@@ -8,8 +8,8 @@ shader = ExtResource("1_yef1k")
 shader_parameter/do_abs = null
 shader_parameter/do_quantize = null
 shader_parameter/quantize_to = 1.0
-shader_parameter/sine_amplitude = Vector2(1, 0)
-shader_parameter/sine_speed = Vector2(1, 0)
+shader_parameter/sine_amplitude = Vector2(0, 20)
+shader_parameter/sine_speed = Vector2(0, 2)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oaghf"]
 animations = [{

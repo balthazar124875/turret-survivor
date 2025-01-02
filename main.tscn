@@ -1,8 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://b12gw52h7h3t5"]
+[gd_scene load_steps=10 format=3 uid="uid://b12gw52h7h3t5"]
 
 [ext_resource type="PackedScene" uid="uid://bf75tspj25scw" path="res://player.tscn" id="1_0gin8"]
 [ext_resource type="PackedScene" uid="uid://lkeky2c6opn5" path="res://enemy.tscn" id="2_kmmyd"]
 [ext_resource type="Script" path="res://enemy.gd" id="3_tprwa"]
+[ext_resource type="Shader" path="res://blur.gdshader" id="4_ydb1j"]
+[ext_resource type="Shader" path="res://waves.gdshader" id="5_a3mli"]
+[ext_resource type="Texture2D" uid="uid://buhgouqsve1sc" path="res://blank.png" id="5_w3fa7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h81u3"]
+shader = ExtResource("4_ydb1j")
+shader_parameter/blur_scale = Vector2(15, 15)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbwv4"]
+shader = ExtResource("5_a3mli")
+shader_parameter/bottom_color = Color(0.231373, 0.176471, 0.905882, 1)
+shader_parameter/top_color = Color(0.415686, 0.831373, 0, 1)
+shader_parameter/wave_amp = 0.228
+shader_parameter/wave_size = 2.286
+shader_parameter/wave_time_mul = 0.47
+shader_parameter/total_phases = 7
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_icc7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w3fa7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Main" type="Node"]
 
@@ -11,3 +38,15 @@
 [node name="Enemy" parent="." instance=ExtResource("2_kmmyd")]
 position = Vector2(851, 180)
 script = ExtResource("3_tprwa")
+
+[node name="Enemy2" parent="." instance=ExtResource("2_kmmyd")]
+material = SubResource("ShaderMaterial_h81u3")
+position = Vector2(297, 160)
+script = ExtResource("3_tprwa")
+
+[node name="Background" type="AnimatedSprite2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_qbwv4")
+position = Vector2(579, 331)
+scale = Vector2(9.25397, 5.12308)
+sprite_frames = SubResource("SpriteFrames_icc7s")
