@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfg33mjhis5o0"]
+
+[ext_resource type="Texture2D" uid="uid://2xpx86r7u8la" path="res://Assets/Sprites/test_enemy_1.png" id="1_hqvm5"]
+
+[node name="TestEnemy" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(547, 346)
+texture = ExtResource("1_hqvm5")
