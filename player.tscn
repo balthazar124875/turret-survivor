@@ -14,15 +14,19 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l2ctd"]
+size = Vector2(102, 115)
 
 [node name="Player" type="Area2D"]
-position = Vector2(236, -30)
+position = Vector2(554, 317)
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(300, 333)
+position = Vector2(15, -23)
 scale = Vector2(0.121176, 0.115583)
 sprite_frames = SubResource("SpriteFrames_oaghf")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, -24.5)
 shape = SubResource("RectangleShape2D_l2ctd")
+metadata/_edit_group_ = true
