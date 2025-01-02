@@ -1,4 +1,7 @@
 extends RigidBody2D
+
+class_name Enemy
+
 var speed = 100
 var target_position = Vector2.ZERO
 var health = 5

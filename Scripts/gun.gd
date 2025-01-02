@@ -1,28 +1,8 @@
-extends Node2D
+extends BaseGun
 
-var cooldown: float = 0.2 #0.2s delay between each shot => firerate = cooldown/1
-var damage: float = 1
-var charge: float = 0
+class_name SimpleGun
 
-var enemy_parent: Node = null
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	enemy_parent = get_node("/root/EmilScene/Enemies")
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	charge += delta
-	if(charge > cooldown):
-		var enemy = _get_closest_enemy()
-		if(enemy != null):
-			shoot(enemy)
-			charge = fmod(charge,  cooldown)
-	
-	pass
-
-func _get_closest_enemy() -> Node:
+func get_target() -> Node:
 	var closest_enemy: Node = null
 	var shortest_distance: float = INF
 	if enemy_parent:
@@ -37,5 +17,6 @@ func _get_closest_enemy() -> Node:
 
 
 func shoot(enemy: Node) -> void:
-	enemy.take_damage(damage)
-	print("Closest enemy:", enemy.name)
+	var bullet = bullet.instantiate()
+	add_child(bullet)
+	bullet.init(enemy, damage)
