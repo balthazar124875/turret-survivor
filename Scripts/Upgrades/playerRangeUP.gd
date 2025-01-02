@@ -1,21 +1,9 @@
-extends Node
+extends Upgrade
 
-class_name Upgrade
-
-enum UpgradeType {
-	WEAPON,
-	PASSIVE,
-	STATUP,
-}
-
-var upgradeName : String;
-var description : String;
-var type : UpgradeType;
-
-
-# Constructor
-func _init(name : String):
-	upgradeName = name;
+func _init():
+	description = "Range of all weapons up by 10%";
+	type = UpgradeType.STATUP;
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,3 +13,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func applyStatUpgradeToPlayer(player : Player) -> void:
+	player.rangeMultiplier *= 1.1;
