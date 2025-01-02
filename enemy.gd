@@ -1,13 +1,13 @@
 extends RigidBody2D
 var speed = 100
 var target_position = Vector2.ZERO
-
+var health = 5
 
 func _init():
 	print("Enemy _init() called")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var player = get_node("../Player")
+	var player = get_node("/root/EmilScene/Player")
 	target_position = player.global_position
 	pass # Replace with function body.
 
@@ -19,6 +19,19 @@ func _process(delta: float) -> void:
 	# Move towards the target position
 	if current_position.distance_to(target_position) > 50:  # Adjust tolerance as needed
 		global_position += direction * speed * delta
-	else:
-		print("Enemy should be doing damage now.")
+	#else:
+		#print("Enemy should be doing damage now.")
 	pass
+
+func is_alive() -> bool:
+	return health > 0
+
+func take_damage(amount: float) -> bool:
+	health -= amount
+	var dead = !is_alive()
+	if(dead):
+		die()
+	return is_alive()
+
+func die() -> void:
+	queue_free()
