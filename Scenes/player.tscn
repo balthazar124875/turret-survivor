@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjyvic2bq55v3"]
+[gd_scene load_steps=5 format=3 uid="uid://n7s457iebtk3"]
 
-[ext_resource type="Texture2D" uid="uid://cv36bot5d554o" path="res://aid.jpg" id="1_efwt4"]
+[ext_resource type="Texture2D" uid="uid://dq2ss7w10v3iu" path="res://Assets/Sprites/Tower.png" id="1_4rhl7"]
 [ext_resource type="Script" path="res://Scripts/gun.gd" id="2_17h55"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oaghf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_efwt4")
+"texture": ExtResource("1_4rhl7")
 }],
 "loop": true,
 "name": &"default",
@@ -18,12 +18,11 @@ animations = [{
 size = Vector2(102, 115)
 
 [node name="Player" type="Area2D"]
-position = Vector2(554, 317)
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(15, -23)
-scale = Vector2(0.121176, 0.115583)
+scale = Vector2(1.043, 1)
 sprite_frames = SubResource("SpriteFrames_oaghf")
 metadata/_edit_group_ = true
 

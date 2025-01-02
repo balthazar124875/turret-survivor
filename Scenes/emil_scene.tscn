@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://u6bs5xni3wp0"]
+[gd_scene load_steps=4 format=3 uid="uid://m53te3bv6k43"]
 
-[ext_resource type="PackedScene" uid="uid://bjyvic2bq55v3" path="res://Scenes/player.tscn" id="1_lb6g2"]
-[ext_resource type="PackedScene" uid="uid://lkeky2c6opn5" path="res://Scenes/enemy.tscn" id="2_f5qrc"]
+[ext_resource type="PackedScene" uid="uid://n7s457iebtk3" path="res://Scenes/player.tscn" id="1_lb6g2"]
+[ext_resource type="PackedScene" uid="uid://bm0hk71151xtr" path="res://Scenes/enemy.tscn" id="3_1cu8v"]
 [ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="4_hihpw"]
 
 [node name="EmilScene" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_lb6g2")]
+position = Vector2(291, 206)
 
 [node name="Marker2D" type="Marker2D" parent="Player"]
 position = Vector2(18, -15)
@@ -15,7 +16,7 @@ position = Vector2(18, -15)
 
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("center", "enemies")]
 script = ExtResource("4_hihpw")
-enemy_scenes = Array[PackedScene]([ExtResource("2_f5qrc")])
+enemy_scenes = Array[PackedScene]([ExtResource("3_1cu8v")])
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
 
