@@ -4,27 +4,19 @@
 [ext_resource type="PackedScene" uid="uid://lkeky2c6opn5" path="res://enemy.tscn" id="2_kmmyd"]
 [ext_resource type="Script" path="res://enemy.gd" id="3_tprwa"]
 [ext_resource type="Shader" path="res://blur.gdshader" id="4_ydb1j"]
-[ext_resource type="Shader" path="res://waves.gdshader" id="5_a3mli"]
-[ext_resource type="Texture2D" uid="uid://buhgouqsve1sc" path="res://blank.png" id="5_w3fa7"]
+[ext_resource type="Material" uid="uid://dfrv2g6uokkkg" path="res://Assets/Materials/Backgrounds/sprite_waves.tres" id="5_ebnw7"]
+[ext_resource type="Texture2D" uid="uid://d3u2i4ps31wif" path="res://checkers.svg" id="6_n4v5y"]
+[ext_resource type="Material" uid="uid://dtqi1d4ppvn50" path="res://Assets/Materials/Backgrounds/rect_balatro.tres" id="7_edg8c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h81u3"]
 shader = ExtResource("4_ydb1j")
 shader_parameter/blur_scale = Vector2(15, 15)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbwv4"]
-shader = ExtResource("5_a3mli")
-shader_parameter/bottom_color = Color(0.231373, 0.176471, 0.905882, 1)
-shader_parameter/top_color = Color(0.415686, 0.831373, 0, 1)
-shader_parameter/wave_amp = 0.228
-shader_parameter/wave_size = 2.286
-shader_parameter/wave_time_mul = 0.47
-shader_parameter/total_phases = 7
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_icc7s"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_w3fa7")
+"texture": ExtResource("6_n4v5y")
 }],
 "loop": true,
 "name": &"default",
@@ -46,7 +38,15 @@ script = ExtResource("3_tprwa")
 
 [node name="Background" type="AnimatedSprite2D" parent="."]
 z_index = -1
-material = SubResource("ShaderMaterial_qbwv4")
-position = Vector2(579, 331)
-scale = Vector2(9.25397, 5.12308)
+texture_repeat = 2
+material = ExtResource("5_ebnw7")
+position = Vector2(584.656, 299)
+scale = Vector2(2.27862, 1.37878)
 sprite_frames = SubResource("SpriteFrames_icc7s")
+
+[node name="BackgroundRect" type="ColorRect" parent="."]
+visible = false
+z_index = -1
+material = ExtResource("7_edg8c")
+offset_right = 1148.0
+offset_bottom = 647.0

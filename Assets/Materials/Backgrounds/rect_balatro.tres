@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dtqi1d4ppvn50"]
+
+[ext_resource type="Shader" path="res://balatro.gdshader" id="1_opqlh"]
+
+[resource]
+shader = ExtResource("1_opqlh")
+shader_parameter/polar_coordinates = true
+shader_parameter/polar_center = Vector2(0.6, 0.5)
+shader_parameter/polar_zoom = 1.0
+shader_parameter/polar_repeat = 1.0
+shader_parameter/spin_rotation = 0.5
+shader_parameter/spin_speed = 1.5
+shader_parameter/offset = Vector2(0.1, 0)
+shader_parameter/colour_1 = Color(0, 0.607843, 0.498039, 1)
+shader_parameter/colour_2 = Color(0, 0, 0.619608, 1)
+shader_parameter/colour_3 = Color(0, 0.897687, 0, 1)
+shader_parameter/contrast = 3.0
+shader_parameter/spin_amount = 0.36
+shader_parameter/pixel_filter = 700.0

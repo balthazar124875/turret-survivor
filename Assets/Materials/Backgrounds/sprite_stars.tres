@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bq6bgmt7750rh"]
+
+[ext_resource type="Shader" path="res://stars.gdshader" id="1_fb42r"]
+
+[resource]
+shader = ExtResource("1_fb42r")
+shader_parameter/bg_color = Color(0, 0, 0, 1)

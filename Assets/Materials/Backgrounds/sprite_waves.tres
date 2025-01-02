@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dfrv2g6uokkkg"]
+
+[ext_resource type="Shader" path="res://waves_c.gdshader" id="1_vs3vk"]
+
+[resource]
+shader = ExtResource("1_vs3vk")
+shader_parameter/bottom_color = Color(0.231373, 0.176471, 0.905882, 1)
+shader_parameter/top_color = Color(0.415686, 0.831373, 0, 1)
+shader_parameter/wave_amp = 0.228
+shader_parameter/wave_size = 2.286
+shader_parameter/wave_time_mul = 0.47
+shader_parameter/total_phases = 7

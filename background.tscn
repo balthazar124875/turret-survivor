@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://d03qy3jsrvvb0"]
+
+[ext_resource type="Shader" path="res://hyperspace.gdshader" id="1_vhfok"]
+[ext_resource type="Texture2D" uid="uid://d3u2i4ps31wif" path="res://checkers.svg" id="2_axihc"]
+[ext_resource type="Script" path="res://background.gd" id="3_qnx7l"]
+[ext_resource type="Shader" path="res://balatro.gdshader" id="4_fqexa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gjt0a"]
+shader = ExtResource("1_vhfok")
+shader_parameter/enabled = false
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_obinn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_axihc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1wle"]
+shader = ExtResource("4_fqexa")
+shader_parameter/polar_coordinates = true
+shader_parameter/polar_center = Vector2(0.6, 0.5)
+shader_parameter/polar_zoom = 1.0
+shader_parameter/polar_repeat = 1.0
+shader_parameter/spin_rotation = 0.5
+shader_parameter/spin_speed = 1.5
+shader_parameter/offset = Vector2(0.1, 0)
+shader_parameter/colour_1 = Color(0, 0.607843, 0.498039, 1)
+shader_parameter/colour_2 = Color(0, 0, 0.619608, 1)
+shader_parameter/colour_3 = Color(0, 0.897687, 0, 1)
+shader_parameter/contrast = 3.0
+shader_parameter/spin_amount = 0.36
+shader_parameter/pixel_filter = 700.0
+
+[node name="Background" type="AnimatedSprite2D"]
+z_index = -1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_gjt0a")
+position = Vector2(584.656, 299)
+scale = Vector2(2.27862, 1.37878)
+sprite_frames = SubResource("SpriteFrames_obinn")
+script = ExtResource("3_qnx7l")
+shaders = Array[Material]([null])
+
+[node name="BackgroundRect2" type="ColorRect" parent="."]
+visible = false
+z_index = -1
+material = SubResource("ShaderMaterial_s1wle")
+offset_right = 1148.0
+offset_bottom = 647.0
