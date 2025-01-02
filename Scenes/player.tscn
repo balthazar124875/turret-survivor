@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjyvic2bq55v3"]
 
 [ext_resource type="Texture2D" uid="uid://cv36bot5d554o" path="res://aid.jpg" id="1_efwt4"]
-[ext_resource type="Script" path="res://gun.gd" id="2_17h55"]
+[ext_resource type="Script" path="res://Scripts/gun.gd" id="2_17h55"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oaghf"]
 animations = [{
