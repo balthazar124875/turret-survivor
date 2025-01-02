@@ -1,6 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bf75tspj25scw"]
+[gd_scene load_steps=6 format=3 uid="uid://bf75tspj25scw"]
 
 [ext_resource type="Texture2D" uid="uid://cv36bot5d554o" path="res://aid.jpg" id="1_efwt4"]
+[ext_resource type="Shader" path="res://bounce.gdshader" id="1_yef1k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6rows"]
+shader = ExtResource("1_yef1k")
+shader_parameter/do_abs = null
+shader_parameter/do_quantize = null
+shader_parameter/quantize_to = 1.0
+shader_parameter/sine_amplitude = Vector2(1, 0)
+shader_parameter/sine_speed = Vector2(1, 0)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oaghf"]
 animations = [{
@@ -21,6 +30,7 @@ position = Vector2(554, 317)
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_6rows")
 position = Vector2(15, -23)
 scale = Vector2(0.121176, 0.115583)
 sprite_frames = SubResource("SpriteFrames_oaghf")
