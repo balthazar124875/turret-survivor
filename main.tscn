@@ -8,9 +8,6 @@
 
 [node name="Player" parent="." instance=ExtResource("1_0gin8")]
 
-[node name="Marker2D" type="Marker2D" parent="Player"]
-position = Vector2(18, -15)
-
 [node name="Enemy" parent="." instance=ExtResource("2_kmmyd")]
-position = Vector2(319, 214)
+position = Vector2(851, 180)
 script = ExtResource("3_tprwa")
