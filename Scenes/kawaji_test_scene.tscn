@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://chfta12gs4bsa"]
+
+[ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="1_p8oo1"]
+[ext_resource type="PackedScene" uid="uid://bfg33mjhis5o0" path="res://Scenes/test_enemy.tscn" id="2_ufj1j"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("center")]
+script = ExtResource("1_p8oo1")
+test_enemy_scene = ExtResource("2_ufj1j")
+center = NodePath("../Center")
+
+[node name="EnemySpawnerTimer" type="Timer" parent="EnemySpawner"]
+autostart = true
+
+[node name="TestEnemy" parent="." instance=ExtResource("2_ufj1j")]
+visible = false
+position = Vector2(1, 2)
+
+[node name="Center" type="Node2D" parent="."]
+position = Vector2(560, 328)
+
+[connection signal="timeout" from="EnemySpawner/EnemySpawnerTimer" to="EnemySpawner" method="_on_enemy_spawner_timer_timeout"]
