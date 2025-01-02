@@ -2,7 +2,7 @@ extends Upgrade
 
 func _init():
 	description = "Range of all weapons up by 10%";
-	type = UpgradeType.STATUP;
+	type = UpgradeType.PLAYER_STAT_UP;
 	rarity = UpgradeRarity.COMMON;
 	pass
 

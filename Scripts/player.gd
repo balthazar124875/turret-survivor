@@ -18,6 +18,6 @@ func _process(delta: float) -> void:
 	pass
 
 func _addUpgrade(upgrade : Upgrade) -> void:
-	if(upgrade.UpgradeType.STATUP):
+	if(upgrade.UpgradeType.PLAYER_STAT_UP):
 		upgrade.applyStatUpgradeToPlayer(); #Call the upgrade callback function
 	playerUpgrades.push_back(upgrade);
