@@ -3,6 +3,7 @@ extends Upgrade
 func _init():
 	description = "Range of all weapons up by 10%";
 	type = UpgradeType.STATUP;
+	rarity = UpgradeRarity.COMMON;
 	pass
 
 # Called when the node enters the scene tree for the first time.

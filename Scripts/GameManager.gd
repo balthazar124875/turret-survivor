@@ -2,15 +2,7 @@
 #ready for use by the player and any other class
 extends Node
 
-"""
-	TUTORIAL! How to create new upgrades!
-	1. Create the upgrade class file.
-	2. Increment the variable NUMBER_OF_UPGRADES.
-	3. Put it in _ready function!
-"""
-
-var UPGRADES_LIST : Array = [];
-const NUMBER_OF_UPGRADES = 1;
+var UPGRADES_LIST : Array = [[]]; #2D array, access elems by UPGRADE_LIST[rarity] -> gives the list of upgrades
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,10 +13,14 @@ func _ready() -> void:
 		var file_name = dir.get_next()
 		while file_name != "":
 			if dir.current_is_dir():
-				UPGRADES_LIST.push_back(load("Upgrades/" + file_name).new())
+				var upgrade = load("Upgrades/" + file_name).new();
+				UPGRADES_LIST[upgrade.UpgradeRarity].push_back(upgrade);
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.");
+	
+	var NUMBER_OF_UPGRADES = UPGRADES_LIST.size();
+	#Sort upgrades in list based on rarity.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -8,9 +8,17 @@ enum UpgradeType {
 	STATUP,
 }
 
+enum UpgradeRarity {
+	COMMON,
+	UNCOMMON,
+	RARE,
+	LEGENDARY,
+}
+
 var upgradeName : String;
 var description : String;
 var type : UpgradeType;
+var rarity : UpgradeRarity;
 
 
 # Constructor
