@@ -9,8 +9,6 @@ func _init():
 func _ready() -> void:
 	var player = get_node("../Player")
 	target_position = player.global_position
-	print("ready")
-	print(target_position)
 	pass # Replace with function body.
 
 
@@ -18,10 +16,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var current_position = global_position
 	var direction = (target_position - current_position).normalized()
-	print(current_position.distance_to(target_position) > 5)
 	# Move towards the target position
-	if current_position.distance_to(target_position) > 5:  # Adjust tolerance as needed
+	if current_position.distance_to(target_position) > 50:  # Adjust tolerance as needed
 		global_position += direction * speed * delta
 	else:
-		print("Reached target position")
+		print("Enemy should be doing damage now.")
 	pass
