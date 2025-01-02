@@ -5,7 +5,8 @@ class_name Upgrade
 enum UpgradeType {
 	WEAPON,
 	PASSIVE,
-	STATUP,
+	PLAYER_STAT_UP,
+	GAME_STAT_UP,
 }
 
 enum UpgradeRarity {
