@@ -10,7 +10,6 @@ extends Node
 """
 
 var upgrades : Array = [];
-const upgradeObj = preload("Upgrades/upgrades.gd");
 const NUMBER_OF_UPGRADES = 1;
 
 # Called when the node enters the scene tree for the first time.
