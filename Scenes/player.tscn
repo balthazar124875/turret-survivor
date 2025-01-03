@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://blmikl8w11roj"]
+[gd_scene load_steps=7 format=3 uid="uid://blmikl8w11roj"]
 
 [ext_resource type="Texture2D" uid="uid://dq2ss7w10v3iu" path="res://Assets/Sprites/Tower.png" id="1_4rhl7"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_sppr7"]
 [ext_resource type="Script" path="res://Scripts/gun.gd" id="2_17h55"]
-[ext_resource type="PackedScene" uid="uid://b4vn1cl2u1xi5" path="res://Scenes/bullet.tscn" id="3_kep8c"]
+[ext_resource type="PackedScene" path="res://Scenes/bullet.tscn" id="3_kep8c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oaghf"]
 animations = [{
