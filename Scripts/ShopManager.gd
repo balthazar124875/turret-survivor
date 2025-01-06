@@ -22,10 +22,13 @@ static var shopUpgradeButtons : Array[ShopUpgradeButton] = [];
 
 var buttons: Array[Node]
 
+var player: Player
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_upgrades()
 	initialize_buttons()
+	player = get_node("/root/EmilScene/Player")
 
 func load_upgrades() -> void:
 			#Iterate all Upgrade scripts and put them in the global array
@@ -57,6 +60,14 @@ func fillShopUpgradeButtons() -> void:
 	for i in shopUpgradeButtons.size():
 		shopUpgradeButtons[i].upgradeNode = newUpgradeList[i];
 		buttons[i].texture_normal = newUpgradeList[i].icon
+		buttons[i].tooltip_text = str(
+			newUpgradeList[i].upgradeName,
+			"\n", 
+			newUpgradeList[i].description,
+			"\n", 
+			newUpgradeList[i].gold_cost, 
+			" gold"
+		)
 
 func renderShopUpgradeButtonsText() -> void:
 	#TODO: Can't assign text to TextureButton like this.
@@ -95,6 +106,9 @@ func GenerateUpgradesListForShop(size : int) -> Array:
 	return shopUpgradeList;
 
 func _on_shop_upgrade_button_pressed(index: int) -> void:
+	if player.gold < shopUpgradeButtons[index].upgradeNode.gold_cost:
+		return
+	player.modify_gold(-shopUpgradeButtons[index].upgradeNode.gold_cost)
 	var new_upgrade = shopUpgradeButtons[index].upgradeNode.duplicate()
 	add_child(new_upgrade)
 	new_upgrade.applyUpgradeToPlayer()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://ebv5vx7fruxe"]
+[gd_scene load_steps=3 format=3 uid="uid://cdu376afd0xi5"]
 
 [ext_resource type="Script" path="res://Scripts/gun.gd" id="1_7uu1s"]
 [ext_resource type="PackedScene" uid="uid://b4vn1cl2u1xi5" path="res://Scenes/Projectiles/bullet.tscn" id="2_52185"]
