@@ -17,7 +17,7 @@
 script = ExtResource("1_itpwq")
 
 [node name="Player" parent="." instance=ExtResource("2_n3kdf")]
-position = Vector2(291, 206)
+position = Vector2(310, 179)
 
 [node name="Marker2D" type="Marker2D" parent="Player"]
 position = Vector2(18, -15)

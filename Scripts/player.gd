@@ -5,7 +5,7 @@ class_name Player
 var hp = 100;
 var playerUpgrades : Array = [];
 var rangeMultiplier = 1.0;
-var extraProjectiles = 7;
+var extraProjectiles = 0;
 var gold = 0;
 
 # Called when the node enters the scene tree for the first time.

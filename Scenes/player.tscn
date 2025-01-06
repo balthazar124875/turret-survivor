@@ -16,7 +16,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l2ctd"]
-size = Vector2(102, 115)
+size = Vector2(41, 50)
 
 [node name="Player" type="Area2D"]
 script = ExtResource("1_sppr7")
@@ -28,7 +28,7 @@ sprite_frames = SubResource("SpriteFrames_oaghf")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(16, -24.5)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_l2ctd")
 
 [node name="Weapons" type="Node2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d1umchc2k1brc"]
+[gd_scene load_steps=17 format=3 uid="uid://d1umchc2k1brc"]
 
 [ext_resource type="Shader" uid="uid://b4sgevpcv7g0g" path="res://vfxShaders/thunder_shader.tres" id="1_kc0ex"]
 [ext_resource type="Script" path="res://Scenes/vfx/vfx_thunder.gd" id="1_xukmf"]
@@ -180,6 +180,9 @@ _data = {
 "start_animation": SubResource("Animation_g8y52")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bykd2"]
+size = Vector2(27, 20)
+
 [node name="vfx_thunder" type="Node2D"]
 script = ExtResource("1_xukmf")
 
@@ -206,3 +209,11 @@ libraries = {
 "": SubResource("AnimationLibrary_el7eb")
 }
 autoplay = "start_animation"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(2.5, 2.5)
+shape = SubResource("RectangleShape2D_bykd2")

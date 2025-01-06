@@ -24,7 +24,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8stfk"]
-size = Vector2(100, 97)
+size = Vector2(4, 4)
 
 [node name="Bullet" type="RigidBody2D"]
 disable_mode = 1
@@ -36,15 +36,13 @@ max_contacts_reported = 1
 script = ExtResource("1_hsvne")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1.00003, -0.999992)
 scale = Vector2(0.13277, 0.13277)
 sprite_frames = SubResource("SpriteFrames_iwoij")
 animation = &"new_animation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_8stfk")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(1.00002, -1.00001)
+position = Vector2(11, 1)
 scale = Vector2(4.775, 4.775)
