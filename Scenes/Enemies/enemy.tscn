@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm0hk71151xtr"]
+[gd_scene load_steps=5 format=3 uid="uid://dnjei3oiiciha"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_biolc"]
 [ext_resource type="Texture2D" uid="uid://dpcn4navygyv1" path="res://Assets/Sprites/little_enemy.png" id="2_i0e02"]

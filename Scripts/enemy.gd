@@ -33,14 +33,14 @@ func _process(delta: float) -> void:
 func is_alive() -> bool:
 	return health > 0
 
-func take_damage(amount: float) -> bool:
-	if(!is_alive()): 
+func take_damage(amount: float) -> void:
+	if(health <= 0): 
 		pass
 	health -= amount
-	if(!is_alive()):
+	if(health <= 0):
 		die()
-	return is_alive()
 
 func die() -> void:
+	print("im dead")
 	SignalBus.enemy_killed.emit(self)
 	queue_free()
