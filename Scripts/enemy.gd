@@ -16,7 +16,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func increase_hp(multiplier: float) -> void:
-	print("multilpying health by " + str(multiplier))
 	health *= multiplier
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,6 +40,5 @@ func take_damage(amount: float) -> void:
 		die()
 
 func die() -> void:
-	print("im dead")
 	SignalBus.enemy_killed.emit(self)
 	queue_free()

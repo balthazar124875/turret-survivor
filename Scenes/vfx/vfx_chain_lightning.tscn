@@ -1,6 +1,5 @@
-[gd_scene load_steps=16 format=3 uid="uid://bpq5k8m6lkt13"]
+[gd_scene load_steps=15 format=3 uid="uid://bpq5k8m6lkt13"]
 
-[ext_resource type="Script" path="res://Scenes/vfx/vfx_thunder.gd" id="1_uu878"]
 [ext_resource type="Shader" uid="uid://b4sgevpcv7g0g" path="res://vfxShaders/thunder_shader.tres" id="2_uwdj3"]
 [ext_resource type="Texture2D" uid="uid://ynjyyam03lvo" path="res://Textures/vfxThunder.jpg" id="3_hcfp4"]
 [ext_resource type="Texture2D" uid="uid://dfw81wjllmjub" path="res://Textures/sparksvfx.jpg" id="4_crdpg"]
@@ -8,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_18eli"]
 shader = ExtResource("2_uwdj3")
 shader_parameter/VanishingValue = 0.0
-shader_parameter/Vector2Parameter = Vector2(0.35, 1)
+shader_parameter/Vector2Parameter = Vector2(0.25, 1)
 shader_parameter/speed = Vector2(-4, 0)
 shader_parameter/basic_texture = ExtResource("3_hcfp4")
 
@@ -181,19 +180,21 @@ _data = {
 "start_animation": SubResource("Animation_g8y52")
 }
 
-[node name="vfx_thunder" type="Node2D"]
-script = ExtResource("1_uu878")
+[node name="vfx_chain_lightning" type="Node2D"]
 
 [node name="Thunder" type="Line2D" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_18eli")
-position = Vector2(-341, -359)
-points = PackedVector2Array(343, 3, 478, 632)
-width = 80.0
-default_color = Color(1, 0.283384, 0.531142, 1)
+points = PackedVector2Array(0, 0, 100, 100)
+width = 25.0
+default_color = Color(0.427392, 0.634639, 0.698615, 1)
 texture_mode = 1
+end_cap_mode = 1
+round_precision = 1
+antialiased = true
 
 [node name="Sparks" type="GPUParticles2D" parent="."]
+visible = false
 material = SubResource("CanvasItemMaterial_r4rhg")
 emitting = false
 amount = 30

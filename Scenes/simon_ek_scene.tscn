@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b1ouph4tunc4b"]
+[gd_scene load_steps=12 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://Scripts/UIManager.gd" id="5_1pdr0"]
 [ext_resource type="Script" path="res://Scripts/ShopManager.gd" id="5_jxmqa"]
 [ext_resource type="Texture2D" uid="uid://b27w0ddjiakbn" path="res://Assets/Sprites/UI/ui_overlay.png" id="6_pvymq"]
-[ext_resource type="PackedScene" uid="uid://csykvm7f1xq7j" path="res://Scenes/Upgrades/gun_upgrade.tscn" id="7_g7jp2"]
 [ext_resource type="Texture2D" uid="uid://baywma4a7d8ba" path="res://Assets/Sprites/UI/32x32_button.png" id="7_vnyei"]
 [ext_resource type="Theme" uid="uid://bug82i6sy1xtq" path="res://Themes/texture_button_theme.tres" id="8_4ctao"]
 [ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="9_yckrj"]
@@ -17,7 +16,7 @@
 script = ExtResource("1_itpwq")
 
 [node name="Player" parent="." instance=ExtResource("2_n3kdf")]
-position = Vector2(291, 206)
+position = Vector2(310, 179)
 
 [node name="Marker2D" type="Marker2D" parent="Player"]
 position = Vector2(18, -15)
@@ -59,7 +58,6 @@ theme_override_constants/h_separation = 2
 theme_override_constants/v_separation = 2
 columns = 4
 script = ExtResource("5_jxmqa")
-testShopUpgrade = ExtResource("7_g7jp2")
 
 [node name="ShopUpgradeButton1" type="TextureButton" parent="Control/ShopUpgrades"]
 layout_mode = 2
@@ -120,11 +118,20 @@ text = "Wave 1"
 
 [node name="GoldLabel" type="RichTextLabel" parent="Control"]
 layout_mode = 0
-offset_left = 533.0
-offset_top = 46.0
-offset_right = 618.0
-offset_bottom = 80.0
+offset_left = 534.0
+offset_top = 107.0
+offset_right = 619.0
+offset_bottom = 141.0
 text = "GOld"
+
+[node name="WaveProgressBar" type="ProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 42.0
+offset_right = 638.0
+offset_bottom = 69.0
+show_percentage = false
 
 [connection signal="timeout" from="EnemySpawner/EnemySpawnerTimer" to="EnemySpawner" method="_on_enemy_spawner_timer_timeout"]
 [connection signal="timeout" from="EnemySpawner/WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]
+[connection signal="pressed" from="Control/HBoxContainer/RerollButton" to="Control/ShopUpgrades" method="_on_reroll_button_pressed"]

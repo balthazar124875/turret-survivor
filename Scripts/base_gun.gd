@@ -14,6 +14,7 @@ enum TargetingType {
 @export var damage: float = 1
 @export var charge: float = 0
 @export var bullet_life_time: float = 2
+@export var range: float = 0
 
 var player: Player
 var enemy_parent: Node = null

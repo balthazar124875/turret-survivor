@@ -13,13 +13,16 @@ var rng = RandomNumberGenerator.new()
 var current_wave_enemy_index = 0
 var current_wave = 1
 
+@onready var wave_progress_bar: ProgressBar = get_node("/root/EmilScene/Control/WaveProgressBar")
+@onready var wave_timer: Timer = get_node("WaveTimer")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	wave_progress_bar.max_value = wave_timer.wait_time
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	wave_progress_bar.value = wave_timer.time_left
 
 func _on_enemy_spawner_timer_timeout() -> void:
 	var enemy = enemy_scenes[current_wave_enemy_index].instantiate()
@@ -29,7 +32,6 @@ func _on_enemy_spawner_timer_timeout() -> void:
 	enemy.position = Vector2(xPos, yPos)
 	enemies.add_child(enemy)
 	enemy.increase_hp(pow(1.2, current_wave / enemy_scenes.size()))
-	
 
 func _on_wave_timer_timeout() -> void:
 	current_wave += 1
