@@ -26,7 +26,7 @@ func shoot(enemy: Node) -> void:
 	for n in range(bulletAmount):
 		var bullet = bullet.instantiate()
 		add_child(bullet)
-		bullet.init_with_direction(direction, damage)
+		bullet.init_with_direction(direction, damage, bullet_life_time)
 		direction = direction.rotated(-deg_to_rad(bullet_spread))
 		
 		

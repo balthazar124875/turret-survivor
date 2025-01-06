@@ -1,13 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://m53te3bv6k43"]
+[gd_scene load_steps=13 format=3 uid="uid://m53te3bv6k43"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_7jn0s"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="1_lb6g2"]
-[ext_resource type="PackedScene" uid="uid://bm0hk71151xtr" path="res://Scenes/enemy.tscn" id="3_1cu8v"]
+[ext_resource type="PackedScene" uid="uid://bm0hk71151xtr" path="res://Scenes/Enemies/enemy.tscn" id="3_1cu8v"]
 [ext_resource type="Script" path="res://Scripts/UIManager.gd" id="4_8ltop"]
 [ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="4_hihpw"]
 [ext_resource type="Texture2D" uid="uid://b27w0ddjiakbn" path="res://Assets/Sprites/UI/ui_overlay.png" id="4_uccbn"]
+[ext_resource type="PackedScene" uid="uid://bs82c8ldhf2up" path="res://Scenes/Enemies/enemy2.tscn" id="5_18nnp"]
 [ext_resource type="Texture2D" uid="uid://baywma4a7d8ba" path="res://Assets/Sprites/UI/32x32_button.png" id="5_magbx"]
 [ext_resource type="Theme" uid="uid://bug82i6sy1xtq" path="res://Themes/texture_button_theme.tres" id="6_lelcr"]
+[ext_resource type="PackedScene" uid="uid://c661j4u550gv2" path="res://Scenes/Enemies/enemy3.tscn" id="6_m3fnc"]
 [ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="6_t6re0"]
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="7_keaff"]
 
@@ -15,16 +17,15 @@
 script = ExtResource("1_7jn0s")
 
 [node name="Player" parent="." instance=ExtResource("1_lb6g2")]
-position = Vector2(291, 206)
+position = Vector2(317, 185)
 
 [node name="Marker2D" type="Marker2D" parent="Player"]
-position = Vector2(18, -15)
 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("center", "enemies")]
 script = ExtResource("4_hihpw")
-enemy_scenes = Array[PackedScene]([ExtResource("3_1cu8v")])
+enemy_scenes = Array[PackedScene]([ExtResource("3_1cu8v"), ExtResource("5_18nnp"), ExtResource("6_m3fnc")])
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
 

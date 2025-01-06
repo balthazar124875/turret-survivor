@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dq2ss7w10v3iu" path="res://Assets/Sprites/Tower.png" id="1_4rhl7"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_sppr7"]
-[ext_resource type="PackedScene" path="res://Scenes/Weapons/gun.tscn" id="3_q8d6d"]
+[ext_resource type="PackedScene" uid="uid://ebv5vx7fruxe" path="res://Scenes/Weapons/gun.tscn" id="3_q8d6d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oaghf"]
 animations = [{
@@ -23,7 +23,6 @@ script = ExtResource("1_sppr7")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(15, -23)
 scale = Vector2(1.043, 1)
 sprite_frames = SubResource("SpriteFrames_oaghf")
 metadata/_edit_group_ = true
