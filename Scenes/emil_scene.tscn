@@ -1,22 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://m53te3bv6k43"]
+[gd_scene load_steps=14 format=3 uid="uid://m53te3bv6k43"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_7jn0s"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="1_lb6g2"]
-<<<<<<< HEAD
-[ext_resource type="PackedScene" uid="uid://bm0hk71151xtr" path="res://Scenes/Enemies/enemy.tscn" id="3_1cu8v"]
-[ext_resource type="Script" path="res://Scripts/UIManager.gd" id="4_8ltop"]
-=======
-[ext_resource type="PackedScene" uid="uid://bm0hk71151xtr" path="res://Scenes/enemy.tscn" id="3_1cu8v"]
+[ext_resource type="PackedScene" uid="uid://dnjei3oiiciha" path="res://Scenes/Enemies/enemy.tscn" id="3_1cu8v"]
 [ext_resource type="Script" path="res://Scripts/ShopManager.gd" id="4_8ltop"]
->>>>>>> f6538da (Fix shop)
 [ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="4_hihpw"]
 [ext_resource type="Texture2D" uid="uid://b27w0ddjiakbn" path="res://Assets/Sprites/UI/ui_overlay.png" id="4_uccbn"]
-[ext_resource type="PackedScene" uid="uid://bs82c8ldhf2up" path="res://Scenes/Enemies/enemy2.tscn" id="5_18nnp"]
+[ext_resource type="PackedScene" uid="uid://di3fcf5mxt36n" path="res://Scenes/Enemies/enemy2.tscn" id="5_18nnp"]
 [ext_resource type="Texture2D" uid="uid://baywma4a7d8ba" path="res://Assets/Sprites/UI/32x32_button.png" id="5_magbx"]
 [ext_resource type="Theme" uid="uid://bug82i6sy1xtq" path="res://Themes/texture_button_theme.tres" id="6_lelcr"]
-[ext_resource type="PackedScene" uid="uid://c661j4u550gv2" path="res://Scenes/Enemies/enemy3.tscn" id="6_m3fnc"]
+[ext_resource type="PackedScene" uid="uid://bvh4sggr4wxu3" path="res://Scenes/Enemies/enemy3.tscn" id="6_m3fnc"]
 [ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="6_t6re0"]
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="7_keaff"]
+[ext_resource type="Script" path="res://Scripts/UIManager.gd" id="8_sr41c"]
 
 [node name="EmilScene" type="Node2D"]
 script = ExtResource("1_7jn0s")
@@ -46,7 +42,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 360.0
-script = ExtResource("4_8ltop")
+script = ExtResource("8_sr41c")
 
 [node name="UiOverlay" type="Sprite2D" parent="Control"]
 position = Vector2(320, 180)
@@ -62,6 +58,7 @@ scale = Vector2(1, 0.998516)
 theme_override_constants/h_separation = 2
 theme_override_constants/v_separation = 2
 columns = 4
+script = ExtResource("4_8ltop")
 
 [node name="ShopUpgradeButton" type="TextureButton" parent="Control/ShopUpgrades"]
 layout_mode = 2
