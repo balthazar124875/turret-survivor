@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bihp4jss16rec"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dloxb"]
+light_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3cfcs"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[node name="VfxExplosion" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_dloxb")
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_3cfcs")
