@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_7jn0s"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="1_lb6g2"]
-[ext_resource type="PackedScene" path="res://Scenes/enemy.tscn" id="3_1cu8v"]
+[ext_resource type="PackedScene" uid="uid://bm0hk71151xtr" path="res://Scenes/enemy.tscn" id="3_1cu8v"]
 [ext_resource type="Script" path="res://Scripts/UIManager.gd" id="4_8ltop"]
 [ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="4_hihpw"]
 [ext_resource type="Texture2D" uid="uid://b27w0ddjiakbn" path="res://Assets/Sprites/UI/ui_overlay.png" id="4_uccbn"]

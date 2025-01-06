@@ -16,13 +16,16 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	global_position += direction * speed * delta
 
-func init(target: Node, dmg: float) -> void:
+func init_with_target(target: Node, damage: float) -> void:
 	var current_position = global_position
 	direction = (target.position - current_position).normalized()
-	damage = dmg
+	self.damage = damage
+	
+func init_with_direction(direction: Vector2, damage: float) -> void:
+	self.direction = direction
+	self.damage = damage
 
 func _on_body_entered(body):
-	print(body.name)
 	if body is Enemy:  # Replace with your enemy script class name
 		body.take_damage(damage)  # Call the enemy's damage function
 		queue_free()  # Destroy the bullet

@@ -5,9 +5,10 @@ class_name Enemy
 var speed = 100
 var target_position = Vector2.ZERO
 var health = 5
+var gold_value = 1
 
-func _init():
-	print("Enemy _init() called")
+signal enemy_killed(enemy)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var player = get_node("/root/EmilScene/Player")
@@ -37,4 +38,5 @@ func take_damage(amount: float) -> bool:
 	return is_alive()
 
 func die() -> void:
+	SignalBus.enemy_killed.emit(self)
 	queue_free()

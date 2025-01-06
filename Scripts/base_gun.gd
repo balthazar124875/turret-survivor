@@ -7,10 +7,12 @@ class_name BaseGun
 @export var damage: float = 1
 @export var charge: float = 0
 
+var player: Player
 var enemy_parent: Node = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	enemy_parent = get_node("/root/EmilScene/Enemies")
+	player = get_node("../..")
 	pass # Replace with function body.
 
 
