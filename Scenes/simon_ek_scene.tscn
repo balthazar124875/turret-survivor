@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
 [ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="3_b8wlj"]
-[ext_resource type="PackedScene" uid="uid://bm0hk71151xtr" path="res://Scenes/enemy.tscn" id="4_2ey2d"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemies/enemy.tscn" id="4_2ey2d"]
 [ext_resource type="Script" path="res://Scripts/ShopManager.gd" id="5_jxmqa"]
 [ext_resource type="Texture2D" uid="uid://b27w0ddjiakbn" path="res://Assets/Sprites/UI/ui_overlay.png" id="6_pvymq"]
 [ext_resource type="PackedScene" uid="uid://csykvm7f1xq7j" path="res://Scenes/Upgrades/gun_upgrade.tscn" id="7_g7jp2"]
