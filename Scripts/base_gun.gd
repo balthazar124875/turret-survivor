@@ -1,6 +1,13 @@
 extends Node2D
 
 class_name BaseGun
+
+enum TargetingType {
+	ENEMY,
+	AREA
+}
+
+@export var targeting_type : TargetingType;
 @export var bullet: PackedScene
 
 @export var cooldown: float = 0.2 #0.2s delay between each shot => firerate = cooldown/1
@@ -20,12 +27,17 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	charge += delta
 	if(charge > cooldown):
-		var enemy = get_target()
-		if(enemy != null):
-			shoot(enemy)
-			charge = fmod(charge,  cooldown)
-	
-	pass
+		match (targeting_type):
+			TargetingType.ENEMY:
+				var enemy = get_target()
+				if(enemy != null):
+					shoot(enemy)
+					charge = fmod(charge,  cooldown)
+			TargetingType.AREA:
+				var area = get_target_area()
+				shoot_area(area)
+				charge = fmod(charge,  cooldown)
+				
 
 func get_target() -> Node: #defaults to getting closest
 	var closest_enemy: Node = null
@@ -39,7 +51,13 @@ func get_target() -> Node: #defaults to getting closest
 					closest_enemy = enemy
 					
 	return closest_enemy
+	
+func get_target_area() -> Vector2: #defaults to getting closest
+	return player.global_position
 
 
 func shoot(enemy: Node) -> void:
 	enemy.take_damage(damage)
+	
+func shoot_area(position: Vector2) -> void:
+	pass

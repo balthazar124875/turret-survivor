@@ -114,5 +114,12 @@ offset_right = 618.0
 offset_bottom = 43.0
 text = "Wave 1"
 
+[node name="GoldLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 534.0
+offset_top = 45.0
+offset_right = 619.0
+offset_bottom = 79.0
+
 [connection signal="timeout" from="EnemySpawner/EnemySpawnerTimer" to="EnemySpawner" method="_on_enemy_spawner_timer_timeout"]
 [connection signal="timeout" from="EnemySpawner/WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]

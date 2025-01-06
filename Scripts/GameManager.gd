@@ -9,23 +9,23 @@ static var availableUpgradesList : Array = []; #This list will hold all upgrades
 static var shuffledUpgradesList = [[]];
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	#Iterate all Upgrade scripts and put them in the global array
-	var dir = DirAccess.open("res://Scripts/Upgrades/");
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			var upgrade = load("res://Scripts/Upgrades/" + file_name).new();
-			UPGRADES_LIST[upgrade.rarity].push_back(upgrade);
-			file_name = dir.get_next()
-	else:
-		print("An error occurred when trying to access the path.");
-	
-	var NUMBER_OF_UPGRADES = UPGRADES_LIST.size();
-	GenerateAvailableUpgradesList(); 
-	ShuffleEntireUpgradesList(); #Use a new list for this.
-	UIManager.initializeUIManager();
+#func _ready() -> void:
+	##Iterate all Upgrade scripts and put them in the global array
+	#var dir = DirAccess.open("res://Scripts/Upgrades/");
+	#if dir:
+		#dir.list_dir_begin()
+		#var file_name = dir.get_next()
+		#while file_name != "":
+			#var upgrade = load("res://Scripts/Upgrades/" + file_name).new();
+			#UPGRADES_LIST[upgrade.rarity].push_back(upgrade);
+			#file_name = dir.get_next()
+	#else:
+		#print("An error occurred when trying to access the path.");
+	#
+	#var NUMBER_OF_UPGRADES = UPGRADES_LIST.size();
+	#GenerateAvailableUpgradesList(); 
+	#ShuffleEntireUpgradesList(); #Use a new list for this.
+	#UIManager.initializeUIManager();
 
 func GenerateAvailableUpgradesList() -> void:
 	pass

@@ -29,7 +29,7 @@ func _on_enemy_spawner_timer_timeout() -> void:
 
 func _on_wave_timer_timeout() -> void:
 	current_wave += 1
-	get_node("/root/EmilScene/Control/WaveLabel").text = "Wave: " + str(current_wave)
+	SignalBus.current_wave_updated.emit(current_wave)
 	if current_wave_enemy_index < enemy_scenes.size() - 1:
 		current_wave_enemy_index += 1
 	else:

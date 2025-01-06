@@ -17,7 +17,6 @@ func get_target() -> Node:
 					
 	return closest_enemy
 
-
 func shoot(enemy: Node) -> void:
 	var bulletAmount = 1 + player.extraProjectiles
 	

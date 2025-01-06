@@ -28,7 +28,7 @@ func _addUpgrade(upgrade : Upgrade) -> void:
 
 func modify_gold(value: int) -> void:
 	gold += value
-	print(gold)
+	SignalBus.gold_amount_updated.emit(gold)
 	
 func _on_enemy_killed(enemy: Enemy) -> void:
 	modify_gold(enemy.gold_value)
