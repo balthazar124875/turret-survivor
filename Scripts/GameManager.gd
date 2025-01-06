@@ -4,11 +4,8 @@ extends Node
 
 class_name GameManager
 
-static var UPGRADES_LIST = [[]]; #2D array, access elems by UPGRADE_LIST[rarity] -> gives the list of upgrades
-static var availableUpgradesList : Array = []; #This list will hold all upgrades that are available to use currently CURRENTLY UNUSED!!!
-static var shuffledUpgradesList = [[]];
-
 # Called when the node enters the scene tree for the first time.
+<<<<<<< HEAD
 #func _ready() -> void:
 	##Iterate all Upgrade scripts and put them in the global array
 	#var dir = DirAccess.open("res://Scripts/Upgrades/");
@@ -67,4 +64,7 @@ static func GenerateUpgradesListForShop(size : int) -> Array:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+=======
+func _ready() -> void:
+>>>>>>> f6538da (Fix shop)
 	pass
