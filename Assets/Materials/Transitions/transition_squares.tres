@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://qi3m1r16tnlf"]
+
+[ext_resource type="Shader" path="res://Scripts/Shaders/Transitions/transition_squares.gdshader" id="1_jifj6"]
+
+[resource]
+shader = ExtResource("1_jifj6")
+shader_parameter/progress = 0.0
+shader_parameter/tiling = 12.0

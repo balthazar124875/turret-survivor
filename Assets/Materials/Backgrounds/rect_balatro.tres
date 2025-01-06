@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dtqi1d4ppvn50"]
 
-[ext_resource type="Shader" path="res://Scripts/Shaders/Transitions/balatro.gdshader" id="1_opqlh"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/Backgrounds/balatro.gdshader" id="1_opqlh"]
 
 [resource]
 shader = ExtResource("1_opqlh")

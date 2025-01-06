@@ -1,8 +1,8 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bovrtvhdx6lx7"]
 
-[ext_resource type="Shader" path="res://transition_diamonds.gdshader" id="1_6ybl5"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/Transitions/transition_diamonds.gdshader" id="1_ggv2r"]
 
 [resource]
-shader = ExtResource("1_6ybl5")
-shader_parameter/progress = 0.429
+shader = ExtResource("1_ggv2r")
+shader_parameter/progress = 1.0
 shader_parameter/diamondPixelSize = 10.0

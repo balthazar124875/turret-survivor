@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b88cgwgs87qid"]
+
+[ext_resource type="Shader" path="res://Scripts/Shaders/Transitions/transition_row_by_row.gdshader" id="1_05fqh"]
+
+[resource]
+shader = ExtResource("1_05fqh")
+shader_parameter/visible_rows = 12
+shader_parameter/offset = 0.0

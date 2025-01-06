@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b8qaons7r7tsb"]
+
+[ext_resource type="Shader" path="res://Scripts/Shaders/Transitions/transition_hex.gdshader" id="1_yh8hk"]
+
+[resource]
+shader = ExtResource("1_yh8hk")
+shader_parameter/size = Vector2(32, 24)
+shader_parameter/progress = 1.0

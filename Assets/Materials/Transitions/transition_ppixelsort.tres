@@ -1,7 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dfuj6jlfpxfpe"]
-
-[ext_resource type="Shader" path="res://ppixelsorting.gdshader" id="1_eul7t"]
-
-[resource]
-shader = ExtResource("1_eul7t")
-shader_parameter/sort = 0.0

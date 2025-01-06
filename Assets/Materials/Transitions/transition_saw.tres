@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b4l2v5iy38w1f"]
 
-[ext_resource type="Shader" path="res://Assets/Materials/Transitions/transition_saw.gdshader" id="1_fk640"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/Transitions/transition_saw.gdshader" id="1_fk640"]
 
 [resource]
 shader = ExtResource("1_fk640")

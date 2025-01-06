@@ -2,20 +2,48 @@
 
 [ext_resource type="Script" path="res://Scripts/background.gd" id="1_qj51f"]
 [ext_resource type="PackedScene" uid="uid://d03qy3jsrvvb0" path="res://background.tscn" id="2_6upbp"]
-[ext_resource type="Material" uid="uid://dfuj6jlfpxfpe" path="res://Assets/Materials/Transitions/transition_ppixelsort.tres" id="3_17710"]
-[ext_resource type="Texture2D" uid="uid://d3u2i4ps31wif" path="res://checkers.svg" id="3_uko5r"]
-[ext_resource type="Shader" path="res://transition_diamonds.gdshader" id="4_l4skq"]
+[ext_resource type="Material" uid="uid://dxtqe0cx86n1x" path="res://Assets/Materials/Transitions/transition_vertical_lines.tres" id="3_hd475"]
+[ext_resource type="Texture2D" uid="uid://4d2ctq5hvmtf" path="res://Assets/black.png" id="5_v0i43"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ycrsm"]
-shader = ExtResource("4_l4skq")
-shader_parameter/progress = 0.429
-shader_parameter/diamondPixelSize = 10.0
+[sub_resource type="Shader" id="Shader_hjvcv"]
+code = "//MADE BY : @ahopness
+//LICENSE : CC0
+//COMATIBLE WITH : GLES2, GLES3, WEBGL
+
+shader_type canvas_item;
+
+uniform float sort :hint_range(0.0, 2.6)= 0.0;
+uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_linear_mipmap;
+
+void fragment(){
+	vec2 uv = FRAGCOORD.xy / (1.0 / SCREEN_PIXEL_SIZE).xy;
+	
+	// Pseudo Pixel Sorting
+	float sortThreshold = 1.0 - clamp(sort / 2.6, 0.0, 1.0);
+	vec2 sortUv = vec2(uv.x, sortThreshold);
+	
+	// Curved melting transition
+	vec2 transitionUV = uv;
+	transitionUV.y += pow(sort, 2.0 + (sort * 2.0)) * uv.x * fract(sin(dot(vec2(transitionUV.x), vec2(12.9, 78.2)))* 437.5);
+	COLOR = texture(SCREEN_TEXTURE, transitionUV);
+	
+	// Draw pixel sorting effect behind the melting transition
+	if(transitionUV.y > 1.){
+		COLOR = texture(SCREEN_TEXTURE, sortUv);
+	}else{
+		COLOR = texture(SCREEN_TEXTURE, uv);
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rgor2"]
+shader = SubResource("Shader_hjvcv")
+shader_parameter/sort = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lo6to"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_uko5r")
+"texture": ExtResource("5_v0i43")
 }],
 "loop": true,
 "name": &"default",
@@ -47,12 +75,12 @@ script = null
 
 [node name="TransitionRect" type="ColorRect" parent="."]
 visible = false
-material = ExtResource("3_17710")
+material = SubResource("ShaderMaterial_rgor2")
 offset_right = 1117.0
 offset_bottom = 637.0
 
 [node name="TransitionASprite" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_ycrsm")
-position = Vector2(535, 276)
-scale = Vector2(2.29, 1.266)
+material = ExtResource("3_hd475")
+position = Vector2(579, 357)
+scale = Vector2(0.639583, 0.653704)
 sprite_frames = SubResource("SpriteFrames_lo6to")
