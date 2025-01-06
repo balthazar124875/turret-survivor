@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://blmikl8w11roj"]
+[gd_scene load_steps=7 format=3 uid="uid://blmikl8w11roj"]
 
 [ext_resource type="Texture2D" uid="uid://dq2ss7w10v3iu" path="res://Assets/Sprites/Tower.png" id="1_4rhl7"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_sppr7"]
 [ext_resource type="PackedScene" path="res://Scenes/Weapons/gun.tscn" id="3_q8d6d"]
+[ext_resource type="Script" path="res://Scripts/Weapons/ThunderStrike.gd" id="4_vbam2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oaghf"]
 animations = [{
@@ -35,3 +36,6 @@ shape = SubResource("RectangleShape2D_l2ctd")
 [node name="Weapons" type="Node2D" parent="."]
 
 [node name="Gun" parent="Weapons" instance=ExtResource("3_q8d6d")]
+
+[node name="ThunderStrike" type="Node2D" parent="Weapons"]
+script = ExtResource("4_vbam2")
