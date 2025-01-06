@@ -18,7 +18,10 @@ static var commonRate = 1.0 - (uncommonRate + rareRate + legendaryRate);
 
 static var shopUpgradeButtons : Array[ShopUpgradeButton] = [];
 
-@export var testShopUpgrade: PackedScene
+var base_reroll_cost = 5
+var current_reroll_cost = base_reroll_cost
+
+var empty_item_slot_texture: Texture2D
 
 var buttons: Array[Node]
 
@@ -28,7 +31,9 @@ var player: Player
 func _ready() -> void:
 	load_upgrades()
 	initialize_buttons()
+	SignalBus.current_wave_updated.connect(new_wave_shop_reroll)
 	player = get_node("/root/EmilScene/Player")
+	empty_item_slot_texture = load("res://Assets/Sprites/upgrades/empty_upgrade_slot.png")
 
 func load_upgrades() -> void:
 			#Iterate all Upgrade scripts and put them in the global array
@@ -52,8 +57,13 @@ func initialize_buttons() -> void:
 		buttons[i].pressed.connect(_on_shop_upgrade_button_pressed.bind(i))
 	fillShopUpgradeButtons()
 
+func new_wave_shop_reroll(current_wave: int = 0) -> void:
+	fillShopUpgradeButtons()
+	current_reroll_cost = base_reroll_cost
+
 #Call this on re-rolls to update all shopUpgrade buttons.
-func fillShopUpgradeButtons() -> void:
+func fillShopUpgradeButtons(current_wave: int = 0) -> void:
+	print("fill shop")
 	#TODO: Shuffle the upgrade list here from GameManager
 	ShuffleEntireUpgradesList()
 	var newUpgradeList = GenerateUpgradesListForShop(shopUpgradeButtons.size());
@@ -106,6 +116,8 @@ func GenerateUpgradesListForShop(size : int) -> Array:
 	return shopUpgradeList;
 
 func _on_shop_upgrade_button_pressed(index: int) -> void:
+	if shopUpgradeButtons[index].upgradeNode == null:
+		return
 	if player.gold < shopUpgradeButtons[index].upgradeNode.gold_cost:
 		return
 	player.modify_gold(-shopUpgradeButtons[index].upgradeNode.gold_cost)
@@ -113,3 +125,12 @@ func _on_shop_upgrade_button_pressed(index: int) -> void:
 	add_child(new_upgrade)
 	new_upgrade.applyUpgradeToPlayer()
 	new_upgrade.queue_free()
+	shopUpgradeButtons[index].upgradeNode = null
+	buttons[index].texture_normal = empty_item_slot_texture
+
+func _on_reroll_button_pressed() -> void:
+	if player.gold < current_reroll_cost:
+		return
+	player.modify_gold(-current_reroll_cost)
+	current_reroll_cost += base_reroll_cost
+	fillShopUpgradeButtons()

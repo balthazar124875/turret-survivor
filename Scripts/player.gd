@@ -6,7 +6,7 @@ var hp = 100;
 var playerUpgrades : Array = [];
 var rangeMultiplier = 1.0;
 var extraProjectiles = 0;
-var gold = 0;
+var gold = 1000;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
