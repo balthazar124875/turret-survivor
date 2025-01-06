@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://blmikl8w11roj"]
+[gd_scene load_steps=6 format=3 uid="uid://blmikl8w11roj"]
 
 [ext_resource type="Texture2D" uid="uid://dq2ss7w10v3iu" path="res://Assets/Sprites/Tower.png" id="1_4rhl7"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_sppr7"]
-[ext_resource type="Script" path="res://Scripts/gun.gd" id="2_17h55"]
-[ext_resource type="PackedScene" path="res://Scenes/bullet.tscn" id="3_kep8c"]
+[ext_resource type="PackedScene" uid="uid://cxy5ts1smfds6" path="res://Scenes/Weapons/gun.tscn" id="3_q8d6d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oaghf"]
 animations = [{
@@ -32,11 +31,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(16, -24.5)
 shape = SubResource("RectangleShape2D_l2ctd")
-metadata/_edit_group_ = true
 
-[node name="Guns" type="Node2D" parent="."]
+[node name="Weapons" type="Node2D" parent="."]
 
-[node name="Gun" type="Node2D" parent="Guns"]
-script = ExtResource("2_17h55")
-bullet = ExtResource("3_kep8c")
-cooldown = 0.1
+[node name="Gun" parent="Weapons" instance=ExtResource("3_q8d6d")]

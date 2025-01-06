@@ -2,6 +2,8 @@ extends BaseGun
 
 class_name SimpleGun
 
+@export var bullet_spread: float = 15
+
 func get_target() -> Node:
 	var closest_enemy: Node = null
 	var shortest_distance: float = INF
@@ -17,6 +19,16 @@ func get_target() -> Node:
 
 
 func shoot(enemy: Node) -> void:
-	var bullet = bullet.instantiate()
-	add_child(bullet)
-	bullet.init(enemy, damage)
+	var bulletAmount = 1 + player.extraProjectiles
+	
+	var current_position = global_position
+	var direction = (enemy.position - current_position).normalized()
+	direction = direction.rotated(deg_to_rad((bullet_spread * bulletAmount / 2)))
+	for n in range(bulletAmount):
+		var bullet = bullet.instantiate()
+		add_child(bullet)
+		bullet.init_with_direction(direction, damage)
+		direction = direction.rotated(-deg_to_rad(bullet_spread))
+		
+		
+	

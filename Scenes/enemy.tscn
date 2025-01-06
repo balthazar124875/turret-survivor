@@ -18,7 +18,6 @@ animations = [{
 size = Vector2(28, 28)
 
 [node name="Enemy" type="RigidBody2D"]
-
 position = Vector2(604, 288)
 collision_layer = 2
 collision_mask = 4
