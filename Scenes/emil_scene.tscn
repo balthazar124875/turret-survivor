@@ -6,10 +6,10 @@
 [ext_resource type="Script" path="res://Scripts/UIManager.gd" id="4_8ltop"]
 [ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="4_hihpw"]
 [ext_resource type="Texture2D" uid="uid://b27w0ddjiakbn" path="res://Assets/Sprites/UI/ui_overlay.png" id="4_uccbn"]
-[ext_resource type="Texture2D" uid="uid://baywma4a7d8ba" path="res://Assets/Sprites/32x32_button.png" id="5_magbx"]
+[ext_resource type="Texture2D" uid="uid://baywma4a7d8ba" path="res://Assets/Sprites/UI/32x32_button.png" id="5_magbx"]
 [ext_resource type="Theme" uid="uid://bug82i6sy1xtq" path="res://Themes/texture_button_theme.tres" id="6_lelcr"]
-[ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/buy_icon.png" id="6_t6re0"]
-[ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/reroll_icon.png" id="7_keaff"]
+[ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="6_t6re0"]
+[ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="7_keaff"]
 
 [node name="EmilScene" type="Node2D"]
 script = ExtResource("1_7jn0s")
