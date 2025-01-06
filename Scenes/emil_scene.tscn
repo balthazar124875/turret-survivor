@@ -2,13 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_7jn0s"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="1_lb6g2"]
-<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://bm0hk71151xtr" path="res://Scenes/Enemies/enemy.tscn" id="3_1cu8v"]
 [ext_resource type="Script" path="res://Scripts/UIManager.gd" id="4_8ltop"]
-=======
-[ext_resource type="PackedScene" uid="uid://bm0hk71151xtr" path="res://Scenes/enemy.tscn" id="3_1cu8v"]
-[ext_resource type="Script" path="res://Scripts/ShopManager.gd" id="4_8ltop"]
->>>>>>> f6538da (Fix shop)
 [ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="4_hihpw"]
 [ext_resource type="Texture2D" uid="uid://b27w0ddjiakbn" path="res://Assets/Sprites/UI/ui_overlay.png" id="4_uccbn"]
 [ext_resource type="PackedScene" uid="uid://bs82c8ldhf2up" path="res://Scenes/Enemies/enemy2.tscn" id="5_18nnp"]
