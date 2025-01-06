@@ -1,16 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://d1umchc2k1brc"]
+[gd_scene load_steps=16 format=3 uid="uid://bpq5k8m6lkt13"]
 
-[ext_resource type="Shader" uid="uid://b4sgevpcv7g0g" path="res://vfxShaders/thunder_shader.tres" id="1_kc0ex"]
-[ext_resource type="Script" path="res://Scenes/vfx/vfx_thunder.gd" id="1_xukmf"]
-[ext_resource type="Texture2D" uid="uid://ynjyyam03lvo" path="res://Textures/vfxThunder.jpg" id="2_bvu4g"]
-[ext_resource type="Texture2D" uid="uid://dfw81wjllmjub" path="res://Textures/sparksvfx.jpg" id="3_oja8k"]
+[ext_resource type="Script" path="res://Scenes/vfx/vfx_thunder.gd" id="1_uu878"]
+[ext_resource type="Shader" uid="uid://b4sgevpcv7g0g" path="res://vfxShaders/thunder_shader.tres" id="2_uwdj3"]
+[ext_resource type="Texture2D" uid="uid://ynjyyam03lvo" path="res://Textures/vfxThunder.jpg" id="3_hcfp4"]
+[ext_resource type="Texture2D" uid="uid://dfw81wjllmjub" path="res://Textures/sparksvfx.jpg" id="4_crdpg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_18eli"]
-shader = ExtResource("1_kc0ex")
+shader = ExtResource("2_uwdj3")
 shader_parameter/VanishingValue = 0.0
-shader_parameter/Vector2Parameter = Vector2(0.3, 1)
+shader_parameter/Vector2Parameter = Vector2(0.35, 1)
 shader_parameter/speed = Vector2(-4, 0)
-shader_parameter/basic_texture = ExtResource("2_bvu4g")
+shader_parameter/basic_texture = ExtResource("3_hcfp4")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r4rhg"]
 blend_mode = 1
@@ -182,13 +182,13 @@ _data = {
 }
 
 [node name="vfx_thunder" type="Node2D"]
-script = ExtResource("1_xukmf")
+script = ExtResource("1_uu878")
 
 [node name="Thunder" type="Line2D" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_18eli")
 position = Vector2(-341, -359)
-points = PackedVector2Array(343, 3, 343, 360)
+points = PackedVector2Array(343, 3, 478, 632)
 width = 80.0
 default_color = Color(1, 0.283384, 0.531142, 1)
 texture_mode = 1
@@ -198,7 +198,7 @@ material = SubResource("CanvasItemMaterial_r4rhg")
 emitting = false
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_vld6c")
-texture = ExtResource("3_oja8k")
+texture = ExtResource("4_crdpg")
 lifetime = 0.1
 fixed_fps = 60
 
