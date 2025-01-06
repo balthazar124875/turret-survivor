@@ -22,7 +22,7 @@ func shoot(enemy: Node) -> void:
 	
 	var current_position = global_position
 	var direction = (enemy.position - current_position).normalized()
-	direction = direction.rotated(deg_to_rad((bullet_spread * bulletAmount / 2)))
+	direction = direction.rotated(deg_to_rad(bullet_spread * (bulletAmount / 2)))
 	for n in range(bulletAmount):
 		var bullet = bullet.instantiate()
 		add_child(bullet)
