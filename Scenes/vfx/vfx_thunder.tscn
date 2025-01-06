@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1umchc2k1brc"]
+[gd_scene load_steps=16 format=3 uid="uid://d1umchc2k1brc"]
 
 [ext_resource type="Shader" uid="uid://b4sgevpcv7g0g" path="res://vfxShaders/thunder_shader.tres" id="1_kc0ex"]
+[ext_resource type="Script" path="res://Scenes/vfx/vfx_thunder.gd" id="1_xukmf"]
 [ext_resource type="Texture2D" uid="uid://ynjyyam03lvo" path="res://Textures/vfxThunder.jpg" id="2_bvu4g"]
 [ext_resource type="Texture2D" uid="uid://dfw81wjllmjub" path="res://Textures/sparksvfx.jpg" id="3_oja8k"]
 
@@ -180,6 +181,7 @@ _data = {
 }
 
 [node name="vfx_thunder" type="Node2D"]
+script = ExtResource("1_xukmf")
 
 [node name="Thunder" type="Line2D" parent="."]
 visible = false
