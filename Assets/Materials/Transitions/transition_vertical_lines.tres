@@ -5,6 +5,6 @@
 [resource]
 shader = ExtResource("1_8tk8r")
 shader_parameter/num_lines = 20.0
-shader_parameter/progress = 1.0
+shader_parameter/progress = 0.0
 shader_parameter/line_color_a = Color(0.00351917, 0.00351917, 0.00351917, 1)
 shader_parameter/line_color_b = Color(0, 0, 0, 1)

@@ -1,12 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1q4ywyi2cblg"]
+[gd_scene load_steps=10 format=3 uid="uid://c1q4ywyi2cblg"]
 
 [ext_resource type="Script" path="res://Scripts/background.gd" id="1_qj51f"]
 [ext_resource type="PackedScene" uid="uid://d03qy3jsrvvb0" path="res://background.tscn" id="2_6upbp"]
 [ext_resource type="Material" uid="uid://dfrv2g6uokkkg" path="res://Assets/Materials/Backgrounds/sprite_waves.tres" id="2_uaehy"]
 [ext_resource type="Material" uid="uid://bovrtvhdx6lx7" path="res://Assets/Materials/Transitions/transition_diamonds.tres" id="3_8rol6"]
 [ext_resource type="Material" uid="uid://dxtqe0cx86n1x" path="res://Assets/Materials/Transitions/transition_vertical_lines.tres" id="3_hd475"]
-[ext_resource type="Material" uid="uid://bq6bgmt7750rh" path="res://Assets/Materials/Backgrounds/sprite_stars.tres" id="3_isl8x"]
-[ext_resource type="Material" uid="uid://b8qaons7r7tsb" path="res://Assets/Materials/Transitions/transition_hexagonals.tres" id="5_ty48n"]
 [ext_resource type="Texture2D" uid="uid://4d2ctq5hvmtf" path="res://Assets/black.png" id="5_v0i43"]
 
 [sub_resource type="Shader" id="Shader_hjvcv"]
@@ -56,8 +54,10 @@ animations = [{
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_qj51f")
-background_shaders = Array[ShaderMaterial]([ExtResource("2_uaehy"), ExtResource("3_isl8x")])
-transition_shaders = Array[ShaderMaterial]([ExtResource("3_8rol6"), ExtResource("3_hd475"), ExtResource("5_ty48n")])
+background_shaders = Array[ShaderMaterial]([ExtResource("2_uaehy"), ExtResource("2_uaehy")])
+transition_shaders = Array[ShaderMaterial]([ExtResource("3_8rol6"), ExtResource("3_hd475")])
+time_between_transitions = null
+linear_parameter_bound = null
 
 [node name="BgLayer1ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -90,6 +90,6 @@ offset_bottom = 637.0
 
 [node name="TransitionASprite" type="AnimatedSprite2D" parent="."]
 material = ExtResource("3_hd475")
-position = Vector2(571.5, 335.75)
-scale = Vector2(0.588021, 0.639352)
+position = Vector2(583, 400)
+scale = Vector2(0.639583, 0.653704)
 sprite_frames = SubResource("SpriteFrames_lo6to")
