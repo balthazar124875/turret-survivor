@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://baywma4a7d8ba"
-path="res://.godot/imported/32x32_button.png-d37851fe7c2ebb97d09126f3705b890b.ctex"
+uid="uid://b07oh36jlpqhd"
+path="res://.godot/imported/magic_wave.png-1496fe961e745f1323fcc2de39cdfbf6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/32x32_button.png"
-dest_files=["res://.godot/imported/32x32_button.png-d37851fe7c2ebb97d09126f3705b890b.ctex"]
+source_file="res://Assets/Sprites/upgrades/magic_wave.png"
+dest_files=["res://.godot/imported/magic_wave.png-1496fe961e745f1323fcc2de39cdfbf6.ctex"]
 
 [params]
 

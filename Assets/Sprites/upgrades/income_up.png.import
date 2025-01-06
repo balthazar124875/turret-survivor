@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdwj2q2l6ab3m"
-path="res://.godot/imported/reroll_icon.png-3a024da65b5809322acdefaf4b860002.ctex"
+uid="uid://bid3oqi85anxc"
+path="res://.godot/imported/income_up.png-77aa505ba055078b2c8f2f4038d2cb63.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/reroll_icon.png"
-dest_files=["res://.godot/imported/reroll_icon.png-3a024da65b5809322acdefaf4b860002.ctex"]
+source_file="res://Assets/Sprites/upgrades/income_up.png"
+dest_files=["res://.godot/imported/income_up.png-77aa505ba055078b2c8f2f4038d2cb63.ctex"]
 
 [params]
 
