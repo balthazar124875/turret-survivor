@@ -21,6 +21,8 @@ expanded_output_ports = [0]
 source = 5
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_ov3ke"]
+default_input_values = [1, Vector2(0.35, 1), 2, Vector2(0, 0)]
+function = 1
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_lefsh"]
 input_name = "time"
@@ -76,7 +78,7 @@ void fragment() {
 
 
 // UVFunc:4
-	vec2 n_out4p0 = n_out6p0 * n_out13p0 + UV;
+	vec2 n_out4p0 = (UV - n_out6p0) * n_out13p0 + n_out6p0;
 
 
 	vec4 n_out3p0;
@@ -100,7 +102,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-857.421, -421.168)
 mode = 1
 modes/blend = 1
 flags/unshaded = true
