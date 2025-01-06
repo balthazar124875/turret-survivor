@@ -13,7 +13,6 @@ enum TargetingType {
 @export var cooldown: float = 0.2 #0.2s delay between each shot => firerate = cooldown/1
 @export var damage: float = 1
 @export var charge: float = 0
-@export var bullet_life_time: float = 2
 
 var player: Player
 var enemy_parent: Node = null

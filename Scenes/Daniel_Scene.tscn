@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 [gd_scene load_steps=2 format=3 uid="uid://bs1gelvp802c3"]
 
 [ext_resource type="PackedScene" uid="uid://d1umchc2k1brc" path="res://Scenes/vfx/vfx_thunder.tscn" id="1_vsk6d"]
-=======
-[gd_scene format=3 uid="uid://b2eb60sx23g36"]
->>>>>>> f6538da (Fix shop)
 
 [node name="DanielScene" type="Node2D"]
 

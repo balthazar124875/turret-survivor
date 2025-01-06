@@ -6,8 +6,6 @@ extends Node2D
 @export var enemy_spawn_distance = 200
 @export var enemies: Node2D
 
-@export var enemy_hp_scaling = 1.2
-
 
 var rng = RandomNumberGenerator.new()
 var current_wave_enemy_index = 0
@@ -28,8 +26,6 @@ func _on_enemy_spawner_timer_timeout() -> void:
 	var yPos = center.position.y + sin(posRand) * enemy_spawn_distance
 	enemy.position = Vector2(xPos, yPos)
 	enemies.add_child(enemy)
-	enemy.increase_hp(pow(1.2, current_wave / enemy_scenes.size()))
-	
 
 func _on_wave_timer_timeout() -> void:
 	current_wave += 1

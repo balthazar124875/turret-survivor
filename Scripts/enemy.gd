@@ -2,10 +2,10 @@ extends RigidBody2D
 
 class_name Enemy
 
+var speed = 100
 var target_position = Vector2.ZERO
-@export var speed = 100
-@export var health = 5
-@export var gold_value = 1
+var health = 5
+var gold_value = 1
 
 signal enemy_killed(enemy)
 
@@ -15,9 +15,6 @@ func _ready() -> void:
 	target_position = player.global_position
 	pass # Replace with function body.
 
-func increase_hp(multiplier: float) -> void:
-	print("multilpying health by " + str(multiplier))
-	health *= multiplier
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -34,10 +31,9 @@ func is_alive() -> bool:
 	return health > 0
 
 func take_damage(amount: float) -> bool:
-	if(!is_alive()): 
-		pass
 	health -= amount
-	if(!is_alive()):
+	var dead = !is_alive()
+	if(dead):
 		die()
 	return is_alive()
 
