@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1q4ywyi2cblg"]
+
+[ext_resource type="Script" path="res://Scripts/background.gd" id="1_qj51f"]
+[ext_resource type="PackedScene" uid="uid://d03qy3jsrvvb0" path="res://background.tscn" id="2_6upbp"]
+[ext_resource type="Material" uid="uid://dfuj6jlfpxfpe" path="res://Assets/Materials/Transitions/transition_ppixelsort.tres" id="3_17710"]
+[ext_resource type="Texture2D" uid="uid://d3u2i4ps31wif" path="res://checkers.svg" id="3_uko5r"]
+[ext_resource type="Shader" path="res://transition_diamonds.gdshader" id="4_l4skq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ycrsm"]
+shader = ExtResource("4_l4skq")
+shader_parameter/progress = 0.429
+shader_parameter/diamondPixelSize = 10.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lo6to"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_uko5r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_qj51f")
+
+[node name="BgLayer1ColorRect" type="ColorRect" parent="."]
+offset_left = 1.0
+offset_top = -15.0
+offset_right = 1151.0
+offset_bottom = 628.0
+
+[node name="BgLayer2ColorRect" type="ColorRect" parent="."]
+offset_left = -11.0
+offset_top = -4.0
+offset_right = 1140.0
+offset_bottom = 640.0
+
+[node name="BgLayer1ASprite" parent="." instance=ExtResource("2_6upbp")]
+position = Vector2(570, 335)
+script = null
+
+[node name="BgLayer2ASprite" parent="." instance=ExtResource("2_6upbp")]
+position = Vector2(574, 344)
+script = null
+
+[node name="TransitionRect" type="ColorRect" parent="."]
+visible = false
+material = ExtResource("3_17710")
+offset_right = 1117.0
+offset_bottom = 637.0
+
+[node name="TransitionASprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_ycrsm")
+position = Vector2(535, 276)
+scale = Vector2(2.29, 1.266)
+sprite_frames = SubResource("SpriteFrames_lo6to")

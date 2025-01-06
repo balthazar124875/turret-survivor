@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dfrv2g6uokkkg"]
 
-[ext_resource type="Shader" path="res://waves_c.gdshader" id="1_vs3vk"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/Backgrounds/waves_c.gdshader" id="1_vs3vk"]
 
 [resource]
 shader = ExtResource("1_vs3vk")

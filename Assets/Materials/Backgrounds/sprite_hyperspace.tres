@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cksh6a6g7xbbn"]
 
-[ext_resource type="Shader" path="res://hyperspace.gdshader" id="1_hdcfm"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/Backgrounds/hyperspace.gdshader" id="1_hdcfm"]
 
 [resource]
 shader = ExtResource("1_hdcfm")

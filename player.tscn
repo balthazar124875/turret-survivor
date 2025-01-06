@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bf75tspj25scw"]
 
 [ext_resource type="Texture2D" uid="uid://cv36bot5d554o" path="res://aid.jpg" id="1_efwt4"]
-[ext_resource type="Shader" path="res://bounce.gdshader" id="1_yef1k"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/bounce.gdshader" id="1_yef1k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6rows"]
 shader = ExtResource("1_yef1k")

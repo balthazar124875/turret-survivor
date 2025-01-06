@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bf75tspj25scw" path="res://player.tscn" id="1_0gin8"]
 [ext_resource type="PackedScene" uid="uid://lkeky2c6opn5" path="res://enemy.tscn" id="2_kmmyd"]
 [ext_resource type="Script" path="res://enemy.gd" id="3_tprwa"]
-[ext_resource type="Shader" path="res://blur.gdshader" id="4_ydb1j"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/blur.gdshader" id="4_ydb1j"]
 [ext_resource type="Material" uid="uid://dfrv2g6uokkkg" path="res://Assets/Materials/Backgrounds/sprite_waves.tres" id="5_ebnw7"]
 [ext_resource type="Texture2D" uid="uid://d3u2i4ps31wif" path="res://checkers.svg" id="6_n4v5y"]
 [ext_resource type="Material" uid="uid://dtqi1d4ppvn50" path="res://Assets/Materials/Backgrounds/rect_balatro.tres" id="7_edg8c"]

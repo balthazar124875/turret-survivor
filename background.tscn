@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://d03qy3jsrvvb0"]
 
-[ext_resource type="Shader" path="res://hyperspace.gdshader" id="1_vhfok"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/Backgrounds/hyperspace.gdshader" id="1_vhfok"]
 [ext_resource type="Texture2D" uid="uid://d3u2i4ps31wif" path="res://checkers.svg" id="2_axihc"]
-[ext_resource type="Script" path="res://background.gd" id="3_qnx7l"]
-[ext_resource type="Shader" path="res://balatro.gdshader" id="4_fqexa"]
+[ext_resource type="Script" path="res://Scripts/background.gd" id="3_qnx7l"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/Transitions/balatro.gdshader" id="4_fqexa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gjt0a"]
 shader = ExtResource("1_vhfok")

@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b4l2v5iy38w1f"]
+
+[ext_resource type="Shader" path="res://Assets/Materials/Transitions/transition_saw.gdshader" id="1_fk640"]
+
+[resource]
+shader = ExtResource("1_fk640")
+shader_parameter/saw_b_shift = -0.267
+shader_parameter/saw_a_interval = 1.0
+shader_parameter/saw_b_interval = 2.0
+shader_parameter/saw_a_scale = 1.0
+shader_parameter/saw_b_scale = 0.821
+shader_parameter/uv_scale = Vector2(2, 8)
+shader_parameter/color = Vector4(0, 0, 0, 1)
+shader_parameter/right = 0.0
+shader_parameter/left = -1.0
