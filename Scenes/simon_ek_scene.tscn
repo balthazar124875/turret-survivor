@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=13 format=3 uid="uid://b1ouph4tunc4b"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
 [ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="3_b8wlj"]
 [ext_resource type="PackedScene" uid="uid://dnjei3oiiciha" path="res://Scenes/Enemies/enemy.tscn" id="4_2ey2d"]
+[ext_resource type="Script" path="res://Scripts/UIManager.gd" id="5_1pdr0"]
 [ext_resource type="Script" path="res://Scripts/ShopManager.gd" id="5_jxmqa"]
 [ext_resource type="Texture2D" uid="uid://b27w0ddjiakbn" path="res://Assets/Sprites/UI/ui_overlay.png" id="6_pvymq"]
 [ext_resource type="PackedScene" uid="uid://csykvm7f1xq7j" path="res://Scenes/Upgrades/gun_upgrade.tscn" id="7_g7jp2"]
@@ -41,6 +42,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 360.0
+script = ExtResource("5_1pdr0")
 
 [node name="UiOverlay" type="Sprite2D" parent="Control"]
 position = Vector2(320, 180)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://csykvm7f1xq7j"]
 
 [ext_resource type="Script" path="res://Scripts/Upgrades/weapon_upgrade.gd" id="1_pthti"]
-[ext_resource type="PackedScene" uid="uid://cxy5ts1smfds6" path="res://Scenes/Weapons/gun.tscn" id="2_4eff0"]
+[ext_resource type="PackedScene" uid="uid://cdu376afd0xi5" path="res://Scenes/Weapons/gun.tscn" id="2_4eff0"]
 [ext_resource type="Texture2D" uid="uid://cl1g4f1ffgev7" path="res://Assets/Sprites/upgrades/cannon.png" id="3_h66cv"]
 
 [node name="GunUpgrade" type="Node2D"]
