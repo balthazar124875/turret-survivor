@@ -6,7 +6,7 @@ extends Node2D
 @export var enemy_spawn_distance = 200
 @export var enemies: Node2D
 
-@export var enemy_hp_scaling = 1.2
+@export var enemy_hp_scaling = 1.15
 
 
 var rng = RandomNumberGenerator.new()
