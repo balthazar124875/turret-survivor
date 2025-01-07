@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/vfx/vfx_explosion.gd" id="1_6e1yk"]
 [ext_resource type="Shader" uid="uid://cm0f4dyf7wyr0" path="res://Scenes/vfx/vfx_explosion.tres" id="1_ort1l"]
-[ext_resource type="Texture2D" uid="uid://bgt0nqph1ev77" path="res://Scenes/vfx/explosion_vfx.jpg" id="2_56gq5"]
+[ext_resource type="Texture2D" uid="uid://bvftxjgvif8sj" path="res://Textures/explosion_vfx_Lowres.jpg" id="3_pm5ub"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_66tyk"]
 resource_local_to_scene = true
@@ -12,7 +12,7 @@ shader_parameter/MainColor = Color(0.800066, 0.532465, 0.179319, 1)
 shader_parameter/VanishingValue = 0.0
 shader_parameter/SecondaryColorMult = 1.589
 shader_parameter/ColorMultiplier = 3.0
-shader_parameter/basic_texture = ExtResource("2_56gq5")
+shader_parameter/basic_texture = ExtResource("3_pm5ub")
 
 [sub_resource type="Curve" id="Curve_3ex1k"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.262887, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -164,7 +164,7 @@ material = SubResource("ShaderMaterial_66tyk")
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_3cfcs")
 one_shot = true
-fixed_fps = 60
+fixed_fps = 20
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

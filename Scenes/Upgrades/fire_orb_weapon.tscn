@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://l8yke0r1f3uq"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/weapon_upgrade.gd" id="1_h4v31"]
+[ext_resource type="Texture2D" uid="uid://cr4ga4fi1oxxb" path="res://Assets/Sprites/upgrades/magic_bolt.png" id="2_2m6vv"]
+[ext_resource type="PackedScene" uid="uid://1igvupm1a3ur" path="res://Scenes/Weapons/fire_orb.tscn" id="2_d2wgw"]
+
+[node name="FireOrbWeapon" type="Node2D"]
+script = ExtResource("1_h4v31")
+weapon_scene = ExtResource("2_d2wgw")
+upgradeName = "Magic orb"
+description = "Spawn a powerful orb spinning around you"
+icon = ExtResource("2_2m6vv")

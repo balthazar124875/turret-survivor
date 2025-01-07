@@ -1,7 +1,7 @@
 extends PassiveUpgrade
 
 var explosionVFX
-var initPercentage = 0.2 #10%
+var initPercentage = 1.0 #10%
 # Called when the node enters the scene tree for the first time.
 func _init():
 	explosionVFX = load("res://Scenes/vfx/vfx_explosion.tscn");

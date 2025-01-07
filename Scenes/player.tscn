@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_sppr7"]
 [ext_resource type="Texture2D" uid="uid://863yykkvhcml" path="res://Assets/Sprites/TowerV2.png" id="2_t2wob"]
 [ext_resource type="PackedScene" uid="uid://ebv5vx7fruxe" path="res://Scenes/Weapons/gun.tscn" id="3_q8d6d"]
-[ext_resource type="PackedScene" uid="uid://bmpv4krjxvicr" path="res://Scenes/Weapons/chain_lightning.tscn" id="4_nldbs"]
+[ext_resource type="PackedScene" uid="uid://c0ispjaku02uc" path="res://Scenes/Weapons/chain_lightning.tscn" id="4_nldbs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oaghf"]
 animations = [{
@@ -17,7 +17,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l2ctd"]
-size = Vector2(41, 50)
+size = Vector2(39, 50)
 
 [node name="Player" type="Area2D"]
 script = ExtResource("1_sppr7")
@@ -29,7 +29,7 @@ sprite_frames = SubResource("SpriteFrames_oaghf")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_l2ctd")
 
 [node name="Weapons" type="Node2D" parent="."]
