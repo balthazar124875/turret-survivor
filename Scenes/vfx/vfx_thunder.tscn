@@ -10,7 +10,8 @@ resource_local_to_scene = true
 shader = ExtResource("1_kc0ex")
 shader_parameter/VanishingValue = 0.0
 shader_parameter/Vector2Parameter = Vector2(0.3, 1)
-shader_parameter/speed = Vector2(-4, 0)
+shader_parameter/Speed = 10.0
+shader_parameter/DistancePerStep = Vector2(-4, 0)
 shader_parameter/basic_texture = ExtResource("2_bvu4g")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r4rhg"]
