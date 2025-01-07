@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dfw81wjllmjub" path="res://Textures/sparksvfx.jpg" id="4_crdpg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_18eli"]
+resource_local_to_scene = true
 shader = ExtResource("2_uwdj3")
 shader_parameter/VanishingValue = 0.0
 shader_parameter/Vector2Parameter = Vector2(0.25, 1)

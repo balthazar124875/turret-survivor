@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bgt0nqph1ev77" path="res://Scenes/vfx/explosion_vfx.jpg" id="2_56gq5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_66tyk"]
+resource_local_to_scene = true
 shader = ExtResource("1_ort1l")
 shader_parameter/SecondaaryColor = Color(0.890618, 0.375503, 3.85046e-07, 1)
 shader_parameter/MainColor = Color(0.800066, 0.532465, 0.179319, 1)
@@ -26,8 +27,8 @@ angle_min = -720.0
 angle_max = 720.0
 spread = 0.0
 gravity = Vector3(0, 0, 0)
-scale_min = 30.0
-scale_max = 30.0
+scale_min = 60.0
+scale_max = 60.0
 scale_curve = SubResource("CurveTexture_lq8bj")
 color = Color(0.948995, 0.148521, 0.337242, 1)
 
