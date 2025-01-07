@@ -16,15 +16,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	for playerUpgrade in playerUpgrades:
-		print(playerUpgrade.name);
 	pass
-
-func _addUpgrade(upgrade : Upgrade) -> void:
-	if(upgrade.UpgradeType.PLAYER_STAT_UP): #TODO: This is wrong syntax????
-		upgrade.applyStatUpgradeToPlayer(); #Call the statup upgrade callback function
-	upgrade.applyUpgradeToPlayer();
-	playerUpgrades.push_back(upgrade);
 
 func modify_gold(value: int) -> void:
 	gold += value

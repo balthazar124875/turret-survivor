@@ -1,15 +1,172 @@
-[gd_scene load_steps=3 format=3 uid="uid://bihp4jss16rec"]
+[gd_scene load_steps=12 format=3 uid="uid://bihp4jss16rec"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dloxb"]
-light_mode = 1
+[ext_resource type="Script" path="res://Scripts/vfx/vfx_explosion.gd" id="1_6e1yk"]
+[ext_resource type="Shader" uid="uid://cm0f4dyf7wyr0" path="res://Scenes/vfx/vfx_explosion.tres" id="1_ort1l"]
+[ext_resource type="Texture2D" uid="uid://bgt0nqph1ev77" path="res://Scenes/vfx/explosion_vfx.jpg" id="2_56gq5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_66tyk"]
+shader = ExtResource("1_ort1l")
+shader_parameter/SecondaaryColor = Color(0.890618, 0.375503, 3.85046e-07, 1)
+shader_parameter/MainColor = Color(0.800066, 0.532465, 0.179319, 1)
+shader_parameter/VanishingValue = 0.0
+shader_parameter/SecondaryColorMult = 1.589
+shader_parameter/ColorMultiplier = 3.0
+shader_parameter/basic_texture = ExtResource("2_56gq5")
+
+[sub_resource type="Curve" id="Curve_3ex1k"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.262887, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_lq8bj"]
+curve = SubResource("Curve_3ex1k")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3cfcs"]
 particle_flag_disable_z = true
-gravity = Vector3(0, 98, 0)
+angle_min = -720.0
+angle_max = 720.0
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 30.0
+scale_max = 30.0
+scale_curve = SubResource("CurveTexture_lq8bj")
+color = Color(0.948995, 0.148521, 0.337242, 1)
+
+[sub_resource type="Animation" id="Animation_o4fxl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles2D:material:shader_parameter/VanishingValue")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xydwb"]
+resource_name = "end_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:material:shader_parameter/VanishingValue")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1afxw"]
+resource_name = "start_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles2D:material:shader_parameter/VanishingValue")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1376t"]
+_data = {
+"RESET": SubResource("Animation_o4fxl"),
+"end_animation": SubResource("Animation_xydwb"),
+"start_animation": SubResource("Animation_1afxw")
+}
 
 [node name="VfxExplosion" type="Node2D"]
+script = ExtResource("1_6e1yk")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-material = SubResource("CanvasItemMaterial_dloxb")
+material = SubResource("ShaderMaterial_66tyk")
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_3cfcs")
+one_shot = true
+fixed_fps = 60
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1376t")
+}
+autoplay = "start_animation"

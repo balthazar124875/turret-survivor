@@ -124,7 +124,8 @@ func _on_shop_upgrade_button_pressed(index: int) -> void:
 	var new_upgrade = shopUpgradeButtons[index].upgradeNode.duplicate()
 	add_child(new_upgrade)
 	new_upgrade.applyUpgradeToPlayer()
-	new_upgrade.queue_free()
+	player.playerUpgrades.push_back(new_upgrade);
+	#new_upgrade.queue_free()
 	shopUpgradeButtons[index].upgradeNode = null
 	buttons[index].texture_normal = empty_item_slot_texture
 
