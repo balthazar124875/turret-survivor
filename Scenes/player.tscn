@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_sppr7"]
 [ext_resource type="Texture2D" uid="uid://863yykkvhcml" path="res://Assets/Sprites/TowerV2.png" id="2_t2wob"]
 [ext_resource type="PackedScene" uid="uid://ebv5vx7fruxe" path="res://Scenes/Weapons/gun.tscn" id="3_q8d6d"]
-[ext_resource type="PackedScene" uid="uid://c0ispjaku02uc" path="res://Scenes/Weapons/chain_lightning.tscn" id="4_nldbs"]
+[ext_resource type="PackedScene" uid="uid://bmpv4krjxvicr" path="res://Scenes/Weapons/chain_lightning.tscn" id="4_nldbs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oaghf"]
 animations = [{
@@ -35,12 +35,12 @@ shape = SubResource("RectangleShape2D_l2ctd")
 [node name="Weapons" type="Node2D" parent="."]
 
 [node name="Gun" parent="Weapons" instance=ExtResource("3_q8d6d")]
-cooldown = 0.2
+cooldown = 5.0
 
 [node name="ChainLightning" parent="Weapons" instance=ExtResource("4_nldbs")]
 position = Vector2(3.14569, 19.2074)
 chains = 3
-chain_range = 200
-cooldown = 1.5
+chain_range = 500
+cooldown = 0.7
 bullet_life_time = 0.35
 range = 2000.0

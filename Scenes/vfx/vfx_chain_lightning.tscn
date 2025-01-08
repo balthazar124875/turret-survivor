@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://bpq5k8m6lkt13"]
+[gd_scene load_steps=16 format=3 uid="uid://bpq5k8m6lkt13"]
 
+[ext_resource type="Script" path="res://Scenes/vfx/chain_lightning_object.gd" id="1_ncd3n"]
 [ext_resource type="Shader" uid="uid://b4sgevpcv7g0g" path="res://vfxShaders/thunder_shader.tres" id="2_uwdj3"]
 [ext_resource type="Texture2D" uid="uid://ynjyyam03lvo" path="res://Textures/vfxThunder.jpg" id="3_hcfp4"]
 [ext_resource type="Texture2D" uid="uid://dfw81wjllmjub" path="res://Textures/sparksvfx.jpg" id="4_crdpg"]
@@ -182,7 +183,9 @@ _data = {
 "start_animation": SubResource("Animation_g8y52")
 }
 
-[node name="vfx_chain_lightning" type="Node2D"]
+[node name="vfx_chain_lightning" type="Node2D" node_paths=PackedStringArray("thunder")]
+script = ExtResource("1_ncd3n")
+thunder = NodePath("Thunder")
 
 [node name="Thunder" type="Line2D" parent="."]
 visible = false

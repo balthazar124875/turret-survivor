@@ -124,5 +124,13 @@ offset_top = 45.0
 offset_right = 619.0
 offset_bottom = 79.0
 
+[node name="WaveProgressBar" type="ProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 42.0
+offset_right = 638.0
+offset_bottom = 69.0
+show_percentage = false
+
 [connection signal="timeout" from="EnemySpawner/EnemySpawnerTimer" to="EnemySpawner" method="_on_enemy_spawner_timer_timeout"]
 [connection signal="timeout" from="EnemySpawner/WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]

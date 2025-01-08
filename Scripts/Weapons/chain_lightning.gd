@@ -20,7 +20,7 @@ func shoot(target_enemy: Node) -> void:
 	var chains = chains
 	
 	
-	var targets = []
+	var targets: Array[Node] = []
 	targets.append(target_enemy)
 	
 	for enemy in enemy_parent.get_children():
@@ -34,14 +34,9 @@ func shoot(target_enemy: Node) -> void:
 					
 	var bullet = bullet.instantiate()
 	add_child(bullet)
-	var thunder = bullet.find_child("Thunder")
-	thunder.clear_points()
-	thunder.add_point(Vector2(0, 0))
-	var i = 0
+	bullet.set_targets(targets)
 	for enemy in targets:
-		thunder.add_point((enemy.global_position - self.global_position))
 		enemy.take_damage(damage)
-		i += 1
 		
 	call_deferred("_delete_after_time", bullet_life_time, bullet)
 	
