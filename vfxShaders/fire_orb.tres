@@ -25,6 +25,7 @@ max = 10.0
 operator = 2
 
 [resource]
+resource_local_to_scene = true
 code = "shader_type canvas_item;
 render_mode blend_add;
 
@@ -62,7 +63,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-345.528, -165.744)
+graph_offset = Vector2(-401.233, -148.62)
 mode = 1
 modes/blend = 1
 flags/light_only = false

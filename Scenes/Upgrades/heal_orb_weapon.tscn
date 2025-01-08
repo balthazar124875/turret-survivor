@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://5v27gt1ij5bx"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/weapon_upgrade.gd" id="1_j5pj3"]
+[ext_resource type="PackedScene" uid="uid://b712tpnf8ej6l" path="res://Scenes/Weapons/heal_orb.tscn" id="2_002s5"]
+[ext_resource type="Texture2D" uid="uid://clxwa5ex88uuy" path="res://Assets/Sprites/upgrades/orbs/healOrb_up.png" id="3_wuthd"]
+
+[node name="HealOrbWeapon" type="Node2D"]
+script = ExtResource("1_j5pj3")
+weapon_scene = ExtResource("2_002s5")
+upgradeName = "Magic orb"
+description = "Spawn a powerful orb spinning around you"
+icon = ExtResource("3_wuthd")
