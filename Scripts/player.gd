@@ -35,12 +35,13 @@ func addPlayerFireOrb(orb : FireOrb):
 	playerFireOrbs.push_back(orb);
 	#Re-arrange them all in a circle
 	var nrOfOrbs = playerFireOrbs.size();
-	var angle = 360.0 / nrOfOrbs;
+	var angle = (360.0 / nrOfOrbs);
 	var i = 0;
 	angle = deg_to_rad(angle);
 	for x in playerFireOrbs:
-		x.startAngle = angle*i;
-		var orbPos = Vector2(sin(x.startAngle), cos(x.startAngle))*x.fireOrbRange;
-		x.global_position = orbPos;
+		x.nextAngle = angle*i;
+		var orbPos = Vector2(sin(x.nextAngle), cos(x.nextAngle))*x.fireOrbRange;
+		x.nextPos = orbPos;
+		x.currAngle = (playerFireOrbs[0].currAngle) + angle*i;
 		i += 1;
 	pass
