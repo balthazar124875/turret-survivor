@@ -5,8 +5,8 @@
 
 [node name="ShotGun" type="Node2D"]
 script = ExtResource("1_dbqsk")
-bullet_spread = 5.0
-base_projectile_amount = 4.0
+bullet_spread = 4.0
+base_projectile_amount = 6.0
 bullet = ExtResource("2_44jpc")
 cooldown = 3.0
 bullet_life_time = 0.6
