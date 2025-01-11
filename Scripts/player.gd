@@ -9,7 +9,7 @@ var extraChains = 0;
 var rangeMultiplier = 1.0;
 var damageMultiplier = 1.0;
 var attackSpeedMultiplier = 1.0;
-var gold = 1000;
+var gold = 0;
 
 static var playerOrbs : Array[FireOrb] = [];
 static var playerOrbsOuter : Array[FireOrb] = [];

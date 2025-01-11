@@ -26,7 +26,7 @@ contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_5t3wh")
 speed = 70
-health = 3
+health = 2
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
