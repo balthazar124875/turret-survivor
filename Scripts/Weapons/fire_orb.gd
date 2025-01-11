@@ -20,12 +20,12 @@ func _ready() -> void:
 func _physics_process(delta):
 	for body in $Area2D.get_overlapping_bodies():
 		if body is Enemy:
-			body.take_damage(damage_per_tick * delta)
+			body.take_damage(damage_per_tick * delta * player.damageMultiplier)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#Rotate fireorb here
-	currAngle = currAngle + delta * orbSpeed;
-	var orbPos = Vector2(cos(currAngle), sin(currAngle))*orbRange;
+	currAngle = currAngle + delta * orbSpeed * player.attackSpeedMultiplier;
+	var orbPos = Vector2(cos(currAngle), sin(currAngle))*orbRange * player.rangeMultiplier;
 	orbPos += player.global_position;
 	global_position = orbPos;

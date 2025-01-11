@@ -8,6 +8,7 @@
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_5mxpo")
 enemy_scenes = Array[PackedScene]([ExtResource("2_yk7nd"), ExtResource("3_afcs5"), ExtResource("4_5cg5e")])
+enemy_hp_scaling = 1.1
 
 [node name="EnemySpawnerTimer" type="Timer" parent="."]
 wait_time = 2.0

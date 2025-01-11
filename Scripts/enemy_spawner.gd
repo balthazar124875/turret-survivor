@@ -38,7 +38,7 @@ func _on_enemy_spawner_timer_timeout() -> void:
 		var yPos = center.position.y + sin(posRand) * enemy_spawn_distance
 		enemy.position = Vector2(xPos, yPos)
 		enemies.add_child(enemy)
-		enemy.increase_hp(pow(1.2, current_wave / enemy_scenes.size()))
+		enemy.increase_hp(pow(enemy_hp_scaling, current_wave / enemy_scenes.size()))
 
 func _on_wave_timer_timeout() -> void:
 	current_wave += 1

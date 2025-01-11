@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://covhyuhyhyf4n"]
+[gd_scene load_steps=8 format=3 uid="uid://dlgmbr1uiavr5"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/fire_orb.gd" id="1_ylw3h"]
 [ext_resource type="Shader" uid="uid://c5ui7q4oyxj3r" path="res://vfxShaders/fire_orb.tres" id="2_c22fh"]

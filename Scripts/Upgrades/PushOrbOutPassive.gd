@@ -9,15 +9,15 @@ func _init():
 
 func applyUpgradeToPlayer(player: Player) -> void:
 	super.applyUpgradeToPlayer(player);
-	if(Player.playerOrbs.size() != 0):
+	if(player.playerOrbs.size() != 0):
 		#Pick a random orb from playerOrbs[]
 		var randomOrbIdx = randi() % Player.playerOrbs.size();
 		var rndOrb = Player.playerOrbs[randomOrbIdx];
 		#Delete orb from array and rearrange array.
-		Player.playerOrbs.remove_at(randomOrbIdx);
+		player.playerOrbs.remove_at(randomOrbIdx);
 		rndOrb.orbRange *= 2.5;
 		rndOrb.orbSpeed *= 0.5;
 		rndOrb.scale *= 2.0;
-		Player.playerOrbsOuter.push_back(rndOrb);
-		Player.ArrangePlayerOrbs(Player.playerOrbs);
-		Player.ArrangePlayerOrbs(Player.playerOrbsOuter);
+		player.playerOrbsOuter.push_back(rndOrb);
+		player.ArrangePlayerOrbs(player.playerOrbs);
+		player.ArrangePlayerOrbs(player.playerOrbsOuter);

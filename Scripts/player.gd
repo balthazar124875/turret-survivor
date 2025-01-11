@@ -35,12 +35,12 @@ func _on_enemy_killed(enemy: Enemy) -> void:
 				playerUpgrade.ApplyEnemyOnKillPassive(enemy);
 	modify_gold(enemy.gold_value)
 
-static func addPlayerFireOrb(orb : FireOrb):
+func addPlayerFireOrb(orb : FireOrb):
 	playerOrbs.push_back(orb);
 	#Re-arrange them all in a circle
 	ArrangePlayerOrbs(playerOrbs);
 
-static func ArrangePlayerOrbs(playerOrbs : Array):
+func ArrangePlayerOrbs(playerOrbs : Array):
 	if(playerOrbs.size() == 0):
 		return
 	var nrOfOrbs = playerOrbs.size();

@@ -1,6 +1,6 @@
 extends BaseGun
 
-@export var chains = 4
+@export var chains = 3
 @export var chain_range = 100
 
 func get_target() -> Node:
@@ -17,7 +17,7 @@ func get_target() -> Node:
 	return closest_enemy
 
 func shoot(target_enemy: Node) -> void:
-	var chains = chains
+	var chains = chains + player.extraChains
 	
 	
 	var targets: Array[Node] = []
