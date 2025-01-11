@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxwa6tdkvgdqy"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Stats/stat_upgrade.gd" id="1_q48cy"]
+[ext_resource type="Texture2D" uid="uid://cngfawelbq4n1" path="res://Assets/Sprites/upgrades/multishot.png" id="2_612nb"]
+
+[node name="ProjectilesUpgrade" type="Node2D"]
+script = ExtResource("1_q48cy")
+stat_type = 3
+amount = 1.0
+upgradeName = "Extra projectiles"
+description = "Increases projectiles by 1"
+type = 2
+icon = ExtResource("2_612nb")

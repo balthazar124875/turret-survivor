@@ -6,4 +6,5 @@
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_7uu1s")
 bullet = ExtResource("2_52185")
-cooldown = 0.1
+cooldown = 0.5
+range = 500.0

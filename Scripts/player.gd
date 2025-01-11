@@ -4,8 +4,11 @@ class_name Player
 
 var hp = 100;
 var playerUpgrades : Array = [];
-var rangeMultiplier = 1.0;
 var extraProjectiles = 0;
+var extraChains = 0;
+var rangeMultiplier = 1.0;
+var damageMultiplier = 1.0;
+var attackSpeedMultiplier = 1.0;
 var gold = 1000;
 
 static var playerOrbs : Array[FireOrb] = [];
@@ -51,3 +54,16 @@ static func ArrangePlayerOrbs(playerOrbs : Array):
 		x.currAngle = (playerOrbs[0].currAngle) + angle*i;
 		i += 1;
 	pass
+
+func modify_stat(stat: GlobalEnums.PLAYER_STATS, amount: float) -> void:
+	match (stat):
+		GlobalEnums.PLAYER_STATS.ATTACK_SPEED:
+			self.attackSpeedMultiplier += amount
+		GlobalEnums.PLAYER_STATS.RANGE_MULTIPLER:
+			self.rangeMultiplier += amount
+		GlobalEnums.PLAYER_STATS.DAMAGE_MULTIPLIER:
+			self.damageMultiplier += amount
+		GlobalEnums.PLAYER_STATS.EXTRA_CHAINS:
+			self.extraChains += amount
+		GlobalEnums.PLAYER_STATS.EXTRA_PROJECTILES:
+			self.extraProjectiles += amount

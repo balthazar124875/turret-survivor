@@ -7,8 +7,8 @@ func _init():
 	passiveType = PassiveUpgradeType.ENEMY_KILL_TYPE;
 	rarity = UpgradeRarity.COMMON;
 
-func applyUpgradeToPlayer() -> void:
-	super.applyUpgradeToPlayer();
+func applyUpgradeToPlayer(player: Player) -> void:
+	super.applyUpgradeToPlayer(player);
 	if(Player.playerOrbs.size() != 0):
 		#Pick a random orb from playerOrbs[]
 		var randomOrbIdx = randi() % Player.playerOrbs.size();

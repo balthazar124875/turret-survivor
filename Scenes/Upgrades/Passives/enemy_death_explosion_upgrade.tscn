@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://duco70b1xc3k7"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/explodeEnemyPassive.gd" id="1_r1f4x"]
+[ext_resource type="Texture2D" uid="uid://bnldljakgdqgj" path="res://Assets/Sprites/upgrades/bounty_up.png" id="2_b05ff"]
+
+[node name="EnemyDeathExplosionUpgrade" type="Node2D"]
+script = ExtResource("1_r1f4x")
+upgradeName = "Explosive kill"
+type = 1
+icon = ExtResource("2_b05ff")

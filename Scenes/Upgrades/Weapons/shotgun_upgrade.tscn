@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://d30www1x6rre5"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/weapon_upgrade.gd" id="1_71klg"]
+[ext_resource type="PackedScene" uid="uid://n0ba0kon3j2f" path="res://Scenes/Weapons/shotgun.tscn" id="2_6ii2h"]
+[ext_resource type="Texture2D" uid="uid://cocul8vf20kub" path="res://Assets/Sprites/upgrades/shotgun.png" id="3_c3hwg"]
+
+[node name="ShotGunUpgrade" type="Node2D"]
+script = ExtResource("1_71klg")
+weapon_scene = ExtResource("2_6ii2h")
+upgradeName = "Gun"
+description = "Shoots a bullet"
+icon = ExtResource("3_c3hwg")

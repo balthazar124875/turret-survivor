@@ -2,7 +2,8 @@ extends BaseGun
 
 class_name SimpleGun
 
-@export var bullet_spread: float = 15
+@export var bullet_spread: float = 10
+@export var base_projectile_amount: float = 1
 
 func get_target() -> Node:
 	var closest_enemy: Node = null
@@ -11,14 +12,14 @@ func get_target() -> Node:
 		for enemy in enemy_parent.get_children():
 			if enemy.is_inside_tree() && enemy.is_alive():
 				var distance = global_position.distance_to(enemy.global_position)
-				if distance < shortest_distance:
+				if distance < shortest_distance && distance < range * player.rangeMultiplier:
 					shortest_distance = distance
 					closest_enemy = enemy
 					
 	return closest_enemy
 
 func shoot(enemy: Node) -> void:
-	var bulletAmount = 1 + player.extraProjectiles
+	var bulletAmount = base_projectile_amount + player.extraProjectiles
 	
 	var current_position = global_position
 	var direction = (enemy.position - current_position).normalized()

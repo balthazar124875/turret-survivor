@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1ddg8r5wvx81"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Stats/stat_upgrade.gd" id="1_lvkud"]
+[ext_resource type="Texture2D" uid="uid://dhym8e8ru5pga" path="res://Assets/Sprites/upgrades/damage_up.png" id="2_r5l7p"]
+
+[node name="DamageUpgrade" type="Node2D"]
+script = ExtResource("1_lvkud")
+stat_type = 2
+amount = 0.1
+upgradeName = "Damage up!"
+description = "Increases damage by 10%"
+type = 2
+icon = ExtResource("2_r5l7p")

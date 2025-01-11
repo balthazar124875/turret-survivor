@@ -37,16 +37,18 @@ func _ready() -> void:
 
 func load_upgrades() -> void:
 			#Iterate all Upgrade scripts and put them in the global array
-	var dir = DirAccess.open("res://Scenes/Upgrades/");
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			var upgrade = load("res://Scenes/Upgrades/" + file_name).instantiate()
-			UPGRADES_LIST[upgrade.rarity].push_back(upgrade);
-			file_name = dir.get_next()
-	else:
-		print("An error occurred when trying to access the path.");
+	var folders = ["Stats", "Weapons", "Passives"]
+	for f in folders:
+		var dir = DirAccess.open("res://Scenes/Upgrades/" + f);
+		if dir:
+			dir.list_dir_begin()
+			var file_name = dir.get_next()
+			while file_name != "":
+				var upgrade = load("res://Scenes/Upgrades/" + f  + "/" + file_name).instantiate()
+				UPGRADES_LIST[upgrade.rarity].push_back(upgrade);
+				file_name = dir.get_next()
+		else:
+			print("An error occurred when trying to access the path.");
 
 func initialize_buttons() -> void:
 	buttons = self.get_children()
@@ -123,7 +125,7 @@ func _on_shop_upgrade_button_pressed(index: int) -> void:
 	player.modify_gold(-shopUpgradeButtons[index].upgradeNode.gold_cost)
 	var new_upgrade = shopUpgradeButtons[index].upgradeNode.duplicate()
 	add_child(new_upgrade)
-	new_upgrade.applyUpgradeToPlayer()
+	new_upgrade.applyUpgradeToPlayer(player)
 	player.playerUpgrades.push_back(new_upgrade);
 	#new_upgrade.queue_free()
 	shopUpgradeButtons[index].upgradeNode = null

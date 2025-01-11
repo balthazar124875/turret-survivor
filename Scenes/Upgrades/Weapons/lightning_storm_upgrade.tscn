@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy6whmqq432j1"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/weapon_upgrade.gd" id="1_7366g"]
+[ext_resource type="PackedScene" uid="uid://bww0dla6ojykp" path="res://Scenes/Weapons/thunder_strike.tscn" id="2_uu81t"]
+[ext_resource type="Texture2D" uid="uid://7y1byjtcu8lp" path="res://Assets/Sprites/upgrades/lightning_storm.png" id="3_xm3ao"]
+
+[node name="LigthningStormUpgrade" type="Node2D"]
+script = ExtResource("1_7366g")
+weapon_scene = ExtResource("2_uu81t")
+upgradeName = "Lightning Storm"
+description = "Brings down THUNDER"
+icon = ExtResource("3_xm3ao")
+gold_cost = 15

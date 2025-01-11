@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6m1pqufh3a6o"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/PushOrbOutPassive.gd" id="1_1xuxc"]
+[ext_resource type="Texture2D" uid="uid://ctl6sr1r216ua" path="res://Assets/Sprites/upgrades/orbs/orbPush_up.png" id="2_tawm4"]
+
+[node name="PushOrbOutUpgrade" type="Node2D"]
+script = ExtResource("1_1xuxc")
+upgradeName = "Orbital"
+type = 2
+icon = ExtResource("2_tawm4")

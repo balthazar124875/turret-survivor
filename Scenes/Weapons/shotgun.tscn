@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://n0ba0kon3j2f"]
+
+[ext_resource type="Script" path="res://Scripts/gun.gd" id="1_dbqsk"]
+[ext_resource type="PackedScene" uid="uid://b4vn1cl2u1xi5" path="res://Scenes/Projectiles/bullet.tscn" id="2_44jpc"]
+
+[node name="ShotGun" type="Node2D"]
+script = ExtResource("1_dbqsk")
+bullet_spread = 5.0
+base_projectile_amount = 4.0
+bullet = ExtResource("2_44jpc")
+cooldown = 3.0
+bullet_life_time = 0.6
+range = 250.0

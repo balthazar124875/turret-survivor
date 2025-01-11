@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://v17ds0gqcar0"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Stats/stat_upgrade.gd" id="1_lnlua"]
+[ext_resource type="Texture2D" uid="uid://bec5fxraqw2ig" path="res://Assets/Sprites/upgrades/range_up.png" id="2_a61r0"]
+
+[node name="RangeUpgrade" type="Node2D"]
+script = ExtResource("1_lnlua")
+stat_type = 1
+amount = 0.1
+upgradeName = "Range up!"
+description = "Increases range by 10%"
+type = 2
+icon = ExtResource("2_a61r0")

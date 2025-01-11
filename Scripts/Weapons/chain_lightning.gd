@@ -10,7 +10,7 @@ func get_target() -> Node:
 		for enemy in enemy_parent.get_children():
 			if enemy.is_inside_tree() && enemy.is_alive():
 				var distance = global_position.distance_to(enemy.global_position)
-				if distance < shortest_distance:
+				if distance < shortest_distance && distance < range * player.rangeMultiplier:
 					shortest_distance = distance
 					closest_enemy = enemy
 					
@@ -26,7 +26,7 @@ func shoot(target_enemy: Node) -> void:
 	for enemy in enemy_parent.get_children():
 		if enemy.is_inside_tree() && enemy.is_alive() && enemy != target_enemy:
 			var distance = target_enemy.global_position.distance_to(enemy.global_position)
-			if(distance < chain_range):
+			if(distance < chain_range * player.rangeMultiplier):
 				targets.append(enemy)
 				if(targets.size() >= chains):
 					break
@@ -36,7 +36,7 @@ func shoot(target_enemy: Node) -> void:
 	add_child(bullet)
 	bullet.set_targets(targets)
 	for enemy in targets:
-		enemy.take_damage(damage)
+		enemy.take_damage(damage * player.damageMultiplier)
 		
 	call_deferred("_delete_after_time", bullet_life_time, bullet)
 	

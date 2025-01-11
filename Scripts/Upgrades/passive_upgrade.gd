@@ -14,7 +14,7 @@ func _ready() -> void:
 	type = UpgradeType.PASSIVE
 	pass # Replace with function body.
 
-func applyUpgradeToPlayer() -> void:
+func applyUpgradeToPlayer(player: Player) -> void:
 	pass
 
 func ApplyEnemyOnKillPassive(enemy : Enemy) ->void:
