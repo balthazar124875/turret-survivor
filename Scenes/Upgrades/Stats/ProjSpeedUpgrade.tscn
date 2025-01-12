@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca3t6garoosm1"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Stats/stat_upgrade.gd" id="1_qrtop"]
+[ext_resource type="Texture2D" uid="uid://bq1vwc7do4883" path="res://Assets/Sprites/upgrades/proj_speed_up.png" id="2_0qgbc"]
+
+[node name="ProjSpeedUpgrade" type="Node2D"]
+script = ExtResource("1_qrtop")
+stat_type = 3
+amount = 0.1
+upgradeName = "Projectile Speed up!"
+description = "Increases projectile speed by 10%"
+type = 2
+icon = ExtResource("2_0qgbc")

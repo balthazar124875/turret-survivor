@@ -2,12 +2,12 @@ extends Upgrade
 
 class_name PassiveUpgrade
 
-@export var weapon_scene : PackedScene;
 var passiveType : PassiveUpgradeType;
 
 enum PassiveUpgradeType {
 	ENEMY_HIT_TYPE,
 	ENEMY_KILL_TYPE,
+	PROJECTILE_MODIFIER
 }
 
 func _ready() -> void:

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyx38s1p66odm"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/bouncy_bullets.gd" id="1_lqm6p"]
+[ext_resource type="Texture2D" uid="uid://bc27thv4erlrl" path="res://Assets/Sprites/upgrades/bounce.png" id="2_g5q1h"]
+
+[node name="BouncyBullets" type="Node2D"]
+script = ExtResource("1_lqm6p")
+upgradeName = "Bouncy Bullets"
+description = "Bullets bounce"
+icon = ExtResource("2_g5q1h")

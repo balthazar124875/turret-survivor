@@ -5,7 +5,7 @@
 
 [node name="ChainUpgrade" type="Node2D"]
 script = ExtResource("1_0ctvg")
-stat_type = 4
+stat_type = 5
 amount = 1.0
 upgradeName = "Extra chain"
 description = "Increases chains by 1"

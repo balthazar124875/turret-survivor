@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://do8ldw660jong"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/random_pierce.gd" id="1_y4vnf"]
+[ext_resource type="Texture2D" uid="uid://cxlxila48ym8k" path="res://Assets/Sprites/upgrades/pierce.png" id="2_al0y5"]
+
+[node name="RandomPierce" type="Node2D"]
+script = ExtResource("1_y4vnf")
+upgradeName = "Bonus Pierce"
+description = "half of all bullets gain +1 pierce"
+type = 1
+icon = ExtResource("2_al0y5")

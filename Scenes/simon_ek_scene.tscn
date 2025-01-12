@@ -108,11 +108,11 @@ text = "Wave 1"
 
 [node name="GoldLabel" type="RichTextLabel" parent="Control"]
 layout_mode = 0
-offset_left = 534.0
+offset_left = 506.0
 offset_top = 107.0
-offset_right = 619.0
+offset_right = 635.0
 offset_bottom = 141.0
-text = "GOld"
+text = "Gold: $0"
 
 [node name="WaveProgressBar" type="ProgressBar" parent="Control"]
 layout_mode = 0
@@ -121,5 +121,14 @@ offset_top = 42.0
 offset_right = 638.0
 offset_bottom = 69.0
 show_percentage = false
+
+[node name="KillsLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 507.0
+offset_top = 327.0
+offset_right = 635.0
+offset_bottom = 361.0
+text = "Kills: 0
+"
 
 [connection signal="pressed" from="Control/HBoxContainer/RerollButton" to="Control/ShopUpgrades" method="_on_reroll_button_pressed"]

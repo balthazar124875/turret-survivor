@@ -4,6 +4,7 @@ extends Node
 
 class_name UIManager;
 
+var kills: float
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	subscribe_to_signals()
@@ -11,10 +12,15 @@ func _ready() -> void:
 func subscribe_to_signals() -> void:
 	SignalBus.gold_amount_updated.connect(on_gold_updated)
 	SignalBus.current_wave_updated.connect(on_wave_updated)
+	SignalBus.enemy_killed.connect(on_enemy_killed)
 
 func on_wave_updated(current_wave: int) -> void:
 	get_node("WaveLabel").text = "Wave: " + str(current_wave)
 	
 func on_gold_updated(gold: int) -> void:
 	get_node("GoldLabel").text = "Gold: $" + str(gold)
+	
+func on_enemy_killed(_e) -> void:
+	kills += 1
+	get_node("KillsLabel").text = "Kills: " + str(kills)
 	

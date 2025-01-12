@@ -25,7 +25,7 @@ func _physics_process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#Rotate fireorb here
-	currAngle = currAngle + delta * orbSpeed * player.attackSpeedMultiplier;
+	currAngle = currAngle + delta * orbSpeed * player.projectileSpeedMultipler;
 	var orbPos = Vector2(cos(currAngle), sin(currAngle))*orbRange * player.rangeMultiplier;
 	orbPos += player.global_position;
 	global_position = orbPos;

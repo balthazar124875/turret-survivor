@@ -5,7 +5,7 @@
 
 [node name="ProjectilesUpgrade" type="Node2D"]
 script = ExtResource("1_q48cy")
-stat_type = 3
+stat_type = 4
 amount = 1.0
 upgradeName = "Extra projectiles"
 description = "Increases projectiles by 1"
