@@ -24,15 +24,10 @@ func shoot(enemy: Node) -> void:
 	
 	var current_position = global_position
 	var direction = (enemy.position - current_position).normalized()
-	print(direction)
 	direction = direction.rotated(deg_to_rad(bullet_spread * (bulletAmount / 2)))
 	for n in range(bulletAmount):
 		var bullet = bullet.instantiate()
 		add_child(bullet)
 		bullet.init_with_direction(direction, damage * player.damageMultiplier, base_projectile_speed * player.projectileSpeedMultipler, bullet_life_time)
-		
-		print(direction)
 		direction = direction.rotated(-deg_to_rad(bullet_spread))
-		
-		
 	
