@@ -9,9 +9,11 @@ var target_position = Vector2.ZERO
 
 signal enemy_killed(enemy)
 
+var player
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var player = get_node("/root/EmilScene/Player")
+	player = get_node("/root/EmilScene/Player")
 	target_position = player.global_position
 	pass # Replace with function body.
 
@@ -25,9 +27,8 @@ func _process(delta: float) -> void:
 	# Move towards the target position
 	if current_position.distance_to(target_position) > 50:  # Adjust tolerance as needed
 		global_position += direction * speed * delta
-	#else:
-		#print("Enemy should be doing damage now.")
-	pass
+	else: 
+		player.take_damage(1.0 * delta)
 
 func is_alive() -> bool:
 	return health > 0

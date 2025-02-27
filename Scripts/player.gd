@@ -2,7 +2,9 @@ extends Node
 
 class_name Player
 
-var hp = 100;
+var maxHealth = 100.0;
+var health = 100.0;
+var healthRegeneration = 0.0;
 var playerUpgrades : Array = [];
 var extraProjectiles = 0;
 var extraChains = 0;
@@ -20,10 +22,24 @@ func _ready() -> void:
 	SignalBus.enemy_killed.connect(_on_enemy_killed)
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	modify_health(healthRegeneration * delta)
+
+func heal_damage(value: float) -> void:
+	modify_health(value)
+
+func take_damage(value: float) -> void:
+	modify_health(-value)
+
+func modify_health(value: float) -> void:
+	health += value
+	if health >= maxHealth:
+		health = maxHealth
+	elif health <= 0:
+		print("DEATH: GAME OVER")
+		SignalBus.player_death.emit()
+	SignalBus.player_health_updated.emit(health)
 
 func modify_gold(value: int) -> void:
 	gold += value

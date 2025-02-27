@@ -21,7 +21,8 @@ position = Vector2(317, 185)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="EnemySpawner" parent="." instance=ExtResource("3_mtl8o")]
+[node name="EnemySpawner" parent="." node_paths=PackedStringArray("center") instance=ExtResource("3_mtl8o")]
+center = NodePath("../Player")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

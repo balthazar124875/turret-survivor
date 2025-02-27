@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=12 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://bug82i6sy1xtq" path="res://Themes/texture_button_theme.tres" id="8_4ctao"]
 [ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="9_yckrj"]
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
+[ext_resource type="Script" path="res://Scripts/UI/health_bar.gd" id="11_4w2qp"]
 
 [node name="EmilScene" type="Node2D"]
 script = ExtResource("1_itpwq")
@@ -121,6 +122,14 @@ offset_top = 42.0
 offset_right = 638.0
 offset_bottom = 69.0
 show_percentage = false
+
+[node name="HealthBar" type="ProgressBar" parent="Control"]
+offset_left = 2.0
+offset_top = 328.0
+offset_right = 138.0
+offset_bottom = 355.0
+value = 100.0
+script = ExtResource("11_4w2qp")
 
 [node name="KillsLabel" type="RichTextLabel" parent="Control"]
 layout_mode = 0
