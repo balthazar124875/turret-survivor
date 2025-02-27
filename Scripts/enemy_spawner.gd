@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var enemy_scenes: Array[PackedScene] = []
+@export var waves: Array[Wave] = []
 @export var center: Node2D
 @export var enemy_spawn_delay = 0.1
 @export var enemy_spawn_distance = 200
@@ -16,10 +16,12 @@ var current_wave = 1
 
 @onready var wave_progress_bar: ProgressBar = get_node("/root/EmilScene/Control/WaveProgressBar")
 @onready var wave_timer: Timer = get_node("WaveTimer")
+@onready var enemy_spawn_timer: Timer = get_node("EnemySpawnerTimer")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	wave_progress_bar.max_value = wave_timer.wait_time
+	enemy_spawn_timer.wait_time = waves[current_wave_enemy_index].spawn_interval
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -32,20 +34,21 @@ func _on_enemy_spawner_timer_timeout() -> void:
 	print(amount)
 	
 	for i in range (amount):
-		var enemy = enemy_scenes[current_wave_enemy_index].instantiate()
+		var enemy = waves[current_wave_enemy_index].enemy.instantiate()
 		var posRand = rng.randf_range(0, 360)
 		var xPos = center.position.x + cos(posRand) * enemy_spawn_distance
 		var yPos = center.position.y + sin(posRand) * enemy_spawn_distance
 		enemy.position = Vector2(xPos, yPos)
 		enemies.add_child(enemy)
-		enemy.increase_hp(pow(enemy_hp_scaling, current_wave / enemy_scenes.size()))
+		enemy.increase_hp(pow(enemy_hp_scaling, current_wave / waves.size()))
 
 func _on_wave_timer_timeout() -> void:
 	current_wave += 1
 	SignalBus.current_wave_updated.emit(current_wave)
-	if current_wave_enemy_index < enemy_scenes.size() - 1:
+	if current_wave_enemy_index < waves.size() - 1:
 		current_wave_enemy_index += 1
 	else:
 		current_wave_enemy_index = 0
 
+	enemy_spawn_timer.wait_time = waves[current_wave_enemy_index].spawn_interval
 	print("Current wave enemy index: ", current_wave_enemy_index)

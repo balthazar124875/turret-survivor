@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Wave" load_steps=3 format=3 uid="uid://2nbfix1i2x45"]
+
+[ext_resource type="PackedScene" uid="uid://bvh4sggr4wxu3" path="res://Scenes/Enemies/enemy3.tscn" id="1_j4ork"]
+[ext_resource type="Script" path="res://Scripts/wave.gd" id="2_duj0v"]
+
+[resource]
+script = ExtResource("2_duj0v")
+enemy = ExtResource("1_j4ork")
+spawn_interval = 2.0
