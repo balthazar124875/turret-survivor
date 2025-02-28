@@ -2,10 +2,14 @@ extends RigidBody2D
 
 class_name Enemy
 
-var target_position = Vector2.ZERO
 @export var speed = 100
 @export var health = 5
 @export var gold_value = 1
+@export var damage: float = 1.0
+@export var attack_cooldown: float = 0.5
+
+var can_attack: bool = true
+var target_position = Vector2.ZERO
 
 signal enemy_killed(enemy)
 
@@ -27,8 +31,14 @@ func _process(delta: float) -> void:
 	# Move towards the target position
 	if current_position.distance_to(target_position) > 50:  # Adjust tolerance as needed
 		global_position += direction * speed * delta
-	else: 
-		player.take_damage(1.0 * delta)
+	elif can_attack: 
+		player.take_damage(damage)
+		call_deferred("enable_can_attack", attack_cooldown)
+		can_attack = false
+
+func enable_can_attack(timeout):
+	await get_tree().create_timer(timeout).timeout
+	can_attack = true
 
 func is_alive() -> bool:
 	return health > 0

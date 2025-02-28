@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://8qo0qvhe2ker"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Stats/stat_upgrade.gd" id="1_rwqk5"]
+[ext_resource type="Texture2D" uid="uid://bsrsq4uahi4pd" path="res://Assets/Sprites/upgrades/health_regen.png" id="2_6xxoi"]
+
+[node name="HealthRegenUpgrade" type="Node2D"]
+script = ExtResource("1_rwqk5")
+stat_type = 7
+amount = 5.0
+upgradeName = "Add health regen"
+description = "Increase health regeneration"
+type = 2
+icon = ExtResource("2_6xxoi")

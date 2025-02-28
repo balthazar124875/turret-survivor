@@ -7,7 +7,6 @@ enum UpgradeType {
 	PASSIVE,
 	PLAYER_STAT_UP,
 	GAME_STAT_UP,
-	count,
 }
 
 enum UpgradeRarity {
@@ -36,3 +35,10 @@ func applyUpgradeToPlayer(player: Player) -> void:
 
 func applyCosmeticChangeToPlayer() -> void:
 	pass
+
+func reparentToPlayer(player: Player) -> void:
+	pass
+
+func apply(player: Player) -> void:
+	applyUpgradeToPlayer(player)
+	reparentToPlayer(player)

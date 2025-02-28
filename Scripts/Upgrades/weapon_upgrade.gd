@@ -11,3 +11,6 @@ func _ready() -> void:
 func applyUpgradeToPlayer(player: Player) -> void:
 	var new_weapon = weapon_scene.instantiate()
 	player.get_node("./Weapons").add_child(new_weapon)
+
+func reparentToPlayer(player: Player) -> void:
+	self.reparent(player.get_node("./Upgrades/Weapons"))

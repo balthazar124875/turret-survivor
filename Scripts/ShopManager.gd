@@ -125,9 +125,9 @@ func _on_shop_upgrade_button_pressed(index: int) -> void:
 	player.modify_gold(-shopUpgradeButtons[index].upgradeNode.gold_cost)
 	var new_upgrade = shopUpgradeButtons[index].upgradeNode.duplicate()
 	add_child(new_upgrade)
-	new_upgrade.applyUpgradeToPlayer(player)
+	new_upgrade.apply(player)
 	player.playerUpgrades.push_back(new_upgrade);
-	#new_upgrade.queue_free()
+
 	shopUpgradeButtons[index].upgradeNode = null
 	buttons[index].texture_normal = empty_item_slot_texture
 

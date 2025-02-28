@@ -34,3 +34,17 @@ shape = SubResource("RectangleShape2D_l2ctd")
 [node name="Weapons" type="Node2D" parent="."]
 
 [node name="Gun" parent="Weapons" instance=ExtResource("3_q8d6d")]
+
+[node name="IncomeTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Upgrades" type="Node2D" parent="."]
+
+[node name="Stats" type="Node2D" parent="Upgrades"]
+
+[node name="Passives" type="Node2D" parent="Upgrades"]
+
+[node name="Weapons" type="Node2D" parent="Upgrades"]
+
+[connection signal="timeout" from="IncomeTimer" to="." method="_on_income_timer_timeout"]

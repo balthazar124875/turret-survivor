@@ -12,7 +12,10 @@ var rangeMultiplier = 1.0;
 var damageMultiplier = 1.0;
 var attackSpeedMultiplier = 1.0;
 var projectileSpeedMultipler = 1.0;
-var gold = 1000;
+var gold = 100;
+var gold_income: int = 5;
+
+@onready var income_timer: Timer = get_node("IncomeTimer")
 
 static var playerOrbs : Array[FireOrb] = [];
 static var playerOrbsOuter : Array[FireOrb] = [];
@@ -25,6 +28,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	modify_health(healthRegeneration * delta)
+	
+func _on_income_timer_timeout() -> void:
+	modify_gold(gold_income)
 
 func heal_damage(value: float) -> void:
 	modify_health(value)
@@ -86,3 +92,12 @@ func modify_stat(stat: GlobalEnums.PLAYER_STATS, amount: float) -> void:
 			self.extraChains += amount
 		GlobalEnums.PLAYER_STATS.EXTRA_PROJECTILES:
 			self.extraProjectiles += amount
+		GlobalEnums.PLAYER_STATS.ADD_BASE_INCOME:
+			self.gold_income += amount
+		GlobalEnums.PLAYER_STATS.MULTIPLY_INCOME_TIMER:
+			income_timer.wait_time = max(income_timer.wait_time * amount, 0.01)
+		GlobalEnums.PLAYER_STATS.ADD_MAX_HEALTH:
+			self.maxHealth += amount
+			modify_health(amount)
+		GlobalEnums.PLAYER_STATS.ADD_HEALTH_REGENERATION:
+			self.healthRegeneration += amount
