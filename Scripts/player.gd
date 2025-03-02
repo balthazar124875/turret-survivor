@@ -17,8 +17,8 @@ var gold_income: int = 5;
 
 @onready var income_timer: Timer = get_node("IncomeTimer")
 
-static var playerOrbs : Array[FireOrb] = [];
-static var playerOrbsOuter : Array[FireOrb] = [];
+static var playerOrbs : Array[BaseOrb] = [];
+static var playerOrbsOuter : Array[BaseOrb] = [];
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -58,7 +58,7 @@ func _on_enemy_killed(enemy: Enemy) -> void:
 				playerUpgrade.ApplyEnemyOnKillPassive(enemy);
 	modify_gold(enemy.gold_value)
 
-func addPlayerFireOrb(orb : FireOrb):
+func addPlayerBaseOrb(orb : BaseOrb):
 	playerOrbs.push_back(orb);
 	#Re-arrange them all in a circle
 	ArrangePlayerOrbs(playerOrbs);

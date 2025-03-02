@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnpsqvpetjokc"]
+
+[ext_resource type="Shader" uid="uid://dx376iw5pgsx6" path="res://vfxShaders/snowflake.tres" id="1_t176j"]
+[ext_resource type="Texture2D" uid="uid://crofxa0uf6nt7" path="res://Textures/snowflake.png" id="2_fysgy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o8fal"]
+resource_local_to_scene = true
+shader = ExtResource("1_t176j")
+shader_parameter/SecondaaryColor = Color(0, 0.756739, 0.985418, 1)
+shader_parameter/ColorIntensity = 1.282
+shader_parameter/basic_texture = ExtResource("2_fysgy")
+
+[sub_resource type="Curve" id="Curve_7fqep"]
+resource_local_to_scene = true
+min_value = -196.22
+max_value = 107.19
+_data = [Vector2(0, 18.5534), 0.0, 0.0, 0, 0, Vector2(1, 107.19), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hm7x1"]
+resource_local_to_scene = true
+texture_mode = 1
+curve = SubResource("Curve_7fqep")
+
+[sub_resource type="Curve" id="Curve_2pdvx"]
+_data = [Vector2(0, 0.300963), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dxb0u"]
+curve = SubResource("Curve_2pdvx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_045x8"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 51.92
+angle_min = -241.9
+angle_max = 1.07288e-05
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -1.0
+linear_accel_max = -2.23517e-06
+linear_accel_curve = SubResource("CurveTexture_hm7x1")
+scale_min = 5.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_dxb0u")
+
+[node name="VfxSnowflakes" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_o8fal")
+use_parent_material = true
+amount = 70
+process_material = SubResource("ParticleProcessMaterial_045x8")

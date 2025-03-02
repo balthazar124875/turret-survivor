@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Turret Survivor"
-run/main_scene="res://Scenes/old_main.tscn"
+run/main_scene="res://Scenes/simon_ek_scene.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
