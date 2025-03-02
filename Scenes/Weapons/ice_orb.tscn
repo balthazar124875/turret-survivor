@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Weapons/ice_orb.gd" id="1_bgo1t"]
 [ext_resource type="Shader" uid="uid://c5ui7q4oyxj3r" path="res://vfxShaders/fire_orb.tres" id="2_c22fh"]
-[ext_resource type="PackedScene" uid="uid://gcpvnvflgy6u" path="res://Scenes/vfx/vfx_iceball.tscn" id="2_uqy37"]
+[ext_resource type="PackedScene" path="res://Scenes/vfx/vfx_iceball.tscn" id="2_uqy37"]
 [ext_resource type="Texture2D" uid="uid://bburp7jn0j75m" path="res://Textures/fire_orb_LowResClean.jpg" id="3_j8kg6"]
 [ext_resource type="Texture2D" uid="uid://dfw81wjllmjub" path="res://Textures/sparksvfx.jpg" id="4_qream"]
 

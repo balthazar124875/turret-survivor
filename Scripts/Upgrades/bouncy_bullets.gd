@@ -14,5 +14,5 @@ func _process(delta: float) -> void:
 	pass
 	
 func _apply_effects(bullet: Bullet):
-	bullet.bounce += 0.2
+	bullet.bounce += bouncePercentage
 	pass
