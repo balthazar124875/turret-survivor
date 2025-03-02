@@ -38,11 +38,14 @@ func init_with_direction(direction: Vector2, damage: float, speed: float, life_t
 	self.speed = speed
 	call_deferred("_delete_after_time", life_time)
 
+func HitEnemy(body : Enemy):
+	body.take_damage(damage)  # Call the enemy's damage function
+	SignalBus.on_enemy_hit.emit(body)
+
 func _on_body_entered(body):
 	if body is Enemy:  # Replace with your enemy script class name
 		
-		body.take_damage(damage)  # Call the enemy's damage function
-		SignalBus.on_enemy_hit.emit(body)
+		HitEnemy(body)
 		if(pierce > 1):
 			pierce -= 1;
 			return
