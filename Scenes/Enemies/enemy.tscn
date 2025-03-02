@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnjei3oiiciha"]
+[gd_scene load_steps=6 format=3 uid="uid://dnjei3oiiciha"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_biolc"]
 [ext_resource type="Texture2D" uid="uid://dpcn4navygyv1" path="res://Assets/Sprites/little_enemy.png" id="2_i0e02"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_60s1w"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p7tvn"]
 animations = [{
@@ -30,6 +32,8 @@ health = 4
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_60s1w")
 sprite_frames = SubResource("SpriteFrames_p7tvn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -39,3 +43,6 @@ shape = SubResource("RectangleShape2D_bkwbl")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0.999999, -1)
 scale = Vector2(1.4, 1.4)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_i0e02")

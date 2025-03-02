@@ -37,6 +37,7 @@ func shoot(target_enemy: Node) -> void:
 	bullet.set_targets(targets)
 	for enemy in targets:
 		enemy.take_damage(damage * player.damageMultiplier)
+		SignalBus.on_enemy_hit.emit(enemy)
 		
 	call_deferred("_delete_after_time", bullet_life_time, bullet)
 	

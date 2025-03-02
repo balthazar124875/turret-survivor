@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr61rv4rcqw28"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/slowing_bullets.gd" id="1_swpto"]
+[ext_resource type="Texture2D" uid="uid://b3j4qovgrrb8f" path="res://Assets/Sprites/upgrades/slowing_bullets.png" id="2_1qqc2"]
+
+[node name="SlowingBullets" type="Node2D"]
+script = ExtResource("1_swpto")
+upgradeName = "Slowing bullets"
+description = "Bullets slow"
+icon = ExtResource("2_1qqc2")
