@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Upgrades/weapon_upgrade.gd" id="1_rsv8p"]
 [ext_resource type="Texture2D" uid="uid://bs28g2j40oica" path="res://Assets/Sprites/upgrades/orbs/iceOrb_up.png" id="2_7eopo"]
-[ext_resource type="PackedScene" uid="uid://covhyuhyhyf4n" path="res://Scenes/Weapons/ice_orb.tscn" id="2_f5kjd"]
+[ext_resource type="PackedScene" uid="uid://dlgmbr1uiavr5" path="res://Scenes/Weapons/ice_orb.tscn" id="2_f5kjd"]
 
 [node name="IceOrbWeapon" type="Node2D"]
 script = ExtResource("1_rsv8p")

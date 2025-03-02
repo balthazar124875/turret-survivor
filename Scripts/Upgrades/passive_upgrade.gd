@@ -2,12 +2,13 @@ extends Upgrade
 
 class_name PassiveUpgrade
 
-var passiveType : PassiveUpgradeType;
+@export var passiveType : PassiveUpgradeType;
 
 enum PassiveUpgradeType {
 	ENEMY_HIT_TYPE,
 	ENEMY_KILL_TYPE,
-	PROJECTILE_MODIFIER
+	PROJECTILE_MODIFIER,
+	ON_PLAYER_HIT
 }
 
 func _ready() -> void:
@@ -21,4 +22,7 @@ func reparentToPlayer(player: Player) -> void:
 	self.reparent(player.get_node("./Upgrades/Passives"))
 
 func ApplyEnemyOnKillPassive(enemy : Enemy) ->void:
+	pass
+
+func ApplyWhenHitEffect(player: Player, enemy : Enemy) ->void:
 	pass

@@ -35,15 +35,18 @@ func _on_income_timer_timeout() -> void:
 func heal_damage(value: float) -> void:
 	modify_health(value)
 
-func take_damage(value: float) -> void:
+func take_damage(value: float, source: Enemy) -> void:
 	modify_health(-value)
+	for playerUpgrade in playerUpgrades:
+		if(playerUpgrade.type == Upgrade.UpgradeType.PASSIVE):
+			if(playerUpgrade.passiveType == PassiveUpgrade.PassiveUpgradeType.ON_PLAYER_HIT):
+				playerUpgrade.ApplyWhenHitEffect(self, source);
 
 func modify_health(value: float) -> void:
 	health += value
 	if health >= maxHealth:
 		health = maxHealth
 	elif health <= 0:
-		print("DEATH: GAME OVER")
 		SignalBus.player_death.emit()
 	SignalBus.player_health_updated.emit(health)
 
