@@ -60,6 +60,8 @@ func update_active_status_effects(delta):
 func increase_hp(multiplier: float) -> void:
 	health *= multiplier
 
+
+# TODO: DO NOT DO THIS EVERY FRAME
 func handle_status_effects():
 	current_action_speed = action_speed
 	$Sprite2D.modulate = Color(1, 1, 1)
