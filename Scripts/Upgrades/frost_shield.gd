@@ -11,4 +11,8 @@ func ApplyWhenHitEffect(player: Player, enemy : Enemy) -> void:
 	var rng = RandomNumberGenerator.new()
 	var rndNumber = rng.randf_range(0.0, 1.0);
 	if(rndNumber <= procChance):
-		enemy.freeze(duration)
+		var freeze = EnemyStatusEffect.new()
+		freeze.type = GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN
+		freeze.duration = 5
+		freeze.magnitude = 0
+		enemy.apply_status_effect(freeze)

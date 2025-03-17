@@ -31,7 +31,6 @@ func _on_enemy_spawner_timer_timeout() -> void:
 	
 	var r = rng.randi_range(0, current_wave)
 	var amount = 1 + (r / double_enemies_every) 
-	print(amount)
 	
 	for i in range (amount):
 		var enemy = waves[current_wave_enemy_index].enemy.instantiate()
