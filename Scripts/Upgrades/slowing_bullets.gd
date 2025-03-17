@@ -16,4 +16,8 @@ func _apply_effects(enemy: Enemy):
 	var rng = RandomNumberGenerator.new()
 	var rndNumber = rng.randf_range(0.0, 1.0);
 	if(initPercentage > rndNumber):
-		enemy.slow(slowAmount)
+		var slow = EnemyStatusEffect.new()
+		slow.type = GlobalEnums.ENEMY_STATUS_EFFECTS.SLOWED
+		slow.duration = 5
+		slow.magnitude = 0.5
+		enemy.apply_status_effect(slow)

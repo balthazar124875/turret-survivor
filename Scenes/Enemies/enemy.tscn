@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dnjei3oiiciha"]
 
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_biolc"]
+[ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_biolc"]
 [ext_resource type="Texture2D" uid="uid://dpcn4navygyv1" path="res://Assets/Sprites/little_enemy.png" id="2_i0e02"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_60s1w"]
