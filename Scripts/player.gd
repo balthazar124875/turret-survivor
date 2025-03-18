@@ -48,7 +48,7 @@ func modify_health(value: float) -> void:
 		health = maxHealth
 	elif health <= 0:
 		SignalBus.player_death.emit()
-	SignalBus.player_health_updated.emit(health)
+	SignalBus.player_health_updated.emit(health, maxHealth)
 
 func modify_gold(value: int) -> void:
 	gold += value
