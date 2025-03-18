@@ -30,4 +30,17 @@ func shoot(enemy: Node) -> void:
 		add_child(bullet)
 		bullet.init_with_direction(direction, damage * player.damageMultiplier, base_projectile_speed * player.projectileSpeedMultipler, bullet_life_time)
 		direction = direction.rotated(-deg_to_rad(bullet_spread))
-	
+
+func apply_level_up():
+	match level:
+		3:
+			base_projectile_amount += 44
+			
+		25:
+			base_projectile_amount += 3
+		2:
+			damage += 1
+		5:
+			cooldown *= 0.99
+		_:
+			base_projectile_speed += 1
