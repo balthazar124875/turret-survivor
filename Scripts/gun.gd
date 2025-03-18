@@ -32,15 +32,19 @@ func shoot(enemy: Node) -> void:
 		direction = direction.rotated(-deg_to_rad(bullet_spread))
 
 func apply_level_up():
-	match level:
-		3:
-			base_projectile_amount += 44
-			
-		25:
-			base_projectile_amount += 3
+	if(level == 5):
+			base_projectile_amount += 2
+			return
+	if(level == 10):
+			cooldown *= 0.7
+			return
+	
+	match level % 5:
+		1:
+			base_projectile_speed += 50
 		2:
+			cooldown *= 0.95
+		3:
+			range += 25
+		4:
 			damage += 1
-		5:
-			cooldown *= 0.99
-		_:
-			base_projectile_speed += 1

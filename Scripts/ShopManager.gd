@@ -78,6 +78,13 @@ func fillShopUpgradeButtons(current_wave: int = 0) -> void:
 			newUpgradeList[i].gold_cost, 
 			" gold"
 		)
+		var text = buttons[i].get_child(0) as RichTextLabel
+		text.scroll_active = false
+		if(newUpgradeList[i].upgradeAmount != 0):
+			text.text = "[right][color=black][font_size=12]" + str(newUpgradeList[i].upgradeAmount) + "[/font_size][/color][/right]"
+		else:
+			text.text = ""
+			
 
 func renderShopUpgradeButtonsText() -> void:
 	#TODO: Can't assign text to TextureButton like this.

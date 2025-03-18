@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=13 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="9_yckrj"]
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
 [ext_resource type="Script" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
+
+[sub_resource type="Theme" id="Theme_t5p71"]
 
 [node name="EmilScene" type="Node2D"]
 script = ExtResource("1_itpwq")
@@ -54,33 +56,154 @@ script = ExtResource("5_jxmqa")
 layout_mode = 2
 texture_normal = ExtResource("7_vnyei")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton1"]
+clip_contents = false
+layout_mode = 0
+offset_left = 5.0
+offset_top = 16.0
+offset_right = 29.0
+offset_bottom = 33.0
+mouse_filter = 1
+theme = SubResource("Theme_t5p71")
+bbcode_enabled = true
+text = "
+"
+autowrap_mode = 0
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
 [node name="ShopUpgradeButton2" type="TextureButton" parent="Control/ShopUpgrades"]
 layout_mode = 2
 texture_normal = ExtResource("7_vnyei")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton2"]
+clip_contents = false
+offset_left = 5.0
+offset_top = 16.0
+offset_right = 29.0
+offset_bottom = 33.0
+mouse_filter = 1
+theme = SubResource("Theme_t5p71")
+bbcode_enabled = true
+text = "
+"
+autowrap_mode = 0
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [node name="ShopUpgradeButton3" type="TextureButton" parent="Control/ShopUpgrades"]
 layout_mode = 2
 texture_normal = ExtResource("7_vnyei")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton3"]
+clip_contents = false
+offset_left = 5.0
+offset_top = 16.0
+offset_right = 29.0
+offset_bottom = 33.0
+mouse_filter = 1
+theme = SubResource("Theme_t5p71")
+bbcode_enabled = true
+text = "
+"
+autowrap_mode = 0
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
 [node name="ShopUpgradeButton4" type="TextureButton" parent="Control/ShopUpgrades"]
 layout_mode = 2
 texture_normal = ExtResource("7_vnyei")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton4"]
+clip_contents = false
+offset_left = 5.0
+offset_top = 16.0
+offset_right = 29.0
+offset_bottom = 33.0
+mouse_filter = 1
+theme = SubResource("Theme_t5p71")
+bbcode_enabled = true
+text = "
+"
+autowrap_mode = 0
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [node name="ShopUpgradeButton5" type="TextureButton" parent="Control/ShopUpgrades"]
 layout_mode = 2
 texture_normal = ExtResource("7_vnyei")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton5"]
+clip_contents = false
+offset_left = 5.0
+offset_top = 16.0
+offset_right = 29.0
+offset_bottom = 33.0
+mouse_filter = 1
+theme = SubResource("Theme_t5p71")
+bbcode_enabled = true
+text = "
+"
+autowrap_mode = 0
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
 [node name="ShopUpgradeButton6" type="TextureButton" parent="Control/ShopUpgrades"]
 layout_mode = 2
 texture_normal = ExtResource("7_vnyei")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton6"]
+clip_contents = false
+offset_left = 5.0
+offset_top = 16.0
+offset_right = 29.0
+offset_bottom = 33.0
+mouse_filter = 1
+theme = SubResource("Theme_t5p71")
+bbcode_enabled = true
+text = "
+"
+autowrap_mode = 0
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [node name="ShopUpgradeButton7" type="TextureButton" parent="Control/ShopUpgrades"]
 layout_mode = 2
 texture_normal = ExtResource("7_vnyei")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton7"]
+clip_contents = false
+offset_left = 5.0
+offset_top = 16.0
+offset_right = 29.0
+offset_bottom = 33.0
+mouse_filter = 1
+theme = SubResource("Theme_t5p71")
+bbcode_enabled = true
+text = "
+"
+autowrap_mode = 0
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
 [node name="ShopUpgradeButton8" type="TextureButton" parent="Control/ShopUpgrades"]
 layout_mode = 2
 texture_normal = ExtResource("7_vnyei")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton8"]
+clip_contents = false
+offset_left = 5.0
+offset_top = 16.0
+offset_right = 29.0
+offset_bottom = 33.0
+mouse_filter = 1
+theme = SubResource("Theme_t5p71")
+bbcode_enabled = true
+text = "
+"
+autowrap_mode = 0
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 0

@@ -17,6 +17,8 @@ enum TargetingType {
 @export var range: float = 0
 @export var level: int = 1
 
+var localAttackSpeedBonus: float = 1
+
 var player: Player
 var enemy_parent: Node = null
 # Called when the node enters the scene tree for the first time.
@@ -28,7 +30,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	charge += delta * player.attackSpeedMultiplier
+	charge += delta * player.attackSpeedMultiplier * localAttackSpeedBonus
 	if(charge > cooldown):
 		match (targeting_type):
 			TargetingType.ENEMY:
