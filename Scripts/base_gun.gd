@@ -15,6 +15,7 @@ enum TargetingType {
 @export var charge: float = 0
 @export var bullet_life_time: float = 2
 @export var range: float = 0
+@export var level: int = 1
 
 var player: Player
 var enemy_parent: Node = null
@@ -62,4 +63,11 @@ func shoot(enemy: Node) -> void:
 	enemy.take_damage(damage)
 	
 func shoot_area(position: Vector2) -> void:
+	pass
+	
+func level_up():
+	level += 1
+	apply_level_up()
+	
+func apply_level_up():
 	pass

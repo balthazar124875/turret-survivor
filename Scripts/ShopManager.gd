@@ -8,7 +8,6 @@ class ShopUpgradeButton:
 	
 static var UPGRADES_LIST = [[]]; #2D array, access elems by UPGRADE_LIST[rarity] -> gives the list of upgrades
 static var availableUpgradesList : Array = []; #This list will hold all upgrades that are available to use currently CURRENTLY UNUSED!!!
-static var shuffledUpgradesList = [[]];
 
 #Rarity rates (rarity rate for common is always one minus the sum of the vars)
 static var legendaryRate = 0.01;
@@ -29,10 +28,10 @@ var player: Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	player = get_node("/root/EmilScene/Player")
 	load_upgrades()
 	initialize_buttons()
 	SignalBus.current_wave_updated.connect(new_wave_shop_reroll)
-	player = get_node("/root/EmilScene/Player")
 	empty_item_slot_texture = load("res://Assets/Sprites/upgrades/empty_upgrade_slot.png")
 
 func load_upgrades() -> void:
@@ -67,7 +66,6 @@ func new_wave_shop_reroll(current_wave: int = 0) -> void:
 func fillShopUpgradeButtons(current_wave: int = 0) -> void:
 	print("fill shop")
 	#TODO: Shuffle the upgrade list here from GameManager
-	ShuffleEntireUpgradesList()
 	var newUpgradeList = GenerateUpgradesListForShop(shopUpgradeButtons.size());
 	for i in shopUpgradeButtons.size():
 		shopUpgradeButtons[i].upgradeNode = newUpgradeList[i];
@@ -87,14 +85,12 @@ func renderShopUpgradeButtonsText() -> void:
 	#for x in shopUpgradeButtons:
 		#x.button.text = x.upgrade.description;
 	pass
-	
-func ShuffleEntireUpgradesList() -> void:
-	#TODO: shuffle properly
-	shuffledUpgradesList = UPGRADES_LIST;
-	pass
 
 #Put upgrades in list based on rarity.
 func GenerateUpgradesListForShop(size : int) -> Array:
+	for u in UPGRADES_LIST:
+		for u2 in u:
+			u2.rolled = false
 	var shopUpgradeList : Array = [];
 	#rates for this algorithm.
 	var legendary = legendaryRate;
@@ -107,13 +103,13 @@ func GenerateUpgradesListForShop(size : int) -> Array:
 		var rng = RandomNumberGenerator.new()
 		var randomNumber = 0.9; #TODO: TEMPORARY always generate comomon! #rng.randf_range(1.0, 0.0);
 		if(randomNumber < legendary):
-			shopUpgradeList.push_back(shuffledUpgradesList[Upgrade.UpgradeRarity.LEGENDARY].pick_random());
+			shopUpgradeList.push_back(choose_weighted_random(UPGRADES_LIST[Upgrade.UpgradeRarity.LEGENDARY]));
 		elif(randomNumber < rare):
-			shopUpgradeList.push_back(shuffledUpgradesList[Upgrade.UpgradeRarity.RARE].pick_random());
+			shopUpgradeList.push_back(choose_weighted_random(UPGRADES_LIST[Upgrade.UpgradeRarity.RARE]));
 		elif(randomNumber < uncommon):
-			shopUpgradeList.push_back(shuffledUpgradesList[Upgrade.UpgradeRarity.UNCOMMON].pick_random());
+			shopUpgradeList.push_back(choose_weighted_random(UPGRADES_LIST[Upgrade.UpgradeRarity.UNCOMMON]));
 		else:
-			shopUpgradeList.push_back(shuffledUpgradesList[Upgrade.UpgradeRarity.COMMON].pick_random());
+			shopUpgradeList.push_back(choose_weighted_random(UPGRADES_LIST[Upgrade.UpgradeRarity.COMMON]));
 		
 	return shopUpgradeList;
 
@@ -125,7 +121,7 @@ func _on_shop_upgrade_button_pressed(index: int) -> void:
 	player.modify_gold(-shopUpgradeButtons[index].upgradeNode.gold_cost)
 	var new_upgrade = shopUpgradeButtons[index].upgradeNode.duplicate()
 	add_child(new_upgrade)
-	new_upgrade.apply(player)
+	shopUpgradeButtons[index].upgradeNode.apply(player)
 	player.playerUpgrades.push_back(new_upgrade);
 
 	shopUpgradeButtons[index].upgradeNode = null
@@ -137,3 +133,20 @@ func _on_reroll_button_pressed() -> void:
 	player.modify_gold(-current_reroll_cost)
 	current_reroll_cost += base_reroll_cost
 	fillShopUpgradeButtons()
+
+func choose_weighted_random(upgrades: Array):
+	var unrolled_upgrades = upgrades.filter(func(x): return !x.rolled)
+	
+	var total_weight = 0
+	total_weight = unrolled_upgrades.reduce(func(x,y): return x + y.weight, 0)
+	
+	var rand_value = randf_range(0, total_weight)
+	var cumulative_weight = 0.0
+	
+	for i in range(unrolled_upgrades.size()):
+		cumulative_weight += unrolled_upgrades[i].weight
+		if rand_value < cumulative_weight:
+			unrolled_upgrades[i].rolled = true
+			return unrolled_upgrades[i]
+		
+	return upgrades[0]

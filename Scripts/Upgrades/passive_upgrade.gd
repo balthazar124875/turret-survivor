@@ -16,6 +16,8 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func applyUpgradeToPlayer(player: Player) -> void:
+	#level up passive
+	
 	pass
 
 func reparentToPlayer(player: Player) -> void:
