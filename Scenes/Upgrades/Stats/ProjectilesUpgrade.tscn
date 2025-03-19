@@ -10,4 +10,5 @@ amount = 1.0
 upgradeName = "Extra projectiles"
 description = "Increases projectiles by 1"
 type = 2
+rarity = 3
 icon = ExtResource("2_612nb")

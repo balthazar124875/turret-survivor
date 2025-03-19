@@ -10,4 +10,5 @@ amount = 1.0
 upgradeName = "Extra chain"
 description = "Increases chains by 1"
 type = 2
+rarity = 1
 icon = ExtResource("2_xpknj")

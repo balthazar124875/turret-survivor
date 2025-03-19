@@ -6,14 +6,19 @@ class ShopUpgradeButton:
 	var button;
 	var upgradeNode: Node2D;
 	
-static var UPGRADES_LIST = [[]]; #2D array, access elems by UPGRADE_LIST[rarity] -> gives the list of upgrades
+static var UPGRADES_LIST = [[],[],[],[]]; #2D array, access elems by UPGRADE_LIST[rarity] -> gives the list of upgrades
 static var availableUpgradesList : Array = []; #This list will hold all upgrades that are available to use currently CURRENTLY UNUSED!!!
 
 #Rarity rates (rarity rate for common is always one minus the sum of the vars)
-static var legendaryRate = 0.01;
+static var legendaryRate = 0.03;
 static var rareRate = 0.1;
-static var uncommonRate = 0.2;
+static var uncommonRate = 0.25;
 static var commonRate = 1.0 - (uncommonRate + rareRate + legendaryRate);
+
+static var commonCost = 10
+static var unCommonCost = 15
+static var rareCost = 25
+static var legendaryCost = 50
 
 static var shopUpgradeButtons : Array[ShopUpgradeButton] = [];
 
@@ -44,6 +49,7 @@ func load_upgrades() -> void:
 			var file_name = dir.get_next()
 			while file_name != "":
 				var upgrade = load("res://Scenes/Upgrades/" + f  + "/" + file_name).instantiate()
+				upgrade.gold_cost = get_cost(upgrade.rarity)
 				UPGRADES_LIST[upgrade.rarity].push_back(upgrade);
 				file_name = dir.get_next()
 		else:
@@ -84,6 +90,11 @@ func fillShopUpgradeButtons(current_wave: int = 0) -> void:
 			text.text = "[right][color=black][font_size=12]" + str(newUpgradeList[i].upgradeAmount) + "[/font_size][/color][/right]"
 		else:
 			text.text = ""
+		
+		
+		var outline = buttons[i].get_child(1) as TextureButton
+		outline.modulate = get_color(newUpgradeList[i].rarity)
+		
 			
 
 func renderShopUpgradeButtonsText() -> void:
@@ -108,7 +119,7 @@ func GenerateUpgradesListForShop(size : int) -> Array:
 	#Our upgrades will only be to increase rare drops or legendary drops by a few %.
 	for i in size:
 		var rng = RandomNumberGenerator.new()
-		var randomNumber = 0.9; #TODO: TEMPORARY always generate comomon! #rng.randf_range(1.0, 0.0);
+		var randomNumber = rng.randf_range(1.0, 0.0);
 		if(randomNumber < legendary):
 			shopUpgradeList.push_back(choose_weighted_random(UPGRADES_LIST[Upgrade.UpgradeRarity.LEGENDARY]));
 		elif(randomNumber < rare):
@@ -157,3 +168,27 @@ func choose_weighted_random(upgrades: Array):
 			return unrolled_upgrades[i]
 		
 	return upgrades[0]
+	
+func get_color(rarity: Upgrade.UpgradeRarity) -> Color:
+	match rarity:
+		Upgrade.UpgradeRarity.COMMON:
+			return Color(0.33, 0.33, 0.33)
+		Upgrade.UpgradeRarity.UNCOMMON:
+			return Color(0, 1, 0)
+		Upgrade.UpgradeRarity.RARE:
+			return Color(0, 0, 1)
+		Upgrade.UpgradeRarity.LEGENDARY:
+			return Color(1, 0.5, 0.25)
+	return Color(1, 1, 1)
+	
+func get_cost(rarity: Upgrade.UpgradeRarity) -> float:
+	match rarity:
+		Upgrade.UpgradeRarity.COMMON:
+			return commonCost
+		Upgrade.UpgradeRarity.UNCOMMON:
+			return unCommonCost
+		Upgrade.UpgradeRarity.RARE:
+			return rareCost
+		Upgrade.UpgradeRarity.LEGENDARY:
+			return legendaryCost
+	return commonCost

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=14 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/ShopManager.gd" id="5_jxmqa"]
 [ext_resource type="Texture2D" uid="uid://b27w0ddjiakbn" path="res://Assets/Sprites/UI/ui_overlay.png" id="6_pvymq"]
 [ext_resource type="Texture2D" uid="uid://baywma4a7d8ba" path="res://Assets/Sprites/UI/32x32_button.png" id="7_vnyei"]
+[ext_resource type="Texture2D" uid="uid://dpnyf8ftq0aek" path="res://Assets/Sprites/UI/outline.png" id="8_3c8yg"]
 [ext_resource type="Theme" uid="uid://bug82i6sy1xtq" path="res://Themes/texture_button_theme.tres" id="8_4ctao"]
 [ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="9_yckrj"]
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
@@ -72,12 +73,18 @@ autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
+[node name="Rarity-Outline" type="TextureButton" parent="Control/ShopUpgrades/ShopUpgradeButton1"]
+layout_mode = 0
+mouse_filter = 1
+texture_normal = ExtResource("8_3c8yg")
+
 [node name="ShopUpgradeButton2" type="TextureButton" parent="Control/ShopUpgrades"]
 layout_mode = 2
 texture_normal = ExtResource("7_vnyei")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton2"]
 clip_contents = false
+layout_mode = 0
 offset_left = 5.0
 offset_top = 16.0
 offset_right = 29.0
@@ -90,6 +97,11 @@ text = "
 autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
+
+[node name="Rarity-Outline" type="TextureButton" parent="Control/ShopUpgrades/ShopUpgradeButton2"]
+layout_mode = 0
+mouse_filter = 1
+texture_normal = ExtResource("8_3c8yg")
 
 [node name="ShopUpgradeButton3" type="TextureButton" parent="Control/ShopUpgrades"]
 layout_mode = 2
@@ -97,6 +109,7 @@ texture_normal = ExtResource("7_vnyei")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton3"]
 clip_contents = false
+layout_mode = 0
 offset_left = 5.0
 offset_top = 16.0
 offset_right = 29.0
@@ -109,6 +122,11 @@ text = "
 autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
+
+[node name="Rarity-Outline" type="TextureButton" parent="Control/ShopUpgrades/ShopUpgradeButton3"]
+layout_mode = 0
+mouse_filter = 1
+texture_normal = ExtResource("8_3c8yg")
 
 [node name="ShopUpgradeButton4" type="TextureButton" parent="Control/ShopUpgrades"]
 layout_mode = 2
@@ -116,6 +134,7 @@ texture_normal = ExtResource("7_vnyei")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton4"]
 clip_contents = false
+layout_mode = 0
 offset_left = 5.0
 offset_top = 16.0
 offset_right = 29.0
@@ -128,6 +147,11 @@ text = "
 autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
+
+[node name="Rarity-Outline" type="TextureButton" parent="Control/ShopUpgrades/ShopUpgradeButton4"]
+layout_mode = 0
+mouse_filter = 1
+texture_normal = ExtResource("8_3c8yg")
 
 [node name="ShopUpgradeButton5" type="TextureButton" parent="Control/ShopUpgrades"]
 layout_mode = 2
@@ -135,6 +159,7 @@ texture_normal = ExtResource("7_vnyei")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton5"]
 clip_contents = false
+layout_mode = 0
 offset_left = 5.0
 offset_top = 16.0
 offset_right = 29.0
@@ -147,6 +172,11 @@ text = "
 autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
+
+[node name="Rarity-Outline" type="TextureButton" parent="Control/ShopUpgrades/ShopUpgradeButton5"]
+layout_mode = 0
+mouse_filter = 1
+texture_normal = ExtResource("8_3c8yg")
 
 [node name="ShopUpgradeButton6" type="TextureButton" parent="Control/ShopUpgrades"]
 layout_mode = 2
@@ -154,6 +184,7 @@ texture_normal = ExtResource("7_vnyei")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton6"]
 clip_contents = false
+layout_mode = 0
 offset_left = 5.0
 offset_top = 16.0
 offset_right = 29.0
@@ -166,6 +197,11 @@ text = "
 autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
+
+[node name="Rarity-Outline" type="TextureButton" parent="Control/ShopUpgrades/ShopUpgradeButton6"]
+layout_mode = 0
+mouse_filter = 1
+texture_normal = ExtResource("8_3c8yg")
 
 [node name="ShopUpgradeButton7" type="TextureButton" parent="Control/ShopUpgrades"]
 layout_mode = 2
@@ -173,6 +209,7 @@ texture_normal = ExtResource("7_vnyei")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton7"]
 clip_contents = false
+layout_mode = 0
 offset_left = 5.0
 offset_top = 16.0
 offset_right = 29.0
@@ -185,6 +222,11 @@ text = "
 autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
+
+[node name="Rarity-Outline" type="TextureButton" parent="Control/ShopUpgrades/ShopUpgradeButton7"]
+layout_mode = 0
+mouse_filter = 1
+texture_normal = ExtResource("8_3c8yg")
 
 [node name="ShopUpgradeButton8" type="TextureButton" parent="Control/ShopUpgrades"]
 layout_mode = 2
@@ -192,6 +234,7 @@ texture_normal = ExtResource("7_vnyei")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton8"]
 clip_contents = false
+layout_mode = 0
 offset_left = 5.0
 offset_top = 16.0
 offset_right = 29.0
@@ -204,6 +247,11 @@ text = "
 autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
+
+[node name="Rarity-Outline" type="TextureButton" parent="Control/ShopUpgrades/ShopUpgradeButton8"]
+layout_mode = 0
+mouse_filter = 1
+texture_normal = ExtResource("8_3c8yg")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 0

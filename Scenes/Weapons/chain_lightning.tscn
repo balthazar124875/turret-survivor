@@ -6,7 +6,7 @@
 [node name="ChainLightning" type="Node2D"]
 script = ExtResource("1_rrsi3")
 bullet = ExtResource("2_2vlsa")
-cooldown = 1.0
+cooldown = 2.0
 damage = 2.0
 bullet_life_time = 0.5
-range = 300.0
+range = 200.0

@@ -8,4 +8,5 @@ script = ExtResource("1_lqm6p")
 upgradeName = "Bouncy Bullets"
 description = "Bullets bounce"
 type = 1
+rarity = 2
 icon = ExtResource("2_g5q1h")

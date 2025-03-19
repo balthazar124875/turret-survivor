@@ -10,4 +10,5 @@ passiveType = 3
 upgradeName = "Frost shield"
 description = "30% to freeze enemies that hit the player"
 type = 1
+rarity = 1
 icon = ExtResource("2_edwxi")

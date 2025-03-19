@@ -10,6 +10,6 @@ bullet_spread = 4.0
 base_projectile_amount = 6.0
 base_projectile_speed = 350.0
 bullet = ExtResource("2_44jpc")
-cooldown = 3.0
+cooldown = 4.0
 bullet_life_time = 0.3
 range = 100.0

@@ -10,4 +10,5 @@ amount = 0.95
 upgradeName = "Income Speed"
 description = "Decrease income timer by 5%"
 type = 2
+rarity = 1
 icon = ExtResource("2_ol3e0")

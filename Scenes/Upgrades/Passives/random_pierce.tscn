@@ -8,4 +8,5 @@ script = ExtResource("1_y4vnf")
 upgradeName = "Bonus Pierce"
 description = "Half of all bullets gain +1 pierce"
 type = 1
+rarity = 1
 icon = ExtResource("2_al0y5")

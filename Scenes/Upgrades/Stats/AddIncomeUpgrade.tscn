@@ -10,4 +10,5 @@ amount = 5.0
 upgradeName = "Income up"
 description = "Add 5 income"
 type = 2
+rarity = 1
 icon = ExtResource("2_trtj2")

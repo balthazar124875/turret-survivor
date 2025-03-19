@@ -9,4 +9,5 @@ script = ExtResource("1_rsv8p")
 weapon_scene = ExtResource("2_f5kjd")
 upgradeName = "Magic orb"
 description = "Spawn a powerful orb spinning around you"
+rarity = 1
 icon = ExtResource("2_7eopo")

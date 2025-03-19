@@ -8,4 +8,4 @@ script = ExtResource("1_7uu1s")
 base_projectile_speed = 250.0
 bullet = ExtResource("2_52185")
 cooldown = 0.5
-range = 500.0
+range = 300.0

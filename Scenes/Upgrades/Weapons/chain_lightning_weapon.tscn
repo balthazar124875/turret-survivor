@@ -9,4 +9,5 @@ script = ExtResource("1_pdo37")
 weapon_scene = ExtResource("2_ddjx6")
 upgradeName = "Chain lightning"
 description = "Shoots lightning that bounces between enemies"
+rarity = 2
 icon = ExtResource("3_qbirf")
