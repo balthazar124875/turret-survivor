@@ -38,6 +38,11 @@ func _ready() -> void:
 	initialize_buttons()
 	SignalBus.current_wave_updated.connect(new_wave_shop_reroll)
 	empty_item_slot_texture = load("res://Assets/Sprites/upgrades/empty_upgrade_slot.png")
+	
+func _input(event):
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_SPACE:
+			_on_reroll_button_pressed()
 
 func load_upgrades() -> void:
 			#Iterate all Upgrade scripts and put them in the global array

@@ -20,4 +20,4 @@ func applyUpgradeToPlayer(player: Player) -> void:
 	#level up gun
 
 func reparentToPlayer(player: Player) -> void:
-	self.reparent(player.get_node("./Upgrades/Weapons"))
+	player.get_node("Upgrades/Weapons").add_child(self)

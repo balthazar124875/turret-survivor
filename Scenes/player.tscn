@@ -1,35 +1,35 @@
 [gd_scene load_steps=6 format=3 uid="uid://blmikl8w11roj"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_sppr7"]
-[ext_resource type="Texture2D" uid="uid://863yykkvhcml" path="res://Assets/Sprites/TowerV2.png" id="2_t2wob"]
+[ext_resource type="Texture2D" uid="uid://dns8c1v2a0267" path="res://Assets/Sprites/TowerV3.png" id="2_wdh5b"]
 [ext_resource type="PackedScene" uid="uid://ebv5vx7fruxe" path="res://Scenes/Weapons/gun.tscn" id="3_q8d6d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oaghf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_t2wob")
+"texture": ExtResource("2_wdh5b")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2ctd"]
-size = Vector2(39, 50)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ysp86"]
+radius = 57.85
 
 [node name="Player" type="Area2D"]
 script = ExtResource("1_sppr7")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.043, 1)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_oaghf")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
-shape = SubResource("RectangleShape2D_l2ctd")
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_ysp86")
 
 [node name="Weapons" type="Node2D" parent="."]
 

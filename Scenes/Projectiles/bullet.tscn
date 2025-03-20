@@ -36,7 +36,7 @@ max_contacts_reported = 1
 script = ExtResource("1_hsvne")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.13277, 0.13277)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_iwoij")
 animation = &"new_animation"
 

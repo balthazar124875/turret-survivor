@@ -19,10 +19,9 @@
 script = ExtResource("1_itpwq")
 
 [node name="Player" parent="." instance=ExtResource("2_n3kdf")]
-position = Vector2(310, 179)
+position = Vector2(960, 540)
 
 [node name="Marker2D" type="Marker2D" parent="Player"]
-position = Vector2(18, -15)
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -30,34 +29,65 @@ position = Vector2(18, -15)
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
 
-[node name="Control" type="Control" parent="."]
+[node name="GameplayUi" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 640.0
-offset_bottom = 360.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 script = ExtResource("5_1pdr0")
 
-[node name="UiOverlay" type="Sprite2D" parent="Control"]
-position = Vector2(320, 180)
+[node name="UiOverlay" type="Sprite2D" parent="GameplayUi"]
+scale = Vector2(3, 3)
 texture = ExtResource("6_pvymq")
+centered = false
 
-[node name="ShopUpgrades" type="GridContainer" parent="Control"]
+[node name="LeftMenuColumn" type="Control" parent="GameplayUi"]
+anchors_preset = 0
+offset_right = 420.0
+offset_bottom = 1080.0
+
+[node name="HealthUi" type="Control" parent="GameplayUi/LeftMenuColumn"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+scale = Vector2(3, 3)
+script = ExtResource("11_4w2qp")
+
+[node name="HealthLabel" type="Label" parent="GameplayUi/LeftMenuColumn/HealthUi"]
+layout_mode = 0
+offset_left = 0.333333
+offset_top = -58.0
+offset_right = 140.333
+offset_bottom = -35.0
+text = "100/100"
+
+[node name="HealthBar" type="ProgressBar" parent="GameplayUi/LeftMenuColumn/HealthUi"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -29.3333
+offset_right = 138.0
+offset_bottom = -2.33333
+value = 100.0
+
+[node name="ShopUpgrades" type="GridContainer" parent="GameplayUi/LeftMenuColumn"]
 layout_mode = 0
 offset_left = 3.0
-offset_top = 3.0
+offset_top = 182.0
 offset_right = 139.0
-offset_bottom = 363.0
-scale = Vector2(1, 0.998516)
+offset_bottom = 542.0
+scale = Vector2(3, 3)
 theme_override_constants/h_separation = 2
 theme_override_constants/v_separation = 2
 columns = 4
 script = ExtResource("5_jxmqa")
 
-[node name="ShopUpgradeButton1" type="TextureButton" parent="Control/ShopUpgrades"]
+[node name="ShopUpgradeButton1" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
 texture_normal = ExtResource("7_vnyei")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton1"]
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton1"]
 clip_contents = false
 layout_mode = 0
 offset_left = 5.0
@@ -73,16 +103,16 @@ autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="Rarity-Outline" type="TextureButton" parent="Control/ShopUpgrades/ShopUpgradeButton1"]
+[node name="Rarity-Outline" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton1"]
 layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
 
-[node name="ShopUpgradeButton2" type="TextureButton" parent="Control/ShopUpgrades"]
+[node name="ShopUpgradeButton2" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
 texture_normal = ExtResource("7_vnyei")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton2"]
 clip_contents = false
 layout_mode = 0
 offset_left = 5.0
@@ -98,16 +128,16 @@ autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="Rarity-Outline" type="TextureButton" parent="Control/ShopUpgrades/ShopUpgradeButton2"]
+[node name="Rarity-Outline" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton2"]
 layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
 
-[node name="ShopUpgradeButton3" type="TextureButton" parent="Control/ShopUpgrades"]
+[node name="ShopUpgradeButton3" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
 texture_normal = ExtResource("7_vnyei")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton3"]
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton3"]
 clip_contents = false
 layout_mode = 0
 offset_left = 5.0
@@ -123,16 +153,16 @@ autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="Rarity-Outline" type="TextureButton" parent="Control/ShopUpgrades/ShopUpgradeButton3"]
+[node name="Rarity-Outline" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton3"]
 layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
 
-[node name="ShopUpgradeButton4" type="TextureButton" parent="Control/ShopUpgrades"]
+[node name="ShopUpgradeButton4" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
 texture_normal = ExtResource("7_vnyei")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton4"]
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton4"]
 clip_contents = false
 layout_mode = 0
 offset_left = 5.0
@@ -148,16 +178,16 @@ autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="Rarity-Outline" type="TextureButton" parent="Control/ShopUpgrades/ShopUpgradeButton4"]
+[node name="Rarity-Outline" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton4"]
 layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
 
-[node name="ShopUpgradeButton5" type="TextureButton" parent="Control/ShopUpgrades"]
+[node name="ShopUpgradeButton5" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
 texture_normal = ExtResource("7_vnyei")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton5"]
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton5"]
 clip_contents = false
 layout_mode = 0
 offset_left = 5.0
@@ -173,16 +203,16 @@ autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="Rarity-Outline" type="TextureButton" parent="Control/ShopUpgrades/ShopUpgradeButton5"]
+[node name="Rarity-Outline" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton5"]
 layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
 
-[node name="ShopUpgradeButton6" type="TextureButton" parent="Control/ShopUpgrades"]
+[node name="ShopUpgradeButton6" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
 texture_normal = ExtResource("7_vnyei")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton6"]
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton6"]
 clip_contents = false
 layout_mode = 0
 offset_left = 5.0
@@ -198,16 +228,16 @@ autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="Rarity-Outline" type="TextureButton" parent="Control/ShopUpgrades/ShopUpgradeButton6"]
+[node name="Rarity-Outline" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton6"]
 layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
 
-[node name="ShopUpgradeButton7" type="TextureButton" parent="Control/ShopUpgrades"]
+[node name="ShopUpgradeButton7" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
 texture_normal = ExtResource("7_vnyei")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton7"]
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton7"]
 clip_contents = false
 layout_mode = 0
 offset_left = 5.0
@@ -223,16 +253,16 @@ autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="Rarity-Outline" type="TextureButton" parent="Control/ShopUpgrades/ShopUpgradeButton7"]
+[node name="Rarity-Outline" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton7"]
 layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
 
-[node name="ShopUpgradeButton8" type="TextureButton" parent="Control/ShopUpgrades"]
+[node name="ShopUpgradeButton8" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
 texture_normal = ExtResource("7_vnyei")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/ShopUpgrades/ShopUpgradeButton8"]
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton8"]
 clip_contents = false
 layout_mode = 0
 offset_left = 5.0
@@ -248,79 +278,98 @@ autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="Rarity-Outline" type="TextureButton" parent="Control/ShopUpgrades/ShopUpgradeButton8"]
+[node name="Rarity-Outline" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton8"]
 layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+[node name="GoldLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -415.0
+offset_top = -41.0
+offset_right = -286.0
+offset_bottom = -7.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(3, 3)
+text = "Gold: $0"
+
+[node name="RerollContainer" type="HBoxContainer" parent="GameplayUi/LeftMenuColumn"]
 layout_mode = 0
 offset_left = 2.0
-offset_top = 76.0
+offset_top = 395.0
 offset_right = 138.0
-offset_bottom = 108.0
-scale = Vector2(0.990985, 1.01713)
+offset_bottom = 427.0
+scale = Vector2(3, 3.079)
 
-[node name="BuyButton" type="TextureButton" parent="Control/HBoxContainer"]
+[node name="BuyButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/RerollContainer"]
 layout_mode = 2
 theme = ExtResource("8_4ctao")
 texture_normal = ExtResource("9_yckrj")
 
-[node name="RerollButton" type="TextureButton" parent="Control/HBoxContainer"]
+[node name="RerollButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/RerollContainer"]
 layout_mode = 2
 texture_normal = ExtResource("10_btva0")
 
-[node name="WaveLabel" type="RichTextLabel" parent="Control"]
-layout_mode = 0
-offset_left = 533.0
-offset_top = 9.0
-offset_right = 618.0
-offset_bottom = 43.0
+[node name="WaveLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = -6.0
+offset_right = -15.0
+offset_bottom = 28.0
+grow_horizontal = 2
+scale = Vector2(3, 3)
 text = "Wave 1"
 
-[node name="GoldLabel" type="RichTextLabel" parent="Control"]
-layout_mode = 0
-offset_left = 506.0
-offset_top = 107.0
-offset_right = 635.0
-offset_bottom = 141.0
-text = "Gold: $0"
-
-[node name="WaveProgressBar" type="ProgressBar" parent="Control"]
-layout_mode = 0
-offset_left = 502.0
-offset_top = 42.0
-offset_right = 638.0
-offset_bottom = 69.0
+[node name="WaveProgressBar" type="ProgressBar" parent="GameplayUi/LeftMenuColumn"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -207.0
+offset_top = 73.0
+offset_right = -71.0
+offset_bottom = 100.0
+grow_horizontal = 2
+scale = Vector2(3, 3)
 show_percentage = false
 
-[node name="HealthUi" type="Control" parent="Control"]
-anchors_preset = 0
-offset_top = 316.0
-offset_right = 140.0
-offset_bottom = 343.0
-script = ExtResource("11_4w2qp")
+[node name="RightMenuColumn" type="Control" parent="GameplayUi"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -540.0
+offset_right = -280.0
+offset_bottom = -180.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(3, 3)
 
-[node name="HealthLabel" type="Label" parent="Control/HealthUi"]
-layout_mode = 0
-offset_top = -24.0
-offset_right = 140.0
-offset_bottom = -1.0
-text = "100/100"
-
-[node name="HealthBar" type="ProgressBar" parent="Control/HealthUi"]
-layout_mode = 0
-offset_right = 136.0
-offset_bottom = 27.0
-value = 100.0
-
-[node name="KillsLabel" type="RichTextLabel" parent="Control"]
-layout_mode = 0
-offset_left = 507.0
-offset_top = 327.0
-offset_right = 635.0
-offset_bottom = 361.0
+[node name="KillsLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = 108.0
+offset_right = 64.0
+offset_bottom = 142.0
+grow_horizontal = 2
 text = "Kills: 0
 "
 
-[connection signal="pressed" from="Control/HBoxContainer/RerollButton" to="Control/ShopUpgrades" method="_on_reroll_button_pressed"]
+[node name="Node2D" type="Node2D" parent="."]
+
+[connection signal="pressed" from="GameplayUi/LeftMenuColumn/RerollContainer/RerollButton" to="GameplayUi/LeftMenuColumn/ShopUpgrades" method="_on_reroll_button_pressed"]

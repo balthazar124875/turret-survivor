@@ -21,7 +21,7 @@ func applyUpgradeToPlayer(player: Player) -> void:
 	pass
 
 func reparentToPlayer(player: Player) -> void:
-	self.reparent(player.get_node("./Upgrades/Passives"))
+	player.get_node("./Upgrades/Passives").add_child(self)
 
 func ApplyEnemyOnKillPassive(enemy : Enemy) ->void:
 	pass

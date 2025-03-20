@@ -15,12 +15,12 @@ func subscribe_to_signals() -> void:
 	SignalBus.enemy_killed.connect(on_enemy_killed)
 
 func on_wave_updated(current_wave: int) -> void:
-	get_node("WaveLabel").text = "Wave: " + str(current_wave)
+	get_node("LeftMenuColumn/WaveLabel").text = "Wave: " + str(current_wave)
 	
 func on_gold_updated(gold: int) -> void:
-	get_node("GoldLabel").text = "Gold: $" + str(gold)
+	get_node("LeftMenuColumn/GoldLabel").text = "Gold: $" + str(gold)
 	
 func on_enemy_killed(_e) -> void:
 	kills += 1
-	get_node("KillsLabel").text = "Kills: " + str(kills)
+	get_node("RightMenuColumn/KillsLabel").text = "Kills: " + str(kills)
 	

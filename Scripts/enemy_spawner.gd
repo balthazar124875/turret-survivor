@@ -3,7 +3,7 @@ extends Node2D
 @export var waves: Array[Wave] = []
 @export var center: Node2D
 @export var enemy_spawn_delay = 0.1
-@export var enemy_spawn_distance = 200
+@export var enemy_spawn_distance = 600
 @export var enemies: Node2D
 
 @export var enemy_hp_scaling = 1.2
@@ -14,7 +14,7 @@ var rng = RandomNumberGenerator.new()
 var current_wave_enemy_index = 0
 var current_wave = 1
 
-@onready var wave_progress_bar: ProgressBar = get_node("/root/EmilScene/Control/WaveProgressBar")
+@onready var wave_progress_bar: ProgressBar = get_node("/root/EmilScene/GameplayUi/LeftMenuColumn/WaveProgressBar")
 @onready var wave_timer: Timer = get_node("WaveTimer")
 @onready var enemy_spawn_timer: Timer = get_node("EnemySpawnerTimer")
 

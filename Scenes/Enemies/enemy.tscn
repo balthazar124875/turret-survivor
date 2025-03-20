@@ -16,8 +16,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkwbl"]
-size = Vector2(28, 28)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1wvhi"]
+radius = 40.0
+height = 80.0
 
 [node name="Enemy" type="RigidBody2D"]
 position = Vector2(604, 288)
@@ -27,7 +28,7 @@ gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_biolc")
-speed = 40
+speed = 120
 health = 4
 metadata/_edit_lock_ = true
 
@@ -38,11 +39,12 @@ sprite_frames = SubResource("SpriteFrames_p7tvn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)
-shape = SubResource("RectangleShape2D_bkwbl")
+shape = SubResource("CapsuleShape2D_1wvhi")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0.999999, -1)
 scale = Vector2(1.4, 1.4)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
 texture = ExtResource("2_i0e02")

@@ -28,6 +28,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	modify_health(healthRegeneration * delta)
+
+#TODO: REMOVE THIS
+func _input(event):
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_Z:
+			modify_gold(9999999)
 	
 func _on_income_timer_timeout() -> void:
 	modify_gold(gold_income)

@@ -27,6 +27,9 @@ signal enemy_killed(enemy)
 var player
 
 var damage_flash_timer = Timer.new()
+var alive_time: float = 0.0
+
+var on_death_particles = preload("res://Scenes/Particles/TestParticle.tscn")
 
 func init_damage_flash_timer():
 	add_child(damage_flash_timer)  # Add the Timer to the node tree
@@ -79,9 +82,12 @@ func handle_status_effects():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	alive_time += delta
 	t += delta * current_action_speed
 	update_active_status_effects(delta)
 	handle_status_effects()
+	
+	$Sprite2D.rotation_degrees = sin(alive_time * 6.0) * 7
 	
 	if(current_action_speed == 0):
 		pass #frozen
@@ -89,7 +95,7 @@ func _process(delta: float) -> void:
 	var current_position = global_position
 	var direction = (target_position - current_position).normalized()
 	# Move towards the target position
-	if current_position.distance_to(target_position) > 50:  # Adjust tolerance as needed
+	if current_position.distance_to(target_position) > 100:  # Adjust tolerance as needed
 		global_position += direction * speed * delta * current_action_speed
 	elif t > attack_cooldown: 
 		t = 0
@@ -115,5 +121,8 @@ func _on_damage_flash_timeout():
 	damage_flash = false
 
 func die() -> void:
+	var new_particle = on_death_particles.instantiate()
+	new_particle.global_position = self.global_position
+	get_node("/root").add_child(new_particle)
 	SignalBus.enemy_killed.emit(self)
 	queue_free()

@@ -6,4 +6,5 @@
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(547, 346)
+scale = Vector2(3, 3)
 texture = ExtResource("1_hqvm5")

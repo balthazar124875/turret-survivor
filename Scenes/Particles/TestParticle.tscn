@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3uhjdjdg1f0e"]
+
+[ext_resource type="Script" path="res://Scripts/particle_handler.gd" id="1_mcx6p"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rc2rd"]
+lifetime_randomness = 0.35
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_min = 26.88
+initial_velocity_max = 216.48
+gravity = Vector3(0, 150, 0)
+scale_min = 2.0
+scale_max = 10.0
+scale_over_velocity_max = 1000.0
+color = Color(0.780392, 0, 0, 1)
+
+[node name="TestParticle" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_rc2rd")
+one_shot = true
+explosiveness = 1.0
+randomness = 0.09
+trail_lifetime = 1.0
+trail_sections = 2
+script = ExtResource("1_mcx6p")

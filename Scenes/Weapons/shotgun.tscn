@@ -12,4 +12,4 @@ base_projectile_speed = 350.0
 bullet = ExtResource("2_44jpc")
 cooldown = 4.0
 bullet_life_time = 0.3
-range = 100.0
+range = 300.0
