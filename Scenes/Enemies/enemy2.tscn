@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://di3fcf5mxt36n"]
+[gd_scene load_steps=6 format=3 uid="uid://di3fcf5mxt36n"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_76bfq"]
 [ext_resource type="Texture2D" uid="uid://2xpx86r7u8la" path="res://Assets/Sprites/test_enemy_1.png" id="2_by6wh"]
+[ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="3_ewhym"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p7tvn"]
 animations = [{
@@ -43,6 +44,13 @@ shape = SubResource("CapsuleShape2D_lletx")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0.999999, -1)
 scale = Vector2(1.4, 1.4)
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.466667)
+z_index = -10
+position = Vector2(0, 82)
+scale = Vector2(6.44, 5.32)
+texture = ExtResource("3_ewhym")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3, -2)

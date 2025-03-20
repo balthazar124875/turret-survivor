@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvh4sggr4wxu3"]
+[gd_scene load_steps=7 format=3 uid="uid://bvh4sggr4wxu3"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_5t3wh"]
 [ext_resource type="Texture2D" uid="uid://djccjykygh1ts" path="res://Assets/Sprites/enemy_1.png" id="2_squui"]
 [ext_resource type="Texture2D" uid="uid://cd7rk22mo2kuf" path="res://Assets/Sprites/Enemies/WalkingEye.png" id="3_3wsrx"]
+[ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="3_cv320"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p7tvn"]
 resource_local_to_scene = true
@@ -43,6 +44,13 @@ shape = SubResource("CapsuleShape2D_twbii")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0.999999, -1)
 scale = Vector2(1.4, 1.4)
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.435294)
+z_index = -10
+position = Vector2(0, 41)
+scale = Vector2(3, 3)
+texture = ExtResource("3_cv320")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
