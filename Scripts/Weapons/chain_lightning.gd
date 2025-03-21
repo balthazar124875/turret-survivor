@@ -22,16 +22,24 @@ func shoot(target_enemy: Node) -> void:
 	var chains = chains + player.extraChains
 	
 	
+	var enemyList = enemy_parent.get_children()
+	enemyList.erase(target_enemy)
+	
 	var targets: Array[Node] = []
 	targets.append(target_enemy)
 	
-	for enemy in enemy_parent.get_children():
-		if enemy.is_inside_tree() && enemy.is_alive() && enemy != target_enemy:
-			var distance = target_enemy.global_position.distance_to(enemy.global_position)
-			if(distance < chain_range * player.rangeMultiplier):
+	for i in chains:
+		var inRange = enemyList.filter(func(enemy): return getDistance(targets.back(),enemy) < chain_range * player.rangeMultiplier)
+		
+		#todo: spara distance så man inte behöver kolla om
+		inRange.sort_custom(func(a,b): return getDistance(targets.back(),a) < getDistance(targets.back(),b))
+		
+		for enemy in inRange:
+			if enemy.is_inside_tree() && enemy.is_alive():
 				targets.append(enemy)
-				if(targets.size() >= chains):
-					break
+				enemyList.erase(enemy)
+				break;
+	
 					
 					
 	var bullet = bullet.instantiate()
@@ -46,6 +54,8 @@ func shoot(target_enemy: Node) -> void:
 		
 	call_deferred("_delete_after_time", bullet_life_time, bullet)
 	
+func getDistance(source: Enemy, enemy: Enemy):
+	return source.global_position.distance_to(enemy.global_position)
 	
 func _delete_after_time(timeout, bullet):
 	await get_tree().create_timer(timeout).timeout
