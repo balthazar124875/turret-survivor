@@ -7,7 +7,7 @@ var currAngle = 0.0;
 var nextAngle = 0.0;
 var nextPos;
 var orbSpeed = 1.0;
-var damage_per_tick = 200.0;
+var damage_per_tick = 50;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

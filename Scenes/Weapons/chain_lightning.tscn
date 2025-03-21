@@ -9,4 +9,4 @@ bullet = ExtResource("2_2vlsa")
 cooldown = 2.0
 damage = 2.0
 bullet_life_time = 0.5
-range = 200.0
+range = 600.0

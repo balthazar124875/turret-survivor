@@ -1,7 +1,7 @@
 extends PassiveUpgrade
 
-@export var procChance = 1.0 #10%
-@export var duration = 2.0 #10%
+@export var procChance = 0.1 #10%
+@export var duration = 1.0 #10%
 # Called when the node enters the scene tree for the first time.
 func _init():
 	pass
@@ -13,6 +13,6 @@ func ApplyWhenHitEffect(player: Player, enemy : Enemy) -> void:
 	if(rndNumber <= procChance):
 		var freeze = EnemyStatusEffect.new()
 		freeze.type = GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN
-		freeze.duration = 5
+		freeze.duration = duration
 		freeze.magnitude = 0
 		enemy.apply_status_effect(freeze)

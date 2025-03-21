@@ -1,7 +1,7 @@
 extends BaseGun
 
 @export var chains = 3
-@export var chain_range = 100
+@export var chain_range = 400
 
 var discharge = false
 
