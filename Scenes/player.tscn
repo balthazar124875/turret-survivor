@@ -42,7 +42,6 @@ shape = SubResource("CircleShape2D_ysp86")
 [node name="Weapons" type="Node2D" parent="."]
 
 [node name="Gun" parent="Weapons" instance=ExtResource("3_q8d6d")]
-base_projectile_speed = 500.0
 
 [node name="IncomeTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -56,4 +55,9 @@ autostart = true
 
 [node name="Weapons" type="Node2D" parent="Upgrades"]
 
+[node name="DamageFlashTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="timeout" from="IncomeTimer" to="." method="_on_income_timer_timeout"]
+[connection signal="timeout" from="DamageFlashTimer" to="." method="_on_damage_flash_timer_timeout"]
