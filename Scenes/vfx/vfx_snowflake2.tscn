@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dqiacmtecsnf8"]
 
 [ext_resource type="Script" path="res://Scripts/vfx/vfx_explosion.gd" id="1_a4p1b"]
-[ext_resource type="Shader" uid="uid://dx376iw5pgsx6" path="res://vfxShaders/snowflake.tres" id="2_6u7ad"]
+[ext_resource type="Shader" uid="uid://bis75onm3uxrb" path="res://vfxShaders/snowflake.tres" id="2_6u7ad"]
 [ext_resource type="Texture2D" uid="uid://bcjbv4xbt7y3a" path="res://Scenes/snowflake.png" id="3_d3w3w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_66tyk"]

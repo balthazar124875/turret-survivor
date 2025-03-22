@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bnpsqvpetjokc"]
 
-[ext_resource type="Shader" uid="uid://dx376iw5pgsx6" path="res://vfxShaders/snowflake.tres" id="1_t176j"]
+[ext_resource type="Shader" uid="uid://bis75onm3uxrb" path="res://vfxShaders/snowflake.tres" id="1_t176j"]
 [ext_resource type="Texture2D" uid="uid://crofxa0uf6nt7" path="res://Textures/snowflake.png" id="2_fysgy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o8fal"]

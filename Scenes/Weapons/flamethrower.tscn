@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://707fed5s0vow"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/FlameThrower.gd" id="1_2fwic"]
+[ext_resource type="PackedScene" uid="uid://be2k75e55bwxm" path="res://Scenes/vfx/vfx_flamethrower.tscn" id="2_lqbnl"]
+
+[node name="FlameThrower" type="Node2D"]
+script = ExtResource("1_2fwic")
+flameThrowerVfx = ExtResource("2_lqbnl")
+cooldown = 4.0
+damage = 0.2
+range = 2.0
