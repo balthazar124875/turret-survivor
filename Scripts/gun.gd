@@ -3,8 +3,6 @@ extends BaseGun
 class_name SimpleGun
 
 @export var bullet_spread: float = 10
-@export var base_projectile_amount: float = 1
-@export var base_projectile_speed: float = 300
 
 func get_target() -> Node:
 	var closest_enemy: Node = null

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://q6ss5jxkvvni"]
 
-[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_lyuc0"]
+[ext_resource type="Script" path="res://Scripts/PlayerProjectiles/bullet.gd" id="1_lyuc0"]
 [ext_resource type="Texture2D" uid="uid://cenem5n5cgw6o" path="res://1637551628485.jpg" id="2_b3a07"]
 [ext_resource type="Texture2D" uid="uid://ks5kcj5v0xea" path="res://Assets/Sprites/whitefireball.png" id="3_0ahpe"]
 

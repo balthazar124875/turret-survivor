@@ -36,6 +36,9 @@ func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_Z:
 			modify_gold(9999999)
+		if event.keycode == KEY_X:
+			for node in get_node("/root/EmilScene/Enemies/").get_children():
+				node.queue_free()
 	
 func _on_income_timer_timeout() -> void:
 	modify_gold(gold_income)
