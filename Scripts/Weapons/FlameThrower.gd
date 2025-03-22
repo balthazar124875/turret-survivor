@@ -49,3 +49,27 @@ func StopFlameThrowerVfx() -> void:
 #adjust the flamethrower vfx visuals based on range
 func SetFlameThrowerRange(range : float) -> void:
 	pass
+	
+func apply_level_up():
+	if(level == 5):
+		ftParticles.process_material.scale *= 2.0
+		damage *= 1.5
+		return
+	if(level == 10):
+		ftParticles.scale += Vector2(1.0,1.0);
+		ftParticles.amount += 100;
+		ftParticles.process_material.scale *= 1.2
+		damage *= 2.0
+		return
+	
+	match level % 5:
+		1:
+			damage *= 1.5
+		2:
+			ftParticles.scale += Vector2(0.5,0.5);
+			ftParticles.amount += 75;
+		3:
+			damage *= 1.5
+		4:
+			ftParticles.scale += Vector2(0.5,0.5);
+			ftParticles.amount += 75;
