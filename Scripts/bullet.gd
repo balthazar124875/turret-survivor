@@ -8,7 +8,7 @@ var damage: float
 var life_time: float = 3
 
 #behaviour modifiers
-var pierce: int = 0
+var pierce: int = 4
 var bounce: float = 0
 
 var dist
@@ -55,11 +55,11 @@ func _on_body_entered(body):
 			queue_free()  # Destroy the bullet
 			return
 			
-		
 		var rng = RandomNumberGenerator.new()
 		var rndNumber = rng.randf_range(0.0, 1);
 		if(bounce > rndNumber):
 			direction = direction.rotated(180 + deg_to_rad(rng.randf_range(-90, 90)))
+			self.rotation = direction.angle()
 		else:
 			queue_free()
 		

@@ -12,6 +12,7 @@ var rangeMultiplier = 1.0;
 var damageMultiplier = 1.0;
 var attackSpeedMultiplier = 1.0;
 var projectileSpeedMultipler = 1.0;
+var areaSizeMultiplier = 1.0;
 var gold = 100;
 var gold_income: int = 5;
 
@@ -100,6 +101,8 @@ func modify_stat(stat: GlobalEnums.PLAYER_STATS, amount: float) -> void:
 			self.damageMultiplier += amount
 		GlobalEnums.PLAYER_STATS.PROJECTILE_SPEED_MULTIPLIER:
 			self.projectileSpeedMultipler += amount
+		GlobalEnums.PLAYER_STATS.AREA_SIZE_MULTIPLIER:
+			self.areaSizeMultiplier += amount
 		GlobalEnums.PLAYER_STATS.EXTRA_CHAINS:
 			self.extraChains += amount
 		GlobalEnums.PLAYER_STATS.EXTRA_PROJECTILES:

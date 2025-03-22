@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://f5a5w7ngu5cl"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Stats/stat_upgrade.gd" id="1_pi0t8"]
+[ext_resource type="Texture2D" uid="uid://e2b3f3l8hgjc" path="res://Assets/Sprites/upgrades/fire_rate_up.png" id="2_nafku"]
+
+[node name="AttackSpeedUpgrade" type="Node2D"]
+script = ExtResource("1_pi0t8")
+amount = 0.1
+upgradeName = "Attack speed Up!"
+description = "Increases attack speed by 10%"
+icon = ExtResource("2_nafku")
