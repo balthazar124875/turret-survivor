@@ -4,15 +4,22 @@ class_name DiscLauncher
 
 func shoot(enemy: Node) -> void:	
 	var bulletAmount: int = base_projectile_amount + player.extraProjectiles
+	var random_offset = randf_range(0, 2 * PI) 
+	print(random_offset)
 	for i in bulletAmount:
 		var bullet = bullet.instantiate()
-		var random_offset = randf_range(-1, 1) 
 		var speed = base_projectile_speed * player.projectileSpeedMultipler
-		bullet.init_with_direction(Vector2(cos(random_offset), sin(random_offset)) * 100, damage, base_projectile_speed * player.projectileSpeedMultipler, bullet_life_time)
-		bullet.outward_speed = speed / 2
+		var offset = Vector2(cos(random_offset + i * (2 * PI / bulletAmount)), sin(random_offset + i * (2 * PI / bulletAmount)))
+		print(offset)
+		bullet.init_with_direction(offset, damage, base_projectile_speed * player.projectileSpeedMultipler, bullet_life_time)
 		bullet.rotation_speed = speed
+		bullet.outward_speed = speed / 2
+			
+			
+			
 		bullet.pierce = pierce
 		bullet.life_time = bullet_life_time
+		bullet.scale = Vector2(1, 1) * player.areaSizeMultiplier
 		add_child(bullet)
 
 func apply_level_up():

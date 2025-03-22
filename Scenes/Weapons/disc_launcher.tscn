@@ -1,12 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgmukr1mndc0j"]
+[gd_scene load_steps=3 format=3 uid="uid://d0rdnr4mwkpcq"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/disc_launcher.gd" id="1_q5i3n"]
-[ext_resource type="PackedScene" uid="uid://b7nx1wgodnptg" path="res://Scenes/Projectiles/disc.tscn" id="2_257bb"]
+[ext_resource type="PackedScene" path="res://Scenes/Projectiles/disc.tscn" id="2_257bb"]
 
 [node name="DiscLauncher" type="Node2D"]
 script = ExtResource("1_q5i3n")
 bullet = ExtResource("2_257bb")
-cooldown = 1.0
+cooldown = 2.0
 base_projectile_speed = 800.0
 bullet_life_time = 4.0
 pierce = 5

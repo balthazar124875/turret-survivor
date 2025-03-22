@@ -11,7 +11,6 @@ var rotation_speed: float
 func _ready() -> void:
 	connect("body_entered", _on_body_entered)
 	SignalBus.bullet_created.emit(self)
-	global_position = direction + player_position
 
 func _physics_process(delta: float) -> void:
 	rotation += 0.75
@@ -21,3 +20,7 @@ func _physics_process(delta: float) -> void:
 func _delete_after_time(timeout):
 	await get_tree().create_timer(timeout).timeout
 	queue_free()
+
+func init_with_direction(direction: Vector2, damage: float, speed: float, life_time: float) -> void:
+	super.init_with_direction(direction, damage, speed, life_time)
+	global_position += direction

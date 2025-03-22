@@ -7,9 +7,9 @@
 script = ExtResource("1_fljpv")
 intensifyShotBonusSpeed = 0.2
 bullet_spread = 4.0
-base_projectile_amount = 6.0
-base_projectile_speed = 400.0
 bullet = ExtResource("2_44jpc")
 cooldown = 4.0
+base_projectile_speed = 400.0
 bullet_life_time = 0.6
 range = 300.0
+base_projectile_amount = 6.0
