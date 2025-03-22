@@ -30,6 +30,7 @@ var damage_flash_timer = Timer.new()
 var alive_time: float = 0.0
 
 var on_death_particles = preload("res://Scenes/Particles/TestParticle.tscn")
+var damage_taken_particles = preload("res://Scenes/Particles/OnHitParticle.tscn")
 
 func init_damage_flash_timer():
 	add_child(damage_flash_timer)  # Add the Timer to the node tree
@@ -114,6 +115,7 @@ func take_damage(amount: float) -> void:
 	health -= amount
 	damage_flash = true
 	damage_flash_timer.start(0.1) 
+	spawn_one_shot_particles(damage_taken_particles, self.global_position)
 	if(health <= 0):
 		die()
 
@@ -121,8 +123,11 @@ func _on_damage_flash_timeout():
 	damage_flash = false
 
 func die() -> void:
-	var new_particle = on_death_particles.instantiate()
-	new_particle.global_position = self.global_position
-	get_node("/root").add_child(new_particle)
+	spawn_one_shot_particles(on_death_particles, self.global_position)
 	SignalBus.enemy_killed.emit(self)
 	queue_free()
+
+func spawn_one_shot_particles(particles: PackedScene, position: Vector2) -> void:
+	var new_particle = particles.instantiate()
+	new_particle.global_position = position
+	get_node("/root/EmilScene/ParticleNode").add_child(new_particle)

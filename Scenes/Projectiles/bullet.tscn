@@ -36,7 +36,7 @@ max_contacts_reported = 1
 script = ExtResource("1_hsvne")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_iwoij")
 animation = &"new_animation"
 
@@ -44,5 +44,4 @@ animation = &"new_animation"
 shape = SubResource("RectangleShape2D_8stfk")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(11, 1)
-scale = Vector2(4.775, 4.775)
+scale = Vector2(3, 3)

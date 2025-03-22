@@ -16,6 +16,7 @@ var gold = 100;
 var gold_income: int = 5;
 
 @onready var income_timer: Timer = get_node("IncomeTimer")
+@onready var damage_flash_timer: Timer = get_node("DamageFlashTimer")
 
 static var playerOrbs : Array[BaseOrb] = [];
 static var playerOrbsOuter : Array[BaseOrb] = [];
@@ -43,6 +44,8 @@ func heal_damage(value: float) -> void:
 
 func take_damage(value: float, source: Enemy) -> void:
 	modify_health(-value)
+	damage_flash_timer.start(0.1)
+	$AnimatedSprite2D.modulate = Color(1, 0.5, 0.5)
 	for playerUpgrade in playerUpgrades:
 		if(playerUpgrade.type == Upgrade.UpgradeType.PASSIVE):
 			if(playerUpgrade.passiveType == PassiveUpgrade.PassiveUpgradeType.ON_PLAYER_HIT):
@@ -110,3 +113,7 @@ func modify_stat(stat: GlobalEnums.PLAYER_STATS, amount: float) -> void:
 			modify_health(amount)
 		GlobalEnums.PLAYER_STATS.ADD_HEALTH_REGENERATION:
 			self.healthRegeneration += amount
+
+
+func _on_damage_flash_timer_timeout() -> void:
+	$AnimatedSprite2D.modulate = Color(1, 1, 1)

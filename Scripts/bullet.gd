@@ -36,6 +36,7 @@ func init_with_direction(direction: Vector2, damage: float, speed: float, life_t
 	self.damage = damage
 	self.life_time = life_time
 	self.speed = speed
+	self.rotation = direction.angle()
 	call_deferred("_delete_after_time", life_time)
 
 func HitEnemy(body : Enemy):
