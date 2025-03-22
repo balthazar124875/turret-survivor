@@ -3,15 +3,17 @@ extends BaseGun
 class_name DiscLauncher
 
 func shoot(enemy: Node) -> void:	
-	var bullet = bullet.instantiate()
-	var random_offset = randf()
-	var speed = base_projectile_speed * player.projectileSpeedMultipler
-	bullet.init_with_direction(Vector2(cos(random_offset), sin(random_offset)), damage, base_projectile_speed * player.projectileSpeedMultipler, bullet_life_time)
-	bullet.outward_speed = speed / 2
-	bullet.rotation_speed = speed
-	bullet.pierce = pierce
-	bullet.life_time = bullet_life_time
-	add_child(bullet)
+	var bulletAmount: int = base_projectile_amount + player.extraProjectiles
+	for i in bulletAmount:
+		var bullet = bullet.instantiate()
+		var random_offset = randf_range(-1, 1) 
+		var speed = base_projectile_speed * player.projectileSpeedMultipler
+		bullet.init_with_direction(Vector2(cos(random_offset), sin(random_offset)) * 100, damage, base_projectile_speed * player.projectileSpeedMultipler, bullet_life_time)
+		bullet.outward_speed = speed / 2
+		bullet.rotation_speed = speed
+		bullet.pierce = pierce
+		bullet.life_time = bullet_life_time
+		add_child(bullet)
 
 func apply_level_up():
 	if(level == 5):
