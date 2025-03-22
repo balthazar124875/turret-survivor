@@ -29,16 +29,21 @@ func shoot(target_enemy: Node) -> void:
 	targets.append(target_enemy)
 	
 	for i in chains:
-		var inRange = enemyList.filter(func(enemy): return getDistance(targets.back(),enemy) < chain_range * player.rangeMultiplier)
 		
-		#todo: spara distance så man inte behöver kolla om
-		inRange.sort_custom(func(a,b): return getDistance(targets.back(),a) < getDistance(targets.back(),b))
+		var closestDistance = chain_range * player.rangeMultiplier
+		var nextTarget
+		for enemy in enemyList:
+			var enemyDistance = getDistance(targets.back(),enemy)
+			if(enemyDistance < closestDistance):
+				if enemy.is_inside_tree() && enemy.is_alive():
+					nextTarget = enemy
+					closestDistance = enemyDistance
 		
-		for enemy in inRange:
-			if enemy.is_inside_tree() && enemy.is_alive():
-				targets.append(enemy)
-				enemyList.erase(enemy)
-				break;
+		if(nextTarget != null):
+			targets.append(nextTarget)
+			enemyList.erase(nextTarget)	
+		else:
+			break; 		
 	
 					
 					
