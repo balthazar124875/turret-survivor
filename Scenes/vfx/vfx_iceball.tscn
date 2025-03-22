@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://gcpvnvflgy6u"]
 
 [ext_resource type="Script" path="res://Scripts/vfx/iceball_bullet.gd" id="1_kdbnj"]
-[ext_resource type="Shader" uid="uid://dx376iw5pgsx6" path="res://vfxShaders/snowflake.tres" id="2_mjfrc"]
+[ext_resource type="Shader" uid="uid://bis75onm3uxrb" path="res://vfxShaders/snowflake.tres" id="2_mjfrc"]
 [ext_resource type="Texture2D" uid="uid://bcjbv4xbt7y3a" path="res://Scenes/snowflake.png" id="3_jl5rc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mkr22"]
@@ -43,13 +43,10 @@ scale_max = 50.0
 scale_curve = SubResource("CurveTexture_lq8bj")
 color = Color(0.948995, 0.148521, 0.337242, 1)
 
-[node name="Bullet" type="RigidBody2D"]
+[node name="Bullet" type="Area2D"]
 disable_mode = 1
 collision_layer = 4
 collision_mask = 2
-gravity_scale = 0.0
-contact_monitor = true
-max_contacts_reported = 1
 script = ExtResource("1_kdbnj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

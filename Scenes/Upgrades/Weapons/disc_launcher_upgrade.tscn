@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://biwjouwj1i6cw"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/weapon_upgrade.gd" id="1_3073y"]
+[ext_resource type="PackedScene" uid="uid://bgmukr1mndc0j" path="res://Scenes/Weapons/disc_launcher.tscn" id="2_ivqxh"]
+[ext_resource type="Texture2D" uid="uid://b361lj3g3dkim" path="res://Assets/Sprites/upgrades/small_disc.png" id="3_i3wyo"]
+
+[node name="DiscLauncherUpgrade" type="Node2D"]
+script = ExtResource("1_3073y")
+weapon_scene = ExtResource("2_ivqxh")
+upgradeName = "Disc launcher"
+description = "Shoots a rotating disc"
+icon = ExtResource("3_i3wyo")
