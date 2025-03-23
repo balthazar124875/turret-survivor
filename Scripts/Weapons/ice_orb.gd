@@ -26,15 +26,13 @@ func _process(delta: float) -> void:
 		var iceball = iceBallVfx.instantiate()
 		get_tree().root.add_child(iceball)
 		iceball.global_position = global_position
-		var direction = Vector2(global_position - player.global_position).normalized()
+		var direction = Vector2(iceball.global_position - player.global_position).normalized()
 		var damage = 0.0
-		var speed = 100.0
+		var speed = 200.0
 		var lifetime = 5.0
 		iceball.init_with_direction(direction, damage, speed, lifetime)
 		iceball.pierce = 1000
 		
 		#TODO: Add velocity and rotation
-		var currIceBallRotation = Vector2(1,0)
-		var rotAngle = currIceBallRotation.dot(direction);
-		iceball.rotation = acos(rotAngle)
+		iceball.rotation = direction.angle() - PI;
 	
