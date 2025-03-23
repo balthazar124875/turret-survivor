@@ -35,10 +35,8 @@ func _process(delta: float) -> void:
 	
 func PlayFlameThrowerVfx(enemy : Node2D) -> void:
 	#Rotate properly
-	var vector = (enemy.global_position - player.global_position).normalized();
-	var upVector = Vector2(1,0);
-	var rotAngle = vector.dot(upVector);
-	ftParticles.rotation = acos(rotAngle);
+	var direction = Vector2(enemy.global_position - player.global_position).normalized();
+	ftParticles.rotation = direction.angle();
 	ftParticles.emitting = true;
 	pass
 	

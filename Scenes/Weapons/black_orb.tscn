@@ -24,7 +24,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_shs68"]
-radius = 20.2237
+radius = 35.0571
 
 [node name="BlackOrb" type="Node2D"]
 script = ExtResource("1_dqspr")
@@ -32,7 +32,6 @@ script = ExtResource("1_dqspr")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_bqkk8")
 position = Vector2(-1, -2)
-scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_avr3i")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -40,5 +39,6 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
+light_mask = 4
+visibility_layer = 2
 shape = SubResource("CircleShape2D_shs68")
