@@ -6,11 +6,9 @@ class_name HealOrb
 var healVfxParticleEmitter : GPUParticles2D;
 var isHealVfxPlaying : bool;
 var healVfxInstance;
-var tween : Tween
 
 func _ready() -> void:
 	super()
-	tween = get_tree().create_tween();
 	isHealVfxPlaying = false;
 	healVfxInstance = healVfx.instantiate();
 	add_child(healVfxInstance)

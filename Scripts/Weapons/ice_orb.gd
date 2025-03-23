@@ -7,6 +7,7 @@ class_name IceOrb
 var spawnTimer = 5.0
 var currTimer = 0.0
 
+#TODO: This needs to slow enemies
 func _physics_process(delta):
 	for body in $Area2D.get_overlapping_bodies():
 		if body is Enemy:

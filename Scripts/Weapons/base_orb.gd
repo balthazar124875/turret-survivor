@@ -30,7 +30,7 @@ func HitEnemy(body, delta) -> void:
 func _process(delta: float) -> void:
 	scale = Vector2(1, 1) * player.areaSizeMultiplier
 	currAngle = currAngle + delta * orbSpeed * player.projectileSpeedMultipler;
-	var orbPos = Vector2(cos(currAngle), sin(currAngle))*orbRange; #* player.rangeMultiplier; #Player range will affect orb distance
+	var orbPos = Vector2(cos(currAngle), sin(currAngle))*orbRange;
 	orbPos += player.global_position;
 	global_position = orbPos;
 	
