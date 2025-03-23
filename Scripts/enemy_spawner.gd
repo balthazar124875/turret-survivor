@@ -50,4 +50,4 @@ func _on_wave_timer_timeout() -> void:
 		current_wave_enemy_index = 0
 
 	enemy_spawn_timer.wait_time = waves[current_wave_enemy_index].spawn_interval
-	print("Current wave enemy index: ", current_wave_enemy_index)
+	#print("Current wave enemy index: ", current_wave_enemy_index)

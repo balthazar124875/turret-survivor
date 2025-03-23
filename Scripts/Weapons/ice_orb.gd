@@ -28,8 +28,8 @@ func _process(delta: float) -> void:
 		iceball.global_position = global_position
 		var direction = Vector2(iceball.global_position - player.global_position).normalized()
 		var damage = 0.0
-		var speed = 200.0
-		var lifetime = 5.0
+		var speed = 250.0
+		var lifetime = 7.0
 		iceball.init_with_direction(direction, damage, speed, lifetime)
 		iceball.pierce = 1000
 		

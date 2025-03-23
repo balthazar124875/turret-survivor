@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwrm5irhi0e4c"]
+[gd_scene load_steps=11 format=3 uid="uid://bwrm5irhi0e4c"]
 
 [ext_resource type="Script" path="res://Scripts/vfx/iceball_bullet.gd" id="1_kdbnj"]
 [ext_resource type="Shader" uid="uid://bis75onm3uxrb" path="res://vfxShaders/snowflake.tres" id="2_mjfrc"]
@@ -14,9 +14,16 @@ shader_parameter/SecondaaryColor = Color(1.44392e-05, 0.692495, 0.912989, 1)
 shader_parameter/ColorIntensity = 1.329
 shader_parameter/basic_texture = ExtResource("3_jl5rc")
 
+[sub_resource type="Curve" id="Curve_p7n5h"]
+_data = [Vector2(0, 0.296703), 0.0, 0.0, 0, 0, Vector2(0.0421941, 1), 0.0, 0.0, 0, 0, Vector2(0.578059, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_stln5"]
+curve = SubResource("Curve_p7n5h")
+
 [sub_resource type="Curve" id="Curve_6nuog"]
 max_value = 2.0
-_data = [Vector2(0, 1.1862), 0.0, 0.0, 0, 0, Vector2(0.250965, 0.810594), 0.0, 0.0, 0, 0, Vector2(1, 0.123596), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1.1862), 0.0, 0.0, 0, 0, Vector2(0.388186, 0.703297), 0.0, 0.0, 0, 0, Vector2(1, 0.123596), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_lq8bj"]
@@ -25,12 +32,11 @@ curve = SubResource("Curve_6nuog")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vr1o4"]
 particle_flag_disable_z = true
 emission_shape = 1
-emission_sphere_radius = 19.71
+emission_sphere_radius = 10.0
 angle_min = -720.0
 angle_max = 720.0
 direction = Vector3(0, 0, 0)
 spread = 0.0
-initial_velocity_max = 131.06
 angular_velocity_min = -1.60933e-05
 angular_velocity_max = 20.0
 radial_velocity_min = -2.23517e-05
@@ -38,10 +44,11 @@ radial_velocity_max = -2.23517e-05
 gravity = Vector3(0, 0, 0)
 linear_accel_min = -2.23517e-06
 linear_accel_max = 100.0
-scale_min = 90.0
-scale_max = 90.0
+scale_min = 70.0
+scale_max = 70.0
 scale_curve = SubResource("CurveTexture_lq8bj")
 color = Color(0.948995, 0.148521, 0.337242, 1)
+alpha_curve = SubResource("CurveTexture_stln5")
 
 [node name="Bullet3" type="Area2D"]
 disable_mode = 1
@@ -53,7 +60,7 @@ script = ExtResource("1_kdbnj")
 shape = SubResource("CircleShape2D_mkr22")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(11, 1)
+position = Vector2(9.53674e-07, 1)
 scale = Vector2(4.775, 4.775)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]

@@ -75,7 +75,6 @@ func new_wave_shop_reroll(current_wave: int = 0) -> void:
 
 #Call this on re-rolls to update all shopUpgrade buttons.
 func fillShopUpgradeButtons(current_wave: int = 0) -> void:
-	print("fill shop")
 	#TODO: Shuffle the upgrade list here from GameManager
 	var newUpgradeList = GenerateUpgradesListForShop(shopUpgradeButtons.size());
 	for i in shopUpgradeButtons.size():

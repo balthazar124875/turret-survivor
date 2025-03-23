@@ -5,12 +5,10 @@ class_name DiscLauncher
 func shoot(enemy: Node) -> void:	
 	var bulletAmount: int = base_projectile_amount + player.extraProjectiles
 	var random_offset = randf_range(0, 2 * PI) 
-	print(random_offset)
 	for i in bulletAmount:
 		var bullet = bullet.instantiate()
 		var speed = base_projectile_speed * player.projectileSpeedMultipler
 		var offset = Vector2(cos(random_offset + i * (2 * PI / bulletAmount)), sin(random_offset + i * (2 * PI / bulletAmount)))
-		print(offset)
 		bullet.init_with_direction(offset, damage, base_projectile_speed * player.projectileSpeedMultipler, bullet_life_time)
 		bullet.rotation_speed = speed
 		bullet.outward_speed = speed / 2

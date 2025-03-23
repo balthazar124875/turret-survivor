@@ -7,7 +7,6 @@ func _init():
 	pass
 
 func ApplyWhenHitEffect(player: Player, enemy : Enemy) -> void:
-	print("im frozen")
 	var rng = RandomNumberGenerator.new()
 	var rndNumber = rng.randf_range(0.0, 1.0);
 	if(rndNumber <= procChance):
