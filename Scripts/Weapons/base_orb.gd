@@ -14,7 +14,7 @@ func _ready() -> void:
 	player = get_node("../..")
 	player.addPlayerBaseOrb(self);
 	var screenSize = get_viewport().get_visible_rect().size;
-	orbRange = screenSize.y*0.10; #10% of the screenSize, to make this scale properly
+	orbRange = screenSize.y*0.15; #10% of the screenSize, to make this scale properly
 	pass # Replace with function body.
 
 func _physics_process(delta):
@@ -30,6 +30,10 @@ func HitEnemy(body, delta) -> void:
 func _process(delta: float) -> void:
 	scale = Vector2(1, 1) * player.areaSizeMultiplier
 	currAngle = currAngle + delta * orbSpeed * player.projectileSpeedMultipler;
-	var orbPos = Vector2(cos(currAngle), sin(currAngle))*orbRange * player.rangeMultiplier;
+	var orbPos = Vector2(cos(currAngle), sin(currAngle))*orbRange; #* player.rangeMultiplier; #Player range will affect orb distance
 	orbPos += player.global_position;
 	global_position = orbPos;
+	
+func ApplyVisualChanges() -> void:
+	scale *= 2.0;
+	pass

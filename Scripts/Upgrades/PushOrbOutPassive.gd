@@ -17,7 +17,7 @@ func applyUpgradeToPlayer(player: Player) -> void:
 		player.playerOrbs.remove_at(randomOrbIdx);
 		rndOrb.orbRange *= 2.5;
 		rndOrb.orbSpeed *= 0.5;
-		rndOrb.scale *= 2.0;
 		player.playerOrbsOuter.push_back(rndOrb);
 		player.ArrangePlayerOrbs(player.playerOrbs);
 		player.ArrangePlayerOrbs(player.playerOrbsOuter);
+		rndOrb.ApplyVisualChanges();

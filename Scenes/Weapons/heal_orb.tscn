@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwu5iugyrcm5f"]
+[gd_scene load_steps=9 format=3 uid="uid://bwu5iugyrcm5f"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/base_orb.gd" id="1_i3wdl"]
+[ext_resource type="Script" path="res://Scripts/Weapons/heal_orb.gd" id="1_cwpcj"]
+[ext_resource type="PackedScene" uid="uid://r2iehdvw4qxl" path="res://Scenes/vfx/vfx_heal_line.tscn" id="2_ah8s6"]
 [ext_resource type="Shader" uid="uid://c5ui7q4oyxj3r" path="res://vfxShaders/fire_orb.tres" id="2_tjwwd"]
 [ext_resource type="Texture2D" uid="uid://bburp7jn0j75m" path="res://Textures/fire_orb_LowResClean.jpg" id="3_aabf7"]
 [ext_resource type="Texture2D" uid="uid://dfw81wjllmjub" path="res://Textures/sparksvfx.jpg" id="4_oyrhw"]
@@ -27,7 +28,8 @@ animations = [{
 radius = 37.054
 
 [node name="HealOrb" type="Node2D"]
-script = ExtResource("1_i3wdl")
+script = ExtResource("1_cwpcj")
+healVfx = ExtResource("2_ah8s6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_bqkk8")
