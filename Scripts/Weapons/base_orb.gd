@@ -35,5 +35,6 @@ func _process(delta: float) -> void:
 	global_position = orbPos;
 	
 func ApplyVisualChanges() -> void:
-	scale *= 2.0;
+	$AnimatedSprite2D.scale *= 2.0;
+	$Area2D/CollisionShape2D.scale *= 2.0;
 	pass

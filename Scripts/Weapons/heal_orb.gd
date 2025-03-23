@@ -62,7 +62,7 @@ func StopHealVfxEffect() -> void:
 #This will basically fixup the vfx effect when orb gets pushed out
 func ApplyVisualChanges() -> void:
 	super();
-	healVfxParticleEmitter.scale *= 2.5;
+	healVfxParticleEmitter.scale *= 2.5; #Needs to be the same value as range pushed out
 	healVfxParticleEmitter.amount = 12;
 	pass
 	
