@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://02sunyn47nr8"]
 
 [ext_resource type="Shader" uid="uid://bis75onm3uxrb" path="res://vfxShaders/snowflake.tres" id="1_gakwd"]
-[ext_resource type="Texture2D" uid="uid://d6r861e13bc3" path="res://Textures/fire_orb_HighRes.jpg" id="2_uegwf"]
+[ext_resource type="Texture2D" uid="uid://kxswvhuwxr0a" path="res://Scenes/vfx/lensFlare_vfx.jpg" id="2_rplik"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i6ooe"]
 shader = ExtResource("1_gakwd")
 shader_parameter/SecondaaryColor = Color(1, 0.533333, 0.819608, 1)
 shader_parameter/ColorIntensity = 1.609
-shader_parameter/basic_texture = ExtResource("2_uegwf")
+shader_parameter/basic_texture = ExtResource("2_rplik")
 
 [sub_resource type="Curve" id="Curve_ojr3o"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.498442, 1), 0.0, 0.0, 0, 0, Vector2(0.679128, 0.28492), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -26,26 +26,29 @@ curve = SubResource("Curve_g4e31")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jptcu"]
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(0, 1, 1)
+emission_box_extents = Vector3(100, 1, 1)
 direction = Vector3(0, 1, 0)
 spread = 0.0
-initial_velocity_min = -80.0
-initial_velocity_max = 80.0
+initial_velocity_min = -150.0
+initial_velocity_max = 150.0
 gravity = Vector3(0, 0, 0)
 linear_accel_min = -100.0
 linear_accel_max = 100.0
 tangential_accel_min = -2.23517e-06
 tangential_accel_max = -2.23517e-06
-scale_min = 20.0
-scale_max = 25.0
+scale_min = 30.0
+scale_max = 35.0
 scale_curve = SubResource("CurveTexture_kgjsx")
 alpha_curve = SubResource("CurveTexture_xw4qs")
 
 [node name="VfxOrbLaser" type="Node2D"]
+show_behind_parent = true
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 100, 0)
 default_color = Color(1, 0.547772, 0.817598, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 show_behind_parent = true

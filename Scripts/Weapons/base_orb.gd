@@ -11,6 +11,7 @@ var damage_per_tick = 50;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	enemy_parent = get_node("/root/EmilScene/Enemies")
 	player = get_node("../..")
 	player.addPlayerBaseOrb(self);
 	var screenSize = get_viewport().get_visible_rect().size;

@@ -1,13 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bweef6mt6qopc"]
+[gd_scene load_steps=9 format=3 uid="uid://bweef6mt6qopc"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/laser_orb.gd" id="1_mlgmm"]
 [ext_resource type="Shader" uid="uid://c5ui7q4oyxj3r" path="res://vfxShaders/fire_orb.tres" id="2_2piki"]
 [ext_resource type="PackedScene" uid="uid://02sunyn47nr8" path="res://Scenes/vfx/vfx_orb_laser.tscn" id="2_jhocc"]
 [ext_resource type="Texture2D" uid="uid://bburp7jn0j75m" path="res://Textures/fire_orb_LowResClean.jpg" id="3_tnnnm"]
 [ext_resource type="Texture2D" uid="uid://dfw81wjllmjub" path="res://Textures/sparksvfx.jpg" id="4_nxxne"]
-
-[sub_resource type="Environment" id="Environment_wxkdq"]
-glow_enabled = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bqkk8"]
 resource_local_to_scene = true
@@ -33,9 +30,6 @@ radius = 35.0143
 [node name="LaserOrb" type="Node2D"]
 script = ExtResource("1_mlgmm")
 laserVfx = ExtResource("2_jhocc")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_wxkdq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_bqkk8")
