@@ -30,10 +30,12 @@ var empty_item_slot_texture: Texture2D
 var buttons: Array[Node]
 
 var player: Player
+var circle: Circle
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_node("/root/EmilScene/Player")
+	circle = get_node("/root/EmilScene/Circle")
 	load_upgrades()
 	initialize_buttons()
 	SignalBus.current_wave_updated.connect(new_wave_shop_reroll)
@@ -143,8 +145,14 @@ func _on_shop_upgrade_button_pressed(index: int) -> void:
 	player.modify_gold(-shopUpgradeButtons[index].upgradeNode.gold_cost)
 	var new_upgrade = shopUpgradeButtons[index].upgradeNode.duplicate()
 	add_child(new_upgrade)
-	shopUpgradeButtons[index].upgradeNode.apply(player)
-	player.playerUpgrades.push_back(new_upgrade);
+	if(new_upgrade.type == Upgrade.UpgradeType.CIRCLE):
+		#Circle upgrader
+		shopUpgradeButtons[index].upgradeNode.applyCircleUpgrade(circle)
+		circle.circleUpgrades.push_back(circle);
+	else:
+		#Player upgrader
+		shopUpgradeButtons[index].upgradeNode.applyPlayerUpgrade(player)
+		player.playerUpgrades.push_back(new_upgrade);
 
 	shopUpgradeButtons[index].upgradeNode = null
 	buttons[index].texture_normal = empty_item_slot_texture

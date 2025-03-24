@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=15 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="9_yckrj"]
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
 [ext_resource type="Script" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
+[ext_resource type="PackedScene" uid="uid://wj4fa28pbvk4" path="res://Scenes/circle.tscn" id="13_o8hoq"]
 
 [sub_resource type="Theme" id="Theme_t5p71"]
 
@@ -371,5 +372,10 @@ text = "Kills: 0
 "
 
 [node name="ParticleNode" type="Node2D" parent="."]
+
+[node name="Circle" parent="." instance=ExtResource("13_o8hoq")]
+z_index = -300
+position = Vector2(960, 540)
+scale = Vector2(2, 2)
 
 [connection signal="pressed" from="GameplayUi/LeftMenuColumn/RerollContainer/RerollButton" to="GameplayUi/LeftMenuColumn/ShopUpgrades" method="_on_reroll_button_pressed"]

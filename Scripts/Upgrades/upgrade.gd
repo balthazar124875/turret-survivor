@@ -7,6 +7,7 @@ enum UpgradeType {
 	PASSIVE,
 	PLAYER_STAT_UP,
 	GAME_STAT_UP,
+	CIRCLE,
 }
 
 enum UpgradeRarity {
@@ -35,14 +36,26 @@ func applyUpgradeToPlayer(player: Player) -> void:
 		learnt = true;
 	applyCosmeticChangeToPlayer();
 
+func applyUpgradeToCircle(circle: Circle) -> void:
+	pass
+
 func applyCosmeticChangeToPlayer() -> void:
 	pass
 
 func reparentToPlayer(player: Player) -> void:
 	pass
 
-func apply(player: Player) -> void:
+func reparentToCircle(circle: Circle) -> void:
+	pass
+
+func applyPlayerUpgrade(player: Player) -> void:
 	upgradeAmount += 1
 	weight -= weight_reduction 
 	applyUpgradeToPlayer(player)
 	reparentToPlayer(player)
+	
+func applyCircleUpgrade(circle: Circle) -> void:
+	upgradeAmount += 1
+	weight -= weight_reduction
+	applyUpgradeToCircle(circle)
+	reparentToCircle(circle)
