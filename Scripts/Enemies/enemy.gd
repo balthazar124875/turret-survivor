@@ -31,6 +31,8 @@ var alive_time: float = 0.0
 
 var on_death_particles = preload("res://Scenes/Particles/TestParticle.tscn")
 var damage_taken_particles = preload("res://Scenes/Particles/OnHitParticle.tscn")
+var damage_numbers_scene = preload("res://Scenes/UI/damage_numbers.tscn")
+
 
 func init_damage_flash_timer():
 	add_child(damage_flash_timer)  # Add the Timer to the node tree
@@ -116,6 +118,10 @@ func take_damage(amount: float) -> void:
 	damage_flash = true
 	damage_flash_timer.start(0.1) 
 	spawn_one_shot_particles(damage_taken_particles, self.global_position)
+	var new_damage_numbers = damage_numbers_scene.instantiate()
+	new_damage_numbers.global_position = position
+	new_damage_numbers.number = amount
+	get_node("/root/EmilScene/ParticleNode").add_child(new_damage_numbers)
 	if(health <= 0):
 		die()
 
