@@ -42,8 +42,6 @@ shape = SubResource("CircleShape2D_ysp86")
 [node name="Weapons" type="Node2D" parent="."]
 
 [node name="Gun" parent="Weapons" instance=ExtResource("3_q8d6d")]
-base_projectile_speed = 250.0
-range = 900.0
 
 [node name="IncomeTimer" type="Timer" parent="."]
 wait_time = 5.0

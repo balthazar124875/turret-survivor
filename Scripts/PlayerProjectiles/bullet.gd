@@ -8,7 +8,7 @@ var damage: float
 var life_time: float = 3
 
 #behaviour modifiers
-var pierce: int = 4
+var pierce: int = 0
 var bounce: float = 0
 
 var dist

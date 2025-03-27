@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b7nx1wgodnptg"]
 
-[ext_resource type="Texture2D" uid="uid://c6ub137dgq1x8" path="res://Assets/Sprites/Projectiles/Disc.png" id="1_1o2lo"]
 [ext_resource type="Script" path="res://Scripts/PlayerProjectiles/disc.gd" id="1_oc4v0"]
+[ext_resource type="Texture2D" uid="uid://dp7vdlvxpygtx" path="res://Assets/Sprites/Projectiles/pwl.png" id="2_5o084"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_35m71"]
 radius = 46.3249
@@ -13,7 +13,7 @@ script = ExtResource("1_oc4v0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
-texture = ExtResource("1_1o2lo")
+texture = ExtResource("2_5o084")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_35m71")
