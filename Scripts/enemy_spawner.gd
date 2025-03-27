@@ -2,7 +2,7 @@ extends Node2D
 
 @export var waves: Array[Wave] = []
 @export var center: Node2D
-@export var enemy_spawn_delay = 0.1
+@export var enemy_spawn_rate_multiplier = 1
 @export var enemy_spawn_distance = 600
 @export var enemies: Node2D
 
@@ -49,5 +49,4 @@ func _on_wave_timer_timeout() -> void:
 	else:
 		current_wave_enemy_index = 0
 
-	enemy_spawn_timer.wait_time = waves[current_wave_enemy_index].spawn_interval
-	#print("Current wave enemy index: ", current_wave_enemy_index)
+	enemy_spawn_timer.wait_time = waves[current_wave_enemy_index].spawn_interval * enemy_spawn_rate_multiplier

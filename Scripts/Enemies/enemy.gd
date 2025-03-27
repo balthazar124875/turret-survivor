@@ -33,7 +33,6 @@ var on_death_particles = preload("res://Scenes/Particles/TestParticle.tscn")
 var damage_taken_particles = preload("res://Scenes/Particles/OnHitParticle.tscn")
 var damage_numbers_scene = preload("res://Scenes/UI/damage_numbers.tscn")
 
-
 func init_damage_flash_timer():
 	add_child(damage_flash_timer)  # Add the Timer to the node tree
 	damage_flash_timer.wait_time = 0.2  # Set duration

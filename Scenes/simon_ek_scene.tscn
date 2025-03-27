@@ -1,14 +1,19 @@
-[gd_scene load_steps=15 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=20 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
 [ext_resource type="PackedScene" uid="uid://bkwrq0qtta0ix" path="res://Scenes/enemy_spawner.tscn" id="3_fpmdp"]
+[ext_resource type="Script" path="res://Scripts/wave.gd" id="4_7auck"]
 [ext_resource type="Script" path="res://Scripts/UIManager.gd" id="5_1pdr0"]
+[ext_resource type="Resource" uid="uid://lhgub04y3bdb" path="res://Resources/wave1.tres" id="5_52t8s"]
 [ext_resource type="Script" path="res://Scripts/ShopManager.gd" id="5_jxmqa"]
+[ext_resource type="Resource" uid="uid://bm2q7xl0iapv5" path="res://Resources/wave2.tres" id="6_cqumk"]
 [ext_resource type="Texture2D" uid="uid://b27w0ddjiakbn" path="res://Assets/Sprites/UI/ui_overlay.png" id="6_pvymq"]
+[ext_resource type="Resource" uid="uid://2nbfix1i2x45" path="res://Resources/wave3.tres" id="7_df5er"]
 [ext_resource type="Texture2D" uid="uid://baywma4a7d8ba" path="res://Assets/Sprites/UI/32x32_button.png" id="7_vnyei"]
 [ext_resource type="Texture2D" uid="uid://dpnyf8ftq0aek" path="res://Assets/Sprites/UI/outline.png" id="8_3c8yg"]
 [ext_resource type="Theme" uid="uid://bug82i6sy1xtq" path="res://Themes/texture_button_theme.tres" id="8_4ctao"]
+[ext_resource type="Resource" uid="uid://dk16077xloovp" path="res://Resources/wave4.tres" id="8_frnkb"]
 [ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="9_yckrj"]
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
 [ext_resource type="Script" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
@@ -27,6 +32,7 @@ position = Vector2(960, 540)
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
+waves = Array[ExtResource("4_7auck")]([ExtResource("5_52t8s"), ExtResource("6_cqumk"), ExtResource("7_df5er"), ExtResource("8_frnkb")])
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
 

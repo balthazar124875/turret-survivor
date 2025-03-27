@@ -13,6 +13,7 @@ func subscribe_to_signals() -> void:
 	SignalBus.gold_amount_updated.connect(on_gold_updated)
 	SignalBus.current_wave_updated.connect(on_wave_updated)
 	SignalBus.enemy_killed.connect(on_enemy_killed)
+	on_gold_updated(get_node("/root/EmilScene/Player").gold)
 
 func on_wave_updated(current_wave: int) -> void:
 	get_node("LeftMenuColumn/WaveLabel").text = "Wave: " + str(current_wave)
