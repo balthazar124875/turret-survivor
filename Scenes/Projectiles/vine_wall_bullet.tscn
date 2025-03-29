@@ -15,8 +15,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ars7x"]
-size = Vector2(25, 19)
+[sub_resource type="CircleShape2D" id="CircleShape2D_xg151"]
+radius = 8.51469
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6ddwl"]
 animations = [{
@@ -34,14 +34,16 @@ script = ExtResource("1_lggh0")
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 2
 
 [node name="AnimatedSprite2DNoSpike" type="AnimatedSprite2D" parent="Area2D"]
 sprite_frames = SubResource("SpriteFrames_lo0gd")
 frame_progress = 0.351796
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.5, 16.5)
-shape = SubResource("RectangleShape2D_ars7x")
+position = Vector2(0.5, 11.5)
+shape = SubResource("CircleShape2D_xg151")
 
 [node name="AnimatedSprite2DSpike" type="AnimatedSprite2D" parent="Area2D"]
 visible = false

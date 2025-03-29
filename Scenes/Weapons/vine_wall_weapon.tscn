@@ -5,6 +5,8 @@
 
 [node name="VineWallWeapon" type="Node2D"]
 script = ExtResource("1_0yfuv")
+targeting_type = 1
 bullet = ExtResource("2_aoeo0")
 cooldown = 1.0
 bullet_life_time = 10.0
+range = 10000.0
