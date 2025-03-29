@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcpyuejojcsv1"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerProjectiles/vine.gd" id="1_jow8d"]
+[ext_resource type="Texture2D" uid="uid://dgorckj3en1s6" path="res://Assets/Sprites/sprite_sheets/vine_1.png" id="2_1rvh1"]
+[ext_resource type="Texture2D" uid="uid://decmd6xpjqqfb" path="res://Assets/Sprites/sprite_sheets/vine_2.png" id="3_a732w"]
+[ext_resource type="Texture2D" uid="uid://dvpfugpesjlq2" path="res://Assets/Sprites/sprite_sheets/vine_3.png" id="4_ko2dt"]
+[ext_resource type="Texture2D" uid="uid://dhhtmwa6n7kit" path="res://Assets/Sprites/sprite_sheets/vine_4.png" id="5_2mit6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_05kx4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1rvh1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a732w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ko2dt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2mit6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plelx"]
+size = Vector2(30, 60)
+
+[node name="Vine" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_jow8d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_05kx4")
+frame = 2
+frame_progress = 0.242397
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_plelx")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(1.5, 3)

@@ -54,14 +54,23 @@ func get_target() -> Node: #defaults to getting closest
 		for enemy in enemy_parent.get_children():
 			if enemy.is_inside_tree() && enemy.is_alive():
 				var distance = global_position.distance_to(enemy.global_position)
-				if distance < shortest_distance:
+				if distance < shortest_distance && distance < range * player.rangeMultiplier:
 					shortest_distance = distance
 					closest_enemy = enemy
 					
 	return closest_enemy
 	
 func get_target_area() -> Vector2: #defaults to getting closest
-	return player.global_position
+	var screenSize = get_viewport().get_visible_rect().size;
+	var distance = randf_range(100, max(range * player.rangeMultiplier, screenSize.y / 2))
+	var angle = randf_range(0, PI * 2)
+	
+	var position = Vector2(1 , 1);
+	position = position.rotated(angle)
+	position *= distance
+	
+	position += player.global_position
+	return position
 
 
 func shoot(enemy: Node) -> void:
