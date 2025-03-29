@@ -77,6 +77,9 @@ func handle_status_effects():
 		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN:
 			current_action_speed = 0
 			$Sprite2D.modulate = Color(0, 0, 1)
+		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.ROOTED:
+			current_action_speed = 0
+			$Sprite2D.modulate = Color(0, 0.85, 0)
 			
 	# TODO: Move this, but this sets the color to red while being damaged
 	if damage_flash: 
@@ -89,7 +92,8 @@ func _process(delta: float) -> void:
 	update_active_status_effects(delta)
 	handle_status_effects()
 	
-	$Sprite2D.rotation_degrees = sin(alive_time * 6.0) * 7
+	if(current_action_speed != 0):
+		$Sprite2D.rotation_degrees = sin(alive_time * 6.0) * 7
 	
 	if(current_action_speed == 0):
 		pass #frozen

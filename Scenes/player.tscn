@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://blmikl8w11roj"]
+[gd_scene load_steps=6 format=3 uid="uid://blmikl8w11roj"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_sppr7"]
 [ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="2_8t7dp"]
 [ext_resource type="Texture2D" uid="uid://dns8c1v2a0267" path="res://Assets/Sprites/TowerV3.png" id="2_wdh5b"]
-[ext_resource type="PackedScene" uid="uid://ebv5vx7fruxe" path="res://Scenes/Weapons/gun.tscn" id="3_q8d6d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oaghf"]
 animations = [{
@@ -40,8 +39,6 @@ position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_ysp86")
 
 [node name="Weapons" type="Node2D" parent="."]
-
-[node name="Gun" parent="Weapons" instance=ExtResource("3_q8d6d")]
 
 [node name="IncomeTimer" type="Timer" parent="."]
 wait_time = 5.0

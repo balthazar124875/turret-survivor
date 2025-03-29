@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://mfhmg2soj24f"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerProjectiles/vine_trap.gd" id="1_quj7q"]
+[ext_resource type="PackedScene" uid="uid://bcpyuejojcsv1" path="res://Scenes/Projectiles/vine.tscn" id="2_f3wmj"]
+[ext_resource type="Texture2D" uid="uid://bm2gylogbm6ix" path="res://Assets/Sprites/sprite_sheets/vine_trap.png" id="2_kwiqn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0cqgq"]
+size = Vector2(25, 29)
+
+[node name="VineTrap" type="Area2D"]
+disable_mode = 1
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_quj7q")
+vine = ExtResource("2_f3wmj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 0)
+texture = ExtResource("2_kwiqn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0cqgq")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(5.72205e-06, 0)
+scale = Vector2(1.25, 1.45)
