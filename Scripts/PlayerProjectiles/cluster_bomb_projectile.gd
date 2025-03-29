@@ -78,7 +78,7 @@ func damage_enemies_in_collider():
 	var enemies = []
 	for body in get_overlapping_bodies():
 		if body is Enemy:  # Check if it's an enemy
-			body.take_damage(damage)
+			body.take_damage(damage, "Cluster bomb")
 #func _delete_after_time(timeout):
 	#await get_tree().create_timer(timeout).timeout
 	#queue_free()

@@ -64,7 +64,8 @@ func get_target() -> Node: #defaults to getting closest
 	
 func get_target_area() -> Vector2: #defaults to getting closest
 	var screenSize = get_viewport().get_visible_rect().size;
-	var distance = randf_range(100, max(range * player.rangeMultiplier, screenSize.y / 2))
+	var distance = randf_range(100, min(range * player.rangeMultiplier, screenSize.y / 2))
+	print(distance)
 	var angle = randf_range(0, PI * 2)
 	
 	var position = Vector2(1 , 1);
