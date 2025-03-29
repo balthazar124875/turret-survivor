@@ -6,6 +6,9 @@ class_name VineBullet
 var hp : float;
 var attackPower : float;
 
+var damage_flash_timer = Timer.new()
+var damage_flash: bool = false
+
 func instantiateVineWall(hpx : float, atkDmg : float) -> void:
 	hp = hpx;
 	attackPower = atkDmg;
@@ -13,7 +16,14 @@ func instantiateVineWall(hpx : float, atkDmg : float) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	init_damage_flash_timer()
 	pass # Replace with function body.
+
+func init_damage_flash_timer():
+	add_child(damage_flash_timer)  # Add the Timer to the node tree
+	damage_flash_timer.wait_time = 0.2  # Set duration
+	damage_flash_timer.one_shot = true  # Make it auto-stop
+	damage_flash_timer.timeout.connect(_on_damage_flash_timeout)
 
 #TODO: This needs to slow enemies
 func _physics_process(delta):
@@ -23,6 +33,8 @@ func _physics_process(delta):
 
 func take_damage(damage : int, enemy : Enemy):
 	hp -= damage;
+	damage_flash = true
+	damage_flash_timer.start(0.1) 
 	enemy.take_damage(attackPower);
 
 func HitEnemy(body, delta) -> void:
@@ -30,8 +42,19 @@ func HitEnemy(body, delta) -> void:
 		body.SetObjectObstructingEnemy(self);
 	return;
 
+func _on_damage_flash_timeout():
+	damage_flash = false
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	if damage_flash: 
+		$Area2D/AnimatedSprite2DNoSpike.modulate = Color(1, 0, 0)
+		$Area2D/AnimatedSprite2DSpike.modulate  = Color(1, 0, 0)
+	else:
+		$Area2D/AnimatedSprite2DNoSpike.modulate = Color(1, 1, 1)
+		$Area2D/AnimatedSprite2DSpike.modulate  = Color(1, 1, 1)
+	
 	if hp <= 0:
 		queue_free();
 	pass
