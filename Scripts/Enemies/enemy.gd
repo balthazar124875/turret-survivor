@@ -33,6 +33,8 @@ var on_death_particles = preload("res://Scenes/Particles/TestParticle.tscn")
 var damage_taken_particles = preload("res://Scenes/Particles/OnHitParticle.tscn")
 var damage_numbers_scene = preload("res://Scenes/UI/damage_numbers.tscn")
 
+var objectObstructingEnemy : Node2D = null;
+
 func init_damage_flash_timer():
 	add_child(damage_flash_timer)  # Add the Timer to the node tree
 	damage_flash_timer.wait_time = 0.2  # Set duration
@@ -100,13 +102,17 @@ func _process(delta: float) -> void:
 	var current_position = global_position
 	var direction = (target_position - current_position).normalized()
 	# Move towards the target position
-	if current_position.distance_to(target_position) > 100:  # Adjust tolerance as needed
-		global_position += direction * speed * delta * current_action_speed
-	elif t > attack_cooldown: 
+	if !objectObstructingEnemy:
+		if current_position.distance_to(target_position) > 100:  # Adjust tolerance as needed
+			global_position += direction * speed * delta * current_action_speed
+		elif t > attack_cooldown: 
+			t = 0
+			player.take_damage(damage, self)
+			#call_deferred("enable_can_attack", attack_cooldown)
+			#can_attack = false
+	elif t > attack_cooldown:
 		t = 0
-		player.take_damage(damage, self)
-		#call_deferred("enable_can_attack", attack_cooldown)
-		#can_attack = false
+		objectObstructingEnemy.take_damage(damage, self)
 
 #func enable_can_attack(timeout):
 	#await get_tree().create_timer(timeout).timeout
@@ -140,3 +146,9 @@ func spawn_one_shot_particles(particles: PackedScene, position: Vector2) -> void
 	var new_particle = particles.instantiate()
 	new_particle.global_position = position
 	get_node("/root/EmilScene/ParticleNode").add_child(new_particle)
+	
+func GetObjectObstructingEnemy() -> Node2D:
+	return objectObstructingEnemy;
+	
+func SetObjectObstructingEnemy(object : Node2D) -> void:
+	objectObstructingEnemy = object;
