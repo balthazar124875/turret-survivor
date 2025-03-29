@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4xmec1qybxji"]
+
+[ext_resource type="Script" path="res://Scripts/vine_wall_bullet.gd" id="1_lggh0"]
+[ext_resource type="Texture2D" uid="uid://cd0kywa76iln7" path="res://Assets/Sprites/Projectiles/VineNoSpike.png" id="2_6nhnk"]
+[ext_resource type="Texture2D" uid="uid://cpsgfhpooyhm5" path="res://Assets/Sprites/Projectiles/VineSpike.png" id="3_e3klv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lo0gd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6nhnk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ars7x"]
+size = Vector2(25, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ddwl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_e3klv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="VineWallBullet" type="Node2D"]
+script = ExtResource("1_lggh0")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="AnimatedSprite2DNoSpike" type="AnimatedSprite2D" parent="Area2D"]
+sprite_frames = SubResource("SpriteFrames_lo0gd")
+frame_progress = 0.351796
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 16.5)
+shape = SubResource("RectangleShape2D_ars7x")
+
+[node name="AnimatedSprite2DSpike" type="AnimatedSprite2D" parent="Area2D"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_6ddwl")
