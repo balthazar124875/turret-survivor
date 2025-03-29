@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ihrw5omwwim6"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/vine_wall_weapon.gd" id="1_0yfuv"]
+[ext_resource type="PackedScene" uid="uid://c4xmec1qybxji" path="res://Scenes/Projectiles/vine_wall_bullet.tscn" id="2_aoeo0"]
+
+[node name="VineWallWeapon" type="Node2D"]
+script = ExtResource("1_0yfuv")
+bullet = ExtResource("2_aoeo0")
+cooldown = 1.0
+bullet_life_time = 10.0
