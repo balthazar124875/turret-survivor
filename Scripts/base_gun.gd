@@ -79,7 +79,9 @@ func shoot(enemy: Node) -> void:
 	enemy.take_damage(damage)
 	
 func shoot_area(position: Vector2) -> void:
-	pass
+	var obj = bullet.instantiate()
+	add_child(obj)
+	obj.global_position = position
 	
 func level_up():
 	level += 1
