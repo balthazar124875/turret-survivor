@@ -36,9 +36,8 @@ func _process(delta: float) -> void:
 	
 	pass
 
-
 func HitEnemy(body : Enemy):
-	body.take_damage(damage)  # Call the enemy's damage function
+	body.take_damage(damage, "Vine")  # Call the enemy's damage function
 	SignalBus.on_enemy_hit.emit(body)
 	body.apply_status_effect(rootEffect)
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=21 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
 [ext_resource type="Script" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
 [ext_resource type="PackedScene" uid="uid://wj4fa28pbvk4" path="res://Scenes/circle.tscn" id="13_o8hoq"]
+[ext_resource type="PackedScene" uid="uid://bampk2ki2ygjd" path="res://Scenes/UI/damage_dictionary.tscn" id="18_dwmxg"]
 
 [sub_resource type="Theme" id="Theme_t5p71"]
 
@@ -376,6 +377,13 @@ offset_bottom = 142.0
 grow_horizontal = 2
 text = "Kills: 0
 "
+
+[node name="DamageDictionary" parent="GameplayUi/RightMenuColumn" instance=ExtResource("18_dwmxg")]
+offset_left = 5.0
+offset_top = 150.0
+offset_right = 5.0
+offset_bottom = 150.0
+scale = Vector2(0.5, 0.5)
 
 [node name="ParticleNode" type="Node2D" parent="."]
 

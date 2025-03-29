@@ -6,6 +6,7 @@ var speed = 300
 var direction: Vector2
 var damage: float
 var life_time: float = 3
+var source: String
 
 #behaviour modifiers
 var pierce: int = 0
@@ -23,24 +24,26 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	global_position += direction * speed * delta
 
-func init_with_target(target: Node, damage: float, speed: float, life_time: float) -> void:
+func init_with_target(target: Node, damage: float, speed: float, life_time: float, source: String) -> void:
 	var current_position = global_position
 	direction = (target.position - current_position).normalized()
 	self.damage = damage
 	self.life_time = life_time
 	self.speed = speed
+	self.source = source
 	call_deferred("_delete_after_time", life_time)
 	
-func init_with_direction(direction: Vector2, damage: float, speed: float, life_time: float) -> void:
+func init_with_direction(direction: Vector2, damage: float, speed: float, life_time: float, source: String) -> void:
 	self.direction = direction
 	self.damage = damage
 	self.life_time = life_time
 	self.speed = speed
 	self.rotation = direction.angle()
+	self.source = source
 	call_deferred("_delete_after_time", life_time)
 
 func HitEnemy(body : Enemy):
-	body.take_damage(damage)  # Call the enemy's damage function
+	body.take_damage(damage, source)  # Call the enemy's damage function
 	SignalBus.on_enemy_hit.emit(body)
 
 func _on_body_entered(body):

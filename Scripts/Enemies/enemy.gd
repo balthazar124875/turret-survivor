@@ -116,7 +116,7 @@ func _process(delta: float) -> void:
 func is_alive() -> bool:
 	return health > 0
 
-func take_damage(amount: float) -> void:
+func take_damage(amount: float, source: String = '') -> void:
 	health -= amount
 	damage_flash = true
 	damage_flash_timer.start(0.1) 
@@ -125,6 +125,7 @@ func take_damage(amount: float) -> void:
 	new_damage_numbers.global_position = position
 	new_damage_numbers.number = amount
 	get_node("/root/EmilScene/ParticleNode").add_child(new_damage_numbers)
+	SignalBus.damage_done.emit(amount, source)
 	if(health <= 0):
 		die()
 

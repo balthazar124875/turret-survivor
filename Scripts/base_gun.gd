@@ -19,6 +19,7 @@ enum TargetingType {
 @export var level: int = 1
 @export var pierce: int = 0
 @export var base_projectile_amount: float = 1
+@export var source: String = ""
 
 var localAttackSpeedBonus: float = 1
 

@@ -9,3 +9,4 @@ targeting_type = 1
 bullet = ExtResource("2_1rwev")
 cooldown = 2.0
 range = 300.0
+source = "Vine Trap"

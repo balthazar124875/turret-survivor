@@ -9,4 +9,6 @@ bullet = ExtResource("2_257bb")
 cooldown = 2.0
 base_projectile_speed = 800.0
 bullet_life_time = 4.0
+range = 600.0
 pierce = 5
+source = "Disc Launcher"

@@ -10,3 +10,4 @@ bullet = ExtResource("2_4rkre")
 cooldown = 4.0
 damage = 0.2
 range = 600.0
+source = "Thunder Strike"

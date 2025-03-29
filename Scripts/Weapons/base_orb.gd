@@ -24,7 +24,7 @@ func _physics_process(delta):
 			HitEnemy(body, delta);
 
 func HitEnemy(body, delta) -> void:
-	body.take_damage(damage_per_tick * delta * player.damageMultiplier)
+	body.take_damage(damage_per_tick * delta * player.damageMultiplier, source)
 	return;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

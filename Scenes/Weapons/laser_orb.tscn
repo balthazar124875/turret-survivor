@@ -30,6 +30,7 @@ radius = 35.0143
 [node name="LaserOrb" type="Node2D"]
 script = ExtResource("1_mlgmm")
 laserVfx = ExtResource("2_jhocc")
+source = "Laser Orb"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_bqkk8")

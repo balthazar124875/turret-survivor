@@ -26,7 +26,7 @@ func shoot(enemy: Node) -> void:
 	for n in range(bulletAmount):
 		var bullet = bullet.instantiate()
 		add_child(bullet)
-		bullet.init_with_direction(direction, damage * player.damageMultiplier, base_projectile_speed * player.projectileSpeedMultipler, bullet_life_time)
+		bullet.init_with_direction(direction, damage * player.damageMultiplier, base_projectile_speed * player.projectileSpeedMultipler, bullet_life_time, source)
 		direction = direction.rotated(-deg_to_rad(bullet_spread))
 
 func apply_level_up():

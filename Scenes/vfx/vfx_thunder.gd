@@ -13,7 +13,7 @@ func _ready() -> void:
 func _physics_process(delta):
 	for body in $Area2D.get_overlapping_bodies():
 		if body is Enemy:
-			body.take_damage(damage_per_tick * delta)
+			body.take_damage(damage_per_tick * delta, "Thunder")
 			
 func _delete_after_time(timeout):
 	await get_tree().create_timer(timeout).timeout

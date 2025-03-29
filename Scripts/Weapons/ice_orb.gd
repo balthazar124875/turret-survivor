@@ -15,7 +15,7 @@ func _physics_process(delta):
 
 func HitEnemy(body, delta) -> void:
 	#TODO: Slow enemies
-	body.take_damage(damage_per_tick * delta * player.damageMultiplier)
+	super.HitEnemy(body, delta)
 	return;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 		var damage = 1.0
 		var speed = 250.0
 		var lifetime = 7.0
-		iceball.init_with_direction(direction, damage, speed, lifetime)
+		iceball.init_with_direction(direction, damage, speed, lifetime, "Ice ball")
 		iceball.pierce = 1000
 		
 		#TODO: Add velocity and rotation

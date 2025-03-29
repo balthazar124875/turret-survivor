@@ -21,6 +21,6 @@ func _delete_after_time(timeout):
 	await get_tree().create_timer(timeout).timeout
 	queue_free()
 
-func init_with_direction(direction: Vector2, damage: float, speed: float, life_time: float) -> void:
-	super.init_with_direction(direction, damage, speed, life_time)
+func init_with_direction(direction: Vector2, damage: float, speed: float, life_time: float, source: String) -> void:
+	super.init_with_direction(direction, damage, speed, life_time, source)
 	global_position += direction
