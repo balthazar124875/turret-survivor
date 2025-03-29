@@ -15,6 +15,10 @@ func _physics_process(delta):
 	#	if body is Enemy:
 	#		body.take_damage(damage_per_tick * delta)
 	pass
+
+func set_particle_scale(scale: float):
+	$GPUParticles2D.process_material.scale_min = scale
+	$GPUParticles2D.process_material.scale_max = scale
 	
 func _delete_after_time(timeout):
 	await get_tree().create_timer(timeout).timeout

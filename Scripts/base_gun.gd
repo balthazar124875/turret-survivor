@@ -60,6 +60,7 @@ func get_target() -> Node: #defaults to getting closest
 					
 	return closest_enemy
 	
+	
 func get_target_area() -> Vector2: #defaults to getting closest
 	return player.global_position
 
