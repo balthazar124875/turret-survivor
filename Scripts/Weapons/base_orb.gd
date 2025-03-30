@@ -11,6 +11,7 @@ var damage_per_tick = 5;
 
 @export var orbEnhanceVfx : PackedScene
 var enhancedVfxInstance : Node2D;
+var isEnhanced : bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -54,4 +55,5 @@ func ApplyVisualChanges() -> void:
 
 func EnhanceOrb() -> void:
 	enhancedVfxInstance.visible = true;
+	isEnhanced = true;
 	pass
