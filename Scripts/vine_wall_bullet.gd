@@ -6,13 +6,16 @@ class_name VineBullet
 var hp : float;
 var attackPower : float;
 var spikedVine : bool;
+var vineIdx : int;
 
 var damage_flash_timer = Timer.new()
 var damage_flash: bool = false
+var player;
 
-func instantiateVineWall(hpx : float, atkDmg : float, spiked : bool) -> void:
+func instantiateVineWall(hpx : float, atkDmg : float, spiked : bool, idx : int) -> void:
 	hp = hpx;
 	attackPower = atkDmg;
+	vineIdx = idx;
 	spikedVine = spiked;
 	if spikedVine:
 		$Area2D/AnimatedSprite2DNoSpike.visible = false;
@@ -22,6 +25,7 @@ func instantiateVineWall(hpx : float, atkDmg : float, spiked : bool) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	player = get_node("/root/EmilScene/Player")
 	init_damage_flash_timer()
 	pass # Replace with function body.
 
@@ -42,7 +46,7 @@ func take_damage(damage : int, enemy : Enemy):
 	damage_flash = true
 	damage_flash_timer.start(0.1)
 	if spikedVine:
-		enemy.take_damage(attackPower);
+		enemy.take_damage(attackPower * player.damageMultiplier);
 
 func HitEnemy(body, delta) -> void:
 	if body.GetObjectObstructingEnemy() == null:
@@ -63,5 +67,6 @@ func _process(delta: float) -> void:
 		$Area2D/AnimatedSprite2DSpike.modulate  = Color(1, 1, 1)
 	
 	if hp <= 0:
+		VineWall.registerVineDeath(vineIdx);
 		queue_free();
 	pass
