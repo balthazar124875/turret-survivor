@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://ihrw5omwwim6"]
+[gd_scene load_steps=3 format=3 uid="uid://bnwmflgl0msoq"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/vine_wall_weapon.gd" id="1_0yfuv"]
 [ext_resource type="PackedScene" uid="uid://c4xmec1qybxji" path="res://Scenes/Projectiles/vine_wall_bullet.tscn" id="2_aoeo0"]

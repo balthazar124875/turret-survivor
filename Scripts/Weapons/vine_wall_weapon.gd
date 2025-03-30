@@ -3,6 +3,7 @@ extends BaseGun
 class_name VineWall
 
 var vines : Array[VineBullet] = [];
+var spikedVines : bool = false;
 
 func shoot_area(position: Vector2) -> void:
 	var vine = bullet.instantiate()
@@ -11,7 +12,7 @@ func shoot_area(position: Vector2) -> void:
 	#Put your vine in a list
 	var vineHP = 2;
 	var vineAttackDmg = 0.5;
-	vine.instantiateVineWall(vineHP, vineAttackDmg)
+	vine.instantiateVineWall(vineHP, vineAttackDmg, spikedVines)
 
 func get_target_area() -> Vector2: #defaults to getting closest
 	var screenSize = get_viewport().get_visible_rect().size;
@@ -27,7 +28,7 @@ func get_target_area() -> Vector2: #defaults to getting closest
 
 func apply_level_up():
 	if(level == 5):
-			base_projectile_speed += 100
+			spikedVines = true
 			return
 	if(level == 10):
 			cooldown *= 0.7

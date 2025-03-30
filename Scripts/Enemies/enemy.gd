@@ -94,11 +94,10 @@ func _process(delta: float) -> void:
 	update_active_status_effects(delta)
 	handle_status_effects()
 	
-	if(current_action_speed != 0):
-		$Sprite2D.rotation_degrees = sin(alive_time * 6.0) * 7
-	
 	if(current_action_speed == 0):
-		pass #frozen
+		return #frozen
+		
+	$Sprite2D.rotation_degrees = sin(alive_time * 6.0) * 7
 	
 	var current_position = global_position
 	var direction = (target_position - current_position).normalized()

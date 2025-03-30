@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://drdghbgnuueoq"]
 
 [ext_resource type="Script" path="res://Scripts/Upgrades/weapon_upgrade.gd" id="1_6dawl"]
-[ext_resource type="PackedScene" uid="uid://ihrw5omwwim6" path="res://Scenes/Weapons/vine_wall_weapon.tscn" id="2_8qmmd"]
+[ext_resource type="PackedScene" uid="uid://bnwmflgl0msoq" path="res://Scenes/Weapons/vine_wall_weapon.tscn" id="2_8qmmd"]
 [ext_resource type="Texture2D" uid="uid://bu4ehurw114of" path="res://Assets/Sprites/upgrades/vineIcon.png" id="2_eo5dj"]
 
 [node name="VineWallUpgrade" type="Node2D"]
