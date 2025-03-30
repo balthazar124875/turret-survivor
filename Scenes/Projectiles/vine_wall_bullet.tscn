@@ -15,8 +15,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xg151"]
-radius = 8.51469
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4wjis"]
+radius = 5.0
+height = 17.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6ddwl"]
 animations = [{
@@ -42,8 +43,9 @@ sprite_frames = SubResource("SpriteFrames_lo0gd")
 frame_progress = 0.351796
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.5, 11.5)
-shape = SubResource("CircleShape2D_xg151")
+position = Vector2(0.5, 15.5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_4wjis")
 
 [node name="AnimatedSprite2DSpike" type="AnimatedSprite2D" parent="Area2D"]
 visible = false

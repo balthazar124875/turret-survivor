@@ -5,13 +5,19 @@ class_name VineBullet
 #TODO: Here the vinewall will damage enemies, animate etc, die etc
 var hp : float;
 var attackPower : float;
+var spikedVine : bool;
 
 var damage_flash_timer = Timer.new()
 var damage_flash: bool = false
 
-func instantiateVineWall(hpx : float, atkDmg : float) -> void:
+func instantiateVineWall(hpx : float, atkDmg : float, spiked : bool) -> void:
 	hp = hpx;
 	attackPower = atkDmg;
+	spikedVine = spiked;
+	if spikedVine:
+		$Area2D/AnimatedSprite2DNoSpike.visible = false;
+		$Area2D/AnimatedSprite2DSpike.visible = true;
+		
 	pass
 
 # Called when the node enters the scene tree for the first time.
@@ -34,8 +40,9 @@ func _physics_process(delta):
 func take_damage(damage : int, enemy : Enemy):
 	hp -= damage;
 	damage_flash = true
-	damage_flash_timer.start(0.1) 
-	enemy.take_damage(attackPower);
+	damage_flash_timer.start(0.1)
+	if spikedVine:
+		enemy.take_damage(attackPower);
 
 func HitEnemy(body, delta) -> void:
 	if body.GetObjectObstructingEnemy() == null:
