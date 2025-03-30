@@ -370,20 +370,20 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -64.0
-offset_top = 108.0
-offset_right = 64.0
-offset_bottom = 142.0
+offset_left = -65.3333
+offset_top = 4.33333
+offset_right = 62.6667
+offset_bottom = 38.3333
 grow_horizontal = 2
 text = "Kills: 0
 "
 
 [node name="DamageDictionary" parent="GameplayUi/RightMenuColumn" instance=ExtResource("18_dwmxg")]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 150.0
-offset_right = 5.0
-offset_bottom = 150.0
+offset_left = 6.0
+offset_top = 32.6667
+offset_right = 162.0
+offset_bottom = 100.667
 scale = Vector2(0.5, 0.5)
 
 [node name="ParticleNode" type="Node2D" parent="."]
