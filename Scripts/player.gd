@@ -21,11 +21,6 @@ var ENABLE_BOUNTY = false
 @onready var income_timer: Timer = get_node("IncomeTimer")
 @onready var damage_flash_timer: Timer = get_node("DamageFlashTimer")
 
-static var playerOrbs : Array[BaseOrb] = [];
-static var playerOrbsOuter : Array[BaseOrb] = [];
-static var maxNrInnerOrbs : int;
-static var maxNrOuterOrbs : int;
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.enemy_killed.connect(_on_enemy_killed)
@@ -78,27 +73,6 @@ func _on_enemy_killed(enemy: Enemy) -> void:
 				playerUpgrade.ApplyEnemyOnKillPassive(enemy);
 	if ENABLE_BOUNTY:
 		modify_gold(enemy.gold_value)
-
-func addPlayerBaseOrb(orb : BaseOrb):
-	#if(maxNrInnerOrbs)
-	playerOrbs.push_back(orb);
-	#Re-arrange them all in a circle
-	ArrangePlayerOrbs(playerOrbs);
-
-func ArrangePlayerOrbs(playerOrbs : Array):
-	if(playerOrbs.size() == 0):
-		return
-	var nrOfOrbs = playerOrbs.size();
-	var angle = (360.0 / nrOfOrbs);
-	var i = 0;
-	angle = deg_to_rad(angle);
-	for x in playerOrbs:
-		x.nextAngle = angle*i;
-		var orbPos = Vector2(sin(x.nextAngle), cos(x.nextAngle))*x.orbRange;
-		x.nextPos = orbPos;
-		x.currAngle = (playerOrbs[0].currAngle) + angle*i;
-		i += 1;
-	pass
 
 func modify_stat(stat: GlobalEnums.PLAYER_STATS, amount: float) -> void:
 	match (stat):

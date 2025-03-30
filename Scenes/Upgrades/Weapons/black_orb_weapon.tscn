@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://c50xckexklumu"]
 
-[ext_resource type="Script" path="res://Scripts/Upgrades/weapon_upgrade.gd" id="1_kxu4t"]
+[ext_resource type="Script" path="res://Scripts/Upgrades/orb_weapon_upgrade.gd" id="1_uw0cj"]
 [ext_resource type="PackedScene" uid="uid://btp3ufwouy15a" path="res://Scenes/Weapons/black_orb.tscn" id="2_jkxy7"]
 [ext_resource type="Texture2D" uid="uid://b0gmwly8gxfee" path="res://Assets/Sprites/upgrades/orbs/blackOrb_up.png" id="2_rmpip"]
 
 [node name="BlackOrbWeapon" type="Node2D"]
-script = ExtResource("1_kxu4t")
+script = ExtResource("1_uw0cj")
 weapon_scene = ExtResource("2_jkxy7")
-upgradeName = "Magic orb"
+upgradeName = "Black Orb"
 description = "Spawn a powerful orb spinning around you"
 icon = ExtResource("2_rmpip")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=22 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="9_yckrj"]
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
 [ext_resource type="Script" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
+[ext_resource type="Script" path="res://Scripts/UI/orb_stats.gd" id="11_v6kre"]
 [ext_resource type="PackedScene" uid="uid://wj4fa28pbvk4" path="res://Scenes/circle.tscn" id="13_o8hoq"]
 [ext_resource type="PackedScene" uid="uid://bampk2ki2ygjd" path="res://Scenes/UI/damage_dictionary.tscn" id="18_dwmxg"]
 
@@ -53,6 +54,27 @@ centered = false
 anchors_preset = 0
 offset_right = 420.0
 offset_bottom = 1080.0
+
+[node name="OrbStats" type="Control" parent="GameplayUi/LeftMenuColumn"]
+anchors_preset = 0
+offset_top = 806.0
+offset_right = 40.0
+offset_bottom = 846.0
+scale = Vector2(2, 2)
+script = ExtResource("11_v6kre")
+
+[node name="InnerOrbLabel" type="Label" parent="GameplayUi/LeftMenuColumn/OrbStats"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "#Inner orbs: "
+
+[node name="OuterOrbLabel" type="Label" parent="GameplayUi/LeftMenuColumn/OrbStats"]
+layout_mode = 0
+offset_top = 24.0
+offset_right = 103.0
+offset_bottom = 47.0
+text = "#Outer orbs: "
 
 [node name="HealthUi" type="Control" parent="GameplayUi/LeftMenuColumn"]
 layout_mode = 1
