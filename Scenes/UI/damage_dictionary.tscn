@@ -1,8 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://bampk2ki2ygjd"]
+[gd_scene load_steps=4 format=3 uid="uid://bampk2ki2ygjd"]
 
 [ext_resource type="Script" path="res://Scripts/UI/damage_dictionary.gd" id="1_4mhtr"]
 
-[node name="DamageDictionary" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[sub_resource type="LabelSettings" id="LabelSettings_1furj"]
+font_size = 20
+font_color = Color(1, 0.984314, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wfcer"]
+font_size = 20
+font_color = Color(1, 1, 0, 1)
+
+[node name="DamageDictionary" type="VBoxContainer"]
+alignment = 1
 script = ExtResource("1_4mhtr")
+
+[node name="Damage" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="DamageDone" type="Label" parent="Damage"]
+layout_mode = 2
+text = "Damage done: 0
+"
+label_settings = SubResource("LabelSettings_1furj")
+
+[node name="DamageList" type="VBoxContainer" parent="Damage"]
+layout_mode = 2
+
+[node name="Heal" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HealDone" type="Label" parent="Heal"]
+layout_mode = 2
+text = "Heal done: 0"
+label_settings = SubResource("LabelSettings_wfcer")
+
+[node name="HealList" type="VBoxContainer" parent="Heal"]
+layout_mode = 2

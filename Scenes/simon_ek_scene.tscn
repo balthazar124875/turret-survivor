@@ -379,6 +379,7 @@ text = "Kills: 0
 "
 
 [node name="DamageDictionary" parent="GameplayUi/RightMenuColumn" instance=ExtResource("18_dwmxg")]
+layout_mode = 0
 offset_left = 5.0
 offset_top = 150.0
 offset_right = 5.0

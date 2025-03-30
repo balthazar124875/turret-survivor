@@ -41,7 +41,7 @@ func _ready() -> void:
 	path.curve.set_point_position(1, target_pos)
 
 func _process(delta) -> void:
-	if path_follow.progress_ratio >= 0.98:
+	if path_follow.progress_ratio >= 0.95:
 		create_explosion()
 		damage_enemies_in_collider()
 		if cluster_times > 0:

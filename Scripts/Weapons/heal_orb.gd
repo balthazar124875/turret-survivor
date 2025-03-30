@@ -7,6 +7,8 @@ var healVfxParticleEmitter : GPUParticles2D;
 var isHealVfxPlaying : bool;
 var healVfxInstance;
 
+@export var heal_per_tick: float = 0.1
+
 func _ready() -> void:
 	super()
 	isHealVfxPlaying = false;
@@ -28,6 +30,7 @@ func _physics_process(delta):
 
 func HitEnemy(body, delta) -> void:
 	PlayHealVfxEffect();
+	player.heal_damage(heal_per_tick, source)
 	super.HitEnemy(body, delta)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

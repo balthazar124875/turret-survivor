@@ -30,7 +30,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	modify_health(healthRegeneration * delta)
+	heal_damage(healthRegeneration * delta, "Regeneration")
 
 #TODO: REMOVE THIS
 func _input(event):
@@ -44,8 +44,9 @@ func _input(event):
 func _on_income_timer_timeout() -> void:
 	modify_gold(gold_income)
 
-func heal_damage(value: float) -> void:
+func heal_damage(value: float, source: String) -> void:
 	modify_health(value)
+	SignalBus.heal_done.emit(value, source)
 
 func take_damage(value: float, source: Enemy) -> void:
 	modify_health(-value)

@@ -12,3 +12,4 @@ base_projectile_speed = 400.0
 bullet_life_time = 1.0
 range = 500.0
 base_projectile_amount = 3.0
+source = "Cluster Bomb"
