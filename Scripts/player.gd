@@ -2,17 +2,17 @@ extends Node
 
 class_name Player
 
-var maxHealth = 100.0;
-var health = 100.0;
-var healthRegeneration = 0.0;
+@export var maxHealth = 100.0;
+@export var health = 100.0;
+@export var healthRegeneration = 0.0;
 var playerUpgrades : Array = [];
-var extraProjectiles = 0;
-var extraChains = 0;
-var rangeMultiplier = 1.0;
-var damageMultiplier = 1.0;
-var attackSpeedMultiplier = 1.0;
-var projectileSpeedMultipler = 1.0;
-var areaSizeMultiplier = 1.0;
+@export var extraProjectiles = 0;
+@export var extraChains = 0;
+@export var rangeMultiplier = 1.0;
+@export var damageMultiplier = 1.0;
+@export var attackSpeedMultiplier = 1.0;
+@export var projectileSpeedMultipler = 1.0;
+@export var areaSizeMultiplier = 1.0;
 var gold = 100;
 var gold_income: int = 5;
 

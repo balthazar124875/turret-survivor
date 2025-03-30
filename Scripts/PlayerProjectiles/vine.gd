@@ -5,6 +5,7 @@ extends Area2D
 
 @export var base_range : float = 200	
 @export var duration : float = 1.5
+@export var root_duration : float = 1
 
 @export var damage : float = 1
 
@@ -46,7 +47,7 @@ func HitEnemy(body : Enemy):
 	SignalBus.on_enemy_hit.emit(body)
 	rootEffect = EnemyStatusEffect.new()
 	rootEffect.type = GlobalEnums.ENEMY_STATUS_EFFECTS.ROOTED
-	rootEffect.duration = 2
+	rootEffect.duration = root_duration
 	rootEffect.magnitude = 0
 	body.apply_status_effect(rootEffect)
 	
