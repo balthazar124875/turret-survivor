@@ -9,16 +9,16 @@ func _init():
 
 func applyUpgradeToPlayer(player: Player) -> void:
 	super.applyUpgradeToPlayer(player);
-	var playerOrbAmount = player.playerOrbs.size();
+	var playerOrbAmount = OrbHandler.playerOrbs.size();
 	if(playerOrbAmount != 0):
-		for orb in player.playerOrbs:
+		for orb in OrbHandler.playerOrbs:
 			if(!orb.isEnhanced):
 				orb.EnhanceOrb();
 				return;
 				
-	var outerOrbAmount = player.playerOrbsOuter.size();
+	var outerOrbAmount = OrbHandler.playerOrbsOuter.size();
 	if(outerOrbAmount != 0):
-		for orb in player.playerOrbsOuter:
+		for orb in OrbHandler.playerOrbsOuter:
 			if(!orb.isEnhanced):
 				orb.EnhanceOrb();
 				return;

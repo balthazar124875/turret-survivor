@@ -9,14 +9,15 @@ func _init():
 
 func applyUpgradeToPlayer(player: Player) -> void:
 	super.applyUpgradeToPlayer(player);
-	var playerOrbAmount = player.playerOrbs.size();
-	if(playerOrbAmount != 0):
-		var latestOrb = Player.playerOrbs[playerOrbAmount-1];
+	var innerOrbAmount = OrbHandler.playerOrbs.size();
+	var outerOrbAmount = OrbHandler.playerOrbsOuter.size();
+	if(innerOrbAmount != 0 && outerOrbAmount < OrbHandler.maxNrOuterOrbs):
+		var latestOrb = OrbHandler.playerOrbs[innerOrbAmount-1];
 		#Delete orb from array and rearrange array.
-		player.playerOrbs.remove_at(playerOrbAmount-1);
+		OrbHandler.playerOrbs.remove_at(innerOrbAmount-1);
 		latestOrb.orbRange *= 2.5;
 		latestOrb.orbSpeed *= 0.5;
-		player.playerOrbsOuter.push_back(latestOrb);
-		player.ArrangePlayerOrbs(player.playerOrbs);
-		player.ArrangePlayerOrbs(player.playerOrbsOuter);
+		OrbHandler.playerOrbsOuter.push_back(latestOrb);
+		OrbHandler.ArrangePlayerOrbs(OrbHandler.playerOrbs);
+		OrbHandler.ArrangePlayerOrbs(OrbHandler.playerOrbsOuter);
 		latestOrb.ApplyVisualChanges();

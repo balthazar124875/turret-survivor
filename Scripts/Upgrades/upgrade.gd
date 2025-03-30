@@ -31,9 +31,7 @@ var upgradeAmount = 0; #If this is > 0, it means this upgrade can be chosen seve
 @export var rolled: bool
 
 func applyUpgradeToPlayer(player: Player) -> void:
-	upgradeAmount -= 1;
-	if(upgradeAmount <= 0):
-		learnt = true;
+	learnt = true;
 	applyCosmeticChangeToPlayer();
 
 func applyUpgradeToCircle(circle: Circle) -> void:

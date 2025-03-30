@@ -24,7 +24,7 @@ func _ready() -> void:
 	enhancedVfxInstance.visible = false;
 	
 	player = get_node("../..")
-	player.addPlayerBaseOrb(self);
+	OrbHandler.addPlayerBaseOrb(self);
 	var screenSize = get_viewport().get_visible_rect().size;
 	orbRange = screenSize.y*0.15; #10% of the screenSize, to make this scale properly
 	pass # Replace with function body.
