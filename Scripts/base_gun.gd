@@ -55,7 +55,7 @@ func get_target() -> Node: #defaults to getting closest
 		for enemy in enemy_parent.get_children():
 			if enemy.is_inside_tree() && enemy.is_alive():
 				var distance = global_position.distance_to(enemy.global_position)
-				if distance < shortest_distance && distance < range * player.rangeMultiplier:
+				if distance < shortest_distance && (range == 0 || distance < range * player.rangeMultiplier):
 					shortest_distance = distance
 					closest_enemy = enemy
 					

@@ -23,6 +23,8 @@ var ENABLE_BOUNTY = false
 
 static var playerOrbs : Array[BaseOrb] = [];
 static var playerOrbsOuter : Array[BaseOrb] = [];
+static var maxNrInnerOrbs : int;
+static var maxNrOuterOrbs : int;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -78,6 +80,7 @@ func _on_enemy_killed(enemy: Enemy) -> void:
 		modify_gold(enemy.gold_value)
 
 func addPlayerBaseOrb(orb : BaseOrb):
+	#if(maxNrInnerOrbs)
 	playerOrbs.push_back(orb);
 	#Re-arrange them all in a circle
 	ArrangePlayerOrbs(playerOrbs);

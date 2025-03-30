@@ -4,7 +4,7 @@ extends PassiveUpgrade
 func _init():
 	description = "Enhance first bought orb that's not yet enhanced"; #TODO: Write which orb that is
 	type = UpgradeType.PASSIVE;
-	passiveType = PassiveUpgradeType.ENEMY_KILL_TYPE;
+	passiveType = PassiveUpgradeType.PROJECTILE_MODIFIER;
 	rarity = UpgradeRarity.COMMON;
 
 func applyUpgradeToPlayer(player: Player) -> void:
