@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://cc5l8igfe6ns8"]
+
+[ext_resource type="Shader" uid="uid://bis75onm3uxrb" path="res://vfxShaders/snowflake.tres" id="1_35e7m"]
+[ext_resource type="Texture2D" uid="uid://kxswvhuwxr0a" path="res://Scenes/vfx/lensFlare_vfx.jpg" id="2_xvj62"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i6ooe"]
+shader = ExtResource("1_35e7m")
+shader_parameter/SecondaaryColor = Color(0.792497, 0.719617, 0.391098, 1)
+shader_parameter/ColorIntensity = 1.609
+shader_parameter/basic_texture = ExtResource("2_xvj62")
+
+[sub_resource type="Curve" id="Curve_ojr3o"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.498442, 1), 0.0, 0.0, 0, 0, Vector2(0.679128, 0.28492), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_xw4qs"]
+curve = SubResource("Curve_ojr3o")
+
+[sub_resource type="Curve" id="Curve_g4e31"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.218069, 1), 0.0, 0.0, 0, 0, Vector2(0.688474, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kgjsx"]
+curve = SubResource("Curve_g4e31")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jptcu"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 42.16
+direction = Vector3(0, -1, 0)
+spread = 20.0
+initial_velocity_min = 150.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -100.0
+linear_accel_max = 100.0
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = -2.23517e-06
+scale_min = 30.0
+scale_max = 35.0
+scale_curve = SubResource("CurveTexture_kgjsx")
+alpha_curve = SubResource("CurveTexture_xw4qs")
+
+[node name="VfxEnhancedOrb" type="Node2D"]
+show_behind_parent = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_i6ooe")
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_jptcu")
+lifetime = 0.5
+speed_scale = 0.5
+local_coords = true

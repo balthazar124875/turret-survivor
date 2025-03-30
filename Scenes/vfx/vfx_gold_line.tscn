@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://hxn63xk07xqj"]
+
+[ext_resource type="Script" path="res://Scripts/flameThrowerBullet.gd" id="1_8io7u"]
+[ext_resource type="Shader" uid="uid://bis75onm3uxrb" path="res://vfxShaders/snowflake.tres" id="2_n2kf0"]
+[ext_resource type="Texture2D" uid="uid://bgnys1mnusout" path="res://Textures/lensFlare_vfx.jpg" id="3_onijk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mkr22"]
+radius = 25.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0dg0d"]
+resource_local_to_scene = true
+shader = ExtResource("2_n2kf0")
+shader_parameter/SecondaaryColor = Color(0.951361, 0.917139, 0.169128, 1)
+shader_parameter/ColorIntensity = 1.939
+shader_parameter/basic_texture = ExtResource("3_onijk")
+
+[sub_resource type="Curve" id="Curve_0b5sw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.194093, 0.736264), 0.0, 0.0, 0, 0, Vector2(0.822394, 0.467897), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ntty0"]
+curve = SubResource("Curve_0b5sw")
+
+[sub_resource type="Curve" id="Curve_6nuog"]
+max_value = 2.0
+_data = [Vector2(0, 1.42857), 0.0, 0.0, 0, 0, Vector2(1, 1.6044), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lq8bj"]
+curve = SubResource("Curve_6nuog")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vr1o4"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(10, 10, 10)
+emission_shape = 1
+emission_sphere_radius = 2.0
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+direction = Vector3(0, 0, 0)
+spread = 3.0
+initial_velocity_min = 250.0
+initial_velocity_max = 250.0
+angular_velocity_min = -224.54
+angular_velocity_max = 190.84
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+scale_min = 10.0
+scale_max = 30.0
+scale_curve = SubResource("CurveTexture_lq8bj")
+color = Color(0.948995, 0.148521, 0.337242, 1)
+alpha_curve = SubResource("CurveTexture_ntty0")
+
+[node name="Bullet" type="RigidBody2D"]
+disable_mode = 1
+collision_layer = 4
+collision_mask = 2
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_8io7u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mkr22")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(11, 1)
+scale = Vector2(4.775, 4.775)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_0dg0d")
+scale = Vector2(0.6, 0.6)
+amount = 6
+process_material = SubResource("ParticleProcessMaterial_vr1o4")

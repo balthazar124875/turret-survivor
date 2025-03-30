@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://cird4sghlnl6q"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/gold_orb.gd" id="1_p2p62"]
+[ext_resource type="PackedScene" uid="uid://hxn63xk07xqj" path="res://Scenes/vfx/vfx_gold_line.tscn" id="2_filug"]
+[ext_resource type="Shader" uid="uid://c5ui7q4oyxj3r" path="res://vfxShaders/fire_orb.tres" id="3_d07va"]
+[ext_resource type="Texture2D" uid="uid://bburp7jn0j75m" path="res://Textures/fire_orb_LowResClean.jpg" id="4_xjj4y"]
+[ext_resource type="Texture2D" uid="uid://dfw81wjllmjub" path="res://Textures/sparksvfx.jpg" id="5_5m77y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bqkk8"]
+resource_local_to_scene = true
+shader = ExtResource("3_d07va")
+shader_parameter/SecondaaryColor = Color(0.647059, 0.580392, 0, 1)
+shader_parameter/ColorIntensity = 2.0
+shader_parameter/basic_texture = ExtResource("4_xjj4y")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_avr3i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_5m77y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_shs68"]
+radius = 35.0143
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m1ryw"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[node name="GoldOrb" type="Node2D"]
+script = ExtResource("1_p2p62")
+goldVfx = ExtResource("2_filug")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_bqkk8")
+position = Vector2(-1, -2)
+sprite_frames = SubResource("SpriteFrames_avr3i")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_shs68")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+process_material = SubResource("ParticleProcessMaterial_m1ryw")

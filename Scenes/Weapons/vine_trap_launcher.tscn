@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dm64rin8a5kr4"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/VineTrapLauncher.gd" id="1_82ojn"]
-[ext_resource type="PackedScene" uid="uid://mfhmg2soj24f" path="res://Scenes/Projectiles/vine_trap.tscn" id="2_1rwev"]
+[ext_resource type="PackedScene" uid="uid://dxjvxbbj7bqln" path="res://Scenes/Projectiles/vine_trap.tscn" id="2_1rwev"]
 
 [node name="VineTrapLauncher" type="Node2D"]
 script = ExtResource("1_82ojn")

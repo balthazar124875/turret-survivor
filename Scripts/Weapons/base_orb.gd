@@ -9,9 +9,19 @@ var nextPos;
 var orbSpeed = 1.0;
 var damage_per_tick = 5;
 
+@export var orbEnhanceVfx : PackedScene
+var enhancedVfxInstance : Node2D;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	enemy_parent = get_node("/root/EmilScene/Enemies")
+	
+	orbEnhanceVfx = load("res://Scenes/vfx/vfx_orb_enhanced.tscn")
+	enhancedVfxInstance = orbEnhanceVfx.instantiate();
+	add_child(enhancedVfxInstance)
+	enhancedVfxInstance.global_position = global_position;
+	enhancedVfxInstance.visible = false;
+	
 	player = get_node("../..")
 	player.addPlayerBaseOrb(self);
 	var screenSize = get_viewport().get_visible_rect().size;
@@ -35,7 +45,13 @@ func _process(delta: float) -> void:
 	orbPos += player.global_position;
 	global_position = orbPos;
 	
+	enhancedVfxInstance.global_position = orbPos;
+	
 func ApplyVisualChanges() -> void:
 	$AnimatedSprite2D.scale *= 2.0;
 	$Area2D/CollisionShape2D.scale *= 2.0;
+	pass
+
+func EnhanceOrb() -> void:
+	enhancedVfxInstance.visible = true;
 	pass
