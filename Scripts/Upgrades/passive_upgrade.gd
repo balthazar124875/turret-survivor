@@ -17,7 +17,6 @@ func _ready() -> void:
 
 func applyUpgradeToPlayer(player: Player) -> void:
 	#level up passive
-	
 	pass
 
 func reparentToPlayer(player: Player) -> void:

@@ -5,7 +5,7 @@ class_name ClusterBomb
 @export var cluster_times: int = 1
 		
 func shoot(enemy: Node) -> void:	
-	if player.global_position.distance_to(get_target().global_position) > range:
+	if player.global_position.distance_to(get_target().global_position) > range * player.rangeMultiplier:
 		return
 	var bullet = bullet.instantiate()
 	if get_target() != null:

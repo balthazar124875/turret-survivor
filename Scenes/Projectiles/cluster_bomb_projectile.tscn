@@ -33,7 +33,7 @@ collision_mask = 2
 script = ExtResource("1_wr13w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-rotation = 1.5708
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_iwoij")
 animation = &"new_animation"
 

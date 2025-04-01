@@ -13,7 +13,7 @@ var playerUpgrades : Array = [];
 @export var attackSpeedMultiplier = 1.0;
 @export var projectileSpeedMultipler = 1.0;
 @export var areaSizeMultiplier = 1.0;
-var gold = 100;
+var gold: int = 100;
 var gold_income: int = 5;
 
 var ENABLE_BOUNTY = false
@@ -53,6 +53,7 @@ func take_damage(value: float, source: Enemy) -> void:
 		if(playerUpgrade.type == Upgrade.UpgradeType.PASSIVE):
 			if(playerUpgrade.passiveType == PassiveUpgrade.PassiveUpgradeType.ON_PLAYER_HIT):
 				playerUpgrade.ApplyWhenHitEffect(self, source);
+				
 
 func modify_health(value: float) -> void:
 	health += value
@@ -60,6 +61,16 @@ func modify_health(value: float) -> void:
 		health = maxHealth
 	elif health <= 0:
 		SignalBus.player_death.emit()
+	SignalBus.player_health_updated.emit(health, maxHealth)
+	
+func modify_max_health(value: float) -> void:
+	maxHealth += value
+	
+	if maxHealth <= 0:
+		SignalBus.player_death.emit()
+	if health >= maxHealth:
+		health = maxHealth
+	
 	SignalBus.player_health_updated.emit(health, maxHealth)
 
 func modify_gold(value: int) -> void:
