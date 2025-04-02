@@ -9,7 +9,8 @@ enum PassiveUpgradeType {
 	ENEMY_KILL_TYPE,
 	PROJECTILE_MODIFIER,
 	ON_PLAYER_HIT,
-	ON_BUY
+	ON_BUY,
+	ON_INCOME_TICK
 }
 
 func _ready() -> void:
@@ -27,4 +28,7 @@ func ApplyEnemyOnKillPassive(enemy : Enemy) ->void:
 	pass
 
 func ApplyWhenHitEffect(player: Player, enemy : Enemy) ->void:
+	pass
+	
+func ApplyWhenIncomeTickEffect(player: Player) -> void:
 	pass

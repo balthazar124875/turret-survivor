@@ -28,6 +28,7 @@ script = ExtResource("1_itpwq")
 
 [node name="Player" parent="." instance=ExtResource("2_n3kdf")]
 position = Vector2(960, 540)
+healthRegeneration = 0.0
 
 [node name="Marker2D" type="Marker2D" parent="Player"]
 

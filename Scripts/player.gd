@@ -40,6 +40,9 @@ func _input(event):
 	
 func _on_income_timer_timeout() -> void:
 	modify_gold(gold_income)
+	for upgrade in get_passive_upgrades_of_type(PassiveUpgrade.PassiveUpgradeType.ON_INCOME_TICK):
+		upgrade.ApplyWhenIncomeTickEffect(self)
+
 
 func heal_damage(value: float, source: String) -> void:
 	modify_health(value)
@@ -49,10 +52,9 @@ func take_damage(value: float, source: Enemy) -> void:
 	modify_health(-value)
 	damage_flash_timer.start(0.1)
 	$AnimatedSprite2D.modulate = Color(1, 0.5, 0.5)
-	for playerUpgrade in playerUpgrades:
-		if(playerUpgrade.type == Upgrade.UpgradeType.PASSIVE):
-			if(playerUpgrade.passiveType == PassiveUpgrade.PassiveUpgradeType.ON_PLAYER_HIT):
-				playerUpgrade.ApplyWhenHitEffect(self, source);
+	get_passive_upgrades_of_type(PassiveUpgrade.PassiveUpgradeType.ON_PLAYER_HIT)
+	for upgrade in get_passive_upgrades_of_type(PassiveUpgrade.PassiveUpgradeType.ON_PLAYER_HIT):
+		upgrade.ApplyWhenHitEffect(self, source);
 				
 
 func modify_health(value: float) -> void:
@@ -81,10 +83,8 @@ func modify_income(value: int) -> void:
 	gold_income += value
 	
 func _on_enemy_killed(enemy: Enemy) -> void:
-	for playerUpgrade in playerUpgrades:
-		if(playerUpgrade.type == Upgrade.UpgradeType.PASSIVE):
-			if(playerUpgrade.passiveType == PassiveUpgrade.PassiveUpgradeType.ENEMY_KILL_TYPE):
-				playerUpgrade.ApplyEnemyOnKillPassive(enemy);
+	for upgrade in get_passive_upgrades_of_type(PassiveUpgrade.PassiveUpgradeType.ENEMY_KILL_TYPE):
+		upgrade.ApplyEnemyOnKillPassive(enemy);
 	if ENABLE_BOUNTY:
 		modify_gold(enemy.gold_value)
 
@@ -114,6 +114,8 @@ func modify_stat(stat: GlobalEnums.PLAYER_STATS, amount: float) -> void:
 		GlobalEnums.PLAYER_STATS.ADD_HEALTH_REGENERATION:
 			self.healthRegeneration += amount
 
+func get_passive_upgrades_of_type(upgrade_type: PassiveUpgrade.PassiveUpgradeType):
+	return playerUpgrades.filter(func(e: Upgrade): return e.type == Upgrade.UpgradeType.PASSIVE && e.passiveType == upgrade_type)
 
 func _on_damage_flash_timer_timeout() -> void:
 	$AnimatedSprite2D.modulate = Color(1, 1, 1)
