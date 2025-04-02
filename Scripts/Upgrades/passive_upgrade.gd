@@ -8,7 +8,8 @@ enum PassiveUpgradeType {
 	ENEMY_HIT_TYPE,
 	ENEMY_KILL_TYPE,
 	PROJECTILE_MODIFIER,
-	ON_PLAYER_HIT
+	ON_PLAYER_HIT,
+	ON_BUY
 }
 
 func _ready() -> void:

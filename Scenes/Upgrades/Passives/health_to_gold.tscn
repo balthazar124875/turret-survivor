@@ -1,14 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6bdijyldfn64"]
 
-[ext_resource type="Script" path="res://Scripts/Upgrades/hit_max_health_gain.gd" id="1_qqytu"]
-[ext_resource type="Texture2D" uid="uid://dw6kiiokdaji" path="res://Assets/Sprites/upgrades/hit_max_health_gain.png" id="2_8irrq"]
+[ext_resource type="Script" path="res://Scripts/Upgrades/health_to_gold.gd" id="1_nbuuk"]
+[ext_resource type="Texture2D" uid="uid://bedtcgrd2c2so" path="res://Assets/Sprites/upgrades/heart_to_gold.png" id="2_mpyhd"]
 
-[node name="HitMaxHealthGain" type="Node2D"]
-script = ExtResource("1_qqytu")
-passiveType = 3
-upgradeName = "Strong heart"
-description = "When player is hit, gain max health"
+[node name="HealthToGold" type="Node2D"]
+script = ExtResource("1_nbuuk")
+upgradeName = "Heart of gold"
+description = "Lose 500 max health, gain 10 income"
 type = 1
-rarity = 2
-icon = ExtResource("2_8irrq")
-gold_cost = 45
+rarity = 1
+icon = ExtResource("2_mpyhd")
+gold_cost = 0

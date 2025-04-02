@@ -77,6 +77,9 @@ func modify_gold(value: int) -> void:
 	gold += value
 	SignalBus.gold_amount_updated.emit(gold)
 	
+func modify_income(value: int) -> void:
+	gold_income += value
+	
 func _on_enemy_killed(enemy: Enemy) -> void:
 	for playerUpgrade in playerUpgrades:
 		if(playerUpgrade.type == Upgrade.UpgradeType.PASSIVE):
