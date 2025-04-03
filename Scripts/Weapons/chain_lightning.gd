@@ -19,17 +19,20 @@ func get_target() -> Node:
 	return closest_enemy
 
 func shoot(target_enemy: Node) -> void:
-	var chains = chains + player.extraChains
 	
+	var lines = []
+	
+	var chains = chains + player.extraChains
 	
 	var enemyList = enemy_parent.get_children()
 	enemyList.erase(target_enemy)
 	
 	var targets: Array[Node] = []
 	targets.append(target_enemy)
-	
-	for i in chains:
 		
+	lines.append(targets)
+		
+	for i in chains:
 		var closestDistance = chain_range * player.rangeMultiplier
 		var nextTarget
 		for enemy in enemyList:
@@ -43,21 +46,45 @@ func shoot(target_enemy: Node) -> void:
 			targets.append(nextTarget)
 			enemyList.erase(nextTarget)	
 		else:
-			break; 		
-	
-					
-					
-	var bullet = bullet.instantiate()
-	add_child(bullet)
-	bullet.set_targets(targets)
-	for enemy in targets:
-		enemy.take_damage(damage * player.damageMultiplier, "Chain Lightning")
-		SignalBus.on_enemy_hit.emit(enemy)
-		if(discharge):
-			#do knockback on enemy
-			pass
+			break; 	
 		
-	call_deferred("_delete_after_time", bullet_life_time, bullet)
+	if(discharge):
+		var chainAmount = chains
+		for i in targets:
+			var newTargetList: Array[Node] = []
+			newTargetList.append(i)
+			chainAmount -= 1
+			for j in chainAmount:
+				var closestDistance = chain_range * player.rangeMultiplier
+				var nextTarget
+				for enemy in enemyList:
+					var enemyDistance = getDistance(i, enemy)
+					if(enemyDistance < closestDistance):
+						if enemy.is_inside_tree() && enemy.is_alive():
+							nextTarget = enemy
+							closestDistance = enemyDistance
+				
+				if(nextTarget != null):
+					newTargetList.append(nextTarget)
+					enemyList.erase(nextTarget)	
+				else:
+					break;
+			
+			if newTargetList.size() > 1: 	
+				lines.append(newTargetList)
+				
+	for i in lines:	
+		var bullet = bullet.instantiate()
+		add_child(bullet)
+		bullet.set_targets(i)
+		for enemy in i:
+			enemy.take_damage(damage * player.damageMultiplier, "Chain Lightning")
+			SignalBus.on_enemy_hit.emit(enemy)
+			if(discharge):
+				#do knockback on enemy
+				pass
+			
+		call_deferred("_delete_after_time", bullet_life_time, bullet)
 	
 func getDistance(source: Enemy, enemy: Enemy):
 	return source.global_position.distance_to(enemy.global_position)
@@ -65,7 +92,6 @@ func getDistance(source: Enemy, enemy: Enemy):
 func _delete_after_time(timeout, bullet):
 	await get_tree().create_timer(timeout).timeout
 	bullet.queue_free()
-	
 	
 func apply_level_up():
 	if(level == 5):
