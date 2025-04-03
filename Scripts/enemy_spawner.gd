@@ -6,7 +6,8 @@ extends Node2D
 @export var enemy_spawn_distance = 600
 @export var enemies: Node2D
 
-@export var enemy_hp_scaling = 1.2
+@export var enemy_hp_scaling = 1.25
+@export var enemy_dmg_scaling = 1.2
 @export var double_enemies_every = 10
 
 
@@ -40,6 +41,7 @@ func _on_enemy_spawner_timer_timeout() -> void:
 		enemy.position = Vector2(xPos, yPos)
 		enemies.add_child(enemy)
 		enemy.increase_hp(pow(enemy_hp_scaling, current_wave / waves.size()))
+		enemy.increase_damage(pow(enemy_dmg_scaling, current_wave / waves.size()))
 
 func _on_wave_timer_timeout() -> void:
 	current_wave += 1

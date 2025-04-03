@@ -30,6 +30,7 @@ script = ExtResource("1_76bfq")
 speed = 75
 health = 8
 gold_value = 2
+damage = 3.1
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

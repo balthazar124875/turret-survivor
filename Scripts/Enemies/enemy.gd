@@ -66,7 +66,9 @@ func update_active_status_effects(delta):
 			
 func increase_hp(multiplier: float) -> void:
 	health *= multiplier
-
+	
+func increase_damage(multiplier: float) -> void:
+	damage *= multiplier
 
 # TODO: DO NOT DO THIS EVERY FRAME
 func handle_status_effects():
@@ -122,6 +124,7 @@ func is_alive() -> bool:
 	return health > 0
 
 func take_damage(amount: float, source: String = '') -> void:
+	#print(amount)
 	health -= amount
 	damage_flash = true
 	damage_flash_timer.start(0.1) 
