@@ -126,10 +126,10 @@ func take_damage(amount: float, source: String = '') -> void:
 	damage_flash = true
 	damage_flash_timer.start(0.1) 
 	spawn_one_shot_particles(damage_taken_particles, self.global_position)
-	#var new_damage_numbers = damage_numbers_scene.instantiate()
-	#new_damage_numbers.global_position = position
-	#new_damage_numbers.number = amount
-	#get_node("/root/EmilScene/ParticleNode").add_child(new_damage_numbers)
+	var new_damage_numbers = damage_numbers_scene.instantiate()
+	new_damage_numbers.global_position = position
+	new_damage_numbers.number = amount
+	get_node("/root/EmilScene/ParticleNode").add_child(new_damage_numbers)
 	SignalBus.damage_done.emit(amount, source)
 	if(health <= 0):
 		die()

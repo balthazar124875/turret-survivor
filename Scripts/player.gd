@@ -4,8 +4,8 @@ class_name Player
 
 @export var maxHealth = 100.0;
 @export var health = 100.0;
-@export var healthRegeneration = 0.0;
-var playerUpgrades : Array = [];
+@export var healthRegeneration: float = 0.0;
+var playerUpgrades: Array = [];
 @export var extraProjectiles = 0;
 @export var extraChains = 0;
 @export var rangeMultiplier = 1.0;
@@ -74,6 +74,9 @@ func modify_max_health(value: float) -> void:
 		health = maxHealth
 	
 	SignalBus.player_health_updated.emit(health, maxHealth)
+
+func modify_health_regeneration(value: float) -> void:
+	healthRegeneration += value
 
 func modify_gold(value: int) -> void:
 	gold += value
