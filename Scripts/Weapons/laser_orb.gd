@@ -8,9 +8,15 @@ var laserLineNode :Line2D;
 var laserVfxInstance;
 var tween : Tween
 
+var currentTargetEnemy : Enemy;
+var laserDamageTimer : float = 0.0;
+var laserDamageTickSpeed : float = 0.25; #Lower value means faster speed.
+var laserDamagePerTick : float = 1.0;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
+	currentTargetEnemy = null;
 	laserVfxInstance = laserVfx.instantiate();
 	add_child(laserVfxInstance)
 	laserVfxInstance.global_position = global_position;
@@ -23,6 +29,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super(delta)
 	var enemy = get_target() #Gets closest enemy #TODO: Get strongest instead
+	if currentTargetEnemy != enemy:
+		#currTargetEnemy has changed
+		currentTargetEnemy = enemy;
+		laserDamageTimer = 0.0;
 	if(enemy != null):
 		laserLineNode.points[1] = to_local(enemy.global_position);
 		var line_length = laserLineNode.points[0].distance_to(laserLineNode.points[1]);
@@ -33,6 +43,11 @@ func _process(delta: float) -> void:
 		var rotAngle = (laserLineNode.points[0] - laserLineNode.points[1]).angle();
 		laserVfxParticleEmitter.rotation = rotAngle - PI;
 		StartLaserVfx();
+		
+		laserDamageTimer += delta;
+		if laserDamageTimer >= laserDamageTickSpeed:
+			enemy.take_damage(laserDamagePerTick * player.damageMultiplier, source);
+			laserDamageTimer = 0.0;
 	else:
 		ShutDownLaserVfx();
 	pass

@@ -8,7 +8,7 @@ var nextAngle = 0.0;
 var nextPos;
 var orbSpeed = 1.0;
 var damage_per_tick = 1;
-var damageThresholdSpeed : float = 0.5;
+var damage_tick_interval : float = 0.5; #Lower value faster tick speed
 
 @export var orbEnhanceVfx : PackedScene
 var enhancedVfxInstance : Node2D;
@@ -61,7 +61,7 @@ func _process(delta: float) -> void:
 	
 	for regEnemy in registeredEnemyList:
 		regEnemy.tick += delta;
-		if regEnemy.tick >= damageThresholdSpeed:
+		if regEnemy.tick >= damage_tick_interval:
 			HitEnemy(regEnemy.enemy);
 			regEnemy.tick = 0.0;
 		
