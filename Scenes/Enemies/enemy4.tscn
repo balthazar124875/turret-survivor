@@ -53,5 +53,6 @@ scale = Vector2(3, 3)
 texture = ExtResource("3_b3hmh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 scale = Vector2(3, 3)
 texture = ExtResource("4_x2fxh")

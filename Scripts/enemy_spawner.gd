@@ -19,6 +19,12 @@ var current_wave = 1
 @onready var wave_timer: Timer = get_node("WaveTimer")
 @onready var enemy_spawn_timer: Timer = get_node("EnemySpawnerTimer")
 
+#TODO: REMOVE THIS
+func _input(event):
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_V:
+			_on_wave_timer_timeout()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	wave_progress_bar.max_value = wave_timer.wait_time

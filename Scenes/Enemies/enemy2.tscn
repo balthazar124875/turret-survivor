@@ -35,6 +35,7 @@ metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
+y_sort_enabled = true
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_p7tvn")
 
@@ -54,6 +55,7 @@ scale = Vector2(6.44, 5.32)
 texture = ExtResource("3_ewhym")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(-3, -2)
 scale = Vector2(3, 3)
 texture = ExtResource("2_by6wh")

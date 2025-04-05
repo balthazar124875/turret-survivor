@@ -13,6 +13,7 @@ var current_damage: float = damage
 var current_attack_cooldown: float = attack_cooldown
 @export var action_speed: float = 1
 var current_action_speed: float = action_speed
+@export var armor: float = 0
 
 var t : float
 
@@ -124,16 +125,17 @@ func is_alive() -> bool:
 	return health > 0
 
 func take_damage(amount: float, source: String = '') -> void:
-	#print(amount)
-	health -= amount
+	# Take minimum 1 damage
+	var damage_after_armor = max(1, amount - armor)
+	health -= damage_after_armor
 	damage_flash = true
 	damage_flash_timer.start(0.1) 
 	spawn_one_shot_particles(damage_taken_particles, self.global_position)
 	var new_damage_numbers = damage_numbers_scene.instantiate()
 	new_damage_numbers.global_position = position
-	new_damage_numbers.number = amount
+	new_damage_numbers.number = damage_after_armor
 	get_node("/root/EmilScene/ParticleNode").add_child(new_damage_numbers)
-	SignalBus.damage_done.emit(amount, source)
+	SignalBus.damage_done.emit(damage_after_armor, source)
 	if(health <= 0):
 		die()
 
