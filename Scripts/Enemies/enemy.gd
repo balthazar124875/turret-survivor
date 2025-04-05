@@ -109,8 +109,7 @@ func _process(delta: float) -> void:
 		if current_position.distance_to(target_position) > 100:  # Adjust tolerance as needed
 			global_position += direction * speed * delta * current_action_speed
 		elif t > attack_cooldown: 
-			t = 0
-			player.take_damage(damage, self)
+			attack()
 			#call_deferred("enable_can_attack", attack_cooldown)
 			#can_attack = false
 	elif t > attack_cooldown:
@@ -120,6 +119,10 @@ func _process(delta: float) -> void:
 #func enable_can_attack(timeout):
 	#await get_tree().create_timer(timeout).timeout
 	#can_attack = true
+
+func attack() -> void:
+	t = 0
+	player.take_damage(damage, self)
 
 func is_alive() -> bool:
 	return health > 0

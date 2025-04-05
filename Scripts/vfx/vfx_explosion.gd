@@ -8,6 +8,7 @@ var damage_per_tick = 100
 func _ready() -> void:
 	animPlayer = $AnimationPlayer;
 	call_deferred("_delete_after_time", aliveTime)
+	animPlayer.play("start_animation")
 	pass # Replace with function body.
 
 func _physics_process(delta):
