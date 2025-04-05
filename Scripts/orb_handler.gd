@@ -36,16 +36,18 @@ static func addPlayerBaseOrb(newOrb : BaseOrb):
 			nextReplacableOrbIdx = nextReplacableOrbIdx % orbList.size();
 
 static func ArrangePlayerOrbs(playerOrbs : Array):
-	if(playerOrbs.size() == 0):
+static func ArrangePlayerOrbs(orbListToArrange : Array):
+	if(orbListToArrange.size() == 0):
 		return
-	var nrOfOrbs = playerOrbs.size();
+	var nrOfOrbs = orbListToArrange.size();
 	var angle = (360.0 / nrOfOrbs);
 	var i = 0;
 	angle = deg_to_rad(angle);
-	for x in playerOrbs:
+	for x in orbListToArrange:
 		x.nextAngle = angle*i;
 		var orbPos = Vector2(sin(x.nextAngle), cos(x.nextAngle))*x.orbRange;
 		x.nextPos = orbPos;
-		x.currAngle = (playerOrbs[0].currAngle) + angle*i;
+		x.currAngle = (orbListToArrange[0].currAngle) + angle*i;
 		i += 1;
-	pass
+	
+	SignalBus.orb_amount_increased.emit(playerOrbs.size(), maxNrInnerOrbs, playerOrbsOuter.size(), maxNrOuterOrbs)
