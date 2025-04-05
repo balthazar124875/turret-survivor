@@ -6,6 +6,8 @@ extends PassiveUpgrade
 @export var procChance = 0.1
 @export var luckScaling = 0.02
 
+var active = false
+
 var coldDamge = false
 
 @onready var player
@@ -16,7 +18,10 @@ func _ready() -> void:
 
 func applyUpgradeToPlayer(player: Player) -> void:
 	self.player = player
-	SignalBus.on_enemy_hit.connect(_apply_effects)
+	if(!active):
+		SignalBus.on_enemy_hit.connect(_apply_effects)
+		active = true
+	super.applyUpgradeToPlayer(player)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
