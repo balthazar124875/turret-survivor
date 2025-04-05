@@ -5,6 +5,8 @@ class_name ClusterBombProjectile
 @onready var cluster_bomb_scene = preload("res://Scenes/Projectiles/cluster_bomb_projectile.tscn")
 @onready var explosionVFX = preload("res://Scenes/vfx/vfx_explosion.tscn");
 @onready var player = get_node("/root/EmilScene/Player")
+@onready var sprite = $Sprite2D
+
 
 var start_pos: Vector2
 var target_pos: Vector2
@@ -39,8 +41,12 @@ func _ready() -> void:
 	
 	path.curve.set_point_out(0, Vector2(target_pos.x / 2, -abs(target_pos.x)))
 	path.curve.set_point_position(1, target_pos)
+	sprite.rotation_degrees = randf_range(0,360)
 
 func _process(delta) -> void:
+	# Spin sprite
+	sprite.rotate(7 * delta)
+	
 	if path_follow.progress_ratio >= 0.95:
 		create_explosion()
 		damage_enemies_in_collider()

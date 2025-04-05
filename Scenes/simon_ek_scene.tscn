@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=23 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dpnyf8ftq0aek" path="res://Assets/Sprites/UI/outline.png" id="8_3c8yg"]
 [ext_resource type="Theme" uid="uid://bug82i6sy1xtq" path="res://Themes/texture_button_theme.tres" id="8_4ctao"]
 [ext_resource type="Resource" uid="uid://dk16077xloovp" path="res://Resources/wave4.tres" id="8_frnkb"]
+[ext_resource type="Resource" uid="uid://ngftjlnyqymm" path="res://Resources/wave5.tres" id="9_qpx83"]
 [ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="9_yckrj"]
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
 [ext_resource type="Script" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
@@ -35,7 +36,7 @@ healthRegeneration = 0.0
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
-waves = Array[ExtResource("4_7auck")]([ExtResource("5_52t8s"), ExtResource("6_cqumk"), ExtResource("7_df5er"), ExtResource("8_frnkb")])
+waves = Array[ExtResource("4_7auck")]([ExtResource("5_52t8s"), ExtResource("6_cqumk"), ExtResource("7_df5er"), ExtResource("8_frnkb"), ExtResource("9_qpx83")])
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
 

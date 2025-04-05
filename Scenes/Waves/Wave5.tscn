@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://tq8o2dq1nxp7"]
+
+[ext_resource type="Script" path="res://Scripts/wave.gd" id="1_djhai"]
+[ext_resource type="PackedScene" uid="uid://bu4hmxcvv053x" path="res://Scenes/Enemies/enemy5.tscn" id="2_ryc0f"]
+
+[node name="Wave5" type="Node2D"]
+script = ExtResource("1_djhai")
+enemy = ExtResource("2_ryc0f")
+spawn_interval = 0.3
