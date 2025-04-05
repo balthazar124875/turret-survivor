@@ -165,6 +165,7 @@ func _on_shop_upgrade_button_pressed(index: int) -> void:
 
 	shopUpgradeButtons[index].upgradeNode = null
 	buttons[index].texture_normal = empty_item_slot_texture
+	tooltipMgr.HideTooltip();
 
 func _on_reroll_button_pressed() -> void:
 	if player.gold < current_reroll_cost:
@@ -215,6 +216,8 @@ func get_cost(rarity: Upgrade.UpgradeRarity) -> float:
 	return commonCost
 
 func mouse_enter(index: int) -> void:
+	if shopUpgradeButtons[index].upgradeNode == null:
+		return; #This means the shop upgrade button has been purchased and is gone
 	var highlightedButton = shopUpgradeButtons[index].button;
 	var buttonTooltip = shopUpgradeButtons[index].tooltip;
 	tooltipMgr.DisplayTooltip(buttonTooltip, highlightedButton);
