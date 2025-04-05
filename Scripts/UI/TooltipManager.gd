@@ -17,7 +17,7 @@ func _ready() -> void:
 func DisplayTooltip(tooltipText : String, button : Control) -> void:
 	label.text = tooltipText;
 	panelContainer.visible = true;
-	
+	panelContainer.reset_size();
 	#panelContainer.global_position = get_viewport().get_mouse_position();
 	
 	#Place the container at bottom centre of button
