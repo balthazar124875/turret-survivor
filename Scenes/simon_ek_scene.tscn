@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=25 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -14,15 +14,30 @@
 [ext_resource type="Texture2D" uid="uid://dpnyf8ftq0aek" path="res://Assets/Sprites/UI/outline.png" id="8_3c8yg"]
 [ext_resource type="Theme" uid="uid://bug82i6sy1xtq" path="res://Themes/texture_button_theme.tres" id="8_4ctao"]
 [ext_resource type="Resource" uid="uid://dk16077xloovp" path="res://Resources/wave4.tres" id="8_frnkb"]
-[ext_resource type="Resource" uid="uid://ngftjlnyqymm" path="res://Resources/wave5.tres" id="9_qpx83"]
+[ext_resource type="Resource" path="res://Resources/wave5.tres" id="9_qpx83"]
 [ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="9_yckrj"]
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
 [ext_resource type="Script" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
 [ext_resource type="Script" path="res://Scripts/UI/orb_stats.gd" id="11_v6kre"]
 [ext_resource type="PackedScene" uid="uid://wj4fa28pbvk4" path="res://Scenes/circle.tscn" id="13_o8hoq"]
 [ext_resource type="PackedScene" uid="uid://bampk2ki2ygjd" path="res://Scenes/UI/damage_dictionary.tscn" id="18_dwmxg"]
+[ext_resource type="Script" path="res://Scripts/UI/TooltipManager.gd" id="22_q1apf"]
 
 [sub_resource type="Theme" id="Theme_t5p71"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v52ci"]
+bg_color = Color(0, 0.0352941, 0.0627451, 0.784314)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.882274, 0.279412, 0.473383, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0.811765, 0, 0, 0)
+shadow_size = 10
 
 [node name="EmilScene" type="Node2D"]
 script = ExtResource("1_itpwq")
@@ -424,5 +439,30 @@ scale = Vector2(0.5, 0.5)
 z_index = -300
 position = Vector2(960, 540)
 scale = Vector2(2, 2)
+
+[node name="Tooltip" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("22_q1apf")
+
+[node name="PanelContainer" type="PanelContainer" parent="Tooltip"]
+z_index = 1
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v52ci")
+
+[node name="MarginContainer" type="MarginContainer" parent="Tooltip/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Tooltip/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Hello"
 
 [connection signal="pressed" from="GameplayUi/LeftMenuColumn/RerollContainer/RerollButton" to="GameplayUi/LeftMenuColumn/ShopUpgrades" method="_on_reroll_button_pressed"]

@@ -24,7 +24,7 @@ var registeredEnemyList : Array[RegisteredEnemy];
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#These two will make so all children of BaseOrb connects events for body entered and exit
-	$Area2D.body_entered.connect(_on_area_2d_body_entered)
+	$Area2D.body_entered.connect(_on_area_2d_body_entered) #The _on_area_2d_body_entered can be named anything!
 	$Area2D.body_exited.connect(_on_area_2d_body_exited)
 	enemy_parent = get_node("/root/EmilScene/Enemies")
 	

@@ -3,8 +3,9 @@ extends Node
 class_name ShopManager;
 
 class ShopUpgradeButton:
-	var button;
+	var button : Control;
 	var upgradeNode: Node2D;
+	var tooltip : String;
 	
 static var UPGRADES_LIST = [[],[],[],[]]; #2D array, access elems by UPGRADE_LIST[rarity] -> gives the list of upgrades
 static var availableUpgradesList : Array = []; #This list will hold all upgrades that are available to use currently CURRENTLY UNUSED!!!
@@ -32,6 +33,8 @@ var buttons: Array[Node]
 var player: Player
 var circle: Circle
 
+@onready var tooltipMgr : TooltipManager = $"../../../Tooltip";
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_node("/root/EmilScene/Player")
@@ -40,7 +43,7 @@ func _ready() -> void:
 	initialize_buttons()
 	SignalBus.current_wave_updated.connect(new_wave_shop_reroll)
 	empty_item_slot_texture = load("res://Assets/Sprites/upgrades/empty_upgrade_slot.png")
-	
+
 func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_SPACE:
@@ -69,6 +72,9 @@ func initialize_buttons() -> void:
 		node.button = buttons[i]
 		shopUpgradeButtons.push_back(node);
 		buttons[i].pressed.connect(_on_shop_upgrade_button_pressed.bind(i))
+		#Register on mouse enter and exit events for all shopbuttons
+		buttons[i].mouse_entered.connect(mouse_enter.bind(i))
+		buttons[i].mouse_exited.connect(mouse_exit)
 	fillShopUpgradeButtons()
 
 func new_wave_shop_reroll(current_wave: int = 0) -> void:
@@ -82,14 +88,7 @@ func fillShopUpgradeButtons(current_wave: int = 0) -> void:
 	for i in shopUpgradeButtons.size():
 		shopUpgradeButtons[i].upgradeNode = newUpgradeList[i];
 		buttons[i].texture_normal = newUpgradeList[i].icon
-		buttons[i].tooltip_text = str(
-			newUpgradeList[i].upgradeName,
-			"\n", 
-			newUpgradeList[i].description,
-			"\n", 
-			newUpgradeList[i].gold_cost, 
-			" gold"
-		)
+		GenerateButtonTooltip(shopUpgradeButtons[i]);
 		var text = buttons[i].get_child(0) as RichTextLabel
 		text.scroll_active = false
 		if(newUpgradeList[i].upgradeAmount != 0):
@@ -102,6 +101,16 @@ func fillShopUpgradeButtons(current_wave: int = 0) -> void:
 		outline.modulate = get_color(newUpgradeList[i].rarity)
 		
 			
+
+func GenerateButtonTooltip(shopUpgradeButtons : ShopUpgradeButton) -> void:
+	shopUpgradeButtons.tooltip = str(
+			shopUpgradeButtons.upgradeNode.upgradeName,
+			"\n", 
+			shopUpgradeButtons.upgradeNode.description,
+			"\n", 
+			shopUpgradeButtons.upgradeNode.gold_cost, 
+			" gold"
+		)
 
 func renderShopUpgradeButtonsText() -> void:
 	#TODO: Can't assign text to TextureButton like this.
@@ -204,3 +213,13 @@ func get_cost(rarity: Upgrade.UpgradeRarity) -> float:
 		Upgrade.UpgradeRarity.LEGENDARY:
 			return legendaryCost
 	return commonCost
+
+func mouse_enter(index: int) -> void:
+	var highlightedButton = shopUpgradeButtons[index].button;
+	var buttonTooltip = shopUpgradeButtons[index].tooltip;
+	tooltipMgr.DisplayTooltip(buttonTooltip, highlightedButton);
+	pass # Replace with function body.
+
+func mouse_exit() -> void:
+	tooltipMgr.HideTooltip();
+	pass # Replace with function body.
