@@ -31,6 +31,7 @@ script = ExtResource("1_uv8rk")
 speed = 200
 health = 8
 damage = 2.3
+armor = 10.0
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
