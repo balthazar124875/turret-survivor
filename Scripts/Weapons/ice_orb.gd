@@ -7,15 +7,9 @@ class_name IceOrb
 var spawnTimer = 1.0
 var currTimer = 0.0
 
-#TODO: This needs to slow enemies
-func _physics_process(delta):
-	for body in $Area2D.get_overlapping_bodies():
-		if body is Enemy:
-			HitEnemy(body, delta);
-
-func HitEnemy(body, delta) -> void:
+func HitEnemy(body) -> void:
 	#TODO: Slow enemies
-	super.HitEnemy(body, delta)
+	super.HitEnemy(body)
 	return;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

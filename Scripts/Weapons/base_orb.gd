@@ -7,14 +7,25 @@ var currAngle = 0.0;
 var nextAngle = 0.0;
 var nextPos;
 var orbSpeed = 1.0;
-var damage_per_tick = 5;
+var damage_per_tick = 1;
+var damageThresholdSpeed : float = 0.5;
 
 @export var orbEnhanceVfx : PackedScene
 var enhancedVfxInstance : Node2D;
 var isEnhanced : bool = false;
 
+class RegisteredEnemy:
+	var enemy : Enemy;
+	var tick : float;
+	
+
+var registeredEnemyList : Array[RegisteredEnemy];
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#These two will make so all children of BaseOrb connects events for body entered and exit
+	$Area2D.body_entered.connect(_on_area_2d_body_entered)
+	$Area2D.body_exited.connect(_on_area_2d_body_exited)
 	enemy_parent = get_node("/root/EmilScene/Enemies")
 	
 	orbEnhanceVfx = load("res://Scenes/vfx/vfx_orb_enhanced.tscn")
@@ -29,13 +40,13 @@ func _ready() -> void:
 	orbRange = screenSize.y*0.15; #10% of the screenSize, to make this scale properly
 	pass # Replace with function body.
 
-func _physics_process(delta):
-	for body in $Area2D.get_overlapping_bodies():
-		if body is Enemy:
-			HitEnemy(body, delta);
+#func _physics_process(delta):
+#	for body in $Area2D.get_overlapping_bodies():
+#		if body is Enemy:
+#			HitEnemy(body, delta);
 
-func HitEnemy(body, delta) -> void:
-	body.take_damage(damage_per_tick * delta * player.damageMultiplier, source)
+func HitEnemy(body) -> void:
+	body.take_damage(damage_per_tick * player.damageMultiplier, source)
 	return;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,6 +59,13 @@ func _process(delta: float) -> void:
 	
 	enhancedVfxInstance.global_position = orbPos;
 	
+	for regEnemy in registeredEnemyList:
+		regEnemy.tick += delta;
+		if regEnemy.tick >= damageThresholdSpeed:
+			HitEnemy(regEnemy.enemy);
+			regEnemy.tick = 0.0;
+		
+	
 func ApplyVisualChanges() -> void:
 	$AnimatedSprite2D.scale *= 2.0;
 	$Area2D/CollisionShape2D.scale *= 2.0;
@@ -57,3 +75,22 @@ func EnhanceOrb() -> void:
 	enhancedVfxInstance.visible = true;
 	isEnhanced = true;
 	pass
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		var registeredEnemy = RegisteredEnemy.new();
+		registeredEnemy.enemy = body;
+		registeredEnemy.tick = 0.0;
+		registeredEnemyList.push_back(registeredEnemy);
+		HitEnemy(body);
+	pass # Replace with function body.
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body is Enemy:
+		for regEnemy in registeredEnemyList:
+			if regEnemy.enemy == body:
+				registeredEnemyList.erase(regEnemy);
+				return;
+	pass # Replace with function body.

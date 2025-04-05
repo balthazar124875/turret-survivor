@@ -26,10 +26,9 @@ func _physics_process(delta):
 		pass
 	for body in collisionList:
 		if body is Enemy:
-			HitEnemy(body, delta);
+			PlayGoldVfxEffect();
 
-func HitEnemy(body, delta) -> void:
-	PlayGoldVfxEffect();
+func HitEnemy(body) -> void:
 	player.modify_gold(gold_per_tick)
 	#super.HitEnemy(body, delta) #This orb does no damage to enemies
 
