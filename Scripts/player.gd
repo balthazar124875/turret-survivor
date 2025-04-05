@@ -13,6 +13,7 @@ var playerUpgrades: Array = [];
 @export var attackSpeedMultiplier = 1.0;
 @export var projectileSpeedMultipler = 1.0;
 @export var areaSizeMultiplier = 1.0;
+@export var luck = 0;
 var gold: int = 100;
 var gold_income: int = 5;
 
@@ -116,6 +117,8 @@ func modify_stat(stat: GlobalEnums.PLAYER_STATS, amount: float) -> void:
 			modify_health(amount)
 		GlobalEnums.PLAYER_STATS.ADD_HEALTH_REGENERATION:
 			self.healthRegeneration += amount
+		GlobalEnums.PLAYER_STATS.BONUS_LUCK:
+			self.luck += amount
 
 func get_passive_upgrades_of_type(upgrade_type: PassiveUpgrade.PassiveUpgradeType):
 	return playerUpgrades.filter(func(e: Upgrade): return e.type == Upgrade.UpgradeType.PASSIVE && e.passiveType == upgrade_type)

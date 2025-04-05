@@ -18,8 +18,10 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func applyUpgradeToPlayer(player: Player) -> void:
-	#level up passive
-	pass
+	if(upgradeAmount == 1):
+		reparentToPlayer(player)
+	else:
+		apply_level_up()
 
 func reparentToPlayer(player: Player) -> void:
 	player.get_node("./Upgrades/Passives").add_child(self)
@@ -32,3 +34,7 @@ func ApplyWhenHitEffect(player: Player, enemy : Enemy) ->void:
 	
 func ApplyWhenIncomeTickEffect(player: Player) -> void:
 	pass
+	
+func apply_level_up():
+	pass
+	

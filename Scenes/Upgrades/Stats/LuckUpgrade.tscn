@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpnandqo3ws5u"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Stats/stat_upgrade.gd" id="1_bljpq"]
+[ext_resource type="Texture2D" uid="uid://crnfw7u4yi5ga" path="res://Assets/Sprites/upgrades/luckybug.png" id="2_pgi7s"]
+
+[node name="LuckUpgrade" type="Node2D"]
+script = ExtResource("1_bljpq")
+stat_type = 11
+amount = 1.0
+upgradeName = "Luck up"
+description = "Increases luck by 1!"
+type = 2
+rarity = 2
+icon = ExtResource("2_pgi7s")

@@ -22,10 +22,11 @@ func shoot(enemy: Node) -> void:
 
 func apply_level_up():
 	if(level == 5):
-			base_projectile_speed += 100
+			pierce += 3
 			return
 	if(level == 10):
-			cooldown *= 0.7
+			cooldown *= 0.9
+			base_projectile_amount += 1
 			return
 	
 	match level % 5:

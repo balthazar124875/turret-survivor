@@ -103,7 +103,7 @@ func apply_level_up():
 	
 	match level % 5:
 		1:
-			chain_range += 100
+			chain_range += 25
 		2:
 			cooldown *= 0.95
 		3:

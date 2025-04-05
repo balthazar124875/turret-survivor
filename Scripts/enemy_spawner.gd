@@ -7,7 +7,7 @@ extends Node2D
 @export var enemies: Node2D
 
 @export var enemy_hp_scaling = 1.25
-@export var enemy_dmg_scaling = 1.2
+@export var enemy_dmg_scaling = 1.05
 @export var double_enemies_every = 10
 
 
