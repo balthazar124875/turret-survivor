@@ -35,7 +35,6 @@ static func addPlayerBaseOrb(newOrb : BaseOrb):
 			nextReplacableOrbIdx += 1;
 			nextReplacableOrbIdx = nextReplacableOrbIdx % orbList.size();
 
-static func ArrangePlayerOrbs(playerOrbs : Array):
 static func ArrangePlayerOrbs(orbListToArrange : Array):
 	if(orbListToArrange.size() == 0):
 		return
