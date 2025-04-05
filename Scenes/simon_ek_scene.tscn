@@ -449,6 +449,7 @@ script = ExtResource("22_q1apf")
 
 [node name="PanelContainer" type="PanelContainer" parent="Tooltip"]
 z_index = 1
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
