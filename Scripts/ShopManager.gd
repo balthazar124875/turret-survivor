@@ -34,9 +34,11 @@ var player: Player
 var circle: Circle
 
 @onready var tooltipMgr : TooltipManager = $"../../../Tooltip";
+var currTooltipShotButtonIdx;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	currTooltipShotButtonIdx = -1;
 	player = get_node("/root/EmilScene/Player")
 	circle = get_node("/root/EmilScene/Circle")
 	load_upgrades()
@@ -99,6 +101,9 @@ func fillShopUpgradeButtons(current_wave: int = 0) -> void:
 		
 		var outline = buttons[i].get_child(1) as TextureButton
 		outline.modulate = get_color(newUpgradeList[i].rarity)
+		#This is to fix a bug where the tooltip from previous upgrade is showing
+		#even after the upgrade have changed after timer runs out.
+		UpdateUpgradeTooltip(currTooltipShotButtonIdx);
 		
 			
 
@@ -215,14 +220,22 @@ func get_cost(rarity: Upgrade.UpgradeRarity) -> float:
 			return legendaryCost
 	return commonCost
 
-func mouse_enter(index: int) -> void:
+func UpdateUpgradeTooltip(index: int):
+	if(index < 0):
+		return
 	if shopUpgradeButtons[index].upgradeNode == null:
 		return; #This means the shop upgrade button has been purchased and is gone
 	var highlightedButton = shopUpgradeButtons[index].button;
 	var buttonTooltip = shopUpgradeButtons[index].tooltip;
 	tooltipMgr.DisplayTooltip(buttonTooltip, highlightedButton);
-	pass # Replace with function body.
+	currTooltipShotButtonIdx = index;
+	pass
+
+func mouse_enter(index: int) -> void:
+	UpdateUpgradeTooltip(index)
+	pass
 
 func mouse_exit() -> void:
 	tooltipMgr.HideTooltip();
-	pass # Replace with function body.
+	currTooltipShotButtonIdx = -1;
+	pass
