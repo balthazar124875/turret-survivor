@@ -8,7 +8,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func applyUpgradeToPlayer(player: Player) -> void:
-	player.modify_stat(stat_type, amount)
+	player.modify_stat(stat_type, amount, upgradeName)
 
 func reparentToPlayer(player: Player) -> void:
 	player.get_node("./Upgrades/Stats").add_child(self)

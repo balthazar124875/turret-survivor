@@ -59,9 +59,9 @@ offset_bottom = 1080.0
 
 [node name="OrbStats" type="Control" parent="GameplayUi/LeftMenuColumn"]
 anchors_preset = 0
-offset_top = 806.0
+offset_top = 669.0
 offset_right = 40.0
-offset_bottom = 846.0
+offset_bottom = 709.0
 scale = Vector2(2, 2)
 script = ExtResource("11_v6kre")
 
@@ -94,6 +94,14 @@ offset_top = -58.0
 offset_right = 140.333
 offset_bottom = -35.0
 text = "100/100"
+
+[node name="ArmorLabel" type="Label" parent="GameplayUi/LeftMenuColumn/HealthUi"]
+layout_mode = 0
+offset_left = 0.333333
+offset_top = -76.6667
+offset_right = 140.333
+offset_bottom = -53.6667
+text = "Armor: 0"
 
 [node name="HealthBar" type="ProgressBar" parent="GameplayUi/LeftMenuColumn/HealthUi"]
 layout_mode = 0
