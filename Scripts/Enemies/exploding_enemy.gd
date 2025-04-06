@@ -9,8 +9,8 @@ func attack() -> void:
 	player.take_damage(damage, self)
 	var explosion = explosionVFX.instantiate()
 	explosion.position = position
-	explosion.set_particle_scale(1)
+	explosion.set_particle_scale(150)
 	$CollisionShape2D.shape.radius = 1
-	add_child(explosion)
-	#die()
+	get_node("/root/EmilScene").add_child(explosion)
+	die()
 	
