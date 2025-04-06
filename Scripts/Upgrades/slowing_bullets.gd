@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	
 func _apply_effects(enemy: Enemy):
 	var rndNumber = randf_range(0.0, 1.0);
-	if(rndNumber <= procChance + (player.luck * luckScaling)):
+	if(rndNumber <= procChance * (1 + (player.luck * luckScaling))):
 		var slow = EnemyStatusEffect.new()
 		slow.type = GlobalEnums.ENEMY_STATUS_EFFECTS.SLOWED
 		slow.duration = duration
@@ -43,7 +43,7 @@ func apply_level_up():
 	
 	match upgradeAmount % 3:
 		0:
-			slowAmount += 0.1
+			slowAmount += 0.02
 		1:
 			procChance += 0.05
 		2:

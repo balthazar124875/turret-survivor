@@ -73,7 +73,7 @@ func initialize_buttons() -> void:
 		var node = ShopUpgradeButton.new()
 		node.button = buttons[i]
 		shopUpgradeButtons.push_back(node);
-		buttons[i].pressed.connect(_on_shop_upgrade_button_pressed.bind(i))
+		buttons[i].button_down.connect(_on_shop_upgrade_button_pressed.bind(i))
 		#Register on mouse enter and exit events for all shopbuttons
 		buttons[i].mouse_entered.connect(mouse_enter.bind(i))
 		buttons[i].mouse_exited.connect(mouse_exit)
@@ -152,6 +152,12 @@ func GenerateUpgradesListForShop(size : int) -> Array:
 	return shopUpgradeList;
 
 func _on_shop_upgrade_button_pressed(index: int) -> void:
+	var rightclick = false
+	if Input.is_mouse_button_pressed(1):
+		rightclick = false
+	elif Input.is_mouse_button_pressed(2):
+		rightclick = true
+		
 	if shopUpgradeButtons[index].upgradeNode == null:
 		return
 	if player.gold < shopUpgradeButtons[index].upgradeNode.gold_cost:
@@ -168,9 +174,16 @@ func _on_shop_upgrade_button_pressed(index: int) -> void:
 		shopUpgradeButtons[index].upgradeNode.applyPlayerUpgrade(player)
 		player.playerUpgrades.push_back(new_upgrade);
 
-	shopUpgradeButtons[index].upgradeNode = null
-	buttons[index].texture_normal = empty_item_slot_texture
-	tooltipMgr.HideTooltip();
+	var x = shopUpgradeButtons[index]
+	if rightclick == false:
+		shopUpgradeButtons[index].upgradeNode = null
+		buttons[index].texture_normal = empty_item_slot_texture
+		tooltipMgr.HideTooltip();
+	else:
+		var text = shopUpgradeButtons[index].button.get_child(0) as RichTextLabel
+		text.scroll_active = false
+		if(shopUpgradeButtons[index].upgradeNode.upgradeAmount != 0):
+			text.text = "[right][color=black][font_size=12]" + str(shopUpgradeButtons[index].upgradeNode.upgradeAmount) + "[/font_size][/color][/right]"
 
 func _on_reroll_button_pressed() -> void:
 	if player.gold < current_reroll_cost:

@@ -140,6 +140,7 @@ script = ExtResource("5_jxmqa")
 
 [node name="ShopUpgradeButton1" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
+button_mask = 3
 texture_normal = ExtResource("7_vnyei")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton1"]
@@ -165,6 +166,7 @@ texture_normal = ExtResource("8_3c8yg")
 
 [node name="ShopUpgradeButton2" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
+button_mask = 3
 texture_normal = ExtResource("7_vnyei")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton2"]
@@ -190,6 +192,7 @@ texture_normal = ExtResource("8_3c8yg")
 
 [node name="ShopUpgradeButton3" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
+button_mask = 3
 texture_normal = ExtResource("7_vnyei")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton3"]
@@ -215,6 +218,7 @@ texture_normal = ExtResource("8_3c8yg")
 
 [node name="ShopUpgradeButton4" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
+button_mask = 3
 texture_normal = ExtResource("7_vnyei")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton4"]
@@ -240,6 +244,7 @@ texture_normal = ExtResource("8_3c8yg")
 
 [node name="ShopUpgradeButton5" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
+button_mask = 3
 texture_normal = ExtResource("7_vnyei")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton5"]
@@ -265,6 +270,7 @@ texture_normal = ExtResource("8_3c8yg")
 
 [node name="ShopUpgradeButton6" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
+button_mask = 3
 texture_normal = ExtResource("7_vnyei")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton6"]
@@ -290,6 +296,7 @@ texture_normal = ExtResource("8_3c8yg")
 
 [node name="ShopUpgradeButton7" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
+button_mask = 3
 texture_normal = ExtResource("7_vnyei")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton7"]
@@ -315,6 +322,7 @@ texture_normal = ExtResource("8_3c8yg")
 
 [node name="ShopUpgradeButton8" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
+button_mask = 3
 texture_normal = ExtResource("7_vnyei")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton8"]

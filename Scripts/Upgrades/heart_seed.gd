@@ -8,8 +8,8 @@ var timer: Timer
 
 var growthOnKill
 @export var timerBase = 40
-@export var procChance = 0.25
-@export var procLuckScaling = 0.05
+@export var procChance = 0.1
+@export var luckScaling = 0.05
 
 var t = 0
 
@@ -41,7 +41,7 @@ func _on_timer_timeout() -> void:
 	
 func _on_enemy_killed(enemy: Enemy) -> void:
 	var r = randf_range(0, 1)
-	if(r < procChance + (procLuckScaling * player.luck)):
+	if(r < procChance * (1 + (player.luck * luckScaling))):
 		#timer.start(timer.time_left - 1)
 		var time_left = timer.time_left
 		var new_time = max(time_left - 1, 0.01)
