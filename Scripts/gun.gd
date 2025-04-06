@@ -4,6 +4,10 @@ class_name SimpleGun
 
 @export var bullet_spread: float = 10
 
+@export var wrapAroundBullet: PackedScene
+
+var wrapAround : bool = false
+
 func get_target() -> Node:
 	var closest_enemy: Node = null
 	var shortest_distance: float = INF
@@ -24,18 +28,19 @@ func shoot(enemy: Node) -> void:
 	var direction = (enemy.position - current_position).normalized()
 	direction = direction.rotated(deg_to_rad(bullet_spread * (bulletAmount / 2)))
 	for n in range(bulletAmount):
-		var bullet = bullet.instantiate()
+		var bullet = wrapAroundBullet.instantiate() if wrapAround else bullet.instantiate()
 		add_child(bullet)
 		bullet.init_with_direction(direction, damage * player.damageMultiplier, base_projectile_speed * player.projectileSpeedMultipler, bullet_life_time, source)
 		direction = direction.rotated(-deg_to_rad(bullet_spread))
 
 func apply_level_up():
 	if(level == 5):
-			base_projectile_amount += 2
+			base_projectile_amount += 1
 			return
 	if(level == 10):
-			cooldown *= 0.7
-			return
+		base_projectile_speed *= 0.75
+		wrapAround = true
+		return
 	
 	match level % 5:
 		1:
