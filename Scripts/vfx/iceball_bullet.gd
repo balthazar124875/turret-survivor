@@ -14,4 +14,4 @@ func HitEnemy(body : Enemy):
 	slow.magnitude = 1
 	body.apply_status_effect(slow)
 	body.take_damage(damage)  # Call the enemy's damage function
-	SignalBus.on_enemy_hit.emit(body)
+	SignalBus.on_enemy_hit.emit(body, self)

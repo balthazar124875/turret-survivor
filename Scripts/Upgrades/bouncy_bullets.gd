@@ -1,6 +1,8 @@
 extends PassiveUpgrade
 
-@export var bouncePercentage: float = 0.2
+var someUpgrade: bool = false
+
+@export var bouncePercentage: float = 0.1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -18,4 +20,8 @@ func _apply_effects(bullet: Bullet):
 	pass
 
 func apply_level_up():
-	pass
+	if(upgradeAmount == 10):
+		someUpgrade = true
+		return
+	
+	bouncePercentage += 0.1

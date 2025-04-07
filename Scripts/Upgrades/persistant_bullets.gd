@@ -1,14 +1,13 @@
 extends PassiveUpgrade
 
-@export var slowAmount = 0.5 #10%
-@export var duration = 2 #10%
+@export var extraDuration = 0.5
 
-@export var procChance = 0.1
+@export var procChance = 0.15
 @export var luckScaling = 0.02
 
 var active = false
 
-var coldDamge = false
+var magicDamage = false
 
 @onready var player
 
@@ -29,22 +28,18 @@ func _process(delta: float) -> void:
 func _apply_effects(enemy: Enemy, bullet: Bullet):
 	var rndNumber = randf_range(0.0, 1.0);
 	if(rndNumber <= procChance * (1 + (player.luck * luckScaling))):
-		var slow = EnemyStatusEffect.new()
-		slow.type = GlobalEnums.ENEMY_STATUS_EFFECTS.SLOWED
-		slow.duration = duration
-		slow.magnitude = slowAmount
-		enemy.apply_status_effect(slow)
+		bullet.life_time += extraDuration
+		if(magicDamage):
+			#make bullets do magic damage
+			bullet.damage += 0.5
 
 func apply_level_up():
 	if(upgradeAmount == 10):
-		coldDamge = true
-		#change damage type to cold
+		magicDamage = true
 		return
 	
-	match upgradeAmount % 3:
+	match upgradeAmount % 1:
 		0:
-			slowAmount += 0.02
+			extraDuration += 0.1
 		1:
 			procChance += 0.05
-		2:
-			duration += 0.25

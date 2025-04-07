@@ -44,7 +44,6 @@ func _process(delta: float) -> void:
 
 func HitEnemy(body : Enemy):
 	body.take_damage(damage, "Vine")  # Call the enemy's damage function
-	SignalBus.on_enemy_hit.emit(body)
 	rootEffect = EnemyStatusEffect.new()
 	rootEffect.type = GlobalEnums.ENEMY_STATUS_EFFECTS.ROOTED
 	rootEffect.duration = root_duration

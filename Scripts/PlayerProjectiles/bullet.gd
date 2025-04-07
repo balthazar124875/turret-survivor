@@ -44,7 +44,7 @@ func init_with_direction(direction: Vector2, damage: float, speed: float, life_t
 
 func HitEnemy(body : Enemy):
 	body.take_damage(damage, source)  # Call the enemy's damage function
-	SignalBus.on_enemy_hit.emit(body)
+	SignalBus.on_enemy_hit.emit(body, self)
 
 func _on_body_entered(body):
 	if body is Enemy:  # Replace with your enemy script class name
