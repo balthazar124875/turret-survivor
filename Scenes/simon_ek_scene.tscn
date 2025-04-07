@@ -16,7 +16,7 @@
 [ext_resource type="Resource" uid="uid://ngftjlnyqymm" path="res://Resources/wave5.tres" id="9_qpx83"]
 [ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="9_yckrj"]
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
-[ext_resource type="Resource" path="res://Resources/wave6.tres" id="10_rsm4w"]
+[ext_resource type="Resource" uid="uid://b5m6113lpakb6" path="res://Resources/wave6.tres" id="10_rsm4w"]
 [ext_resource type="Script" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
 [ext_resource type="Script" path="res://Scripts/UI/orb_stats.gd" id="11_v6kre"]
 [ext_resource type="PackedScene" uid="uid://wj4fa28pbvk4" path="res://Scenes/circle.tscn" id="13_o8hoq"]

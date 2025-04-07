@@ -37,7 +37,7 @@ func _apply_effects(enemy: Enemy):
 
 func apply_level_up():
 	if(upgradeAmount == 10):
-		var coldDamge = true
+		coldDamge = true
 		#change damage type to cold
 		return
 	

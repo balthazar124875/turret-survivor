@@ -50,7 +50,6 @@ func _on_body_entered(body):
 	if body is Enemy:  # Replace with your enemy script class name
 		
 		HitEnemy(body)
-		print(pierce)
 		if(pierce >= 1):
 			pierce -= 1;
 			return
