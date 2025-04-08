@@ -77,7 +77,7 @@ func handle_status_effects():
 	$Sprite2D.modulate = Color(1, 1, 1)
 	for status_effect in active_status_effects.values():
 		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.SLOWED:
-			current_action_speed = action_speed - active_status_effects[status_effect.type].magnitude
+			current_action_speed = action_speed * active_status_effects[status_effect.type].magnitude
 			$Sprite2D.modulate = Color(0, 0.5, 0.5)
 		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN:
 			current_action_speed = 0

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bctcxqmdps8gg"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/poison_dart_weapon.gd" id="1_2671m"]
+[ext_resource type="PackedScene" uid="uid://0p83h784vlg6" path="res://Scenes/Projectiles/poison_dart_projectile.tscn" id="2_jsq7j"]
+
+[node name="PoisonDartWeapon" type="Node2D"]
+script = ExtResource("1_2671m")
+bullet = ExtResource("2_jsq7j")
+cooldown = 1.25
+gun_damage_multiplier = 0.5
+base_projectile_speed = 500.0
+range = 600.0
+source = "Gun"
