@@ -1,17 +1,7 @@
 extends SimpleGun
 
-func get_target() -> Node:
-	var closest_enemy: Node = null
-	var shortest_distance: float = INF
-	if enemy_parent:
-		for enemy in enemy_parent.get_children():
-			if enemy.is_inside_tree() && enemy.is_alive():
-				var distance = global_position.distance_to(enemy.global_position)
-				if distance < shortest_distance && distance < range * player.rangeMultiplier:
-					shortest_distance = distance
-					closest_enemy = enemy
-					
-	return closest_enemy
+@export var poison_damage_per_tick: float = 1
+@export var poison_duration: float = 2.0
 
 func shoot(enemy: Node) -> void:
 	var bulletAmount: int = base_projectile_amount + player.extraProjectiles
@@ -21,19 +11,21 @@ func shoot(enemy: Node) -> void:
 	direction = direction.rotated(deg_to_rad(bullet_spread * (bulletAmount / 2)))
 	for n in range(bulletAmount):
 		var bullet = wrapAroundBullet.instantiate() if wrapAround else bullet.instantiate()
+		bullet.poison_damage_per_tick = poison_damage_per_tick
+		bullet.poison_duration = poison_duration
 		add_child(bullet)
 		bullet.init_with_direction(direction, damage * player.damageMultiplier * gun_damage_multiplier, 
 			base_projectile_speed * local_projectile_speed_multiplier * player.projectileSpeedMultipler, bullet_life_time, source)
 		direction = direction.rotated(-deg_to_rad(bullet_spread))
 
+# TODO: Add other poison level ups
 func apply_level_up():
 	if(level == 5):
-		base_projectile_amount += 1
+		cooldown *= 0.8
 		return
 	if(level == 10):
 		local_projectile_speed_multiplier *= 0.75
 		bullet_life_time *= 1.33
-		wrapAround = true
 		return
 	
 	match level % 5:
@@ -42,6 +34,6 @@ func apply_level_up():
 		2:
 			cooldown *= 0.95
 		3:
-			range += 25
+			poison_duration += 1
 		4:
-			damage += 1
+			poison_damage_per_tick += 1

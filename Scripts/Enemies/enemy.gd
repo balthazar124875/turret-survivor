@@ -18,7 +18,7 @@ var current_action_speed: float = action_speed
 var t : float
 
 # StatusEffectType -> StatusEffect
-var active_status_effects: Dictionary = {}
+var active_status_effects: Array[EnemyStatusEffect] = []
 
 #var can_attack: bool = true
 var target_position = Vector2.ZERO
@@ -28,6 +28,7 @@ signal enemy_killed(enemy)
 var player
 
 var damage_flash_timer = Timer.new()
+var dot_timer = Timer.new()
 var alive_time: float = 0.0
 
 var on_death_particles = preload("res://Scenes/Particles/TestParticle.tscn")
@@ -36,35 +37,70 @@ var damage_numbers_scene = preload("res://Scenes/UI/damage_numbers.tscn")
 
 var objectObstructingEnemy : Node2D = null;
 
-func init_damage_flash_timer():
+var dot_tick_time = 0.5 
+
+func init_timers():
 	add_child(damage_flash_timer)  # Add the Timer to the node tree
 	damage_flash_timer.wait_time = 0.2  # Set duration
 	damage_flash_timer.one_shot = true  # Make it auto-stop
 	damage_flash_timer.timeout.connect(_on_damage_flash_timeout)
+	
+	add_child(dot_timer)
+	dot_timer.wait_time = dot_tick_time
+	dot_timer.start()
+	dot_timer.timeout.connect(apply_dot_effects)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	init_damage_flash_timer()
+	init_timers()
 	player = get_node("/root/EmilScene/Player")
 	target_position = player.global_position
+	
+func apply_dot_effects():
+	# TODO: Sum dots seperately and add damage source categories for them
+	var damage_from_dots = active_status_effects.filter(
+			func(ase): return ase.type == GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED
+		).map(func(ase): return ase.magnitude).reduce(func(a, b): return  a + b, 0)
+		
+	if damage_from_dots > 0:
+		take_damage(damage_from_dots, 'Poison', true)
 
 func apply_status_effect(status_effect: EnemyStatusEffect):
-	# Add status effect if it does not exist
-	if status_effect.type not in active_status_effects:
-		active_status_effects[status_effect.type] = status_effect
-
-	# Update status effect if it already exists
-	if status_effect.type in active_status_effects:
-		active_status_effects[status_effect.type].duration = status_effect.duration
-		if status_effect.magnitude > active_status_effects[status_effect.type].magnitude:
-			active_status_effects[status_effect.type].magnitude = status_effect.magnitude
-
-func update_active_status_effects(delta):
-	for type in active_status_effects.keys():
-		active_status_effects[type].duration -= delta
-		if active_status_effects[type].duration <= 0:
-			active_status_effects.erase(type)
+	active_status_effects.append(status_effect)
+	var type = status_effect.type
+	
+	if type in GlobalEnums.CROWD_CONTROL:
+		var crowd_control_effects = active_status_effects.filter(
+				func(ase): return ase.type in GlobalEnums.CROWD_CONTROL
+			)
 			
+		var highest_slow_amount = crowd_control_effects.map(func(ase): return ase.magnitude).min()
+			
+		if(highest_slow_amount != null):
+			current_action_speed = action_speed * (1 - highest_slow_amount)
+		else:
+			current_action_speed = action_speed
+
+func update_active_status_effect_durations(delta):
+	for status_effect in active_status_effects:
+		status_effect.duration -= delta
+		if status_effect.duration <= 0:
+			erase_status_effect(status_effect)
+
+func erase_status_effect(status_effect: EnemyStatusEffect):
+	active_status_effects.erase(status_effect)
+	var type = status_effect.type
+	
+	if type in GlobalEnums.CROWD_CONTROL:
+		var highest_slow_amount = active_status_effects.filter(
+				func(ase): ase.type in GlobalEnums.CROWD_CONTROL
+			).map(func(ase): ase.magnitude).min()
+			
+		if(highest_slow_amount != null):
+			current_action_speed = action_speed * highest_slow_amount
+		else:
+			current_action_speed = action_speed
+
 func increase_hp(multiplier: float) -> void:
 	health *= multiplier
 	
@@ -72,19 +108,17 @@ func increase_damage(multiplier: float) -> void:
 	damage *= multiplier
 
 # TODO: DO NOT DO THIS EVERY FRAME
-func handle_status_effects():
-	current_action_speed = action_speed
+func handle_color_change():
 	$Sprite2D.modulate = Color(1, 1, 1)
-	for status_effect in active_status_effects.values():
+	for status_effect in active_status_effects:
 		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.SLOWED:
-			current_action_speed = action_speed * active_status_effects[status_effect.type].magnitude
 			$Sprite2D.modulate = Color(0, 0.5, 0.5)
 		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN:
-			current_action_speed = 0
 			$Sprite2D.modulate = Color(0, 0, 1)
 		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.ROOTED:
-			current_action_speed = 0
 			$Sprite2D.modulate = Color(0, 0.85, 0)
+		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED:
+			$Sprite2D.modulate = Color(0.2, 0.70, 0.2)
 			
 	# TODO: Move this, but this sets the color to red while being damaged
 	if damage_flash: 
@@ -94,11 +128,11 @@ func handle_status_effects():
 func _process(delta: float) -> void:
 	alive_time += delta
 	t += delta * current_action_speed
-	update_active_status_effects(delta)
-	handle_status_effects()
+	update_active_status_effect_durations(delta)
+	handle_color_change()
 	
 	if(current_action_speed == 0):
-		return #frozen
+		return #frozen / rooted
 		
 	$Sprite2D.rotation_degrees = sin(alive_time * 6.0) * 7
 	
@@ -127,9 +161,9 @@ func attack() -> void:
 func is_alive() -> bool:
 	return health > 0
 
-func take_damage(amount: float, source: String = '') -> void:
+func take_damage(amount: float, source: String = '', ignore_armor: bool = false) -> void:
 	# Take minimum 1 damage
-	var damage_after_armor = max(1, amount - armor)
+	var damage_after_armor = max(1, amount) if ignore_armor else max(1, amount - armor)
 	health -= damage_after_armor
 	damage_flash = true
 	damage_flash_timer.start(0.1) 
