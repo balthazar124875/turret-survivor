@@ -8,3 +8,4 @@ script = ExtResource("1_2fwic")
 flameThrowerVfx = ExtResource("2_lqbnl")
 cooldown = 4.0
 damage = 0.2
+gun_damage_multiplier = 0.2

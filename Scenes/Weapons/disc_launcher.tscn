@@ -6,7 +6,8 @@
 [node name="DiscLauncher" type="Node2D"]
 script = ExtResource("1_q5i3n")
 bullet = ExtResource("2_257bb")
-cooldown = 2.0
+cooldown = 4.0
+gun_damage_multiplier = 0.8
 base_projectile_speed = 800.0
 bullet_life_time = 4.0
 range = 600.0

@@ -7,7 +7,6 @@ class_name ClusterBombProjectile
 @onready var player = get_node("/root/EmilScene/Player")
 @onready var sprite = $Sprite2D
 
-
 var start_pos: Vector2
 var target_pos: Vector2
 
@@ -69,8 +68,8 @@ func cluster():
 		new_bomb.speed = speed 
 		new_bomb.arc_height = 50
 		new_bomb.damage = damage
-		new_bomb.cluster_times = cluster_times - 1
-		new_bomb.number_of_cluster_bombs = (int) (number_of_cluster_bombs / 2)
+		new_bomb.cluster_times = cluster_times - 1 if i == 0 else 0
+		new_bomb.number_of_cluster_bombs = number_of_cluster_bombs
 		get_parent().add_child(new_bomb)
 		
 func create_explosion():

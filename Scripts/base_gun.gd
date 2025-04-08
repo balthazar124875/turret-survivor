@@ -11,7 +11,8 @@ enum TargetingType {
 @export var bullet: PackedScene
 
 @export var cooldown: float = 0.2 #0.2s delay between each shot => firerate = cooldown/1
-@export var damage: float = 1
+@export var damage: float = 1 #increment this for increasing strength of guns
+@export var gun_damage_multiplier: float = 1 #fixed per weapon, changes how much different weapons scale on bonus damage
 @export var charge: float = 0
 @export var base_projectile_speed: float = 300
 @export var bullet_life_time: float = 2

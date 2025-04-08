@@ -7,6 +7,7 @@
 script = ExtResource("1_82ojn")
 targeting_type = 1
 bullet = ExtResource("2_1rwev")
-cooldown = 4.0
+cooldown = 5.0
+gun_damage_multiplier = 1.33
 range = 200.0
 source = "Vine Trap"

@@ -7,6 +7,6 @@
 script = ExtResource("1_0yfuv")
 targeting_type = 1
 bullet = ExtResource("2_aoeo0")
-cooldown = 2.0
+cooldown = 3.0
 bullet_life_time = 10.0
 range = 10000.0
