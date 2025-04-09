@@ -10,6 +10,7 @@ var goldVfxInstance;
 @export var gold_per_tick: float = 1.0
 
 func _ready() -> void:
+	type = OrbHandler.OrbTypes.GOLD;
 	super()
 	isGoldVfxPlaying = false;
 	goldVfxInstance = goldVfx.instantiate();

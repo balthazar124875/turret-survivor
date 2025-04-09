@@ -13,5 +13,5 @@ func HitEnemy(body : Enemy):
 	slow.duration = 5
 	slow.magnitude = 1
 	body.apply_status_effect(slow)
-	body.take_damage(damage)  # Call the enemy's damage function
+	body.take_damage(damage, "Ice ball", GlobalEnums.DAMAGE_TYPES.ICE)  # Call the enemy's damage function
 	SignalBus.on_enemy_hit.emit(body, self)

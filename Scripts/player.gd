@@ -18,6 +18,9 @@ var playerUpgrades: Array = [];
 # https://warcraft3.info/articles/208/overview-of-armor-and-damage-reduction
 # Each 0.01 gives 1% more effective health points per armor point
 @export var armor_damage_reduction_const = 0.05
+# <DAMAGE_TYPE, float>
+@export var damage_type_multipliers: Dictionary = {}
+
 var gold: int = 100;
 var gold_income: int = 5;
 
@@ -26,13 +29,20 @@ var ENABLE_BOUNTY = false
 @onready var income_timer: Timer = get_node("IncomeTimer")
 @onready var damage_flash_timer: Timer = get_node("DamageFlashTimer")
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	init_damage_type_multipliers()
 	SignalBus.enemy_killed.connect(_on_enemy_killed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	heal_damage(healthRegeneration * delta, "Regeneration")
+
+func init_damage_type_multipliers():
+	for key in GlobalEnums.DAMAGE_TYPES.values():
+		damage_type_multipliers[key] = 1.0
+	
 
 #TODO: REMOVE THIS
 func _input(event):

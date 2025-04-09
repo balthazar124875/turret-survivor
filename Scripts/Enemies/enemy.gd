@@ -63,7 +63,7 @@ func apply_dot_effects():
 		).map(func(ase): return ase.magnitude).reduce(func(a, b): return  a + b, 0)
 		
 	if damage_from_dots > 0:
-		take_damage(damage_from_dots, 'Poison', true, "green")
+		take_damage(damage_from_dots, 'Poison', GlobalEnums.DAMAGE_TYPES.POISON)
 
 func apply_status_effect(status_effect: EnemyStatusEffect):
 	active_status_effects.append(status_effect)
@@ -161,9 +161,15 @@ func attack() -> void:
 func is_alive() -> bool:
 	return health > 0
 
-func take_damage(amount: float, source: String = '', ignore_armor: bool = false, color: String = "white") -> void:
+func take_damage(
+	amount: float,
+	source: String = '',
+	damage_type: GlobalEnums.DAMAGE_TYPES = GlobalEnums.DAMAGE_TYPES.PHYSICAL,
+	ignore_armor: bool = false
+	) -> void:
 	# Take minimum 1 damage
-	var damage_after_armor = max(1, amount) if ignore_armor else max(1, amount - armor)
+	var damage_after_type_multipler = amount * player.damage_type_multipliers[damage_type]
+	var damage_after_armor = max(1, damage_after_type_multipler) if ignore_armor else max(1, damage_after_type_multipler - armor)
 	health -= damage_after_armor
 	damage_flash = true
 	damage_flash_timer.start(0.1) 
@@ -171,7 +177,6 @@ func take_damage(amount: float, source: String = '', ignore_armor: bool = false,
 	var new_damage_numbers = damage_numbers_scene.instantiate()
 	new_damage_numbers.global_position = position
 	new_damage_numbers.number = damage_after_armor
-	new_damage_numbers.update_text(damage_after_armor, color)
 	get_node("/root/EmilScene/ParticleNode").add_child(new_damage_numbers)
 	SignalBus.damage_done.emit(damage_after_armor, source)
 	if(health <= 0):

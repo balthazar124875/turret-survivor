@@ -15,6 +15,7 @@ var laserDamagePerTick : float = 1.0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	type = OrbHandler.OrbTypes.LASER;
 	super()
 	currentTargetEnemy = null;
 	laserVfxInstance = laserVfx.instantiate();
@@ -46,7 +47,7 @@ func _process(delta: float) -> void:
 		
 		laserDamageTimer += delta;
 		if laserDamageTimer >= laserDamageTickSpeed:
-			enemy.take_damage(laserDamagePerTick * player.damageMultiplier, source);
+			enemy.take_damage(laserDamagePerTick * player.damageMultiplier, source, GlobalEnums.DAMAGE_TYPES.MAGIC);
 			laserDamageTimer = 0.0;
 	else:
 		ShutDownLaserVfx();
