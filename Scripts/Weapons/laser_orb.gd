@@ -15,6 +15,7 @@ var laserDamagePerTick : float = 1.0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	type = OrbHandler.OrbTypes.LASER;
 	super()
 	currentTargetEnemy = null;
 	laserVfxInstance = laserVfx.instantiate();
@@ -23,7 +24,6 @@ func _ready() -> void:
 	laserVfxParticleEmitter = laserVfxInstance.get_node("GPUParticles2D");
 	laserLineNode = laserVfxInstance.get_node("Line2D");
 	StartLaserVfx();
-	type = OrbHandler.OrbTypes.LASER;
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -10,6 +10,7 @@ var goldVfxInstance;
 @export var gold_per_tick: float = 1.0
 
 func _ready() -> void:
+	type = OrbHandler.OrbTypes.GOLD;
 	super()
 	isGoldVfxPlaying = false;
 	goldVfxInstance = goldVfx.instantiate();
@@ -17,7 +18,6 @@ func _ready() -> void:
 	goldVfxInstance.global_position = global_position;
 	goldVfxParticleEmitter = goldVfxInstance.get_node("GPUParticles2D");
 	StopGoldVfxEffect();
-	type = OrbHandler.OrbTypes.GOLD;
 	pass
 
 func _physics_process(delta):

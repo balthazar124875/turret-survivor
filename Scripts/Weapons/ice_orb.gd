@@ -8,8 +8,8 @@ var spawnTimer = 1.0
 var currTimer = 0.0
 
 func _ready() -> void:
-	super();
 	type = OrbHandler.OrbTypes.ICE;
+	super();
 
 func HitEnemy(body) -> void:
 	#TODO: Slow enemies
