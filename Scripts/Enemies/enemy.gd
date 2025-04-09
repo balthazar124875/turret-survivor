@@ -169,7 +169,7 @@ func take_damage(
 	) -> void:
 	# Take minimum 1 damage
 	var damage_after_type_multipler = amount * player.damage_type_multipliers[damage_type]
-	var damage_after_armor = max(1, amount) if ignore_armor else max(1, amount - armor)
+	var damage_after_armor = max(1, damage_after_type_multipler) if ignore_armor else max(1, damage_after_type_multipler - armor)
 	health -= damage_after_armor
 	damage_flash = true
 	damage_flash_timer.start(0.1) 
@@ -177,6 +177,7 @@ func take_damage(
 	var new_damage_numbers = damage_numbers_scene.instantiate()
 	new_damage_numbers.global_position = position
 	new_damage_numbers.number = damage_after_armor
+	new_damage_numbers.damage_type = damage_type
 	get_node("/root/EmilScene/ParticleNode").add_child(new_damage_numbers)
 	SignalBus.damage_done.emit(damage_after_armor, source)
 	if(health <= 0):
