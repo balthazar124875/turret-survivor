@@ -39,6 +39,10 @@ func _ready() -> void:
 	OrbHandler.addPlayerBaseOrb(self);
 	var screenSize = get_viewport().get_visible_rect().size;
 	orbRange = screenSize.y*0.15; #10% of the screenSize, to make this scale properly
+	
+	if OrbHandler.enhancedOrbs[type]:
+		EnhanceOrb();
+	
 	pass # Replace with function body.
 
 #func _physics_process(delta):

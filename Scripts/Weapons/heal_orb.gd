@@ -10,6 +10,7 @@ var healVfxInstance;
 @export var heal_per_tick: float = 5.0
 
 func _ready() -> void:
+	type = OrbHandler.OrbTypes.HEAL;
 	super()
 	isHealVfxPlaying = false;
 	healVfxInstance = healVfx.instantiate();
@@ -17,7 +18,6 @@ func _ready() -> void:
 	healVfxInstance.global_position = global_position;
 	healVfxParticleEmitter = healVfxInstance.get_node("GPUParticles2D");
 	StopHealVfxEffect();
-	type = OrbHandler.OrbTypes.HEAL;
 	pass
 
 func _physics_process(delta):
