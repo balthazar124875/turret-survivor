@@ -47,7 +47,7 @@ func HitEnemy(body : Enemy):
 	rootEffect = EnemyStatusEffect.new()
 	rootEffect.type = GlobalEnums.ENEMY_STATUS_EFFECTS.ROOTED
 	rootEffect.duration = root_duration
-	rootEffect.magnitude = 0
+	rootEffect.magnitude = 1
 	body.apply_status_effect(rootEffect)
 	
 func _on_body_entered(body):

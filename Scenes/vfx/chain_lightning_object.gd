@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 			thunder.set_point_position(i, (enemy.global_position - self.global_position))
 		i += 1
 
-func set_targets(targets: Array[Node]) -> void:
+func set_targets(targets) -> void:
 	self.targets = targets
 	thunder.clear_points()
 	thunder.add_point(Vector2(0, 0))

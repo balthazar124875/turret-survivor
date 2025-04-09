@@ -63,7 +63,7 @@ func apply_dot_effects():
 		).map(func(ase): return ase.magnitude).reduce(func(a, b): return  a + b, 0)
 		
 	if damage_from_dots > 0:
-		take_damage(damage_from_dots, 'Poison', true)
+		take_damage(damage_from_dots, 'Poison', true, "green")
 
 func apply_status_effect(status_effect: EnemyStatusEffect):
 	active_status_effects.append(status_effect)
@@ -161,7 +161,7 @@ func attack() -> void:
 func is_alive() -> bool:
 	return health > 0
 
-func take_damage(amount: float, source: String = '', ignore_armor: bool = false) -> void:
+func take_damage(amount: float, source: String = '', ignore_armor: bool = false, color: String = "white") -> void:
 	# Take minimum 1 damage
 	var damage_after_armor = max(1, amount) if ignore_armor else max(1, amount - armor)
 	health -= damage_after_armor
@@ -171,6 +171,7 @@ func take_damage(amount: float, source: String = '', ignore_armor: bool = false)
 	var new_damage_numbers = damage_numbers_scene.instantiate()
 	new_damage_numbers.global_position = position
 	new_damage_numbers.number = damage_after_armor
+	new_damage_numbers.update_text(damage_after_armor, color)
 	get_node("/root/EmilScene/ParticleNode").add_child(new_damage_numbers)
 	SignalBus.damage_done.emit(damage_after_armor, source)
 	if(health <= 0):
@@ -194,3 +195,7 @@ func GetObjectObstructingEnemy() -> Node2D:
 	
 func SetObjectObstructingEnemy(object : Node2D) -> void:
 	objectObstructingEnemy = object;
+
+func get_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> Array[EnemyStatusEffect]:
+	var s = active_status_effects.filter(func(ase): return ase.type == status)
+	return s

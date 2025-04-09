@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0j276hyq8vd6"]
+
+[ext_resource type="Shader" uid="uid://b4sgevpcv7g0g" path="res://vfxShaders/thunder_shader.tres" id="2_413ls"]
+[ext_resource type="Script" path="res://Scenes/vfx/vfx_chain_poison.gd" id="3_nhbov"]
+[ext_resource type="Texture2D" uid="uid://ynjyyam03lvo" path="res://Textures/vfxThunder.jpg" id="3_wryvb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_18eli"]
+resource_local_to_scene = true
+shader = ExtResource("2_413ls")
+shader_parameter/VanishingValue = 0.0
+shader_parameter/Vector2Parameter = Vector2(0.25, 1)
+shader_parameter/Speed = null
+shader_parameter/DistancePerStep = null
+shader_parameter/basic_texture = ExtResource("3_wryvb")
+
+[node name="PoisonLine" type="Line2D"]
+material = SubResource("ShaderMaterial_18eli")
+position = Vector2(0.0370369, 0.0370369)
+scale = Vector2(1.00926, 1.00926)
+width = 4.0
+default_color = Color(0, 0.580392, 0.333333, 1)
+texture_mode = 1
+end_cap_mode = 1
+round_precision = 1
+antialiased = true
+script = ExtResource("3_nhbov")
+duration = 0.15

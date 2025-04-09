@@ -19,7 +19,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_twbii"]
 radius = 36.0
-height = 72.0
+height = 96.0
 
 [node name="Enemy6" type="RigidBody2D"]
 position = Vector2(604, 288)
