@@ -112,10 +112,12 @@ func GenerateButtonTooltip(shopUpgradeButtons : ShopUpgradeButton) -> void:
 			shopUpgradeButtons.upgradeNode.upgradeName,
 			"\n", 
 			shopUpgradeButtons.upgradeNode.description,
-			"\n", 
-			shopUpgradeButtons.upgradeNode.gold_cost, 
-			" gold"
+			"\n"
 		)
+		
+	shopUpgradeButtons.tooltip += shopUpgradeButtons.upgradeNode.GetSpecialTooltipDescription(); #TODO: Implement
+	shopUpgradeButtons.tooltip += shopUpgradeButtons.upgradeNode.GetTooltipStats();
+	shopUpgradeButtons.tooltip += str(shopUpgradeButtons.upgradeNode.gold_cost, " gold")
 
 func renderShopUpgradeButtonsText() -> void:
 	#TODO: Can't assign text to TextureButton like this.
