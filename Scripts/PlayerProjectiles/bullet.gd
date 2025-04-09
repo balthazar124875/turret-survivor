@@ -11,8 +11,9 @@ var source: String
 #behaviour modifiers
 var pierce: int = 0
 var bounce: float = 0
-
 var dist
+
+@export var damage_type: GlobalEnums.DAMAGE_TYPES = GlobalEnums.DAMAGE_TYPES.PHYSICAL
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	connect("body_entered", _on_body_entered)

@@ -30,7 +30,7 @@ func _physics_process(delta):
 			PlayHealVfxEffect();
 
 func HitEnemy(body) -> void:
-	body.take_damage(damage_per_tick * player.damageMultiplier, source)
+	body.take_damage(damage_per_tick * player.damageMultiplier, source, GlobalEnums.DAMAGE_TYPES.MAGIC)
 	player.heal_damage(heal_per_tick, source)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
