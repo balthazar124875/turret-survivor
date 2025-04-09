@@ -17,6 +17,7 @@ func _ready() -> void:
 	goldVfxInstance.global_position = global_position;
 	goldVfxParticleEmitter = goldVfxInstance.get_node("GPUParticles2D");
 	StopGoldVfxEffect();
+	type = OrbHandler.OrbTypes.GOLD;
 	pass
 
 func _physics_process(delta):

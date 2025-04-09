@@ -2,6 +2,7 @@ extends BaseGun
 
 class_name BaseOrb
 
+var type : OrbHandler.OrbTypes;
 var orbRange = 0.0; #10 feets away from player
 var currAngle = 0.0;
 var nextAngle = 0.0;

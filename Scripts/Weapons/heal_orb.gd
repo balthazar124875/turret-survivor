@@ -17,6 +17,7 @@ func _ready() -> void:
 	healVfxInstance.global_position = global_position;
 	healVfxParticleEmitter = healVfxInstance.get_node("GPUParticles2D");
 	StopHealVfxEffect();
+	type = OrbHandler.OrbTypes.HEAL;
 	pass
 
 func _physics_process(delta):

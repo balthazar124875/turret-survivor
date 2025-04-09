@@ -2,10 +2,22 @@ extends Node
 
 class_name OrbHandler
 
+enum OrbTypes
+{
+	FIRE,
+	ICE,
+	HEAL,
+	LASER,
+	GOLD,
+	BLACK,
+	COUNT
+}
+
 static var playerOrbs : Array[BaseOrb] = [];
 static var playerOrbsOuter : Array[BaseOrb] = [];
 static var maxNrInnerOrbs : int;
 static var maxNrOuterOrbs : int;
+static var orbInventory : Array[OrbTypes];
 
 static var nextReplacableOrbIdx : int;
 var player : Node2D;
@@ -16,11 +28,16 @@ func _ready() -> void:
 	maxNrInnerOrbs = 3;
 	maxNrOuterOrbs = 1;
 	nextReplacableOrbIdx = 0;
+	
+	orbInventory.resize(OrbTypes.COUNT);
+	orbInventory.fill(0);
+		
 	pass
 
 static func addPlayerBaseOrb(newOrb : BaseOrb):
 	if(playerOrbs.size() < maxNrInnerOrbs):
 		playerOrbs.push_back(newOrb);
+		orbInventory[newOrb.type] += 1;
 		#Re-arrange them all in a circle
 		ArrangePlayerOrbs(playerOrbs);
 	else:
@@ -34,6 +51,9 @@ static func addPlayerBaseOrb(newOrb : BaseOrb):
 			replacedOrb.queue_free();
 			nextReplacableOrbIdx += 1;
 			nextReplacableOrbIdx = nextReplacableOrbIdx % orbList.size();
+			orbInventory[replacedOrb.type] -= 1;
+			orbInventory[newOrb.type] += 1;
+	
 
 static func ArrangePlayerOrbs(orbListToArrange : Array):
 	if(orbListToArrange.size() == 0):
