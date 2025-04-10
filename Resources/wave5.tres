@@ -6,4 +6,4 @@
 [resource]
 script = ExtResource("2_3p3pd")
 enemy = ExtResource("1_wj6fb")
-spawn_interval = 3.0
+spawn_interval = 4.0

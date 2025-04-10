@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://df6s5r7bc5qm0"]
+
+[ext_resource type="Script" path="res://Scripts/Augments/toxic_blood.gd" id="1_yaab7"]
+[ext_resource type="Texture2D" uid="uid://nbu3quikapyf" path="res://Assets/Sprites/upgrades/toxic_blood.png" id="2_88ejv"]
+
+[node name="Toxic Blood" type="Node2D"]
+script = ExtResource("1_yaab7")
+passiveType = 3
+upgradeName = "Toxic Blood"
+description = "Poison enemies that hit you equal to your health regen"
+type = 1
+rarity = 3
+icon = ExtResource("2_88ejv")
+weight_reduction = 10

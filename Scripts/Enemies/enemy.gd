@@ -177,6 +177,7 @@ func take_damage(
 	var new_damage_numbers = damage_numbers_scene.instantiate()
 	new_damage_numbers.global_position = position
 	new_damage_numbers.number = damage_after_armor
+	new_damage_numbers.damage_type = damage_type
 	get_node("/root/EmilScene/ParticleNode").add_child(new_damage_numbers)
 	SignalBus.damage_done.emit(damage_after_armor, source)
 	if(health <= 0):

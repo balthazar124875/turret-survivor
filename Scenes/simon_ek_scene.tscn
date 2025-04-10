@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=26 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
 [ext_resource type="PackedScene" uid="uid://bkwrq0qtta0ix" path="res://Scenes/enemy_spawner.tscn" id="3_fpmdp"]
 [ext_resource type="Script" path="res://Scripts/wave.gd" id="4_7auck"]
 [ext_resource type="Script" path="res://Scripts/UIManager.gd" id="5_1pdr0"]
+[ext_resource type="Resource" uid="uid://lhgub04y3bdb" path="res://Resources/wave1.tres" id="5_h832e"]
 [ext_resource type="Script" path="res://Scripts/ShopManager.gd" id="5_jxmqa"]
 [ext_resource type="Resource" uid="uid://bm2q7xl0iapv5" path="res://Resources/wave2.tres" id="6_cqumk"]
 [ext_resource type="Texture2D" uid="uid://b27w0ddjiakbn" path="res://Assets/Sprites/UI/ui_overlay.png" id="6_pvymq"]
@@ -51,9 +52,11 @@ healthRegeneration = 0.0
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
-waves = Array[ExtResource("4_7auck")]([ExtResource("10_rsm4w"), ExtResource("6_cqumk"), ExtResource("7_df5er"), ExtResource("8_frnkb"), ExtResource("9_qpx83"), ExtResource("10_rsm4w")])
+waves = Array[ExtResource("4_7auck")]([ExtResource("5_h832e"), ExtResource("6_cqumk"), ExtResource("7_df5er"), ExtResource("8_frnkb"), ExtResource("9_qpx83"), ExtResource("10_rsm4w")])
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
+enemy_hp_scaling = 1.15
+enemy_dmg_scaling = 1.05
 
 [node name="GameplayUi" type="Control" parent="."]
 layout_mode = 3
