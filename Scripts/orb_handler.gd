@@ -26,6 +26,12 @@ static var NR_ORBS_REQUIRED_FOR_ENHANCE : int = 5;
 static var nextReplacableOrbIdx : int;
 var player : Node2D;
 
+#Orb stats, send these in when orbs level up
+static var damagePerTick = 1;
+static var effectMultiplier : float = 1.0;
+static var orbSizeMultiplier : float = 1.0;
+static var damageTickMultiplier : float = 1.0;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_parent(); #Gets the parent which is Player
@@ -39,6 +45,41 @@ func _ready() -> void:
 	enhancedOrbs.resize(OrbTypes.COUNT);
 	enhancedOrbs.fill(false);
 		
+	pass
+
+static func LevelUpOrbs(upgradeAmount : int) -> void:
+	if(upgradeAmount == 5):
+		damageTickMultiplier *= 2.0; 
+		orbSizeMultiplier *= 1.2;
+	if(upgradeAmount == 10):
+		effectMultiplier *= 2.0;
+		orbSizeMultiplier *= 2.0;
+		damageTickMultiplier *= 2.0; 
+	match upgradeAmount % 5:
+		1:
+			damagePerTick += 1;
+		2:
+			damagePerTick += 1;
+		3:
+			effectMultiplier *= 1.2;
+		4:
+			damagePerTick += 1;
+		5:
+			orbSizeMultiplier *= 1.2;
+	ApplyStatsToOrbs()
+
+#Loop through all your orbs and apply these stats to it
+static func ApplyStatsToOrbs() -> void:
+	var orbList = playerOrbs + playerOrbsOuter;
+	for orb in orbList:
+		ApplyStatsToOneOrb(orb)
+	pass
+	
+static func ApplyStatsToOneOrb(orb : BaseOrb) -> void:
+	orb.IncreaseOrbSize(orbSizeMultiplier);
+	orb.damage_per_tick = damagePerTick;
+	orb.effect_multiplier *= effectMultiplier;
+	orb.damage_tick_interval *= damageTickMultiplier;
 	pass
 
 static func addPlayerBaseOrb(newOrb : BaseOrb):
@@ -60,7 +101,9 @@ static func addPlayerBaseOrb(newOrb : BaseOrb):
 			nextReplacableOrbIdx = nextReplacableOrbIdx % orbList.size();
 			orbInventory[replacedOrb.type] -= 1;
 			orbInventory[newOrb.type] += 1;
-			
+	
+	ApplyStatsToOneOrb(newOrb);
+	
 	#Check if you own more than 5 of the same orb, then enhance
 	if orbInventory[newOrb.type] >= NR_ORBS_REQUIRED_FOR_ENHANCE:
 		var wasThisOrbTypeEnhanced : bool = enhancedOrbs[newOrb.type];

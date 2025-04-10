@@ -10,6 +10,7 @@ var nextPos;
 var orbSpeed = 1.0;
 var damage_per_tick = 1;
 var damage_tick_interval : float = 0.5; #Lower value faster tick speed
+var effect_multiplier : float = 1.0;
 
 @export var orbEnhanceVfx : PackedScene
 var enhancedVfxInstance : Node2D;
@@ -75,12 +76,16 @@ func ApplyVisualChanges() -> void:
 	$AnimatedSprite2D.scale *= 2.0;
 	$Area2D/CollisionShape2D.scale *= 2.0;
 	pass
+	
+func IncreaseOrbSize(multiplier : float) -> void:
+	$AnimatedSprite2D.scale *= multiplier;
+	$Area2D/CollisionShape2D.scale *= multiplier;
+	pass
 
 func EnhanceOrb() -> void:
 	enhancedVfxInstance.visible = true;
 	isEnhanced = true;
 	pass
-
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Enemy:
