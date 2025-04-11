@@ -27,10 +27,10 @@ static var nextReplacableOrbIdx : int;
 var player : Node2D;
 
 #Orb stats, send these in when orbs level up
-static var damagePerTick = 1;
+static var damagePerTick : int = 1;
 static var effectMultiplier : float = 1.0;
 static var orbSizeMultiplier : float = 1.0;
-static var damageTickMultiplier : float = 1.0;
+static var damageTickInterval : float = 1.0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -49,12 +49,14 @@ func _ready() -> void:
 
 static func LevelUpOrbs(upgradeAmount : int) -> void:
 	if(upgradeAmount == 5):
-		damageTickMultiplier *= 2.0; 
+		damageTickInterval *= 1.0;
 		orbSizeMultiplier *= 1.2;
+		damagePerTick += 1;
 	if(upgradeAmount == 10):
 		effectMultiplier *= 2.0;
-		orbSizeMultiplier *= 2.0;
-		damageTickMultiplier *= 2.0; 
+		orbSizeMultiplier *= 1.5;
+		damageTickInterval *= 0.5;
+		damagePerTick *= 2.0;
 	match upgradeAmount % 5:
 		1:
 			damagePerTick += 1;
@@ -64,8 +66,6 @@ static func LevelUpOrbs(upgradeAmount : int) -> void:
 			effectMultiplier *= 1.2;
 		4:
 			damagePerTick += 1;
-		5:
-			orbSizeMultiplier *= 1.2;
 	ApplyStatsToOrbs()
 
 #Loop through all your orbs and apply these stats to it
@@ -73,13 +73,13 @@ static func ApplyStatsToOrbs() -> void:
 	var orbList = playerOrbs + playerOrbsOuter;
 	for orb in orbList:
 		ApplyStatsToOneOrb(orb)
+		
+	for orb in playerOrbsOuter:
+		orb.ApplyVisualChanges() #Give outer orb the correct size
 	pass
 	
 static func ApplyStatsToOneOrb(orb : BaseOrb) -> void:
-	orb.IncreaseOrbSize(orbSizeMultiplier);
-	orb.damage_per_tick = damagePerTick;
-	orb.effect_multiplier *= effectMultiplier;
-	orb.damage_tick_interval *= damageTickMultiplier;
+	orb.ApplyOrbStats(damagePerTick, damageTickInterval, effectMultiplier, orbSizeMultiplier);
 	pass
 
 static func addPlayerBaseOrb(newOrb : BaseOrb):

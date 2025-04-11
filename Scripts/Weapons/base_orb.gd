@@ -12,6 +12,10 @@ var damage_per_tick = 1;
 var damage_tick_interval : float = 0.5; #Lower value faster tick speed
 var effect_multiplier : float = 1.0;
 
+var ogScale;
+var ogColliderScale;
+var ogDamageTickInterval;
+
 @export var orbEnhanceVfx : PackedScene
 var enhancedVfxInstance : Node2D;
 var isEnhanced : bool = false;
@@ -35,6 +39,10 @@ func _ready() -> void:
 	add_child(enhancedVfxInstance)
 	enhancedVfxInstance.global_position = global_position;
 	enhancedVfxInstance.visible = false;
+	
+	ogScale = $AnimatedSprite2D.scale;
+	ogColliderScale = $Area2D/CollisionShape2D.scale;
+	ogDamageTickInterval = damage_tick_interval;
 	
 	player = get_node("../..")
 	OrbHandler.addPlayerBaseOrb(self);
@@ -77,9 +85,14 @@ func ApplyVisualChanges() -> void:
 	$Area2D/CollisionShape2D.scale *= 2.0;
 	pass
 	
-func IncreaseOrbSize(multiplier : float) -> void:
-	$AnimatedSprite2D.scale *= multiplier;
-	$Area2D/CollisionShape2D.scale *= multiplier;
+func ApplyOrbStats(dmg : int, dmg_interval : float, effect_mult : float, scale : float) -> void:
+	damage_per_tick = dmg;
+	damage_tick_interval = ogDamageTickInterval * dmg_interval;
+	effect_multiplier = effect_mult;
+	$AnimatedSprite2D.scale = ogScale * scale;
+	$Area2D/CollisionShape2D.scale = ogColliderScale * scale;
+	
+	AdjustParticleEmitterScaleAfterOrbScale(scale);
 	pass
 
 func EnhanceOrb() -> void:
@@ -104,3 +117,6 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 				registeredEnemyList.erase(regEnemy);
 				return;
 	pass # Replace with function body.
+	
+func AdjustParticleEmitterScaleAfterOrbScale(scale : float) -> void:
+	pass
