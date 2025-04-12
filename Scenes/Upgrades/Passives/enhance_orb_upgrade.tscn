@@ -3,9 +3,14 @@
 [ext_resource type="Script" path="res://Scripts/Upgrades/enhanceOrbPassive.gd" id="1_gxs2y"]
 [ext_resource type="Texture2D" uid="uid://bvlcopmcih8gl" path="res://Assets/Sprites/upgrades/orbs/orbEnhance_up.png" id="2_l8vwe"]
 
-[node name="PushOrbOutUpgrade" type="Node2D"]
+[node name="EnhanceOrbUpgrade" type="Node2D"]
 script = ExtResource("1_gxs2y")
 passiveType = 2
-upgradeName = "Enhance Orb"
+upgradeName = "Enhance Orbs"
+description = "Level up all your orbs"
 type = 1
+rarity = null
 icon = ExtResource("2_l8vwe")
+gold_cost = null
+weight_reduction = null
+rolled = null
