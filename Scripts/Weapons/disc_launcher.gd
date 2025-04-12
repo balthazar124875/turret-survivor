@@ -15,7 +15,7 @@ func shoot(enemy: Node) -> void:
 			
 			
 			
-		bullet.pierce = pierce
+		bullet.pierce = pierce + player.extraPierce
 		bullet.life_time = bullet_life_time
 		bullet.scale = Vector2(1, 1) * player.areaSizeMultiplier
 		add_child(bullet)

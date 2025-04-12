@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 		var speed = 250.0
 		var lifetime = 7.0
 		iceball.init_with_direction(direction, damage, speed, lifetime, "Ice ball")
-		iceball.pierce = 1000
+		iceball.pierce = 1000 + player.extraPierce
 		
 		#TODO: Add velocity and rotation
 		iceball.rotation = direction.angle() - PI;

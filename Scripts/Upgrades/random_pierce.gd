@@ -1,29 +1,14 @@
-extends PassiveUpgrade
+extends Upgrade
 
-@export var bonusOnePiercePercentage: float = 0.5
+@export var stat_type: GlobalEnums.PLAYER_STATS
+@export var amount: float
 
-var active = false
-var pierceBonus = 1
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	type = UpgradeType.PLAYER_STAT_UP
 	pass # Replace with function body.
 
 func applyUpgradeToPlayer(player: Player) -> void:
-	if(!active):
-		SignalBus.bullet_created.connect(_apply_effects)
-		active = true
-	super.applyUpgradeToPlayer(player)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
-func _apply_effects(bullet: Bullet):
-	bullet.pierce += pierceBonus
+	player.modify_stat(stat_type, amount, upgradeName)
 
-func apply_level_up():
-	if(upgradeAmount == 10):
-		#something cool
-		return
-	
-	pierceBonus = pierceBonus + 1
+func reparentToPlayer(player: Player) -> void:
+	player.get_node("./Upgrades/Stats").add_child(self)

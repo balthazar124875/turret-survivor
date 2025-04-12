@@ -23,5 +23,5 @@ func on_gold_updated(gold: int) -> void:
 	
 func on_enemy_killed(_e) -> void:
 	kills += 1
-	get_node("RightMenuColumn/KillsLabel").text = "Kills: " + str(kills)
+	get_node("RightMenuColumn/TabContainer/Stats/KillsLabel").text = "Kills: " + str(kills)
 	
