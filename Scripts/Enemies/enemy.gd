@@ -5,6 +5,7 @@ class_name Enemy
 var damage_flash: bool = false
 
 @export var speed = 100
+@export var max_health = 5
 @export var health = 5
 @export var gold_value = 1
 @export var damage: float = 1.0
@@ -74,7 +75,7 @@ func apply_status_effect(status_effect: EnemyStatusEffect):
 				func(ase): return ase.type in GlobalEnums.CROWD_CONTROL
 			)
 			
-		var highest_slow_amount = crowd_control_effects.map(func(ase): return ase.magnitude).min()
+		var highest_slow_amount = crowd_control_effects.map(func(ase): return ase.magnitude).max()
 			
 		if(highest_slow_amount != null):
 			current_action_speed = action_speed * (1 - highest_slow_amount)
@@ -103,6 +104,7 @@ func erase_status_effect(status_effect: EnemyStatusEffect):
 
 func increase_hp(multiplier: float) -> void:
 	health *= multiplier
+	max_health *= multiplier
 	
 func increase_damage(multiplier: float) -> void:
 	damage *= multiplier

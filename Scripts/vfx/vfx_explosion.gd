@@ -1,16 +1,24 @@
-extends Node2D
+extends Area2D
 
 var animPlayer;
 var aliveTime = 0.2;
-var damage_per_tick = 100
+var damage
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	animPlayer = $AnimationPlayer;
 	call_deferred("_delete_after_time", aliveTime)
 	animPlayer.play("start_animation")
+	
+	if(damage != null):
+		connect("body_entered", _on_body_entered)
 	pass # Replace with function body.
 
+func _on_body_entered(body):
+	if body is Enemy and body.is_alive():  # Replace with your enemy script class name
+		
+		body.take_damage(damage, "Corpse Explosion", GlobalEnums.DAMAGE_TYPES.FIRE) 
+			
 func _physics_process(delta):
 	#for body in $Area2D.get_overlapping_bodies():
 	#	if body is Enemy:

@@ -30,6 +30,7 @@ contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_0gflr")
 explosionVFX = ExtResource("2_150mo")
+max_health = 3
 health = 3
 damage = 15.0
 armor = 3.0

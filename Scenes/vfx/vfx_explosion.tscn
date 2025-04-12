@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bihp4jss16rec"]
+[gd_scene load_steps=13 format=3 uid="uid://bihp4jss16rec"]
 
 [ext_resource type="Script" path="res://Scripts/vfx/vfx_explosion.gd" id="1_6e1yk"]
 [ext_resource type="Shader" uid="uid://cm0f4dyf7wyr0" path="res://Scenes/vfx/vfx_explosion.tres" id="1_ort1l"]
@@ -156,7 +156,12 @@ _data = {
 "start_animation": SubResource("Animation_1afxw")
 }
 
-[node name="VfxExplosion" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwj20"]
+size = Vector2(50, 48.5)
+
+[node name="VfxExplosion" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_6e1yk")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -171,3 +176,6 @@ libraries = {
 "": SubResource("AnimationLibrary_1376t")
 }
 autoplay = "start_animation"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fwj20")

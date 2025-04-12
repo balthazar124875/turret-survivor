@@ -28,6 +28,7 @@ contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_76bfq")
 speed = 75
+max_health = 8
 health = 8
 gold_value = 2
 damage = 3.1

@@ -26,3 +26,4 @@ func land():
 	for body in get_overlapping_bodies():
 		if body is Enemy:  # Check if it's an enemy
 			trigger_trap()
+			return
