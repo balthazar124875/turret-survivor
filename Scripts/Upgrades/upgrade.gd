@@ -34,13 +34,13 @@ func applyUpgradeToPlayer(player: Player) -> void:
 	learnt = true;
 	applyCosmeticChangeToPlayer();
 
-func applyUpgradeToCircle(circle: Circle) -> void:
+func applyUpgradeToCircle() -> void:
 	pass
 
 func applyCosmeticChangeToPlayer() -> void:
 	pass
 
-func reparentToCircle(circle: Circle) -> void:
+func reparentToCircle() -> void:
 	pass
 
 func applyPlayerUpgrade(player: Player) -> void:
@@ -49,11 +49,11 @@ func applyPlayerUpgrade(player: Player) -> void:
 	applyUpgradeToPlayer(player)
 	#reparentToPlayer(player)
 	
-func applyCircleUpgrade(circle: Circle) -> void:
+func applyCircleUpgrade() -> void:
 	upgradeAmount += 1
 	weight -= weight_reduction
-	applyUpgradeToCircle(circle)
-	reparentToCircle(circle)
+	applyUpgradeToCircle()
+	reparentToCircle()
 	
 #This function should return the current level desc, and next level desc
 # Lvl 2 -> 3

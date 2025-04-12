@@ -53,7 +53,7 @@ func _input(event):
 
 func load_upgrades() -> void:
 			#Iterate all Upgrade scripts and put them in the global array
-	var folders = ["Stats", "Weapons", "Passives"]
+	var folders = ["Circle", "Stats", "Weapons", "Passives"]
 	for f in folders:
 		var dir = DirAccess.open("res://Scenes/Upgrades/" + f);
 		if dir:
@@ -169,11 +169,11 @@ func _on_shop_upgrade_button_pressed(index: int) -> void:
 	add_child(new_upgrade)
 	if(new_upgrade.type == Upgrade.UpgradeType.CIRCLE):
 		#Circle upgrader
-		shopUpgradeButtons[index].upgradeNode.applyCircleUpgrade(circle)
-		circle.circleUpgrades.push_back(circle);
+		new_upgrade.applyCircleUpgrade()
+		circle.circleUpgrades.push_back(new_upgrade);
 	else:
 		#Player upgrader
-		shopUpgradeButtons[index].upgradeNode.applyPlayerUpgrade(player)
+		new_upgrade.applyPlayerUpgrade(player)
 		player.playerUpgrades.push_back(new_upgrade);
 
 	var x = shopUpgradeButtons[index]

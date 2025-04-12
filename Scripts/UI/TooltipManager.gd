@@ -7,7 +7,7 @@ extends Node
 class_name TooltipManager
 
 @onready var panelContainer = $PanelContainer;
-@onready var label = $PanelContainer/MarginContainer/Label;
+@onready var label = $PanelContainer/MarginContainer/RichTextLabel;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
