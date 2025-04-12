@@ -8,6 +8,9 @@ var recursive: bool = false
 		
 func shoot(enemy: Node) -> void:	
 	var target = get_random_target()
+	if target == null:
+		return
+		
 	if player.global_position.distance_to(target.global_position) > range * player.rangeMultiplier:
 		return
 	var bullet = bullet.instantiate()
@@ -15,6 +18,7 @@ func shoot(enemy: Node) -> void:
 		bullet.target_pos = target.global_position - player.global_position
 	bullet.speed = base_projectile_speed
 	bullet.damage = damage * player.damageMultiplier * gun_damage_multiplier
+	bullet.start_pos = Vector2(0,0)
 	add_child(bullet)
 	
 func apply_level_up():

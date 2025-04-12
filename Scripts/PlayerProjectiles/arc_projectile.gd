@@ -25,7 +25,7 @@ func _process(delta) -> void:
 	if path_follow.progress_ratio >= 1:
 		land()
 		
-	path_follow.progress_ratio += delta
+	path_follow.progress += speed * delta
 	position = path_follow.position
 	
 func init_arc(start_pos: Vector2, target_pos: Vector2, speed: float):

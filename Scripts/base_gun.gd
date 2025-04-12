@@ -4,8 +4,8 @@ class_name BaseGun
 
 enum TargetingType {
 	ENEMY,
-	RANDOM_ENEMY,
-	AREA
+	AREA,
+	RANDOM_ENEMY
 }
 
 @export var targeting_type : TargetingType;
@@ -70,9 +70,10 @@ func get_target() -> Node: #defaults to getting closest
 	
 
 func get_random_target() -> Node:
-	return enemy_parent.get_children().filter(
+	var enemies = enemy_parent.get_children()
+	return enemies.filter(
 			func(enemy): return global_position.distance_to(enemy.global_position) < range * player.rangeMultiplier
-		).pick_random()
+		).pick_random() if enemies.size() > 0 else null
 	
 	
 func get_target_area() -> Vector2: #defaults to getting closest
