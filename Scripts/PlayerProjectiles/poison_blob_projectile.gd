@@ -6,14 +6,16 @@ var damage = 1
 var base_explosion_size = 100
 
 @onready var player = get_node("/root/EmilScene/Player")
-
+var splat_particles = preload("res://Scenes/Particles/PoisonSplatParticle.tscn")
 func _ready() -> void:
-		init_arc(start_pos, target_pos, speed)
+	init_arc(start_pos, target_pos, speed)
 
 func create_explosion():
+	var new_particle = splat_particles.instantiate()
+	new_particle.global_position = global_position
+	get_node("/root/EmilScene/ParticleNode").add_child(new_particle)
 	$CollisionShape2D.shape.radius = base_explosion_size * player.areaSizeMultiplier
 	damage_enemies_in_collider()
-	
 
 func land():
 	landed = true
