@@ -173,7 +173,7 @@ func _on_shop_upgrade_button_pressed(index: int) -> void:
 		circle.circleUpgrades.push_back(new_upgrade);
 	else:
 		#Player upgrader
-		new_upgrade.applyPlayerUpgrade(player)
+		shopUpgradeButtons[index].upgradeNode.applyPlayerUpgrade(player)
 		player.playerUpgrades.push_back(new_upgrade);
 
 	var x = shopUpgradeButtons[index]
