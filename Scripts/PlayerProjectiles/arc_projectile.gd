@@ -14,6 +14,7 @@ var landed = false
 
 var arc_height: float  = 100
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass

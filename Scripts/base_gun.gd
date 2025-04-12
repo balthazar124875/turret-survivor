@@ -4,6 +4,7 @@ class_name BaseGun
 
 enum TargetingType {
 	ENEMY,
+	RANDOM_ENEMY,
 	AREA
 }
 
@@ -43,6 +44,11 @@ func _process(delta: float) -> void:
 				if(enemy != null):
 					shoot(enemy)
 					charge = fmod(charge,  cooldown)
+			TargetingType.RANDOM_ENEMY:
+				var enemy = get_random_target()
+				if(enemy != null):
+					shoot(enemy)
+					charge = fmod(charge,  cooldown)
 			TargetingType.AREA:
 				var area = get_target_area()
 				shoot_area(area)
@@ -61,6 +67,12 @@ func get_target() -> Node: #defaults to getting closest
 					closest_enemy = enemy
 					
 	return closest_enemy
+	
+
+func get_random_target() -> Node:
+	return enemy_parent.get_children().filter(
+			func(enemy): return global_position.distance_to(enemy.global_position) < range * player.rangeMultiplier
+		).pick_random()
 	
 	
 func get_target_area() -> Vector2: #defaults to getting closest

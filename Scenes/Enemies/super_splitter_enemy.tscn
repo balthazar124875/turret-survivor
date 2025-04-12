@@ -1,16 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://dab7kg6pilus7"]
+[gd_scene load_steps=8 format=3 uid="uid://bi15bknmvxxfb"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/exploding_enemy.gd" id="1_0gflr"]
-[ext_resource type="Texture2D" uid="uid://dlpiyvwh7k5wk" path="res://Assets/Sprites/Enemies/bloorg.png" id="2_2e0us"]
-[ext_resource type="PackedScene" uid="uid://bihp4jss16rec" path="res://Scenes/vfx/vfx_explosion.tscn" id="2_i5i20"]
-[ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="3_683tw"]
+[ext_resource type="Script" path="res://Scripts/Enemies/splitting_enemy.gd" id="1_0lgyv"]
+[ext_resource type="PackedScene" uid="uid://crqen402ma3x3" path="res://Scenes/Enemies/splitter_enemy.tscn" id="2_pc6he"]
+[ext_resource type="Texture2D" uid="uid://daqsrf8qt1dlg" path="res://Assets/Sprites/Enemies/fetto.png" id="3_jccpo"]
+[ext_resource type="Texture2D" uid="uid://bsruevcpfmwig" path="res://Assets/Sprites/Enemies/super_fetto.png" id="4_4fhxu"]
+[ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="4_7tf3n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p7tvn"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_2e0us")
+"texture": ExtResource("3_jccpo")
 }],
 "loop": true,
 "name": &"default",
@@ -18,21 +19,20 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_twbii"]
-radius = 36.0
-height = 96.0
+radius = 79.0
+height = 158.0
 
-[node name="Enemy6" type="RigidBody2D"]
+[node name="SuperSplitterEnemy" type="RigidBody2D"]
 position = Vector2(604, 288)
 collision_layer = 2
 collision_mask = 4
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("1_0gflr")
-explosionVFX = ExtResource("2_i5i20")
-health = 3
-damage = 15.0
-armor = 3.0
+script = ExtResource("1_0lgyv")
+child_scene = ExtResource("2_pc6he")
+speed = 70
+health = 8
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -51,12 +51,12 @@ scale = Vector2(1.4, 1.4)
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.435294)
 z_index = -10
-position = Vector2(2, 38)
-scale = Vector2(3, 3)
-texture = ExtResource("3_683tw")
+position = Vector2(2, 77)
+scale = Vector2(5, 5)
+texture = ExtResource("4_7tf3n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(7, 3)
 scale = Vector2(3, 3)
-texture = ExtResource("2_2e0us")
+texture = ExtResource("4_4fhxu")

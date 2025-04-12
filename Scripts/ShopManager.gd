@@ -47,7 +47,7 @@ func _ready() -> void:
 	empty_item_slot_texture = load("res://Assets/Sprites/upgrades/empty_upgrade_slot.png")
 
 func _input(event):
-	if event is InputEventKey and event.pressed:
+	if event is InputEventKey and event.is_released():
 		if event.keycode == KEY_SPACE:
 			_on_reroll_button_pressed()
 

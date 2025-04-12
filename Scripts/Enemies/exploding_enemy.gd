@@ -13,4 +13,3 @@ func attack() -> void:
 	$CollisionShape2D.shape.radius = 1
 	get_node("/root/EmilScene").add_child(explosion)
 	die()
-	

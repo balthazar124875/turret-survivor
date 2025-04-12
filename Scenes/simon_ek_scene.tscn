@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=28 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -17,9 +17,11 @@
 [ext_resource type="Resource" uid="uid://ngftjlnyqymm" path="res://Resources/wave5.tres" id="9_qpx83"]
 [ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="9_yckrj"]
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
-[ext_resource type="Resource" uid="uid://b5m6113lpakb6" path="res://Resources/wave6.tres" id="10_rsm4w"]
+[ext_resource type="Resource" path="res://Resources/wave6.tres" id="10_rsm4w"]
 [ext_resource type="Script" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
+[ext_resource type="Resource" uid="uid://7ac7y18jfnu6" path="res://Resources/wave7.tres" id="11_7ww4k"]
 [ext_resource type="Script" path="res://Scripts/UI/orb_stats.gd" id="11_v6kre"]
+[ext_resource type="Resource" uid="uid://bwfc7pp6uhsfk" path="res://Resources/wave8.tres" id="12_pyvo8"]
 [ext_resource type="PackedScene" uid="uid://wj4fa28pbvk4" path="res://Scenes/circle.tscn" id="13_o8hoq"]
 [ext_resource type="PackedScene" uid="uid://bampk2ki2ygjd" path="res://Scenes/UI/damage_dictionary.tscn" id="18_dwmxg"]
 [ext_resource type="Script" path="res://Scripts/UI/TooltipManager.gd" id="22_q1apf"]
@@ -52,7 +54,7 @@ healthRegeneration = 0.0
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
-waves = Array[ExtResource("4_7auck")]([ExtResource("5_h832e"), ExtResource("6_cqumk"), ExtResource("7_df5er"), ExtResource("8_frnkb"), ExtResource("9_qpx83"), ExtResource("10_rsm4w")])
+waves = Array[ExtResource("4_7auck")]([ExtResource("5_h832e"), ExtResource("6_cqumk"), ExtResource("7_df5er"), ExtResource("8_frnkb"), ExtResource("9_qpx83"), ExtResource("10_rsm4w"), ExtResource("11_7ww4k"), ExtResource("12_pyvo8")])
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
 enemy_hp_scaling = 1.15

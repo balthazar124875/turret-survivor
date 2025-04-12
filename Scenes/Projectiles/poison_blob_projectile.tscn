@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgcou2gcjqd7j"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerProjectiles/poison_blob_projectile.gd" id="1_v62ex"]
+[ext_resource type="Texture2D" uid="uid://b811xb8hspakk" path="res://Assets/Sprites/Projectiles/poison_blob_projectile.png" id="2_p5cei"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_anlhq"]
+radius = 90.1388
+
+[node name="PoisonBloblProjectile" type="Area2D"]
+disable_mode = 1
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_v62ex")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_p5cei")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_anlhq")
+debug_color = Color(0, 0.6, 0.701961, 0.262745)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(3, 3)
