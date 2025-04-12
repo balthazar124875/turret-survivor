@@ -8,6 +8,8 @@ class_name Player
 var playerUpgrades: Array = [];
 @export var extraProjectiles = 0;
 @export var extraChains = 0;
+@export var extraPierce = 0;
+@export var extraBounce = 0;
 @export var rangeMultiplier = 1.0;
 @export var damageMultiplier = 1.0;
 @export var attackSpeedMultiplier = 1.0;
@@ -101,10 +103,6 @@ func modify_gold(value: int) -> void:
 	
 func modify_income(value: int) -> void:
 	gold_income += value
-
-func modify_armor(value: float, source: String) -> void:
-	armor += value
-	SignalBus.armor_updated.emit(armor, source)
 	
 func _on_enemy_killed(enemy: Enemy) -> void:
 	for upgrade in get_passive_upgrades_of_type(PassiveUpgrade.PassiveUpgradeType.ENEMY_KILL_TYPE):
@@ -116,31 +114,50 @@ func modify_stat(stat: GlobalEnums.PLAYER_STATS, amount: float, source: String) 
 	match (stat):
 		GlobalEnums.PLAYER_STATS.ATTACK_SPEED:
 			self.attackSpeedMultiplier += amount
+			SignalBus.stat_updated.emit(stat, self.attackSpeedMultiplier, amount)
 		GlobalEnums.PLAYER_STATS.RANGE_MULTIPLER:
 			self.rangeMultiplier += amount
+			SignalBus.stat_updated.emit(stat, self.rangeMultiplier, amount)
 		GlobalEnums.PLAYER_STATS.DAMAGE_MULTIPLIER:
 			self.damageMultiplier += amount
+			SignalBus.stat_updated.emit(stat, self.damageMultiplier, amount)
 		GlobalEnums.PLAYER_STATS.PROJECTILE_SPEED_MULTIPLIER:
 			self.projectileSpeedMultipler += amount
+			SignalBus.stat_updated.emit(stat, self.projectileSpeedMultipler, amount)
 		GlobalEnums.PLAYER_STATS.AREA_SIZE_MULTIPLIER:
 			self.areaSizeMultiplier += amount
+			SignalBus.stat_updated.emit(stat, self.areaSizeMultiplier, amount)
 		GlobalEnums.PLAYER_STATS.EXTRA_CHAINS:
 			self.extraChains += amount
+			SignalBus.stat_updated.emit(stat, self.extraChains, amount)
 		GlobalEnums.PLAYER_STATS.EXTRA_PROJECTILES:
 			self.extraProjectiles += amount
+			SignalBus.stat_updated.emit(stat, self.extraProjectiles, amount)
 		GlobalEnums.PLAYER_STATS.ADD_BASE_INCOME:
 			self.gold_income += amount
+			SignalBus.stat_updated.emit(stat, self.gold_income, amount)
 		GlobalEnums.PLAYER_STATS.MULTIPLY_INCOME_TIMER:
 			income_timer.wait_time = max(income_timer.wait_time * amount, 0.01)
+			SignalBus.stat_updated.emit(stat, income_timer.wait_time, amount)
 		GlobalEnums.PLAYER_STATS.ADD_MAX_HEALTH:
 			self.maxHealth += amount
 			modify_health(amount)
+			SignalBus.stat_updated.emit(stat, maxHealth, amount)
 		GlobalEnums.PLAYER_STATS.ADD_HEALTH_REGENERATION:
 			self.healthRegeneration += amount
+			SignalBus.stat_updated.emit(stat, self.healthRegeneration, amount)
+		GlobalEnums.PLAYER_STATS.ADD_ARMOR:
+			self.armor += amount
+			SignalBus.stat_updated.emit(stat, self.armor, amount)
 		GlobalEnums.PLAYER_STATS.BONUS_LUCK:
 			self.luck += amount
-		GlobalEnums.PLAYER_STATS.ADD_ARMOR:
-			modify_armor(amount, source)
+			SignalBus.stat_updated.emit(stat, self.luck, amount)
+		GlobalEnums.PLAYER_STATS.BONUS_PIERCE:
+			self.extraPierce += amount
+			SignalBus.stat_updated.emit(stat, self.extraPierce, amount)
+		GlobalEnums.PLAYER_STATS.BONUS_BOUNCE:
+			self.extraBounce += amount
+			SignalBus.stat_updated.emit(stat, self.extraBounce + 1, amount)
 
 func get_passive_upgrades_of_type(upgrade_type: PassiveUpgrade.PassiveUpgradeType):
 	return playerUpgrades.filter(func(e: Upgrade): return e.type == Upgrade.UpgradeType.PASSIVE && e.passiveType == upgrade_type)

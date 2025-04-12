@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=45 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -17,16 +17,38 @@
 [ext_resource type="Resource" uid="uid://ngftjlnyqymm" path="res://Resources/wave5.tres" id="9_qpx83"]
 [ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="9_yckrj"]
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
-[ext_resource type="Resource" path="res://Resources/wave6.tres" id="10_rsm4w"]
+[ext_resource type="Resource" uid="uid://b5m6113lpakb6" path="res://Resources/wave6.tres" id="10_rsm4w"]
 [ext_resource type="Script" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
-[ext_resource type="Resource" uid="uid://7ac7y18jfnu6" path="res://Resources/wave7.tres" id="11_7ww4k"]
 [ext_resource type="Script" path="res://Scripts/UI/orb_stats.gd" id="11_v6kre"]
-[ext_resource type="Resource" uid="uid://bwfc7pp6uhsfk" path="res://Resources/wave8.tres" id="12_pyvo8"]
 [ext_resource type="PackedScene" uid="uid://wj4fa28pbvk4" path="res://Scenes/circle.tscn" id="13_o8hoq"]
 [ext_resource type="PackedScene" uid="uid://bampk2ki2ygjd" path="res://Scenes/UI/damage_dictionary.tscn" id="18_dwmxg"]
+[ext_resource type="Theme" uid="uid://x0o6l3r75ami" path="res://Themes/new_test.tres" id="21_uq2lv"]
 [ext_resource type="Script" path="res://Scripts/UI/TooltipManager.gd" id="22_q1apf"]
+[ext_resource type="Script" path="res://Scripts/UI/stat_display.gd" id="23_538x1"]
+[ext_resource type="Texture2D" uid="uid://c18hxp10xpph3" path="res://Assets/Sprites/upgrades/health.png" id="23_n2622"]
+[ext_resource type="Texture2D" uid="uid://bsrsq4uahi4pd" path="res://Assets/Sprites/upgrades/health_regen.png" id="24_k15pe"]
+[ext_resource type="Texture2D" uid="uid://m2fbo1scyp7x" path="res://Assets/Sprites/upgrades/armor_up.png" id="25_mkusj"]
+[ext_resource type="Texture2D" uid="uid://bpp541wygu8nr" path="res://Assets/Sprites/upgrades/income_timer.png" id="26_ctdy5"]
+[ext_resource type="Texture2D" uid="uid://bid3oqi85anxc" path="res://Assets/Sprites/upgrades/income_up.png" id="27_tsq1f"]
+[ext_resource type="Texture2D" uid="uid://dhym8e8ru5pga" path="res://Assets/Sprites/upgrades/damage_up.png" id="28_g4c07"]
+[ext_resource type="Texture2D" uid="uid://bok4vaa68chsr" path="res://Assets/Sprites/upgrades/chain_up.png" id="28_imtlq"]
+[ext_resource type="Texture2D" uid="uid://e2b3f3l8hgjc" path="res://Assets/Sprites/upgrades/fire_rate_up.png" id="29_6eskr"]
+[ext_resource type="Texture2D" uid="uid://bc27thv4erlrl" path="res://Assets/Sprites/upgrades/bounce.png" id="29_7b38y"]
+[ext_resource type="Texture2D" uid="uid://cxlxila48ym8k" path="res://Assets/Sprites/upgrades/pierce.png" id="30_kj3s7"]
+[ext_resource type="Texture2D" uid="uid://bec5fxraqw2ig" path="res://Assets/Sprites/upgrades/range_up.png" id="30_y7pdg"]
+[ext_resource type="Texture2D" uid="uid://cngfawelbq4n1" path="res://Assets/Sprites/upgrades/multishot.png" id="31_7uaoo"]
+[ext_resource type="Texture2D" uid="uid://cn4vbiasqmowd" path="res://Assets/Sprites/upgrades/area_up.png" id="31_i8is2"]
+[ext_resource type="Texture2D" uid="uid://crnfw7u4yi5ga" path="res://Assets/Sprites/upgrades/luckybug.png" id="32_26hin"]
+[ext_resource type="Texture2D" uid="uid://bq1vwc7do4883" path="res://Assets/Sprites/upgrades/proj_speed_up.png" id="32_e3gei"]
+[ext_resource type="StyleBox" uid="uid://e2ylx83bifj" path="res://Themes/augment.tres" id="38_xtrk1"]
 
 [sub_resource type="Theme" id="Theme_t5p71"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3e480"]
+bg_color = Color(0, 0, 0, 0)
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.247059, 0.247059, 0.454902, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v52ci"]
 bg_color = Color(0, 0.0352941, 0.0627451, 0.784314)
@@ -54,7 +76,7 @@ healthRegeneration = 0.0
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
-waves = Array[ExtResource("4_7auck")]([ExtResource("5_h832e"), ExtResource("6_cqumk"), ExtResource("7_df5er"), ExtResource("8_frnkb"), ExtResource("9_qpx83"), ExtResource("10_rsm4w"), ExtResource("11_7ww4k"), ExtResource("12_pyvo8")])
+waves = Array[ExtResource("4_7auck")]([ExtResource("5_h832e"), ExtResource("6_cqumk"), ExtResource("7_df5er"), ExtResource("8_frnkb"), ExtResource("9_qpx83"), ExtResource("10_rsm4w")])
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
 enemy_hp_scaling = 1.15
@@ -419,32 +441,518 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -420.0
 offset_top = -540.0
-offset_right = -280.0
-offset_bottom = -180.0
+offset_bottom = 540.0
 grow_horizontal = 0
 grow_vertical = 2
-scale = Vector2(3, 3)
 
-[node name="KillsLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn"]
+[node name="TabContainer" type="TabContainer" parent="GameplayUi/RightMenuColumn"]
+clip_contents = true
+layout_mode = 0
+offset_top = 4.0
+offset_right = 420.0
+offset_bottom = 1078.0
+theme = ExtResource("21_uq2lv")
+tab_alignment = 1
+current_tab = 1
+
+[node name="Stats" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="DamageDictionary" parent="GameplayUi/RightMenuColumn/TabContainer/Stats" instance=ExtResource("18_dwmxg")]
+layout_mode = 0
+offset_left = 8.00004
+offset_top = 71.0
+offset_right = 164.0
+offset_bottom = 139.0
+scale = Vector2(1.5, 1.5)
+
+[node name="KillsLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Stats"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -65.3333
-offset_top = 4.33333
-offset_right = 62.6667
-offset_bottom = 38.3333
+offset_left = -207.0
+offset_top = -1.0
+offset_right = -79.0
+offset_bottom = 33.0
 grow_horizontal = 2
+scale = Vector2(3, 3)
 text = "Kills: 0
 "
 
-[node name="DamageDictionary" parent="GameplayUi/RightMenuColumn" instance=ExtResource("18_dwmxg")]
+[node name="Character" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="BaseStats" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character"]
+anchors_preset = 0
+offset_top = 8.0
+offset_right = 420.0
+offset_bottom = 278.0
+
+[node name="MaxHp" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats"]
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 5.0
+offset_right = 80.0
+offset_bottom = 85.0
+script = ExtResource("23_538x1")
+stat = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/MaxHp"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("23_n2622")
+centered = false
+offset = Vector2(3, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/MaxHp"]
 layout_mode = 0
-offset_left = 6.0
-offset_top = 32.6667
-offset_right = 162.0
-offset_bottom = 100.667
-scale = Vector2(0.5, 0.5)
+offset_left = -11.0
+offset_top = 53.0
+offset_right = 69.0
+offset_bottom = 80.0
+bbcode_enabled = true
+text = "[center]-[/center]
+"
+
+[node name="Regen" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats"]
+anchors_preset = 0
+offset_left = 100.0
+offset_top = 5.0
+offset_right = 160.0
+offset_bottom = 85.0
+script = ExtResource("23_538x1")
+stat = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Regen"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("24_k15pe")
+centered = false
+offset = Vector2(3, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Regen"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 53.0
+offset_right = 69.0
+offset_bottom = 80.0
+bbcode_enabled = true
+text = "[center]-[/center]
+"
+
+[node name="Armor" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats"]
+anchors_preset = 0
+offset_left = 180.0
+offset_top = 5.0
+offset_right = 240.0
+offset_bottom = 85.0
+script = ExtResource("23_538x1")
+stat = 12
+
+[node name="Sprite2D" type="Sprite2D" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Armor"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("25_mkusj")
+centered = false
+offset = Vector2(3, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Armor"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 53.0
+offset_right = 69.0
+offset_bottom = 80.0
+bbcode_enabled = true
+text = "[center]-[/center]
+"
+
+[node name="IncomeTimer" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats"]
+anchors_preset = 0
+offset_left = 260.0
+offset_top = 5.0
+offset_right = 320.0
+offset_bottom = 85.0
+script = ExtResource("23_538x1")
+stat = 9
+percentage = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/IncomeTimer"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("26_ctdy5")
+centered = false
+offset = Vector2(3, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/IncomeTimer"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 53.0
+offset_right = 69.0
+offset_bottom = 80.0
+bbcode_enabled = true
+text = "[center]-[/center]
+"
+
+[node name="Income" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats"]
+anchors_preset = 0
+offset_left = 340.0
+offset_top = 5.0
+offset_right = 400.0
+offset_bottom = 85.0
+script = ExtResource("23_538x1")
+stat = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Income"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("27_tsq1f")
+centered = false
+offset = Vector2(3, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Income"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 53.0
+offset_right = 69.0
+offset_bottom = 80.0
+bbcode_enabled = true
+text = "[center]-[/center]
+"
+
+[node name="Damage" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats"]
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 90.0
+offset_right = 80.0
+offset_bottom = 170.0
+script = ExtResource("23_538x1")
+stat = 2
+percentage = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Damage"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("28_g4c07")
+centered = false
+offset = Vector2(3, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Damage"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 53.0
+offset_right = 69.0
+offset_bottom = 80.0
+bbcode_enabled = true
+text = "[center]-[/center]
+"
+
+[node name="AttackSpeed" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats"]
+anchors_preset = 0
+offset_left = 100.0
+offset_top = 90.0
+offset_right = 160.0
+offset_bottom = 170.0
+script = ExtResource("23_538x1")
+percentage = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/AttackSpeed"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("29_6eskr")
+centered = false
+offset = Vector2(3, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/AttackSpeed"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 53.0
+offset_right = 69.0
+offset_bottom = 80.0
+bbcode_enabled = true
+text = "[center]-[/center]
+"
+
+[node name="Range" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats"]
+anchors_preset = 0
+offset_left = 180.0
+offset_top = 90.0
+offset_right = 240.0
+offset_bottom = 170.0
+script = ExtResource("23_538x1")
+stat = 1
+percentage = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Range"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("30_y7pdg")
+centered = false
+offset = Vector2(3, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Range"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 53.0
+offset_right = 69.0
+offset_bottom = 80.0
+bbcode_enabled = true
+text = "[center]-[/center]
+"
+
+[node name="Area" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats"]
+anchors_preset = 0
+offset_left = 260.0
+offset_top = 90.0
+offset_right = 320.0
+offset_bottom = 170.0
+script = ExtResource("23_538x1")
+stat = 10
+percentage = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Area"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("31_i8is2")
+centered = false
+offset = Vector2(3, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Area"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 53.0
+offset_right = 69.0
+offset_bottom = 80.0
+bbcode_enabled = true
+text = "[center]-[/center]
+"
+
+[node name="ProjectileSpeed" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats"]
+anchors_preset = 0
+offset_left = 340.0
+offset_top = 90.0
+offset_right = 400.0
+offset_bottom = 170.0
+script = ExtResource("23_538x1")
+stat = 3
+percentage = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/ProjectileSpeed"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("32_e3gei")
+centered = false
+offset = Vector2(3, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/ProjectileSpeed"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 53.0
+offset_right = 69.0
+offset_bottom = 80.0
+bbcode_enabled = true
+text = "[center]-[/center]
+"
+
+[node name="Chain" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats"]
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 175.0
+offset_right = 80.0
+offset_bottom = 255.0
+script = ExtResource("23_538x1")
+stat = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Chain"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("28_imtlq")
+centered = false
+offset = Vector2(3, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Chain"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 53.0
+offset_right = 69.0
+offset_bottom = 80.0
+bbcode_enabled = true
+text = "[center]-[/center]
+"
+
+[node name="Bounce" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats"]
+anchors_preset = 0
+offset_left = 100.0
+offset_top = 175.0
+offset_right = 160.0
+offset_bottom = 255.0
+script = ExtResource("23_538x1")
+stat = 14
+percentage = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Bounce"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("29_7b38y")
+centered = false
+offset = Vector2(3, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Bounce"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 53.0
+offset_right = 69.0
+offset_bottom = 80.0
+bbcode_enabled = true
+text = "[center]-[/center]
+"
+
+[node name="Pierce" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats"]
+anchors_preset = 0
+offset_left = 180.0
+offset_top = 175.0
+offset_right = 240.0
+offset_bottom = 255.0
+script = ExtResource("23_538x1")
+stat = 13
+
+[node name="Sprite2D" type="Sprite2D" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Pierce"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("30_kj3s7")
+centered = false
+offset = Vector2(3, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Pierce"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 53.0
+offset_right = 69.0
+offset_bottom = 80.0
+bbcode_enabled = true
+text = "[center]-[/center]
+"
+
+[node name="Projectiles" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats"]
+anchors_preset = 0
+offset_left = 260.0
+offset_top = 175.0
+offset_right = 320.0
+offset_bottom = 255.0
+script = ExtResource("23_538x1")
+stat = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Projectiles"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("31_7uaoo")
+centered = false
+offset = Vector2(3, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Projectiles"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 53.0
+offset_right = 69.0
+offset_bottom = 80.0
+bbcode_enabled = true
+text = "[center]-[/center]
+"
+
+[node name="Luck" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats"]
+anchors_preset = 0
+offset_left = 340.0
+offset_top = 175.0
+offset_right = 400.0
+offset_bottom = 255.0
+script = ExtResource("23_538x1")
+stat = 11
+
+[node name="Sprite2D" type="Sprite2D" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Luck"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("32_26hin")
+centered = false
+offset = Vector2(3, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/Luck"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 53.0
+offset_right = 69.0
+offset_bottom = 80.0
+bbcode_enabled = true
+text = "[center]-[/center]
+"
+
+[node name="Augments" type="Panel" parent="GameplayUi/RightMenuColumn/TabContainer/Character"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 264.0
+offset_right = 410.0
+offset_bottom = 394.0
+theme = ExtResource("21_uq2lv")
+theme_override_styles/panel = SubResource("StyleBoxFlat_3e480")
+
+[node name="Augment1" type="Panel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/Augments"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 35.0
+offset_right = 110.0
+offset_bottom = 95.0
+theme_override_styles/panel = ExtResource("38_xtrk1")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/Augments/Augment1"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 55.0
+offset_bottom = 55.0
+bbcode_enabled = true
+text = "Round
+[center]25
+"
+
+[node name="Augment2" type="Panel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/Augments"]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 35.0
+offset_right = 230.0
+offset_bottom = 95.0
+theme_override_styles/panel = ExtResource("38_xtrk1")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/Augments/Augment2"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 55.0
+offset_bottom = 55.0
+bbcode_enabled = true
+text = "Round
+[center]50
+"
+
+[node name="Augment3" type="Panel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/Augments"]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 35.0
+offset_right = 350.0
+offset_bottom = 95.0
+theme_override_styles/panel = ExtResource("38_xtrk1")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/Augments/Augment3"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 55.0
+offset_bottom = 55.0
+bbcode_enabled = true
+text = "Round
+[center]75
+"
+
+[node name="Weapons" type="Panel" parent="GameplayUi/RightMenuColumn/TabContainer/Character"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 403.0
+offset_right = 210.0
+offset_bottom = 1039.0
+
+[node name="Passives" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 205.0
+offset_top = 577.0
+offset_right = 418.0
+offset_bottom = 1050.0
 
 [node name="ParticleNode" type="Node2D" parent="."]
 
@@ -475,8 +983,11 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="Tooltip/PanelContainer/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Tooltip/PanelContainer/MarginContainer"]
 layout_mode = 2
 text = "Hello"
+fit_content = true
+autowrap_mode = 0
+text_direction = 1
 
 [connection signal="pressed" from="GameplayUi/LeftMenuColumn/RerollContainer/RerollButton" to="GameplayUi/LeftMenuColumn/ShopUpgrades" method="_on_reroll_button_pressed"]

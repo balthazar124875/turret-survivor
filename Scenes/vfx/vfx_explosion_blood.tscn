@@ -156,7 +156,7 @@ _data = {
 "start_animation": SubResource("Animation_1afxw")
 }
 
-[node name="VfxExplosionBlood" type="Node2D"]
+[node name="VfxExplosionBlood" type="Area2D"]
 script = ExtResource("1_e7cqh")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]

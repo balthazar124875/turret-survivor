@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Enemies/exploding_enemy.gd" id="1_0gflr"]
 [ext_resource type="Texture2D" uid="uid://dlpiyvwh7k5wk" path="res://Assets/Sprites/Enemies/bloorg.png" id="2_2e0us"]
-[ext_resource type="PackedScene" uid="uid://bihp4jss16rec" path="res://Scenes/vfx/vfx_explosion.tscn" id="2_i5i20"]
+[ext_resource type="PackedScene" uid="uid://cfo7n2f5t114n" path="res://Scenes/vfx/vfx_explosion_blood.tscn" id="2_150mo"]
 [ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="3_683tw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p7tvn"]
@@ -29,7 +29,8 @@ gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_0gflr")
-explosionVFX = ExtResource("2_i5i20")
+explosionVFX = ExtResource("2_150mo")
+max_health = 3
 health = 3
 damage = 15.0
 armor = 3.0
