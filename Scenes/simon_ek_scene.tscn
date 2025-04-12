@@ -983,8 +983,11 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="Tooltip/PanelContainer/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Tooltip/PanelContainer/MarginContainer"]
 layout_mode = 2
 text = "Hello"
+fit_content = true
+autowrap_mode = 0
+text_direction = 1
 
 [connection signal="pressed" from="GameplayUi/LeftMenuColumn/RerollContainer/RerollButton" to="GameplayUi/LeftMenuColumn/ShopUpgrades" method="_on_reroll_button_pressed"]
