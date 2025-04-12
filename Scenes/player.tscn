@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://blmikl8w11roj"]
+[gd_scene load_steps=8 format=3 uid="uid://blmikl8w11roj"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_sppr7"]
 [ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="2_8t7dp"]
 [ext_resource type="Texture2D" uid="uid://dns8c1v2a0267" path="res://Assets/Sprites/TowerV3.png" id="2_wdh5b"]
 [ext_resource type="Script" path="res://Scripts/orb_handler.gd" id="4_ydyco"]
+[ext_resource type="PackedScene" uid="uid://wj4fa28pbvk4" path="res://Scenes/circle.tscn" id="5_efrji"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oaghf"]
 animations = [{
@@ -62,6 +63,9 @@ one_shot = true
 
 [node name="OrbHandler" type="Node2D" parent="."]
 script = ExtResource("4_ydyco")
+
+[node name="Circle" parent="." instance=ExtResource("5_efrji")]
+z_index = -200
 
 [connection signal="timeout" from="IncomeTimer" to="." method="_on_income_timer_timeout"]
 [connection signal="timeout" from="DamageFlashTimer" to="." method="_on_damage_flash_timer_timeout"]

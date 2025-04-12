@@ -40,7 +40,7 @@ var currTooltipShotButtonIdx;
 func _ready() -> void:
 	currTooltipShotButtonIdx = -1;
 	player = get_node("/root/EmilScene/Player")
-	circle = get_node("/root/EmilScene/Circle")
+	circle = player.get_node("./Circle")
 	load_upgrades()
 	initialize_buttons()
 	SignalBus.current_wave_updated.connect(new_wave_shop_reroll)
@@ -64,6 +64,9 @@ func load_upgrades() -> void:
 				upgrade.gold_cost = get_cost(upgrade.rarity)
 				UPGRADES_LIST[upgrade.rarity].push_back(upgrade);
 				file_name = dir.get_next()
+				
+				if(f == "Circle"):
+					upgrade._instantiate(); #Generate random inner outer functionality for circle upgrade
 		else:
 			print("An error occurred when trying to access the path.");
 
@@ -167,13 +170,9 @@ func _on_shop_upgrade_button_pressed(index: int) -> void:
 	player.modify_gold(-shopUpgradeButtons[index].upgradeNode.gold_cost)
 	var new_upgrade = shopUpgradeButtons[index].upgradeNode.duplicate()
 	add_child(new_upgrade)
-	if(new_upgrade.type == Upgrade.UpgradeType.CIRCLE):
-		#Circle upgrader
-		new_upgrade.applyCircleUpgrade()
-		circle.circleUpgrades.push_back(new_upgrade);
-	else:
-		#Player upgrader
-		shopUpgradeButtons[index].upgradeNode.applyPlayerUpgrade(player)
+	#Player upgrader
+	shopUpgradeButtons[index].upgradeNode.applyPlayerUpgrade(player)
+	if shopUpgradeButtons[index].upgradeNode.upgradeAmount == 1:
 		player.playerUpgrades.push_back(new_upgrade);
 
 	var x = shopUpgradeButtons[index]

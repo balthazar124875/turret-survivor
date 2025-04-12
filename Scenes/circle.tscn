@@ -15,6 +15,7 @@ animations = [{
 }]
 
 [node name="Circle" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_sd4co")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

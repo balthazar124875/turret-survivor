@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 static func AddCircleUpgrade(circle : CircleType, upgrade : CircleUpgrade) -> void:
 	circleUpgrades[circle].push_back(upgrade);
 	
-static func GetRandomPositionWithinInnerCircle() -> Vector2:
+static func GetRandomPositionInsideCircle() -> Vector2:
 	var radius = GetCircleRadius();
 	var radiusOffset = 0.9; #10% offset
 	#Use sqrt here to weight the rnd closer to circle radius
@@ -48,6 +48,27 @@ static func GetRandomPositionWithinInnerCircle() -> Vector2:
 	
 	var rndPos = playerPos + Vector2(cos(rndAngle), sin(rndAngle)) * rndRadius;
 	return rndPos;
+	
+static func GetRandomPositionOutsideCircle() -> Vector2:
+	var radius = GetCircleRadius()
+	var circle_radius = radius;
+	
+	var max_attempts = 100
+	var attempt = 0
+		
+	var gameViewYMin = 0;
+	var gameViewYMax = 1080;
+	var gameViewXMin = 420;
+	var gameViewXMax = 1500;
+	
+	while attempt < max_attempts:
+		var rnd_pos = Vector2(randf_range(gameViewXMin, gameViewXMax), randf_range(gameViewYMin, gameViewYMax))
+		if rnd_pos.distance_to(playerPos) > circle_radius:
+			return rnd_pos
+		attempt += 1
+	
+	# Fallback if no suitable point found
+	return Vector2(gameViewXMax, gameViewYMax)
 
 static func GetCircleRadius() -> float:
 	return circleSprite.get_width() * CircleSelf.scale.x / 2.0;
