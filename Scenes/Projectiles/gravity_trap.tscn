@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://kdfu1gj068k0"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerProjectiles/gravity_trap.gd" id="1_3u7mr"]
+[ext_resource type="Texture2D" uid="uid://bj5r6fc36vaag" path="res://Assets/Sprites/upgrades/gravity_trap_transparent.png" id="2_y0u3j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2mywb"]
+radius = 16.0
+
+[node name="GravityTrap" type="Area2D"]
+disable_mode = 1
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_3u7mr")
+pull_speed = 550.0
+radius = 300.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 0)
+texture = ExtResource("2_y0u3j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.75, 0)
+shape = SubResource("CircleShape2D_2mywb")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-2, 0)
+scale = Vector2(1.4, 1.45)

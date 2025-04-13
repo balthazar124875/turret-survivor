@@ -1,8 +1,17 @@
 extends RigidBody2D
 
+
 class_name Enemy
 
+enum EnemyState {
+	MOVE,
+	ATTACK,
+	DISPLACEMENT
+}
+
 var damage_flash: bool = false
+
+var state: EnemyState
 
 @export var speed = 100
 @export var max_health = 5
@@ -39,6 +48,10 @@ var damage_numbers_scene = preload("res://Scenes/UI/damage_numbers.tscn")
 var objectObstructingEnemy : Node2D = null;
 
 var dot_tick_time = 0.5 
+
+var displacement_path: Path2D
+var displacement_path_follow: PathFollow2D
+var displacement_speed: float
 
 func init_timers():
 	add_child(damage_flash_timer)  # Add the Timer to the node tree
@@ -138,19 +151,22 @@ func _process(delta: float) -> void:
 		
 	$Sprite2D.rotation_degrees = sin(alive_time * 6.0) * 7
 	
-	var current_position = global_position
-	var direction = (target_position - current_position).normalized()
-	# Move towards the target position
-	if !objectObstructingEnemy:
-		if current_position.distance_to(target_position) > 100:  # Adjust tolerance as needed
-			global_position += direction * speed * delta * current_action_speed
-		elif t > attack_cooldown: 
-			attack()
-			#call_deferred("enable_can_attack", attack_cooldown)
-			#can_attack = false
-	elif t > attack_cooldown:
-		t = 0
-		objectObstructingEnemy.take_damage(damage, self)
+	if(state == EnemyState.DISPLACEMENT):
+		move_along_path(delta)
+	else:
+		var current_position = global_position
+		var direction = (target_position - current_position).normalized()
+		# Move towards the target position
+		if !objectObstructingEnemy:
+			if current_position.distance_to(target_position) > 100:  # Adjust tolerance as needed
+				global_position += direction * speed * delta * current_action_speed
+			elif t > attack_cooldown: 
+				attack()
+				#call_deferred("enable_can_attack", attack_cooldown)
+				#can_attack = false
+		elif t > attack_cooldown:
+			t = 0
+			objectObstructingEnemy.take_damage(damage, self)
 
 #func enable_can_attack(timeout):
 	#await get_tree().create_timer(timeout).timeout
@@ -207,3 +223,31 @@ func SetObjectObstructingEnemy(object : Node2D) -> void:
 func get_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> Array[EnemyStatusEffect]:
 	var s = active_status_effects.filter(func(ase): return ase.type == status)
 	return s
+
+func addDisplacement(end_position: Vector2, speed: float) -> void:
+	state = EnemyState.DISPLACEMENT
+	displacement_speed = speed
+	create_curve(end_position)
+	
+func create_curve(target_pos: Vector2, arc_height = 25):
+	displacement_path = Path2D.new()
+	displacement_path_follow = PathFollow2D.new()
+	
+	var curve = Curve2D.new()
+	curve.add_point(position)
+	curve.add_point((position + target_pos) / 2 - Vector2(0, arc_height))  # Arc control point
+	curve.add_point(target_pos)
+	
+	var current_pos = global_position
+	
+	displacement_path_follow.loop = false
+	displacement_path.curve = curve
+	add_child(displacement_path)
+	displacement_path.add_child(displacement_path_follow)
+
+func move_along_path(delta: float):
+	if displacement_path_follow.progress_ratio >= 1:
+		state = EnemyState.MOVE
+		
+	displacement_path_follow.progress += displacement_speed * delta
+	position = displacement_path_follow.position
