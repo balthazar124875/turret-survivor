@@ -17,9 +17,9 @@ static var uncommonRate = 0.25;
 static var commonRate = 1.0 - (uncommonRate + rareRate + legendaryRate);
 
 static var commonCost = 10
-static var unCommonCost = 15
-static var rareCost = 25
-static var legendaryCost = 50
+static var unCommonCost = 25
+static var rareCost = 50
+static var legendaryCost = 150
 
 static var shopUpgradeButtons : Array[ShopUpgradeButton] = [];
 

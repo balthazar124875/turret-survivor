@@ -10,5 +10,5 @@ amount = 1.0
 upgradeName = "Bonus Pierce"
 description = "Bullets gain +1 pierce"
 type = 1
-rarity = 3
+rarity = 2
 icon = ExtResource("2_rja3x")

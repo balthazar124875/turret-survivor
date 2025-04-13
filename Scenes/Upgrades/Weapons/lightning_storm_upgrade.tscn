@@ -9,6 +9,6 @@ script = ExtResource("1_7366g")
 weapon_scene = ExtResource("2_uu81t")
 upgradeName = "Lightning Storm"
 description = "Brings down THUNDER"
-rarity = 1
+rarity = 3
 icon = ExtResource("3_xm3ao")
 gold_cost = 15
