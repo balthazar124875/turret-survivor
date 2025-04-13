@@ -969,11 +969,19 @@ offset_right = 420.0
 offset_bottom = 1049.0
 script = ExtResource("40_5dn0k")
 
-[node name="WeaponContainer" type="VBoxContainer" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PassiveContainer" type="VBoxContainer" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer"]
+[node name="WeaponContainer" type="VBoxContainer" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PassiveContainer" type="VBoxContainer" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer/ScrollContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 

@@ -3,8 +3,8 @@ extends HBoxContainer
 
 # <name, upgrade>
 var upgrade_dict: Dictionary = {}
-@onready var weapon_container = $WeaponContainer
-@onready var passive_container = $PassiveContainer
+@onready var weapon_container = $ScrollContainer/WeaponContainer
+@onready var passive_container = $ScrollContainer2/PassiveContainer
 @onready var upgrade_container_scene = preload("res://Scenes/UI/upgrade_container.tscn");
 
 func _ready() -> void:
@@ -25,7 +25,7 @@ func add_upgrade_to_container(upgrade: Upgrade, container):
 		container.add_child(upgrade_container)
 	else:
 		upgrade_container = container.get_node(upgrade.upgradeName)
-	upgrade_container.get_node("./LevelContainer/LevelTextLabel").text = str(upgrade_dict[upgrade.upgradeName].level)
+	upgrade_container.get_node("./LevelContainer/LevelTextLabel").text = "[center]" + str(upgrade_dict[upgrade.upgradeName].level)
 	upgrade_container.get_node("./ImageContainer/Sprite2D").texture = upgrade.icon
 	upgrade_container.get_node("./NameContainer/NameLabel").text = upgrade.upgradeName
 	upgrade_container.name = upgrade.upgradeName
