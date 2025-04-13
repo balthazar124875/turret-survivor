@@ -41,6 +41,8 @@ func applyPlayerUpgrade(player: Player) -> void:
 	upgradeAmount += 1
 	weight -= weight_reduction 
 	applyUpgradeToPlayer(player)
+	SignalBus.upgrade_recieved.emit(self)
+
 	#reparentToPlayer(player)
 	
 #This function should return the current level desc, and next level desc

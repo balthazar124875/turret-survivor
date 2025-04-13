@@ -29,5 +29,5 @@ func damage_enemies_in_collider():
 			var poisonEffect = EnemyStatusEffect.new()
 			poisonEffect.type = GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED
 			poisonEffect.duration = 5
-			poisonEffect.magnitude = 1 * player.damage_type_multipliers[GlobalEnums.DAMAGE_TYPES.POISON]
+			poisonEffect.magnitude = 1
 			body.apply_status_effect(poisonEffect)

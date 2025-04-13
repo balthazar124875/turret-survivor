@@ -9,5 +9,6 @@ stat_type = 10
 amount = 0.1
 upgradeName = "Area of Effect Up!"
 description = "Increases  area of effects by 10%"
+type = 2
 rarity = 1
 icon = ExtResource("2_8tjiw")

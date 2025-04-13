@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://btwp0tjhar3hs"]
+
+[ext_resource type="Script" path="res://Scripts/UI/upgrades_container.gd" id="1_463fy"]
+[ext_resource type="Texture2D" uid="uid://dlpiyvwh7k5wk" path="res://Assets/Sprites/Enemies/bloorg.png" id="2_wqknm"]
+
+[node name="UpgradesContainer" type="HBoxContainer"]
+offset_top = 394.0
+offset_right = 420.0
+offset_bottom = 1048.0
+script = ExtResource("1_463fy")
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 1
+item_0/text = "1"
+item_0/icon = ExtResource("2_wqknm")
+item_0/selectable = false
+
+[node name="WeaponContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WeaponContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="WeaponContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="LevelTextLabeel" type="RichTextLabel" parent="WeaponContainer/HBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "12"
+fit_content = true
+scroll_active = false
+
+[node name="Control" type="Control" parent="WeaponContainer/HBoxContainer/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="WeaponContainer/HBoxContainer/CenterContainer/Control"]
+position = Vector2(19, -2)
+texture = ExtResource("2_wqknm")
+
+[node name="UpgradeNode2" type="Control" parent="WeaponContainer"]
+visible = false
+layout_mode = 2
+
+[node name="LevelTextLabeel" type="RichTextLabel" parent="WeaponContainer/UpgradeNode2"]
+layout_mode = 2
+offset_right = 42.0
+offset_bottom = 31.0
+size_flags_vertical = 3
+text = "1"
+scroll_active = false
+
+[node name="Sprite2D" type="Sprite2D" parent="WeaponContainer/UpgradeNode2"]
+
+[node name="PassivesContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
