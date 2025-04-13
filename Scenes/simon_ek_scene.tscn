@@ -962,16 +962,16 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer/WeaponContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="LevelTextLabeel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer/WeaponContainer/HBoxContainer/CenterContainer"]
+[node name="LevelTextLabeel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer/WeaponContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_vertical = 3
 text = "12"
 fit_content = true
 scroll_active = false
+
+[node name="CenterContainer" type="CenterContainer" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer/WeaponContainer/HBoxContainer"]
+layout_mode = 2
 
 [node name="Control" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer/WeaponContainer/HBoxContainer/CenterContainer"]
 layout_mode = 2
