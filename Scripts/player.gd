@@ -31,9 +31,11 @@ var ENABLE_BOUNTY = false
 @onready var income_timer: Timer = get_node("IncomeTimer")
 @onready var damage_flash_timer: Timer = get_node("DamageFlashTimer")
 
+var circle;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	circle = get_node("./Circle");
 	init_damage_type_multipliers()
 	SignalBus.enemy_killed.connect(_on_enemy_killed)
 
@@ -157,6 +159,13 @@ func modify_stat(stat: GlobalEnums.PLAYER_STATS, amount: float, source: String) 
 		GlobalEnums.PLAYER_STATS.BONUS_BOUNCE:
 			self.extraBounce += amount
 			SignalBus.stat_updated.emit(stat, self.extraBounce + 1, amount)
+
+func GetDamageMultiplier(damage_type : GlobalEnums.DAMAGE_TYPES, enemyPos : Vector2) -> float:
+	var damage_multiplier = damage_type_multipliers[damage_type]
+	#Check circle buffs
+	var IsWithinInnerOrOuterCircle : Circle.CircleType = Circle.IsPositionWithinInnerCircle(enemyPos);
+	damage_multiplier *= circle.damage_type_multipliers[IsWithinInnerOrOuterCircle][damage_type];
+	return damage_multiplier;
 
 func get_passive_upgrades_of_type(upgrade_type: PassiveUpgrade.PassiveUpgradeType):
 	return playerUpgrades.filter(func(e: Upgrade): return e.type == Upgrade.UpgradeType.PASSIVE && e.passiveType == upgrade_type)

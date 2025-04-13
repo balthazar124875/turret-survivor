@@ -7,6 +7,9 @@ var circleUpgradeType : Circle.CircleType; #This should be random generated
 @export var stickerTexture : Texture2D #The sticker that will be placed
 var innerOuterString : String;
 var stickerSpriteInstance : Sprite2D;
+var damage_type : GlobalEnums.DAMAGE_TYPES = -1;
+var statup_type : GlobalEnums.PLAYER_STATS = -1;
+var statMultiplier = 1.0;
 
 func _ready() -> void:
 	pass
@@ -49,4 +52,6 @@ func reparentToPlayer(player: Player) -> void:
 	player.get_node("./Circle/Upgrades").add_child(self)
 	
 func apply_level_up():
+	statMultiplier += 0.1;
+	Circle.UpdateCircleMultipliers(circleUpgradeType, self);
 	pass

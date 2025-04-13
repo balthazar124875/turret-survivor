@@ -27,6 +27,7 @@ var target_position = Vector2.ZERO
 signal enemy_killed(enemy)
 
 var player
+var circle
 
 var damage_flash_timer = Timer.new()
 var dot_timer = Timer.new()
@@ -55,6 +56,7 @@ func init_timers():
 func _ready() -> void:
 	init_timers()
 	player = get_node("/root/EmilScene/Player")
+	circle = player.get_node("./Circle")
 	target_position = player.global_position
 	
 func apply_dot_effects():
@@ -170,7 +172,7 @@ func take_damage(
 	ignore_armor: bool = false
 	) -> void:
 	# Take minimum 1 damage
-	var damage_after_type_multipler = amount * player.damage_type_multipliers[damage_type]
+	var damage_after_type_multipler = amount * player.GetDamageMultiplier(damage_type, global_position);
 	var damage_after_armor = max(1, damage_after_type_multipler) if ignore_armor else max(1, damage_after_type_multipler - armor)
 	health -= damage_after_armor
 	damage_flash = true
