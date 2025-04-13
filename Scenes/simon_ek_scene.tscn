@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=48 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -17,7 +17,7 @@
 [ext_resource type="Resource" uid="uid://ngftjlnyqymm" path="res://Resources/wave5.tres" id="9_qpx83"]
 [ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="9_yckrj"]
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
-[ext_resource type="Resource" path="res://Resources/wave6.tres" id="10_rsm4w"]
+[ext_resource type="Resource" uid="uid://b5m6113lpakb6" path="res://Resources/wave6.tres" id="10_rsm4w"]
 [ext_resource type="Script" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
 [ext_resource type="Script" path="res://Scripts/UI/orb_stats.gd" id="11_v6kre"]
 [ext_resource type="PackedScene" uid="uid://bampk2ki2ygjd" path="res://Scenes/UI/damage_dictionary.tscn" id="18_dwmxg"]
@@ -39,12 +39,10 @@
 [ext_resource type="Texture2D" uid="uid://cn4vbiasqmowd" path="res://Assets/Sprites/upgrades/area_up.png" id="31_i8is2"]
 [ext_resource type="Texture2D" uid="uid://crnfw7u4yi5ga" path="res://Assets/Sprites/upgrades/luckybug.png" id="32_26hin"]
 [ext_resource type="Texture2D" uid="uid://bq1vwc7do4883" path="res://Assets/Sprites/upgrades/proj_speed_up.png" id="32_e3gei"]
-[ext_resource type="StyleBox" path="res://Themes/augment.tres" id="38_xtrk1"]
+[ext_resource type="StyleBox" uid="uid://e2ylx83bifj" path="res://Themes/augment.tres" id="38_xtrk1"]
 [ext_resource type="Script" path="res://Scenes/UI/ui_augments.gd" id="39_j6pgw"]
 [ext_resource type="Script" path="res://Scripts/UI/upgrades_container.gd" id="40_5dn0k"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/augment_handler.tscn" id="40_yymlw"]
-[ext_resource type="Texture2D" uid="uid://dlpiyvwh7k5wk" path="res://Assets/Sprites/Enemies/bloorg.png" id="41_dq32b"]
-[ext_resource type="Texture2D" uid="uid://bnmy7tuijxlfs" path="res://Assets/Sprites/Enemies/cucumba.png" id="43_lbx1r"]
+[ext_resource type="PackedScene" uid="uid://b28o0wogrqmsi" path="res://Scenes/UI/augment_handler.tscn" id="40_yymlw"]
 
 [sub_resource type="Theme" id="Theme_t5p71"]
 
@@ -947,9 +945,26 @@ text = "Round
 [center]75
 "
 
+[node name="WeaponsLabel" type="Label" parent="GameplayUi/RightMenuColumn/TabContainer/Character"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 400.0
+offset_right = 129.0
+offset_bottom = 423.0
+text = "Weapons"
+
+[node name="PassivesLabel" type="Label" parent="GameplayUi/RightMenuColumn/TabContainer/Character"]
+layout_mode = 0
+offset_left = 273.0
+offset_top = 400.0
+offset_right = 345.0
+offset_bottom = 423.0
+text = "Passives
+"
+
 [node name="UpgradesContainer" type="HBoxContainer" parent="GameplayUi/RightMenuColumn/TabContainer/Character"]
 layout_mode = 0
-offset_top = 395.0
+offset_top = 441.0
 offset_right = 420.0
 offset_bottom = 1049.0
 script = ExtResource("40_5dn0k")
@@ -958,52 +973,7 @@ script = ExtResource("40_5dn0k")
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer/WeaponContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="LevelTextLabeel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer/WeaponContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-size_flags_vertical = 3
-text = "12"
-fit_content = true
-scroll_active = false
-
-[node name="CenterContainer" type="CenterContainer" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer/WeaponContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Control" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer/WeaponContainer/HBoxContainer/CenterContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer/WeaponContainer/HBoxContainer/CenterContainer/Control"]
-position = Vector2(19, -2)
-texture = ExtResource("41_dq32b")
-
-[node name="UpgradeNode2" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer/WeaponContainer"]
-visible = false
-layout_mode = 2
-
-[node name="LevelTextLabeel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer/WeaponContainer/UpgradeNode2"]
-layout_mode = 2
-offset_right = 42.0
-offset_bottom = 31.0
-size_flags_vertical = 3
-text = "1"
-scroll_active = false
-
-[node name="Sprite2D" type="Sprite2D" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer/WeaponContainer/UpgradeNode2"]
-
-[node name="ItemList" type="ItemList" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-item_count = 1
-item_0/text = "test"
-item_0/icon = ExtResource("43_lbx1r")
-
-[node name="PassivesContainer" type="VBoxContainer" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer"]
-visible = false
+[node name="PassiveContainer" type="VBoxContainer" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 

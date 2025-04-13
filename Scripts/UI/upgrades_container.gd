@@ -1,11 +1,33 @@
 extends HBoxContainer
 
 
-# Called when the node enters the scene tree for the first time.
+# <name, upgrade>
+var upgrade_dict: Dictionary = {}
+@onready var weapon_container = $WeaponContainer
+@onready var passive_container = $PassiveContainer
+@onready var upgrade_container_scene = preload("res://Scenes/UI/upgrade_container.tscn");
+
 func _ready() -> void:
-	pass # Replace with function body.
+	SignalBus.upgrade_recieved.connect(add_upgrade)
 
+func add_upgrade(upgrade: Upgrade):
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	upgrade_dict[upgrade.upgradeName] = UpgradeListItem.create(upgrade.upgradeAmount, upgrade.icon, upgrade.upgradeName)
+	if upgrade.type == Upgrade.UpgradeType.WEAPON:
+		add_upgrade_to_container(upgrade, weapon_container)
+	elif  upgrade.type == Upgrade.UpgradeType.PASSIVE:
+		add_upgrade_to_container(upgrade, passive_container)
+
+func add_upgrade_to_container(upgrade: Upgrade, container):
+	var upgrade_container
+	if upgrade_dict[upgrade.upgradeName].level == 1:
+		upgrade_container = upgrade_container_scene.instantiate()
+		container.add_child(upgrade_container)
+	else:
+		upgrade_container = container.get_node(upgrade.upgradeName)
+	upgrade_container.get_node("./LevelContainer/LevelTextLabel").text = str(upgrade_dict[upgrade.upgradeName].level)
+	upgrade_container.get_node("./ImageContainer/Sprite2D").texture = upgrade.icon
+	upgrade_container.get_node("./NameContainer/NameLabel").text = upgrade.upgradeName
+	upgrade_container.name = upgrade.upgradeName
+
+	
