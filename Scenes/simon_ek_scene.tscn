@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=48 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -21,7 +21,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
 [ext_resource type="Script" path="res://Scripts/UI/orb_stats.gd" id="11_v6kre"]
 [ext_resource type="PackedScene" uid="uid://bampk2ki2ygjd" path="res://Scenes/UI/damage_dictionary.tscn" id="18_dwmxg"]
-[ext_resource type="Theme" uid="uid://x0o6l3r75ami" path="res://Themes/new_test.tres" id="21_uq2lv"]
+[ext_resource type="Theme" uid="uid://7qh40l0am5og" path="res://Themes/new_test.tres" id="21_uq2lv"]
 [ext_resource type="Script" path="res://Scripts/UI/TooltipManager.gd" id="22_q1apf"]
 [ext_resource type="Script" path="res://Scripts/UI/stat_display.gd" id="23_538x1"]
 [ext_resource type="Texture2D" uid="uid://c18hxp10xpph3" path="res://Assets/Sprites/upgrades/health.png" id="23_n2622"]
@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://bq1vwc7do4883" path="res://Assets/Sprites/upgrades/proj_speed_up.png" id="32_e3gei"]
 [ext_resource type="StyleBox" uid="uid://e2ylx83bifj" path="res://Themes/augment.tres" id="38_xtrk1"]
 [ext_resource type="Script" path="res://Scenes/UI/ui_augments.gd" id="39_j6pgw"]
+[ext_resource type="Script" path="res://Scripts/UI/upgrades_container.gd" id="40_5dn0k"]
 [ext_resource type="PackedScene" uid="uid://b28o0wogrqmsi" path="res://Scenes/UI/augment_handler.tscn" id="40_yymlw"]
 
 [sub_resource type="Theme" id="Theme_t5p71"]
@@ -944,7 +945,48 @@ text = "Round
 [center]75
 "
 
+[node name="WeaponsLabel" type="Label" parent="GameplayUi/RightMenuColumn/TabContainer/Character"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 400.0
+offset_right = 129.0
+offset_bottom = 423.0
+text = "Weapons"
+
+[node name="PassivesLabel" type="Label" parent="GameplayUi/RightMenuColumn/TabContainer/Character"]
+layout_mode = 0
+offset_left = 273.0
+offset_top = 400.0
+offset_right = 345.0
+offset_bottom = 423.0
+text = "Passives
+"
+
+[node name="UpgradesContainer" type="HBoxContainer" parent="GameplayUi/RightMenuColumn/TabContainer/Character"]
+layout_mode = 0
+offset_top = 441.0
+offset_right = 420.0
+offset_bottom = 1049.0
+script = ExtResource("40_5dn0k")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WeaponContainer" type="VBoxContainer" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PassiveContainer" type="VBoxContainer" parent="GameplayUi/RightMenuColumn/TabContainer/Character/UpgradesContainer/ScrollContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="Weapons" type="Panel" parent="GameplayUi/RightMenuColumn/TabContainer/Character"]
+visible = false
 layout_mode = 0
 offset_left = 10.0
 offset_top = 403.0
@@ -952,6 +994,7 @@ offset_right = 210.0
 offset_bottom = 1039.0
 
 [node name="Passives" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 205.0

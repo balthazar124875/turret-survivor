@@ -42,17 +42,17 @@ func _process(delta: float) -> void:
 			TargetingType.ENEMY:
 				var enemy = get_target()
 				if(enemy != null):
-					shoot(enemy)
 					charge = fmod(charge,  cooldown)
+					shoot(enemy)
 			TargetingType.RANDOM_ENEMY:
 				var enemy = get_random_target()
 				if(enemy != null):
-					shoot(enemy)
 					charge = fmod(charge,  cooldown)
+					shoot(enemy)
 			TargetingType.AREA:
 				var area = get_target_area()
-				shoot_area(area)
 				charge = fmod(charge,  cooldown)
+				shoot_area(area)
 				
 
 func get_target() -> Node: #defaults to getting closest
@@ -81,7 +81,7 @@ func get_target_area() -> Vector2: #defaults to getting closest
 	var distance = randf_range(100, min(range * player.rangeMultiplier, screenSize.y / 2))
 	var angle = randf_range(0, PI * 2)
 	
-	var position = Vector2(1 , 1);
+	var position = Vector2(1 , 0);
 	position = position.rotated(angle)
 	position *= distance
 	

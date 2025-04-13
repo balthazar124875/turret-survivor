@@ -9,4 +9,5 @@ script = ExtResource("1_1pm35")
 weapon_scene = ExtResource("2_pv8x5")
 upgradeName = "Gold Orb"
 description = "Spawn a gold orb spinning around you. Generates money when hitting enemies. Deals no damage"
+rarity = 2
 icon = ExtResource("3_el12u")

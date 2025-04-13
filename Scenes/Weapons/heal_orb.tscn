@@ -30,18 +30,6 @@ radius = 37.054
 [node name="HealOrb" type="Node2D"]
 script = ExtResource("1_cwpcj")
 healVfx = ExtResource("2_ah8s6")
-heal_per_tick = null
-targeting_type = null
-cooldown = null
-damage = null
-gun_damage_multiplier = null
-charge = null
-base_projectile_speed = null
-bullet_life_time = null
-range = null
-level = null
-pierce = null
-base_projectile_amount = null
 source = "Heal Orb"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

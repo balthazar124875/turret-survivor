@@ -184,7 +184,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bykd2"]
-size = Vector2(27, 20)
+size = Vector2(27, 25.6667)
 
 [node name="vfx_thunder" type="Node2D"]
 script = ExtResource("1_xukmf")
@@ -218,5 +218,6 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(2.5, 2.5)
+position = Vector2(0, -8.5)
+scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_bykd2")

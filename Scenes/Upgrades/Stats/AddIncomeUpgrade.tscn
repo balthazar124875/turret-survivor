@@ -6,9 +6,9 @@
 [node name="AddIncomeUpgrade" type="Node2D"]
 script = ExtResource("1_vok66")
 stat_type = 8
-amount = 5.0
+amount = 3.0
 upgradeName = "Income up"
 description = "Add 5 income"
 type = 2
-rarity = 1
+rarity = 2
 icon = ExtResource("2_trtj2")

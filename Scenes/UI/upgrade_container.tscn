@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctqmjm3qr1rbe"]
+
+[ext_resource type="Texture2D" uid="uid://dlpiyvwh7k5wk" path="res://Assets/Sprites/Enemies/bloorg.png" id="1_4t7vc"]
+
+[node name="UpgradeContainer" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+
+[node name="LevelContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="LevelTextLabel" type="RichTextLabel" parent="LevelContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]0
+"
+fit_content = true
+scroll_active = false
+
+[node name="ImageContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="ImageContainer"]
+position = Vector2(16, 23)
+texture = ExtResource("1_4t7vc")
+
+[node name="NameContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="NameLabel" type="RichTextLabel" parent="NameContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "My Item Name 
+"
+fit_content = true
+scroll_active = false

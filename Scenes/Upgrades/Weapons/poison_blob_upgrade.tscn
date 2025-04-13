@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2lofl0lajgok"]
+[gd_scene load_steps=4 format=3 uid="uid://dfk0qovai41p1"]
 
 [ext_resource type="Script" path="res://Scripts/Upgrades/weapon_upgrade.gd" id="1_1sl07"]
-[ext_resource type="PackedScene" uid="uid://806d5fm7v70f" path="res://Scenes/Weapons/poison_blob_weapon.tscn" id="2_hxxbu"]
+[ext_resource type="PackedScene" uid="uid://ce4plsqtdq4ga" path="res://Scenes/Weapons/poison_blob_weapon.tscn" id="2_hxxbu"]
 [ext_resource type="Texture2D" uid="uid://dord7tsnjx8d3" path="res://Assets/Sprites/upgrades/poison_blob.png" id="2_l1enk"]
 
 [node name="PoisonBlobUpgrade" type="Node2D"]
@@ -9,4 +9,5 @@ script = ExtResource("1_1sl07")
 weapon_scene = ExtResource("2_hxxbu")
 upgradeName = "Poison blob"
 description = "Shoots toxic poison that explodes"
+rarity = 1
 icon = ExtResource("2_l1enk")
