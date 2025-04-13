@@ -37,7 +37,7 @@ func _on_timer_timeout() -> void:
 	timer.stop()
 	timer.wait_time = timerBase
 	timer.start()
-	player.modify_health_regeneration(health_regeneration)
+	player.modify_stat(GlobalEnums.PLAYER_STATS.ADD_HEALTH_REGENERATION, health_regeneration, upgradeName)
 	
 func _on_enemy_killed(enemy: Enemy) -> void:
 	var r = randf_range(0, 1)
