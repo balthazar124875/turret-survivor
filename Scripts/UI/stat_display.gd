@@ -21,5 +21,5 @@ func _update_stat(stat: GlobalEnums.PLAYER_STATS, new_total: float, increase: fl
 		var text = "+ " + str(increase if !percentage else increase * 100) + ("%" if percentage else "")
 		floating_text.display_text = text
 		add_child(floating_text)
-		$RichTextLabel.text = "[center]" + "+ " +str(((new_total - 1) * 100) if percentage else new_total) + ("%" if percentage else "") + "[/center]"
+		$RichTextLabel.text = "[center]" + "+ " +String.num((((new_total - 1) * 100) if percentage else new_total), 2) + ("%" if percentage else "") + "[/center]"
 	pass

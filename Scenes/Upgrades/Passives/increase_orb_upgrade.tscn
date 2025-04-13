@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://8dfk8eajkrro"]
 
-[ext_resource type="Script" path="res://Scripts/Upgrades/increase_orbs_upgrade.gd" id="1_ep8j0"]
+[ext_resource type="Script" path="res://Scripts/Upgrades/Passives/increase_orbs_upgrade.gd" id="1_ep8j0"]
 [ext_resource type="Texture2D" uid="uid://dyb7d64nc7psd" path="res://Assets/Sprites/upgrades/orbs/orbSlot_up.png" id="2_jn2lb"]
 
 [node name="IncreaseOrbCountUpgrade" type="Node2D"]

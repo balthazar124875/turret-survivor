@@ -1,4 +1,4 @@
-extends PassiveUpgrade
+extends AugmentUpgrade
 
 var enemy_parent: Node = null
 var spreadRange: float = 400
@@ -11,17 +11,6 @@ var poison_duration: float = 5
 func _ready() -> void:
 	enemy_parent = get_node("/root/EmilScene/Enemies")
 	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-var explosionVFX
-var initPercentage = 1.0 #10%
-# Called when the node enters the scene tree for the first time.
-func _init():
-	type = UpgradeType.PASSIVE;
-	passiveType = PassiveUpgradeType.ENEMY_KILL_TYPE;
 
 func ApplyEnemyOnKillPassive(killedEnemy : Enemy) ->void:
 	var enemyPoisonStacks = killedEnemy.get_status(GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED)

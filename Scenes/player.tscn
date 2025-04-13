@@ -57,6 +57,8 @@ autostart = true
 
 [node name="Weapons" type="Node2D" parent="Upgrades"]
 
+[node name="Augments" type="Node2D" parent="Upgrades"]
+
 [node name="DamageFlashTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true

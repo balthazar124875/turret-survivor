@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b28o0wogrqmsi"]
+
+[ext_resource type="Script" path="res://Scripts/augment_handler.gd" id="1_xrt3i"]
+[ext_resource type="PackedScene" uid="uid://bblakrwwg08ml" path="res://Scenes/UI/augment_choice.tscn" id="2_qtcnf"]
+
+[node name="AugmentHandler" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xrt3i")
+augment_button = ExtResource("2_qtcnf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 420.0
+offset_right = 1500.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0.205, 0.205, 0.205, 0.7)

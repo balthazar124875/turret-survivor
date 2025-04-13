@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://3dmoy0ei3gdw"]
 
-[ext_resource type="Script" path="res://Scripts/Upgrades/frost_shield.gd" id="1_cpdfy"]
+[ext_resource type="Script" path="res://Scripts/Upgrades/Passives/frost_shield.gd" id="1_cpdfy"]
 [ext_resource type="Texture2D" uid="uid://b7tckw5ram66n" path="res://Assets/Sprites/upgrades/frost_shield.png" id="2_edwxi"]
 
 [node name="FrostShield" type="Node2D"]

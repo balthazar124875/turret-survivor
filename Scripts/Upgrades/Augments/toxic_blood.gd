@@ -1,4 +1,4 @@
-extends PassiveUpgrade
+extends AugmentUpgrade
 
 @onready var player = get_node("/root/EmilScene/Player")
 

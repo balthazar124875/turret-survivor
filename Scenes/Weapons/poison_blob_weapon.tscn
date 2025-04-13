@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://806d5fm7v70f"]
+[gd_scene load_steps=3 format=3 uid="uid://ce4plsqtdq4ga"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/poison_blob_weapon.gd" id="1_qwwfd"]
-[ext_resource type="PackedScene" uid="uid://c0gcolsn6f72i" path="res://Scenes/Projectiles/poison_blob_projectile.tscn" id="2_dylgq"]
+[ext_resource type="PackedScene" path="res://Scenes/Projectiles/poison_blob_projectile.tscn" id="2_dylgq"]
 
 [node name="PoisonBlobWeapon" type="Node2D"]
 script = ExtResource("1_qwwfd")

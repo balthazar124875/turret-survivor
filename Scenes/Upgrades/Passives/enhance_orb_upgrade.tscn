@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwdbnkl13xupu"]
 
-[ext_resource type="Script" path="res://Scripts/Upgrades/enhanceOrbPassive.gd" id="1_gxs2y"]
+[ext_resource type="Script" path="res://Scripts/Upgrades/Passives/enhanceOrbPassive.gd" id="1_gxs2y"]
 [ext_resource type="Texture2D" uid="uid://bvlcopmcih8gl" path="res://Assets/Sprites/upgrades/orbs/orbEnhance_up.png" id="2_l8vwe"]
 
 [node name="EnhanceOrbUpgrade" type="Node2D"]

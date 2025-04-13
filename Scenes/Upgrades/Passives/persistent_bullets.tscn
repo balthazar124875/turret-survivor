@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dcftlm2vd606b"]
 
-[ext_resource type="Script" path="res://Scripts/Upgrades/persistant_bullets.gd" id="1_mg871"]
+[ext_resource type="Script" path="res://Scripts/Upgrades/Passives/persistant_bullets.gd" id="1_mg871"]
 [ext_resource type="Texture2D" uid="uid://be6e7gkosqqgv" path="res://Assets/Sprites/upgrades/persistant_bullets.png" id="2_q5kap"]
 
 [node name="PersistentBullets" type="Node2D"]

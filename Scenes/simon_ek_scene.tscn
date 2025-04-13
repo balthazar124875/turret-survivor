@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=47 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -17,7 +17,7 @@
 [ext_resource type="Resource" uid="uid://ngftjlnyqymm" path="res://Resources/wave5.tres" id="9_qpx83"]
 [ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="9_yckrj"]
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
-[ext_resource type="Resource" path="res://Resources/wave6.tres" id="10_rsm4w"]
+[ext_resource type="Resource" uid="uid://b5m6113lpakb6" path="res://Resources/wave6.tres" id="10_rsm4w"]
 [ext_resource type="Script" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
 [ext_resource type="Script" path="res://Scripts/UI/orb_stats.gd" id="11_v6kre"]
 [ext_resource type="PackedScene" uid="uid://bampk2ki2ygjd" path="res://Scenes/UI/damage_dictionary.tscn" id="18_dwmxg"]
@@ -39,7 +39,9 @@
 [ext_resource type="Texture2D" uid="uid://cn4vbiasqmowd" path="res://Assets/Sprites/upgrades/area_up.png" id="31_i8is2"]
 [ext_resource type="Texture2D" uid="uid://crnfw7u4yi5ga" path="res://Assets/Sprites/upgrades/luckybug.png" id="32_26hin"]
 [ext_resource type="Texture2D" uid="uid://bq1vwc7do4883" path="res://Assets/Sprites/upgrades/proj_speed_up.png" id="32_e3gei"]
-[ext_resource type="StyleBox" path="res://Themes/augment.tres" id="38_xtrk1"]
+[ext_resource type="StyleBox" uid="uid://e2ylx83bifj" path="res://Themes/augment.tres" id="38_xtrk1"]
+[ext_resource type="Script" path="res://Scenes/UI/ui_augments.gd" id="39_j6pgw"]
+[ext_resource type="PackedScene" uid="uid://b28o0wogrqmsi" path="res://Scenes/UI/augment_handler.tscn" id="40_yymlw"]
 
 [sub_resource type="Theme" id="Theme_t5p71"]
 
@@ -48,6 +50,8 @@ bg_color = Color(0, 0, 0, 0)
 border_width_top = 1
 border_width_bottom = 1
 border_color = Color(0.247059, 0.247059, 0.454902, 1)
+
+[sub_resource type="Theme" id="Theme_7cud4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v52ci"]
 bg_color = Color(0, 0.0352941, 0.0627451, 0.784314)
@@ -878,8 +882,9 @@ offset_left = 10.0
 offset_top = 264.0
 offset_right = 410.0
 offset_bottom = 394.0
-theme = ExtResource("21_uq2lv")
 theme_override_styles/panel = SubResource("StyleBoxFlat_3e480")
+script = ExtResource("39_j6pgw")
+color_selected = Color(0.24332, 0.460651, 0.854586, 1)
 
 [node name="Augment1" type="Panel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/Augments"]
 layout_mode = 0
@@ -887,6 +892,7 @@ offset_left = 50.0
 offset_top = 35.0
 offset_right = 110.0
 offset_bottom = 95.0
+theme = SubResource("Theme_7cud4")
 theme_override_styles/panel = ExtResource("38_xtrk1")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/Augments/Augment1"]
@@ -953,9 +959,12 @@ offset_top = 577.0
 offset_right = 418.0
 offset_bottom = 1050.0
 
+[node name="AugmentHandler" parent="GameplayUi" instance=ExtResource("40_yymlw")]
+
 [node name="ParticleNode" type="Node2D" parent="."]
 
 [node name="Tooltip" type="Control" parent="."]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

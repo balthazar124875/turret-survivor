@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://mwnkm75pb41g"]
 
-[ext_resource type="Script" path="res://Scripts/Upgrades/heart_seed.gd" id="1_pidw3"]
+[ext_resource type="Script" path="res://Scripts/Upgrades/Passives/heart_seed.gd" id="1_pidw3"]
 [ext_resource type="Texture2D" uid="uid://bt1q3r8hxo7ku" path="res://Assets/Sprites/upgrades/heart_seed.png" id="2_orrto"]
 
 [node name="HeartSeed" type="Node2D"]

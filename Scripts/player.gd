@@ -69,7 +69,6 @@ func take_damage(value: float, source: Enemy) -> void:
 	modify_health(-damage_after_armor_reduction(value))
 	damage_flash_timer.start(0.1)
 	$AnimatedSprite2D.modulate = Color(1, 0.5, 0.5)
-	get_passive_upgrades_of_type(PassiveUpgrade.PassiveUpgradeType.ON_PLAYER_HIT)
 	for upgrade in get_passive_upgrades_of_type(PassiveUpgrade.PassiveUpgradeType.ON_PLAYER_HIT):
 		upgrade.ApplyWhenHitEffect(self, source);
 

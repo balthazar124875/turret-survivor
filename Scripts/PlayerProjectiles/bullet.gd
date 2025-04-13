@@ -62,7 +62,7 @@ func _on_body_entered(body):
 		var rng = RandomNumberGenerator.new()
 		var rndNumber = rng.randf_range(0.0, 1);
 		if(bounce > rndNumber):
-			direction = direction.rotated(180 + deg_to_rad(rng.randf_range(-90, 90)))
+			direction = direction.rotated(deg_to_rad(rng.randf_range(90, 270)))
 			self.rotation = direction.angle()
 		else:
 			queue_free()

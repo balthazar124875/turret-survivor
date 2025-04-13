@@ -53,7 +53,7 @@ func _on_enemy_killed(enemy: Enemy) -> void:
 #func _process(delta: float) -> void:
 	#player.modify_health_regeneration(health_regeneration_per_second * delta)
 	
-func apply_level_up(player: Player = null):
+func apply_level_up():
 	if(upgradeAmount == 10):
 			growthOnKill = true
 			SignalBus.enemy_killed.connect(_on_enemy_killed)

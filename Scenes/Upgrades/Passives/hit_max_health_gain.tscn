@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ogvr6m3kxw4f"]
 
-[ext_resource type="Script" path="res://Scripts/Upgrades/hit_max_health_gain.gd" id="1_rlv3m"]
+[ext_resource type="Script" path="res://Scripts/Upgrades/Passives/hit_max_health_gain.gd" id="1_rlv3m"]
 [ext_resource type="Texture2D" uid="uid://dw6kiiokdaji" path="res://Assets/Sprites/upgrades/hit_max_health_gain.png" id="2_sp30q"]
 
 [node name="HitMaxHealthGain" type="Node2D"]

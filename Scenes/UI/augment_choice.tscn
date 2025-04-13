@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://bblakrwwg08ml"]
+
+[ext_resource type="Script" path="res://Scripts/UI/augment_choice.gd" id="1_7to26"]
+[ext_resource type="Texture2D" uid="uid://dpq4wkue5l7gy" path="res://Assets/Sprites/upgrades/decay.png" id="1_vrmvc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55glw"]
+bg_color = Color(0.774633, 0.527617, 0.493483, 1)
+
+[node name="AugmentScene" type="Panel"]
+offset_right = 200.0
+offset_bottom = 240.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_55glw")
+script = ExtResource("1_7to26")
+
+[node name="Name" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 195.0
+offset_bottom = 30.0
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center][b][color=3f3f74]name"
+
+[node name="Description" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 107.0
+offset_right = 195.0
+offset_bottom = 232.0
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center][font_size=12][color=3f3f74]Descipriont oes here"
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(100, 70)
+texture = ExtResource("1_vrmvc")
