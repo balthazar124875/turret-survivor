@@ -92,7 +92,6 @@ func ApplyOrbStats(dmg : int, dmg_interval : float, effect_mult : float, scale :
 	$AnimatedSprite2D.scale = ogScale * scale;
 	$Area2D/CollisionShape2D.scale = ogColliderScale * scale;
 	
-	AdjustParticleEmitterScaleAfterOrbScale(scale);
 	pass
 
 func EnhanceOrb() -> void:
@@ -117,6 +116,3 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 				registeredEnemyList.erase(regEnemy);
 				return;
 	pass # Replace with function body.
-	
-func AdjustParticleEmitterScaleAfterOrbScale(scale : float) -> void:
-	pass

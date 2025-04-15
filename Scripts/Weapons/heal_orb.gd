@@ -7,8 +7,6 @@ var healVfxParticleEmitter : GPUParticles2D;
 var isHealVfxPlaying : bool;
 var healVfxInstance;
 
-var ogParticleEmitterScale;
-
 @export var heal_per_tick: float = 5.0
 
 func _ready() -> void:
@@ -18,7 +16,6 @@ func _ready() -> void:
 	add_child(healVfxInstance)
 	healVfxInstance.global_position = global_position;
 	healVfxParticleEmitter = healVfxInstance.get_node("GPUParticles2D");
-	ogParticleEmitterScale = healVfxParticleEmitter.scale
 	super()
 	StopHealVfxEffect();
 	pass
@@ -68,9 +65,3 @@ func ApplyVisualChanges() -> void:
 	healVfxParticleEmitter.scale *= 2.5; #Needs to be the same value as range pushed out
 	healVfxParticleEmitter.amount = 12;
 	pass
-
-#Particle emitter needs to adjust its scale if our orbs get scaled, you need to half its scale if orb scale doubles
-func AdjustParticleEmitterScaleAfterOrbScale(orbScaleMult : float) -> void:
-	var scaleReductionMult = orbScaleMult;
-	healVfxParticleEmitter.scale = ogParticleEmitterScale * scaleReductionMult;
-	
