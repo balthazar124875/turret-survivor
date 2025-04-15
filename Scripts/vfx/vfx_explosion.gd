@@ -16,15 +16,8 @@ func _ready() -> void:
 
 func _on_body_entered(body):
 	if body is Enemy and body.is_alive():  # Replace with your enemy script class name
-		
 		body.take_damage(damage, "Corpse Explosion", GlobalEnums.DAMAGE_TYPES.FIRE) 
 			
-func _physics_process(delta):
-	#for body in $Area2D.get_overlapping_bodies():
-	#	if body is Enemy:
-	#		body.take_damage(damage_per_tick * delta)
-	pass
-
 func set_particle_scale(scale: float):
 	$GPUParticles2D.process_material.scale_min = scale
 	$GPUParticles2D.process_material.scale_max = scale

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpvsil1b5pgkk"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/ShockWaveTrapLauncher.gd" id="1_rpaf7"]
+[ext_resource type="PackedScene" uid="uid://dto00ay2vkxky" path="res://Scenes/Projectiles/shockwave_trap.tscn" id="2_b2igs"]
+
+[node name="ShockWaveTrapLauncher" type="Node2D"]
+script = ExtResource("1_rpaf7")
+base_knockback_radius = 100
+base_knockback_distance = 150
+targeting_type = 1
+bullet = ExtResource("2_b2igs")
+cooldown = 5.0
+gun_damage_multiplier = 1.5
+range = 200.0
+source = "Gravity Trap"

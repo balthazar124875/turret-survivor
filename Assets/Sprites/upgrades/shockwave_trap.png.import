@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj5r6fc36vaag"
-path="res://.godot/imported/gravity_trap_transparent.png-fd01f2f5e1c194291ee7113bc885143e.ctex"
+uid="uid://d25ss8pfrtsor"
+path="res://.godot/imported/shockwave_trap.png-1e0425bc935050c4af3083bc3ac6dccd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/upgrades/gravity_trap_transparent.png"
-dest_files=["res://.godot/imported/gravity_trap_transparent.png-fd01f2f5e1c194291ee7113bc885143e.ctex"]
+source_file="res://Assets/Sprites/upgrades/shockwave_trap.png"
+dest_files=["res://.godot/imported/shockwave_trap.png-1e0425bc935050c4af3083bc3ac6dccd.ctex"]
 
 [params]
 

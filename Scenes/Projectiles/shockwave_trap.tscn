@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dto00ay2vkxky"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerProjectiles/shockwave_trap.gd" id="1_cpjrs"]
+[ext_resource type="Texture2D" uid="uid://dch3ekpmvehje" path="res://Assets/Sprites/sprite_sheets/shockwave_trap.png" id="2_joufu"]
+[ext_resource type="PackedScene" uid="uid://tmmnwjhmhken" path="res://Scenes/vfx/shockwave.tscn" id="2_oyv41"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2mywb"]
+radius = 16.0
+
+[node name="ShockWaveTrap" type="Area2D"]
+disable_mode = 1
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_cpjrs")
+knockback_speed = 500.0
+shockwave_vfx = ExtResource("2_oyv41")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 0)
+texture = ExtResource("2_joufu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.75, 0)
+shape = SubResource("CircleShape2D_2mywb")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-2, 0)
+scale = Vector2(1.4, 1.45)

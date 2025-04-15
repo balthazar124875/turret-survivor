@@ -228,6 +228,7 @@ func get_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> Array[EnemyStatusEf
 
 func addDisplacement(end_position: Vector2, speed: float) -> void:
 	state = EnemyState.DISPLACEMENT
+	SignalBus.enemy_displaced.emit(self)
 	displacement_speed = speed
 	create_curve(end_position)
 	

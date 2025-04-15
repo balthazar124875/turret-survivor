@@ -23,6 +23,8 @@ func land():
 	armed = true
 	connect("body_entered", _on_body_entered)
 	
+	SignalBus.trap_landed.emit(self)
+	
 	for body in get_overlapping_bodies():
 		if body is Enemy:  # Check if it's an enemy
 			trigger_trap()
