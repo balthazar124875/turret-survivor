@@ -1,34 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyma1sdp5lt6f"]
+[gd_scene load_steps=4 format=3 uid="uid://5lmklbb1mifl"]
 
+[ext_resource type="Material" uid="uid://24tpfnl7yfr7" path="res://Materials/PoisonSplatParticle.tres" id="1_6jtoc"]
 [ext_resource type="Script" path="res://Scripts/particle_handler.gd" id="1_xmnct"]
+[ext_resource type="Texture2D" uid="uid://doc3q1k0hn0l" path="res://Assets/Sprites/Particles/green_blob.png" id="2_cm3lh"]
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rc2rd"]
-lifetime_randomness = 0.35
-particle_flag_disable_z = true
-angle_min = -720.0
-angle_max = 720.0
-spread = 180.0
-initial_velocity_min = 71.29
-initial_velocity_max = 199.28
-angular_velocity_min = -407.38
-angular_velocity_max = 443.92
-gravity = Vector3(0, 200, 0)
-scale_min = 4.0
-scale_max = 10.0
-scale_over_velocity_max = 1000.0
-color = Color(0, 0.917647, 0.211765, 1)
-
-[node name="PoisonSplatParticle" type="Node2D"]
+[node name="PoisonNovaParticle" type="Node2D"]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 30
-process_material = SubResource("ParticleProcessMaterial_rc2rd")
-lifetime = 0.5
+process_material = ExtResource("1_6jtoc")
+texture = ExtResource("2_cm3lh")
 one_shot = true
 explosiveness = 1.0
 randomness = 0.09
-trail_lifetime = 0.16
+visibility_rect = Rect2(-1, -1, 2, 2)
+trail_lifetime = 0.01
 trail_sections = 2
 script = ExtResource("1_xmnct")
 

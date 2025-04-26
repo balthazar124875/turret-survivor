@@ -1,4 +1,11 @@
-[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://24tpfnl7yfr7"]
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://24tpfnl7yfr7"]
+
+[sub_resource type="Curve" id="Curve_7cpx8"]
+_data = [Vector2(0.00862069, 0.561798), 0.0, 1.08925, 0, 0, Vector2(0.675287, 0.802809), -2.31052, -2.31052, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_b4jmf"]
+curve = SubResource("Curve_7cpx8")
 
 [resource]
 lifetime_randomness = 0.2
@@ -6,8 +13,8 @@ particle_flag_disable_z = true
 angle_min = 1.07288e-05
 angle_max = 1.07288e-05
 spread = 180.0
-initial_velocity_min = 165.04
-initial_velocity_max = 219.18
+initial_velocity_min = 179.04
+initial_velocity_max = 315.53
 angular_velocity_min = -14.33
 angular_velocity_max = 10.37
 gravity = Vector3(0, 0, 0)
@@ -15,6 +22,7 @@ linear_accel_min = -200.0
 linear_accel_max = -2.23517e-06
 scale_min = 3.0
 scale_max = 4.0
+scale_curve = SubResource("CurveTexture_b4jmf")
 scale_over_velocity_max = 1000.0
 color = Color(0, 0.917647, 0.211765, 1)
 turbulence_noise_strength = 3.09
