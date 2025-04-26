@@ -1,6 +1,5 @@
 extends RigidBody2D
 
-
 class_name Enemy
 
 enum EnemyState {
@@ -16,6 +15,7 @@ var state: EnemyState
 @export var speed = 100
 @export var max_health = 5
 @export var health = 5
+@export var regen = 0
 @export var gold_value = 1
 @export var damage: float = 1.0
 var current_damage: float = damage
@@ -24,6 +24,10 @@ var current_attack_cooldown: float = attack_cooldown
 @export var action_speed: float = 1
 var current_action_speed: float = action_speed
 @export var armor: float = 0
+@export var cc_effectiveness = 1
+
+
+@export var champion_type: GlobalEnums.ENEMY_CHAMPION_TYPE = GlobalEnums.ENEMY_CHAMPION_TYPE.NONE
 
 var t : float
 
@@ -73,6 +77,9 @@ func _ready() -> void:
 	target_position = player.global_position
 	
 func apply_dot_effects():
+	if(regen > 0):
+		regenerateHp()
+	
 	# TODO: Sum dots seperately and add damage source categories for them
 	var damage_from_dots = active_status_effects.filter(
 			func(ase): return ase.type == GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED
@@ -84,8 +91,11 @@ func apply_dot_effects():
 func apply_status_effect(status_effect: EnemyStatusEffect):
 	active_status_effects.append(status_effect)
 	var type = status_effect.type
-	
 	if type in GlobalEnums.CROWD_CONTROL:
+		status_effect.duration *= cc_effectiveness
+		if(type == GlobalEnums.ENEMY_STATUS_EFFECTS.SLOWED):
+			status_effect.magnitude *= cc_effectiveness
+		
 		var crowd_control_effects = active_status_effects.filter(
 				func(ase): return ase.type in GlobalEnums.CROWD_CONTROL
 			)
@@ -96,6 +106,8 @@ func apply_status_effect(status_effect: EnemyStatusEffect):
 			current_action_speed = action_speed * (1 - highest_slow_amount)
 		else:
 			current_action_speed = action_speed
+			
+			
 
 func update_active_status_effect_durations(delta):
 	for status_effect in active_status_effects:
@@ -123,23 +135,42 @@ func increase_hp(multiplier: float) -> void:
 	
 func increase_damage(multiplier: float) -> void:
 	damage *= multiplier
+	
+func modify_stats(hp_mult: float, damage_mult: float, cc_effectiveness_mult: float) -> void:
+	health *= hp_mult
+	max_health *= hp_mult
+	damage *= damage_mult
+	cc_effectiveness *= cc_effectiveness_mult
+
+func regenerateHp():
+	health += max_health * regen
+	if(health > max_health):
+		health = max_health
+	#add shader
 
 # TODO: DO NOT DO THIS EVERY FRAME
 func handle_color_change():
-	$Sprite2D.modulate = Color(1, 1, 1)
+	var color = Color(1, 1, 1, 1)
+	
 	for status_effect in active_status_effects:
 		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.SLOWED:
-			$Sprite2D.modulate = Color(0, 0.5, 0.5)
+			color = Color(0, 0.5, 0.5, 1)
 		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN:
-			$Sprite2D.modulate = Color(0, 0, 1)
+			color = Color(0, 0, 1, 1)
 		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.ROOTED:
-			$Sprite2D.modulate = Color(0, 0.85, 0)
+			color = Color(0, 0.85, 0, 1)
 		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED:
-			$Sprite2D.modulate = Color(0.2, 0.70, 0.2)
+			color = Color(0.2, 0.70, 0.2, 1)
 			
 	# TODO: Move this, but this sets the color to red while being damaged
 	if damage_flash: 
-		$Sprite2D.modulate = Color(1, 0, 0)
+		color = Color(1, 0, 0, 1)
+		
+	if(champion_type != GlobalEnums.ENEMY_CHAMPION_TYPE.NONE):
+		$Sprite2D.material.set_shader_parameter("inner_color", color)
+	else:
+		$Sprite2D.modulate = color
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -164,15 +195,9 @@ func _process(delta: float) -> void:
 				global_position += direction * speed * delta * current_action_speed
 			elif t > attack_cooldown: 
 				attack()
-				#call_deferred("enable_can_attack", attack_cooldown)
-				#can_attack = false
 		elif t > attack_cooldown:
 			t = 0
 			objectObstructingEnemy.take_damage(damage, self)
-
-#func enable_can_attack(timeout):
-	#await get_tree().create_timer(timeout).timeout
-	#can_attack = true
 
 func attack() -> void:
 	t = 0
@@ -226,11 +251,35 @@ func get_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> Array[EnemyStatusEf
 	var s = active_status_effects.filter(func(ase): return ase.type == status)
 	return s
 
-func addDisplacement(end_position: Vector2, speed: float) -> void:
+func set_champion_type(type: GlobalEnums.ENEMY_CHAMPION_TYPE):
+	champion_type = type
+	match type:
+		GlobalEnums.ENEMY_CHAMPION_TYPE.QUICK:
+			speed *= 2.5
+			$Sprite2D.scale *= 0.5
+			$ShadowSprite2D.scale *= 0.5
+			$ShadowSprite2D.position.y *= 0.5
+		GlobalEnums.ENEMY_CHAMPION_TYPE.REGENERATING:
+			regen += 0.05
+		GlobalEnums.ENEMY_CHAMPION_TYPE.JUGGERNAUT:
+			max_health *= 2
+			health *= 2
+			speed *= 0.4
+			$ShadowSprite2D.scale *= 1.5
+			$ShadowSprite2D.position.y *= 1.5
+			$Sprite2D.scale *= 1.5
+			cc_effectiveness = 0
+		GlobalEnums.ENEMY_CHAMPION_TYPE.SPLITTING:
+			pass
+
+func add_displacement(displacement_vector: Vector2, speed: float) -> void:
+	if(cc_effectiveness == 0):
+		return
+	
 	state = EnemyState.DISPLACEMENT
 	SignalBus.enemy_displaced.emit(self)
 	displacement_speed = speed
-	create_curve(end_position)
+	create_curve(global_position + (displacement_vector)) #reduce with cc_effectiveness?
 	
 func create_curve(target_pos: Vector2, arc_height = 25):
 	displacement_path = Path2D.new()
