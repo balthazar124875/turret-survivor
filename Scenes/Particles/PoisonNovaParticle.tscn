@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyma1sdp5lt6f"]
+
+[ext_resource type="Script" path="res://Scripts/particle_handler.gd" id="1_xmnct"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rc2rd"]
+lifetime_randomness = 0.35
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_min = 71.29
+initial_velocity_max = 199.28
+angular_velocity_min = -407.38
+angular_velocity_max = 443.92
+gravity = Vector3(0, 200, 0)
+scale_min = 4.0
+scale_max = 10.0
+scale_over_velocity_max = 1000.0
+color = Color(0, 0.917647, 0.211765, 1)
+
+[node name="PoisonSplatParticle" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_rc2rd")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.09
+trail_lifetime = 0.16
+trail_sections = 2
+script = ExtResource("1_xmnct")
+
+[connection signal="finished" from="GPUParticles2D" to="GPUParticles2D" method="_on_finished"]

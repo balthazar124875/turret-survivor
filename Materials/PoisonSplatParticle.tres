@@ -1,0 +1,24 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://24tpfnl7yfr7"]
+
+[resource]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+spread = 180.0
+initial_velocity_min = 165.04
+initial_velocity_max = 219.18
+angular_velocity_min = -14.33
+angular_velocity_max = 10.37
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -200.0
+linear_accel_max = -2.23517e-06
+scale_min = 3.0
+scale_max = 4.0
+scale_over_velocity_max = 1000.0
+color = Color(0, 0.917647, 0.211765, 1)
+turbulence_noise_strength = 3.09
+turbulence_noise_scale = 5.142
+turbulence_noise_speed_random = 1.19
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.02

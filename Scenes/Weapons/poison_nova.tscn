@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://83i0lep7vi6x"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/cluster_bomb_weapon.gd" id="1_2tx44"]
+[ext_resource type="PackedScene" uid="uid://dld1f4yhc0meq" path="res://Scenes/Projectiles/cluster_bomb_projectile.tscn" id="2_a3r1j"]
+
+[node name="PoisonNova" type="Node2D"]
+script = ExtResource("1_2tx44")
+bullet = ExtResource("2_a3r1j")
+cooldown = 2.0
+damage = 2.0
+base_projectile_speed = 400.0
+bullet_life_time = 1.0
+range = 500.0
+base_projectile_amount = 3.0
+source = "Cluster Bomb"
