@@ -17,10 +17,13 @@
 [ext_resource type="Resource" uid="uid://ngftjlnyqymm" path="res://Resources/wave5.tres" id="9_qpx83"]
 [ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="9_yckrj"]
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
-[ext_resource type="Resource" uid="uid://b5m6113lpakb6" path="res://Resources/wave6.tres" id="10_rsm4w"]
+[ext_resource type="Resource" path="res://Resources/wave6.tres" id="10_rsm4w"]
 [ext_resource type="Script" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
 [ext_resource type="Shader" path="res://vfxShaders/enemy_outline.gdshader" id="11_c2oc0"]
+[ext_resource type="Resource" path="res://Resources/wave7.tres" id="11_18urw"]
 [ext_resource type="Script" path="res://Scripts/UI/orb_stats.gd" id="11_v6kre"]
+[ext_resource type="Resource" path="res://Resources/wave8.tres" id="12_dhg8p"]
+[ext_resource type="Resource" uid="uid://v466i54pm1qm" path="res://Resources/wave9.tres" id="13_uo667"]
 [ext_resource type="PackedScene" uid="uid://bampk2ki2ygjd" path="res://Scenes/UI/damage_dictionary.tscn" id="18_dwmxg"]
 [ext_resource type="Theme" uid="uid://7qh40l0am5og" path="res://Themes/new_test.tres" id="21_uq2lv"]
 [ext_resource type="Script" path="res://Scripts/UI/TooltipManager.gd" id="22_q1apf"]
@@ -40,7 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://cn4vbiasqmowd" path="res://Assets/Sprites/upgrades/area_up.png" id="31_i8is2"]
 [ext_resource type="Texture2D" uid="uid://crnfw7u4yi5ga" path="res://Assets/Sprites/upgrades/luckybug.png" id="32_26hin"]
 [ext_resource type="Texture2D" uid="uid://bq1vwc7do4883" path="res://Assets/Sprites/upgrades/proj_speed_up.png" id="32_e3gei"]
-[ext_resource type="StyleBox" uid="uid://e2ylx83bifj" path="res://Themes/augment.tres" id="38_xtrk1"]
+[ext_resource type="StyleBox" path="res://Themes/augment.tres" id="38_xtrk1"]
 [ext_resource type="Script" path="res://Scenes/UI/ui_augments.gd" id="39_j6pgw"]
 [ext_resource type="Script" path="res://Scripts/UI/upgrades_container.gd" id="40_5dn0k"]
 [ext_resource type="PackedScene" uid="uid://b28o0wogrqmsi" path="res://Scenes/UI/augment_handler.tscn" id="40_yymlw"]
@@ -88,7 +91,7 @@ healthRegeneration = 0.0
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
-waves = Array[ExtResource("4_7auck")]([ExtResource("5_h832e"), ExtResource("6_cqumk"), ExtResource("7_df5er"), ExtResource("8_frnkb"), ExtResource("9_qpx83"), ExtResource("10_rsm4w")])
+waves = Array[ExtResource("4_7auck")]([ExtResource("5_h832e"), ExtResource("6_cqumk"), ExtResource("7_df5er"), ExtResource("8_frnkb"), ExtResource("9_qpx83"), ExtResource("10_rsm4w"), ExtResource("11_18urw"), ExtResource("12_dhg8p"), ExtResource("13_uo667")])
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
 champion_spawn_rate = 0.05
