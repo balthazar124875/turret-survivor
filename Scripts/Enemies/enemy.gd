@@ -8,6 +8,8 @@ enum EnemyState {
 	DISPLACEMENT
 }
 
+var scene: PackedScene
+
 var damage_flash: bool = false
 
 var state: EnemyState
@@ -106,8 +108,6 @@ func apply_status_effect(status_effect: EnemyStatusEffect):
 			current_action_speed = action_speed * (1 - highest_slow_amount)
 		else:
 			current_action_speed = action_speed
-			
-			
 
 func update_active_status_effect_durations(delta):
 	for status_effect in active_status_effects:
@@ -234,6 +234,12 @@ func _on_damage_flash_timeout():
 func die() -> void:
 	spawn_one_shot_particles(on_death_particles, self.global_position)
 	SignalBus.enemy_killed.emit(self)
+	
+	if(champion_type == GlobalEnums.ENEMY_CHAMPION_TYPE.SPLITTING):
+		var angle_degrees = 360 / 2
+		for i in range(2):
+			get_node("/root/EmilScene/EnemySpawner").spawn_enemy(scene, false, position + Vector2(40, 0).rotated(deg_to_rad(angle_degrees) * i))
+	
 	queue_free()
 
 func spawn_one_shot_particles(particles: PackedScene, position: Vector2) -> void:

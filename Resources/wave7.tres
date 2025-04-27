@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Wave" load_steps=3 format=3 uid="uid://7ac7y18jfnu6"]
+[gd_resource type="Resource" script_class="Wave" load_steps=3 format=3 uid="uid://beiccymgq76cw"]
 
-[ext_resource type="PackedScene" uid="uid://crqen402ma3x3" path="res://Scenes/Enemies/splitter_enemy.tscn" id="1_rmdbq"]
+[ext_resource type="PackedScene" uid="uid://dubhjiikeg6by" path="res://Scenes/Enemies/splitter_enemy.tscn" id="1_rmdbq"]
 [ext_resource type="Script" path="res://Scripts/wave.gd" id="2_nk860"]
 
 [resource]
 script = ExtResource("2_nk860")
 enemy = ExtResource("1_rmdbq")
-spawn_interval = 1.0
+spawn_interval = 2.0
