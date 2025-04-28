@@ -8,8 +8,5 @@ class_name SplittingEnemy
 func die() -> void:
 	var angle_degrees = 360 / number_of_split_children
 	for i in range(number_of_split_children):
-		var child = child_scene.instantiate()
-		child.position = position + Vector2(40, 0).rotated(deg_to_rad(angle_degrees) * i)
-		child.set_linear_velocity(Vector2(10,10))
-		get_node("/root/EmilScene/Enemies").add_child(child)
+		get_node("/root/EmilScene/EnemySpawner").spawn_enemy(child_scene, false, position + Vector2(40, 0).rotated(deg_to_rad(angle_degrees) * i))
 	super.die()

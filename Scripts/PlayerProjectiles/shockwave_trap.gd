@@ -27,7 +27,7 @@ func trigger_trap():
 					enemy.take_damage(base_damage, "ShockWave Trap", GlobalEnums.DAMAGE_TYPES.LIGHTNING)
 					
 					if(enemy.get_status(GlobalEnums.ENEMY_STATUS_EFFECTS.ROOTED).size() == 0):
-						enemy.addDisplacement(enemy.global_position + vector_dir, knockback_speed)
+						enemy.add_displacement(vector_dir, knockback_speed)
 						
 						
 	if(delayed_detonation):

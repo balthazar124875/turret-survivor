@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bi15bknmvxxfb"]
+[gd_scene load_steps=8 format=3 uid="uid://5p2t51y1w4vo"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/splitting_enemy.gd" id="1_0lgyv"]
-[ext_resource type="PackedScene" uid="uid://crqen402ma3x3" path="res://Scenes/Enemies/splitter_enemy.tscn" id="2_pc6he"]
+[ext_resource type="PackedScene" uid="uid://dubhjiikeg6by" path="res://Scenes/Enemies/splitter_enemy.tscn" id="2_pc6he"]
 [ext_resource type="Texture2D" uid="uid://daqsrf8qt1dlg" path="res://Assets/Sprites/Enemies/fetto.png" id="3_jccpo"]
 [ext_resource type="Texture2D" uid="uid://bsruevcpfmwig" path="res://Assets/Sprites/Enemies/super_fetto.png" id="4_4fhxu"]
 [ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="4_7tf3n"]

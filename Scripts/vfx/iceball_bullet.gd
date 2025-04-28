@@ -10,7 +10,7 @@ extends Bullet
 func HitEnemy(body : Enemy):
 	var slow = EnemyStatusEffect.new()
 	slow.type = GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN
-	slow.duration = 5
+	slow.duration = 3
 	slow.magnitude = 1
 	body.apply_status_effect(slow)
 	body.take_damage(damage, "Ice ball", GlobalEnums.DAMAGE_TYPES.ICE)  # Call the enemy's damage function

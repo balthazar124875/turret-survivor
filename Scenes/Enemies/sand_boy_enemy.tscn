@@ -1,16 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://dubhjiikeg6by"]
+[gd_scene load_steps=7 format=3 uid="uid://tcjdgegtxgem"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/splitting_enemy.gd" id="1_8p3yr"]
-[ext_resource type="PackedScene" uid="uid://be8eohoa58so4" path="res://Scenes/Enemies/splitter_enemy_child.tscn" id="2_hclkf"]
-[ext_resource type="Texture2D" uid="uid://daqsrf8qt1dlg" path="res://Assets/Sprites/Enemies/fetto.png" id="3_wyxuc"]
-[ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="4_nsce7"]
+[ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_32vcg"]
+[ext_resource type="Texture2D" uid="uid://djccjykygh1ts" path="res://Assets/Sprites/enemy_1.png" id="2_vufim"]
+[ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="3_smhwt"]
+[ext_resource type="Texture2D" uid="uid://dgdwh0buhdbec" path="res://Assets/Sprites/Enemies/sand_boy.png" id="4_3dacl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p7tvn"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_wyxuc")
+"texture": ExtResource("2_vufim")
 }],
 "loop": true,
 "name": &"default",
@@ -18,42 +18,41 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_twbii"]
-radius = 48.0
-height = 96.0
+radius = 38.0
+height = 90.0
 
-[node name="SplitterEnemy" type="RigidBody2D"]
-position = Vector2(604, 288)
+[node name="Enemy" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 4
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("1_8p3yr")
-child_scene = ExtResource("2_hclkf")
+script = ExtResource("1_32vcg")
+speed = 150
+damage = 2.3
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
-y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_p7tvn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 7)
+position = Vector2(1, -1)
 shape = SubResource("CapsuleShape2D_twbii")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(3, -4)
+position = Vector2(0.999999, -1)
 scale = Vector2(1.4, 1.4)
 
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.435294)
 z_index = -10
-position = Vector2(2, 38)
+position = Vector2(0, 44)
 scale = Vector2(3, 3)
-texture = ExtResource("4_nsce7")
+texture = ExtResource("3_smhwt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(7, 3)
+position = Vector2(6, -12)
 scale = Vector2(3, 3)
-texture = ExtResource("3_wyxuc")
+texture = ExtResource("4_3dacl")

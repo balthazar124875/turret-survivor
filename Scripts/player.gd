@@ -110,8 +110,19 @@ func _on_enemy_killed(enemy: Enemy) -> void:
 		upgrade.ApplyEnemyOnKillPassive(enemy);
 	if ENABLE_BOUNTY:
 		modify_gold(enemy.gold_value)
+		
+	match enemy.champion_type:
+		GlobalEnums.ENEMY_CHAMPION_TYPE.QUICK:
+			modify_stat(GlobalEnums.PLAYER_STATS.ATTACK_SPEED, 0.01)
+		GlobalEnums.ENEMY_CHAMPION_TYPE.REGENERATING:
+			modify_stat(GlobalEnums.PLAYER_STATS.ADD_HEALTH_REGENERATION, 1)
+		GlobalEnums.ENEMY_CHAMPION_TYPE.JUGGERNAUT:
+			modify_stat(GlobalEnums.PLAYER_STATS.DAMAGE_MULTIPLIER, 0.01)
+		GlobalEnums.ENEMY_CHAMPION_TYPE.SPLITTING:
+			modify_stat(GlobalEnums.PLAYER_STATS.PROJECTILE_SPEED_MULTIPLIER, 0.01)
+		
 
-func modify_stat(stat: GlobalEnums.PLAYER_STATS, amount: float, source: String) -> void:
+func modify_stat(stat: GlobalEnums.PLAYER_STATS, amount: float, source: String = "") -> void:
 	match (stat):
 		GlobalEnums.PLAYER_STATS.ATTACK_SPEED:
 			self.attackSpeedMultiplier += amount

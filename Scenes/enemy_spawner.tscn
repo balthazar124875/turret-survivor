@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkwrq0qtta0ix"]
+[gd_scene load_steps=12 format=3 uid="uid://bkwrq0qtta0ix"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="1_5mxpo"]
 [ext_resource type="Script" path="res://Scripts/wave.gd" id="2_ykpo0"]
@@ -6,10 +6,15 @@
 [ext_resource type="Resource" uid="uid://bm2q7xl0iapv5" path="res://Resources/wave2.tres" id="4_uruiv"]
 [ext_resource type="Resource" uid="uid://2nbfix1i2x45" path="res://Resources/wave3.tres" id="5_njt6p"]
 [ext_resource type="Resource" uid="uid://b5m6113lpakb6" path="res://Resources/wave6.tres" id="6_5wqby"]
+[ext_resource type="Resource" uid="uid://beiccymgq76cw" path="res://Resources/wave7.tres" id="6_r04g0"]
+[ext_resource type="Resource" uid="uid://dk16077xloovp" path="res://Resources/wave4.tres" id="7_dyggi"]
+[ext_resource type="Resource" uid="uid://ngftjlnyqymm" path="res://Resources/wave5.tres" id="8_g8k1h"]
+[ext_resource type="Resource" uid="uid://cafpbt15yrcnl" path="res://Resources/wave8.tres" id="10_hi7nu"]
+[ext_resource type="Resource" uid="uid://bul3ky4jfitsy" path="res://Resources/wave9.tres" id="11_wfau8"]
 
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_5mxpo")
-waves = Array[ExtResource("2_ykpo0")]([ExtResource("3_h3sms"), ExtResource("4_uruiv"), ExtResource("5_njt6p"), ExtResource("6_5wqby")])
+waves = Array[ExtResource("2_ykpo0")]([ExtResource("3_h3sms"), ExtResource("4_uruiv"), ExtResource("5_njt6p"), ExtResource("6_r04g0"), ExtResource("7_dyggi"), ExtResource("8_g8k1h"), ExtResource("6_5wqby"), ExtResource("10_hi7nu"), ExtResource("11_wfau8")])
 enemy_hp_scaling = 1.1
 
 [node name="EnemySpawnerTimer" type="Timer" parent="."]

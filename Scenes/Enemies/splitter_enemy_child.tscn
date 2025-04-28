@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdlwva3pwtsyy"]
+[gd_scene load_steps=7 format=3 uid="uid://be8eohoa58so4"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_em73y"]
 [ext_resource type="Texture2D" uid="uid://daqsrf8qt1dlg" path="res://Assets/Sprites/Enemies/fetto.png" id="2_c50s5"]
