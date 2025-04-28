@@ -8,6 +8,12 @@ var ftParticles : GPUParticles2D
 var IsShooting : bool;
 var targettedEnemy : Node2D;
 
+@onready var flameCollider;
+var flameRange = 0.6
+var maxFlameRange = 4.0;
+var ogFlameRange = 0.6;
+var ogParticleScale = 1.0;
+
 func _ready() -> void:
 	super()
 	IsShooting = false;
@@ -16,9 +22,11 @@ func _ready() -> void:
 	flame_thrower_instance.global_position = player.global_position;
 	ftParticles = flame_thrower_instance.get_node("GPUParticles2D");
 	ftParticles.global_position = player.global_position;
+	flameCollider = flame_thrower_instance.get_node("Area2D").get_node("CollisionPolygon2D");
 	targettedEnemy = null;
+	ogParticleScale = ftParticles.process_material.scale;
 	StopFlameThrowerVfx();
-	SetFlameThrowerRange(range);
+	#IncreaseFlameThrowerRange(flameRange);
 	pass
 	
 func _process(delta: float) -> void:
@@ -31,12 +39,27 @@ func _process(delta: float) -> void:
 	elif(targettedEnemy == null):
 		IsShooting = false;
 		StopFlameThrowerVfx();
+	UpdateFlameColliderPoints();
 	pass
-	
+
+func UpdateFlameColliderPoints() -> void:
+	var spread_angle = 20;
+	var colRange = flameRange * 250;
+	var half_width = colRange * tan(deg_to_rad(spread_angle) / 2)
+	var points = [
+		Vector2(0, -half_width),           # Top-left
+		Vector2(colRange, -half_width),    # Top-right
+		Vector2(colRange, half_width),     # Bottom-right
+		Vector2(0, half_width)             # Bottom-left
+	]
+	flameCollider.polygon = points
+	pass
+
 func PlayFlameThrowerVfx(enemy : Node2D) -> void:
 	#Rotate properly
 	var direction = Vector2(enemy.global_position - player.global_position).normalized();
 	ftParticles.rotation = direction.angle();
+	flameCollider.rotation = direction.angle();
 	ftParticles.emitting = true;
 	pass
 	
@@ -45,18 +68,37 @@ func StopFlameThrowerVfx() -> void:
 	pass
 	
 #adjust the flamethrower vfx visuals based on range
-func SetFlameThrowerRange(range : float) -> void:
+func IncreaseFlameThrowerRange(range : float) -> void:
+	flameRange += range;
+	if(flameRange >= maxFlameRange):
+		flameRange = maxFlameRange;
+		
+	ftParticles.scale = Vector2(flameRange, flameRange);
+	var rangeRatio : int = flameRange / ogFlameRange;
+	
+	#Scale the particles themselves
+	#ftParticles.process_material.scale = ogParticleScale * rangeRatio * 0.2;
+	#Increase amount of particles
+	ftParticles.amount = 100*rangeRatio;
+	
 	pass
 	
 func apply_level_up():
+	
+	if(level > 10):
+		damage *= 1.2;
+		return;
+	
 	if(level == 5):
 		ftParticles.process_material.scale *= 2.0
+		IncreaseFlameThrowerRange(0.5);
 		damage *= 1.5
 		return
 	if(level == 10):
-		ftParticles.scale += Vector2(1.0,1.0);
-		ftParticles.amount += 100;
-		ftParticles.process_material.scale *= 1.2
+		#ftParticles.scale += Vector2(1.0,1.0);
+		#ftParticles.amount += 100;
+		ftParticles.process_material.scale *= 1.5
+		IncreaseFlameThrowerRange(0.5);
 		damage *= 2.0
 		return
 	
@@ -64,10 +106,12 @@ func apply_level_up():
 		1:
 			damage *= 1.5
 		2:
-			ftParticles.scale += Vector2(0.5,0.5);
-			ftParticles.amount += 75;
+			IncreaseFlameThrowerRange(0.5);
+			#ftParticles.scale += Vector2(0.5,0.5);
+			#ftParticles.amount += 75;
 		3:
 			damage *= 1.5
 		4:
-			ftParticles.scale += Vector2(0.5,0.5);
-			ftParticles.amount += 75;
+			IncreaseFlameThrowerRange(0.5);
+			#ftParticles.scale += Vector2(0.5,0.5);
+			#ftParticles.amount += 75;
