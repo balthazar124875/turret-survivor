@@ -10,6 +10,7 @@ var targettedEnemy : Node2D;
 
 @onready var flameCollider;
 var flameRange = 0.6
+var flameColRange = 0.6
 var maxFlameRange = 4.0;
 var ogFlameRange = 0.6;
 var ogParticleScale = 1.0;
@@ -44,7 +45,7 @@ func _process(delta: float) -> void:
 
 func UpdateFlameColliderPoints() -> void:
 	var spread_angle = 20;
-	var colRange = flameRange * 250;
+	var colRange = flameColRange * 250;
 	var half_width = colRange * tan(deg_to_rad(spread_angle) / 2)
 	var points = [
 		Vector2(0, -half_width),           # Top-left
@@ -80,7 +81,7 @@ func IncreaseFlameThrowerRange(range : float) -> void:
 	#ftParticles.process_material.scale = ogParticleScale * rangeRatio * 0.2;
 	#Increase amount of particles
 	ftParticles.amount = 100*rangeRatio;
-	
+	flameColRange = flameRange*0.9;
 	pass
 	
 func apply_level_up():
