@@ -9,25 +9,33 @@ var IsShooting : bool;
 var targettedEnemy : Node2D;
 
 @onready var flameCollider;
+var areaSizeMultiplierScale = 0.375;
+var activeFlameColliders : Array[Node] = [];
 var flameRange = 0.6
 var flameColRange = 0.6
 var maxFlameRange = 4.0;
 var ogFlameRange = 0.6;
 var ogParticleScale = 1.0;
+var currentMinParticleScale = 1.0;
+var spread_angle = 20.0;
 
 func _ready() -> void:
 	super()
 	IsShooting = false;
-	var flame_thrower_instance = flameThrowerVfx.instantiate();
+	spread_angle = 20.0;
+	SignalBus.stat_updated.connect(IncreaseFlameAreaSizeMultiplier)
+	targettedEnemy = null;
+	
+	flame_thrower_instance = flameThrowerVfx.instantiate();
 	add_child(flame_thrower_instance)
 	flame_thrower_instance.global_position = player.global_position;
 	ftParticles = flame_thrower_instance.get_node("GPUParticles2D");
 	ftParticles.global_position = player.global_position;
-	flameCollider = flame_thrower_instance.get_node("Area2D").get_node("CollisionPolygon2D");
-	targettedEnemy = null;
 	ogParticleScale = ftParticles.process_material.scale;
+	currentMinParticleScale = ogParticleScale;
+	
+	CreateFlameColliderInstance();
 	StopFlameThrowerVfx();
-	#IncreaseFlameThrowerRange(flameRange);
 	pass
 	
 func _process(delta: float) -> void:
@@ -43,18 +51,31 @@ func _process(delta: float) -> void:
 	UpdateFlameColliderPoints();
 	pass
 
+func CreateFlameColliderInstance() -> void:
+	#TODO: Create a new flameCollider instance and store in list
+	flameCollider = flame_thrower_instance.get_node("Area2D").get_node("CollisionPolygon2D");
+	UpdateFlameAreaSize()
+
 func UpdateFlameColliderPoints() -> void:
-	var spread_angle = 20;
 	var colRange = flameColRange * 250;
 	var half_width = colRange * tan(deg_to_rad(spread_angle) / 2)
 	var points = [
-		Vector2(0, -half_width),           # Top-left
-		Vector2(colRange, -half_width),    # Top-right
-		Vector2(colRange, half_width),     # Bottom-right
-		Vector2(0, half_width)             # Bottom-left
+		Vector2(0, -half_width*0.5),           # Top-left
+		Vector2(colRange, -half_width*1.1),    # Top-right
+		Vector2(colRange, half_width*1.1),     # Bottom-right
+		Vector2(0, half_width*0.5)             # Bottom-left
 	]
 	flameCollider.polygon = points
 	pass
+
+func IncreaseFlameAreaSizeMultiplier(stat: GlobalEnums.PLAYER_STATS, new_total: float, increase: float) -> void:
+	if(stat == GlobalEnums.PLAYER_STATS.AREA_SIZE_MULTIPLIER):
+		UpdateFlameAreaSize()
+
+func UpdateFlameAreaSize() -> void:
+	var multiplier = (player.areaSizeMultiplier - 1.0) * areaSizeMultiplierScale + 1.0;
+	spread_angle = 20 + (multiplier - 1.0)*15; #Increase this with scale increase
+	ftParticles.process_material.scale = currentMinParticleScale * multiplier;
 
 func PlayFlameThrowerVfx(enemy : Node2D) -> void:
 	#Rotate properly
@@ -92,6 +113,7 @@ func apply_level_up():
 	
 	if(level == 5):
 		ftParticles.process_material.scale *= 2.0
+		currentMinParticleScale = ftParticles.process_material.scale
 		IncreaseFlameThrowerRange(0.5);
 		damage *= 1.5
 		return
@@ -99,6 +121,7 @@ func apply_level_up():
 		#ftParticles.scale += Vector2(1.0,1.0);
 		#ftParticles.amount += 100;
 		ftParticles.process_material.scale *= 1.5
+		currentMinParticleScale = ftParticles.process_material.scale
 		IncreaseFlameThrowerRange(0.5);
 		damage *= 2.0
 		return
