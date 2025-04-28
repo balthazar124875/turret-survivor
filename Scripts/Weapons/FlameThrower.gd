@@ -17,6 +17,7 @@ var maxFlameRange = 4.0;
 var ogFlameRange = 0.6;
 var ogParticleScale = 1.0;
 var currentMinParticleScale = 1.0;
+var finalFlameScale = 1.0;
 var spread_angle = 20.0;
 
 func _ready() -> void:
@@ -33,6 +34,7 @@ func _ready() -> void:
 	ftParticles.global_position = player.global_position;
 	ogParticleScale = ftParticles.process_material.scale;
 	currentMinParticleScale = ogParticleScale;
+	finalFlameScale = ogParticleScale;
 	
 	CreateFlameColliderInstance();
 	StopFlameThrowerVfx();
@@ -75,7 +77,8 @@ func IncreaseFlameAreaSizeMultiplier(stat: GlobalEnums.PLAYER_STATS, new_total: 
 func UpdateFlameAreaSize() -> void:
 	var multiplier = (player.areaSizeMultiplier - 1.0) * areaSizeMultiplierScale + 1.0;
 	spread_angle = 20 + (multiplier - 1.0)*15; #Increase this with scale increase
-	ftParticles.process_material.scale = currentMinParticleScale * multiplier;
+	finalFlameScale = currentMinParticleScale * multiplier;
+	ftParticles.process_material.scale = finalFlameScale;
 
 func PlayFlameThrowerVfx(enemy : Node2D) -> void:
 	#Rotate properly
@@ -97,9 +100,7 @@ func IncreaseFlameThrowerRange(range : float) -> void:
 		
 	ftParticles.scale = Vector2(flameRange, flameRange);
 	var rangeRatio : int = flameRange / ogFlameRange;
-	
-	#Scale the particles themselves
-	#ftParticles.process_material.scale = ogParticleScale * rangeRatio * 0.2;
+
 	#Increase amount of particles
 	ftParticles.amount = 100*rangeRatio;
 	flameColRange = flameRange*0.9;
@@ -112,16 +113,16 @@ func apply_level_up():
 		return;
 	
 	if(level == 5):
-		ftParticles.process_material.scale *= 2.0
-		currentMinParticleScale = ftParticles.process_material.scale
+		currentMinParticleScale *= 2.0
+		UpdateFlameAreaSize()
 		IncreaseFlameThrowerRange(0.5);
 		damage *= 1.5
 		return
 	if(level == 10):
 		#ftParticles.scale += Vector2(1.0,1.0);
 		#ftParticles.amount += 100;
-		ftParticles.process_material.scale *= 1.5
-		currentMinParticleScale = ftParticles.process_material.scale
+		currentMinParticleScale *= 1.5
+		UpdateFlameAreaSize()
 		IncreaseFlameThrowerRange(0.5);
 		damage *= 2.0
 		return
