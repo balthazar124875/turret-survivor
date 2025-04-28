@@ -10,7 +10,8 @@ var targettedEnemy : Node2D;
 
 @onready var flameCollider;
 var areaSizeMultiplierScale = 0.375;
-var activeFlameColliders : Array[Node] = [];
+var enemy_to_flameColliders_hashMap = {};
+var deadFlameColliders = []; #Colliders that are about to die, will shrink and get deleted
 var flameRange = 0.6
 var flameColRange = 0.6
 var maxFlameRange = 4.0;
@@ -25,6 +26,7 @@ func _ready() -> void:
 	IsShooting = false;
 	spread_angle = 20.0;
 	SignalBus.stat_updated.connect(IncreaseFlameAreaSizeMultiplier)
+	SignalBus.enemy_killed.connect(DestroyFlameColliderInstance)
 	targettedEnemy = null;
 	
 	flame_thrower_instance = flameThrowerVfx.instantiate();
@@ -35,8 +37,6 @@ func _ready() -> void:
 	ogParticleScale = ftParticles.process_material.scale;
 	currentMinParticleScale = ogParticleScale;
 	finalFlameScale = ogParticleScale;
-	
-	CreateFlameColliderInstance();
 	StopFlameThrowerVfx();
 	pass
 	
@@ -50,15 +50,33 @@ func _process(delta: float) -> void:
 	elif(targettedEnemy == null):
 		IsShooting = false;
 		StopFlameThrowerVfx();
-	UpdateFlameColliderPoints();
+	UpdateAllFlameColliderPoints();
+	UpdateDeadFlameColliderPoints();
 	pass
 
-func CreateFlameColliderInstance() -> void:
+func CreateFlameColliderInstance(enemyHash : Enemy, directionAngle : float) -> void:
 	#TODO: Create a new flameCollider instance and store in list
-	flameCollider = flame_thrower_instance.get_node("Area2D").get_node("CollisionPolygon2D");
+	var flameColliderInst = flame_thrower_instance.get_node("Area2D").get_node("CollisionPolygon2D").duplicate();
+	flameColliderInst.rotation = directionAngle;
+	flame_thrower_instance.add_child(flameColliderInst);
+	enemy_to_flameColliders_hashMap[enemyHash] = flameColliderInst;
 	UpdateFlameAreaSize()
 
-func UpdateFlameColliderPoints() -> void:
+func DestroyFlameColliderInstance(enemyHash: Enemy) -> void:
+	var flameCollider = enemy_to_flameColliders_hashMap.get(enemyHash, null)
+	if flameCollider:
+		enemy_to_flameColliders_hashMap.erase(enemyHash);
+		deadFlameColliders.push_back(flameCollider);
+		flameCollider.queue_free(); #NEED REWORK!!
+	pass
+
+func UpdateAllFlameColliderPoints() -> void:
+	for enemyHash in enemy_to_flameColliders_hashMap:
+		var flameCollider = enemy_to_flameColliders_hashMap[enemyHash];
+		UpdateSingleFlameColliderPoints(flameCollider)
+	pass
+	
+func UpdateSingleFlameColliderPoints(flameCollider : Node2D) -> void:
 	var colRange = flameColRange * 250;
 	var half_width = colRange * tan(deg_to_rad(spread_angle) / 2)
 	var points = [
@@ -68,8 +86,12 @@ func UpdateFlameColliderPoints() -> void:
 		Vector2(0, half_width*0.5)             # Bottom-left
 	]
 	flameCollider.polygon = points
+	
+func UpdateDeadFlameColliderPoints() -> void:
+	#for flameCollider in deadFlameColliders:
+	#	flameCollider.queue_free();
 	pass
-
+		
 func IncreaseFlameAreaSizeMultiplier(stat: GlobalEnums.PLAYER_STATS, new_total: float, increase: float) -> void:
 	if(stat == GlobalEnums.PLAYER_STATS.AREA_SIZE_MULTIPLIER):
 		UpdateFlameAreaSize()
@@ -84,8 +106,8 @@ func PlayFlameThrowerVfx(enemy : Node2D) -> void:
 	#Rotate properly
 	var direction = Vector2(enemy.global_position - player.global_position).normalized();
 	ftParticles.rotation = direction.angle();
-	flameCollider.rotation = direction.angle();
 	ftParticles.emitting = true;
+	CreateFlameColliderInstance(enemy, direction.angle());
 	pass
 	
 func StopFlameThrowerVfx() -> void:

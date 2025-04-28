@@ -15,7 +15,7 @@ shader_parameter/basic_texture = ExtResource("3_rkye6")
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.489451, 0.78022), 0.0, 0.0, 0, 0, Vector2(0.822394, 0.467897), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_ntty0"]
+[sub_resource type="CurveTexture" id="CurveTexture_n7qwx"]
 curve = SubResource("Curve_0b5sw")
 
 [sub_resource type="Curve" id="Curve_6nuog"]
@@ -23,7 +23,7 @@ max_value = 2.0
 _data = [Vector2(0, 0.835165), 0.0, 0.0, 0, 0, Vector2(0.409283, 1.16484), 0.0, 0.0, 0, 0, Vector2(1, 1.6044), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_lq8bj"]
+[sub_resource type="CurveTexture" id="CurveTexture_60qy6"]
 curve = SubResource("Curve_6nuog")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vr1o4"]
@@ -44,17 +44,11 @@ linear_accel_min = -2.23517e-06
 linear_accel_max = 100.0
 scale_min = 40.0
 scale_max = 50.0
-scale_curve = SubResource("CurveTexture_lq8bj")
+scale_curve = SubResource("CurveTexture_60qy6")
 color = Color(0.948995, 0.148521, 0.337242, 1)
-alpha_curve = SubResource("CurveTexture_ntty0")
+alpha_curve = SubResource("CurveTexture_n7qwx")
 
-[node name="Bullet" type="RigidBody2D"]
-disable_mode = 1
-collision_layer = 4
-collision_mask = 2
-gravity_scale = 0.0
-contact_monitor = true
-max_contacts_reported = 1
+[node name="Bullet" type="Node2D"]
 script = ExtResource("1_1rqsl")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
@@ -68,6 +62,8 @@ amount = 100
 process_material = SubResource("ParticleProcessMaterial_vr1o4")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(0, -2, 17, -21, 151, -39, 153, 31, 16, 20)
