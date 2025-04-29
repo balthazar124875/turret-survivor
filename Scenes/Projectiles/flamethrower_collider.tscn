@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf0s7rop2v3fy"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerProjectiles/flamethrower_collider.gd" id="1_wnk1s"]
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_wnk1s")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -2, 17, -21, 151, -39, 153, 31, 16, 20)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
