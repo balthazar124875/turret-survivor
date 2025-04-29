@@ -15,7 +15,8 @@
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_5mxpo")
 waves = Array[ExtResource("2_ykpo0")]([ExtResource("3_h3sms"), ExtResource("4_uruiv"), ExtResource("5_njt6p"), ExtResource("6_r04g0"), ExtResource("7_dyggi"), ExtResource("8_g8k1h"), ExtResource("6_5wqby"), ExtResource("10_hi7nu"), ExtResource("11_wfau8")])
-enemy_hp_scaling = 1.1
+enemy_hp_scaling = 1.35
+enemy_dmg_scaling = 1.2
 
 [node name="EnemySpawnerTimer" type="Timer" parent="."]
 wait_time = 2.0

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy14vjq080icj"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Augments/unstable_power.gd" id="1_g1hbg"]
+[ext_resource type="Texture2D" uid="uid://b80x7g2iai67x" path="res://Assets/Sprites/upgrades/unstable_power.png" id="2_0y22l"]
+
+[node name="UnstablePower" type="Node2D"]
+script = ExtResource("1_g1hbg")
+upgradeName = "Unstable Power"
+description = "Get varying buffs"
+type = 1
+rarity = 3
+icon = ExtResource("2_0y22l")

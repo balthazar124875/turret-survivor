@@ -4,6 +4,7 @@ class_name Disc
 
 var outward_speed: float
 var rotation_speed: float
+var armor_reduction: int = 0
 
 @onready var player_position = get_node("/root/EmilScene/Player").global_position
 
@@ -12,6 +13,10 @@ func _ready() -> void:
 	connect("body_entered", _on_body_entered)
 	SignalBus.bullet_created.emit(self)
 
+func HitEnemy(body : Enemy):
+	super.HitEnemy(body)
+	body.armor -= armor_reduction
+	
 func _physics_process(delta: float) -> void:
 	rotation += 0.75
 	global_position += (global_position - player_position).normalized() * outward_speed * delta

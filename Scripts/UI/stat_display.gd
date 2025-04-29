@@ -18,8 +18,9 @@ func _process(delta: float) -> void:
 func _update_stat(stat: GlobalEnums.PLAYER_STATS, new_total: float, increase: float) -> void:
 	if(stat == self.stat):
 		var floating_text = floating_text.instantiate()
-		var text = "+ " + str(increase if !percentage else increase * 100) + ("%" if percentage else "")
+		var text = ("+" if increase > 0 else "") + str(increase if !percentage else increase * 100) + ("%" if percentage else "")
 		floating_text.display_text = text
+		floating_text.color = ("yellow" if increase > 0 else "red")
 		add_child(floating_text)
-		$RichTextLabel.text = "[center]" + "+ " +String.num((((new_total - 1) * 100) if percentage else new_total), 2) + ("%" if percentage else "") + "[/center]"
+		$RichTextLabel.text = "[center]" + ("+" if increase > 0 else "") +String.num((((new_total - 1) * 100) if percentage else new_total), 2) + ("%" if percentage else "") + "[/center]"
 	pass

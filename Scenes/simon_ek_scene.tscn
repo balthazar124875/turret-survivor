@@ -1,9 +1,9 @@
-[gd_scene load_steps=42 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=43 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
 [ext_resource type="PackedScene" uid="uid://bkwrq0qtta0ix" path="res://Scenes/enemy_spawner.tscn" id="3_fpmdp"]
-[ext_resource type="Material" uid="uid://s5llad2vcw02" path="res://Materials/enemy_outline_material.tres" id="4_ay0jl"]
+[ext_resource type="Shader" path="res://vfxShaders/enemy_outline.gdshader" id="4_6ev4i"]
 [ext_resource type="Script" path="res://Scripts/UIManager.gd" id="5_1pdr0"]
 [ext_resource type="Script" path="res://Scripts/ShopManager.gd" id="5_jxmqa"]
 [ext_resource type="Texture2D" uid="uid://b27w0ddjiakbn" path="res://Assets/Sprites/UI/ui_overlay.png" id="6_pvymq"]
@@ -37,6 +37,13 @@
 [ext_resource type="Script" path="res://Scenes/UI/ui_augments.gd" id="39_j6pgw"]
 [ext_resource type="Script" path="res://Scripts/UI/upgrades_container.gd" id="40_5dn0k"]
 [ext_resource type="PackedScene" uid="uid://b28o0wogrqmsi" path="res://Scenes/UI/augment_handler.tscn" id="40_yymlw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lkrqp"]
+resource_local_to_scene = true
+shader = ExtResource("4_6ev4i")
+shader_parameter/outline_color = Vector4(0, 0, 0, 1)
+shader_parameter/inner_color = Vector4(1, 1, 1, 1)
+shader_parameter/outline_size = 1.0
 
 [sub_resource type="Theme" id="Theme_t5p71"]
 
@@ -76,7 +83,7 @@ healthRegeneration = 0.0
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
-enemy_outline_material = ExtResource("4_ay0jl")
+enemy_outline_material = SubResource("ShaderMaterial_lkrqp")
 
 [node name="GameplayUi" type="Control" parent="."]
 layout_mode = 3

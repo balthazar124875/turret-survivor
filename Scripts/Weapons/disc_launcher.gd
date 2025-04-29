@@ -2,6 +2,8 @@ extends BaseGun
 
 class_name DiscLauncher
 
+var armor_shred: bool = false
+
 func shoot(enemy: Node) -> void:	
 	var bulletAmount: int = base_projectile_amount + player.extraProjectiles
 	var random_offset = randf_range(0, 2 * PI) 
@@ -12,6 +14,9 @@ func shoot(enemy: Node) -> void:
 		bullet.init_with_direction(offset, damage * player.damageMultiplier * gun_damage_multiplier, base_projectile_speed * player.projectileSpeedMultipler, bullet_life_time, "Disc Launcher")
 		bullet.rotation_speed = speed
 		bullet.outward_speed = speed / 2
+		
+		if(armor_shred):
+			bullet.armor_reduction = 1
 			
 			
 			
@@ -22,12 +27,12 @@ func shoot(enemy: Node) -> void:
 
 func apply_level_up():
 	if(level == 5):
-			pierce += 3
-			return
+		base_projectile_amount += 1
+		return
 	if(level == 10):
-			cooldown *= 0.9
-			base_projectile_amount += 1
-			return
+		armor_shred = true
+		base_projectile_amount += 1
+		return
 	
 	match level % 5:
 		1:
@@ -35,6 +40,6 @@ func apply_level_up():
 		2:
 			cooldown *= 0.95
 		3:
-			range += 25
+			pierce += 2
 		4:
 			damage += 1
