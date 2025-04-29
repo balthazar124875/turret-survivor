@@ -35,6 +35,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#ProcessPerFrameData(delta)
+	pass
+	
+func ProcessPerFrameData(delta: float) -> void:
 	#This will make sure our collider outer points are growing
 	currFlameRange += outerGrowSpeed * delta * speedScale;
 	if(currFlameRange >= flameMaxRange):
@@ -90,6 +94,7 @@ func HitEnemy(body) -> void:
 	body.take_damage(damage*100.0, "Flamethrower", GlobalEnums.DAMAGE_TYPES.FIRE)
 
 func _physics_process(delta):
+	ProcessPerFrameData(delta);
 	UpdateSingleFlameColliderPoints();
 
 func _on_body_entered(body: Node2D) -> void:
