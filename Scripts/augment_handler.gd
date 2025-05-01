@@ -49,6 +49,7 @@ func spawn_augments():
 		new_augment.position = Vector2(630 + i * 230, 420)
 		new_augment.choice_data = augment
 		new_augment.connect("choice_selected", Callable(self, "_on_choice_selected"))
+		augment_list.erase(augments[i])
 		
 func _on_choice_selected(choice: AugmentUpgrade):
 	SignalBus.augment_recieved.emit(choice)

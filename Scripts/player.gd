@@ -17,11 +17,14 @@ var playerUpgrades: Array = [];
 @export var areaSizeMultiplier = 1.0;
 @export var luck = 0;
 @export var armor: float = 0.0;
+@export var healing_multiplier: float = 1.0
 # https://warcraft3.info/articles/208/overview-of-armor-and-damage-reduction
 # Each 0.01 gives 1% more effective health points per armor point
 @export var armor_damage_reduction_const = 0.05
 # <DAMAGE_TYPE, float>
 @export var damage_type_multipliers: Dictionary = {}
+
+@export var championRewardBonus: float = 1;
 
 var gold: int = 100;
 var gold_income: int = 5;
@@ -64,8 +67,9 @@ func _on_income_timer_timeout() -> void:
 
 
 func heal_damage(value: float, source: String) -> void:
-	modify_health(value)
-	SignalBus.heal_done.emit(value, source)
+	var result = healing_multiplier * value
+	modify_health(result)
+	SignalBus.heal_done.emit(result, source)
 
 func take_damage(value: float, source: Enemy) -> void:
 	modify_health(-damage_after_armor_reduction(value))
@@ -113,13 +117,13 @@ func _on_enemy_killed(enemy: Enemy) -> void:
 		
 	match enemy.champion_type:
 		GlobalEnums.ENEMY_CHAMPION_TYPE.QUICK:
-			modify_stat(GlobalEnums.PLAYER_STATS.ATTACK_SPEED, 0.01)
+			modify_stat(GlobalEnums.PLAYER_STATS.ATTACK_SPEED, championRewardBonus * 0.01)
 		GlobalEnums.ENEMY_CHAMPION_TYPE.REGENERATING:
-			modify_stat(GlobalEnums.PLAYER_STATS.ADD_HEALTH_REGENERATION, 1)
+			modify_stat(GlobalEnums.PLAYER_STATS.ADD_HEALTH_REGENERATION, championRewardBonus * 1)
 		GlobalEnums.ENEMY_CHAMPION_TYPE.JUGGERNAUT:
-			modify_stat(GlobalEnums.PLAYER_STATS.DAMAGE_MULTIPLIER, 0.01)
+			modify_stat(GlobalEnums.PLAYER_STATS.DAMAGE_MULTIPLIER, championRewardBonus *0.01)
 		GlobalEnums.ENEMY_CHAMPION_TYPE.SPLITTING:
-			modify_stat(GlobalEnums.PLAYER_STATS.PROJECTILE_SPEED_MULTIPLIER, 0.01)
+			modify_stat(GlobalEnums.PLAYER_STATS.PROJECTILE_SPEED_MULTIPLIER, championRewardBonus * 0.01)
 		
 
 func modify_stat(stat: GlobalEnums.PLAYER_STATS, amount: float, source: String = "") -> void:
