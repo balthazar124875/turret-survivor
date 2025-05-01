@@ -52,7 +52,15 @@ func _input(event):
 	if event is InputEventKey and event.is_released():
 		if event.keycode == KEY_SPACE:
 			_on_reroll_button_pressed()
-
+		if event.keycode == KEY_K:
+			for i in locked:
+				shopUpgradeButtons[i].button.get_node("LockButton").queue_free()
+			locked.clear()
+			for i in locked_buyable:
+				shopUpgradeButtons[i].button.get_node("LockButton").queue_free()
+			locked_buyable.clear()
+			
+			
 func load_upgrades() -> void:
 			#Iterate all Upgrade scripts and put them in the global array
 	var folders = ["Circle", "Stats", "Weapons", "Passives"]
