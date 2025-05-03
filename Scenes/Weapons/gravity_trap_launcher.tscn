@@ -7,6 +7,7 @@
 script = ExtResource("1_4ho2x")
 targeting_type = 1
 bullet = ExtResource("2_as42f")
-cooldown = 5.0
+cooldown = 4.0
+damage = 3.0
 range = 500.0
 source = "Gravity Trap"

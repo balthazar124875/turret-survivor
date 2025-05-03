@@ -13,6 +13,8 @@ var pierce: int = 0
 var bounce: float = 0
 var dist
 
+var effects: Array = []
+
 @export var damage_type: GlobalEnums.DAMAGE_TYPES = GlobalEnums.DAMAGE_TYPES.PHYSICAL
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,8 +46,9 @@ func init_with_direction(direction: Vector2, damage: float, speed: float, life_t
 	call_deferred("_delete_after_time", life_time)
 
 func HitEnemy(body : Enemy):
-	body.take_damage(damage, source)  # Call the enemy's damage function
-	SignalBus.on_enemy_hit.emit(body, self)
+	body.take_damage(damage, source, damage_type)  # Call the enemy's damage function
+	for e in effects:
+		e.call(body, self)
 
 func _on_body_entered(body):
 	if body is Enemy:  # Replace with your enemy script class name

@@ -10,6 +10,7 @@ base_knockback_distance = 150
 targeting_type = 1
 bullet = ExtResource("2_b2igs")
 cooldown = 5.0
+damage = 2.0
 gun_damage_multiplier = 1.5
 range = 200.0
 source = "Gravity Trap"

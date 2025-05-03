@@ -6,9 +6,13 @@ extends PassiveUpgrade
 @export var procChance = 0.1
 @export var luckScaling = 0.02
 
+@export var color: Color
+@export var colorPriority = 0
+
+
 var active = false
 
-var coldDamge = false
+var coldDamage = false
 
 @onready var player
 
@@ -19,26 +23,31 @@ func _ready() -> void:
 func applyUpgradeToPlayer(player: Player) -> void:
 	self.player = player
 	if(!active):
-		SignalBus.on_enemy_hit.connect(_apply_effects)
+		SignalBus.bullet_created.connect(_bullet_created)
 		active = true
 	super.applyUpgradeToPlayer(player)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 	
-func _apply_effects(enemy: Enemy, bullet: Bullet):
+func _bullet_created(bullet):
 	var rndNumber = randf_range(0.0, 1.0);
 	if(rndNumber <= procChance * (1 + (player.luck * luckScaling))):
-		var slow = EnemyStatusEffect.new()
-		slow.type = GlobalEnums.ENEMY_STATUS_EFFECTS.SLOWED
-		slow.duration = duration
-		slow.magnitude = slowAmount
-		enemy.apply_status_effect(slow)
+		bullet.effects.append(_apply_effects)
+		bullet.get_node("Sprite2D").modulate = color
+		if(coldDamage):
+			bullet.damage_type = GlobalEnums.DAMAGE_TYPES.ICE
+	
+func _apply_effects(enemy: Enemy, bullet: Bullet):
+	var slow = EnemyStatusEffect.new()
+	slow.type = GlobalEnums.ENEMY_STATUS_EFFECTS.SLOWED
+	slow.duration = duration
+	slow.magnitude = slowAmount
+	enemy.apply_status_effect(slow)
 
 func apply_level_up():
 	if(upgradeAmount == 10):
-		coldDamge = true
-		#change damage type to cold
+		coldDamage = true
 		return
 	
 	match upgradeAmount % 3:

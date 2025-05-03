@@ -55,7 +55,7 @@ func spawn_enemy(enemyScene: PackedScene, possibleChampion: bool, position: Vect
 		var xPos = center.position.x + cos(posRand) * enemy_spawn_distance
 		var yPos = center.position.y + sin(posRand) * enemy_spawn_distance
 		enemy.position = Vector2(xPos, yPos)
-	enemies.add_child(enemy)
+	call_deferred("_spawn", enemy)
 	enemy.modify_stats(pow(enemy_hp_scaling, current_wave / waves.size()),
 	 pow(enemy_dmg_scaling, current_wave / waves.size()),
 	 pow(enemy_cc_effectiveness_scaling, current_wave / waves.size()))
@@ -76,7 +76,9 @@ func spawn_enemy(enemyScene: PackedScene, possibleChampion: bool, position: Vect
 				enemy.scene = enemyScene
 				
 		enemy.set_champion_type(type)
-	
+
+func _spawn(enemy):
+	enemies.add_child(enemy)
 
 func _on_wave_timer_timeout() -> void:
 	current_wave += 1

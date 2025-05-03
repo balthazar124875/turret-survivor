@@ -117,13 +117,13 @@ func _on_enemy_killed(enemy: Enemy) -> void:
 		
 	match enemy.champion_type:
 		GlobalEnums.ENEMY_CHAMPION_TYPE.QUICK:
-			modify_stat(GlobalEnums.PLAYER_STATS.ATTACK_SPEED, championRewardBonus * 0.01)
+			modify_stat(GlobalEnums.PLAYER_STATS.ATTACK_SPEED, championRewardBonus * 0.005)
 		GlobalEnums.ENEMY_CHAMPION_TYPE.REGENERATING:
-			modify_stat(GlobalEnums.PLAYER_STATS.ADD_HEALTH_REGENERATION, championRewardBonus * 1)
+			modify_stat(GlobalEnums.PLAYER_STATS.ADD_HEALTH_REGENERATION, championRewardBonus * 0.2)
 		GlobalEnums.ENEMY_CHAMPION_TYPE.JUGGERNAUT:
-			modify_stat(GlobalEnums.PLAYER_STATS.DAMAGE_MULTIPLIER, championRewardBonus *0.01)
+			modify_stat(GlobalEnums.PLAYER_STATS.DAMAGE_MULTIPLIER, championRewardBonus *0.005)
 		GlobalEnums.ENEMY_CHAMPION_TYPE.SPLITTING:
-			modify_stat(GlobalEnums.PLAYER_STATS.PROJECTILE_SPEED_MULTIPLIER, championRewardBonus * 0.01)
+			modify_stat(GlobalEnums.PLAYER_STATS.PROJECTILE_SPEED_MULTIPLIER, championRewardBonus * 0.005)
 		
 
 func modify_stat(stat: GlobalEnums.PLAYER_STATS, amount: float, source: String = "") -> void:

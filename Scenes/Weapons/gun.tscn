@@ -8,8 +8,8 @@
 script = ExtResource("1_7uu1s")
 wrapAroundBullet = ExtResource("2_0013l")
 bullet = ExtResource("2_52185")
-cooldown = 1.25
-gun_damage_multiplier = 0.5
+cooldown = 1.0
+damage = 2.0
 base_projectile_speed = 500.0
 range = 600.0
 source = "Gun"

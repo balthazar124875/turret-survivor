@@ -5,6 +5,7 @@
 
 [node name="SlowingBullets" type="Node2D"]
 script = ExtResource("1_swpto")
+color = Color(0, 0.884542, 0.960313, 1)
 upgradeName = "Slowing bullets"
 description = "Bullets slow"
 icon = ExtResource("2_1qqc2")
