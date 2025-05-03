@@ -34,4 +34,5 @@ text = "[center][font_size=12][color=3f3f74]Descipriont oes here"
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(100, 70)
+scale = Vector2(2, 2)
 texture = ExtResource("1_vrmvc")

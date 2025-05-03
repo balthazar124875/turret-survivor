@@ -50,7 +50,6 @@ var alive_time: float = 0.0
 
 var on_death_particles = preload("res://Scenes/Particles/TestParticle.tscn")
 var damage_taken_particles = preload("res://Scenes/Particles/OnHitParticle.tscn")
-var damage_numbers_scene = preload("res://Scenes/UI/damage_numbers.tscn")
 
 var objectObstructingEnemy : Node2D = null;
 
@@ -210,24 +209,32 @@ func take_damage(
 	amount: float,
 	source: String = '',
 	damage_type: GlobalEnums.DAMAGE_TYPES = GlobalEnums.DAMAGE_TYPES.PHYSICAL,
-	ignore_armor: bool = false
+	ignore_armor: bool = false,
+	direct: bool = true
 	) -> void:
 	# Take minimum 1 damage
 	var damage_after_type_multipler = amount * player.GetDamageMultiplier(damage_type, global_position);
 	var damage_after_armor = max(1, damage_after_type_multipler) if ignore_armor else max(1, damage_after_type_multipler - armor)
+	var health_before = health
 	health -= damage_after_armor
-	damage_flash = true
-	damage_flash_timer.start(0.1) 
+	health = max(0, health)
+	var damage_done = health_before - health
+	
 	spawn_one_shot_particles(damage_taken_particles, self.global_position)
-	var new_damage_numbers = damage_numbers_scene.instantiate()
-	new_damage_numbers.global_position = position
-	new_damage_numbers.number = damage_after_armor
-	new_damage_numbers.damage_type = damage_type
-	get_node("/root/EmilScene/ParticleNode").add_child(new_damage_numbers)
-	SignalBus.damage_done.emit(damage_after_armor, source)
+	
+	SignalBus.damage_done.emit(self, damage_done, damage_type, source, direct)
+	
 	if(health <= 0):
 		die()
+	else:
+		start_damage_flash()
+	
 
+func start_damage_flash():
+	damage_flash = true
+	damage_flash_timer.start(0.1) 
+	
+	
 func _on_damage_flash_timeout():
 	damage_flash = false
 

@@ -29,6 +29,8 @@ var current_reroll_cost = base_reroll_cost
 var empty_item_slot_texture: Texture2D
 
 var buttons: Array[Node]
+var locked_buyable = [2, 6]
+var locked = [3, 7]
 
 var player: Player
 var circle: Circle
@@ -50,7 +52,15 @@ func _input(event):
 	if event is InputEventKey and event.is_released():
 		if event.keycode == KEY_SPACE:
 			_on_reroll_button_pressed()
-
+		if event.keycode == KEY_K:
+			for i in locked:
+				shopUpgradeButtons[i].button.get_node("LockButton").queue_free()
+			locked.clear()
+			for i in locked_buyable:
+				shopUpgradeButtons[i].button.get_node("LockButton").queue_free()
+			locked_buyable.clear()
+			
+			
 func load_upgrades() -> void:
 			#Iterate all Upgrade scripts and put them in the global array
 	var folders = ["Circle", "Stats", "Weapons", "Passives"]
@@ -80,6 +90,13 @@ func initialize_buttons() -> void:
 		#Register on mouse enter and exit events for all shopbuttons
 		buttons[i].mouse_entered.connect(mouse_enter.bind(i))
 		buttons[i].mouse_exited.connect(mouse_exit)
+		if(i in locked or i in locked_buyable):
+			var l = buttons[i].get_node("LockButton")
+			l.button_down.connect(_on_shop_locked_button_pressed.bind(i))
+			l.mouse_entered.connect(mouse_enter.bind(i))
+			l.mouse_exited.connect(mouse_exit)
+			
+		
 	fillShopUpgradeButtons()
 
 func new_wave_shop_reroll(current_wave: int = 0) -> void:
@@ -165,6 +182,7 @@ func _on_shop_upgrade_button_pressed(index: int) -> void:
 		
 	if shopUpgradeButtons[index].upgradeNode == null:
 		return
+		
 	if player.gold < shopUpgradeButtons[index].upgradeNode.gold_cost:
 		return
 	player.modify_gold(-shopUpgradeButtons[index].upgradeNode.gold_cost)
@@ -185,6 +203,15 @@ func _on_shop_upgrade_button_pressed(index: int) -> void:
 		text.scroll_active = false
 		if(shopUpgradeButtons[index].upgradeNode.upgradeAmount != 0):
 			text.text = "[right][color=black][font_size=12]" + str(shopUpgradeButtons[index].upgradeNode.upgradeAmount) + "[/font_size][/color][/right]"
+
+func _on_shop_locked_button_pressed(index: int) -> void:
+	if(index in locked_buyable):
+		var unlock_cost = (100 if locked_buyable.size() == 2 else 300)
+		if(player.gold >= unlock_cost):
+			shopUpgradeButtons[index].button.get_node("LockButton").queue_free()
+			locked_buyable.erase(index)
+			player.modify_gold(-unlock_cost)
+		return
 
 func _on_reroll_button_pressed() -> void:
 	if player.gold < current_reroll_cost:
@@ -239,7 +266,16 @@ func UpdateUpgradeTooltip(index: int):
 		return
 	if shopUpgradeButtons[index].upgradeNode == null:
 		return; #This means the shop upgrade button has been purchased and is gone
+		
 	var highlightedButton = shopUpgradeButtons[index].button;
+	
+	if(index in locked_buyable):
+		tooltipMgr.DisplayTooltip("Locked! Unlock for " + ("100" if locked_buyable.size() == 2 else "300") + "g?", highlightedButton);
+		return
+	if(index in locked ):
+		tooltipMgr.DisplayTooltip("Locked! Find an augment to unlock these", highlightedButton);
+		return
+		
 	var buttonTooltip = shopUpgradeButtons[index].tooltip;
 	tooltipMgr.DisplayTooltip(buttonTooltip, highlightedButton);
 	currTooltipShotButtonIdx = index;
@@ -253,3 +289,9 @@ func mouse_exit() -> void:
 	tooltipMgr.HideTooltip();
 	currTooltipShotButtonIdx = -1;
 	pass
+	
+func unlock_extra_slots() -> void:
+	for i in locked:
+		shopUpgradeButtons[i].button.get_node("LockButton").queue_free()
+	locked.clear()
+	

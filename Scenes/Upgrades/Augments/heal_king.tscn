@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8i678nyyu7px"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Augments/heal_king.gd" id="1_2v838"]
+[ext_resource type="Texture2D" uid="uid://dahsvs0n0nnbe" path="res://Assets/Sprites/upgrades/heal_king.png" id="2_ixy0u"]
+
+[node name="Heal King" type="Node2D"]
+script = ExtResource("1_2v838")
+upgradeName = "Heal King"
+description = "Increases healing by 100%."
+type = 1
+rarity = 3
+icon = ExtResource("2_ixy0u")

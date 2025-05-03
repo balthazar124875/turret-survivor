@@ -27,7 +27,7 @@ func _input(event):
 func _process(delta: float) -> void:
 	pass
 
-func _add_damage(amount: float, source: String):
+func _add_damage(enemy: Enemy, amount: float, damageType: GlobalEnums.DAMAGE_TYPES, source: String, direct:bool):
 	if (source == ''):
 		return
 	if source in damages:

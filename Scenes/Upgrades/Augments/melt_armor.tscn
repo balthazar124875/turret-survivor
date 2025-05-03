@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmwo6nenk6x2t"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Augments/melt_armor.gd" id="1_h2lyk"]
+[ext_resource type="Texture2D" uid="uid://dt0yjeejte3av" path="res://Assets/Sprites/upgrades/melt_armor.png" id="2_f54ma"]
+
+[node name="Melt Armor" type="Node2D"]
+script = ExtResource("1_h2lyk")
+passiveType = 3
+upgradeName = "Melt Armor"
+description = "Direct fire damage melts armor"
+type = 1
+rarity = 3
+icon = ExtResource("2_f54ma")
+weight_reduction = 10

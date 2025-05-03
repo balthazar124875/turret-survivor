@@ -60,7 +60,7 @@ func _ready() -> void:
 #			HitEnemy(body, delta);
 
 func HitEnemy(body) -> void:
-	body.take_damage(damage_per_tick * player.damageMultiplier, source)
+	body.take_damage(damage_per_tick * player.damageMultiplier, source, GlobalEnums.DAMAGE_TYPES.FIRE)
 	return;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

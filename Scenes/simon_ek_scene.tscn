@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=45 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
 [ext_resource type="Script" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
 [ext_resource type="Script" path="res://Scripts/UI/orb_stats.gd" id="11_v6kre"]
+[ext_resource type="Texture2D" uid="uid://bphat1e3xk2ax" path="res://Assets/Sprites/UI/locked_slot.png" id="12_msjj3"]
 [ext_resource type="PackedScene" uid="uid://bampk2ki2ygjd" path="res://Scenes/UI/damage_dictionary.tscn" id="18_dwmxg"]
 [ext_resource type="Theme" uid="uid://7qh40l0am5og" path="res://Themes/new_test.tres" id="21_uq2lv"]
 [ext_resource type="Script" path="res://Scripts/UI/TooltipManager.gd" id="22_q1apf"]
@@ -33,12 +34,13 @@
 [ext_resource type="Texture2D" uid="uid://cn4vbiasqmowd" path="res://Assets/Sprites/upgrades/area_up.png" id="31_i8is2"]
 [ext_resource type="Texture2D" uid="uid://crnfw7u4yi5ga" path="res://Assets/Sprites/upgrades/luckybug.png" id="32_26hin"]
 [ext_resource type="Texture2D" uid="uid://bq1vwc7do4883" path="res://Assets/Sprites/upgrades/proj_speed_up.png" id="32_e3gei"]
-[ext_resource type="StyleBox" path="res://Themes/augment.tres" id="38_xtrk1"]
+[ext_resource type="Script" path="res://Scripts/UI/damage_numbers_handler.gd" id="37_5o2m1"]
+[ext_resource type="StyleBox" uid="uid://e2ylx83bifj" path="res://Themes/augment.tres" id="38_xtrk1"]
 [ext_resource type="Script" path="res://Scenes/UI/ui_augments.gd" id="39_j6pgw"]
 [ext_resource type="Script" path="res://Scripts/UI/upgrades_container.gd" id="40_5dn0k"]
 [ext_resource type="PackedScene" uid="uid://b28o0wogrqmsi" path="res://Scenes/UI/augment_handler.tscn" id="40_yymlw"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7smmg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r5r0a"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -83,7 +85,7 @@ healthRegeneration = 0.0
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_7smmg")
+enemy_outline_material = SubResource("ShaderMaterial_r5r0a")
 
 [node name="GameplayUi" type="Control" parent="."]
 layout_mode = 3
@@ -176,10 +178,10 @@ texture_normal = ExtResource("7_vnyei")
 [node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton1"]
 clip_contents = false
 layout_mode = 0
-offset_left = 5.0
-offset_top = 16.0
+offset_left = 4.0
+offset_top = 13.0
 offset_right = 29.0
-offset_bottom = 33.0
+offset_bottom = 29.0
 mouse_filter = 1
 theme = SubResource("Theme_t5p71")
 bbcode_enabled = true
@@ -202,10 +204,10 @@ texture_normal = ExtResource("7_vnyei")
 [node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton2"]
 clip_contents = false
 layout_mode = 0
-offset_left = 5.0
-offset_top = 16.0
+offset_left = 4.0
+offset_top = 13.0
 offset_right = 29.0
-offset_bottom = 33.0
+offset_bottom = 29.0
 mouse_filter = 1
 theme = SubResource("Theme_t5p71")
 bbcode_enabled = true
@@ -228,10 +230,10 @@ texture_normal = ExtResource("7_vnyei")
 [node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton3"]
 clip_contents = false
 layout_mode = 0
-offset_left = 5.0
-offset_top = 16.0
+offset_left = 4.0
+offset_top = 13.0
 offset_right = 29.0
-offset_bottom = 33.0
+offset_bottom = 29.0
 mouse_filter = 1
 theme = SubResource("Theme_t5p71")
 bbcode_enabled = true
@@ -246,6 +248,14 @@ layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
 
+[node name="LockButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton3"]
+layout_mode = 0
+offset_left = -0.5
+offset_top = -0.5
+offset_right = 32.5
+offset_bottom = 32.5
+texture_normal = ExtResource("12_msjj3")
+
 [node name="ShopUpgradeButton4" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
 button_mask = 3
@@ -254,10 +264,10 @@ texture_normal = ExtResource("7_vnyei")
 [node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton4"]
 clip_contents = false
 layout_mode = 0
-offset_left = 5.0
-offset_top = 16.0
+offset_left = 4.0
+offset_top = 13.0
 offset_right = 29.0
-offset_bottom = 33.0
+offset_bottom = 29.0
 mouse_filter = 1
 theme = SubResource("Theme_t5p71")
 bbcode_enabled = true
@@ -272,6 +282,14 @@ layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
 
+[node name="LockButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton4"]
+layout_mode = 0
+offset_left = -0.5
+offset_top = -0.5
+offset_right = 32.5
+offset_bottom = 32.5
+texture_normal = ExtResource("12_msjj3")
+
 [node name="ShopUpgradeButton5" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
 button_mask = 3
@@ -280,10 +298,10 @@ texture_normal = ExtResource("7_vnyei")
 [node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton5"]
 clip_contents = false
 layout_mode = 0
-offset_left = 5.0
-offset_top = 16.0
+offset_left = 4.0
+offset_top = 13.0
 offset_right = 29.0
-offset_bottom = 33.0
+offset_bottom = 29.0
 mouse_filter = 1
 theme = SubResource("Theme_t5p71")
 bbcode_enabled = true
@@ -306,10 +324,10 @@ texture_normal = ExtResource("7_vnyei")
 [node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton6"]
 clip_contents = false
 layout_mode = 0
-offset_left = 5.0
-offset_top = 16.0
+offset_left = 4.0
+offset_top = 13.0
 offset_right = 29.0
-offset_bottom = 33.0
+offset_bottom = 29.0
 mouse_filter = 1
 theme = SubResource("Theme_t5p71")
 bbcode_enabled = true
@@ -332,10 +350,10 @@ texture_normal = ExtResource("7_vnyei")
 [node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton7"]
 clip_contents = false
 layout_mode = 0
-offset_left = 5.0
-offset_top = 16.0
+offset_left = 4.0
+offset_top = 13.0
 offset_right = 29.0
-offset_bottom = 33.0
+offset_bottom = 29.0
 mouse_filter = 1
 theme = SubResource("Theme_t5p71")
 bbcode_enabled = true
@@ -350,6 +368,15 @@ layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
 
+[node name="LockButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton7"]
+layout_mode = 0
+offset_left = -0.5
+offset_top = -0.5
+offset_right = 32.5
+offset_bottom = 32.5
+tooltip_text = "Locked!"
+texture_normal = ExtResource("12_msjj3")
+
 [node name="ShopUpgradeButton8" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
 button_mask = 3
@@ -358,10 +385,10 @@ texture_normal = ExtResource("7_vnyei")
 [node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton8"]
 clip_contents = false
 layout_mode = 0
-offset_left = 5.0
-offset_top = 16.0
+offset_left = 4.0
+offset_top = 13.0
 offset_right = 29.0
-offset_bottom = 33.0
+offset_bottom = 29.0
 mouse_filter = 1
 theme = SubResource("Theme_t5p71")
 bbcode_enabled = true
@@ -375,6 +402,15 @@ drag_and_drop_selection_enabled = false
 layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
+
+[node name="LockButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton8"]
+layout_mode = 0
+offset_left = -0.5
+offset_top = -0.5
+offset_right = 32.5
+offset_bottom = 32.5
+tooltip_text = "Locked!"
+texture_normal = ExtResource("12_msjj3")
 
 [node name="GoldLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn"]
 layout_mode = 1
@@ -1002,6 +1038,12 @@ offset_right = 418.0
 offset_bottom = 1050.0
 
 [node name="AugmentHandler" parent="GameplayUi" instance=ExtResource("40_yymlw")]
+
+[node name="DamageNumbersHandler" type="Control" parent="GameplayUi"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("37_5o2m1")
 
 [node name="ParticleNode" type="Node2D" parent="."]
 

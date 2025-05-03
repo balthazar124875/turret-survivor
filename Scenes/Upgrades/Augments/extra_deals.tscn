@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ii4dseeahcsl"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Augments/extra_deals.gd" id="1_qwc7j"]
+[ext_resource type="Texture2D" uid="uid://5fbp3jpigben" path="res://Assets/Sprites/upgrades/extra_deals.png" id="2_ypbbf"]
+
+[node name="Extra Deals" type="Node2D"]
+script = ExtResource("1_qwc7j")
+passiveType = 3
+upgradeName = "Extra deals"
+description = "Increases amount of slots in the shop."
+type = 1
+rarity = 3
+icon = ExtResource("2_ypbbf")
+weight_reduction = 10
