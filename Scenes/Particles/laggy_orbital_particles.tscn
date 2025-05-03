@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://dh2lm6ob2wd07"]
+
+[ext_resource type="Texture2D" uid="uid://b70b6b1k75ggq" path="res://Assets/Sprites/Particles/purple_ball.png" id="1_wnf7u"]
+
+[sub_resource type="Gradient" id="Gradient_w00g2"]
+offsets = PackedFloat32Array(0, 0.86875)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.721569)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gdn70"]
+gradient = SubResource("Gradient_w00g2")
+
+[sub_resource type="Curve" id="Curve_bq4fo"]
+max_value = 3.0
+_data = [Vector2(0, 0.0286517), 0.0, 26.4421, 0, 0, Vector2(0.318966, 3), 0.0, 0.0, 0, 0, Vector2(1, 0.0432585), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6htjl"]
+curve = SubResource("Curve_bq4fo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0epkt"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0, 0, 0)
+angle_min = -100.0
+angle_max = 100.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 303.09
+initial_velocity_max = 394.25
+orbit_velocity_min = 0.364
+orbit_velocity_max = 1.394
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+scale_curve = SubResource("CurveTexture_6htjl")
+color_ramp = SubResource("GradientTexture1D_gdn70")
+turbulence_enabled = true
+turbulence_noise_strength = 6.15
+
+[node name="LaggyOrbitalParticles" type="GPUParticles2D"]
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_0epkt")
+texture = ExtResource("1_wnf7u")

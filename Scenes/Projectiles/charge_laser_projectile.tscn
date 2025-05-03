@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://baxg6dpo4avbu"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerProjectiles/charge_laser_projectile.gd" id="1_ghx2m"]
+[ext_resource type="Texture2D" uid="uid://b70b6b1k75ggq" path="res://Assets/Sprites/Particles/purple_ball.png" id="2_lg460"]
+[ext_resource type="Texture2D" uid="uid://e0ipawprq50w" path="res://Assets/Sprites/Projectiles/charge_laser_slice.png" id="2_va2un"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0q4f"]
+size = Vector2(20, 2.12502)
+
+[sub_resource type="Gradient" id="Gradient_w00g2"]
+offsets = PackedFloat32Array(0, 0.86875)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.721569)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gdn70"]
+gradient = SubResource("Gradient_w00g2")
+
+[sub_resource type="Curve" id="Curve_bq4fo"]
+max_value = 3.0
+_data = [Vector2(0, 0.0286517), 0.0, 26.4421, 0, 0, Vector2(0.318966, 3), 0.0, 0.0, 0, 0, Vector2(1, 0.0432585), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6htjl"]
+curve = SubResource("Curve_bq4fo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0epkt"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 68.86
+angle_min = -100.0
+angle_max = 100.0
+direction = Vector3(-1, -1, -1)
+spread = 0.0
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+radial_velocity_min = -240.32
+radial_velocity_max = -2.23517e-05
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+scale_curve = SubResource("CurveTexture_6htjl")
+color_ramp = SubResource("GradientTexture1D_gdn70")
+turbulence_enabled = true
+turbulence_noise_strength = 6.15
+
+[node name="ChargeLaserProjectile" type="Node2D"]
+script = ExtResource("1_ghx2m")
+
+[node name="LaserSprite" type="Sprite2D" parent="."]
+scale = Vector2(2, 2.5)
+texture = ExtResource("2_va2un")
+centered = false
+offset = Vector2(0, -8)
+
+[node name="LaserArea" type="Area2D" parent="."]
+scale = Vector2(1, 2)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserArea"]
+position = Vector2(0.937492, -2.26277e-07)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_r0q4f")
+
+[node name="ChargeParticles" type="GPUParticles2D" parent="."]
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_0epkt")
+texture = ExtResource("2_lg460")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

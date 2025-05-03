@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c27kwnhgs5cdb"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/charge_laser.gd" id="1_t54i0"]
+[ext_resource type="PackedScene" uid="uid://baxg6dpo4avbu" path="res://Scenes/Projectiles/charge_laser_projectile.tscn" id="2_ifa75"]
+
+[node name="ChargeLaser" type="Node2D"]
+script = ExtResource("1_t54i0")
+bullet = ExtResource("2_ifa75")
+cooldown = 4.0
+damage = 3.0
+base_projectile_speed = 800.0
+bullet_life_time = 4.0
+range = 450.0
+pierce = 5
+source = "Charge laser"
+damage_type = 1
