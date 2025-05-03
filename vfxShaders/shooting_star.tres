@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://bis75onm3uxrb"]
+[gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://cakp1cy7773l7"]
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_7gqt0"]
 operator = 2
@@ -104,7 +104,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-705.016, 0.350388)
+graph_offset = Vector2(-562.6, -156.338)
 mode = 1
 flags/light_only = false
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_libh5")
