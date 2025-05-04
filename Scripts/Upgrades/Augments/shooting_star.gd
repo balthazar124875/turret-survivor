@@ -1,7 +1,5 @@
 extends AugmentUpgrade
 
-@onready var player = get_node("/root/EmilScene/Player")
-
 @export var shootingStarVfx : PackedScene;
 
 var enemyKillCounter : int;

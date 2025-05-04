@@ -46,7 +46,7 @@ turbulence_noise_strength = 6.15
 [node name="ChargeLaserProjectile" type="Node2D"]
 script = ExtResource("1_ghx2m")
 
-[node name="LaserSprite" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2.5)
 texture = ExtResource("2_va2un")
 centered = false

@@ -4,7 +4,7 @@ class_name ChargeLaserProjectile
 
 @onready var charge_particles = $ChargeParticles
 @onready var laser_area = $LaserArea
-@onready var laser_sprite = $LaserSprite
+@onready var laser_sprite = $Sprite2D
 @onready var damage_tick_timer = $Timer
 
 enum ChargeState {CHARGING, DO_DAMAGE, DECHARGE}

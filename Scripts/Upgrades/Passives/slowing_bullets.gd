@@ -30,7 +30,9 @@ func _bullet_created(bullet):
 	var rndNumber = randf_range(0.0, 1.0);
 	if(rndNumber <= procChance * (1 + (player.luck * luckScaling))):
 		bullet.effects.append(_apply_effects)
-		bullet.get_node("Sprite2D").modulate = color
+		var bullet_sprite = bullet.get_node("Sprite2D")
+		if bullet_sprite != null:
+			bullet_sprite.modulate = color
 		if(coldDamage):
 			bullet.damage_type = GlobalEnums.DAMAGE_TYPES.ICE
 	

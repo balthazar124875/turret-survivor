@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyx38s1p66odm"]
+[gd_scene load_steps=3 format=3 uid="uid://baf8ussfby2f4"]
 
 [ext_resource type="Script" path="res://Scripts/Upgrades/Stats/stat_upgrade.gd" id="1_27yxo"]
 [ext_resource type="Texture2D" uid="uid://bc27thv4erlrl" path="res://Assets/Sprites/upgrades/bounce.png" id="2_g5q1h"]
@@ -9,6 +9,6 @@ stat_type = 14
 amount = 0.1
 upgradeName = "Bouncy Bullets"
 description = "Bullets bounce"
-type = 1
+type = 2
 rarity = 2
 icon = ExtResource("2_g5q1h")

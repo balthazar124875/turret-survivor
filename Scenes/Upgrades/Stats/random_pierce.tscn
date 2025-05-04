@@ -9,6 +9,6 @@ stat_type = 13
 amount = 1.0
 upgradeName = "Bonus Pierce"
 description = "Bullets gain +1 pierce"
-type = 1
+type = 2
 rarity = 2
 icon = ExtResource("2_rja3x")
