@@ -7,6 +7,7 @@
 shader = ExtResource("1_35e7m")
 shader_parameter/SecondaaryColor = Color(0.792497, 0.719617, 0.391098, 1)
 shader_parameter/ColorIntensity = 1.609
+shader_parameter/AlphaClamping = null
 shader_parameter/basic_texture = ExtResource("2_xvj62")
 
 [sub_resource type="Curve" id="Curve_ojr3o"]

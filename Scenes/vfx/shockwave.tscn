@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://tmmnwjhmhken"]
+[gd_scene load_steps=9 format=3 uid="uid://clxyrnvqyvycl"]
 
 [ext_resource type="Shader" uid="uid://bis75onm3uxrb" path="res://vfxShaders/snowflake.tres" id="1_ah0co"]
 [ext_resource type="Texture2D" uid="uid://s7u4x4cyfetq" path="res://Textures/shockwave_low_res.png" id="1_pjnov"]
@@ -9,6 +9,7 @@
 shader = ExtResource("1_ah0co")
 shader_parameter/SecondaaryColor = Color(0.729412, 0.921569, 0.811765, 1)
 shader_parameter/ColorIntensity = 1.588
+shader_parameter/AlphaClamping = null
 shader_parameter/basic_texture = ExtResource("2_7bxln")
 
 [sub_resource type="Curve" id="Curve_pw862"]

@@ -9,6 +9,7 @@ resource_local_to_scene = true
 shader = ExtResource("2_bpqft")
 shader_parameter/SecondaaryColor = Color(0.988235, 0.262745, 0, 1)
 shader_parameter/ColorIntensity = 6.713
+shader_parameter/AlphaClamping = null
 shader_parameter/basic_texture = ExtResource("3_rkye6")
 
 [sub_resource type="Curve" id="Curve_0b5sw"]
