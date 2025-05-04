@@ -47,6 +47,7 @@ var circle
 var damage_flash_timer = Timer.new()
 var dot_timer = Timer.new()
 var alive_time: float = 0.0
+var isDead : bool = false;
 
 var on_death_particles = preload("res://Scenes/Particles/TestParticle.tscn")
 var damage_taken_particles = preload("res://Scenes/Particles/OnHitParticle.tscn")
@@ -224,7 +225,7 @@ func take_damage(
 	
 	SignalBus.damage_done.emit(self, damage_done, damage_type, source, direct)
 	
-	if(health <= 0):
+	if(health <= 0 && !isDead):
 		die()
 	else:
 		start_damage_flash()
@@ -239,6 +240,7 @@ func _on_damage_flash_timeout():
 	damage_flash = false
 
 func die() -> void:
+	isDead = true;
 	spawn_one_shot_particles(on_death_particles, self.global_position)
 	SignalBus.enemy_killed.emit(self)
 	

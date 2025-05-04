@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://q8133dm7xwik"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Augments/shooting_star.gd" id="1_8u6to"]
+[ext_resource type="Texture2D" uid="uid://bkpymun47webw" path="res://Assets/Sprites/upgrades/shooting_star.png" id="2_hqmvb"]
+[ext_resource type="PackedScene" uid="uid://cxfvtbdc1kbn1" path="res://Scenes/vfx/vfx_shooting_star.tscn" id="2_io1nk"]
+
+[node name="ShootingStar" type="Node2D"]
+script = ExtResource("1_8u6to")
+shootingStarVfx = ExtResource("2_io1nk")
+passiveType = 1
+upgradeName = "Shooting Star"
+description = "Spawn a shooting star on every 10 enemies killed"
+type = 1
+icon = ExtResource("2_hqmvb")

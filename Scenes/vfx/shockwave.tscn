@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://tmmnwjhmhken"]
+[gd_scene load_steps=9 format=3 uid="uid://clxyrnvqyvycl"]
 
 [ext_resource type="Shader" uid="uid://bis75onm3uxrb" path="res://vfxShaders/snowflake.tres" id="1_ah0co"]
 [ext_resource type="Texture2D" uid="uid://s7u4x4cyfetq" path="res://Textures/shockwave_low_res.png" id="1_pjnov"]

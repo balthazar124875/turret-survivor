@@ -1,21 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://cxfvtbdc1kbn1"]
+[gd_scene load_steps=13 format=3 uid="uid://dhj14cqr4wl7i"]
 
-[ext_resource type="Script" path="res://Scripts/vfx/shooting_star.gd" id="1_yk322"]
-[ext_resource type="Shader" uid="uid://cakp1cy7773l7" path="res://vfxShaders/shooting_star.tres" id="2_hbu80"]
-[ext_resource type="PackedScene" uid="uid://v6gg3rwunt4p" path="res://Scenes/vfx/vfx_star_mark.tscn" id="2_ttvwn"]
-[ext_resource type="Texture2D" uid="uid://cnkc6t5yslb4d" path="res://Textures/star.png" id="3_3fmi5"]
-[ext_resource type="PackedScene" uid="uid://dhj14cqr4wl7i" path="res://Scenes/vfx/vfx_star_explosion.tscn" id="3_pqbyh"]
+[ext_resource type="Script" path="res://Scripts/vfx/star_explosion.gd" id="1_a1dtd"]
+[ext_resource type="Shader" uid="uid://cakp1cy7773l7" path="res://vfxShaders/shooting_star.tres" id="3_jri11"]
+[ext_resource type="Texture2D" uid="uid://cnkc6t5yslb4d" path="res://Textures/star.png" id="4_sc8hu"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mkr22"]
-radius = 25.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56c2k"]
+size = Vector2(57, 54)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0dg0d"]
 resource_local_to_scene = true
-shader = ExtResource("2_hbu80")
+shader = ExtResource("3_jri11")
 shader_parameter/SecondaaryColor = Color(0.471114, 0.464074, 0.117646, 1)
 shader_parameter/ColorIntensity = 2.406
 shader_parameter/AlphaClamping = 0.155
-shader_parameter/basic_texture = ExtResource("3_3fmi5")
+shader_parameter/basic_texture = ExtResource("4_sc8hu")
 
 [sub_resource type="Curve" id="Curve_p7n5h"]
 _data = [Vector2(0, 0.296703), 0.0, 0.0, 0, 0, Vector2(0.0421941, 1), 0.0, 0.0, 0, 0, Vector2(0.578059, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -45,8 +43,10 @@ emission_shape = 1
 emission_sphere_radius = 0.01
 angle_min = -720.0
 angle_max = 720.0
-direction = Vector3(0, 0, 0)
-spread = 5.0
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 70.0
+initial_velocity_max = 200.0
 angular_velocity_min = -200.0
 angular_velocity_max = 200.0
 radial_velocity_min = -2.23517e-05
@@ -54,34 +54,21 @@ radial_velocity_max = -2.23517e-05
 gravity = Vector3(0, 0, 0)
 linear_accel_min = -2.23517e-06
 linear_accel_max = 40.0
-scale_min = 70.0
-scale_max = 70.0
+scale_min = 20.0
+scale_max = 25.0
 scale_curve = SubResource("CurveTexture_lq8bj")
 color = Color(0.948995, 0.148521, 0.337242, 1)
 color_ramp = SubResource("GradientTexture1D_rg8yo")
 alpha_curve = SubResource("CurveTexture_stln5")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8xg1o"]
-particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 0.01
-angular_velocity_min = -200.0
-angular_velocity_max = -200.0
-gravity = Vector3(0, 0, 0)
-scale_min = 70.0
-scale_max = 70.0
-
-[node name="Shooting star" type="Area2D"]
+[node name="Star Explosion" type="Area2D"]
 disable_mode = 1
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_yk322")
-starSign = ExtResource("2_ttvwn")
-starExplosion = ExtResource("3_pqbyh")
+script = ExtResource("1_a1dtd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("CircleShape2D_mkr22")
+shape = SubResource("RectangleShape2D_56c2k")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(9.53674e-07, 1)
@@ -89,13 +76,11 @@ scale = Vector2(4.775, 4.775)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 material = SubResource("ShaderMaterial_0dg0d")
+rotation = -6.28319
 scale = Vector2(1.5, 1.5)
-amount = 15
+emitting = false
+amount = 30
 process_material = SubResource("ParticleProcessMaterial_vr1o4")
+one_shot = true
+explosiveness = 1.0
 fixed_fps = 60
-
-[node name="Static star" type="GPUParticles2D" parent="GPUParticles2D"]
-material = SubResource("ShaderMaterial_0dg0d")
-amount = 1
-process_material = SubResource("ParticleProcessMaterial_8xg1o")
-lifetime = 20.0

@@ -25,6 +25,14 @@ func _instantiate() -> void:
 	else:
 		innerOuterString = "[color=red]Outer[/color]";
 	UpgradeDescription()
+	
+	# Load and apply the shader
+	var shader = load("res://vfxShaders/enemy_outline.gdshader")
+	var shader_material = ShaderMaterial.new()
+	shader_material.shader = shader
+	stickerSpriteInstance.material = shader_material
+	stickerSpriteInstance.material.set_shader_parameter("outline_color", Vector4(1, 1, 1, 1))
+	
 	pass # Replace with function body.
 
 func UpgradeDescription() -> void:

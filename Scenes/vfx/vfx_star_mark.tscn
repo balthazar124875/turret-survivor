@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://v6gg3rwunt4p"]
+
+[ext_resource type="Shader" uid="uid://cakp1cy7773l7" path="res://vfxShaders/shooting_star.tres" id="2_lrttt"]
+[ext_resource type="Texture2D" uid="uid://cnkc6t5yslb4d" path="res://Textures/star.png" id="3_c8ej5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mkr22"]
+radius = 25.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0dg0d"]
+resource_local_to_scene = true
+shader = ExtResource("2_lrttt")
+shader_parameter/SecondaaryColor = Color(0.471114, 0.464074, 0.117646, 1)
+shader_parameter/ColorIntensity = 2.406
+shader_parameter/AlphaClamping = 0.155
+shader_parameter/basic_texture = ExtResource("3_c8ej5")
+
+[sub_resource type="Curve" id="Curve_p7n5h"]
+_data = [Vector2(0, 0.296703), 0.0, 0.0, 0, 0, Vector2(0.0421941, 1), 0.0, 0.0, 0, 0, Vector2(0.578059, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_stln5"]
+curve = SubResource("Curve_p7n5h")
+
+[sub_resource type="Gradient" id="Gradient_q61e5"]
+offsets = PackedFloat32Array(0, 0.0590278)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rg8yo"]
+gradient = SubResource("Gradient_q61e5")
+
+[sub_resource type="Curve" id="Curve_k8k7h"]
+max_value = 2.0
+_data = [Vector2(0, 1.62343), 0.0, 0.0, 0, 0, Vector2(0.0776699, 1.01099), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ef62v"]
+curve = SubResource("Curve_k8k7h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vr1o4"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 0.01
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 0, 0)
+spread = 5.0
+angular_velocity_min = -200.0
+angular_velocity_max = -200.0
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+scale_min = 100.0
+scale_max = 100.0
+scale_curve = SubResource("CurveTexture_ef62v")
+color_ramp = SubResource("GradientTexture1D_rg8yo")
+alpha_curve = SubResource("CurveTexture_stln5")
+
+[node name="Star Mark" type="Area2D"]
+disable_mode = 1
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mkr22")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(9.53674e-07, 1)
+scale = Vector2(4.775, 4.775)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_0dg0d")
+scale = Vector2(1.5, 1.5)
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_vr1o4")
+lifetime = 20.0
+fixed_fps = 60
