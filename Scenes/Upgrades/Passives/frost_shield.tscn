@@ -7,7 +7,7 @@
 script = ExtResource("1_cpdfy")
 passiveType = 3
 upgradeName = "Frost shield"
-description = "10% to freeze enemies that hit the player"
+description = "Freezes enemies that hit the player"
 type = 1
 rarity = 1
 icon = ExtResource("2_edwxi")

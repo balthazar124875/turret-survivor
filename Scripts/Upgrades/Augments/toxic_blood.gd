@@ -1,7 +1,5 @@
 extends AugmentUpgrade
 
-@onready var player = get_node("/root/EmilScene/Player")
-
 @export var duration = 5
 
 func ApplyWhenHitEffect(player: Player, enemy : Enemy) -> void:
@@ -11,3 +9,6 @@ func ApplyWhenHitEffect(player: Player, enemy : Enemy) -> void:
 		poisonEffect.duration = duration
 		poisonEffect.magnitude = player.healthRegeneration / duration
 		enemy.apply_status_effect(poisonEffect)
+
+func get_description() -> String:
+	return "Taking damage poisons enemy dealing [color=green]" + str(player.healthRegeneration * duration / 2) + "[/color] over [color=yellow]" + str(duration) + "[/color] seconds"

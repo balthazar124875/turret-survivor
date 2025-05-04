@@ -24,6 +24,8 @@ func DisplayTooltip(tooltipText : String, button : Control) -> void:
 	var buttonSize = button.get_global_rect().size;
 	buttonSize.x *= 0.5; #Place it at centre on x-axis only
 	panelContainer.global_position = button.global_position + buttonSize;
+	if(button.global_position.x > 960):
+		panelContainer.global_position += Vector2(-250, 0) #fix this sometime
 	pass;
 	
 func HideTooltip() -> void:

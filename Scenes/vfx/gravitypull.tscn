@@ -9,6 +9,7 @@
 shader = ExtResource("1_ou1x5")
 shader_parameter/SecondaaryColor = Color(1, 0.28489, 0.654693, 1)
 shader_parameter/ColorIntensity = 2.823
+shader_parameter/AlphaClamping = null
 shader_parameter/basic_texture = ExtResource("2_wpyae")
 
 [sub_resource type="Curve" id="Curve_pw862"]

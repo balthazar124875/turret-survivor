@@ -57,3 +57,9 @@ func GetSpecialTooltipDescription() -> String:
 # speed: 3 -> 4 etc
 func GetTooltipStats() -> String:
 	return ""
+
+func get_tooltip() -> String:
+	return "[b]" + upgradeName + "[/b] \n" + get_description()
+
+func get_description() -> String:
+	return description

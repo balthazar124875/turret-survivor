@@ -1,7 +1,5 @@
 extends PassiveUpgrade
 
-@onready var player = get_node("/root/EmilScene/Player")
-
 @export var heal = false
 
 @export var max_health_gain = 1	
@@ -21,7 +19,13 @@ func apply_level_up():
 		return
 	
 	match upgradeAmount % 2:
+		0:
+			max_health_gain += 1
 		1:
 			procChance += 0.1
-		2:
-			max_health_gain += 1
+
+func get_description() -> String:
+	var text = "[color=red]" + str(100 * (procChance * (1 + (player.luck * luckScaling)))) + "%[/color] to gain [color=red]" + str(max_health_gain) + "[/color] maximum health when hit"
+	if(heal):
+		text += "\nLvl [color=yellow]10[/color]: Restores [color=red]" + str(max_health_gain * 2) + "[/color] health when this happens"
+	return text

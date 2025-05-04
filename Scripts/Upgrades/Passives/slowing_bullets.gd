@@ -9,19 +9,15 @@ extends PassiveUpgrade
 @export var color: Color
 @export var colorPriority = 0
 
-
 var active = false
 
 var coldDamage = false
-
-@onready var player
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 func applyUpgradeToPlayer(player: Player) -> void:
-	self.player = player
 	if(!active):
 		SignalBus.bullet_created.connect(_bullet_created)
 		active = true
@@ -52,8 +48,14 @@ func apply_level_up():
 	
 	match upgradeAmount % 3:
 		0:
-			slowAmount += 0.02
+			slowAmount += 0.1
 		1:
-			procChance += 0.05
+			procChance += 0.1
 		2:
 			duration += 0.25
+
+func get_description() -> String:
+	var text = "[color=red]" + str(100 * (procChance * (1 + (player.luck * luckScaling)))) + "%[/color] for bullets to slow by [color=cyan]" + str(100 * slowAmount) + "%[/color] for [color=cyan]" + str(duration) + "[/color] seconds"
+	if(coldDamage):
+		text += "\nLvl [color=yellow]10[/color]: Slowing bullets do [color=cyan]ice[/color] damage"
+	return text

@@ -11,3 +11,7 @@ func apply_level_up():
 		return
 	
 	heal_mult += 0.25
+
+func get_description() -> String:
+	var text = "When recieving income restore [color=red]" + str(heal_mult * player.gold_income) + "[/color] health"
+	return text

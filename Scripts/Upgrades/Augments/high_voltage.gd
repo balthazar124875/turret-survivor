@@ -1,7 +1,5 @@
 extends AugmentUpgrade
 
-@onready var player = get_node("/root/EmilScene/Player")
-
 @export var knockback_distance = 150
 @export var knockback_speed = 400
 
@@ -22,3 +20,6 @@ func knockback(enemy: Enemy, amount: float, damageType: GlobalEnums.DAMAGE_TYPES
 		var rndNumber = randf_range(0.0, 1.0);
 		if(rndNumber <= procChance * (1 + (player.luck * luckScaling))):
 			enemy.add_displacement(vector_dir, knockback_speed)
+
+func get_description() -> String:
+	return "Direct lightning damage has a [color=red]" + str(100 * (procChance * (1 + (player.luck * luckScaling)))) + "[/color]% to knockback enemies"

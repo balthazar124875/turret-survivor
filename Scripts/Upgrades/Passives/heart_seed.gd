@@ -2,8 +2,6 @@ extends PassiveUpgrade
 
 @export var health_regeneration = 1
 
-@onready var player = get_node("/root/EmilScene/Player")
-
 var timer: Timer
 
 var growthOnKill
@@ -32,7 +30,6 @@ func start_timer():
 	timer.connect("timeout", _on_timer_timeout)
 	
 func _on_timer_timeout() -> void:
-	print("incerasing regen by " + str(health_regeneration) + ", " + str(player.healthRegeneration) + ", took " + str(t) + " seconds")
 	t = 0
 	timer.stop()
 	timer.wait_time = timerBase
@@ -61,3 +58,10 @@ func apply_level_up():
 			
 	else:
 		health_regeneration += 0.5
+
+func get_description() -> String:
+	var text = "Increases health regen by [color=red]" + str(health_regeneration) + "[/color] every [color=yellow]" + str(timerBase) + "[/color] seconds"
+	if(growthOnKill):
+		text += "\nLvl [color=yellow]10[/color]: [color=red]" + str(100 * (procChance * (1 + (player.luck * luckScaling)))) + "%[/color] when killing an enemy to reduce this timer by [color=yellow]1[/color] second"
+	text += "\nTime left: [color=yellow]" + str(timer.time_left) + "[/color] seconds"
+	return text

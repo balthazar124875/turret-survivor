@@ -2,6 +2,8 @@ extends Upgrade
 
 class_name PassiveUpgrade
 
+@onready var player = get_node("/root/EmilScene/Player")
+
 @export var passiveType : PassiveUpgradeType;
 
 enum PassiveUpgradeType {
@@ -37,4 +39,3 @@ func ApplyWhenIncomeTickEffect(player: Player) -> void:
 	
 func apply_level_up():
 	pass
-	

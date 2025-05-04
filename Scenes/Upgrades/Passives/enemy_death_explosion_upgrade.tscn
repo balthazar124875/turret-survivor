@@ -8,6 +8,7 @@
 script = ExtResource("1_r1f4x")
 explosionVFX = ExtResource("2_rdsrc")
 upgradeName = "Explosive kill"
+description = "Enemies explode on death"
 type = 1
 rarity = 3
 icon = ExtResource("2_b05ff")

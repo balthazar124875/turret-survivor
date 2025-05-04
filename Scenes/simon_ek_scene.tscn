@@ -40,7 +40,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/upgrades_container.gd" id="40_5dn0k"]
 [ext_resource type="PackedScene" uid="uid://b28o0wogrqmsi" path="res://Scenes/UI/augment_handler.tscn" id="40_yymlw"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c7lcy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x1qtt"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -85,7 +85,7 @@ healthRegeneration = 0.0
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_c7lcy")
+enemy_outline_material = SubResource("ShaderMaterial_x1qtt")
 
 [node name="GameplayUi" type="Control" parent="."]
 layout_mode = 3
@@ -1064,6 +1064,8 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_v52ci")
 
 [node name="MarginContainer" type="MarginContainer" parent="Tooltip/PanelContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
@@ -1075,7 +1077,11 @@ layout_mode = 2
 bbcode_enabled = true
 text = "Hello"
 fit_content = true
-autowrap_mode = 0
 text_direction = 1
+
+[node name="TextureRect" type="TextureRect" parent="Tooltip"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="pressed" from="GameplayUi/LeftMenuColumn/RerollContainer/RerollButton" to="GameplayUi/LeftMenuColumn/ShopUpgrades" method="_on_reroll_button_pressed"]

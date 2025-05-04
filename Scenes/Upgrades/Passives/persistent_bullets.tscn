@@ -5,7 +5,8 @@
 
 [node name="PersistentBullets" type="Node2D"]
 script = ExtResource("1_mg871")
-upgradeName = "Slowing bullets"
+upgradeName = "Undying bullets"
 description = "Bullets gain lifetime upon hitting enemies"
+type = 1
 rarity = 2
 icon = ExtResource("2_q5kap")

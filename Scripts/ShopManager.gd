@@ -191,7 +191,7 @@ func _on_shop_upgrade_button_pressed(index: int) -> void:
 	#Player upgrader
 	shopUpgradeButtons[index].upgradeNode.applyPlayerUpgrade(player)
 	if shopUpgradeButtons[index].upgradeNode.upgradeAmount == 1:
-		player.playerUpgrades.push_back(new_upgrade);
+		player.playerUpgrades.push_back(shopUpgradeButtons[index].upgradeNode);
 
 	var x = shopUpgradeButtons[index]
 	if rightclick == false:

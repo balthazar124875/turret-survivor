@@ -1,6 +1,8 @@
 extends PassiveUpgrade
 
 @export var explosionVFX: PackedScene
+@export var hp_scaling: float = 0.1
+
 var initPercentage = 0.03 #10%
 # Called when the node enters the scene tree for the first time.
 func _init():
@@ -22,3 +24,8 @@ func ApplyEnemyOnKillPassive(enemy : Enemy) ->void:
 
 func apply_level_up():
 	initPercentage += 0.03
+
+func get_description() -> String:
+	var text = "[color=red]" + str(100 * initPercentage) + "%[/color] for enemeis to explode for [color=yellow]" + str(100 * hp_scaling) + "%[/color] of their health as fire damage to nearby enemies"
+
+	return text

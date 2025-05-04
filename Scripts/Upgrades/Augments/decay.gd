@@ -4,8 +4,6 @@ var enemy_parent: Node = null
 var spreadRange: float = 400
 var poison_duration: float = 5
 
-@onready var player: Player = get_node("/root/EmilScene/Player")
-
 @export var spreadVfx : PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,3 +33,6 @@ func ApplyEnemyOnKillPassive(killedEnemy : Enemy) ->void:
 			newLine.add_point(closest_enemy.global_position - player.global_position)
 			newLine.add_point(killedEnemy.global_position - player.global_position)
 			player.add_child(newLine)
+			
+func get_description() -> String:
+	return "Enemies who die while poisoned transfer remaining poison to nearby ally within [color=yellow]" + str(spreadRange * player.rangeMultiplier) + "[/color] range"

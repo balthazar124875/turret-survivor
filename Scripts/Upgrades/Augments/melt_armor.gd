@@ -1,7 +1,5 @@
 extends AugmentUpgrade
 
-@onready var player = get_node("/root/EmilScene/Player")
-
 @export var armor_reduction = 1
 
 func _ready() -> void:

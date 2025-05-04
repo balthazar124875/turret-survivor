@@ -27,7 +27,13 @@ func apply_level_up():
 			return
 	
 	match upgradeAmount % 2:
+		0:
+			duration += 0.1
 		1:
 			procChance += 0.05
-		2:
-			duration += 0.1
+
+func get_description() -> String:
+	var text = "[color=red]" + str(100 * (procChance * (1 + (player.luck * luckScaling)))) + "%[/color] to freeze enemeis that hit the player for [color=yellow]" + str(duration) + "[/color] seconds"
+	if(coc):
+		text += "\nLvl [color=yellow]10[/color]: Launches a freezing gust in a cone when hit [color=red](Not implemented)"
+	return text
