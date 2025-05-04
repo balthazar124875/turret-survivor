@@ -46,7 +46,7 @@ func take_damage(damage : int, enemy : Enemy):
 	damage_flash = true
 	damage_flash_timer.start(0.1)
 	if spikedVine:
-		enemy.take_damage(attackPower * player.damageMultiplier);
+		enemy.take_damage(attackPower);
 
 func HitEnemy(body, delta) -> void:
 	if body.GetObjectObstructingEnemy() == null:

@@ -175,8 +175,8 @@ func modify_stat(stat: GlobalEnums.PLAYER_STATS, amount: float, source: String =
 			self.extraBounce += amount
 			SignalBus.stat_updated.emit(stat, self.extraBounce + 1, amount)
 
-func GetDamageMultiplier(damage_type : GlobalEnums.DAMAGE_TYPES, enemyPos : Vector2) -> float:
-	var damage_multiplier = damage_type_multipliers[damage_type]
+func get_damage_multiplier(damage_type : GlobalEnums.DAMAGE_TYPES, enemyPos : Vector2) -> float:
+	var damage_multiplier = damageMultiplier * damage_type_multipliers[damage_type]
 	#Check circle buffs
 	var IsWithinInnerOrOuterCircle : Circle.CircleType = Circle.IsPositionWithinInnerCircle(enemyPos);
 	damage_multiplier *= circle.damage_type_multipliers[IsWithinInnerOrOuterCircle][damage_type];

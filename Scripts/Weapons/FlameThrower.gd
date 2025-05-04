@@ -57,7 +57,7 @@ func CreateFlameColliderInstance(enemyHash : Enemy, directionAngle : float) -> v
 	var flameColliderInst = flameCollider.instantiate();
 	flame_thrower_instance.add_child(flameColliderInst);
 	flameColliderInst.rotation = directionAngle;
-	flameColliderInst.init(flameColRange, spread_angle, damage * player.damageMultiplier, flameRange / ogFlameRange);
+	flameColliderInst.init(flameColRange, spread_angle, damage, flameRange / ogFlameRange);
 	enemy_to_flameColliders_hashMap[enemyHash] = flameColliderInst;
 
 func DestroyFlameColliderInstance(enemyHash: Enemy) -> void:
@@ -82,7 +82,7 @@ func UpdateFlameAreaSize() -> void:
 func UpdateCollidersData() -> void:
 	for enemyHash in enemy_to_flameColliders_hashMap:
 		var flameCollider = enemy_to_flameColliders_hashMap[enemyHash];
-		flameCollider.UpdateData(flameColRange, spread_angle, damage * player.damageMultiplier, flameRange / ogFlameRange);
+		flameCollider.UpdateData(flameColRange, spread_angle, damage, flameRange / ogFlameRange);
 	pass
 	
 #adjust the flamethrower vfx visuals based on range

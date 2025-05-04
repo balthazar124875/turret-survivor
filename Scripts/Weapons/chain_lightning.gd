@@ -78,7 +78,7 @@ func shoot(target_enemy: Node) -> void:
 		add_child(bullet)
 		bullet.set_targets(i)
 		for enemy in i:
-			enemy.take_damage(damage * player.damageMultiplier * gun_damage_multiplier, "Chain Lightning", GlobalEnums.DAMAGE_TYPES.LIGHTNING)
+			enemy.take_damage(damage * gun_damage_multiplier, "Chain Lightning", GlobalEnums.DAMAGE_TYPES.LIGHTNING)
 			if(discharge):
 				#do knockback on enemy
 				pass

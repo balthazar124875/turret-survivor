@@ -103,6 +103,3 @@ func level_up():
 	
 func apply_level_up():
 	pass
-
-func get_modified_damage():
-	return damage * player.damageMultiplier * gun_damage_multiplier * player.damage_type_multipliers[damage_type]

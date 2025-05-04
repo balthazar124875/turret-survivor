@@ -10,7 +10,7 @@ func shoot_area(position: Vector2) -> void:
 	var obj = bullet.instantiate()
 	add_child(obj)
 	obj.create_trap(Vector2(0, 0), position - global_position, base_projectile_speed * player.projectileSpeedMultipler,
-	 damage * player.damageMultiplier * gun_damage_multiplier, base_area * player.areaSizeMultiplier)
+	 damage * gun_damage_multiplier, base_area * player.areaSizeMultiplier)
 	obj.pull_radius = base_pull_distance
 	
 func apply_level_up():

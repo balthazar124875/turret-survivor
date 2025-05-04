@@ -211,10 +211,11 @@ func take_damage(
 	source: String = '',
 	damage_type: GlobalEnums.DAMAGE_TYPES = GlobalEnums.DAMAGE_TYPES.PHYSICAL,
 	ignore_armor: bool = false,
-	direct: bool = true
+	direct: bool = true,
+	ignore_multipliers: bool = false,
 	) -> void:
 	# Take minimum 1 damage
-	var damage_after_type_multipler = amount * player.GetDamageMultiplier(damage_type, global_position);
+	var damage_after_type_multipler = amount if ignore_multipliers else amount * player.get_damage_multiplier(damage_type, global_position)
 	var damage_after_armor = max(1, damage_after_type_multipler) if ignore_armor else max(1, damage_after_type_multipler - armor)
 	var health_before = health
 	health -= damage_after_armor
