@@ -4,7 +4,7 @@ extends AugmentUpgrade
 @export var knockback_speed = 400
 
 @export var procChance = 0.2
-@export var luckScaling = 0.02
+@export var luckScaling = 0.05
 
 func _ready() -> void:
 	SignalBus.damage_done.connect(knockback)
@@ -22,4 +22,4 @@ func knockback(enemy: Enemy, amount: float, damageType: GlobalEnums.DAMAGE_TYPES
 			enemy.add_displacement(vector_dir, knockback_speed)
 
 func get_description() -> String:
-	return "Direct lightning damage has a [color=red]" + str(100 * (procChance * (1 + (player.luck * luckScaling)))) + "[/color]% to knockback enemies"
+	return "Direct lightning damage has a [color=red]" + str(100 * (procChance * (1 + (player.luck * luckScaling)))) + "%[/color](" + str(procChance * 100) + "+" + str(procChance * luckScaling * 100) + "*" + IconHandler.get_icon_path("luck") + ") to knockback enemies"

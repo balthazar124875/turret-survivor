@@ -4,7 +4,7 @@ extends PassiveUpgrade
 @export var duration = 2 #10%
 
 @export var procChance = 0.1
-@export var luckScaling = 0.02
+@export var luckScaling = 0.05
 
 @export var color: Color
 @export var colorPriority = 0
@@ -57,7 +57,7 @@ func apply_level_up():
 			duration += 0.25
 
 func get_description() -> String:
-	var text = "[color=red]" + str(100 * (procChance * (1 + (player.luck * luckScaling)))) + "%[/color] for bullets to slow by [color=cyan]" + str(100 * slowAmount) + "%[/color] for [color=cyan]" + str(duration) + "[/color] seconds"
+	var text = TooltipHelper.get_luck_scaling_format(procChance, luckScaling, player.luck) + " for bullets to slow by [color=cyan]" + str(100 * slowAmount) + "%[/color] for [color=cyan]" + str(duration) + "[/color] seconds"
 	if(coldDamage):
 		text += "\nLvl [color=yellow]10[/color]: Slowing bullets do [color=cyan]ice[/color] damage"
 	return text
