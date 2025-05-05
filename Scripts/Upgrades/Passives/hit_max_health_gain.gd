@@ -25,7 +25,7 @@ func apply_level_up():
 			procChance += 0.1
 
 func get_description() -> String:
-	var text = "[color=red]" + str(100 * (procChance * (1 + (player.luck * luckScaling)))) + "%[/color] to gain [color=red]" + str(max_health_gain) + "[/color] maximum health when hit"
+	var text = TooltipHelper.get_luck_scaling_format(procChance, luckScaling, player.luck) + " to gain [color=red]" + str(max_health_gain) + "[/color] maximum " + IconHandler.get_icon_path("health") + " when hit"
 	if(heal):
-		text += "\nLvl [color=yellow]10[/color]: Restores [color=red]" + str(max_health_gain * 2) + "[/color] health when this happens"
+		text += "\nLvl [color=yellow]10[/color]: Restores [color=red]" + str(max_health_gain * 2) + IconHandler.get_icon_path("health") + "[/color] when this happens"
 	return text

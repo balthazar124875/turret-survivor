@@ -3,7 +3,7 @@ extends PassiveUpgrade
 @export var extraDuration = 0.5
 
 @export var procChance = 0.15
-@export var luckScaling = 0.02
+@export var luckScaling = 0.05
 
 @export var damageBonus = 1.05
 
@@ -48,7 +48,7 @@ func apply_level_up():
 			procChance += 0.05
 
 func get_description() -> String:
-	var text = "[color=red]" + str(100 * (procChance * (1 + (player.luck * luckScaling)))) + "%[/color] to increase bullet lifetime by [color=yellow]" + str(extraDuration) + "[/color] seconds when they hit enemies"
+	var text = TooltipHelper.get_luck_scaling_format(procChance, luckScaling, player.luck) + " to increase bullet lifetime by [color=yellow]" + str(extraDuration) + "[/color] seconds when they hit enemies"
 	if(magicDamage):
 		text += "\nLvl [color=yellow]10[/color]: Also increases the bullets damage and size by [color=red]" + str((damageBonus - 1) * 100) + "[/color]%"
 	return text

@@ -65,7 +65,7 @@ func get_current_bonus() -> String:
 		GlobalEnums.PLAYER_STATS.BONUS_BOUNCE:
 			text = "% bonus bounce chance"
 			percentage = true
-	return "[color=yellow]" + str(stats_buffs[current_buff] * (100 if percentage else 1)) + "[/color]" + text
+	return "[color=yellow]+" + str(stats_buffs[current_buff] * (100 if percentage else 1)) + "[/color]" + text
 
 func get_description() -> String:
-	return "Recieve a new buff each round. \nCurrent buff: +" + get_current_bonus()
+	return "Recieve a new buff each round. \nCurrent buff: " + get_current_bonus()

@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 SignalBus="*res://SignalBus.gd"
 GlobalEnums="*res://Scripts/GlobalEnums.gd"
+IconHandler="*res://Scripts/icon_handler.gd"
+TooltipHelper="*res://Scripts/tooltip_helper.gd"
 
 [display]
 

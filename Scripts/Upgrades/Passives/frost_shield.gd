@@ -3,7 +3,7 @@ extends PassiveUpgrade
 @export var procChance = 0.1 #10%
 @export var duration = 1.0 #10%
 
-@export var luckScaling = 0.02
+@export var luckScaling = 0.05
 
 var coc
 
@@ -33,7 +33,7 @@ func apply_level_up():
 			procChance += 0.05
 
 func get_description() -> String:
-	var text = "[color=red]" + str(100 * (procChance * (1 + (player.luck * luckScaling)))) + "%[/color] to freeze enemeis that hit the player for [color=yellow]" + str(duration) + "[/color] seconds"
+	var text = TooltipHelper.get_luck_scaling_format(procChance, luckScaling, player.luck) + " to freeze enemeis that hit the player for [color=yellow]" + str(duration) + "[/color] seconds"
 	if(coc):
 		text += "\nLvl [color=yellow]10[/color]: Launches a freezing gust in a cone when hit [color=red](Not implemented)"
 	return text

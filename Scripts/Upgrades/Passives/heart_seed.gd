@@ -62,6 +62,6 @@ func apply_level_up():
 func get_description() -> String:
 	var text = "Increases health regen by [color=red]" + str(health_regeneration) + "[/color] every [color=yellow]" + str(timerBase) + "[/color] seconds"
 	if(growthOnKill):
-		text += "\nLvl [color=yellow]10[/color]: [color=red]" + str(100 * (procChance * (1 + (player.luck * luckScaling)))) + "%[/color] when killing an enemy to reduce this timer by [color=yellow]1[/color] second"
+		text += "\nLvl [color=yellow]10[/color]: " + TooltipHelper.get_luck_scaling_format(procChance, luckScaling, player.luck) + " when killing an enemy to reduce this timer by [color=yellow]1[/color] second"
 	text += "\nTime left: [color=yellow]" + str(timer.time_left) + "[/color] seconds"
 	return text
