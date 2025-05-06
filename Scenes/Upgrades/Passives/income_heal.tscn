@@ -5,6 +5,7 @@
 
 [node name="IncomeHeal" type="Node2D"]
 script = ExtResource("1_66mx0")
+heal_mult = 1.0
 passiveType = 5
 upgradeName = "Income heal"
 description = "Heals player for income gold"

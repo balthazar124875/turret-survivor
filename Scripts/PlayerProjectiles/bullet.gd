@@ -71,5 +71,11 @@ func _on_body_entered(body):
 			queue_free()
 		
 func _delete_after_time(timeout):
+	life_time -= timeout
 	await get_tree().create_timer(timeout).timeout
-	queue_free()
+	
+	if(life_time > 0):
+		print(life_time)
+		call_deferred("_delete_after_time", life_time)
+	else:
+		queue_free()

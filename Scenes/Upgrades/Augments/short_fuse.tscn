@@ -6,7 +6,7 @@
 [node name="ShortFuse" type="Node2D"]
 script = ExtResource("1_y25wx")
 upgradeName = "Short fuse"
-description = "Traps detonate instantly upon ladning"
+description = "Traps detonate instantly upon landing. Increases trap damage by 20%."
 type = 1
 rarity = 3
 icon = ExtResource("2_x2ke6")

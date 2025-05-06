@@ -129,7 +129,9 @@ func fillShopUpgradeButtons(current_wave: int = 0) -> void:
 
 func GenerateButtonTooltip(shopUpgradeButtons : ShopUpgradeButton) -> void:
 	shopUpgradeButtons.tooltip = str(
+			"[b]",
 			shopUpgradeButtons.upgradeNode.upgradeName,
+			"[/b]",
 			"\n", 
 			shopUpgradeButtons.upgradeNode.description,
 			"\n"
@@ -137,7 +139,7 @@ func GenerateButtonTooltip(shopUpgradeButtons : ShopUpgradeButton) -> void:
 		
 	shopUpgradeButtons.tooltip += shopUpgradeButtons.upgradeNode.GetSpecialTooltipDescription(); #TODO: Implement
 	shopUpgradeButtons.tooltip += shopUpgradeButtons.upgradeNode.GetTooltipStats();
-	shopUpgradeButtons.tooltip += str(shopUpgradeButtons.upgradeNode.gold_cost, " gold")
+	shopUpgradeButtons.tooltip += str(shopUpgradeButtons.upgradeNode.gold_cost, IconHandler.get_icon_path("coin"))
 
 func renderShopUpgradeButtonsText() -> void:
 	#TODO: Can't assign text to TextureButton like this.
@@ -270,7 +272,7 @@ func UpdateUpgradeTooltip(index: int):
 	var highlightedButton = shopUpgradeButtons[index].button;
 	
 	if(index in locked_buyable):
-		tooltipMgr.DisplayTooltip("Locked! Unlock for " + ("100" if locked_buyable.size() == 2 else "300") + "g?", highlightedButton);
+		tooltipMgr.DisplayTooltip("Locked! Unlock for " + ("100" if locked_buyable.size() == 2 else "300") + IconHandler.get_icon_path("coin") + "?", highlightedButton);
 		return
 	if(index in locked ):
 		tooltipMgr.DisplayTooltip("Locked! Find an augment to unlock these", highlightedButton);

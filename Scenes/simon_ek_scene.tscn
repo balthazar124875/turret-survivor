@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=47 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -40,7 +40,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/upgrades_container.gd" id="40_5dn0k"]
 [ext_resource type="PackedScene" uid="uid://b28o0wogrqmsi" path="res://Scenes/UI/augment_handler.tscn" id="40_yymlw"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_86vhh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iyt08"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -48,6 +48,14 @@ shader_parameter/inner_color = Vector4(1, 1, 1, 1)
 shader_parameter/outline_size = 1.0
 
 [sub_resource type="Theme" id="Theme_t5p71"]
+
+[sub_resource type="Gradient" id="Gradient_e11lr"]
+colors = PackedColorArray(0.929412, 0.717647, 0.227451, 1, 0.972549, 0.901961, 0.541176, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hdy6k"]
+gradient = SubResource("Gradient_e11lr")
+width = 310
+height = 80
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3e480"]
 bg_color = Color(0, 0, 0, 0)
@@ -85,7 +93,7 @@ healthRegeneration = 0.0
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_86vhh")
+enemy_outline_material = SubResource("ShaderMaterial_iyt08")
 
 [node name="GameplayUi" type="Control" parent="."]
 layout_mode = 3
@@ -412,38 +420,65 @@ offset_bottom = 32.5
 tooltip_text = "Locked!"
 texture_normal = ExtResource("12_msjj3")
 
-[node name="GoldLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn"]
+[node name="RerollContainer" type="Control" parent="GameplayUi/LeftMenuColumn"]
+layout_direction = 2
+anchors_preset = 0
+offset_left = 14.0
+offset_top = 395.0
+offset_right = 410.0
+offset_bottom = 482.0
+scale = Vector2(0.974, 1)
+
+[node name="Gold" type="Panel" parent="GameplayUi/LeftMenuColumn/RerollContainer"]
+layout_mode = 2
+offset_right = 310.0
+offset_bottom = 80.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="GameplayUi/LeftMenuColumn/RerollContainer/Gold"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 310.0
+offset_bottom = 81.0
+step = 0.01
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_hdy6k")
+tint_under = Color(0.980392, 0.498039, 0, 0)
+tint_over = Color(0.603922, 0, 0.298039, 0)
+tint_progress = Color(0.94902, 1, 0.678431, 0.878431)
+
+[node name="Amount" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/RerollContainer/Gold"]
+layout_direction = 2
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -415.0
-offset_top = -41.0
-offset_right = -286.0
-offset_bottom = -7.0
-grow_horizontal = 0
+offset_left = 7.0
+offset_top = -32.0
+offset_right = 106.0
+offset_bottom = -9.0
 grow_vertical = 2
 scale = Vector2(3, 3)
-text = "Gold: $0"
-
-[node name="RerollContainer" type="HBoxContainer" parent="GameplayUi/LeftMenuColumn"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 395.0
-offset_right = 138.0
-offset_bottom = 427.0
-scale = Vector2(3, 3.079)
+bbcode_enabled = true
+text = "[img width=16 height=16]res://Assets/icons/coin.png[/img][color=black]hehej[/color]
+"
 
 [node name="BuyButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/RerollContainer"]
+visible = false
 layout_mode = 2
+offset_left = 4.0
+offset_right = 104.0
+offset_bottom = 32.0
 theme = ExtResource("8_4ctao")
 texture_normal = ExtResource("9_yckrj")
 
 [node name="RerollButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/RerollContainer"]
 layout_mode = 2
+offset_left = 321.355
+offset_right = 353.355
+offset_bottom = 32.0
+scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("10_btva0")
+stretch_mode = 0
 
 [node name="WaveLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn"]
 layout_mode = 1
