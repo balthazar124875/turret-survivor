@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5w6vbul2jww4"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/basic_sword.gd" id="1_0acrg"]
+[ext_resource type="PackedScene" uid="uid://ckjytsgcfxb7" path="res://Scenes/Projectiles/basic_sword_projectile.tscn" id="2_vwwsp"]
+
+[node name="BasicSword" type="Node2D"]
+script = ExtResource("1_0acrg")
+base_swing_degrees = 75.0
+bullet = ExtResource("2_vwwsp")
+cooldown = 3.0
+damage = 2.0
+base_projectile_speed = 0.0
+range = 300.0
+source = "Sword"
