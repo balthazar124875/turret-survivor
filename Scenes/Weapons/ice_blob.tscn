@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcfyfx8iv801t"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/ice_blob_weapon.gd" id="1_tvkrc"]
+[ext_resource type="PackedScene" uid="uid://v4s0y3icum8n" path="res://Scenes/vfx/vfx_ice_blob.tscn" id="2_ijxak"]
+
+[node name="IceBlob" type="Node2D"]
+script = ExtResource("1_tvkrc")
+bullet = ExtResource("2_ijxak")
+cooldown = 3.0
+damage = 3.0
+base_projectile_speed = 125.0
+bullet_life_time = 10.0
+pierce = 10000
+source = "Ice Blob"
+damage_type = 2

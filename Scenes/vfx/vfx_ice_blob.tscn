@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://v4s0y3icum8n"]
+
+[ext_resource type="Script" path="res://Scripts/vfx/vfx_ice_blob.gd" id="1_a7jbo"]
+[ext_resource type="Shader" path="res://vfxShaders/vfx_blob.gdshader" id="2_jjlsl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eijkf"]
+shader = ExtResource("2_jjlsl")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jopvs"]
+radius = 39.0
+
+[node name="VfxBlob" type="Area2D"]
+scale = Vector2(0.3, 0.3)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_a7jbo")
+damage_type = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_eijkf")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jopvs")

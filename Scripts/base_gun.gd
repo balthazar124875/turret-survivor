@@ -89,6 +89,7 @@ func get_target_area() -> Vector2: #defaults to getting closest
 	position += player.global_position
 	return position
 
+#TODO: Set default behaviour to bullet travel forward
 func shoot(enemy: Node) -> void:
 	enemy.take_damage(damage)
 	
