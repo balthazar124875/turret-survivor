@@ -5,7 +5,6 @@ extends SimpleGun
 
 func shoot(enemy: Node) -> void:
 	var bulletAmount: int = base_projectile_amount + player.extraProjectiles
-	
 	var current_position = global_position
 	var direction = (enemy.position - current_position).normalized()
 	direction = direction.rotated(deg_to_rad(bullet_spread * (bulletAmount / 2)))

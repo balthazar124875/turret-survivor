@@ -187,3 +187,15 @@ func get_passive_upgrades_of_type(upgrade_type: PassiveUpgrade.PassiveUpgradeTyp
 
 func _on_damage_flash_timer_timeout() -> void:
 	$AnimatedSprite2D.modulate = Color(1, 1, 1)
+	
+func get_random_weapon(tag: String = "") -> WeaponUpgrade:
+	var matching_children := []
+	var weapons = playerUpgrades.filter(func(e: Upgrade): return e.type == Upgrade.UpgradeType.WEAPON)
+	for child in weapons:
+		if tag.to_lower() in child.name.to_lower():
+			matching_children.append(child)
+
+	if matching_children.size() > 0:
+		return matching_children[randi() % matching_children.size()]
+	else:
+		return null

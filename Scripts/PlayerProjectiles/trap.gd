@@ -12,6 +12,7 @@ func _on_body_entered(body):
 
 func start_expiration():
 	await get_tree().create_timer(lifetime).timeout
+	SignalBus.trap_expired.emit(self)
 	queue_free()
 
 func trigger_trap():
