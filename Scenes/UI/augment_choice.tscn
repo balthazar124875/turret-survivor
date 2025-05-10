@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bblakrwwg08ml"]
 
 [ext_resource type="Script" path="res://Scripts/UI/augment_choice.gd" id="1_7to26"]
-[ext_resource type="Texture2D" uid="uid://dpq4wkue5l7gy" path="res://Assets/Sprites/upgrades/decay.png" id="1_vrmvc"]
+[ext_resource type="Texture2D" uid="uid://dpq4wkue5l7gy" path="res://Assets/Sprites/upgrades/augments/decay.png" id="1_vrmvc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55glw"]
 bg_color = Color(0.774633, 0.527617, 0.493483, 1)

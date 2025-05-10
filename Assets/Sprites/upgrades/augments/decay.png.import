@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5fbp3jpigben"
-path="res://.godot/imported/extra_deals.png-aaf8bdfd4c05692a9eab6885bbb0b826.ctex"
+uid="uid://dpq4wkue5l7gy"
+path="res://.godot/imported/decay.png-9bff5467724d319d334763b8f4540f6a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/upgrades/extra_deals.png"
-dest_files=["res://.godot/imported/extra_deals.png-aaf8bdfd4c05692a9eab6885bbb0b826.ctex"]
+source_file="res://Assets/Sprites/upgrades/augments/decay.png"
+dest_files=["res://.godot/imported/decay.png-9bff5467724d319d334763b8f4540f6a.ctex"]
 
 [params]
 

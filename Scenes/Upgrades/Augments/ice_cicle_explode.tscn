@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc6leopvof3k5"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Augments/ice_shards.gd" id="1_0rswv"]
+
+[node name="IceCicleAugment" type="Node2D"]
+script = ExtResource("1_0rswv")
+passiveType = 1
+upgradeName = "Ice shards"
+description = "Frozen enemies shoot out ice shards in all directions when killed"
+type = 1

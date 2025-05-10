@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://x5ikinlyf0yg"]
 
 [ext_resource type="Script" path="res://Scripts/Upgrades/Augments/high_voltage.gd" id="1_kdc4p"]
-[ext_resource type="Texture2D" uid="uid://dvcnbcu7jjyb" path="res://Assets/Sprites/upgrades/high_voltage.png" id="2_6wnin"]
+[ext_resource type="Texture2D" uid="uid://dvcnbcu7jjyb" path="res://Assets/Sprites/upgrades/augments/high_voltage.png" id="2_6wnin"]
 
 [node name="High Voltage" type="Node2D"]
 script = ExtResource("1_kdc4p")
