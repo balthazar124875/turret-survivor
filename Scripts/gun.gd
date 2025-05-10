@@ -46,6 +46,7 @@ func apply_level_up():
 		local_projectile_speed_multiplier *= 0.75
 		bullet_life_time *= 1.33
 		wrapAround = true
+		damage_type = GlobalEnums.DAMAGE_TYPES.MAGIC
 		return
 	
 	match level % 5:
@@ -57,3 +58,6 @@ func apply_level_up():
 			range += 25
 		4:
 			damage += 1
+
+func get_lvl10_bonus_description() -> String:
+	return "\nLvl [color=yellow]10[/color]: Magic bullets cross the borders of the screen"

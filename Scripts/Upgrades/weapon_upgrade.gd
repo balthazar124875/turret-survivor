@@ -16,8 +16,6 @@ func applyUpgradeToPlayer(player: Player) -> void:
 		weapon = new_weapon
 	else:
 		weapon.level_up()
-	
-	#level up gun
 
 func reparentToPlayer(player: Player) -> void:
 	player.get_node("Upgrades/Weapons").add_child(self)
