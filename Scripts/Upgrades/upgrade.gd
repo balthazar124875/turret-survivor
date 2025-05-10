@@ -8,6 +8,7 @@ enum UpgradeType {
 	PLAYER_STAT_UP,
 	GAME_STAT_UP,
 	CIRCLE,
+	OTHER
 }
 
 enum UpgradeRarity {

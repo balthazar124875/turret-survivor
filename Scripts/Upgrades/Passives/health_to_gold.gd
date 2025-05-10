@@ -8,8 +8,8 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func offerHealth() -> void:
-	player.modify_income(income_gold_gain)
-	player.modify_max_health(-500)
+	player.modify_stat(GlobalEnums.PLAYER_STATS.ADD_BASE_INCOME, income_gold_gain)
+	player.modify_stat(GlobalEnums.PLAYER_STATS.ADD_MAX_HEALTH, -500)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

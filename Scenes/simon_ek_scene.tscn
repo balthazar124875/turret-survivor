@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=50 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
 [ext_resource type="Script" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
 [ext_resource type="Script" path="res://Scripts/UI/orb_stats.gd" id="11_v6kre"]
+[ext_resource type="Script" path="res://Scripts/UI/TextEffects/jumping_text.gd" id="12_fie7l"]
 [ext_resource type="Texture2D" uid="uid://bphat1e3xk2ax" path="res://Assets/Sprites/UI/locked_slot.png" id="12_msjj3"]
 [ext_resource type="PackedScene" uid="uid://bampk2ki2ygjd" path="res://Scenes/UI/damage_dictionary.tscn" id="18_dwmxg"]
 [ext_resource type="Theme" uid="uid://7qh40l0am5og" path="res://Themes/new_test.tres" id="21_uq2lv"]
@@ -40,7 +41,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/upgrades_container.gd" id="40_5dn0k"]
 [ext_resource type="PackedScene" uid="uid://b28o0wogrqmsi" path="res://Scenes/UI/augment_handler.tscn" id="40_yymlw"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_duncf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_veic8"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -48,6 +49,11 @@ shader_parameter/inner_color = Vector4(1, 1, 1, 1)
 shader_parameter/outline_size = 1.0
 
 [sub_resource type="Theme" id="Theme_t5p71"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pycml"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_jhrc1"]
+script = ExtResource("12_fie7l")
 
 [sub_resource type="Gradient" id="Gradient_e11lr"]
 colors = PackedColorArray(0.929412, 0.717647, 0.227451, 1, 0.972549, 0.901961, 0.541176, 1)
@@ -84,7 +90,7 @@ script = ExtResource("1_itpwq")
 
 [node name="Player" parent="." instance=ExtResource("2_n3kdf")]
 position = Vector2(960, 540)
-healthRegeneration = 0.0
+healthRegeneration = 3.0
 
 [node name="Marker2D" type="Marker2D" parent="Player"]
 
@@ -93,7 +99,7 @@ healthRegeneration = 0.0
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_duncf")
+enemy_outline_material = SubResource("ShaderMaterial_veic8")
 
 [node name="GameplayUi" type="Control" parent="."]
 layout_mode = 3
@@ -200,6 +206,7 @@ deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
 [node name="Rarity-Outline" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton1"]
+material = SubResource("ShaderMaterial_pycml")
 layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
@@ -414,11 +421,24 @@ texture_normal = ExtResource("8_3c8yg")
 [node name="LockButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton8"]
 layout_mode = 0
 offset_left = -0.5
-offset_top = -0.5
+offset_top = -0.166672
 offset_right = 32.5
-offset_bottom = 32.5
+offset_bottom = 32.8333
 tooltip_text = "Locked!"
 texture_normal = ExtResource("12_msjj3")
+
+[node name="DoubleBuyLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn"]
+visible = false
+layout_mode = 2
+offset_left = 186.0
+offset_top = 257.0
+offset_right = 208.0
+offset_bottom = 281.0
+scale = Vector2(2, 2)
+bbcode_enabled = true
+text = "[jump]x2[/jump]
+"
+custom_effects = [SubResource("RichTextEffect_jhrc1")]
 
 [node name="RerollContainer" type="Control" parent="GameplayUi/LeftMenuColumn"]
 layout_direction = 2

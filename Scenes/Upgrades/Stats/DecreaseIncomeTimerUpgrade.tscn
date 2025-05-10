@@ -6,9 +6,9 @@
 [node name="DecreaseIncomeTimerUpgrade" type="Node2D"]
 script = ExtResource("1_483sg")
 stat_type = 9
-amount = 0.97
+amount = 0.9
 upgradeName = "Income Speed"
-description = "Decrease income timer by 5%"
+description = "Decrease income timer by 10%"
 type = 2
 rarity = 1
 icon = ExtResource("2_ol3e0")

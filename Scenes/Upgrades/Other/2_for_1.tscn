@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://qphklf0lamm1"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Other/2_for_1.gd" id="1_ikork"]
+[ext_resource type="Texture2D" uid="uid://bowl45b3vomst" path="res://Assets/Sprites/upgrades/2_for_1.png" id="2_lw7s0"]
+
+[node name="2_for_1" type="Node2D"]
+script = ExtResource("1_ikork")
+upgradeName = "2 For 1!"
+description = "Gives you two of your next purchase"
+type = 5
+icon = ExtResource("2_lw7s0")
