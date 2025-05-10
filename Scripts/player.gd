@@ -4,7 +4,7 @@ class_name Player
 
 @export var maxHealth = 100.0;
 @export var health = 100.0;
-@export var healthRegeneration: float = 0.0;
+@export var healthRegeneration: float = 3;
 var playerUpgrades: Array = [];
 @export var extraProjectiles = 0;
 @export var extraChains = 0;

@@ -32,11 +32,15 @@ var buttons: Array[Node]
 var locked_buyable = [2, 6]
 var locked = [3, 7]
 
+var doubles: float = 0
+
 var player: Player
 var circle: Circle
 
 @onready var tooltipMgr : TooltipManager = $"../../../Tooltip";
 var currTooltipShotButtonIdx;
+
+@onready var doubleBuyLabel : RichTextLabel = $"../DoubleBuyLabel";
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -63,7 +67,7 @@ func _input(event):
 			
 func load_upgrades() -> void:
 			#Iterate all Upgrade scripts and put them in the global array
-	var folders = ["Circle", "Stats", "Weapons", "Passives"]
+	var folders = ["Circle", "Stats", "Weapons", "Passives", "Other"]
 	for f in folders:
 		var dir = DirAccess.open("res://Scenes/Upgrades/" + f);
 		if dir:
@@ -141,6 +145,20 @@ func GenerateButtonTooltip(shopUpgradeButtons : ShopUpgradeButton) -> void:
 	shopUpgradeButtons.tooltip += shopUpgradeButtons.upgradeNode.GetTooltipStats();
 	shopUpgradeButtons.tooltip += str(shopUpgradeButtons.upgradeNode.gold_cost, IconHandler.get_icon_path("coin"))
 
+func buy_upgrade(index: int) -> void:
+	player.modify_gold(-shopUpgradeButtons[index].upgradeNode.gold_cost)
+	var new_upgrade = shopUpgradeButtons[index].upgradeNode.duplicate()
+	add_child(new_upgrade)
+	#Player upgrader
+	shopUpgradeButtons[index].upgradeNode.applyPlayerUpgrade(player)
+	if shopUpgradeButtons[index].upgradeNode.upgradeAmount == 1:
+		player.playerUpgrades.push_back(shopUpgradeButtons[index].upgradeNode);
+		
+	if(doubles > 0):
+		shopUpgradeButtons[index].upgradeNode.applyPlayerUpgrade(player)
+		update_doubles(-1)
+	pass
+
 func renderShopUpgradeButtonsText() -> void:
 	#TODO: Can't assign text to TextureButton like this.
 	#solution here: 
@@ -187,13 +205,8 @@ func _on_shop_upgrade_button_pressed(index: int) -> void:
 		
 	if player.gold < shopUpgradeButtons[index].upgradeNode.gold_cost:
 		return
-	player.modify_gold(-shopUpgradeButtons[index].upgradeNode.gold_cost)
-	var new_upgrade = shopUpgradeButtons[index].upgradeNode.duplicate()
-	add_child(new_upgrade)
-	#Player upgrader
-	shopUpgradeButtons[index].upgradeNode.applyPlayerUpgrade(player)
-	if shopUpgradeButtons[index].upgradeNode.upgradeAmount == 1:
-		player.playerUpgrades.push_back(shopUpgradeButtons[index].upgradeNode);
+		
+	buy_upgrade(index)
 
 	var x = shopUpgradeButtons[index]
 	if rightclick == false:
@@ -297,3 +310,6 @@ func unlock_extra_slots() -> void:
 		shopUpgradeButtons[i].button.get_node("LockButton").queue_free()
 	locked.clear()
 	
+func update_doubles(amount: float):
+	doubles += amount
+	doubleBuyLabel.visible = true if doubles > 0 else false

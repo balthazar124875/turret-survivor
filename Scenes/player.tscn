@@ -46,7 +46,7 @@ shape = SubResource("CircleShape2D_ysp86")
 [node name="Weapons" type="Node2D" parent="."]
 
 [node name="IncomeTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 8.0
 autostart = true
 
 [node name="Upgrades" type="Node2D" parent="."]
@@ -58,6 +58,8 @@ autostart = true
 [node name="Weapons" type="Node2D" parent="Upgrades"]
 
 [node name="Augments" type="Node2D" parent="Upgrades"]
+
+[node name="Other" type="Node2D" parent="Upgrades"]
 
 [node name="DamageFlashTimer" type="Timer" parent="."]
 wait_time = 0.2
