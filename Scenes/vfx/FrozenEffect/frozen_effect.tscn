@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://lrf6tcqawhxs"]
+
+[ext_resource type="Shader" path="res://vfxShaders/frozen_effect.gdshader" id="1_i0ot2"]
+[ext_resource type="Texture2D" uid="uid://cv36bot5d554o" path="res://aid.jpg" id="2_k51cc"]
+[ext_resource type="Texture2D" uid="uid://bytditdd8mtar" path="res://vfxShaders/Ice/ice_normal_map.jpg" id="2_yrwn2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_65iu2"]
+shader = ExtResource("1_i0ot2")
+shader_parameter/uv_scale = 0.11
+shader_parameter/uv_offset = 0.475
+shader_parameter/colorIntensity = 1.0
+shader_parameter/refraction_strength = 0.1
+shader_parameter/use_screen_texture = true
+shader_parameter/normal_map = ExtResource("2_yrwn2")
+shader_parameter/diffuseTex = ExtResource("2_k51cc")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_smn5j"]
+normal_texture = ExtResource("2_yrwn2")
+specular_shininess = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xw24o"]
+shader = ExtResource("1_i0ot2")
+shader_parameter/uv_scale = 0.11
+shader_parameter/uv_offset = 0.0
+shader_parameter/colorIntensity = 1.0
+shader_parameter/refraction_strength = 0.03
+shader_parameter/use_screen_texture = true
+shader_parameter/normal_map = ExtResource("2_yrwn2")
+shader_parameter/diffuseTex = ExtResource("2_k51cc")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_mk2gx"]
+
+[node name="FrozenEffect" type="Node2D"]
+
+[node name="Shape2" type="Node2D" parent="."]
+visible = false
+position = Vector2(-3.03629, -3.27766)
+scale = Vector2(1.2, 1.2)
+
+[node name="shape2" type="Polygon2D" parent="Shape2"]
+visible = false
+material = SubResource("ShaderMaterial_65iu2")
+position = Vector2(0.409852, 0.500387)
+scale = Vector2(0.833333, 0.833333)
+texture = SubResource("CanvasTexture_smn5j")
+polygon = PackedVector2Array(1.33851, 2.31101, 1.67502, 1.48276, 3.06056, 1.48276, 3.70948, 2.16676, 3.91994, 3.11384, 4, 3.68, 2, 4, 1.089, 3.068)
+uv = PackedVector2Array(1.339, 2.311, 1.952, 1.539, 3.233, 1.136, 4, 2, 4.355, 2.96, 4, 3.68, 2, 4, 1.089, 3.068)
+
+[node name="shape2Outline" type="Polygon2D" parent="Shape2"]
+visible = false
+texture = SubResource("CanvasTexture_smn5j")
+polygon = PackedVector2Array(1.33851, 2.31101, 1.67502, 1.48276, 3.06056, 1.48276, 3.70948, 2.16676, 3.91994, 3.11384, 4, 3.68, 2, 4, 1.089, 3.068)
+uv = PackedVector2Array(1.339, 2.311, 1.952, 1.539, 3.233, 1.136, 4, 2, 4.355, 2.96, 4, 3.68, 2, 4, 1.089, 3.068)
+
+[node name="Shape1" type="Node2D" parent="."]
+
+[node name="shape1" type="Polygon2D" parent="Shape1"]
+material = SubResource("ShaderMaterial_xw24o")
+position = Vector2(-2.331, -2.74659)
+texture = SubResource("CanvasTexture_mk2gx")
+polygon = PackedVector2Array(1, 2, 1.72585, 1.4099, 3.02958, 1.91814, 3.6704, 2.36008, 3.74842, 3.11668, 3, 4, 1.48279, 3.88478, 1.08504, 3.13348)
+
+[node name="shape1_outline" type="Polygon2D" parent="Shape1"]
+visible = false
+z_index = -1
+position = Vector2(-2.64036, -3.25482)
+scale = Vector2(1.15, 1.15)
+color = Color(0, 0.74902, 1, 1)
+texture = SubResource("CanvasTexture_mk2gx")
+polygon = PackedVector2Array(1, 2, 1.72585, 1.4099, 3.02958, 1.91814, 3.6704, 2.36008, 3.74842, 3.11668, 3, 4, 1.48279, 3.88478, 1.08504, 3.13348)
