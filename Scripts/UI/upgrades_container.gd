@@ -7,7 +7,7 @@ var upgrade_dict: Dictionary = {}
 @onready var passive_container = $ScrollContainer2/PassiveContainer
 @onready var upgrade_container_scene = preload("res://Scenes/UI/upgrade_container.tscn");
 
-@onready var tooltipMgr : TooltipManager = $"../../../../../Tooltip"
+@onready var tooltipMgr = get_node("/root/EmilScene/GameplayUi/Tooltip")
 
 func _ready() -> void:
 	SignalBus.upgrade_recieved.connect(add_upgrade)

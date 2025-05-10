@@ -43,7 +43,7 @@
 [ext_resource type="Script" path="res://Scripts/effect_handler.gd" id="41_3t8tb"]
 [ext_resource type="PackedScene" uid="uid://2nc5rlyhtq58" path="res://Scenes/vfx/FrozenEffect/frozen_effect_main_scene.tscn" id="42_c3t1l"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4pxfv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4srtw"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -101,7 +101,7 @@ healthRegeneration = 3.0
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_4pxfv")
+enemy_outline_material = SubResource("ShaderMaterial_4srtw")
 
 [node name="GameplayUi" type="Control" parent="."]
 layout_mode = 3
@@ -213,6 +213,20 @@ layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
 
+[node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton1"]
+visible = false
+layout_mode = 0
+offset_left = 7.0
+offset_top = 17.6667
+offset_right = 58.0
+offset_bottom = 42.6667
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+bbcode_enabled = true
+text = "[jump]-50%[/jump]
+"
+custom_effects = [SubResource("RichTextEffect_jhrc1")]
+
 [node name="ShopUpgradeButton2" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
 button_mask = 3
@@ -239,6 +253,19 @@ layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
 
+[node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton2"]
+visible = false
+offset_left = 7.0
+offset_top = 17.6667
+offset_right = 58.0
+offset_bottom = 42.6667
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+bbcode_enabled = true
+text = "[jump]-50%[/jump]
+"
+custom_effects = [SubResource("RichTextEffect_jhrc1")]
+
 [node name="ShopUpgradeButton3" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
 button_mask = 3
@@ -264,6 +291,19 @@ drag_and_drop_selection_enabled = false
 layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
+
+[node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton3"]
+visible = false
+offset_left = 7.0
+offset_top = 17.6667
+offset_right = 58.0
+offset_bottom = 42.6667
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+bbcode_enabled = true
+text = "[jump]-50%[/jump]
+"
+custom_effects = [SubResource("RichTextEffect_jhrc1")]
 
 [node name="LockButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton3"]
 layout_mode = 0
@@ -299,6 +339,19 @@ layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
 
+[node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton4"]
+visible = false
+offset_left = 7.0
+offset_top = 17.6667
+offset_right = 58.0
+offset_bottom = 42.6667
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+bbcode_enabled = true
+text = "[jump]-50%[/jump]
+"
+custom_effects = [SubResource("RichTextEffect_jhrc1")]
+
 [node name="LockButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton4"]
 layout_mode = 0
 offset_left = -0.5
@@ -333,6 +386,19 @@ layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
 
+[node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton5"]
+visible = false
+offset_left = 7.0
+offset_top = 17.6667
+offset_right = 58.0
+offset_bottom = 42.6667
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+bbcode_enabled = true
+text = "[jump]-50%[/jump]
+"
+custom_effects = [SubResource("RichTextEffect_jhrc1")]
+
 [node name="ShopUpgradeButton6" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
 button_mask = 3
@@ -359,6 +425,19 @@ layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
 
+[node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton6"]
+visible = false
+offset_left = 7.0
+offset_top = 17.6667
+offset_right = 58.0
+offset_bottom = 42.6667
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+bbcode_enabled = true
+text = "[jump]-50%[/jump]
+"
+custom_effects = [SubResource("RichTextEffect_jhrc1")]
+
 [node name="ShopUpgradeButton7" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
 button_mask = 3
@@ -384,6 +463,19 @@ drag_and_drop_selection_enabled = false
 layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
+
+[node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton7"]
+visible = false
+offset_left = 7.0
+offset_top = 17.6667
+offset_right = 58.0
+offset_bottom = 42.6667
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+bbcode_enabled = true
+text = "[jump]-50%[/jump]
+"
+custom_effects = [SubResource("RichTextEffect_jhrc1")]
 
 [node name="LockButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton7"]
 layout_mode = 0
@@ -419,6 +511,19 @@ drag_and_drop_selection_enabled = false
 layout_mode = 0
 mouse_filter = 1
 texture_normal = ExtResource("8_3c8yg")
+
+[node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton8"]
+visible = false
+offset_left = 7.0
+offset_top = 17.6667
+offset_right = 58.0
+offset_bottom = 42.6667
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+bbcode_enabled = true
+text = "[jump]-50%[/jump]
+"
+custom_effects = [SubResource("RichTextEffect_jhrc1")]
 
 [node name="LockButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton8"]
 layout_mode = 0
@@ -1102,9 +1207,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("37_5o2m1")
 
-[node name="ParticleNode" type="Node2D" parent="."]
-
-[node name="Tooltip" type="Control" parent="."]
+[node name="Tooltip" type="Control" parent="GameplayUi"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 0
@@ -1112,7 +1215,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("22_q1apf")
 
-[node name="PanelContainer" type="PanelContainer" parent="Tooltip"]
+[node name="PanelContainer" type="PanelContainer" parent="GameplayUi/Tooltip"]
 z_index = 1
 layout_mode = 0
 offset_right = 40.0
@@ -1120,7 +1223,7 @@ offset_bottom = 40.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_v52ci")
 
-[node name="MarginContainer" type="MarginContainer" parent="Tooltip/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="GameplayUi/Tooltip/PanelContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
@@ -1129,17 +1232,19 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Tooltip/PanelContainer/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/Tooltip/PanelContainer/MarginContainer"]
 layout_mode = 2
 bbcode_enabled = true
 text = "Hello"
 fit_content = true
 text_direction = 1
 
-[node name="TextureRect" type="TextureRect" parent="Tooltip"]
+[node name="TextureRect" type="TextureRect" parent="GameplayUi/Tooltip"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="ParticleNode" type="Node2D" parent="."]
 
 [node name="EffectHandler" type="Node2D" parent="."]
 script = ExtResource("41_3t8tb")

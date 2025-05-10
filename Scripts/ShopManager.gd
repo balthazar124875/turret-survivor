@@ -6,6 +6,8 @@ class ShopUpgradeButton:
 	var button : Control;
 	var upgradeNode: Node2D;
 	var tooltip : String;
+	var cost: int;
+	var sale: bool
 	
 static var UPGRADES_LIST = [[],[],[],[]]; #2D array, access elems by UPGRADE_LIST[rarity] -> gives the list of upgrades
 static var availableUpgradesList : Array = []; #This list will hold all upgrades that are available to use currently CURRENTLY UNUSED!!!
@@ -34,10 +36,12 @@ var locked = [3, 7]
 
 var doubles: float = 0
 
+@export var sale_chance: float = 0.05
+
 var player: Player
 var circle: Circle
 
-@onready var tooltipMgr : TooltipManager = $"../../../Tooltip";
+@onready var tooltipMgr : TooltipManager = get_node("/root/EmilScene/GameplayUi/Tooltip")
 var currTooltipShotButtonIdx;
 
 @onready var doubleBuyLabel : RichTextLabel = $"../DoubleBuyLabel";
@@ -114,6 +118,13 @@ func fillShopUpgradeButtons(current_wave: int = 0) -> void:
 	for i in shopUpgradeButtons.size():
 		shopUpgradeButtons[i].upgradeNode = newUpgradeList[i];
 		buttons[i].texture_normal = newUpgradeList[i].icon
+		var r = randf_range(0, 1)
+		var x = shopUpgradeButtons[i]
+		var sale = (r < sale_chance)
+		shopUpgradeButtons[i].sale = sale
+		shopUpgradeButtons[i].button.get_node("Sale").visible = sale
+		shopUpgradeButtons[i].cost = newUpgradeList[i].gold_cost * (0.5 if sale else 1)
+		
 		GenerateButtonTooltip(shopUpgradeButtons[i]);
 		var text = buttons[i].get_child(0) as RichTextLabel
 		text.scroll_active = false
@@ -143,10 +154,10 @@ func GenerateButtonTooltip(shopUpgradeButtons : ShopUpgradeButton) -> void:
 		
 	shopUpgradeButtons.tooltip += shopUpgradeButtons.upgradeNode.GetSpecialTooltipDescription(); #TODO: Implement
 	shopUpgradeButtons.tooltip += shopUpgradeButtons.upgradeNode.GetTooltipStats();
-	shopUpgradeButtons.tooltip += str(shopUpgradeButtons.upgradeNode.gold_cost, IconHandler.get_icon_path("coin"))
+	shopUpgradeButtons.tooltip += str(shopUpgradeButtons.cost, IconHandler.get_icon_path("coin"))
 
 func buy_upgrade(index: int) -> void:
-	player.modify_gold(-shopUpgradeButtons[index].upgradeNode.gold_cost)
+	player.modify_gold(-shopUpgradeButtons[index].cost)
 	var new_upgrade = shopUpgradeButtons[index].upgradeNode.duplicate()
 	add_child(new_upgrade)
 	#Player upgrader
@@ -203,7 +214,7 @@ func _on_shop_upgrade_button_pressed(index: int) -> void:
 	if shopUpgradeButtons[index].upgradeNode == null:
 		return
 		
-	if player.gold < shopUpgradeButtons[index].upgradeNode.gold_cost:
+	if player.gold < shopUpgradeButtons[index].cost:
 		return
 		
 	buy_upgrade(index)

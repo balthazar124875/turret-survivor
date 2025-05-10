@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcnhdnj1tfdaa"]
+[gd_scene load_steps=4 format=3 uid="uid://bkpmmksyq51d4"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerProjectiles/bullet.gd" id="1_uhujp"]
 [ext_resource type="Texture2D" uid="uid://rmoj5202r65c" path="res://Textures/IceCicle.png" id="2_cpqxv"]
