@@ -279,6 +279,9 @@ func get_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> Array[EnemyStatusEf
 	var s = active_status_effects.filter(func(ase): return ase.type == status)
 	return s
 
+func has_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> bool:
+	return active_status_effects.any(func(ase): return ase.type == status)
+
 func set_champion_type(type: GlobalEnums.ENEMY_CHAMPION_TYPE):
 	champion_type = type
 	match type:

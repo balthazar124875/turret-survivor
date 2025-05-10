@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3twshf16qkx4"
-path="res://.godot/imported/bounty_hunter.png-9da5af75f9390c7b00d924f9acfabee2.ctex"
+uid="uid://g4qp62iqbvf5"
+path="res://.godot/imported/push.png-9581a906bebf11049c75b1b71757d5ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/upgrades/bounty_hunter.png"
-dest_files=["res://.godot/imported/bounty_hunter.png-9da5af75f9390c7b00d924f9acfabee2.ctex"]
+source_file="res://Assets/Sprites/upgrades/augments/push.png"
+dest_files=["res://.godot/imported/push.png-9581a906bebf11049c75b1b71757d5ab.ctex"]
 
 [params]
 

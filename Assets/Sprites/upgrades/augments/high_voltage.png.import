@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g4qp62iqbvf5"
-path="res://.godot/imported/push.png-9c5cbbc8e6d5dd886145e78734953d5c.ctex"
+uid="uid://dvcnbcu7jjyb"
+path="res://.godot/imported/high_voltage.png-e990ccf3fb78efa4ca6c49da18b3fd42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/upgrades/push.png"
-dest_files=["res://.godot/imported/push.png-9c5cbbc8e6d5dd886145e78734953d5c.ctex"]
+source_file="res://Assets/Sprites/upgrades/augments/high_voltage.png"
+dest_files=["res://.godot/imported/high_voltage.png-e990ccf3fb78efa4ca6c49da18b3fd42.ctex"]
 
 [params]
 
