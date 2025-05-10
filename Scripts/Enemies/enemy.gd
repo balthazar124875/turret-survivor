@@ -60,6 +60,8 @@ var displacement_path: Path2D
 var displacement_path_follow: PathFollow2D
 var displacement_speed: float
 
+var ice_block_instance;
+
 func init_timers():
 	add_child(damage_flash_timer)  # Add the Timer to the node tree
 	damage_flash_timer.wait_time = 0.2  # Set duration
@@ -98,6 +100,13 @@ func apply_status_effect(status_effect: EnemyStatusEffect):
 		if(type == GlobalEnums.ENEMY_STATUS_EFFECTS.SLOWED):
 			status_effect.magnitude *= cc_effectiveness
 		
+		if(type == GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN):
+			if(ice_block_instance == null):
+				ice_block_instance = get_node("/root/EmilScene/EffectHandler").freezeEffect.instantiate();
+				add_child(ice_block_instance);
+				ice_block_instance.global_position = self.global_position;
+			status_effect.magnitude = 1;
+		
 		var crowd_control_effects = active_status_effects.filter(
 				func(ase): return ase.type in GlobalEnums.CROWD_CONTROL
 			)
@@ -117,6 +126,10 @@ func update_active_status_effect_durations(delta):
 
 func erase_status_effect(status_effect: EnemyStatusEffect):
 	active_status_effects.erase(status_effect)
+	
+	if(status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN && ice_block_instance != null && get_status(GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN).size() == 0):
+		ice_block_instance.queue_free();
+		
 	var type = status_effect.type
 	
 	if type in GlobalEnums.CROWD_CONTROL:
@@ -155,8 +168,8 @@ func handle_color_change():
 	for status_effect in active_status_effects:
 		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.SLOWED:
 			color = Color(0, 0.5, 0.5, 1)
-		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN:
-			color = Color(0, 0, 1, 1)
+		#if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN:
+		#	color = Color(0, 0, 1, 1)
 		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.ROOTED:
 			color = Color(0, 0.85, 0, 1)
 		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED:
