@@ -5,9 +5,12 @@ uniform sampler2D diffuseTex;
 uniform float uv_scale = 0.11;
 uniform float uv_offset = 0.0;
 uniform float colorIntensity = 1.0;
+uniform float blurAmount = 0.0;
 uniform float refraction_strength : hint_range(0.0, 1.0) = 0.03;
 uniform bool use_screen_texture = true;
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_nearest_mipmap;
+
+render_mode blend_disabled; //Doesn't respect alpha i.e alpha gets turned off here
 
 void fragment() {
     // Sample normal from normal map
@@ -27,7 +30,7 @@ void fragment() {
     vec2 refract_uv = SCREEN_UV + offset;
 
     // Sample screen color using distorted UVs
-    vec4 screen_color = texture(SCREEN_TEXTURE, refract_uv);
+    vec3 screen_color = textureLod(SCREEN_TEXTURE, refract_uv, blurAmount).rgb;
 
     // You can blend with a frost tint if desired
     vec3 ice_tint = vec3(0.6, 0.8, 1.0);
