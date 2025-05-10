@@ -12,12 +12,12 @@ uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
 void fragment() {
     // Sample normal from normal map
     vec3 normal = texture(normal_map, UV * uv_scale + uv_offset).rgb * 2.0 - 1.0;
-    
+
     // Convert normal map from [0,1] to [-1,1] range
     vec2 offset = (normal.xy) * refraction_strength;
 
 
-	
+
 	//vec2 screen_res = 1.0 / SCREEN_PIXEL_SIZE;
 	//vec2 pixel_pos = SCREEN_UV * screen_res;
 	//vec2 virtual_res = vec2(1000, 1000);
@@ -35,7 +35,7 @@ void fragment() {
 	float blend = clamp(colorIntensity*fresnel, 0, 1);
 	blend = smoothstep(0.4, 1.0, blend);
     screen_color.rgb = mix(screen_color.rgb, ice_tint, blend);
-	
+
     COLOR = vec4(screen_color.rgb, 1.0);
 }
 
