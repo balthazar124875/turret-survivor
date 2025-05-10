@@ -1,4 +1,4 @@
-extends BaseGun
+extends TrapLauncher
 
 class_name VineTrapLauncher
 
@@ -11,7 +11,7 @@ func shoot_area(position: Vector2) -> void:
 	var obj = bullet.instantiate()
 	add_child(obj)
 	obj.create_trap(Vector2(0, 0), position - global_position, base_projectile_speed * player.projectileSpeedMultipler,
-	 damage * player.damageMultiplier, base_area * player.areaSizeMultiplier)
+	 damage * player.damageMultiplier, base_area * player.areaSizeMultiplier, trap_duration)
 	obj.vine_amount += extra_vines
 	obj.root_duration = root_duration
 	

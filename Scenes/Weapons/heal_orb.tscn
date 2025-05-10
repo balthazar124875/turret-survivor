@@ -31,6 +31,7 @@ radius = 37.054
 script = ExtResource("1_cwpcj")
 healVfx = ExtResource("2_ah8s6")
 source = "Heal Orb"
+damage_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_bqkk8")

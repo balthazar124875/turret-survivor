@@ -47,3 +47,9 @@ func apply_level_up():
 			gun_damage_multiplier += 0.1
 		4:
 			range += 100
+
+func get_damage() -> String:
+	return "\nDamage: [color=red]" + String.num(player.gold * gun_damage_multiplier, 2) + "[/color] (Player gold" + IconHandler.get_icon_path("coin") + " x "+ str(gun_damage_multiplier) + ")" 
+	
+func get_lvl10_bonus_description() -> String:
+	return "\nLvl [color=yellow]10[/color]: When recieving income, shoot [color=red]" + str(8 + player.extraProjectiles) + "[/color] coins in a circle"

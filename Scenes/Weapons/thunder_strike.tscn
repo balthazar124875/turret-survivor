@@ -12,3 +12,4 @@ damage = 3.0
 gun_damage_multiplier = 50.0
 range = 600.0
 source = "Thunder Strike"
+damage_type = 5

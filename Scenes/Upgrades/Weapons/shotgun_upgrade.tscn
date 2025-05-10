@@ -7,6 +7,6 @@
 [node name="ShotGunUpgrade" type="Node2D"]
 script = ExtResource("1_71klg")
 weapon_scene = ExtResource("2_6ii2h")
-upgradeName = "Gun"
-description = "Shoots a bullet"
+upgradeName = "Shotgun"
+description = "Shoots several bullets"
 icon = ExtResource("3_c3hwg")

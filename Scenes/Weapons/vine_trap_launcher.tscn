@@ -12,3 +12,4 @@ damage = 2.0
 gun_damage_multiplier = 1.33
 range = 200.0
 source = "Vine Trap"
+damage_type = 4
