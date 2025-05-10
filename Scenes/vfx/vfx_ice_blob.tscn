@@ -6,8 +6,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eijkf"]
 shader = ExtResource("2_jjlsl")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jopvs"]
-radius = 39.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8qsk"]
+size = Vector2(33.3333, 73.3333)
 
 [node name="VfxBlob" type="Area2D"]
 scale = Vector2(0.3, 0.3)
@@ -31,4 +31,5 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_jopvs")
+position = Vector2(16.6667, 0)
+shape = SubResource("RectangleShape2D_y8qsk")

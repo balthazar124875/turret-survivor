@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfb4ejqc4eq44"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/coin_cannon.gd" id="1_da7uc"]
+[ext_resource type="PackedScene" uid="uid://cdsiybq1aaagv" path="res://Scenes/Projectiles/coin_bullet.tscn" id="2_x7lbl"]
+
+[node name="Coin Cannon" type="Node2D"]
+script = ExtResource("1_da7uc")
+bullet_spread = 4.0
+bullet = ExtResource("2_x7lbl")
+cooldown = 3.0
+base_projectile_speed = 400.0
+bullet_life_time = 1.0
+range = 300.0
+source = "Coin Cannon"

@@ -69,7 +69,14 @@ func _on_body_entered(body):
 			self.rotation = direction.angle()
 		else:
 			queue_free()
-		
+	
+func color_bullet(color: Color):
+	var sprite_node = get_node_or_null("AnimatedSprite2D")
+	if sprite_node == null:
+		sprite_node = get_node_or_null("Sprite2D")
+	if sprite_node != null:
+		sprite_node.modulate = color
+	
 func _delete_after_time(timeout):
 	life_time -= timeout
 	await get_tree().create_timer(timeout).timeout
