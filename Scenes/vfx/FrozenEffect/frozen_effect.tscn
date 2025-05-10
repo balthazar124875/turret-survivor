@@ -9,6 +9,7 @@ shader = ExtResource("1_i0ot2")
 shader_parameter/uv_scale = 0.11
 shader_parameter/uv_offset = 0.475
 shader_parameter/colorIntensity = 1.0
+shader_parameter/blurAmount = 0.0
 shader_parameter/refraction_strength = 0.1
 shader_parameter/use_screen_texture = true
 shader_parameter/normal_map = ExtResource("2_yrwn2")
@@ -23,6 +24,7 @@ shader = ExtResource("1_i0ot2")
 shader_parameter/uv_scale = 0.11
 shader_parameter/uv_offset = 0.0
 shader_parameter/colorIntensity = 1.0
+shader_parameter/blurAmount = 0.5
 shader_parameter/refraction_strength = 0.03
 shader_parameter/use_screen_texture = true
 shader_parameter/normal_map = ExtResource("2_yrwn2")
@@ -54,13 +56,16 @@ uv = PackedVector2Array(1.339, 2.311, 1.952, 1.539, 3.233, 1.136, 4, 2, 4.355, 2
 
 [node name="Shape1" type="Node2D" parent="."]
 
-[node name="shape1" type="Polygon2D" parent="Shape1"]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Shape1"]
+copy_mode = 2
+
+[node name="shape1" type="Polygon2D" parent="Shape1/BackBufferCopy"]
 material = SubResource("ShaderMaterial_xw24o")
 position = Vector2(-2.331, -2.74659)
 texture = SubResource("CanvasTexture_mk2gx")
 polygon = PackedVector2Array(1, 2, 1.72585, 1.4099, 3.02958, 1.91814, 3.6704, 2.36008, 3.74842, 3.11668, 3, 4, 1.48279, 3.88478, 1.08504, 3.13348)
 
-[node name="shape1_outline" type="Polygon2D" parent="Shape1"]
+[node name="shape1_outline" type="Polygon2D" parent="Shape1/BackBufferCopy"]
 visible = false
 z_index = -1
 position = Vector2(-2.64036, -3.25482)
