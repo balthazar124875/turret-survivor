@@ -27,10 +27,10 @@ void fragment() {
 	    // Multiply angle by number of waves to repeat them
 	    float wave = sin(angle * float(wave_count) - time * speed);
 		wave = abs(wave); // Make all waves positive
-		float blend = pow(1.0 - wave, sharpness); 
-		
+		float blend = pow(1.0 - wave, sharpness);
+
 	    vec3 final_color = mix(outline_color.rgb, vec3(1), blend);
 	    COLOR = vec4(final_color, tex_color.a);
 	}
-	
+
 }
