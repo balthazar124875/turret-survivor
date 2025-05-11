@@ -9,6 +9,10 @@ func shoot(enemy: Node) -> void:
 	add_child(bullet)
 	bullet.init_with_direction(direction, player.gold * player.damageMultiplier * gun_damage_multiplier, 
 	base_projectile_speed, bullet_life_time, source)
+	
+	
+	bullet.rotation = Vector2(1, 0).rotated(deg_to_rad(randf_range(0, 360))).angle()
+	
 	bullet.pierce = pierce + player.extraPierce
 	bullet.bounce = player.extraBounce
 	player.modify_gold(-1)
@@ -22,9 +26,11 @@ func shoot_in_circle() -> void:
 		add_child(bullet)
 		bullet.init_with_direction(direction, player.gold * player.damageMultiplier * gun_damage_multiplier, 
 			base_projectile_speed * local_projectile_speed_multiplier * player.projectileSpeedMultipler, bullet_life_time, source)
+			
+		bullet.rotation = Vector2(1, 0).rotated(deg_to_rad(randf_range(0, 360))).angle()
 		bullet.pierce += player.extraPierce
 		bullet.bounce += player.extraBounce
-		direction = direction.rotated(-deg_to_rad(spread))
+		direction = direction.rotated(-deg_to_rad(randf_range(0, 360)))
 	player.modify_gold(-1)
 	
 # TODO: Add other poison level ups

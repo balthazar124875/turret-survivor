@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=54 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -13,9 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="9_yckrj"]
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
 [ext_resource type="Script" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
+[ext_resource type="Shader" path="res://vfxShaders/sale_pulse.gdshader" id="11_co786"]
 [ext_resource type="Script" path="res://Scripts/UI/orb_stats.gd" id="11_v6kre"]
 [ext_resource type="Script" path="res://Scripts/UI/TextEffects/jumping_text.gd" id="12_fie7l"]
 [ext_resource type="Texture2D" uid="uid://bphat1e3xk2ax" path="res://Assets/Sprites/UI/locked_slot.png" id="12_msjj3"]
+[ext_resource type="Script" path="res://Scripts/UI/sale_outline.gd" id="13_jowf6"]
 [ext_resource type="PackedScene" uid="uid://bampk2ki2ygjd" path="res://Scenes/UI/damage_dictionary.tscn" id="18_dwmxg"]
 [ext_resource type="Theme" uid="uid://7qh40l0am5og" path="res://Themes/new_test.tres" id="21_uq2lv"]
 [ext_resource type="Script" path="res://Scripts/UI/TooltipManager.gd" id="22_q1apf"]
@@ -43,7 +45,7 @@
 [ext_resource type="Script" path="res://Scripts/effect_handler.gd" id="41_3t8tb"]
 [ext_resource type="PackedScene" uid="uid://2nc5rlyhtq58" path="res://Scenes/vfx/FrozenEffect/frozen_effect_main_scene.tscn" id="42_c3t1l"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4srtw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eklto"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -53,6 +55,14 @@ shader_parameter/outline_size = 1.0
 [sub_resource type="Theme" id="Theme_t5p71"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pycml"]
+shader = ExtResource("11_co786")
+shader_parameter/time = 20.0
+shader_parameter/wave_width = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/outline_color = Vector4(0, 0.75, 0, 1)
+shader_parameter/wave_count = 3
+shader_parameter/active = true
+shader_parameter/sharpness = 1.5
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_jhrc1"]
 script = ExtResource("12_fie7l")
@@ -101,9 +111,10 @@ healthRegeneration = 3.0
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_4srtw")
+enemy_outline_material = SubResource("ShaderMaterial_eklto")
 
 [node name="GameplayUi" type="Control" parent="."]
+z_index = 100
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
@@ -185,6 +196,7 @@ theme_override_constants/h_separation = 2
 theme_override_constants/v_separation = 2
 columns = 4
 script = ExtResource("5_jxmqa")
+sale_chance = 0.1
 
 [node name="ShopUpgradeButton1" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
@@ -207,11 +219,13 @@ autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="Rarity-Outline" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton1"]
+[node name="Rarity-Outline" type="TextureRect" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton1"]
 material = SubResource("ShaderMaterial_pycml")
 layout_mode = 0
-mouse_filter = 1
-texture_normal = ExtResource("8_3c8yg")
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("8_3c8yg")
+script = ExtResource("13_jowf6")
 
 [node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton1"]
 visible = false
@@ -248,13 +262,17 @@ autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="Rarity-Outline" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton2"]
+[node name="Rarity-Outline" type="TextureRect" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton2"]
+material = SubResource("ShaderMaterial_pycml")
 layout_mode = 0
-mouse_filter = 1
-texture_normal = ExtResource("8_3c8yg")
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("8_3c8yg")
+script = ExtResource("13_jowf6")
 
 [node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton2"]
 visible = false
+layout_mode = 0
 offset_left = 7.0
 offset_top = 17.6667
 offset_right = 58.0
@@ -287,13 +305,17 @@ autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="Rarity-Outline" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton3"]
+[node name="Rarity-Outline" type="TextureRect" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton3"]
+material = SubResource("ShaderMaterial_pycml")
 layout_mode = 0
-mouse_filter = 1
-texture_normal = ExtResource("8_3c8yg")
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("8_3c8yg")
+script = ExtResource("13_jowf6")
 
 [node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton3"]
 visible = false
+layout_mode = 0
 offset_left = 7.0
 offset_top = 17.6667
 offset_right = 58.0
@@ -334,13 +356,17 @@ autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="Rarity-Outline" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton4"]
+[node name="Rarity-Outline" type="TextureRect" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton4"]
+material = SubResource("ShaderMaterial_pycml")
 layout_mode = 0
-mouse_filter = 1
-texture_normal = ExtResource("8_3c8yg")
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("8_3c8yg")
+script = ExtResource("13_jowf6")
 
 [node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton4"]
 visible = false
+layout_mode = 0
 offset_left = 7.0
 offset_top = 17.6667
 offset_right = 58.0
@@ -381,13 +407,17 @@ autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="Rarity-Outline" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton5"]
+[node name="Rarity-Outline" type="TextureRect" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton5"]
+material = SubResource("ShaderMaterial_pycml")
 layout_mode = 0
-mouse_filter = 1
-texture_normal = ExtResource("8_3c8yg")
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("8_3c8yg")
+script = ExtResource("13_jowf6")
 
 [node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton5"]
 visible = false
+layout_mode = 0
 offset_left = 7.0
 offset_top = 17.6667
 offset_right = 58.0
@@ -420,13 +450,17 @@ autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="Rarity-Outline" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton6"]
+[node name="Rarity-Outline" type="TextureRect" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton6"]
+material = SubResource("ShaderMaterial_pycml")
 layout_mode = 0
-mouse_filter = 1
-texture_normal = ExtResource("8_3c8yg")
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("8_3c8yg")
+script = ExtResource("13_jowf6")
 
 [node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton6"]
 visible = false
+layout_mode = 0
 offset_left = 7.0
 offset_top = 17.6667
 offset_right = 58.0
@@ -459,13 +493,17 @@ autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="Rarity-Outline" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton7"]
+[node name="Rarity-Outline" type="TextureRect" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton7"]
+material = SubResource("ShaderMaterial_pycml")
 layout_mode = 0
-mouse_filter = 1
-texture_normal = ExtResource("8_3c8yg")
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("8_3c8yg")
+script = ExtResource("13_jowf6")
 
 [node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton7"]
 visible = false
+layout_mode = 0
 offset_left = 7.0
 offset_top = 17.6667
 offset_right = 58.0
@@ -507,13 +545,17 @@ autowrap_mode = 0
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="Rarity-Outline" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton8"]
+[node name="Rarity-Outline" type="TextureRect" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton8"]
+material = SubResource("ShaderMaterial_pycml")
 layout_mode = 0
-mouse_filter = 1
-texture_normal = ExtResource("8_3c8yg")
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("8_3c8yg")
+script = ExtResource("13_jowf6")
 
 [node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton8"]
 visible = false
+layout_mode = 0
 offset_left = 7.0
 offset_top = 17.6667
 offset_right = 58.0

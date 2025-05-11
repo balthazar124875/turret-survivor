@@ -10,6 +10,7 @@ var growthOnKill
 @export var luckScaling = 0.05
 
 var t = 0
+var total_gained = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,6 +36,7 @@ func _on_timer_timeout() -> void:
 	timer.wait_time = timerBase
 	timer.start()
 	player.modify_stat(GlobalEnums.PLAYER_STATS.ADD_HEALTH_REGENERATION, health_regeneration, upgradeName)
+	total_gained += health_regeneration
 	
 func _on_enemy_killed(enemy: Enemy) -> void:
 	var r = randf_range(0, 1)
@@ -63,5 +65,7 @@ func get_description() -> String:
 	var text = "Increases health regen by [color=red]" + str(health_regeneration) + "[/color] every [color=yellow]" + str(timerBase) + "[/color] seconds"
 	if(growthOnKill):
 		text += "\nLvl [color=yellow]10[/color]: " + TooltipHelper.get_luck_scaling_format(procChance, luckScaling, player.luck) + " when killing an enemy to reduce this timer by [color=yellow]1[/color] second"
+	
+	text += "\n[b]Total regen gained: [/b][color=red]" + str(total_gained) + "[/color]"
 	text += "\nTime left: [color=yellow]" + str(timer.time_left) + "[/color] seconds"
 	return text

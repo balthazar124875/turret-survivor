@@ -109,10 +109,10 @@ func get_modified_damage():
 	return damage * player.damageMultiplier * gun_damage_multiplier * player.damage_type_multipliers[damage_type]
 
 func get_damage() -> String:
-	return "\nDamage: [color=red]" + String.num(damage * gun_damage_multiplier, 2) + "[/color]"
+	return "\nDamage: [color=red]" + String.num(get_modified_damage(), 2) + "[/color]"
 	
 func get_fireRate() -> String:
-	return "\nFire rate: [color=yellow]" + String.num(1 / cooldown, 2) + "[/color] shots/sec"
+	return "\nFire rate: [color=yellow]" + String.num(1 * player.attackSpeedMultiplier / cooldown, 2) + "[/color] shots/sec"
 	
 func get_damage_type() -> String:
 	return "\nDamage type: [color=" + get_damage_color() + "]" + get_enum_name(damage_type) + "[/color]"

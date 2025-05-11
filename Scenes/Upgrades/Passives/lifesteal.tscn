@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhdh3vngatfq4"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Passives/lifesteal.gd" id="1_plhb3"]
+[ext_resource type="Texture2D" uid="uid://f1prgs5vx07n" path="res://Assets/Sprites/upgrades/sack_friend.png" id="2_5jq7g"]
+
+[node name="Lifesteal" type="Node2D"]
+script = ExtResource("1_plhb3")
+upgradeName = "Lifesteal"
+description = "When below 25% direct hits to enemies restore health"
+type = 1
+rarity = 2
+icon = ExtResource("2_5jq7g")

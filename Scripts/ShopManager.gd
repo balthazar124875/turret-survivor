@@ -120,7 +120,7 @@ func fillShopUpgradeButtons(current_wave: int = 0) -> void:
 		buttons[i].texture_normal = newUpgradeList[i].icon
 		var r = randf_range(0, 1)
 		var x = shopUpgradeButtons[i]
-		var sale = (r < sale_chance)
+		var sale = (r < sale_chance + (player.luck * 0.01))
 		shopUpgradeButtons[i].sale = sale
 		shopUpgradeButtons[i].button.get_node("Sale").visible = sale
 		shopUpgradeButtons[i].cost = newUpgradeList[i].gold_cost * (0.5 if sale else 1)
@@ -133,11 +133,9 @@ func fillShopUpgradeButtons(current_wave: int = 0) -> void:
 		else:
 			text.text = ""
 		
-		
-		var outline = buttons[i].get_child(1) as TextureButton
-		outline.modulate = get_color(newUpgradeList[i].rarity)
-		#This is to fix a bug where the tooltip from previous upgrade is showing
-		#even after the upgrade have changed after timer runs out.
+		var outline = buttons[i].get_child(1)
+		outline.update(sale, get_color(newUpgradeList[i].rarity))
+			
 		UpdateUpgradeTooltip(currTooltipShotButtonIdx);
 		
 			
@@ -268,7 +266,7 @@ func get_color(rarity: Upgrade.UpgradeRarity) -> Color:
 		Upgrade.UpgradeRarity.COMMON:
 			return Color(0.33, 0.33, 0.33)
 		Upgrade.UpgradeRarity.UNCOMMON:
-			return Color(0, 1, 0)
+			return Color(0, 0.75, 0)
 		Upgrade.UpgradeRarity.RARE:
 			return Color(0, 0, 1)
 		Upgrade.UpgradeRarity.LEGENDARY:

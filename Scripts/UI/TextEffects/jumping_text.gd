@@ -10,7 +10,7 @@ var _word = 0.0
 
 func _process_custom_fx(char_fx):
 	var t = smoothstep(0.3, 0.6, sin(char_fx.elapsed_time * 4.0) * .5 + .5)
-	char_fx.color = lerp(char_fx.color, Color.ORANGE_RED, t)
+	char_fx.color = lerp(Color.RED, Color.ORANGE_RED, t)
 	
 	if char_fx.relative_index == 0:
 		_word = 0

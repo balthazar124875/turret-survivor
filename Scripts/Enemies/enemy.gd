@@ -90,7 +90,7 @@ func apply_dot_effects():
 		).map(func(ase): return ase.magnitude).reduce(func(a, b): return  a + b, 0)
 		
 	if damage_from_dots > 0:
-		take_damage(damage_from_dots, 'Poison', GlobalEnums.DAMAGE_TYPES.POISON)
+		take_damage(damage_from_dots, 'Poison', GlobalEnums.DAMAGE_TYPES.POISON, true, false)
 
 func apply_status_effect(status_effect: EnemyStatusEffect):
 	active_status_effects.append(status_effect)
