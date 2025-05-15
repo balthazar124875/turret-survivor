@@ -20,5 +20,4 @@ func HitEnemy(body : Enemy):
 
 func Knockback(enemy : Enemy) -> void:
 	var vector_dir = (enemy.global_position - global_position).normalized() * knockback_distance
-	if(enemy.get_status(GlobalEnums.ENEMY_STATUS_EFFECTS.ROOTED).size() == 0):
-		enemy.add_displacement(vector_dir, knockback_speed)
+	enemy.add_displacement(vector_dir, knockback_speed)

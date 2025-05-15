@@ -22,6 +22,5 @@ func trigger_trap():
 					var vector_dir = (global_position - enemy.global_position).normalized() * (distance - 25) 
 					enemy.take_damage(base_damage, "Gravity Trap", GlobalEnums.DAMAGE_TYPES.MAGIC)
 					
-					if(enemy.get_status(GlobalEnums.ENEMY_STATUS_EFFECTS.ROOTED).size() == 0):
-						enemy.add_displacement(vector_dir, pull_speed)
+					enemy.add_displacement(vector_dir, pull_speed)
 	queue_free()

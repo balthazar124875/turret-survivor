@@ -45,7 +45,7 @@
 [ext_resource type="Script" path="res://Scripts/effect_handler.gd" id="41_3t8tb"]
 [ext_resource type="PackedScene" uid="uid://2nc5rlyhtq58" path="res://Scenes/vfx/FrozenEffect/frozen_effect_main_scene.tscn" id="42_c3t1l"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7ctp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7wqua"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -111,7 +111,7 @@ healthRegeneration = 3.0
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_n7ctp")
+enemy_outline_material = SubResource("ShaderMaterial_7wqua")
 
 [node name="GameplayUi" type="Control" parent="."]
 z_index = 100

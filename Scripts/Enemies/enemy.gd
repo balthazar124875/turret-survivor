@@ -304,7 +304,7 @@ func set_champion_type(type: GlobalEnums.ENEMY_CHAMPION_TYPE):
 			pass
 
 func add_displacement(displacement_vector: Vector2, speed: float) -> void:
-	if(cc_effectiveness == 0):
+	if(cc_effectiveness == 0 || has_status(GlobalEnums.ENEMY_STATUS_EFFECTS.ROOTED)):
 		return
 	
 	state = EnemyState.DISPLACEMENT

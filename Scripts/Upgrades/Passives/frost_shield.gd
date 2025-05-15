@@ -11,7 +11,7 @@ var coc
 func _init():
 	pass
 
-func ApplyWhenHitEffect(player: Player, enemy : Enemy) -> void:
+func ApplyWhenHitEffect(player: Player, enemy : Enemy, value: float) -> void:
 	var rng = RandomNumberGenerator.new()
 	var rndNumber = rng.randf_range(0.0, 1.0);
 	if(rndNumber <= procChance * (1 + (player.luck * luckScaling))):

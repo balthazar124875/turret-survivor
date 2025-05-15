@@ -8,7 +8,7 @@ extends PassiveUpgrade
 
 var total_gained = 0
 
-func ApplyWhenHitEffect(player: Player, enemy : Enemy) -> void:
+func ApplyWhenHitEffect(player: Player, enemy : Enemy, value: float) -> void:
 	var rndNumber = randf_range(0.0, 1.0);
 	if(rndNumber <= procChance * (1 + (player.luck * luckScaling))):
 		player.modify_max_health(max_health_gain)

@@ -73,11 +73,12 @@ func heal_damage(value: float, source: String) -> void:
 	SignalBus.heal_done.emit(result, source)
 
 func take_damage(value: float, source: Enemy) -> void:
-	modify_health(-damage_after_armor_reduction(value))
+	var after_armor_value = damage_after_armor_reduction(value)
+	modify_health(-after_armor_value)
 	damage_flash_timer.start(0.1)
 	$AnimatedSprite2D.modulate = Color(1, 0.5, 0.5)
 	for upgrade in get_passive_upgrades_of_type(PassiveUpgrade.PassiveUpgradeType.ON_PLAYER_HIT):
-		upgrade.ApplyWhenHitEffect(self, source);
+		upgrade.ApplyWhenHitEffect(self, source, after_armor_value);
 
 func damage_after_armor_reduction(value: float) -> float:
 	return value - (armor * armor_damage_reduction_const) / (1 + armor_damage_reduction_const * armor)

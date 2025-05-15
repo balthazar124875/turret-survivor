@@ -2,7 +2,7 @@ extends AugmentUpgrade
 
 @export var duration = 5
 
-func ApplyWhenHitEffect(player: Player, enemy : Enemy) -> void:
+func ApplyWhenHitEffect(player: Player, enemy : Enemy, value: float) -> void:
 	if(player.healthRegeneration > 0):
 		var poisonEffect = EnemyStatusEffect.new()
 		poisonEffect.type = GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED

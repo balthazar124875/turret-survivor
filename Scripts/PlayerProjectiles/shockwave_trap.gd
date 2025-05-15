@@ -17,7 +17,6 @@ func trigger_trap():
 	vfx.global_position = global_position
 	get_node("/root/EmilScene/ParticleNode").add_child(vfx)
 	
-	
 	var enemy_parent = get_node("/root/EmilScene/Enemies")
 	for enemy in enemy_parent.get_children():
 			if enemy.is_inside_tree() && enemy.is_alive():
@@ -26,8 +25,7 @@ func trigger_trap():
 					var vector_dir = (enemy.global_position - global_position).normalized() * knockback_distance
 					enemy.take_damage(base_damage, "ShockWave Trap", GlobalEnums.DAMAGE_TYPES.LIGHTNING)
 					
-					if(enemy.get_status(GlobalEnums.ENEMY_STATUS_EFFECTS.ROOTED).size() == 0):
-						enemy.add_displacement(vector_dir, knockback_speed)
+					enemy.add_displacement(vector_dir, knockback_speed)
 						
 						
 	if(delayed_detonation):

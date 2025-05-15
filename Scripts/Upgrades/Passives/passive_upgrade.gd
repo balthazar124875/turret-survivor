@@ -31,7 +31,7 @@ func reparentToPlayer(player: Player) -> void:
 func ApplyEnemyOnKillPassive(enemy : Enemy) ->void:
 	pass
 
-func ApplyWhenHitEffect(player: Player, enemy : Enemy) ->void:
+func ApplyWhenHitEffect(player: Player, enemy : Enemy, value: float) ->void:
 	pass
 	
 func ApplyWhenIncomeTickEffect(player: Player) -> void:

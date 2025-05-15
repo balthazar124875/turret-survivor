@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bluof58om3ei6"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/reactive_shell.gd" id="1_nkms6"]
+[ext_resource type="PackedScene" uid="uid://dh2xehl3as5u0" path="res://Scenes/vfx/reactive_shockwave.tscn" id="2_cq0yv"]
+[ext_resource type="Texture2D" uid="uid://cqgc15hdpas6f" path="res://Assets/Sprites/upgrades/magic_shield.png" id="2_ole4q"]
+
+[node name="ReactiveShell" type="Node2D"]
+script = ExtResource("1_nkms6")
+shockwave_vfx = ExtResource("2_cq0yv")
+passiveType = 3
+upgradeName = "Reactive Shell"
+description = "Knockback enemies after taking heavy damage"
+type = 1
+icon = ExtResource("2_ole4q")
