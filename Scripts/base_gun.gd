@@ -72,9 +72,14 @@ func get_target() -> Node: #defaults to getting closest
 
 func get_random_target() -> Node:
 	var enemies = enemy_parent.get_children()
-	return enemies.filter(
+	var enemies_in_range = enemies.filter(
 			func(enemy): return global_position.distance_to(enemy.global_position) < range * player.rangeMultiplier
-		).pick_random() if enemies.size() > 0 else null
+		)
+		
+	if enemies_in_range.size() == 0:
+		return
+		
+	return enemies_in_range.pick_random()
 	
 	
 func get_target_area() -> Vector2: #defaults to getting closest
