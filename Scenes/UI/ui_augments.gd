@@ -1,7 +1,7 @@
 extends Panel
 
 var augments: Array[AugmentUpgrade] = []
-@onready var tooltipMgr : TooltipManager = $"../../../../../Tooltip"
+@onready var tooltipMgr : TooltipManager = get_node("/root/EmilScene/GameplayUi/Tooltip")
 
 @export var color_selected: Color
 # Called when the node enters the scene tree for the first time.

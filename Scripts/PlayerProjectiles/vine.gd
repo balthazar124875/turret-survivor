@@ -8,6 +8,7 @@ extends Area2D
 @export var root_duration : float = 1
 
 @export var damage : float = 1
+@export var poison : bool = true
 
 var enemiesHit: Array = []
 
@@ -49,6 +50,12 @@ func HitEnemy(body : Enemy):
 	rootEffect.duration = root_duration
 	rootEffect.magnitude = 1
 	body.apply_status_effect(rootEffect)
+	if(poison):
+		var poisonEffect = EnemyStatusEffect.new()
+		poisonEffect.type = GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED
+		poisonEffect.duration = root_duration
+		poisonEffect.magnitude = damage
+		body.apply_status_effect(poisonEffect)
 	
 func _on_body_entered(body):
 	if body is Enemy && !body in enemiesHit:  # Replace with your enemy script class name

@@ -12,3 +12,4 @@ damage = 3.0
 gun_damage_multiplier = 1.5
 bullet_life_time = 0.5
 range = 250.0
+damage_type = 5

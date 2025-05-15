@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpq4wkue5l7gy"
-path="res://.godot/imported/decay.png-7d55899fe3b75dea416b1e1fa7a13725.ctex"
+uid="uid://7kw0vw7alvub"
+path="res://.godot/imported/coin2.png-398cf6815b622ec2337f116e9c1f7f78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/upgrades/decay.png"
-dest_files=["res://.godot/imported/decay.png-7d55899fe3b75dea416b1e1fa7a13725.ctex"]
+source_file="res://Assets/Sprites/Projectiles/coin2.png"
+dest_files=["res://.godot/imported/coin2.png-398cf6815b622ec2337f116e9c1f7f78.ctex"]
 
 [params]
 

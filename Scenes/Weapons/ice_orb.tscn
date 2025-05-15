@@ -31,6 +31,7 @@ radius = 35.0
 script = ExtResource("1_bgo1t")
 iceBallVfx = ExtResource("2_uqy37")
 source = "Ice Orb"
+damage_type = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_bqkk8")

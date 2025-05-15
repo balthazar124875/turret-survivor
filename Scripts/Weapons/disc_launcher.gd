@@ -43,3 +43,6 @@ func apply_level_up():
 			pierce += 2
 		4:
 			damage += 1
+
+func get_lvl10_bonus_description() -> String:
+	return "\nLvl [color=yellow]10[/color]: Disks reduce enemy armor by [color=red]1[/color]"

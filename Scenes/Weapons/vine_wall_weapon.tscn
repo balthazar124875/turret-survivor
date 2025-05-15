@@ -10,3 +10,4 @@ bullet = ExtResource("2_aoeo0")
 cooldown = 3.0
 bullet_life_time = 10.0
 range = 10000.0
+source = "Vine wall"

@@ -18,7 +18,7 @@ func ApplyWhenHitEffect(player: Player, enemy : Enemy) -> void:
 		var freeze = EnemyStatusEffect.new()
 		freeze.type = GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN
 		freeze.duration = duration
-		freeze.magnitude = 0
+		freeze.magnitude = 1
 		enemy.apply_status_effect(freeze)
 
 func apply_level_up():

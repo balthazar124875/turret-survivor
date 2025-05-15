@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 	pass
 
 func check_wave(wave: int):
-	if(wave == 25 || wave == 50 || wave == 75):
+	if(wave == 10 || wave == 35 || wave == 60):
 		get_tree().paused = true
 		get_node("ColorRect").visible = true
 		spawn_augments()

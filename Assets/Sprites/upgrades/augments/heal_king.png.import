@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvcnbcu7jjyb"
-path="res://.godot/imported/high_voltage.png-7e9e58470b5ba4b79e6b672f87aacf94.ctex"
+uid="uid://dahsvs0n0nnbe"
+path="res://.godot/imported/heal_king.png-cf02f058bee062749d477a3b04e8f705.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/upgrades/high_voltage.png"
-dest_files=["res://.godot/imported/high_voltage.png-7e9e58470b5ba4b79e6b672f87aacf94.ctex"]
+source_file="res://Assets/Sprites/upgrades/augments/heal_king.png"
+dest_files=["res://.godot/imported/heal_king.png-cf02f058bee062749d477a3b04e8f705.ctex"]
 
 [params]
 

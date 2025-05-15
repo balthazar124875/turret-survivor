@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g4qp62iqbvf5"
-path="res://.godot/imported/push.png-9c5cbbc8e6d5dd886145e78734953d5c.ctex"
+uid="uid://doyesl33ck38n"
+path="res://.godot/imported/yummy_coin.png-4aae1613cb9a3604d98907b017cc25ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/upgrades/push.png"
-dest_files=["res://.godot/imported/push.png-9c5cbbc8e6d5dd886145e78734953d5c.ctex"]
+source_file="res://Assets/Sprites/upgrades/yummy_coin.png"
+dest_files=["res://.godot/imported/yummy_coin.png-4aae1613cb9a3604d98907b017cc25ac.ctex"]
 
 [params]
 

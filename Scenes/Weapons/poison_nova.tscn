@@ -11,6 +11,7 @@ script = ExtResource("1_wl01p")
 particle_effect = ExtResource("2_odcwx")
 cooldown = 4.0
 source = "Poison Nova"
+damage_type = 4
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4

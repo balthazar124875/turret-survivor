@@ -31,6 +31,7 @@ radius = 35.0143
 script = ExtResource("1_mlgmm")
 laserVfx = ExtResource("2_jhocc")
 source = "Laser Orb"
+damage_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_bqkk8")

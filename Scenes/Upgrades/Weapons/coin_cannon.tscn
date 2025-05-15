@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://it5o8xiq417m"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/weapon_upgrade.gd" id="1_ph30h"]
+[ext_resource type="PackedScene" uid="uid://cfb4ejqc4eq44" path="res://Scenes/Weapons/coin_cannon.tscn" id="2_ns3d6"]
+[ext_resource type="Texture2D" uid="uid://ch2coxwopig16" path="res://Assets/Sprites/upgrades/golden_gun.png" id="3_t1i7p"]
+
+[node name="GoldenGunUpgrade" type="Node2D"]
+script = ExtResource("1_ph30h")
+weapon_scene = ExtResource("2_ns3d6")
+upgradeName = "Coin Cannon"
+description = "Shoots a coin"
+icon = ExtResource("3_t1i7p")

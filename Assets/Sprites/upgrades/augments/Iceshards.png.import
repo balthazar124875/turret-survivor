@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3twshf16qkx4"
-path="res://.godot/imported/bounty_hunter.png-9da5af75f9390c7b00d924f9acfabee2.ctex"
+uid="uid://bs1ar1pe7rqf"
+path="res://.godot/imported/Iceshards.png-656b052b743a5f5c11717a4f2f27033b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/upgrades/bounty_hunter.png"
-dest_files=["res://.godot/imported/bounty_hunter.png-9da5af75f9390c7b00d924f9acfabee2.ctex"]
+source_file="res://Assets/Sprites/upgrades/augments/Iceshards.png"
+dest_files=["res://.godot/imported/Iceshards.png-656b052b743a5f5c11717a4f2f27033b.ctex"]
 
 [params]
 

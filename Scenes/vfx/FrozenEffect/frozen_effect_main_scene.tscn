@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://2nc5rlyhtq58"]
+
+[ext_resource type="PackedScene" uid="uid://lrf6tcqawhxs" path="res://Scenes/vfx/FrozenEffect/frozen_effect.tscn" id="1_umf5b"]
+[ext_resource type="PackedScene" uid="uid://b248au75vo48n" path="res://Scenes/vfx/FrozenEffect/frozen_effect_outline.tscn" id="2_ex101"]
+
+[node name="FrozenEffectMainScene" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="FrozenEffect" parent="." instance=ExtResource("1_umf5b")]
+position = Vector2(-6.29643, 4.00226)
+scale = Vector2(23.93, 23.93)
+
+[node name="Outline" parent="." instance=ExtResource("2_ex101")]
+position = Vector2(8.852, -5.965)
+scale = Vector2(22.995, 22.995)

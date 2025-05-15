@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkpmmksyq51d4"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerProjectiles/bullet.gd" id="1_uhujp"]
+[ext_resource type="Texture2D" uid="uid://rmoj5202r65c" path="res://Textures/IceCicle.png" id="2_cpqxv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8stfk"]
+size = Vector2(14, 37)
+
+[node name="IceBullet" type="Area2D"]
+disable_mode = 1
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_uhujp")
+damage_type = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("2_cpqxv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_8stfk")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(3, 3)

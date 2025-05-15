@@ -12,3 +12,4 @@ gun_damage_multiplier = 0.5
 base_projectile_speed = 500.0
 range = 600.0
 source = "Gun"
+damage_type = 4

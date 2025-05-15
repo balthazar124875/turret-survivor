@@ -10,3 +10,4 @@ bullet = ExtResource("2_dylgq")
 cooldown = 3.0
 base_projectile_speed = 600.0
 range = 900.0
+damage_type = 4

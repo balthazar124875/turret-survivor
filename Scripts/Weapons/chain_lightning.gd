@@ -109,3 +109,9 @@ func apply_level_up():
 			range += 50
 		4:
 			damage += 1
+
+func get_custom_tooltip_text() -> String: #override this
+	return "\nChains: " + str(chains)
+	
+func get_lvl10_bonus_description() -> String:
+	return "\nLvl [color=yellow]10[/color]: Lightning forks each time it chains"

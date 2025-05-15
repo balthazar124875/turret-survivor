@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdsiybq1aaagv"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerProjectiles/coin_bullet.gd" id="1_fp58h"]
+[ext_resource type="Texture2D" uid="uid://dpybvfku5tpqp" path="res://Assets/Sprites/Projectiles/coin1.png" id="3_q2nm0"]
+[ext_resource type="Texture2D" uid="uid://7kw0vw7alvub" path="res://Assets/Sprites/Projectiles/coin2.png" id="4_ukfrl"]
+[ext_resource type="Texture2D" uid="uid://di0o7j135s7kk" path="res://Assets/Sprites/Projectiles/coin3.png" id="5_r8cnb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8stfk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eicxp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_q2nm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ukfrl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_r8cnb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="CoinBullet" type="Area2D"]
+disable_mode = 1
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_fp58h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8stfk")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(3, 3)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_eicxp")
+frame_progress = 0.343377

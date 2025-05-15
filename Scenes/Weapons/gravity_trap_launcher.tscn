@@ -11,3 +11,4 @@ cooldown = 4.0
 damage = 3.0
 range = 500.0
 source = "Gravity Trap"
+damage_type = 1

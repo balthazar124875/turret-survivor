@@ -4,7 +4,7 @@ class_name Player
 
 @export var maxHealth = 100.0;
 @export var health = 100.0;
-@export var healthRegeneration: float = 0.0;
+@export var healthRegeneration: float = 3;
 var playerUpgrades: Array = [];
 @export var extraProjectiles = 0;
 @export var extraChains = 0;
@@ -64,6 +64,7 @@ func _on_income_timer_timeout() -> void:
 	modify_gold(gold_income)
 	for upgrade in get_passive_upgrades_of_type(PassiveUpgrade.PassiveUpgradeType.ON_INCOME_TICK):
 		upgrade.ApplyWhenIncomeTickEffect(self)
+	SignalBus.income_recieved.emit()
 
 
 func heal_damage(value: float, source: String) -> void:
@@ -105,6 +106,8 @@ func modify_health_regeneration(value: float) -> void:
 func modify_gold(value: int) -> void:
 	gold += value
 	SignalBus.gold_amount_updated.emit(gold)
+	if(value < 0):
+		SignalBus.gold_spent.emit(value)
 	
 func modify_income(value: int) -> void:
 	gold_income += value

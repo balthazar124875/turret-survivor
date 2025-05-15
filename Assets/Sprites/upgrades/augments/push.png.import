@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dahsvs0n0nnbe"
-path="res://.godot/imported/heal_king.png-d00d458fcdf936fcb16b83e531bbd776.ctex"
+uid="uid://g4qp62iqbvf5"
+path="res://.godot/imported/push.png-9581a906bebf11049c75b1b71757d5ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/upgrades/heal_king.png"
-dest_files=["res://.godot/imported/heal_king.png-d00d458fcdf936fcb16b83e531bbd776.ctex"]
+source_file="res://Assets/Sprites/upgrades/augments/push.png"
+dest_files=["res://.godot/imported/push.png-9581a906bebf11049c75b1b71757d5ab.ctex"]
 
 [params]
 
