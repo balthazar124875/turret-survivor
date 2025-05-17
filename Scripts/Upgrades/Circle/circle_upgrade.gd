@@ -43,6 +43,7 @@ func applyUpgradeToPlayer(player: Player) -> void:
 		player.get_node("./Circle").add_child(stickerSpriteInstance);
 		Circle.AddCircleUpgrade(circleUpgradeType, self);
 		PlaceCircleUpgradeIcon(circleUpgradeType);
+		reparentToPlayer(player)
 	else:
 		apply_level_up();
 
@@ -57,6 +58,7 @@ func PlaceCircleUpgradeIcon(circleUpgradeType : Circle.CircleType) -> void:
 	pass
 	
 func reparentToPlayer(player: Player) -> void:
+	player.playerUpgrades.push_back(self)
 	player.get_node("./Circle/Upgrades").add_child(self)
 	
 func apply_level_up():

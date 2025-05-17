@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=58 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -44,8 +44,10 @@
 [ext_resource type="PackedScene" uid="uid://b28o0wogrqmsi" path="res://Scenes/UI/augment_handler.tscn" id="40_yymlw"]
 [ext_resource type="Script" path="res://Scripts/effect_handler.gd" id="41_3t8tb"]
 [ext_resource type="PackedScene" uid="uid://2nc5rlyhtq58" path="res://Scenes/vfx/FrozenEffect/frozen_effect_main_scene.tscn" id="42_c3t1l"]
+[ext_resource type="Script" path="res://Scripts/UI/debug_upgrade_menu.gd" id="43_tdgbw"]
+[ext_resource type="PackedScene" uid="uid://cgwyhsqfwal2c" path="res://Scenes/UI/debug_upgrade_button.tscn" id="44_h1cgt"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7wqua"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w6qma"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -97,6 +99,12 @@ corner_radius_bottom_left = 15
 shadow_color = Color(0.811765, 0, 0, 0)
 shadow_size = 10
 
+[sub_resource type="Gradient" id="Gradient_ed0hj"]
+colors = PackedColorArray(0, 0, 0, 0.768627, 0, 0, 0, 0.768627)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fikbe"]
+gradient = SubResource("Gradient_ed0hj")
+
 [node name="EmilScene" type="Node2D"]
 script = ExtResource("1_itpwq")
 
@@ -111,7 +119,7 @@ healthRegeneration = 3.0
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_7wqua")
+enemy_outline_material = SubResource("ShaderMaterial_w6qma")
 
 [node name="GameplayUi" type="Control" parent="."]
 z_index = 100
@@ -1285,6 +1293,37 @@ text_direction = 1
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Debug" type="Control" parent="GameplayUi"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("43_tdgbw")
+debug_button = ExtResource("44_h1cgt")
+
+[node name="TextureRect" type="TextureRect" parent="GameplayUi/Debug"]
+layout_mode = 2
+offset_left = 428.0
+offset_top = 123.0
+offset_right = 1491.0
+offset_bottom = 879.0
+texture = SubResource("GradientTexture2D_fikbe")
+expand_mode = 2
+
+[node name="BoxContainer" type="GridContainer" parent="GameplayUi/Debug"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 434.0
+offset_top = 128.0
+offset_right = 918.0
+offset_bottom = 460.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+columns = 12
 
 [node name="ParticleNode" type="Node2D" parent="."]
 

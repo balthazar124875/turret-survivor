@@ -160,8 +160,6 @@ func buy_upgrade(index: int) -> void:
 	add_child(new_upgrade)
 	#Player upgrader
 	shopUpgradeButtons[index].upgradeNode.applyPlayerUpgrade(player)
-	if shopUpgradeButtons[index].upgradeNode.upgradeAmount == 1:
-		player.playerUpgrades.push_back(shopUpgradeButtons[index].upgradeNode);
 		
 	if(doubles > 0):
 		shopUpgradeButtons[index].upgradeNode.applyPlayerUpgrade(player)

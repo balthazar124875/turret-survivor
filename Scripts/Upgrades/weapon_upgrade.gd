@@ -14,10 +14,12 @@ func applyUpgradeToPlayer(player: Player) -> void:
 		var new_weapon = weapon_scene.instantiate()
 		player.get_node("./Weapons").add_child(new_weapon)
 		weapon = new_weapon
+		reparentToPlayer(player)
 	else:
 		weapon.level_up()
 
 func reparentToPlayer(player: Player) -> void:
+	player.playerUpgrades.push_back(self)
 	player.get_node("Upgrades/Weapons").add_child(self)
 
 func get_description() -> String:

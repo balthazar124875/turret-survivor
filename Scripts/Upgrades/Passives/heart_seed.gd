@@ -20,8 +20,8 @@ func _process(delta: float) -> void:
 	t += delta
 
 func reparentToPlayer(player: Player) -> void:
+	super.reparentToPlayer(player)
 	start_timer()
-	player.get_node("./Upgrades/Passives").add_child(self)
 	
 func start_timer():
 	timer = Timer.new()

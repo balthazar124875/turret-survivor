@@ -1,0 +1,53 @@
+extends Control
+
+
+var debug_open = false
+var loaded = false
+
+@export var debug_button: PackedScene
+
+@onready var player: Player = get_node("/root/EmilScene/Player")
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+func _input(event):
+	if event is InputEventKey and event.is_released():
+		if event.keycode == KEY_TAB:
+			debug_open = !debug_open
+			visible = debug_open
+			if(!loaded && debug_open):
+				load_upgrades()
+
+func load_upgrades() -> void:
+			#Iterate all Upgrade scripts and put them in the global array
+	var folders = ["Circle", "Stats", "Weapons", "Passives", "Augments", "Other"]
+	for f in folders:
+		var dir = DirAccess.open("res://Scenes/Upgrades/" + f);
+		if dir:
+			dir.list_dir_begin()
+			var file_name = dir.get_next()
+			while file_name != "":
+				var upgrade = load("res://Scenes/Upgrades/" + f  + "/" + file_name).instantiate()
+				
+				var upgrade_button = debug_button.instantiate()
+				upgrade_button.init(upgrade)
+				upgrade_button.pressed.connect(Callable(self, "_on_button_pressed").bind(upgrade_button.upgrade))
+				
+				get_node("BoxContainer").add_child(upgrade_button)
+				
+				file_name = dir.get_next()
+				
+				if(f == "Circle"):
+					upgrade._instantiate(); #Generate random inner outer functionality for circle upgrade
+		else:
+			print("An error occurred when trying to access the path.");
+	loaded = true
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func _on_button_pressed(upgrade: Upgrade):
+	upgrade.applyPlayerUpgrade(player)

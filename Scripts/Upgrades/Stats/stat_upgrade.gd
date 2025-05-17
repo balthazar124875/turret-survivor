@@ -11,4 +11,5 @@ func applyUpgradeToPlayer(player: Player) -> void:
 	player.modify_stat(stat_type, amount, upgradeName)
 
 func reparentToPlayer(player: Player) -> void:
+	player.playerUpgrades.push_back(self)
 	player.get_node("./Upgrades/Stats").add_child(self)

@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 func _bullet_created(bullet):
 	bullet.effects.append(_apply_effects)
 			
-func _apply_effects(enemy: Enemy, bullet: Bullet):
+func _apply_effects(enemy: Enemy, bullet):
 	var rndNumber = randf_range(0.0, 1.0);
 	if(rndNumber <= procChance * (1 + (player.luck * luckScaling))):
 		bullet.life_time += extraDuration

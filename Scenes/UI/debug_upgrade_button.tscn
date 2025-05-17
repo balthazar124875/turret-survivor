@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgwyhsqfwal2c"]
+
+[ext_resource type="Texture2D" uid="uid://3twshf16qkx4" path="res://Assets/Sprites/upgrades/augments/bounty_hunter.png" id="1_gpcud"]
+[ext_resource type="Script" path="res://Scripts/UI/debug_upgrade_button.gd" id="2_oppgn"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(32, 32)
+icon = ExtResource("1_gpcud")
+script = ExtResource("2_oppgn")

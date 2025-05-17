@@ -10,7 +10,7 @@ extends PassiveUpgrade
 
 
 func reparentToPlayer(player: Player) -> void:
-	player.get_node("./Upgrades/Passives").add_child(self)
+	super.reparentToPlayer(player)
 	SignalBus.damage_done.connect(aracane_missile_proc_check)
 
 func aracane_missile_proc_check(enemy: Enemy, amount: float, damageType: GlobalEnums.DAMAGE_TYPES, damage_source: String, direct: bool):

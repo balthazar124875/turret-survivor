@@ -26,6 +26,7 @@ func applyUpgradeToPlayer(player: Player) -> void:
 		apply_level_up()
 
 func reparentToPlayer(player: Player) -> void:
+	player.playerUpgrades.push_back(self)
 	player.get_node("./Upgrades/Passives").add_child(self)
 
 func ApplyEnemyOnKillPassive(enemy : Enemy) ->void:
