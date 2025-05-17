@@ -12,7 +12,8 @@ enum PassiveUpgradeType {
 	PROJECTILE_MODIFIER,
 	ON_PLAYER_HIT,
 	ON_BUY,
-	ON_INCOME_TICK
+	ON_INCOME_TICK,
+	OTHER
 }
 
 func _ready() -> void:

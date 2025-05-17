@@ -53,8 +53,8 @@ func spawn_augments():
 		
 func _on_choice_selected(choice: AugmentUpgrade):
 	SignalBus.augment_recieved.emit(choice)
-	choice.applyUpgradeToPlayer(player)
 	reset()
+	choice.applyUpgradeToPlayer(player)
 	print(choice.upgradeName)
 
 func reset():

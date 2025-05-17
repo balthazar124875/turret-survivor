@@ -1,8 +1,8 @@
 extends Control
 
-
 var debug_open = false
 var loaded = false
+var single_pick = true
 
 @export var debug_button: PackedScene
 
@@ -15,10 +15,28 @@ func _ready() -> void:
 func _input(event):
 	if event is InputEventKey and event.is_released():
 		if event.keycode == KEY_TAB:
-			debug_open = !debug_open
-			visible = debug_open
-			if(!loaded && debug_open):
-				load_upgrades()
+			if debug_open: 
+				close() 
+			else: 
+				open()
+
+func open(single_pick: bool = false) -> void:
+	debug_open = true
+	visible = debug_open
+	if(!loaded && debug_open):
+		load_upgrades()
+	self.single_pick = single_pick
+	
+	get_tree().paused = true
+		
+func close(single_pick: bool = false) -> void:
+	debug_open = false
+	visible = false
+	if(!loaded && debug_open):
+		load_upgrades()
+		
+	get_tree().paused = false
+		
 
 func load_upgrades() -> void:
 			#Iterate all Upgrade scripts and put them in the global array
@@ -51,3 +69,6 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed(upgrade: Upgrade):
 	upgrade.applyPlayerUpgrade(player)
+	if(single_pick):
+		close()
+		
