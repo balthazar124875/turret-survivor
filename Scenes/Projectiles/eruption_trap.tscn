@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://5mm0ou4jrlqa"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerProjectiles/eruption_trap.gd" id="1_2y0pr"]
+[ext_resource type="Texture2D" uid="uid://bhc2jjjk7nco" path="res://Assets/Sprites/sprite_sheets/eruption_trap.png" id="2_o8fbe"]
+[ext_resource type="PackedScene" uid="uid://dl4b1u5aa0ad" path="res://Scenes/vfx/eruption.tscn" id="2_t8ijq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2mywb"]
+radius = 11.75
+
+[node name="EruptionTrap" type="Area2D"]
+scale = Vector2(2, 2)
+disable_mode = 1
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_2y0pr")
+eruption_vfx = ExtResource("2_t8ijq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 0)
+texture = ExtResource("2_o8fbe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.75, 0)
+shape = SubResource("CircleShape2D_2mywb")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-2, 0)
+scale = Vector2(1.4, 1.45)

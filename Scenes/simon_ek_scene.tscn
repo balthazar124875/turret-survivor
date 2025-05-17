@@ -47,7 +47,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/debug_upgrade_menu.gd" id="43_tdgbw"]
 [ext_resource type="PackedScene" uid="uid://cgwyhsqfwal2c" path="res://Scenes/UI/debug_upgrade_button.tscn" id="44_h1cgt"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tw0ah"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tgobs"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -119,7 +119,7 @@ healthRegeneration = 3.0
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_tw0ah")
+enemy_outline_material = SubResource("ShaderMaterial_tgobs")
 
 [node name="GameplayUi" type="Control" parent="."]
 z_index = 100
