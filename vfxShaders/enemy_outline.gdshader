@@ -7,8 +7,6 @@ uniform float outline_size = 1.0;
 void fragment() {
     vec4 tex = texture(TEXTURE, UV);
 
-
-
     if (tex.a < 0.1) {
         //Sample surrounding pixels to create an outline
         float alpha = 0.0;

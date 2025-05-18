@@ -67,6 +67,7 @@ func _on_body_entered(body):
 		if(bounce > rndNumber):
 			direction = direction.rotated(deg_to_rad(rng.randf_range(90, 270)))
 			self.rotation = direction.angle()
+			self.damage *= 0.5
 		else:
 			queue_free()
 	
