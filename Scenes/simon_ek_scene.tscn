@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=64 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -48,12 +48,11 @@
 [ext_resource type="PackedScene" uid="uid://cgwyhsqfwal2c" path="res://Scenes/UI/debug_upgrade_button.tscn" id="44_h1cgt"]
 [ext_resource type="Script" path="res://Scripts/background_handler.gd" id="47_45rtc"]
 [ext_resource type="Shader" path="res://vfxShaders/disolve.gdshader" id="47_onmk0"]
-[ext_resource type="Texture2D" uid="uid://b5n7342pglsfh" path="res://Assets/Sprites/Background/background_field.png" id="48_woxhf"]
-[ext_resource type="Texture2D" uid="uid://br4bfl88njpqm" path="res://Assets/Sprites/Background/background_dark.png" id="48_ygq0o"]
 [ext_resource type="Script" path="res://Scripts/background.gd" id="49_rpqod"]
+[ext_resource type="Texture2D" uid="uid://tj3i0lmn0iqy" path="res://Assets/Sprites/Background/background_dungeon_2.png" id="51_ifjer"]
 [ext_resource type="Texture2D" uid="uid://drq40qtvwf5tj" path="res://Assets/Sprites/Background/background_field_2.png" id="52_2txh5"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b1lki"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rb7wu"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -133,7 +132,7 @@ healthRegeneration = 3.0
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_b1lki")
+enemy_outline_material = SubResource("ShaderMaterial_rb7wu")
 
 [node name="GameplayUi" type="Control" parent="."]
 z_index = 100
@@ -1352,24 +1351,17 @@ position = Vector2(960, 540)
 script = ExtResource("47_45rtc")
 
 [node name="Background2" type="Sprite2D" parent="BackgroundHandler"]
+visible = false
 material = SubResource("ShaderMaterial_n4ukr")
-position = Vector2(0, -0.499939)
-scale = Vector2(1, 1.00278)
-texture = ExtResource("48_woxhf")
+scale = Vector2(3, 3)
+texture = ExtResource("52_2txh5")
 script = ExtResource("49_rpqod")
 
 [node name="Background" type="Sprite2D" parent="BackgroundHandler"]
 z_index = -1
 material = SubResource("ShaderMaterial_n4ukr")
-scale = Vector2(0.999, 1)
-texture = ExtResource("48_ygq0o")
-script = ExtResource("49_rpqod")
-
-[node name="Background3" type="Sprite2D" parent="BackgroundHandler"]
-z_index = -1
-material = SubResource("ShaderMaterial_n4ukr")
 scale = Vector2(3, 3)
-texture = ExtResource("52_2txh5")
+texture = ExtResource("51_ifjer")
 script = ExtResource("49_rpqod")
 
 [connection signal="pressed" from="GameplayUi/LeftMenuColumn/RerollContainer/RerollButton" to="GameplayUi/LeftMenuColumn/ShopUpgrades" method="_on_reroll_button_pressed"]
