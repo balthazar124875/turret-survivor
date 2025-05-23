@@ -1,23 +1,34 @@
-[gd_scene load_steps=67 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=78 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
 [ext_resource type="PackedScene" uid="uid://bkwrq0qtta0ix" path="res://Scenes/enemy_spawner.tscn" id="3_fpmdp"]
+[ext_resource type="Script" path="res://Scripts/wave.gd" id="4_4h2fe"]
 [ext_resource type="Shader" path="res://vfxShaders/enemy_outline.gdshader" id="4_6ev4i"]
 [ext_resource type="Script" path="res://Scripts/UIManager.gd" id="5_1pdr0"]
+[ext_resource type="Resource" uid="uid://lhgub04y3bdb" path="res://Resources/wave1.tres" id="5_dajof"]
 [ext_resource type="Script" path="res://Scripts/ShopManager.gd" id="5_jxmqa"]
 [ext_resource type="Texture2D" uid="uid://b27w0ddjiakbn" path="res://Assets/Sprites/UI/ui_overlay.png" id="6_pvymq"]
+[ext_resource type="Resource" uid="uid://bm2q7xl0iapv5" path="res://Resources/wave2.tres" id="6_wb1pu"]
+[ext_resource type="Resource" uid="uid://2nbfix1i2x45" path="res://Resources/wave3.tres" id="7_5jkau"]
 [ext_resource type="Texture2D" uid="uid://baywma4a7d8ba" path="res://Assets/Sprites/UI/32x32_button.png" id="7_vnyei"]
 [ext_resource type="Texture2D" uid="uid://dpnyf8ftq0aek" path="res://Assets/Sprites/UI/outline.png" id="8_3c8yg"]
 [ext_resource type="Theme" uid="uid://bug82i6sy1xtq" path="res://Themes/texture_button_theme.tres" id="8_4ctao"]
+[ext_resource type="Resource" uid="uid://beiccymgq76cw" path="res://Resources/wave7.tres" id="8_5cu7a"]
+[ext_resource type="Resource" uid="uid://dk16077xloovp" path="res://Resources/wave4.tres" id="9_4h6ve"]
 [ext_resource type="Texture2D" uid="uid://ccokfawkm4ps4" path="res://Assets/Sprites/UI/buy_icon.png" id="9_yckrj"]
+[ext_resource type="Resource" uid="uid://ngftjlnyqymm" path="res://Resources/wave5.tres" id="10_2ssat"]
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
+[ext_resource type="Resource" uid="uid://b5m6113lpakb6" path="res://Resources/wave6.tres" id="11_2kb38"]
 [ext_resource type="Script" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
 [ext_resource type="Shader" path="res://vfxShaders/sale_pulse.gdshader" id="11_co786"]
 [ext_resource type="Script" path="res://Scripts/UI/orb_stats.gd" id="11_v6kre"]
 [ext_resource type="Script" path="res://Scripts/UI/TextEffects/jumping_text.gd" id="12_fie7l"]
 [ext_resource type="Texture2D" uid="uid://bphat1e3xk2ax" path="res://Assets/Sprites/UI/locked_slot.png" id="12_msjj3"]
+[ext_resource type="Resource" uid="uid://cafpbt15yrcnl" path="res://Resources/wave8.tres" id="12_y5lg1"]
 [ext_resource type="Script" path="res://Scripts/UI/sale_outline.gd" id="13_jowf6"]
+[ext_resource type="Resource" uid="uid://bul3ky4jfitsy" path="res://Resources/wave9.tres" id="13_yidmk"]
+[ext_resource type="Resource" uid="uid://cuhq1q0hrbfeo" path="res://Resources/wave10.tres" id="14_3ncf5"]
 [ext_resource type="PackedScene" uid="uid://bampk2ki2ygjd" path="res://Scenes/UI/damage_dictionary.tscn" id="18_dwmxg"]
 [ext_resource type="Theme" uid="uid://7qh40l0am5og" path="res://Themes/new_test.tres" id="21_uq2lv"]
 [ext_resource type="Script" path="res://Scripts/UI/TooltipManager.gd" id="22_q1apf"]
@@ -54,7 +65,7 @@
 [ext_resource type="Shader" path="res://Scenes/Shaders/simon_ek_scene.gdshader" id="52_mk7mp"]
 [ext_resource type="Texture2D" uid="uid://dwkn3crn28sa8" path="res://Assets/Sprites/Background/background_spooky_2.png" id="53_bqs3t"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a2xw1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lrdsu"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -160,9 +171,10 @@ healthRegeneration = 3.0
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
+waves = Array[ExtResource("4_4h2fe")]([ExtResource("5_dajof"), ExtResource("6_wb1pu"), ExtResource("7_5jkau"), ExtResource("8_5cu7a"), ExtResource("9_4h6ve"), ExtResource("10_2ssat"), ExtResource("11_2kb38"), ExtResource("12_y5lg1"), ExtResource("13_yidmk"), ExtResource("14_3ncf5")])
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_a2xw1")
+enemy_outline_material = SubResource("ShaderMaterial_lrdsu")
 
 [node name="GameplayUi" type="Control" parent="."]
 z_index = 100

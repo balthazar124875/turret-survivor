@@ -25,6 +25,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		target = get_random_target()
 
+func color_bullet(color: Color):
+	var sprite_node = get_node_or_null("AnimatedSprite2D")
+	if sprite_node == null:
+		sprite_node = get_node_or_null("Sprite2D")
+	if sprite_node != null:
+		sprite_node.modulate = color
+
 func get_random_target() -> Node2D:
 	var enemies = get_node("/root/EmilScene/Enemies").get_children()
 	return enemies.pick_random() if enemies.size() > 0 else null
