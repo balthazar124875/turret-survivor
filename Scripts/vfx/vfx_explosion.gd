@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func _on_body_entered(body):
 	if body is Enemy and body.is_alive():  # Replace with your enemy script class name
-		body.take_damage(damage, "Corpse Explosion", GlobalEnums.DAMAGE_TYPES.FIRE) 
+		body.take_hit(damage, "Corpse Explosion", GlobalEnums.DAMAGE_TYPES.FIRE) 
 			
 func set_particle_scale(scale: float):
 	$GPUParticles2D.process_material.scale_min = scale

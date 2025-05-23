@@ -3,7 +3,7 @@ extends BaseGun
 @export var chains = 3
 @export var chain_range = 400
 
-var discharge = false
+var forking = false
 
 func get_target() -> Node:
 	var closest_enemy: Node = null
@@ -48,7 +48,7 @@ func shoot(target_enemy: Node) -> void:
 		else:
 			break; 	
 		
-	if(discharge):
+	if(forking):
 		var chainAmount = chains
 		for i in targets:
 			var newTargetList: Array[Node] = []
@@ -78,10 +78,7 @@ func shoot(target_enemy: Node) -> void:
 		add_child(bullet)
 		bullet.set_targets(i)
 		for enemy in i:
-			enemy.take_damage(damage * player.damageMultiplier * gun_damage_multiplier, "Chain Lightning", GlobalEnums.DAMAGE_TYPES.LIGHTNING)
-			if(discharge):
-				#do knockback on enemy
-				pass
+			enemy.take_hit(damage * player.damageMultiplier * gun_damage_multiplier, "Chain Lightning", GlobalEnums.DAMAGE_TYPES.LIGHTNING)
 			
 		call_deferred("_delete_after_time", bullet_life_time, bullet)
 	
@@ -97,14 +94,14 @@ func apply_level_up():
 		chains += 2
 		return
 	if(level == 10):
-		discharge = true
+		forking = true
 		return
 	
 	match level % 5:
 		1:
 			chain_range += 25
 		2:
-			cooldown *= 0.95
+			cooldown *= 0.9
 		3:
 			range += 50
 		4:

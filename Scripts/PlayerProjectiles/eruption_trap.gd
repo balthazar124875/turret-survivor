@@ -4,6 +4,10 @@ extends Trap
 
 @export var eruption_vfx: PackedScene
 
+var ignites: bool
+var ignite_duration: float
+var ignite_damage: float
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -18,6 +22,10 @@ func trigger_trap():
 			if enemy.is_inside_tree() && enemy.is_alive():
 				var distance = global_position.distance_to(enemy.global_position)
 				if (distance < eruption_radius):
-					enemy.take_damage(base_damage, "Eruption Trap", GlobalEnums.DAMAGE_TYPES.FIRE)
-						
+					if(ignites):
+						var burnEffect = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.BURNING, ignite_duration, ignite_damage)
+						enemy.take_hit(base_damage, "Eruption Trap", GlobalEnums.DAMAGE_TYPES.FIRE, [burnEffect])
+					else:
+						enemy.take_hit(base_damage, "Eruption Trap", GlobalEnums.DAMAGE_TYPES.FIRE)
+					
 	queue_free()

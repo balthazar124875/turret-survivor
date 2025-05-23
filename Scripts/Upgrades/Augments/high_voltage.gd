@@ -22,4 +22,4 @@ func knockback(enemy: Enemy, amount: float, damageType: GlobalEnums.DAMAGE_TYPES
 			enemy.add_displacement(vector_dir, knockback_speed)
 
 func get_description() -> String:
-	return "Direct lightning damage has a " + TooltipHelper.get_luck_scaling_format(procChance, luckScaling, player.luck) + "%[/color](" + str(procChance * 100) + "+" + str(procChance * luckScaling * 100) + "*" + IconHandler.get_icon_path("luck") + ") to knockback enemies"
+	return "Direct lightning damage has a " + TooltipHelper.get_luck_scaling_format(procChance, luckScaling, player.luck) + " chance to knockback enemies"
