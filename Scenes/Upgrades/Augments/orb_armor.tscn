@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bewdffrqqgrur"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Augments/orb_armor.gd" id="1_mqf7d"]
+[ext_resource type="Texture2D" uid="uid://suytr41riag5" path="res://Assets/Sprites/upgrades/augments/orb_armor_augment.png" id="2_ei0wx"]
+
+[node name="OrbArmor" type="Node2D"]
+script = ExtResource("1_mqf7d")
+passiveType = 6
+upgradeName = "Orb Armor"
+description = "Gain +1 armor per orb"
+type = 1
+icon = ExtResource("2_ei0wx")
