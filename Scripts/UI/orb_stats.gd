@@ -5,7 +5,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	SignalBus.orb_amount_increased.connect(update_orb_stat_labels)
+	SignalBus.orb_total_increased.connect(update_orb_stat_labels)
 	update_orb_stat_labels(OrbHandler.playerOrbs.size(), OrbHandler.maxNrInnerOrbs, OrbHandler.playerOrbsOuter.size(), OrbHandler.maxNrOuterOrbs)
 
 func update_orb_stat_labels(nrInner : int, maxInner : int, nrOuter : int, maxOuter : int) -> void:

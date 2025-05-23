@@ -11,7 +11,7 @@ func applyUpgradeToPlayer(player: Player) -> void:
 	super.applyUpgradeToPlayer(player);
 	OrbHandler.maxNrInnerOrbs += 2;
 	OrbHandler.maxNrOuterOrbs += 1; #TODO: Too good, increase outer by 1 per every other level
-	SignalBus.orb_amount_increased.emit(OrbHandler.playerOrbs.size(), OrbHandler.maxNrInnerOrbs, OrbHandler.playerOrbsOuter.size(), OrbHandler.maxNrOuterOrbs)
+	SignalBus.orb_total_increased.emit(OrbHandler.playerOrbs.size(), OrbHandler.maxNrInnerOrbs, OrbHandler.playerOrbsOuter.size(), OrbHandler.maxNrOuterOrbs)
 
 func apply_level_up():
 	#match level % 2:

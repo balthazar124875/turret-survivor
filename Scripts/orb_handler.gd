@@ -86,6 +86,7 @@ static func addPlayerBaseOrb(newOrb : BaseOrb):
 	if(playerOrbs.size() < maxNrInnerOrbs):
 		playerOrbs.push_back(newOrb);
 		orbInventory[newOrb.type] += 1;
+		SignalBus.orb_amount_increased.emit();
 		#Re-arrange them all in a circle
 		ArrangePlayerOrbs(playerOrbs);
 	else:
@@ -130,4 +131,4 @@ static func ArrangePlayerOrbs(orbListToArrange : Array):
 		x.currAngle = (orbListToArrange[0].currAngle) + angle*i;
 		i += 1;
 	
-	SignalBus.orb_amount_increased.emit(playerOrbs.size(), maxNrInnerOrbs, playerOrbsOuter.size(), maxNrOuterOrbs)
+	SignalBus.orb_total_increased.emit(playerOrbs.size(), maxNrInnerOrbs, playerOrbsOuter.size(), maxNrOuterOrbs)
