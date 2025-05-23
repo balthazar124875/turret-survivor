@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=67 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -51,8 +51,10 @@
 [ext_resource type="Script" path="res://Scripts/background.gd" id="49_rpqod"]
 [ext_resource type="Texture2D" uid="uid://tj3i0lmn0iqy" path="res://Assets/Sprites/Background/background_dungeon_2.png" id="51_ifjer"]
 [ext_resource type="Texture2D" uid="uid://drq40qtvwf5tj" path="res://Assets/Sprites/Background/background_field_2.png" id="52_2txh5"]
+[ext_resource type="Shader" path="res://Scenes/Shaders/simon_ek_scene.gdshader" id="52_mk7mp"]
+[ext_resource type="Texture2D" uid="uid://dwkn3crn28sa8" path="res://Assets/Sprites/Background/background_spooky_2.png" id="53_bqs3t"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rb7wu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a2xw1"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -118,6 +120,34 @@ shader_parameter/modulate_color = Vector4(1, 1, 1, 1)
 shader_parameter/progress = 0.0
 shader_parameter/margin = 0.02
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3hep3"]
+shader = ExtResource("52_mk7mp")
+shader_parameter/snes_transparency = false
+shader_parameter/gba_transparency = true
+shader_parameter/horizontal_scan_line = false
+shader_parameter/vertical_scan_line = false
+shader_parameter/enable_palette_cycling = false
+shader_parameter/sprite_scroll_direction = Vector2(0, 0)
+shader_parameter/sprite_scroll_speed = 0.01
+shader_parameter/gba_transparency_scroll_direction = Vector2(0, 0)
+shader_parameter/gba_transparency_scroll_speed = 0.0
+shader_parameter/gba_transparency_value = 0.5
+shader_parameter/horizontal_wave_amplitude = 0.01
+shader_parameter/horizontal_wave_frequency = 0.0
+shader_parameter/horizontal_wave_speed = 0.3
+shader_parameter/vertical_wave_amplitude = 0.01
+shader_parameter/vertical_wave_frequency = 0.0
+shader_parameter/vertical_wave_speed = 1.0
+shader_parameter/horizontal_deform_amplitude = 0.01
+shader_parameter/horizontal_deform_frequency = 1.0
+shader_parameter/horizontal_deform_speed = 1.0
+shader_parameter/vertical_deform_amplitude = 0.01
+shader_parameter/vertical_deform_frequency = 1.0
+shader_parameter/vertical_deform_speed = 0.5
+shader_parameter/width = 0.0
+shader_parameter/height = 0.0
+shader_parameter/palette_cycling_speed = 0.1
+
 [node name="EmilScene" type="Node2D"]
 script = ExtResource("1_itpwq")
 
@@ -132,7 +162,7 @@ healthRegeneration = 3.0
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_rb7wu")
+enemy_outline_material = SubResource("ShaderMaterial_a2xw1")
 
 [node name="GameplayUi" type="Control" parent="."]
 z_index = 100
@@ -1351,7 +1381,6 @@ position = Vector2(960, 540)
 script = ExtResource("47_45rtc")
 
 [node name="Background2" type="Sprite2D" parent="BackgroundHandler"]
-visible = false
 material = SubResource("ShaderMaterial_n4ukr")
 scale = Vector2(3, 3)
 texture = ExtResource("52_2txh5")
@@ -1362,6 +1391,13 @@ z_index = -1
 material = SubResource("ShaderMaterial_n4ukr")
 scale = Vector2(3, 3)
 texture = ExtResource("51_ifjer")
+script = ExtResource("49_rpqod")
+
+[node name="Background3" type="Sprite2D" parent="BackgroundHandler"]
+z_index = -1
+material = SubResource("ShaderMaterial_3hep3")
+scale = Vector2(3, 3)
+texture = ExtResource("53_bqs3t")
 script = ExtResource("49_rpqod")
 
 [connection signal="pressed" from="GameplayUi/LeftMenuColumn/RerollContainer/RerollButton" to="GameplayUi/LeftMenuColumn/ShopUpgrades" method="_on_reroll_button_pressed"]
