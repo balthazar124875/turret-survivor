@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://di3fcf5mxt36n"]
+[gd_scene load_steps=7 format=3 uid="uid://di3fcf5mxt36n"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_76bfq"]
 [ext_resource type="Texture2D" uid="uid://2xpx86r7u8la" path="res://Assets/Sprites/test_enemy_1.png" id="2_by6wh"]
 [ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="3_ewhym"]
+[ext_resource type="Texture2D" uid="uid://dsrwnxqh7gm46" path="res://Assets/Sprites/Enemies/eye_thing.png" id="4_fduhh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p7tvn"]
 animations = [{
@@ -16,8 +17,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lletx"]
-radius = 76.0
-height = 152.0
+radius = 37.5
+height = 94.0
 
 [node name="Enemy2" type="RigidBody2D"]
 position = Vector2(604, 288)
@@ -41,7 +42,7 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_p7tvn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.5, 5)
+position = Vector2(2, 8)
 shape = SubResource("CapsuleShape2D_lletx")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
@@ -51,12 +52,12 @@ scale = Vector2(1.4, 1.4)
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.466667)
 z_index = -10
-position = Vector2(0, 82)
-scale = Vector2(6.44, 5.32)
+position = Vector2(3, 61)
+scale = Vector2(3.6679, 3.03)
 texture = ExtResource("3_ewhym")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(-3, -2)
+position = Vector2(3, 17)
 scale = Vector2(3, 3)
-texture = ExtResource("2_by6wh")
+texture = ExtResource("4_fduhh")

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dhj14cqr4wl7i" path="res://Scenes/vfx/vfx_star_explosion.tscn" id="3_pqbyh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mkr22"]
-radius = 25.0
+radius = 62.2896
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0dg0d"]
 resource_local_to_scene = true
@@ -80,7 +80,6 @@ starSign = ExtResource("2_ttvwn")
 starExplosion = ExtResource("3_pqbyh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_mkr22")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

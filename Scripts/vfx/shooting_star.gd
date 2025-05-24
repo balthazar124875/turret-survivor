@@ -34,3 +34,9 @@ func _process(delta: float) -> void:
 		starSignInstance.queue_free();
 		queue_free();
 	pass
+	
+func damage_enemies_in_collider():
+	var enemies = []
+	for body in $CollisionShape2D.get_overlapping_bodies():
+		if body is Enemy:  
+			
