@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dhj14cqr4wl7i" path="res://Scenes/vfx/vfx_star_explosion.tscn" id="3_pqbyh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mkr22"]
-radius = 62.2896
+radius = 160.378
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0dg0d"]
 resource_local_to_scene = true
