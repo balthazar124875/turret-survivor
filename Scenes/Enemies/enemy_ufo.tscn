@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://bue25mmhxqpqh"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_n038x"]
+[ext_resource type="Texture2D" uid="uid://dpcn4navygyv1" path="res://Assets/Sprites/little_enemy.png" id="2_f2lcd"]
+[ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="3_5x4xl"]
+[ext_resource type="Texture2D" uid="uid://dwg4wayqgxvwo" path="res://Assets/Sprites/Enemies/small_ufo.png" id="4_do8nx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_60s1w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p7tvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f2lcd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1wvhi"]
+radius = 28.0
+height = 58.0
+
+[node name="Enemy" type="RigidBody2D"]
+position = Vector2(604, 288)
+collision_layer = 2
+collision_mask = 4
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_n038x")
+speed = 60
+rotational_speed = 140
+max_health = 4
+health = 4
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_60s1w")
+sprite_frames = SubResource("SpriteFrames_p7tvn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+shape = SubResource("CapsuleShape2D_1wvhi")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.999999, -1)
+scale = Vector2(1.4, 1.4)
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.419608)
+z_index = -10
+position = Vector2(-0.999993, 29)
+scale = Vector2(2.15471, 1.79)
+texture = ExtResource("3_5x4xl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+scale = Vector2(3, 3)
+texture = ExtResource("4_do8nx")

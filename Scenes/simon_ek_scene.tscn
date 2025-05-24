@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=81 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -29,6 +29,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/sale_outline.gd" id="13_jowf6"]
 [ext_resource type="Resource" uid="uid://bul3ky4jfitsy" path="res://Resources/wave9.tres" id="13_yidmk"]
 [ext_resource type="Resource" path="res://Resources/wave10.tres" id="14_3ncf5"]
+[ext_resource type="Resource" uid="uid://cl8k4vxw56nif" path="res://Resources/wave11.tres" id="15_cdqcm"]
 [ext_resource type="PackedScene" uid="uid://bampk2ki2ygjd" path="res://Scenes/UI/damage_dictionary.tscn" id="18_dwmxg"]
 [ext_resource type="Theme" uid="uid://7qh40l0am5og" path="res://Themes/new_test.tres" id="21_uq2lv"]
 [ext_resource type="Script" path="res://Scripts/UI/TooltipManager.gd" id="22_q1apf"]
@@ -49,7 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://crnfw7u4yi5ga" path="res://Assets/Sprites/upgrades/luckybug.png" id="32_26hin"]
 [ext_resource type="Texture2D" uid="uid://bq1vwc7do4883" path="res://Assets/Sprites/upgrades/proj_speed_up.png" id="32_e3gei"]
 [ext_resource type="Script" path="res://Scripts/UI/damage_numbers_handler.gd" id="37_5o2m1"]
-[ext_resource type="StyleBox" uid="uid://e2ylx83bifj" path="res://Themes/augment.tres" id="38_xtrk1"]
+[ext_resource type="StyleBox" path="res://Themes/augment.tres" id="38_xtrk1"]
 [ext_resource type="Script" path="res://Scenes/UI/ui_augments.gd" id="39_j6pgw"]
 [ext_resource type="Script" path="res://Scripts/UI/upgrades_container.gd" id="40_5dn0k"]
 [ext_resource type="PackedScene" uid="uid://b28o0wogrqmsi" path="res://Scenes/UI/augment_handler.tscn" id="40_yymlw"]
@@ -65,9 +66,9 @@
 [ext_resource type="Shader" path="res://Scenes/Shaders/simon_ek_scene.gdshader" id="52_mk7mp"]
 [ext_resource type="Texture2D" uid="uid://dwkn3crn28sa8" path="res://Assets/Sprites/Background/background_spooky_2.png" id="53_bqs3t"]
 [ext_resource type="Script" path="res://Scripts/UI/lootbox_roll.gd" id="56_76q55"]
-[ext_resource type="PackedScene" uid="uid://b3hbh58fbjtka" path="res://Scenes/UI/lootbox_upgrade.tscn" id="67_b7gyy"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/lootbox_upgrade.tscn" id="67_b7gyy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ediig"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_up6rd"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -173,10 +174,10 @@ healthRegeneration = 3.0
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
-waves = Array[ExtResource("4_4h2fe")]([ExtResource("5_dajof"), ExtResource("6_wb1pu"), ExtResource("7_5jkau"), ExtResource("8_5cu7a"), ExtResource("9_4h6ve"), ExtResource("10_2ssat"), ExtResource("11_2kb38"), ExtResource("12_y5lg1"), ExtResource("13_yidmk"), ExtResource("14_3ncf5")])
+waves = Array[ExtResource("4_4h2fe")]([ExtResource("5_dajof"), ExtResource("6_wb1pu"), ExtResource("7_5jkau"), ExtResource("8_5cu7a"), ExtResource("9_4h6ve"), ExtResource("10_2ssat"), ExtResource("11_2kb38"), ExtResource("12_y5lg1"), ExtResource("13_yidmk"), ExtResource("14_3ncf5"), ExtResource("15_cdqcm")])
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_ediig")
+enemy_outline_material = SubResource("ShaderMaterial_up6rd")
 
 [node name="GameplayUi" type="Control" parent="."]
 z_index = 100

@@ -15,6 +15,8 @@ var damage_flash: bool = false
 var state: EnemyState
 
 @export var speed = 100
+@export var rotational_speed = 0
+@export var random_shake_movement_enabled = false
 @export var max_health = 5
 @export var health = 5
 @export var regen = 0
@@ -62,6 +64,7 @@ var displacement_speed: float
 
 var ice_block_instance;
 
+
 func init_timers():
 	add_child(damage_flash_timer)  # Add the Timer to the node tree
 	damage_flash_timer.wait_time = 0.2  # Set duration
@@ -79,7 +82,7 @@ func _ready() -> void:
 	player = get_node("/root/EmilScene/Player")
 	circle = player.get_node("./Circle")
 	target_position = player.global_position
-	
+
 func apply_dot_effects():
 	if(regen > 0):
 		regenerateHp()
@@ -196,6 +199,7 @@ func _process(delta: float) -> void:
 	if(current_action_speed == 0):
 		return #frozen / rooted
 		
+	# Wobble enemy sprite
 	$Sprite2D.rotation_degrees = sin(alive_time * 6.0) * 7
 	
 	if(state == EnemyState.DISPLACEMENT):
@@ -207,6 +211,12 @@ func _process(delta: float) -> void:
 		if !objectObstructingEnemy:
 			if current_position.distance_to(target_position) > 100:  # Adjust tolerance as needed
 				global_position += direction * speed * delta * current_action_speed
+				if rotational_speed != 0:
+					# decides direction of rotational movement
+					var direction_sign = 1
+					if random_shake_movement_enabled: 
+						direction_sign = randi_range(-1,1)
+					global_position += direction_sign * direction.rotated(deg_to_rad(90)) * rotational_speed * delta * current_action_speed
 			elif t > attack_cooldown: 
 				attack()
 		elif t > attack_cooldown:
@@ -215,6 +225,14 @@ func _process(delta: float) -> void:
 
 func attack() -> void:
 	t = 0
+	var tween = get_tree().create_tween()
+	var original_scale = $Sprite2D.scale
+	tween.set_parallel()
+	var attack_position = player.global_position * 0.3 + global_position * 0.70
+	tween.tween_property($Sprite2D, "global_position", attack_position, 0.2).set_trans(Tween.TRANS_SPRING)
+	tween.tween_property($Sprite2D, "scale", original_scale * 1.2, 0.2).set_trans(Tween.TRANS_SPRING)
+	tween.tween_property($Sprite2D, "scale", original_scale, 0.2).set_trans(Tween.TRANS_SPRING).set_delay(0.2)
+	tween.tween_property($Sprite2D, "global_position", global_position, 0.2).set_trans(Tween.TRANS_SPRING).set_delay(0.2)
 	player.take_damage(damage, self)
 
 func is_alive() -> bool:

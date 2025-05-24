@@ -51,7 +51,7 @@ func _final_align():
 
 	# Animate a small correction using Tween
 	var tween = get_tree().create_tween()
-	tween.tween_property(item_row, "position:x", item_row.position.x - item_offset, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(item_row, "position:x", item_row.position.x - item_offset, 0.5).set_trans(Tween.TRANS_ELASTIC)
 	
 	await get_tree().create_timer(1.5).timeout
 	visible = false
