@@ -9,8 +9,8 @@ radius = 25.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0dg0d"]
 resource_local_to_scene = true
 shader = ExtResource("2_lrttt")
-shader_parameter/SecondaaryColor = Color(0.471114, 0.464074, 0.117646, 1)
-shader_parameter/ColorIntensity = 2.406
+shader_parameter/SecondaryColor = Color(1, 1, 1, 1)
+shader_parameter/ColorIntensity = 1.0
 shader_parameter/AlphaClamping = 0.155
 shader_parameter/basic_texture = ExtResource("3_c8ej5")
 

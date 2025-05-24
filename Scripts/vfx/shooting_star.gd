@@ -12,12 +12,26 @@ var damage_max_health_percent = 20.0
 var source = "Shooting Star"
 @onready var player_damage_mult = get_node("/root/EmilScene/Player").damageMultiplier
 
+var random_damage_type;
+var starColor;
+
 func init(signPos : Vector2) -> void:
 	starSignInstance = starSign.instantiate();
 	get_tree().root.add_child(starSignInstance);
 	starSignInstance.global_position = signPos;
+	
+	var rndIdx = randi_range(0, GlobalEnums.ELEMENTAL_DAMAGE_TYPES.size() - 1)
+	random_damage_type = GlobalEnums.ELEMENTAL_DAMAGE_TYPES[rndIdx];
+	print(random_damage_type);
+	starColor = GlobalEnums.ShootingStarDamageColor[random_damage_type];
+	
+	$GPUParticles2D.material.set_shader_parameter("SecondaryColor", starColor);
+	$"GPUParticles2D/Static star".material.set_shader_parameter("SecondaryColor", starColor);
+	starSignInstance.get_node("GPUParticles2D").material.set_shader_parameter("SecondaryColor", starColor);
 	goalPos = signPos;
 	
+	var rng = RandomNumberGenerator.new()
+	distanceFromGoal = distanceFromGoal + rng.randf_range(0.0, 1.0); #Add a small delay
 	#The shooting star itself
 	self.global_position = goalPos * distanceFromGoal;
 	pass;
@@ -26,6 +40,7 @@ func CreateStarExplosion() -> void:
 	var starExplInst = starExplosion.instantiate();
 	get_tree().root.add_child(starExplInst);
 	starExplInst.global_position = goalPos;
+	starExplInst.get_node("GPUParticles2D").material.set_shader_parameter("SecondaryColor", starColor);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -41,7 +56,6 @@ func _process(delta: float) -> void:
 	
 func damage_enemies_in_collider():
 	var enemies = []
-	var random_damage_type = randi_range(0, GlobalEnums.DAMAGE_TYPES.size() - 1)
 	for body in get_overlapping_bodies():
 		if body is Enemy:  
 			body.take_hit(damage * player_damage_mult + damage_max_health_percent, source, random_damage_type)
