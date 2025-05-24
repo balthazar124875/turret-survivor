@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dns8c1v2a0267"
-path="res://.godot/imported/TowerV3.png-5680350e9c6a2f1e7cbbf3dd35b0df1e.ctex"
+uid="uid://b64g8q2vxh5v2"
+path="res://.godot/imported/Lemon.png-76a697f6dd9573742b1d9cd5801036bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/TowerV3.png"
-dest_files=["res://.godot/imported/TowerV3.png-5680350e9c6a2f1e7cbbf3dd35b0df1e.ctex"]
+source_file="res://Assets/Sprites/Players/Lemon.png"
+dest_files=["res://.godot/imported/Lemon.png-76a697f6dd9573742b1d9cd5801036bf.ctex"]
 
 [params]
 

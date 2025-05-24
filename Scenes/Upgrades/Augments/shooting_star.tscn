@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ceckm0ci8wv0g"]
+[gd_scene load_steps=4 format=3 uid="uid://q8133dm7xwik"]
 
 [ext_resource type="Script" path="res://Scripts/Upgrades/Augments/shooting_star.gd" id="1_8u6to"]
 [ext_resource type="Texture2D" uid="uid://bkpymun47webw" path="res://Assets/Sprites/upgrades/shooting_star.png" id="2_hqmvb"]

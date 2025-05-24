@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_sppr7"]
 [ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="2_8t7dp"]
-[ext_resource type="Texture2D" uid="uid://dns8c1v2a0267" path="res://Assets/Sprites/TowerV3.png" id="2_wdh5b"]
+[ext_resource type="Texture2D" uid="uid://dns8c1v2a0267" path="res://Assets/Sprites/Players/TowerV3.png" id="2_wdh5b"]
 [ext_resource type="Script" path="res://Scripts/orb_handler.gd" id="4_ydyco"]
 [ext_resource type="PackedScene" uid="uid://wj4fa28pbvk4" path="res://Scenes/circle.tscn" id="5_efrji"]
 
