@@ -8,5 +8,5 @@ script = ExtResource("1_2v838")
 upgradeName = "Heal King"
 description = "Increases healing by 100%."
 type = 1
-rarity = 3
+rarity = 4
 icon = ExtResource("2_ixy0u")

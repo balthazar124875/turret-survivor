@@ -9,5 +9,5 @@ passiveType = 6
 upgradeName = "Developer Console"
 description = "Select any upgrade in the game"
 type = 1
-rarity = 3
+rarity = 4
 icon = ExtResource("2_qtw1h")

@@ -70,7 +70,6 @@ vec2 calculate_move(vec2 dir, float spd){
 
 
 void fragment(){
-	
 	float def_x = calculate_diff(UV.x, horizontal_deform_amplitude, horizontal_deform_frequency, horizontal_deform_speed);
 	float def_y = calculate_diff(UV.y, vertical_deform_amplitude, vertical_deform_frequency, vertical_deform_speed);
 	float wav_x = calculate_diff(UV.y, horizontal_wave_amplitude, horizontal_wave_frequency, horizontal_wave_speed);

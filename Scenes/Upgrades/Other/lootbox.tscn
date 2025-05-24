@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwr1cgn7djp6j"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Other/lootbox.gd" id="1_f4dvj"]
+[ext_resource type="Texture2D" uid="uid://bcfy27lckkr32" path="res://Assets/Sprites/upgrades/lootbox.png" id="2_l6qdg"]
+
+[node name="Lootbox" type="Node2D"]
+script = ExtResource("1_f4dvj")
+upgradeName = "Lootbox"
+description = "Roll a random upgrade!"
+type = 5
+rarity = 1
+icon = ExtResource("2_l6qdg")

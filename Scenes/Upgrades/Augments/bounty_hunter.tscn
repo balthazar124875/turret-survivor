@@ -10,6 +10,6 @@ passiveType = 3
 upgradeName = "Bounty Hunter"
 description = "Rewards from champions are increased by 50%."
 type = 1
-rarity = 3
+rarity = 4
 icon = ExtResource("2_yjqd8")
 weight_reduction = 10

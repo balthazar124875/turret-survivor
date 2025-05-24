@@ -8,5 +8,5 @@ script = ExtResource("1_5dw4w")
 upgradeName = "Yummy coins."
 description = "Gain maximum health when spending money"
 type = 1
-rarity = 3
+rarity = 4
 icon = ExtResource("2_4hctg")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3hbh58fbjtka"]
+
+[ext_resource type="Texture2D" uid="uid://bc54if6q3hvdt" path="res://Assets/Sprites/upgrades/chain_lightning.png" id="1_wi1wl"]
+[ext_resource type="Texture2D" uid="uid://dpnyf8ftq0aek" path="res://Assets/Sprites/UI/outline.png" id="2_r4780"]
+
+[node name="UpgradeIcon" type="TextureRect"]
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("1_wi1wl")
+
+[node name="Rarity-Outline" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("2_r4780")

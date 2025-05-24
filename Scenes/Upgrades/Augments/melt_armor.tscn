@@ -9,6 +9,6 @@ passiveType = 3
 upgradeName = "Melt Armor"
 description = "Direct fire damage melts armor"
 type = 1
-rarity = 3
+rarity = 4
 icon = ExtResource("2_f54ma")
 weight_reduction = 10

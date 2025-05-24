@@ -11,4 +11,5 @@ passiveType = 1
 upgradeName = "Ice shards"
 description = "Frozen enemies shoot out ice shards in all directions when killed"
 type = 1
+rarity = 4
 icon = ExtResource("3_50u6d")

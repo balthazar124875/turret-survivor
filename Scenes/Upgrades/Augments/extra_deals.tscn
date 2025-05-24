@@ -9,6 +9,6 @@ passiveType = 3
 upgradeName = "Extra deals"
 description = "Increases amount of slots in the shop."
 type = 1
-rarity = 3
+rarity = 4
 icon = ExtResource("2_ypbbf")
 weight_reduction = 10

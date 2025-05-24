@@ -9,6 +9,6 @@ passiveType = 3
 upgradeName = "Toxic Blood"
 description = "Poison enemies that hit you equal to your health regen"
 type = 1
-rarity = 3
+rarity = 4
 icon = ExtResource("2_o18mn")
 weight_reduction = 10

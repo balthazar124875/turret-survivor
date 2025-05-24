@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=80 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -28,7 +28,7 @@
 [ext_resource type="Resource" uid="uid://cafpbt15yrcnl" path="res://Resources/wave8.tres" id="12_y5lg1"]
 [ext_resource type="Script" path="res://Scripts/UI/sale_outline.gd" id="13_jowf6"]
 [ext_resource type="Resource" uid="uid://bul3ky4jfitsy" path="res://Resources/wave9.tres" id="13_yidmk"]
-[ext_resource type="Resource" uid="uid://cuhq1q0hrbfeo" path="res://Resources/wave10.tres" id="14_3ncf5"]
+[ext_resource type="Resource" path="res://Resources/wave10.tres" id="14_3ncf5"]
 [ext_resource type="PackedScene" uid="uid://bampk2ki2ygjd" path="res://Scenes/UI/damage_dictionary.tscn" id="18_dwmxg"]
 [ext_resource type="Theme" uid="uid://7qh40l0am5og" path="res://Themes/new_test.tres" id="21_uq2lv"]
 [ext_resource type="Script" path="res://Scripts/UI/TooltipManager.gd" id="22_q1apf"]
@@ -49,7 +49,7 @@
 [ext_resource type="Texture2D" uid="uid://crnfw7u4yi5ga" path="res://Assets/Sprites/upgrades/luckybug.png" id="32_26hin"]
 [ext_resource type="Texture2D" uid="uid://bq1vwc7do4883" path="res://Assets/Sprites/upgrades/proj_speed_up.png" id="32_e3gei"]
 [ext_resource type="Script" path="res://Scripts/UI/damage_numbers_handler.gd" id="37_5o2m1"]
-[ext_resource type="StyleBox" path="res://Themes/augment.tres" id="38_xtrk1"]
+[ext_resource type="StyleBox" uid="uid://e2ylx83bifj" path="res://Themes/augment.tres" id="38_xtrk1"]
 [ext_resource type="Script" path="res://Scenes/UI/ui_augments.gd" id="39_j6pgw"]
 [ext_resource type="Script" path="res://Scripts/UI/upgrades_container.gd" id="40_5dn0k"]
 [ext_resource type="PackedScene" uid="uid://b28o0wogrqmsi" path="res://Scenes/UI/augment_handler.tscn" id="40_yymlw"]
@@ -64,8 +64,10 @@
 [ext_resource type="Texture2D" uid="uid://drq40qtvwf5tj" path="res://Assets/Sprites/Background/background_field_2.png" id="52_2txh5"]
 [ext_resource type="Shader" path="res://Scenes/Shaders/simon_ek_scene.gdshader" id="52_mk7mp"]
 [ext_resource type="Texture2D" uid="uid://dwkn3crn28sa8" path="res://Assets/Sprites/Background/background_spooky_2.png" id="53_bqs3t"]
+[ext_resource type="Script" path="res://Scripts/UI/lootbox_roll.gd" id="56_76q55"]
+[ext_resource type="PackedScene" uid="uid://b3hbh58fbjtka" path="res://Scenes/UI/lootbox_upgrade.tscn" id="67_b7gyy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lrdsu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vql1x"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -174,7 +176,7 @@ healthRegeneration = 3.0
 waves = Array[ExtResource("4_4h2fe")]([ExtResource("5_dajof"), ExtResource("6_wb1pu"), ExtResource("7_5jkau"), ExtResource("8_5cu7a"), ExtResource("9_4h6ve"), ExtResource("10_2ssat"), ExtResource("11_2kb38"), ExtResource("12_y5lg1"), ExtResource("13_yidmk"), ExtResource("14_3ncf5")])
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_lrdsu")
+enemy_outline_material = SubResource("ShaderMaterial_vql1x")
 
 [node name="GameplayUi" type="Control" parent="."]
 z_index = 100
@@ -1381,6 +1383,48 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 columns = 12
 
+[node name="Lootbox" type="Control" parent="GameplayUi"]
+visible = false
+anchors_preset = 0
+offset_left = 450.0
+offset_top = 30.0
+offset_right = 710.0
+offset_bottom = 63.0
+script = ExtResource("56_76q55")
+upgrade_element = ExtResource("67_b7gyy")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GameplayUi/Lootbox"]
+layout_mode = 0
+offset_right = 260.0
+offset_bottom = 32.0
+
+[node name="SubViewport" type="SubViewport" parent="GameplayUi/Lootbox/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(260, 32)
+render_target_update_mode = 0
+
+[node name="ItemRow" type="Control" parent="GameplayUi/Lootbox/SubViewportContainer/SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="GameplayUi/Lootbox"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -7.0
+offset_right = 38.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.1, 0.15)
+texture = ExtResource("7_vnyei")
+
 [node name="ParticleNode" type="Node2D" parent="."]
 
 [node name="EffectHandler" type="Node2D" parent="."]
@@ -1408,6 +1452,7 @@ script = ExtResource("49_rpqod")
 [node name="Background3" type="Sprite2D" parent="BackgroundHandler"]
 z_index = -1
 material = SubResource("ShaderMaterial_3hep3")
+position = Vector2(7, -2)
 scale = Vector2(3, 3)
 texture = ExtResource("53_bqs3t")
 script = ExtResource("49_rpqod")

@@ -11,6 +11,6 @@ passiveType = 1
 upgradeName = "Decay"
 description = "Enemies who die while poisoned transfer remaining poison to nearby ally"
 type = 1
-rarity = 3
+rarity = 4
 icon = ExtResource("3_nsuww")
 weight = 0

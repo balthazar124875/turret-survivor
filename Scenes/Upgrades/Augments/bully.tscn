@@ -10,6 +10,6 @@ passiveType = 1
 upgradeName = "Bully"
 description = "Displacing enemies deal 5% of their hp as magic damage"
 type = 1
-rarity = 3
+rarity = 4
 icon = ExtResource("2_12yiq")
 weight = 0

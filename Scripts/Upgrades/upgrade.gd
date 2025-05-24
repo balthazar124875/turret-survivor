@@ -16,6 +16,7 @@ enum UpgradeRarity {
 	UNCOMMON,
 	RARE,
 	LEGENDARY,
+	MYTHIC
 }
 
 @export var upgradeName : String;

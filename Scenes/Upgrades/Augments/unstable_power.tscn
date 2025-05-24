@@ -8,5 +8,5 @@ script = ExtResource("1_g1hbg")
 upgradeName = "Unstable Power"
 description = "Get varying buffs"
 type = 1
-rarity = 3
+rarity = 4
 icon = ExtResource("2_0y22l")

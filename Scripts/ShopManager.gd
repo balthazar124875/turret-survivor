@@ -9,7 +9,7 @@ class ShopUpgradeButton:
 	var cost: int;
 	var sale: bool
 	
-static var UPGRADES_LIST = [[],[],[],[]]; #2D array, access elems by UPGRADE_LIST[rarity] -> gives the list of upgrades
+static var UPGRADES_LIST = [[],[],[],[],[]]; #2D array, access elems by UPGRADE_LIST[rarity] -> gives the list of upgrades
 static var availableUpgradesList : Array = []; #This list will hold all upgrades that are available to use currently CURRENTLY UNUSED!!!
 
 #Rarity rates (rarity rate for common is always one minus the sum of the vars)
@@ -71,7 +71,7 @@ func _input(event):
 			
 func load_upgrades() -> void:
 			#Iterate all Upgrade scripts and put them in the global array
-	var folders = ["Circle", "Stats", "Weapons", "Passives", "Other"]
+	var folders = ["Circle", "Stats", "Weapons", "Passives", "Other", "Augments"]
 	for f in folders:
 		var dir = DirAccess.open("res://Scenes/Upgrades/" + f);
 		if dir:
@@ -320,3 +320,29 @@ func unlock_extra_slots() -> void:
 func update_doubles(amount: float):
 	doubles += amount
 	doubleBuyLabel.visible = true if doubles > 0 else false
+	
+func get_random_upgrade() -> Upgrade:
+	var flat_array = []
+	for sub_array in UPGRADES_LIST:
+		flat_array += sub_array  # Concatenate sub-arrays
+	if flat_array.size() > 0:
+		return flat_array[randi() % flat_array.size()]
+	return null  # Or some fallback value if the array is empty
+	
+func get_random_upgrades(count: int = 10) -> Array:
+	var flat_array = []
+
+	for sub_array in UPGRADES_LIST:
+		flat_array += sub_array
+
+	flat_array.shuffle()
+	return flat_array.slice(0, min(count, flat_array.size()))
+	
+func get_random_lootbox_upgrades() -> Upgrade:
+	var r = randf_range(0, 1)
+	
+	if(r < 0.01): return choose_weighted_random(UPGRADES_LIST[Upgrade.UpgradeRarity.MYTHIC]);
+	if(r < 0.03): return choose_weighted_random(UPGRADES_LIST[Upgrade.UpgradeRarity.LEGENDARY]);
+	if(r < 0.1): return choose_weighted_random(UPGRADES_LIST[Upgrade.UpgradeRarity.RARE]);
+	if(r < 0.25): return choose_weighted_random(UPGRADES_LIST[Upgrade.UpgradeRarity.UNCOMMON]);
+	return choose_weighted_random(UPGRADES_LIST[Upgrade.UpgradeRarity.COMMON]);
