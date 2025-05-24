@@ -11,6 +11,7 @@ extends Node2D
 @export var enemy_hp_scaling = 1.25
 @export var enemy_dmg_scaling = 1.15
 @export var enemy_cc_effectiveness_scaling = 0.96
+@export var enemy_speed_bonus_per_wave = 0.01
 @export var double_enemies_every = 10
 
 var rng = RandomNumberGenerator.new()
@@ -58,7 +59,8 @@ func spawn_enemy(enemyScene: PackedScene, possibleChampion: bool, position: Vect
 	call_deferred("_spawn", enemy)
 	enemy.modify_stats(pow(enemy_hp_scaling, current_wave / waves.size()),
 	 pow(enemy_dmg_scaling, current_wave / waves.size()),
-	 pow(enemy_cc_effectiveness_scaling, current_wave / waves.size()))
+	 pow(enemy_cc_effectiveness_scaling, current_wave / waves.size()),
+	 current_wave * enemy_speed_bonus_per_wave)
 	
 	var champ_r = randf_range(0, 1)
 	if(possibleChampion && champ_r < champion_spawn_rate):

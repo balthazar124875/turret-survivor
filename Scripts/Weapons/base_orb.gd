@@ -80,7 +80,6 @@ func _process(delta: float) -> void:
 			HitEnemy(regEnemy.enemy);
 			regEnemy.tick = 0.0;
 		
-	
 func ApplyVisualChanges() -> void:
 	$AnimatedSprite2D.scale *= 2.0;
 	$Area2D/CollisionShape2D.scale *= 2.0;

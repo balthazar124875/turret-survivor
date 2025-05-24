@@ -37,7 +37,7 @@ func get_random_target() -> Node2D:
 	return enemies.pick_random() if enemies.size() > 0 else null
 
 func HitEnemy(body : Enemy):
-	body.take_damage(damage, source, damage_type)  # Call the enemy's damage function
+	body.take_hit(damage, source, damage_type)  # Call the enemy's damage function
 	for e in effects:
 		e.call(body, self)
 	queue_free()

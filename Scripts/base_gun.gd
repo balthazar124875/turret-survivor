@@ -96,7 +96,7 @@ func get_target_area() -> Vector2: #defaults to getting closest
 
 #TODO: Set default behaviour to bullet travel forward
 func shoot(enemy: Node) -> void:
-	enemy.take_damage(damage)
+	enemy.take_hit(damage)
 	
 func shoot_area(position: Vector2) -> void:
 	var obj = bullet.instantiate()

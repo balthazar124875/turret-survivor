@@ -26,10 +26,7 @@ func paralyze(enemy: Enemy, amount: float, damageType: GlobalEnums.DAMAGE_TYPES,
 	if(damageType == GlobalEnums.DAMAGE_TYPES.POISON):
 		var rndNumber = randf_range(0.0, 1.0);
 		if(rndNumber <= procChance * (1 + (player.luck * luckScaling))):
-			var slow = EnemyStatusEffect.new()
-			slow.type = GlobalEnums.ENEMY_STATUS_EFFECTS.ROOTED
-			slow.duration = duration
-			slow.magnitude = 1
+			var slow = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.ROOTED, duration, 1)
 			enemy.apply_status_effect(slow)
 			
 func apply_level_up():

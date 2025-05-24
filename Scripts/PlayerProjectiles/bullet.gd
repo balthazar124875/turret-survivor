@@ -46,7 +46,7 @@ func init_with_direction(direction: Vector2, damage: float, speed: float, life_t
 	call_deferred("_delete_after_time", life_time)
 
 func HitEnemy(body : Enemy):
-	body.take_damage(damage, source, damage_type)  # Call the enemy's damage function
+	body.take_hit(damage, source, damage_type)  # Call the enemy's damage function
 	for e in effects:
 		e.call(body, self)
 

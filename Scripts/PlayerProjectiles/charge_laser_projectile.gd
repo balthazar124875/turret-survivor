@@ -54,7 +54,7 @@ func damage_enemies_in_collider():
 	var enemies = []
 	for body in laser_area.get_overlapping_bodies():
 		if body is Enemy:  # Check if it's an enemy
-			body.take_damage(damage_per_tick, source, damage_type)
+			body.take_hit(damage_per_tick, source, damage_type)
 	if ticks_done >= total_ticks:
 		damage_tick_timer.stop()
 		state = ChargeState.DECHARGE

@@ -91,7 +91,7 @@ func UpdateSingleFlameColliderPoints() -> void:
 	#await get_tree().process_frame
 
 func HitEnemy(body) -> void:
-	body.take_damage(damage*100.0, "Flamethrower", GlobalEnums.DAMAGE_TYPES.FIRE)
+	body.take_hit(damage*100.0, "Flamethrower", GlobalEnums.DAMAGE_TYPES.FIRE)
 
 func _physics_process(delta):
 	ProcessPerFrameData(delta);

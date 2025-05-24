@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgvprl7fit2me"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Passives/burning.gd" id="1_y2pfa"]
+[ext_resource type="Texture2D" uid="uid://dsrocoxhq0kgy" path="res://Assets/Sprites/upgrades/ignite.png" id="2_m2jqe"]
+
+[node name="Burning" type="Node2D"]
+script = ExtResource("1_y2pfa")
+burnAmount = 0.1
+passiveType = 2
+upgradeName = "Burny "
+description = "Fire damage can burn enemies"
+type = 1
+icon = ExtResource("2_m2jqe")

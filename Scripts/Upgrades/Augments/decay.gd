@@ -23,10 +23,7 @@ func ApplyEnemyOnKillPassive(killedEnemy : Enemy) ->void:
 					closest_enemy = enemy
 					
 		if(closest_enemy != null):
-			var poisonEffect = EnemyStatusEffect.new()
-			poisonEffect.type = GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED
-			poisonEffect.duration = poison_duration
-			poisonEffect.magnitude = enemyPoisonStacks.reduce(func(a, b): return a + b.magnitude  * 3 / b.duration, 0)
+			var poisonEffect = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED, poison_duration, enemyPoisonStacks.reduce(func(a, b): return a + b.magnitude  * 3 / b.duration, 0))
 			closest_enemy.apply_status_effect(poisonEffect)
 			
 			var newLine = spreadVfx.instantiate();

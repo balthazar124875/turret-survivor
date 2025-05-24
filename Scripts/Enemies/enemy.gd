@@ -85,12 +85,19 @@ func apply_dot_effects():
 		regenerateHp()
 	
 	# TODO: Sum dots seperately and add damage source categories for them
-	var damage_from_dots = active_status_effects.filter(
+	var damage_from_poison = active_status_effects.filter(
 			func(ase): return ase.type == GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED
 		).map(func(ase): return ase.magnitude).reduce(func(a, b): return  a + b, 0)
 		
-	if damage_from_dots > 0:
-		take_damage(damage_from_dots, 'Poison', GlobalEnums.DAMAGE_TYPES.POISON, true, false)
+	if damage_from_poison > 0:
+		take_damage(damage_from_poison, 'Poison', GlobalEnums.DAMAGE_TYPES.POISON, true, false)
+		
+	var damage_from_burning = active_status_effects.filter(
+		func(ase): return ase.type == GlobalEnums.ENEMY_STATUS_EFFECTS.BURNING
+	).map(func(ase): return ase.magnitude).reduce(func(a, b): return  a + b, 0)
+		
+	if damage_from_burning > 0:
+		take_damage(damage_from_burning, 'Burning', GlobalEnums.DAMAGE_TYPES.FIRE, true, false)
 
 func apply_status_effect(status_effect: EnemyStatusEffect):
 	active_status_effects.append(status_effect)
@@ -142,18 +149,12 @@ func erase_status_effect(status_effect: EnemyStatusEffect):
 		else:
 			current_action_speed = action_speed
 
-func increase_hp(multiplier: float) -> void:
-	health *= multiplier
-	max_health *= multiplier
-	
-func increase_damage(multiplier: float) -> void:
-	damage *= multiplier
-	
-func modify_stats(hp_mult: float, damage_mult: float, cc_effectiveness_mult: float) -> void:
+func modify_stats(hp_mult: float, damage_mult: float, cc_effectiveness_mult: float, speed_bonus: float) -> void:
 	health *= hp_mult
 	max_health *= hp_mult
 	damage *= damage_mult
 	cc_effectiveness *= cc_effectiveness_mult
+	speed *= (1 + speed_bonus)
 
 func regenerateHp():
 	health += max_health * regen
@@ -218,6 +219,17 @@ func attack() -> void:
 
 func is_alive() -> bool:
 	return health > 0
+
+func take_hit(amount: float,
+	source: String = '',
+	damage_type: GlobalEnums.DAMAGE_TYPES = GlobalEnums.DAMAGE_TYPES.PHYSICAL,
+	on_hit_effects: Array = [],
+	ignore_armor: bool = false) -> void:
+		take_damage(amount, source, damage_type, ignore_armor, true)
+		if(!isDead):
+			SignalBus.before_enemy_take_hit.emit(amount, damage_type, on_hit_effects)
+			for on_hit_effect in on_hit_effects:
+				apply_status_effect(on_hit_effect)
 
 func take_damage(
 	amount: float,
