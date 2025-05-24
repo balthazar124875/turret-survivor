@@ -57,6 +57,11 @@ func _process(delta: float) -> void:
 func damage_enemies_in_collider():
 	var enemies = []
 	for body in get_overlapping_bodies():
-		if body is Enemy:  
-			body.take_hit(damage * player_damage_mult + damage_max_health_percent, source, random_damage_type)
+		if body is Enemy:
+			  
+			if(random_damage_type == GlobalEnums.DAMAGE_TYPES.ICE):
+				var slow = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN, 3, 1)
+				body.take_hit(damage * player_damage_mult + damage_max_health_percent, source, random_damage_type, [slow])
+			else:
+				body.take_hit(damage * player_damage_mult + damage_max_health_percent, source, random_damage_type)
 			

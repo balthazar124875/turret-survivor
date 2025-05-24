@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/vfx/shooting_star.gd" id="1_yk322"]
 [ext_resource type="Shader" uid="uid://cakp1cy7773l7" path="res://vfxShaders/shooting_star.tres" id="2_hbu80"]
-[ext_resource type="PackedScene" uid="uid://v6gg3rwunt4p" path="res://Scenes/vfx/vfx_star_mark.tscn" id="2_ttvwn"]
-[ext_resource type="PackedScene" uid="uid://dhj14cqr4wl7i" path="res://Scenes/vfx/vfx_star_explosion.tscn" id="3_pqbyh"]
+[ext_resource type="PackedScene" path="res://Scenes/vfx/vfx_star_mark.tscn" id="2_ttvwn"]
+[ext_resource type="PackedScene" path="res://Scenes/vfx/vfx_star_explosion.tscn" id="3_pqbyh"]
 [ext_resource type="Texture2D" uid="uid://bqk7bbkd7hptt" path="res://Textures/star_filled_128x128.png" id="5_f0mao"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mkr22"]

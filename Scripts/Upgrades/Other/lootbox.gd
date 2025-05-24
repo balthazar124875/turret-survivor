@@ -15,9 +15,6 @@ func apply_level_up():
 	upgrade = shop_manager.get_random_lootbox_upgrades()
 	var random_upgrades = shop_manager.get_random_upgrades(15)
 	
-	for x in random_upgrades:
-		print(x.upgradeName)
-	
 	var array: Array[Upgrade] = []
 	array.append_array(random_upgrades)
 	array.append(upgrade)

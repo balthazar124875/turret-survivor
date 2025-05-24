@@ -67,7 +67,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/lootbox_roll.gd" id="56_76q55"]
 [ext_resource type="PackedScene" uid="uid://b3hbh58fbjtka" path="res://Scenes/UI/lootbox_upgrade.tscn" id="67_b7gyy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_131nl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ediig"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -176,7 +176,7 @@ healthRegeneration = 3.0
 waves = Array[ExtResource("4_4h2fe")]([ExtResource("5_dajof"), ExtResource("6_wb1pu"), ExtResource("7_5jkau"), ExtResource("8_5cu7a"), ExtResource("9_4h6ve"), ExtResource("10_2ssat"), ExtResource("11_2kb38"), ExtResource("12_y5lg1"), ExtResource("13_yidmk"), ExtResource("14_3ncf5")])
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_131nl")
+enemy_outline_material = SubResource("ShaderMaterial_ediig")
 
 [node name="GameplayUi" type="Control" parent="."]
 z_index = 100
@@ -1384,6 +1384,7 @@ scale = Vector2(2, 2)
 columns = 12
 
 [node name="Lootbox" type="Control" parent="GameplayUi"]
+visible = false
 anchors_preset = 0
 offset_left = 450.0
 offset_top = 30.0
@@ -1401,7 +1402,7 @@ offset_bottom = 32.0
 [node name="SubViewport" type="SubViewport" parent="GameplayUi/Lootbox/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(260, 32)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="ItemRow" type="Control" parent="GameplayUi/Lootbox/SubViewportContainer/SubViewport"]
 layout_mode = 3
@@ -1452,8 +1453,8 @@ script = ExtResource("49_rpqod")
 [node name="Background3" type="Sprite2D" parent="BackgroundHandler"]
 z_index = -1
 material = SubResource("ShaderMaterial_3hep3")
-position = Vector2(7, -2)
-scale = Vector2(3, 3)
+position = Vector2(4, -2)
+scale = Vector2(3.00937, 3)
 texture = ExtResource("53_bqs3t")
 script = ExtResource("49_rpqod")
 
