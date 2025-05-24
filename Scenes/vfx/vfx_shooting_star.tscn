@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/vfx/shooting_star.gd" id="1_yk322"]
 [ext_resource type="Shader" uid="uid://cakp1cy7773l7" path="res://vfxShaders/shooting_star.tres" id="2_hbu80"]
 [ext_resource type="PackedScene" uid="uid://v6gg3rwunt4p" path="res://Scenes/vfx/vfx_star_mark.tscn" id="2_ttvwn"]
-[ext_resource type="Texture2D" uid="uid://cnkc6t5yslb4d" path="res://Textures/star.png" id="3_3fmi5"]
 [ext_resource type="PackedScene" uid="uid://dhj14cqr4wl7i" path="res://Scenes/vfx/vfx_star_explosion.tscn" id="3_pqbyh"]
+[ext_resource type="Texture2D" uid="uid://bqk7bbkd7hptt" path="res://Textures/star_filled_128x128.png" id="5_f0mao"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mkr22"]
 radius = 160.378
@@ -12,10 +12,10 @@ radius = 160.378
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0dg0d"]
 resource_local_to_scene = true
 shader = ExtResource("2_hbu80")
-shader_parameter/SecondaaryColor = Color(0.471114, 0.464074, 0.117646, 1)
-shader_parameter/ColorIntensity = 2.406
-shader_parameter/AlphaClamping = 0.155
-shader_parameter/basic_texture = ExtResource("3_3fmi5")
+shader_parameter/SecondaryColor = Color(0.933333, 0.509804, 0.933333, 1)
+shader_parameter/ColorIntensity = 1.0
+shader_parameter/AlphaClamping = 0.779
+shader_parameter/basic_texture = ExtResource("5_f0mao")
 
 [sub_resource type="Curve" id="Curve_p7n5h"]
 _data = [Vector2(0, 0.296703), 0.0, 0.0, 0, 0, Vector2(0.0421941, 1), 0.0, 0.0, 0, 0, Vector2(0.578059, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

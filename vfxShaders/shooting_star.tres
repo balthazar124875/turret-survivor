@@ -24,7 +24,7 @@ expanded_output_ports = [0]
 source = 5
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_ntcu3"]
-parameter_name = "SecondaaryColor"
+parameter_name = "SecondaryColor"
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_iebmp"]
 operator = 2
@@ -46,7 +46,7 @@ resource_local_to_scene = true
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
-uniform vec4 SecondaaryColor : source_color;
+uniform vec4 SecondaryColor : source_color;
 uniform float ColorIntensity : hint_range(0, 10);
 uniform sampler2D basic_texture : source_color, filter_nearest, repeat_disable;
 uniform float AlphaClamping : hint_range(0, 1);
@@ -55,7 +55,7 @@ uniform float AlphaClamping : hint_range(0, 1);
 
 void fragment() {
 // ColorParameter:4
-	vec4 n_out4p0 = SecondaaryColor;
+	vec4 n_out4p0 = SecondaryColor;
 
 
 // FloatParameter:7
@@ -104,7 +104,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-608.495, -124.542)
+graph_offset = Vector2(-1685.64, -618.47)
 mode = 1
 flags/light_only = false
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_libh5")

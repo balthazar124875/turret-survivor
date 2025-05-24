@@ -10,7 +10,7 @@ var damage_type_colors = {
 	GlobalEnums.DAMAGE_TYPES.PHYSICAL: "white",
 	GlobalEnums.DAMAGE_TYPES.MAGIC: "purple",
 	GlobalEnums.DAMAGE_TYPES.ICE: "cyan",
-	GlobalEnums.DAMAGE_TYPES.FIRE: "red",
+	GlobalEnums.DAMAGE_TYPES.FIRE: "orange",
 	GlobalEnums.DAMAGE_TYPES.POISON: "green",
 	GlobalEnums.DAMAGE_TYPES.LIGHTNING: "yellow"
 }
