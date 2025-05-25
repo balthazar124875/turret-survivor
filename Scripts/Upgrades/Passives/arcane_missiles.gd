@@ -17,10 +17,10 @@ func aracane_missile_proc_check(enemy: Enemy, amount: float, damageType: GlobalE
 	if(damageType == GlobalEnums.DAMAGE_TYPES.MAGIC && damage_source != source):
 		var rndNumber = randf_range(0.0, 1.0);
 		if(rndNumber <= procChance * (1 + (player.luck * luckScaling))):
-			print(procChance * (1 + (player.luck * luckScaling)))
-			print("procChance: ", procChance)
-			print("player.luck: ", player.luck)
-			print("luckScaling: " , luckScaling)
+			#print(procChance * (1 + (player.luck * luckScaling)))
+			#print("procChance: ", procChance)
+			#print("player.luck: ", player.luck)
+			#print("luckScaling: " , luckScaling)
 
 			create_arcane_missile()
 

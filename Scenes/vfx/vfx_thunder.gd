@@ -1,7 +1,7 @@
 extends Node2D
 
 var animPlayer;
-var aliveTime = 2.0;
+@export var aliveTime = 2.0;
 var damage_per_second = 100
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -177,7 +177,7 @@ func modify_stat(stat: GlobalEnums.PLAYER_STATS, amount: float, source: String =
 			SignalBus.stat_updated.emit(stat, self.extraPierce, amount)
 		GlobalEnums.PLAYER_STATS.BONUS_BOUNCE:
 			self.extraBounce += amount
-			SignalBus.stat_updated.emit(stat, self.extraBounce + 1, amount)
+			SignalBus.stat_updated.emit(stat, self.extraBounce, amount)
 
 func GetDamageMultiplier(damage_type : GlobalEnums.DAMAGE_TYPES, enemyPos : Vector2) -> float:
 	var damage_multiplier = damage_type_multipliers[damage_type]

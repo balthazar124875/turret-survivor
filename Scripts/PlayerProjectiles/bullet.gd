@@ -58,18 +58,16 @@ func _on_body_entered(body):
 			pierce -= 1;
 			return
 		
+		if(bounce >= 1):
+			bounce -= 1;
+			direction = direction.rotated(deg_to_rad(randf_range(90, 270)))
+			self.rotation = direction.angle()
+			self.damage *= 0.5
+			return
+		
 		if(pierce == 0 && bounce == 0):
 			queue_free()  # Destroy the bullet
 			return
-			
-		var rng = RandomNumberGenerator.new()
-		var rndNumber = rng.randf_range(0.0, 1);
-		if(bounce > rndNumber):
-			direction = direction.rotated(deg_to_rad(rng.randf_range(90, 270)))
-			self.rotation = direction.angle()
-			self.damage *= 0.5
-		else:
-			queue_free()
 	
 func color_bullet(color: Color):
 	var sprite_node = get_node_or_null("AnimatedSprite2D")
@@ -83,7 +81,6 @@ func _delete_after_time(timeout):
 	await get_tree().create_timer(timeout).timeout
 	
 	if(life_time > 0):
-		print(life_time)
 		call_deferred("_delete_after_time", life_time)
 	else:
 		queue_free()

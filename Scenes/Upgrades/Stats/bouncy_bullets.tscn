@@ -6,7 +6,7 @@
 [node name="BouncyBullets" type="Node2D"]
 script = ExtResource("1_27yxo")
 stat_type = 14
-amount = 0.1
+amount = 1.0
 upgradeName = "Bouncy Bullets"
 description = "Bullets bounce"
 type = 2

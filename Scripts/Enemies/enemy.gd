@@ -264,8 +264,6 @@ func take_damage(
 	health = max(0, health)
 	var damage_done = health_before - health
 	
-	spawn_one_shot_particles(damage_taken_particles, self.global_position)
-	
 	SignalBus.damage_done.emit(self, damage_done, damage_type, source, direct)
 	
 	if(health <= 0 && !isDead):
@@ -275,6 +273,8 @@ func take_damage(
 	
 
 func start_damage_flash():
+	if(!damage_flash):
+		spawn_one_shot_particles(damage_taken_particles, self.global_position)
 	damage_flash = true
 	damage_flash_timer.start(0.1) 
 	

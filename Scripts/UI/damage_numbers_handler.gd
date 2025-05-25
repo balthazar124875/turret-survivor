@@ -1,6 +1,7 @@
 extends Control
 
 var damage_numbers_scene = preload("res://Scenes/UI/damage_numbers.tscn")
+@onready var particle_node = get_node("/root/EmilScene/ParticleNode")
 
 @export var damage_number_active: bool = true
 
@@ -14,8 +15,18 @@ func _process(delta: float) -> void:
 
 func _spawn_numbers(enemy: Enemy, amount: float, damageType: GlobalEnums.DAMAGE_TYPES, source: String, direct: bool):
 	if(damage_number_active):
-		var new_damage_numbers = damage_numbers_scene.instantiate()
-		new_damage_numbers.global_position = enemy.position
-		new_damage_numbers.number = amount
-		new_damage_numbers.damage_type = damageType
-		get_node("/root/EmilScene/ParticleNode").add_child(new_damage_numbers)
+		
+		var number_exist = particle_node.get_node_or_null(str(enemy.get_instance_id()) + source)
+		if number_exist && number_exist.time_since_change < 0.1:
+			number_exist.global_position = enemy.global_position
+			number_exist.update_number(number_exist.number + amount)
+			
+		else:
+			var new_damage_numbers = damage_numbers_scene.instantiate()
+			new_damage_numbers.name = str(enemy.get_instance_id()) + source
+			new_damage_numbers.global_position = enemy.position
+			new_damage_numbers.number = amount
+			new_damage_numbers.damage_type = damageType
+			particle_node.add_child(new_damage_numbers)
+		
+		
