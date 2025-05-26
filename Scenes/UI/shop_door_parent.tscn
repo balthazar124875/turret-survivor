@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh7wpwn830yq8"]
+
+[ext_resource type="Texture2D" uid="uid://ch75yn1lg3g7j" path="res://Assets/Sprites/UI/shop_door.png" id="1_v7w6m"]
+[ext_resource type="Script" path="res://Scripts/UI/shop_door_handler.gd" id="2_17k8n"]
+
+[node name="ShopDoorParent" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ShopDoorMask" type="Sprite2D" parent="."]
+clip_children = 1
+z_index = 1
+position = Vector2(210.5, 281)
+scale = Vector2(3.00746, 2.42222)
+texture = ExtResource("1_v7w6m")
+
+[node name="ShopDoor" type="Sprite2D" parent="ShopDoorMask"]
+position = Vector2(0, -88)
+texture = ExtResource("1_v7w6m")
+offset = Vector2(0, -2.33333)
+script = ExtResource("2_17k8n")

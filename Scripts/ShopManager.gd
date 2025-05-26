@@ -54,6 +54,7 @@ func _ready() -> void:
 	load_upgrades()
 	initialize_buttons()
 	SignalBus.current_wave_updated.connect(new_wave_shop_reroll)
+	SignalBus.refresh_shop_upgrades.connect(fillShopUpgradeButtons)
 	empty_item_slot_texture = load("res://Assets/Sprites/upgrades/empty_upgrade_slot.png")
 
 func _input(event):
@@ -104,11 +105,11 @@ func initialize_buttons() -> void:
 			l.mouse_entered.connect(mouse_enter.bind(i))
 			l.mouse_exited.connect(mouse_exit)
 			
-		
+	
 	fillShopUpgradeButtons()
 
 func new_wave_shop_reroll(current_wave: int = 0) -> void:
-	fillShopUpgradeButtons()
+	SignalBus.animate_shop_upgrade_door.emit()
 	current_reroll_cost = base_reroll_cost
 
 #Call this on re-rolls to update all shopUpgrade buttons.
@@ -240,7 +241,7 @@ func _on_reroll_button_pressed() -> void:
 		return
 	player.modify_gold(-current_reroll_cost)
 	current_reroll_cost += base_reroll_cost
-	fillShopUpgradeButtons()
+	SignalBus.animate_shop_upgrade_door.emit()
 
 func choose_weighted_random(upgrades: Array):
 	var unrolled_upgrades = upgrades.filter(func(x): return !x.rolled)
