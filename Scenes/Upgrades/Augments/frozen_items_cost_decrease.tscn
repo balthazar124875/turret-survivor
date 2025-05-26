@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://5my4snvnriwv"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Augments/frozen_food.gd" id="1_vd3my"]
+[ext_resource type="Texture2D" uid="uid://c2w2xxk4xs2qu" path="res://Assets/Sprites/upgrades/frozen_cash.png" id="2_u0lyw"]
+
+[node name="Frozen food" type="Node2D"]
+script = ExtResource("1_vd3my")
+passiveType = 6
+upgradeName = "Frozen food"
+description = "Rewards from champions are increased by 50%."
+type = 1
+rarity = 4
+icon = ExtResource("2_u0lyw")
+weight_reduction = 10

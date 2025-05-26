@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=83 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -38,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://bsrsq4uahi4pd" path="res://Assets/Sprites/upgrades/health_regen.png" id="24_k15pe"]
 [ext_resource type="Texture2D" uid="uid://m2fbo1scyp7x" path="res://Assets/Sprites/upgrades/armor_up.png" id="25_mkusj"]
 [ext_resource type="Texture2D" uid="uid://bpp541wygu8nr" path="res://Assets/Sprites/upgrades/income_timer.png" id="26_ctdy5"]
+[ext_resource type="Script" path="res://Scripts/UI/TextEffects/frozen_text.gd" id="27_3hf6d"]
 [ext_resource type="Texture2D" uid="uid://bid3oqi85anxc" path="res://Assets/Sprites/upgrades/income_up.png" id="27_tsq1f"]
 [ext_resource type="Texture2D" uid="uid://dhym8e8ru5pga" path="res://Assets/Sprites/upgrades/damage_up.png" id="28_g4c07"]
 [ext_resource type="Texture2D" uid="uid://bok4vaa68chsr" path="res://Assets/Sprites/upgrades/chain_up.png" id="28_imtlq"]
@@ -68,7 +69,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/lootbox_roll.gd" id="56_76q55"]
 [ext_resource type="PackedScene" uid="uid://b3hbh58fbjtka" path="res://Scenes/UI/lootbox_upgrade.tscn" id="67_b7gyy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_py4bj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2s6uy"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -82,13 +83,16 @@ shader = ExtResource("11_co786")
 shader_parameter/time = 11.177
 shader_parameter/wave_width = 1.0
 shader_parameter/speed = 5.0
-shader_parameter/outline_color = Vector4(0, 0.75, 0, 1)
+shader_parameter/outline_color = Vector4(0, 0, 0, 1)
 shader_parameter/wave_count = 3
 shader_parameter/active = true
 shader_parameter/sharpness = 1.5
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_jhrc1"]
 script = ExtResource("12_fie7l")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_65edt"]
+script = ExtResource("27_3hf6d")
 
 [sub_resource type="Gradient" id="Gradient_e11lr"]
 colors = PackedColorArray(0.929412, 0.717647, 0.227451, 1, 0.972549, 0.901961, 0.541176, 1)
@@ -177,7 +181,7 @@ healthRegeneration = 3.0
 waves = Array[ExtResource("4_4h2fe")]([ExtResource("5_dajof"), ExtResource("6_wb1pu"), ExtResource("7_5jkau"), ExtResource("8_5cu7a"), ExtResource("9_4h6ve"), ExtResource("10_2ssat"), ExtResource("11_2kb38"), ExtResource("12_y5lg1"), ExtResource("13_yidmk"), ExtResource("14_3ncf5"), ExtResource("15_cdqcm")])
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_py4bj")
+enemy_outline_material = SubResource("ShaderMaterial_2s6uy")
 
 [node name="GameplayUi" type="Control" parent="."]
 z_index = 100
@@ -307,6 +311,20 @@ text = "[jump]-50%[/jump]
 "
 custom_effects = [SubResource("RichTextEffect_jhrc1")]
 
+[node name="FROZEN" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton1"]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_right = 74.0
+offset_bottom = 25.0
+rotation = 0.785398
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+bbcode_enabled = true
+text = "[frozen]FROZEN[/frozen]
+"
+custom_effects = [SubResource("RichTextEffect_65edt")]
+
 [node name="ShopUpgradeButton2" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
 button_mask = 3
@@ -350,6 +368,20 @@ text = "[jump]-50%[/jump]
 "
 custom_effects = [SubResource("RichTextEffect_jhrc1")]
 
+[node name="FROZEN" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton2"]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_right = 74.0
+offset_bottom = 25.0
+rotation = 0.785398
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+bbcode_enabled = true
+text = "[frozen]FROZEN[/frozen]
+"
+custom_effects = [SubResource("RichTextEffect_65edt")]
+
 [node name="ShopUpgradeButton3" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
 button_mask = 3
@@ -392,6 +424,20 @@ bbcode_enabled = true
 text = "[jump]-50%[/jump]
 "
 custom_effects = [SubResource("RichTextEffect_jhrc1")]
+
+[node name="FROZEN" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton3"]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_right = 74.0
+offset_bottom = 25.0
+rotation = 0.785398
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+bbcode_enabled = true
+text = "[frozen]FROZEN[/frozen]
+"
+custom_effects = [SubResource("RichTextEffect_65edt")]
 
 [node name="LockButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton3"]
 layout_mode = 0
@@ -444,6 +490,20 @@ text = "[jump]-50%[/jump]
 "
 custom_effects = [SubResource("RichTextEffect_jhrc1")]
 
+[node name="FROZEN" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton4"]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_right = 74.0
+offset_bottom = 25.0
+rotation = 0.785398
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+bbcode_enabled = true
+text = "[frozen]FROZEN[/frozen]
+"
+custom_effects = [SubResource("RichTextEffect_65edt")]
+
 [node name="LockButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton4"]
 layout_mode = 0
 offset_left = -0.5
@@ -495,6 +555,20 @@ text = "[jump]-50%[/jump]
 "
 custom_effects = [SubResource("RichTextEffect_jhrc1")]
 
+[node name="FROZEN" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton5"]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_right = 74.0
+offset_bottom = 25.0
+rotation = 0.785398
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+bbcode_enabled = true
+text = "[frozen]FROZEN[/frozen]
+"
+custom_effects = [SubResource("RichTextEffect_65edt")]
+
 [node name="ShopUpgradeButton6" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
 button_mask = 3
@@ -538,6 +612,20 @@ text = "[jump]-50%[/jump]
 "
 custom_effects = [SubResource("RichTextEffect_jhrc1")]
 
+[node name="FROZEN" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton6"]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_right = 74.0
+offset_bottom = 25.0
+rotation = 0.785398
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+bbcode_enabled = true
+text = "[frozen]FROZEN[/frozen]
+"
+custom_effects = [SubResource("RichTextEffect_65edt")]
+
 [node name="ShopUpgradeButton7" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades"]
 layout_mode = 2
 button_mask = 3
@@ -580,6 +668,20 @@ bbcode_enabled = true
 text = "[jump]-50%[/jump]
 "
 custom_effects = [SubResource("RichTextEffect_jhrc1")]
+
+[node name="FROZEN" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton7"]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_right = 74.0
+offset_bottom = 25.0
+rotation = 0.785398
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+bbcode_enabled = true
+text = "[frozen]FROZEN[/frozen]
+"
+custom_effects = [SubResource("RichTextEffect_65edt")]
 
 [node name="LockButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton7"]
 layout_mode = 0
@@ -632,6 +734,20 @@ bbcode_enabled = true
 text = "[jump]-50%[/jump]
 "
 custom_effects = [SubResource("RichTextEffect_jhrc1")]
+
+[node name="FROZEN" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton8"]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_right = 74.0
+offset_bottom = 25.0
+rotation = 0.785398
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+bbcode_enabled = true
+text = "[frozen]FROZEN[/frozen]
+"
+custom_effects = [SubResource("RichTextEffect_65edt")]
 
 [node name="LockButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton8"]
 layout_mode = 0

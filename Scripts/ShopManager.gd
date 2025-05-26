@@ -7,7 +7,8 @@ class ShopUpgradeButton:
 	var upgradeNode: Node2D;
 	var tooltip : String;
 	var cost: int;
-	var sale: bool
+	var sale: bool;
+	var locked: bool;
 	
 static var UPGRADES_LIST = [[],[],[],[],[]]; #2D array, access elems by UPGRADE_LIST[rarity] -> gives the list of upgrades
 static var availableUpgradesList : Array = []; #This list will hold all upgrades that are available to use currently CURRENTLY UNUSED!!!
@@ -35,6 +36,9 @@ var locked_buyable = [2, 6]
 var locked = [3, 7]
 
 var doubles: float = 0
+
+var freeze_limit = 1
+var frozen = []
 
 @export var sale_chance: float = 0.05
 
@@ -113,9 +117,12 @@ func new_wave_shop_reroll(current_wave: int = 0) -> void:
 
 #Call this on re-rolls to update all shopUpgrade buttons.
 func fillShopUpgradeButtons(current_wave: int = 0) -> void:
+	SignalBus.shop_refreshed.emit()
 	#TODO: Shuffle the upgrade list here from GameManager
 	var newUpgradeList = GenerateUpgradesListForShop(shopUpgradeButtons.size());
 	for i in shopUpgradeButtons.size():
+		if(shopUpgradeButtons[i].locked):
+			continue
 		shopUpgradeButtons[i].upgradeNode = newUpgradeList[i];
 		buttons[i].texture_normal = newUpgradeList[i].icon
 		var r = randf_range(0, 1)
@@ -201,11 +208,9 @@ func GenerateUpgradesListForShop(size : int) -> Array:
 	return shopUpgradeList;
 
 func _on_shop_upgrade_button_pressed(index: int) -> void:
-	var rightclick = false
-	if Input.is_mouse_button_pressed(1):
-		rightclick = false
-	elif Input.is_mouse_button_pressed(2):
-		rightclick = true
+	if Input.is_mouse_button_pressed(2):
+		lock_item(index)
+		return
 		
 	if shopUpgradeButtons[index].upgradeNode == null:
 		return
@@ -216,15 +221,26 @@ func _on_shop_upgrade_button_pressed(index: int) -> void:
 	buy_upgrade(index)
 
 	var x = shopUpgradeButtons[index]
-	if rightclick == false:
-		shopUpgradeButtons[index].upgradeNode = null
-		buttons[index].texture_normal = empty_item_slot_texture
-		tooltipMgr.HideTooltip();
-	else:
-		var text = shopUpgradeButtons[index].button.get_child(0) as RichTextLabel
-		text.scroll_active = false
-		if(shopUpgradeButtons[index].upgradeNode.upgradeAmount != 0):
-			text.text = "[right][color=black][font_size=12]" + str(shopUpgradeButtons[index].upgradeNode.upgradeAmount) + "[/font_size][/color][/right]"
+	#if rightclick == false:
+	shopUpgradeButtons[index].upgradeNode = null
+	shopUpgradeButtons[index].locked = false
+	shopUpgradeButtons[index].button.get_node("FROZEN").visible = shopUpgradeButtons[index].locked
+	buttons[index].texture_normal = empty_item_slot_texture
+	tooltipMgr.HideTooltip();
+	#else:
+		#var text = shopUpgradeButtons[index].button.get_child(0) as RichTextLabel
+		#text.scroll_active = false
+		#if(shopUpgradeButtons[index].upgradeNode.upgradeAmount != 0):
+			#text.text = "[right][color=black][font_size=12]" + str(shopUpgradeButtons[index].upgradeNode.upgradeAmount) + "[/font_size][/color][/right]"
+
+func lock_item(index: int) -> void:
+	if (!shopUpgradeButtons[index].locked):
+		var locked_amount = shopUpgradeButtons.reduce(func(a, b): return a +  (1 if b.locked else 0), 0)
+		if(locked_amount >= freeze_limit):
+			return
+	
+	shopUpgradeButtons[index].locked = !shopUpgradeButtons[index].locked
+	shopUpgradeButtons[index].button.get_node("FROZEN").visible = shopUpgradeButtons[index].locked
 
 func _on_shop_locked_button_pressed(index: int) -> void:
 	if(index in locked_buyable):
