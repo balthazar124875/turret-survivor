@@ -17,7 +17,6 @@ func _process(delta: float) -> void:
 
 func apply_level_up():
 	weight *= 2
-	print(weight)
 	offerHealth()
 
 func get_description() -> String:

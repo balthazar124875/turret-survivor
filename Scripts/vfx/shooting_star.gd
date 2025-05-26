@@ -22,7 +22,6 @@ func init(signPos : Vector2) -> void:
 	
 	var rndIdx = randi_range(0, GlobalEnums.ELEMENTAL_DAMAGE_TYPES.size() - 1)
 	random_damage_type = GlobalEnums.ELEMENTAL_DAMAGE_TYPES[rndIdx];
-	print(random_damage_type);
 	starColor = GlobalEnums.ShootingStarDamageColor[random_damage_type];
 	
 	$GPUParticles2D.material.set_shader_parameter("SecondaryColor", starColor);

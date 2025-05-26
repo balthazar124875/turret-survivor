@@ -4,6 +4,7 @@ extends Node2D
 @export var center: Node2D
 @export var enemy_spawn_rate_multiplier = 1
 @export var enemy_spawn_distance = 600
+@export var random_spawn_offset = 50
 @export var enemies: Node2D
 
 @export var champion_spawn_rate: float = 0.1 
@@ -53,8 +54,9 @@ func spawn_enemy(enemyScene: PackedScene, possibleChampion: bool, position: Vect
 		enemy.position = position
 	else:
 		var posRand = rng.randf_range(0, 360)
-		var xPos = center.position.x + cos(posRand) * enemy_spawn_distance
-		var yPos = center.position.y + sin(posRand) * enemy_spawn_distance
+		var distance = enemy_spawn_distance + rng.randi_range(0, random_spawn_offset)
+		var xPos = center.position.x + cos(posRand) * distance
+		var yPos = center.position.y + sin(posRand) * distance
 		enemy.position = Vector2(xPos, yPos)
 	call_deferred("_spawn", enemy)
 	enemy.modify_stats(pow(enemy_hp_scaling, current_wave / waves.size()),
