@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=85 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -31,6 +31,8 @@
 [ext_resource type="Resource" path="res://Resources/wave10.tres" id="14_3ncf5"]
 [ext_resource type="Resource" uid="uid://cl8k4vxw56nif" path="res://Resources/wave11.tres" id="15_cdqcm"]
 [ext_resource type="PackedScene" uid="uid://bampk2ki2ygjd" path="res://Scenes/UI/damage_dictionary.tscn" id="18_dwmxg"]
+[ext_resource type="Texture2D" uid="uid://ch75yn1lg3g7j" path="res://Assets/Sprites/UI/shop_door.png" id="20_0xokr"]
+[ext_resource type="Script" path="res://Scripts/UI/shop_door_handler.gd" id="21_s3o7k"]
 [ext_resource type="Theme" uid="uid://7qh40l0am5og" path="res://Themes/new_test.tres" id="21_uq2lv"]
 [ext_resource type="Script" path="res://Scripts/UI/TooltipManager.gd" id="22_q1apf"]
 [ext_resource type="Script" path="res://Scripts/UI/stat_display.gd" id="23_538x1"]
@@ -51,7 +53,7 @@
 [ext_resource type="Texture2D" uid="uid://crnfw7u4yi5ga" path="res://Assets/Sprites/upgrades/luckybug.png" id="32_26hin"]
 [ext_resource type="Texture2D" uid="uid://bq1vwc7do4883" path="res://Assets/Sprites/upgrades/proj_speed_up.png" id="32_e3gei"]
 [ext_resource type="Script" path="res://Scripts/UI/damage_numbers_handler.gd" id="37_5o2m1"]
-[ext_resource type="StyleBox" uid="uid://e2ylx83bifj" path="res://Themes/augment.tres" id="38_xtrk1"]
+[ext_resource type="StyleBox" path="res://Themes/augment.tres" id="38_xtrk1"]
 [ext_resource type="Script" path="res://Scenes/UI/ui_augments.gd" id="39_j6pgw"]
 [ext_resource type="Script" path="res://Scripts/UI/upgrades_container.gd" id="40_5dn0k"]
 [ext_resource type="PackedScene" uid="uid://b28o0wogrqmsi" path="res://Scenes/UI/augment_handler.tscn" id="40_yymlw"]
@@ -67,9 +69,9 @@
 [ext_resource type="Shader" path="res://Scenes/Shaders/simon_ek_scene.gdshader" id="52_mk7mp"]
 [ext_resource type="Texture2D" uid="uid://dwkn3crn28sa8" path="res://Assets/Sprites/Background/background_spooky_2.png" id="53_bqs3t"]
 [ext_resource type="Script" path="res://Scripts/UI/lootbox_roll.gd" id="56_76q55"]
-[ext_resource type="PackedScene" uid="uid://b3hbh58fbjtka" path="res://Scenes/UI/lootbox_upgrade.tscn" id="67_b7gyy"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/lootbox_upgrade.tscn" id="67_b7gyy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2s6uy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v8gab"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -169,8 +171,9 @@ shader_parameter/palette_cycling_speed = 0.1
 [node name="EmilScene" type="Node2D"]
 script = ExtResource("1_itpwq")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("2_n3kdf")]
-position = Vector2(960, 540)
 healthRegeneration = 3.0
 
 [node name="Marker2D" type="Marker2D" parent="Player"]
@@ -181,14 +184,16 @@ healthRegeneration = 3.0
 waves = Array[ExtResource("4_4h2fe")]([ExtResource("5_dajof"), ExtResource("6_wb1pu"), ExtResource("7_5jkau"), ExtResource("8_5cu7a"), ExtResource("9_4h6ve"), ExtResource("10_2ssat"), ExtResource("11_2kb38"), ExtResource("12_y5lg1"), ExtResource("13_yidmk"), ExtResource("14_3ncf5"), ExtResource("15_cdqcm")])
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_2s6uy")
+enemy_outline_material = SubResource("ShaderMaterial_v8gab")
 
 [node name="GameplayUi" type="Control" parent="."]
 z_index = 100
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
 script = ExtResource("5_1pdr0")
 
 [node name="UiOverlay" type="Sprite2D" parent="GameplayUi"]
@@ -221,6 +226,26 @@ offset_top = 24.0
 offset_right = 103.0
 offset_bottom = 47.0
 text = "#Outer orbs: "
+
+[node name="ShopDoorParent" type="Control" parent="GameplayUi/LeftMenuColumn"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ShopDoorMask" type="Sprite2D" parent="GameplayUi/LeftMenuColumn/ShopDoorParent"]
+clip_children = 1
+z_index = 1
+position = Vector2(210, 281)
+scale = Vector2(3.08209, 2.42222)
+texture = ExtResource("20_0xokr")
+
+[node name="ShopDoor" type="Sprite2D" parent="GameplayUi/LeftMenuColumn/ShopDoorParent/ShopDoorMask"]
+position = Vector2(-4.97699e-06, -88.7616)
+texture = ExtResource("20_0xokr")
+offset = Vector2(0, -2.33333)
+script = ExtResource("21_s3o7k")
 
 [node name="HealthUi" type="Control" parent="GameplayUi/LeftMenuColumn"]
 layout_mode = 1
@@ -257,10 +282,10 @@ value = 100.0
 
 [node name="ShopUpgrades" type="GridContainer" parent="GameplayUi/LeftMenuColumn"]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 182.0
-offset_right = 139.0
-offset_bottom = 542.0
+offset_left = 9.0
+offset_top = 178.0
+offset_right = 146.0
+offset_bottom = 539.0
 scale = Vector2(3, 3)
 theme_override_constants/h_separation = 2
 theme_override_constants/v_separation = 2
@@ -1550,7 +1575,6 @@ freezeEffect = ExtResource("42_c3t1l")
 
 [node name="BackgroundHandler" type="Node2D" parent="."]
 z_index = -2000
-position = Vector2(960, 540)
 script = ExtResource("47_45rtc")
 
 [node name="Background2" type="Sprite2D" parent="BackgroundHandler"]

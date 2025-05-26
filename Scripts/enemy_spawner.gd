@@ -25,7 +25,7 @@ var current_wave = 1
 @onready var wave_timer: Timer = get_node("WaveTimer")
 @onready var enemy_spawn_timer: Timer = get_node("EnemySpawnerTimer")
 
-#TODO: REMOVE THIS
+#TODO: REMOVE THIS DEBUG FEATURE
 func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_V:
@@ -41,7 +41,6 @@ func _process(delta: float) -> void:
 	wave_progress_bar.value = wave_timer.time_left
 
 func _on_enemy_spawner_timer_timeout() -> void:
-	
 	var r = rng.randi_range(0, current_wave)
 	var amount = 1 + (r / double_enemies_every) 
 	
@@ -58,6 +57,7 @@ func spawn_enemy(enemyScene: PackedScene, possibleChampion: bool, position: Vect
 		var xPos = center.position.x + cos(posRand) * distance
 		var yPos = center.position.y + sin(posRand) * distance
 		enemy.position = Vector2(xPos, yPos)
+		
 	call_deferred("_spawn", enemy)
 	enemy.modify_stats(pow(enemy_hp_scaling, current_wave / waves.size()),
 	 pow(enemy_dmg_scaling, current_wave / waves.size()),
