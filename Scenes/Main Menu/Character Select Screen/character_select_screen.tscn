@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnlnbvug3d6tw"]
+
+[ext_resource type="Script" path="res://Scripts/Menus/character_select_screen.gd" id="1_cp40a"]
+[ext_resource type="PackedScene" uid="uid://beeycdkbtpq0s" path="res://Scenes/Main Menu/Character Select Screen/lemon_select.tscn" id="2_hf2f7"]
+[ext_resource type="PackedScene" uid="uid://d1y3th5qku4c0" path="res://Scenes/Main Menu/Character Select Screen/player1_select.tscn" id="3_a8bii"]
+[ext_resource type="PackedScene" uid="uid://d3ilsjok78chr" path="res://Scenes/Main Menu/Character Select Screen/player3_select.tscn" id="4_70myy"]
+
+[node name="CharacterSelectScreen" type="Node2D"]
+script = ExtResource("1_cp40a")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background Color" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = -1037.0
+offset_top = -614.0
+offset_right = 1060.0
+offset_bottom = 644.0
+color = Color(0.0807833, 0.0807833, 0.0807833, 1)
+
+[node name="NameLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = -96.0
+offset_top = 64.0
+offset_right = 206.0
+offset_bottom = 201.0
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "Player"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Characters" type="Node2D" parent="."]
+position = Vector2(0, -200)
+
+[node name="Player1" parent="Characters" instance=ExtResource("3_a8bii")]
+position = Vector2(175, -10)
+
+[node name="Lemon" parent="Characters" instance=ExtResource("2_hf2f7")]
+position = Vector2(-205, -24)
+
+[node name="Player3" parent="Characters" instance=ExtResource("4_70myy")]
+position = Vector2(-7, -271)
