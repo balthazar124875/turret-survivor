@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://defi70snoa0ww"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Augments/berserk.gd" id="1_37tee"]
+[ext_resource type="Texture2D" uid="uid://mtiemx8atbo5" path="res://Assets/Sprites/upgrades/worldo.png" id="2_ww0ni"]
+
+[node name="Berserk" type="Node2D"]
+script = ExtResource("1_37tee")
+cooldown = 500.0
+passiveType = 3
+upgradeName = "Berserk"
+description = "Gives temporary immense power when approaching death"
+type = 1
+rarity = 4
+icon = ExtResource("2_ww0ni")

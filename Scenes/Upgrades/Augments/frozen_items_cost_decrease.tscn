@@ -7,7 +7,7 @@
 script = ExtResource("1_vd3my")
 passiveType = 6
 upgradeName = "Frozen food"
-description = "Rewards from champions are increased by 50%."
+description = "Frozen items in the shop will have thier cost reduced when shop is refreshed"
 type = 1
 rarity = 4
 icon = ExtResource("2_u0lyw")
