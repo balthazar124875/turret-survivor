@@ -12,3 +12,4 @@ description = "Add 3 income"
 type = 2
 rarity = 1
 icon = ExtResource("2_trtj2")
+weight = 0

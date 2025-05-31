@@ -25,8 +25,8 @@ func _before_hit(hit: Hit, enemy: Enemy):
 	for effect in statuses:
 		unique_effects[effect.type] = true
 	
-	var bonus_damage = 1 + (damage_bonus_per_effect * unique_effects.size())
-	hit.amount *= bonus_damage
+	var bonus_damage = hit.amount * (damage_bonus_per_effect * unique_effects.size())
+	hit.bonus_damage += bonus_damage
 				
 func apply_level_up():
 	if(upgradeAmount == 10):

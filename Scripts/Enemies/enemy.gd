@@ -172,12 +172,12 @@ func handle_color_change():
 	for status_effect in active_status_effects:
 		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.SLOWED:
 			color = Color(0, 0.5, 0.5, 1)
-		#if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN:
-		#	color = Color(0, 0, 1, 1)
 		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.ROOTED:
 			color = Color(0, 0.85, 0, 1)
 		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED:
 			color = Color(0.2, 0.70, 0.2, 1)
+		if status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.BURNING:
+			color = Color(0.7, 0.4, 0.1, 1)
 			
 	# TODO: Move this, but this sets the color to red while being damaged
 	if damage_flash: 
@@ -245,7 +245,7 @@ func take_hit(amount: float,
 	ignore_armor: bool = false) -> void:
 		var hit = Hit.new(amount, damage_type, on_hit_effects, source)
 		SignalBus.before_enemy_take_hit.emit(hit, self)
-		take_damage(hit.amount, source, hit.type, ignore_armor, true)
+		take_damage(hit.amount + hit.bonus_damage, source, hit.type, ignore_armor, true)
 		if(!isDead):
 			for on_hit_effect in hit.on_hit_effects:
 				apply_status_effect(on_hit_effect)

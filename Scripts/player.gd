@@ -26,8 +26,10 @@ var playerUpgrades: Array = [];
 
 @export var championRewardBonus: float = 1;
 
-var gold: int = 100;
-var gold_income: int = 5;
+var gold: int = 50;
+var gold_income: int = 10;
+var interest_per_amount: int = 10;
+var interest_cap: int = 10;
 
 var ENABLE_BOUNTY = false
 
@@ -61,11 +63,15 @@ func _input(event):
 				node.queue_free()
 	
 func _on_income_timer_timeout() -> void:
-	modify_gold(gold_income)
+	var interest = get_interest()
+	modify_gold(gold_income + interest)
 	for upgrade in get_passive_upgrades_of_type(PassiveUpgrade.PassiveUpgradeType.ON_INCOME_TICK):
 		upgrade.ApplyWhenIncomeTickEffect(self)
 	SignalBus.income_recieved.emit()
 
+func get_interest() -> int:
+	var interest = (gold / interest_per_amount) as int
+	return min(interest_cap, interest)
 
 func heal_damage(value: float, source: String) -> void:
 	var result = healing_multiplier * value
@@ -106,7 +112,7 @@ func modify_health_regeneration(value: float) -> void:
 
 func modify_gold(value: int) -> void:
 	gold += value
-	SignalBus.gold_amount_updated.emit(gold)
+	SignalBus.gold_amount_updated.emit()
 	if(value < 0):
 		SignalBus.gold_spent.emit(value)
 	

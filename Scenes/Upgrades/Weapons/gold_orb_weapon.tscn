@@ -11,3 +11,4 @@ upgradeName = "Gold Orb"
 description = "Spawn a gold orb spinning around you. Generates money when hitting enemies. Deals no damage"
 rarity = 2
 icon = ExtResource("3_el12u")
+weight = 0

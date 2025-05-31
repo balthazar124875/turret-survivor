@@ -1,7 +1,7 @@
-
 class_name Hit
 
 @export var amount: float
+@export var bonus_damage: float
 @export var type: GlobalEnums.DAMAGE_TYPES
 @export var on_hit_effects: Array[EnemyStatusEffect]
 @export var after_hit_effects: Array[Callable] = []
