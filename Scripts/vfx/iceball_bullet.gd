@@ -8,7 +8,7 @@ extends Bullet
 #	pass # Replace with function body.
 
 func HitEnemy(body : Enemy):
-	var slow = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN, 3, 1)
-	var effects: Array[EnemyStatusEffect] = [slow]
+	var freeze = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN, 3, 1)
+	var effects: Array[EnemyStatusEffect] = [freeze]
 	body.take_hit(damage, "Ice ball", GlobalEnums.DAMAGE_TYPES.ICE, effects)
 	SignalBus.on_enemy_hit.emit(body, self)
