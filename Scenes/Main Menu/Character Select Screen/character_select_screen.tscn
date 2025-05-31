@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnlnbvug3d6tw"]
+[gd_scene load_steps=9 format=3 uid="uid://bnlnbvug3d6tw"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/character_select_screen.gd" id="1_cp40a"]
 [ext_resource type="PackedScene" uid="uid://djk2xjnw738l7" path="res://Scenes/Main Menu/Character Select Screen/spell_desc_node.tscn" id="2_b5s0k"]
 [ext_resource type="Texture2D" uid="uid://3twshf16qkx4" path="res://Assets/Sprites/upgrades/augments/bounty_hunter.png" id="2_egitf"]
 [ext_resource type="PackedScene" uid="uid://beeycdkbtpq0s" path="res://Scenes/Main Menu/Character Select Screen/lemon_select.tscn" id="2_hf2f7"]
+[ext_resource type="Script" path="res://Scripts/vfx/camera_shake.gd" id="3_8h3ui"]
 [ext_resource type="PackedScene" uid="uid://d1y3th5qku4c0" path="res://Scenes/Main Menu/Character Select Screen/player1_select.tscn" id="3_a8bii"]
 [ext_resource type="PackedScene" uid="uid://d3ilsjok78chr" path="res://Scenes/Main Menu/Character Select Screen/player3_select.tscn" id="4_70myy"]
 
@@ -23,6 +24,7 @@ script = ExtResource("1_cp40a")
 spellDescNode = ExtResource("2_b5s0k")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_8h3ui")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

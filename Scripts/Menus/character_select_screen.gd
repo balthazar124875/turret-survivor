@@ -3,6 +3,7 @@ extends Node
 var characters : Array;
 var totalNrOfCharacters : int;
 var currentSelectedIdx : int;
+var selectedPlayer;
 
 #UI
 var nameLabel : Control;
@@ -33,7 +34,7 @@ func RenderPlayers(startIdx : int):
 		var currIdx = (idx + currentSelectedIdx) % characters.size();
 		characters[currIdx].global_position = pivotPos + Vector2(cos(startAngle + angleStep*idx), sin(startAngle + angleStep*idx))*radius;
 	
-	var selectedPlayer = characters[currentSelectedIdx] as PlayerSelectNode;
+	selectedPlayer = characters[currentSelectedIdx] as PlayerSelectNode;
 	nameLabel.text = selectedPlayer.playerName;
 	if selectedPlayer.isLocked:
 		nameLabel.text = "[center]???[/center]";
@@ -79,10 +80,24 @@ func ShiftRight() -> void:
 	RenderPlayers(currentSelectedIdx + 1)
 	pass
 
+func SelectCharacter() -> void:
+	if !selectedPlayer.isLocked:
+		var new_scene = load("res://Scenes/simon_ek_scene.tscn").instantiate()
+		#new_scene.set_character_data(my_character_data)  # Custom method in the new scene
+		var currScene = get_tree().current_scene;
+		get_tree().root.add_child(new_scene);
+		get_tree().current_scene = new_scene;
+		currScene.call_deferred("free");
+	else:
+		$Camera2D.start_shake(20);
+	pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("move_left"):
 		ShiftLeft();
 	if Input.is_action_just_pressed("move_right"):
 		ShiftRight();
+	if Input.is_action_just_pressed("confirm"):
+		SelectCharacter();
 	pass

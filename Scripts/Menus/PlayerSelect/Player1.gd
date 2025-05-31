@@ -5,8 +5,6 @@ func _ready() -> void:
 	playerName = "Player1x"
 	isLocked = false;
 	
-	startAugments.push_back(load("res://Scenes/Upgrades/Augments/yummy_coin.tscn"));
-	
 	pass # Replace with function body.
 
 
