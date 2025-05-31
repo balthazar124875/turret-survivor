@@ -2,6 +2,10 @@ class_name EnemyMovementHandler
 
 var enemy: Enemy
 
+var displacement_path: Path2D
+var displacement_path_follow: PathFollow2D
+var displacement_speed: float
+
 func _init(enemy: Enemy):
 	self.enemy = enemy
 
@@ -33,12 +37,12 @@ func add_displacement(displacement_vector: Vector2, speed: float) -> void:
 	
 	enemy.state = Enemy.EnemyState.DISPLACEMENT
 	SignalBus.enemy_displaced.emit(self)
-	enemy.displacement_speed = speed
+	displacement_speed = speed
 	create_curve(enemy.global_position + (displacement_vector)) #reduce with cc_effectiveness?
 	
 func create_curve(target_pos: Vector2, arc_height = 25):
-	enemy.displacement_path = Path2D.new()
-	enemy.displacement_path_follow = PathFollow2D.new()
+	displacement_path = Path2D.new()
+	displacement_path_follow = PathFollow2D.new()
 	
 	var curve = Curve2D.new()
 	curve.add_point(enemy.position)
@@ -47,14 +51,14 @@ func create_curve(target_pos: Vector2, arc_height = 25):
 	
 	var current_pos = enemy.global_position
 	
-	enemy.displacement_path_follow.loop = false
-	enemy.displacement_path.curve = curve
-	enemy.add_child(enemy.displacement_path)
-	enemy.displacement_path.add_child(enemy.displacement_path_follow)
+	displacement_path_follow.loop = false
+	displacement_path.curve = curve
+	enemy.add_child(displacement_path)
+	displacement_path.add_child(displacement_path_follow)
 
 func move_along_path(delta: float):
-	if enemy.displacement_path_follow.progress_ratio >= 1:
+	if displacement_path_follow.progress_ratio >= 1:
 		enemy.state = Enemy.EnemyState.MOVE
 		
-	enemy.displacement_path_follow.progress += enemy.displacement_speed * delta
-	enemy.position = enemy.displacement_path_follow.position
+	displacement_path_follow.progress += displacement_speed * delta
+	enemy.position = displacement_path_follow.position
