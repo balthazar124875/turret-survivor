@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://djk2xjnw738l7"]
+
+[ext_resource type="Texture2D" uid="uid://dahsvs0n0nnbe" path="res://Assets/Sprites/upgrades/augments/heal_king.png" id="1_6in6l"]
+
+[node name="SpellDescNode" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="SpellName" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 128.0
+offset_top = -8.0
+offset_right = 428.0
+offset_bottom = 22.0
+scale = Vector2(2, 2)
+text = "Heal king"
+
+[node name="SpellDesc" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 40.0
+offset_right = 728.0
+offset_bottom = 152.0
+text = "Heal everytime you take damage."
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 100.0
+offset_bottom = 100.0
+texture = ExtResource("1_6in6l")

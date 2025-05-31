@@ -6,12 +6,17 @@ var currentSelectedIdx : int;
 
 #UI
 var nameLabel : Control;
-var startAugments;
+var unlockConditionLabel : Control;
+var startAugmentsUI : Array;
+@export var spellDescNode : PackedScene;
+var augmentStatsControl : Control;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	characters = $Characters.get_children();
 	nameLabel = $Control/NameLabel;
+	unlockConditionLabel = $Control/UnlockConditionLabel;
+	augmentStatsControl = $Control/Stats/AugmentStats;
 	var startPlayerIdx = 0;
 	totalNrOfCharacters = characters.size();
 	RenderPlayers(startPlayerIdx);
@@ -31,9 +36,40 @@ func RenderPlayers(startIdx : int):
 	var selectedPlayer = characters[currentSelectedIdx] as PlayerSelectNode;
 	nameLabel.text = selectedPlayer.playerName;
 	if selectedPlayer.isLocked:
-		var animated_sprite = characters[currentSelectedIdx].get_node("AnimatedSprite2D");
-		animated_sprite.modulate = Color(0.1, 0.1, 0.1, 1)
 		nameLabel.text = "[center]???[/center]";
+		unlockConditionLabel.visible = true;
+		augmentStatsControl.visible = false;
+		unlockConditionLabel.text = selectedPlayer.unlockCondition;
+	else:
+		unlockConditionLabel.visible = false;
+		augmentStatsControl.visible = true;
+		RenderStartSpellsList(selectedPlayer);
+	
+	#Make locked characters black
+	for idx in characters.size():
+		var animated_sprite = characters[idx].get_node("AnimatedSprite2D");
+		var currPlayer = characters[idx] as PlayerSelectNode;
+		if currPlayer.isLocked:
+			animated_sprite.modulate = Color(0.1, 0.1, 0.1, 1)
+
+func RenderStartSpellsList(player : PlayerSelectNode) -> void:
+	for elem in startAugmentsUI:
+		elem.queue_free();
+	startAugmentsUI.clear();
+	
+	var startAugments =  player.startAugments;
+	var idx = 0;
+	for augment in startAugments:
+		var spellDescNode = spellDescNode.instantiate();
+		var augmentScript = augment.instantiate() as AugmentUpgrade;
+		spellDescNode.get_node("SpellName").text = augmentScript.upgradeName;
+		spellDescNode.get_node("SpellDesc").text = augmentScript.description;
+		spellDescNode.get_node("Icon").texture = augmentScript.icon;
+		startAugmentsUI.push_back(spellDescNode);
+		augmentStatsControl.add_child(spellDescNode);
+		spellDescNode.global_position.y += 120 * idx;
+		idx = idx + 1;
+	pass;
 
 func ShiftLeft() -> void:
 	RenderPlayers(currentSelectedIdx - 1)
