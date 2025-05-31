@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://v17df4excdr5"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Augments/freezy_frost.gd" id="1_7wigq"]
+[ext_resource type="Texture2D" uid="uid://bcggjp1hvfuxt" path="res://Assets/Sprites/upgrades/augments/freezy_frost.png" id="2_j3ptq"]
+
+[node name="Freezy Frost" type="Node2D"]
+script = ExtResource("1_7wigq")
+upgradeName = "Freezy Frost"
+description = "Cold damage might freeze enemies for seconds depending on damage dealt"
+type = 1
+rarity = 4
+icon = ExtResource("2_j3ptq")

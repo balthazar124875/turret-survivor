@@ -41,4 +41,4 @@ func get_description() -> String:
 func remove_freezes(enemy: Enemy):
 	var freezes = enemy.get_status(GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN)
 	for f in freezes:
-		enemy.erase_status_effect(f)
+		enemy.status_effect_handler.erase_status_effect(f)

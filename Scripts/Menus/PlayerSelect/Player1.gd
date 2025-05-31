@@ -4,10 +4,4 @@ extends PlayerSelectNode
 func _ready() -> void:
 	playerName = "Player1x"
 	isLocked = false;
-	
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

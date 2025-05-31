@@ -93,6 +93,9 @@ func apply_status_effect(status_effect: EnemyStatusEffect):
 func has_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> bool:
 	return status_effect_handler.has_status(status)
 
+func get_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> Array[EnemyStatusEffect]:
+	return active_status_effects.filter(func(ase): return ase.type == status)
+
 func modify_stats(hp_mult: float, damage_mult: float, cc_effectiveness_mult: float, speed_bonus: float) -> void:
 	health *= hp_mult
 	max_health *= hp_mult

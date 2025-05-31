@@ -20,10 +20,10 @@ func _ready() -> void:
 	augmentStatsControl = $Control/Stats/AugmentStats;
 	var startPlayerIdx = 0;
 	totalNrOfCharacters = characters.size();
-	RenderPlayers(startPlayerIdx);
+	RenderPlayers(startPlayerIdx, false);
 	pass # Replace with function body.
 
-func RenderPlayers(startIdx : int):
+func RenderPlayers(startIdx : int, tweening : bool):
 	currentSelectedIdx = startIdx;
 	currentSelectedIdx = currentSelectedIdx % characters.size();
 	var pivotPos = $Characters.global_position;
@@ -32,8 +32,15 @@ func RenderPlayers(startIdx : int):
 	var startAngle = deg_to_rad(90.0);
 	for idx in characters.size():
 		var currIdx = (idx + currentSelectedIdx) % characters.size();
-		characters[currIdx].global_position = pivotPos + Vector2(cos(startAngle + angleStep*idx), sin(startAngle + angleStep*idx))*radius;
-	
+		if !tweening:
+			characters[currIdx].pivotPos = pivotPos;
+			characters[currIdx].radius = radius;
+			characters[currIdx].curr_angle = startAngle + angleStep*idx;
+			characters[currIdx].global_position = pivotPos + Vector2(cos(startAngle + angleStep*idx), sin(startAngle + angleStep*idx))*radius;
+		else:
+			var target_angle = startAngle + angleStep*idx;
+			characters[currIdx].TweenToNewAngle(target_angle);
+			
 	selectedPlayer = characters[currentSelectedIdx] as PlayerSelectNode;
 	nameLabel.text = selectedPlayer.playerName;
 	if selectedPlayer.isLocked:
@@ -73,17 +80,17 @@ func RenderStartSpellsList(player : PlayerSelectNode) -> void:
 	pass;
 
 func ShiftLeft() -> void:
-	RenderPlayers(currentSelectedIdx - 1)
+	RenderPlayers(currentSelectedIdx - 1, true)
 	pass
 	
 func ShiftRight() -> void:
-	RenderPlayers(currentSelectedIdx + 1)
+	RenderPlayers(currentSelectedIdx + 1, true)
 	pass
 
 func SelectCharacter() -> void:
 	if !selectedPlayer.isLocked:
 		var new_scene = load("res://Scenes/simon_ek_scene.tscn").instantiate()
-		#new_scene.set_character_data(my_character_data)  # Custom method in the new scene
+		new_scene.set_player_init_data(selectedPlayer)
 		var currScene = get_tree().current_scene;
 		get_tree().root.add_child(new_scene);
 		get_tree().current_scene = new_scene;

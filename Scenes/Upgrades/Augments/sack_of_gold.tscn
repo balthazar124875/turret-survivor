@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://r0ah0d7fjtg5"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Augments/sack_of_gold.gd" id="1_m0gp5"]
+[ext_resource type="Texture2D" uid="uid://cwpi0jj0kqn8a" path="res://Assets/Sprites/upgrades/augments/sack_of_gold.png" id="2_t8hqm"]
+
+[node name="Sack Of Gold" type="Node2D"]
+script = ExtResource("1_m0gp5")
+passiveType = 6
+upgradeName = "Sack of gold"
+description = "Gives 500 gold"
+type = 1
+rarity = 4
+icon = ExtResource("2_t8hqm")
