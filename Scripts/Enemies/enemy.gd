@@ -54,9 +54,6 @@ var on_death_particles = preload("res://Scenes/Particles/TestParticle.tscn")
 var damage_taken_particles = preload("res://Scenes/Particles/OnHitParticle.tscn")
 
 var objectObstructingEnemy : Node2D = null;
-var displacement_path: Path2D
-var displacement_path_follow: PathFollow2D
-var displacement_speed: float
 
 @onready var movement_handler = EnemyMovementHandler.new(self)
 @onready var status_effect_handler = EnemyStatusEffectHandler.new(self)
