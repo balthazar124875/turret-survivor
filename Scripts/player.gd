@@ -35,11 +35,25 @@ var ENABLE_BOUNTY = false
 
 @onready var income_timer: Timer = get_node("IncomeTimer")
 @onready var damage_flash_timer: Timer = get_node("DamageFlashTimer")
+@onready var GameManager : GameManager = get_node("/root/EmilScene")
 
 var circle;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if(GameManager.playerInitData != null):
+		#Set the main player sprite
+		var sprite_frames = $AnimatedSprite2D.sprite_frames
+		var animation_name = $AnimatedSprite2D.animation
+		var frame_index = $AnimatedSprite2D.frame  #Current frame index
+		# Replace the texture of the current frame
+		sprite_frames.set_frame(animation_name, frame_index, GameManager.playerInitData.sprite);
+		
+		#Set starting augments
+		for augment in GameManager.playerInitData.startAugments:
+			var currAugment = augment.instantiate() as AugmentUpgrade;
+			currAugment.applyUpgradeToPlayer(self);
+	
 	circle = get_node("./Circle");
 	init_damage_type_multipliers()
 	SignalBus.enemy_killed.connect(_on_enemy_killed)

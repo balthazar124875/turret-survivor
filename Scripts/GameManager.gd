@@ -3,3 +3,9 @@
 extends Node
 
 class_name GameManager
+
+var playerInitData;
+
+func set_player_init_data(playerData : PlayerSelectNode) -> void:
+	playerInitData = playerData;
+	pass

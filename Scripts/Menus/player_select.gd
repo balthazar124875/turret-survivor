@@ -7,6 +7,7 @@ class_name PlayerSelectNode
 @export var startWeapons : Array[PackedScene];
 var isLocked : bool;
 @export var unlockCondition : String;
+@export var sprite : Texture2D;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

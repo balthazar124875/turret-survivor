@@ -83,7 +83,7 @@ func ShiftRight() -> void:
 func SelectCharacter() -> void:
 	if !selectedPlayer.isLocked:
 		var new_scene = load("res://Scenes/simon_ek_scene.tscn").instantiate()
-		#new_scene.set_character_data(my_character_data)  # Custom method in the new scene
+		new_scene.set_player_init_data(selectedPlayer)
 		var currScene = get_tree().current_scene;
 		get_tree().root.add_child(new_scene);
 		get_tree().current_scene = new_scene;
