@@ -8,6 +8,12 @@ enum EnemyState {
 	DISPLACEMENT
 }
 
+enum EnemyMovementType {
+	NORMAL,
+	ZIGZAG,
+	CIRCLE
+}
+
 var scene: PackedScene
 
 var damage_flash: bool = false
@@ -30,8 +36,14 @@ var current_action_speed: float = action_speed
 @export var armor: float = 0
 @export var cc_effectiveness = 1
 
-
 @export var champion_type: GlobalEnums.ENEMY_CHAMPION_TYPE = GlobalEnums.ENEMY_CHAMPION_TYPE.NONE
+
+@export var movement_type: EnemyMovementType = EnemyMovementType.NORMAL
+
+@export_group("ZigZag Movement")
+@export var zigzag_cooldown_time = 1
+@export var zigzag_tween_time = 0.5
+@export var zigzag_angle = 40
 
 var t : float
 

@@ -26,6 +26,7 @@ position = Vector2(604, 288)
 collision_layer = 2
 collision_mask = 4
 gravity_scale = 0.0
+lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_biolc")
