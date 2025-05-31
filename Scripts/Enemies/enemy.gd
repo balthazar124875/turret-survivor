@@ -47,7 +47,6 @@ var player
 var circle
 
 var damage_flash_timer = Timer.new()
-var dot_timer = Timer.new()
 var alive_time: float = 0.0
 var isDead : bool = false;
 
@@ -56,25 +55,15 @@ var damage_taken_particles = preload("res://Scenes/Particles/OnHitParticle.tscn"
 
 var objectObstructingEnemy : Node2D = null;
 
-var dot_tick_time = 0.5 
-
-var displacement_path: Path2D
-var displacement_path_follow: PathFollow2D
-var displacement_speed: float
-
-var ice_block_instance;
-
+@onready var movement_handler = EnemyMovementHandler.new(self)
+@onready var status_effect_handler = EnemyStatusEffectHandler.new(self)
+@onready var attack_handler = EnemyAttackHandler.new(self)
 
 func init_timers():
 	add_child(damage_flash_timer)  # Add the Timer to the node tree
 	damage_flash_timer.wait_time = 0.2  # Set duration
 	damage_flash_timer.one_shot = true  # Make it auto-stop
 	damage_flash_timer.timeout.connect(_on_damage_flash_timeout)
-	
-	add_child(dot_timer)
-	dot_timer.wait_time = dot_tick_time
-	dot_timer.start()
-	dot_timer.timeout.connect(apply_dot_effects)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -82,75 +71,18 @@ func _ready() -> void:
 	player = get_node("/root/EmilScene/Player")
 	circle = player.get_node("./Circle")
 	target_position = player.global_position
-
-func apply_dot_effects():
-	if(regen > 0):
-		regenerateHp()
 	
-	# TODO: Sum dots seperately and add damage source categories for them
-	var damage_from_poison = active_status_effects.filter(
-			func(ase): return ase.type == GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED
-		).map(func(ase): return ase.magnitude).reduce(func(a, b): return  a + b, 0)
-		
-	if damage_from_poison > 0:
-		take_damage(damage_from_poison, 'Poison', GlobalEnums.DAMAGE_TYPES.POISON, true, false)
-		
-	var damage_from_burning = active_status_effects.filter(
-		func(ase): return ase.type == GlobalEnums.ENEMY_STATUS_EFFECTS.BURNING
-	).map(func(ase): return ase.magnitude).reduce(func(a, b): return  a + b, 0)
-		
-	if damage_from_burning > 0:
-		take_damage(damage_from_burning, 'Burning', GlobalEnums.DAMAGE_TYPES.FIRE, true, false)
+func add_displacement(displacement_vector: Vector2, speed: float) -> void:
+	movement_handler.add_displacement(displacement_vector, speed)
 
 func apply_status_effect(status_effect: EnemyStatusEffect):
-	active_status_effects.append(status_effect)
-	var type = status_effect.type
-	if type in GlobalEnums.CROWD_CONTROL:
-		status_effect.duration *= cc_effectiveness
-		if(type == GlobalEnums.ENEMY_STATUS_EFFECTS.SLOWED):
-			status_effect.magnitude *= cc_effectiveness
-		
-		if(type == GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN):
-			if(ice_block_instance == null):
-				ice_block_instance = get_node("/root/EmilScene/EffectHandler").freezeEffect.instantiate();
-				add_child(ice_block_instance);
-				ice_block_instance.global_position = self.global_position;
-			status_effect.magnitude = 1;
-		
-		var crowd_control_effects = active_status_effects.filter(
-				func(ase): return ase.type in GlobalEnums.CROWD_CONTROL
-			)
-			
-		var highest_slow_amount = crowd_control_effects.map(func(ase): return ase.magnitude).max()
-			
-		if(highest_slow_amount != null):
-			current_action_speed = action_speed * (1 - highest_slow_amount)
-		else:
-			current_action_speed = action_speed
+	status_effect_handler.apply_status_effect(status_effect)
 
-func update_active_status_effect_durations(delta):
-	for status_effect in active_status_effects:
-		status_effect.duration -= delta
-		if status_effect.duration <= 0:
-			erase_status_effect(status_effect)
+func has_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> bool:
+	return status_effect_handler.has_status(status)
 
-func erase_status_effect(status_effect: EnemyStatusEffect):
-	active_status_effects.erase(status_effect)
-	
-	if(status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN && ice_block_instance != null && get_status(GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN).size() == 0):
-		ice_block_instance.queue_free();
-		
-	var type = status_effect.type
-	
-	if type in GlobalEnums.CROWD_CONTROL:
-		var highest_slow_amount = active_status_effects.filter(
-				func(ase): ase.type in GlobalEnums.CROWD_CONTROL
-			).map(func(ase): ase.magnitude).min()
-			
-		if(highest_slow_amount != null):
-			current_action_speed = action_speed * highest_slow_amount
-		else:
-			current_action_speed = action_speed
+func get_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> Array[EnemyStatusEffect]:
+	return active_status_effects.filter(func(ase): return ase.type == status)
 
 func modify_stats(hp_mult: float, damage_mult: float, cc_effectiveness_mult: float, speed_bonus: float) -> void:
 	health *= hp_mult
@@ -187,13 +119,12 @@ func handle_color_change():
 		$Sprite2D.material.set_shader_parameter("inner_color", color)
 	else:
 		$Sprite2D.modulate = color
-		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	alive_time += delta
 	t += delta * current_action_speed
-	update_active_status_effect_durations(delta)
+	status_effect_handler.update_active_status_effect_durations(delta)
 	handle_color_change()
 	
 	if(current_action_speed == 0):
@@ -201,39 +132,7 @@ func _process(delta: float) -> void:
 		
 	# Wobble enemy sprite
 	$Sprite2D.rotation_degrees = sin(alive_time * 6.0) * 7
-	
-	if(state == EnemyState.DISPLACEMENT):
-		move_along_path(delta)
-	else:
-		var current_position = global_position
-		var direction = (target_position - current_position).normalized()
-		# Move towards the target position
-		if !objectObstructingEnemy:
-			if current_position.distance_to(target_position) > 100:  # Adjust tolerance as needed
-				global_position += direction * speed * delta * current_action_speed
-				if rotational_speed != 0:
-					# decides direction of rotational movement
-					var direction_sign = 1
-					if random_shake_movement_enabled: 
-						direction_sign = randi_range(-1,1)
-					global_position += direction_sign * direction.rotated(deg_to_rad(90)) * rotational_speed * delta * current_action_speed
-			elif t > attack_cooldown: 
-				attack()
-		elif t > attack_cooldown:
-			t = 0
-			objectObstructingEnemy.take_damage(damage, self)
-
-func attack() -> void:
-	t = 0
-	var tween = get_tree().create_tween()
-	var original_scale = $Sprite2D.scale
-	tween.set_parallel()
-	var attack_position = player.global_position * 0.3 + global_position * 0.70
-	tween.tween_property($Sprite2D, "global_position", attack_position, 0.2).set_trans(Tween.TRANS_SPRING)
-	tween.tween_property($Sprite2D, "scale", original_scale * 1.2, 0.2).set_trans(Tween.TRANS_SPRING)
-	tween.tween_property($Sprite2D, "scale", original_scale, 0.2).set_trans(Tween.TRANS_SPRING).set_delay(0.2)
-	tween.tween_property($Sprite2D, "global_position", global_position, 0.2).set_trans(Tween.TRANS_SPRING).set_delay(0.2)
-	player.take_damage(damage, self)
+	movement_handler.handle_movement(delta)
 
 func is_alive() -> bool:
 	return health > 0
@@ -274,7 +173,6 @@ func take_damage(
 		die()
 	else:
 		start_damage_flash()
-	
 
 func start_damage_flash():
 	if(!damage_flash):
@@ -308,13 +206,7 @@ func GetObjectObstructingEnemy() -> Node2D:
 	
 func SetObjectObstructingEnemy(object : Node2D) -> void:
 	objectObstructingEnemy = object;
-
-func get_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> Array[EnemyStatusEffect]:
-	return active_status_effects.filter(func(ase): return ase.type == status)
-
-func has_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> bool:
-	return active_status_effects.any(func(ase): return ase.type == status)
-
+	
 func set_champion_type(type: GlobalEnums.ENEMY_CHAMPION_TYPE):
 	champion_type = type
 	match type:
@@ -335,35 +227,3 @@ func set_champion_type(type: GlobalEnums.ENEMY_CHAMPION_TYPE):
 			cc_effectiveness = 0
 		GlobalEnums.ENEMY_CHAMPION_TYPE.SPLITTING:
 			pass
-
-func add_displacement(displacement_vector: Vector2, speed: float) -> void:
-	if(cc_effectiveness == 0 || has_status(GlobalEnums.ENEMY_STATUS_EFFECTS.ROOTED)):
-		return
-	
-	state = EnemyState.DISPLACEMENT
-	SignalBus.enemy_displaced.emit(self)
-	displacement_speed = speed
-	create_curve(global_position + (displacement_vector)) #reduce with cc_effectiveness?
-	
-func create_curve(target_pos: Vector2, arc_height = 25):
-	displacement_path = Path2D.new()
-	displacement_path_follow = PathFollow2D.new()
-	
-	var curve = Curve2D.new()
-	curve.add_point(position)
-	curve.add_point((position + target_pos) / 2 - Vector2(0, arc_height))  # Arc control point
-	curve.add_point(target_pos)
-	
-	var current_pos = global_position
-	
-	displacement_path_follow.loop = false
-	displacement_path.curve = curve
-	add_child(displacement_path)
-	displacement_path.add_child(displacement_path_follow)
-
-func move_along_path(delta: float):
-	if displacement_path_follow.progress_ratio >= 1:
-		state = EnemyState.MOVE
-		
-	displacement_path_follow.progress += displacement_speed * delta
-	position = displacement_path_follow.position

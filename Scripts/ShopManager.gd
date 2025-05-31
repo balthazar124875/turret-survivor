@@ -41,6 +41,7 @@ var freeze_limit = 1
 var frozen = []
 
 @export var sale_chance: float = 0.05
+@export var super_shop_chance: float = 0.005
 
 var player: Player
 var circle: Circle
@@ -120,29 +121,33 @@ func new_wave_shop_reroll(current_wave: int = 0) -> void:
 func fillShopUpgradeButtons(current_wave: int = 0) -> void:
 	SignalBus.shop_refreshed.emit()
 	#TODO: Shuffle the upgrade list here from GameManager
-	var newUpgradeList = GenerateUpgradesListForShop(shopUpgradeButtons.size());
+	
+	var s_r = randf_range(0, 1)
+	var super_shop = s_r < super_shop_chance
+		
+	var newUpgradeList = GenerateUpgradesListForShop(1 if super_shop else shopUpgradeButtons.size());
 	for i in shopUpgradeButtons.size():
 		if(shopUpgradeButtons[i].locked):
 			continue
-		shopUpgradeButtons[i].upgradeNode = newUpgradeList[i];
-		buttons[i].texture_normal = newUpgradeList[i].icon
+		shopUpgradeButtons[i].upgradeNode = newUpgradeList[i if !super_shop else 0];
+		buttons[i].texture_normal = newUpgradeList[i if !super_shop else 0].icon
 		var r = randf_range(0, 1)
 		var x = shopUpgradeButtons[i]
 		var sale = (r < sale_chance + (player.luck * 0.01))
 		shopUpgradeButtons[i].sale = sale
 		shopUpgradeButtons[i].button.get_node("Sale").visible = sale
-		shopUpgradeButtons[i].cost = newUpgradeList[i].gold_cost * (0.5 if sale else 1)
+		shopUpgradeButtons[i].cost = newUpgradeList[i if !super_shop else 0].gold_cost * (0.5 if sale else 1)
 		
 		GenerateButtonTooltip(shopUpgradeButtons[i]);
 		var text = buttons[i].get_child(0) as RichTextLabel
 		text.scroll_active = false
-		if(newUpgradeList[i].upgradeAmount != 0):
-			text.text = "[right][color=black][font_size=12]" + str(newUpgradeList[i].upgradeAmount) + "[/font_size][/color][/right]"
+		if(newUpgradeList[i if !super_shop else 0].upgradeAmount != 0):
+			text.text = "[right][color=black][font_size=12]" + str(newUpgradeList[i if !super_shop else 0].upgradeAmount) + "[/font_size][/color][/right]"
 		else:
 			text.text = ""
 		
 		var outline = buttons[i].get_child(1)
-		outline.update(sale, get_color(newUpgradeList[i].rarity))
+		outline.update(sale, get_color(newUpgradeList[i if !super_shop else 0].rarity))
 			
 		UpdateUpgradeTooltip(currTooltipShotButtonIdx);
 		

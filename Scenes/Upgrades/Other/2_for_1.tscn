@@ -9,3 +9,4 @@ upgradeName = "2 For 1!"
 description = "Gives you two of your next purchase"
 type = 5
 icon = ExtResource("2_lw7s0")
+weight = 3
