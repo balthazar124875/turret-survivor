@@ -42,7 +42,7 @@ func apply_status_effect(status_effect: EnemyStatusEffect):
 			status_effect.magnitude *= enemy.cc_effectiveness
 		
 		if(type == GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN):
-			if(enemy.ice_block_instance == null):
+			if(ice_block_instance == null):
 				ice_block_instance = enemy.get_node("/root/EmilScene/EffectHandler").freezeEffect.instantiate();
 				enemy.add_child(ice_block_instance);
 				ice_block_instance.global_position = enemy.global_position;
