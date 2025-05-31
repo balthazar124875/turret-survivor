@@ -6,7 +6,3 @@ func _ready() -> void:
 	isLocked = true;
 	unlockCondition = "Deal 1000 damage of each element (fire, ice, lighting, poison) in a single run."
 	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
