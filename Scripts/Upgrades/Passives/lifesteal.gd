@@ -1,6 +1,6 @@
 extends PassiveUpgrade
 
-@export var health_restore = 0.2
+@export var health_restore = 0.5
 @export var health_threshold = 0.25 #10%
 
 var active = false
@@ -30,7 +30,7 @@ func apply_level_up():
 	
 	match upgradeAmount % 2:
 		0:
-			health_restore += 0.2
+			health_restore += 0.5
 		1:
 			health_threshold += 0.01
 

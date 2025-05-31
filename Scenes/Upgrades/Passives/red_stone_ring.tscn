@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx5y8xt0hffpi"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Passives/red_stone_ring.gd" id="1_rbtqy"]
+[ext_resource type="Texture2D" uid="uid://6g4rwsysnfv3" path="res://Assets/Sprites/upgrades/red_stone_ring.png" id="2_c4t62"]
+
+[node name="Red Stone Ring" type="Node2D"]
+script = ExtResource("1_rbtqy")
+upgradeName = "Red Stone Ring"
+description = "You deal more damage at lower health."
+type = 1
+icon = ExtResource("2_c4t62")

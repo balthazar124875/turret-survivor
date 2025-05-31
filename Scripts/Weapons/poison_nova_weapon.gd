@@ -39,5 +39,5 @@ func poison_enemies_in_collider():
 	var enemies = []
 	for body in area2d.get_overlapping_bodies():
 		if body is Enemy:  # Check if it's an enemy
-			var poisonEffect = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED, poison_duration, poison_magnitude)
+			var poisonEffect = StatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED, poison_duration, poison_magnitude)
 			body.apply_status_effect(poisonEffect)

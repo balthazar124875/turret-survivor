@@ -33,7 +33,7 @@ func apply_dot_effects():
 	if damage_from_burning > 0:
 		enemy.take_damage(damage_from_burning, 'Burning', GlobalEnums.DAMAGE_TYPES.FIRE, true, false)
 
-func apply_status_effect(status_effect: EnemyStatusEffect):
+func apply_status_effect(status_effect: StatusEffect):
 	enemy.active_status_effects.append(status_effect)
 	var type = status_effect.type
 	if type in GlobalEnums.CROWD_CONTROL:
@@ -65,7 +65,7 @@ func update_active_status_effect_durations(delta):
 		if status_effect.duration <= 0:
 			erase_status_effect(status_effect)
 
-func erase_status_effect(status_effect: EnemyStatusEffect):
+func erase_status_effect(status_effect: StatusEffect):
 	enemy.active_status_effects.erase(status_effect)
 	
 	if(status_effect.type == GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN && ice_block_instance != null && get_status(GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN).size() == 0):
@@ -83,7 +83,7 @@ func erase_status_effect(status_effect: EnemyStatusEffect):
 		else:
 			enemy.current_action_speed = enemy.action_speed
 
-func get_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> Array[EnemyStatusEffect]:
+func get_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> Array[StatusEffect]:
 	return enemy.active_status_effects.filter(func(ase): return ase.type == status)
 
 func has_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> bool:

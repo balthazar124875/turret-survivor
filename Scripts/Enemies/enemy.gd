@@ -36,7 +36,7 @@ var current_action_speed: float = action_speed
 var t : float
 
 # StatusEffectType -> StatusEffect
-var active_status_effects: Array[EnemyStatusEffect] = []
+var active_status_effects: Array[StatusEffect] = []
 
 #var can_attack: bool = true
 var target_position = Vector2.ZERO
@@ -75,13 +75,13 @@ func _ready() -> void:
 func add_displacement(displacement_vector: Vector2, speed: float) -> void:
 	movement_handler.add_displacement(displacement_vector, speed)
 
-func apply_status_effect(status_effect: EnemyStatusEffect):
+func apply_status_effect(status_effect: StatusEffect):
 	status_effect_handler.apply_status_effect(status_effect)
 
 func has_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> bool:
 	return status_effect_handler.has_status(status)
 
-func get_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> Array[EnemyStatusEffect]:
+func get_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> Array[StatusEffect]:
 	return active_status_effects.filter(func(ase): return ase.type == status)
 
 func modify_stats(hp_mult: float, damage_mult: float, cc_effectiveness_mult: float, speed_bonus: float) -> void:
@@ -140,7 +140,7 @@ func is_alive() -> bool:
 func take_hit(amount: float,
 	source: String = '',
 	damage_type: GlobalEnums.DAMAGE_TYPES = GlobalEnums.DAMAGE_TYPES.PHYSICAL,
-	on_hit_effects: Array[EnemyStatusEffect] = [],
+	on_hit_effects: Array[StatusEffect] = [],
 	ignore_armor: bool = false) -> void:
 		var hit = Hit.new(amount, damage_type, on_hit_effects, source)
 		SignalBus.before_enemy_take_hit.emit(hit, self)

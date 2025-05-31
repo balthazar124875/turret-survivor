@@ -1,5 +1,5 @@
 extends Resource
-class_name EnemyStatusEffect
+class_name StatusEffect
 
 @export var type: GlobalEnums.ENEMY_STATUS_EFFECTS
 @export var duration: float

@@ -9,7 +9,6 @@ func _ready() -> void:
 	player.modify_stat(GlobalEnums.PLAYER_STATS.BONUS_LUCK, 2, "Lady Luck");
 	total_gained += 2
 	SignalBus.current_wave_updated.connect(wave_updated)
-	pass # Replace with function body.
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -35,7 +35,7 @@ func _bullet_created(bullet):
 			bullet.damage_type = GlobalEnums.DAMAGE_TYPES.ICE
 	
 func _apply_effects(enemy: Enemy, bullet):
-	var slow = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.SLOWED, duration, slowAmount)
+	var slow = StatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.SLOWED, duration, slowAmount)
 	enemy.apply_status_effect(slow)
 
 func apply_level_up():

@@ -27,7 +27,7 @@ func _before_hit(hit: Hit, enemy: Enemy):
 	if(hit.type == GlobalEnums.DAMAGE_TYPES.FIRE):
 		var rndNumber = randf_range(0.0, 1.0);
 		if(rndNumber <= procChance * (1 + (player.luck * luckScaling))):
-			var burnEffect = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.BURNING, duration, burnAmount * hit.amount)
+			var burnEffect = StatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.BURNING, duration, burnAmount * hit.amount)
 			hit.on_hit_effects.append(burnEffect)
 				
 func apply_level_up():
