@@ -19,6 +19,9 @@ func _input(event):
 				close() 
 			else: 
 				open()
+				
+		if event.keycode == KEY_U:
+			debug_get_all()
 
 func open(single_pick: bool = false) -> void:
 	debug_open = true
@@ -37,6 +40,13 @@ func close(single_pick: bool = false) -> void:
 		
 	get_tree().paused = false
 		
+
+func debug_get_all():
+	if(!loaded):
+		load_upgrades()
+		
+	for button in get_node("BoxContainer").get_children():
+		button.upgrade.applyPlayerUpgrade(player)
 
 func load_upgrades() -> void:
 			#Iterate all Upgrade scripts and put them in the global array
