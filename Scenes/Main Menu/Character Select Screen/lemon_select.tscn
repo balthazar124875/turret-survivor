@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://beeycdkbtpq0s"]
+[gd_scene load_steps=7 format=3 uid="uid://beeycdkbtpq0s"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/PlayerSelect/Player2.gd" id="1_nmmrx"]
 [ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="2_pj2tc"]
+[ext_resource type="PackedScene" uid="uid://b8i678nyyu7px" path="res://Scenes/Upgrades/Augments/heal_king.tscn" id="2_u3rj1"]
 [ext_resource type="Texture2D" uid="uid://b64g8q2vxh5v2" path="res://Assets/Sprites/Players/Lemon.png" id="3_3omym"]
+[ext_resource type="PackedScene" uid="uid://x5ikinlyf0yg" path="res://Scenes/Upgrades/Augments/high_voltage.tscn" id="3_nbimo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oaghf"]
 animations = [{
@@ -17,6 +19,7 @@ animations = [{
 
 [node name="Lemon" type="Node2D"]
 script = ExtResource("1_nmmrx")
+startAugments = Array[PackedScene]([ExtResource("2_u3rj1"), ExtResource("3_nbimo")])
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -71,7 +71,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/lootbox_roll.gd" id="56_76q55"]
 [ext_resource type="PackedScene" uid="uid://b3hbh58fbjtka" path="res://Scenes/UI/lootbox_upgrade.tscn" id="67_b7gyy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5fatm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vm0fi"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -184,7 +184,7 @@ healthRegeneration = 3.0
 waves = Array[ExtResource("4_4h2fe")]([ExtResource("5_dajof"), ExtResource("6_wb1pu"), ExtResource("7_5jkau"), ExtResource("8_5cu7a"), ExtResource("9_4h6ve"), ExtResource("10_2ssat"), ExtResource("11_2kb38"), ExtResource("12_y5lg1"), ExtResource("13_yidmk"), ExtResource("14_3ncf5"), ExtResource("15_cdqcm")])
 center = NodePath("../Player")
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_5fatm")
+enemy_outline_material = SubResource("ShaderMaterial_vm0fi")
 
 [node name="GameplayUi" type="Control" parent="."]
 z_index = 100

@@ -1,14 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnlnbvug3d6tw"]
+[gd_scene load_steps=9 format=3 uid="uid://bnlnbvug3d6tw"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/character_select_screen.gd" id="1_cp40a"]
+[ext_resource type="PackedScene" uid="uid://djk2xjnw738l7" path="res://Scenes/Main Menu/Character Select Screen/spell_desc_node.tscn" id="2_b5s0k"]
+[ext_resource type="Texture2D" uid="uid://3twshf16qkx4" path="res://Assets/Sprites/upgrades/augments/bounty_hunter.png" id="2_egitf"]
 [ext_resource type="PackedScene" uid="uid://beeycdkbtpq0s" path="res://Scenes/Main Menu/Character Select Screen/lemon_select.tscn" id="2_hf2f7"]
+[ext_resource type="Script" path="res://Scripts/vfx/camera_shake.gd" id="3_8h3ui"]
 [ext_resource type="PackedScene" uid="uid://d1y3th5qku4c0" path="res://Scenes/Main Menu/Character Select Screen/player1_select.tscn" id="3_a8bii"]
 [ext_resource type="PackedScene" uid="uid://d3ilsjok78chr" path="res://Scenes/Main Menu/Character Select Screen/player3_select.tscn" id="4_70myy"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o67t5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="CharacterSelectScreen" type="Node2D"]
 script = ExtResource("1_cp40a")
+spellDescNode = ExtResource("2_b5s0k")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_8h3ui")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -26,15 +42,106 @@ color = Color(0.0807833, 0.0807833, 0.0807833, 1)
 
 [node name="NameLabel" type="RichTextLabel" parent="Control"]
 layout_mode = 0
-offset_left = -96.0
+offset_left = -144.0
 offset_top = 64.0
-offset_right = 206.0
+offset_right = 158.0
 offset_bottom = 201.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "Player"
 fit_content = true
 autowrap_mode = 0
+
+[node name="UnlockConditionLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = -392.0
+offset_top = 144.0
+offset_right = -90.0
+offset_bottom = 281.0
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Player"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Stats" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AugmentStats" type="Control" parent="Control/Stats"]
+anchors_preset = 0
+offset_left = -248.0
+offset_top = 208.0
+offset_right = -208.0
+offset_bottom = 248.0
+
+[node name="SpellDescNode" parent="Control/Stats/AugmentStats" instance=ExtResource("2_b5s0k")]
+visible = false
+
+[node name="SpellDescNode2" type="Control" parent="Control/Stats/AugmentStats"]
+visible = false
+anchors_preset = 0
+offset_left = 24.0
+offset_top = 152.0
+offset_right = 24.0
+offset_bottom = 152.0
+
+[node name="SpellName" type="RichTextLabel" parent="Control/Stats/AugmentStats/SpellDescNode2"]
+layout_mode = 2
+offset_left = 128.0
+offset_top = -8.0
+offset_right = 428.0
+offset_bottom = 22.0
+scale = Vector2(2, 2)
+text = "Heal king"
+
+[node name="SpellDesc" type="RichTextLabel" parent="Control/Stats/AugmentStats/SpellDescNode2"]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 40.0
+offset_right = 728.0
+offset_bottom = 152.0
+text = "Heal everytime you take damage."
+
+[node name="Icon" type="TextureRect" parent="Control/Stats/AugmentStats/SpellDescNode2"]
+layout_mode = 2
+offset_right = 100.0
+offset_bottom = 100.0
+texture = ExtResource("2_egitf")
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/Stats/AugmentStats"]
+visible = false
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 452.0
+offset_bottom = 292.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_o67t5")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Stats/AugmentStats/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 340
+theme_override_constants/margin_top = 180
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="StartAugmentsLabel" type="PanelContainer" parent="Control/Stats/AugmentStats"]
+visible = false
+layout_mode = 0
+offset_left = 176.99
+offset_top = -32.0
+offset_right = 636.99
+offset_bottom = 268.0
+scale = Vector2(0.205, 0.205)
+theme_override_styles/panel = SubResource("StyleBoxFlat_o67t5")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Stats/AugmentStats/StartAugmentsLabel"]
+layout_mode = 2
+theme_override_constants/margin_left = 340
+theme_override_constants/margin_top = 180
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
 
 [node name="Characters" type="Node2D" parent="."]
 position = Vector2(0, -200)

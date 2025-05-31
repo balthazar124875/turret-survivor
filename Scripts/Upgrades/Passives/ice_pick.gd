@@ -20,8 +20,8 @@ func _process(delta: float) -> void:
 	
 func _before_hit(hit: Hit, enemy: Enemy):
 	if enemy.has_status(GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN):
-		var bonus_damage = 1 + (damage_bonus)
-		hit.amount *= bonus_damage
+		var bonus_damage = hit.amount * damage_bonus
+		hit.bonus_damage += bonus_damage
 		hit.after_hit_effects.append(remove_freezes)
 	
 				

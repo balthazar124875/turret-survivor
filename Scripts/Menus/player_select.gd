@@ -3,7 +3,8 @@ extends Node
 class_name PlayerSelectNode
 
 @export var playerName : String;
-var startingAugments : Array[AugmentUpgrade];
+@export var startAugments : Array[PackedScene]; #res://Scenes/Upgrades/Augments/
+@export var startWeapons : Array[PackedScene];
 var isLocked : bool;
 @export var unlockCondition : String;
 
