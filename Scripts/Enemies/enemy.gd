@@ -241,13 +241,17 @@ func is_alive() -> bool:
 func take_hit(amount: float,
 	source: String = '',
 	damage_type: GlobalEnums.DAMAGE_TYPES = GlobalEnums.DAMAGE_TYPES.PHYSICAL,
-	on_hit_effects: Array = [],
+	on_hit_effects: Array[EnemyStatusEffect] = [],
 	ignore_armor: bool = false) -> void:
-		take_damage(amount, source, damage_type, ignore_armor, true)
+		var hit = Hit.new(amount, damage_type, on_hit_effects, source)
+		SignalBus.before_enemy_take_hit.emit(hit, self)
+		take_damage(hit.amount, source, hit.type, ignore_armor, true)
 		if(!isDead):
-			SignalBus.before_enemy_take_hit.emit(amount, damage_type, on_hit_effects)
-			for on_hit_effect in on_hit_effects:
+			for on_hit_effect in hit.on_hit_effects:
 				apply_status_effect(on_hit_effect)
+				
+			for after_hit_effect in hit.after_hit_effects:
+				after_hit_effect.call(self)
 
 func take_damage(
 	amount: float,
@@ -306,8 +310,7 @@ func SetObjectObstructingEnemy(object : Node2D) -> void:
 	objectObstructingEnemy = object;
 
 func get_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> Array[EnemyStatusEffect]:
-	var s = active_status_effects.filter(func(ase): return ase.type == status)
-	return s
+	return active_status_effects.filter(func(ase): return ase.type == status)
 
 func has_status(status: GlobalEnums.ENEMY_STATUS_EFFECTS) -> bool:
 	return active_status_effects.any(func(ase): return ase.type == status)

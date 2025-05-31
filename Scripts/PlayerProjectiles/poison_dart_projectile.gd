@@ -5,5 +5,6 @@ extends Bullet
 
 func HitEnemy(body : Enemy):
 	var poisonEffect = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED, poison_duration, poison_damage_per_tick)
-	body.take_hit(damage, source, GlobalEnums.DAMAGE_TYPES.PHYSICAL, [poisonEffect])
+	var effects: Array[EnemyStatusEffect] = [poisonEffect]
+	body.take_hit(damage, source, GlobalEnums.DAMAGE_TYPES.PHYSICAL, effects)
 	SignalBus.on_enemy_hit.emit(body, self)

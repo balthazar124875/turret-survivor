@@ -60,7 +60,8 @@ func damage_enemies_in_collider():
 			  
 			if(random_damage_type == GlobalEnums.DAMAGE_TYPES.ICE):
 				var slow = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN, 3, 1)
-				body.take_hit(damage * player_damage_mult + damage_max_health_percent, source, random_damage_type, [slow])
+				var effects: Array[EnemyStatusEffect] = [slow]
+				body.take_hit(damage * player_damage_mult + damage_max_health_percent, source, random_damage_type, effects)
 			else:
 				body.take_hit(damage * player_damage_mult + damage_max_health_percent, source, random_damage_type)
 			

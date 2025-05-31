@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf1782bg0opia"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Passives/ice_pick.gd" id="1_kj5lq"]
+[ext_resource type="Texture2D" uid="uid://ctvj6irrgi42k" path="res://Assets/Sprites/upgrades/icepick.png" id="2_o45fk"]
+
+[node name="IcePick" type="Node2D"]
+script = ExtResource("1_kj5lq")
+upgradeName = "Icepick"
+description = "Deals lots of extra damage to frozen enemies but breaks the ice"
+type = 1
+icon = ExtResource("2_o45fk")

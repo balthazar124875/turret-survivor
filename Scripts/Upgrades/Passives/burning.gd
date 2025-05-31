@@ -23,14 +23,13 @@ func applyUpgradeToPlayer(player: Player) -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func _before_hit(amount: float, type: GlobalEnums.DAMAGE_TYPES, on_hit_effects: Array):
-	if(type == GlobalEnums.DAMAGE_TYPES.FIRE):
+func _before_hit(hit: Hit, enemy: Enemy):
+	if(hit.type == GlobalEnums.DAMAGE_TYPES.FIRE):
 		var rndNumber = randf_range(0.0, 1.0);
 		if(rndNumber <= procChance * (1 + (player.luck * luckScaling))):
-			var burnEffect = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.BURNING, duration, burnAmount * amount)
-			on_hit_effects.append(burnEffect)
+			var burnEffect = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.BURNING, duration, burnAmount * hit.amount)
+			hit.on_hit_effects.append(burnEffect)
 				
-
 func apply_level_up():
 	if(upgradeAmount == 10):
 		burn = true

@@ -24,7 +24,8 @@ func trigger_trap():
 				if (distance < eruption_radius):
 					if(ignites):
 						var burnEffect = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.BURNING, ignite_duration, ignite_damage)
-						enemy.take_hit(base_damage, "Eruption Trap", GlobalEnums.DAMAGE_TYPES.FIRE, [burnEffect])
+						var effects: Array[EnemyStatusEffect] = [burnEffect]
+						enemy.take_hit(base_damage, "Eruption Trap", GlobalEnums.DAMAGE_TYPES.FIRE, effects)
 					else:
 						enemy.take_hit(base_damage, "Eruption Trap", GlobalEnums.DAMAGE_TYPES.FIRE)
 					

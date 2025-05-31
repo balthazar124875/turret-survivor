@@ -45,12 +45,12 @@ func _process(delta: float) -> void:
 
 func HitEnemy(enemy : Enemy):
 	rootEffect = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.ROOTED, root_duration, 1)
-	var e = [rootEffect]
+	var effects: Array[EnemyStatusEffect] = [rootEffect]
 	
 	if(poison):
 		var poisonEffect = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED, root_duration, damage)
-		e.append(poisonEffect)
-	enemy.take_hit(damage, "Vine", GlobalEnums.DAMAGE_TYPES.PHYSICAL, e)
+		effects.append(poisonEffect)
+	enemy.take_hit(damage, "Vine", GlobalEnums.DAMAGE_TYPES.PHYSICAL, effects)
 	
 func _on_body_entered(body):
 	if body is Enemy && !body in enemiesHit:  # Replace with your enemy script class name

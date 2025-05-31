@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://5nvwkpombrbr"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Passives/suffering.gd" id="1_sjcbn"]
+[ext_resource type="Texture2D" uid="uid://b1jgd3u8hir48" path="res://Assets/Sprites/upgrades/venne.png" id="2_v7gtt"]
+
+[node name="Suffering" type="Node2D"]
+script = ExtResource("1_sjcbn")
+passiveType = 1
+upgradeName = "Suffering"
+description = "Killing a poisoned or burning enemy restores health"
+type = 1
+rarity = 1
+icon = ExtResource("2_v7gtt")
