@@ -26,5 +26,5 @@ func damage_enemies_in_collider():
 	var enemies = []
 	for body in get_overlapping_bodies():
 		if body is Enemy:  # Check if it's an enemy
-			var poisonEffect = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED, 5, 1)
+			var poisonEffect = StatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED, 5, 1)
 			body.apply_status_effect(poisonEffect)

@@ -17,7 +17,7 @@ func _before_hit(hit: Hit, enemy: Enemy):
 		
 		var rndNumber = randf_range(0.0, 1.0);
 		if(rndNumber <= percentage_of_hp * hp_threshold_scaling):
-			var freeze = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN, duration, 1)
+			var freeze = StatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN, duration, 1)
 			hit.on_hit_effects.append(freeze)
 
 func get_description() -> String:

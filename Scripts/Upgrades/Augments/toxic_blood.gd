@@ -4,7 +4,7 @@ extends AugmentUpgrade
 
 func ApplyWhenHitEffect(player: Player, enemy : Enemy, value: float) -> void:
 	if(player.healthRegeneration > 0):
-		var poisonEffect = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED, duration, player.healthRegeneration / duration)
+		var poisonEffect = StatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED, duration, player.healthRegeneration / duration)
 		enemy.apply_status_effect(poisonEffect)
 
 func get_description() -> String:

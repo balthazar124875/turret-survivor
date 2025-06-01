@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://lqpf3cyonbbr"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Augments/blood_control.gd" id="1_xa0a4"]
+[ext_resource type="Texture2D" uid="uid://b4w4ceufwu8da" path="res://Assets/Sprites/upgrades/augments/blood_control.png" id="2_6cpyi"]
+
+[node name="Blood Control" type="Node2D"]
+script = ExtResource("1_xa0a4")
+passiveType = 3
+upgradeName = "Blood control"
+description = "Gives 40 armor. Causes player to bleed when hit."
+type = 1
+rarity = 4
+icon = ExtResource("2_6cpyi")

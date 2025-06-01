@@ -14,7 +14,7 @@ var enemiesHit: Array = []
 
 var t = 0
 
-var rootEffect : EnemyStatusEffect
+var rootEffect : StatusEffect
 
 var maxScale = 1
 
@@ -44,11 +44,11 @@ func _process(delta: float) -> void:
 	pass
 
 func HitEnemy(enemy : Enemy):
-	rootEffect = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.ROOTED, root_duration, 1)
-	var effects: Array[EnemyStatusEffect] = [rootEffect]
+	rootEffect = StatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.ROOTED, root_duration, 1)
+	var effects: Array[StatusEffect] = [rootEffect]
 	
 	if(poison):
-		var poisonEffect = EnemyStatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED, root_duration, damage)
+		var poisonEffect = StatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.POISONED, root_duration, damage)
 		effects.append(poisonEffect)
 	enemy.take_hit(damage, "Vine", GlobalEnums.DAMAGE_TYPES.PHYSICAL, effects)
 	

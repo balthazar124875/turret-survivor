@@ -39,6 +39,32 @@ var ENABLE_BOUNTY = false
 
 var circle;
 
+var dot_timer = Timer.new()
+var dot_tick_time = 0.5 
+
+var active_status_effects: Array[StatusEffect]
+	
+func apply_dot_effects():
+	var damage_from_bleeding = active_status_effects.filter(
+			func(ase): return ase.type == GlobalEnums.ENEMY_STATUS_EFFECTS.BLEEDING
+		).map(func(ase): return ase.magnitude).reduce(func(a, b): return  a + b, 0)
+		
+	if damage_from_bleeding > 0:
+		take_damage(damage_from_bleeding, null)
+		print("taking" + str(damage_from_bleeding) + " from blleding")
+
+func apply_status_effect(status_effect: StatusEffect):
+	active_status_effects.append(status_effect)
+
+func update_active_status_effect_durations(delta):
+	for status_effect in active_status_effects:
+		status_effect.duration -= delta
+		if status_effect.duration <= 0:
+			erase_status_effect(status_effect)
+
+func erase_status_effect(status_effect: StatusEffect):
+	active_status_effects.erase(status_effect)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if(GameManager.playerInitData != null):
@@ -57,10 +83,15 @@ func _ready() -> void:
 	circle = get_node("./Circle");
 	init_damage_type_multipliers()
 	SignalBus.enemy_killed.connect(_on_enemy_killed)
+	add_child(dot_timer)
+	dot_timer.wait_time = dot_tick_time
+	dot_timer.start()
+	dot_timer.timeout.connect(apply_dot_effects)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	heal_damage(healthRegeneration * delta, "Regeneration")
+	update_active_status_effect_durations(delta)
 
 func init_damage_type_multipliers():
 	for key in GlobalEnums.DAMAGE_TYPES.values():
@@ -97,8 +128,9 @@ func take_damage(value: float, source: Enemy) -> void:
 	modify_health(-after_armor_value)
 	damage_flash_timer.start(0.1)
 	$AnimatedSprite2D.modulate = Color(1, 0.5, 0.5)
-	for upgrade in get_passive_upgrades_of_type(PassiveUpgrade.PassiveUpgradeType.ON_PLAYER_HIT):
-		upgrade.ApplyWhenHitEffect(self, source, after_armor_value);
+	if(source != null):
+		for upgrade in get_passive_upgrades_of_type(PassiveUpgrade.PassiveUpgradeType.ON_PLAYER_HIT):
+			upgrade.ApplyWhenHitEffect(self, source, after_armor_value);
 
 func damage_after_armor_reduction(value: float) -> float:
 	return value - (armor * armor_damage_reduction_const) / (1 + armor_damage_reduction_const * armor)
