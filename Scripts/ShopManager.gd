@@ -42,6 +42,7 @@ var frozen = []
 
 @export var sale_chance: float = 0.05
 @export var super_shop_chance: float = 0.005
+@export var weapon_variaty_chance: float = 0.05
 
 var player: Player
 var circle: Circle
@@ -123,7 +124,7 @@ func fillShopUpgradeButtons(current_wave: int = 0) -> void:
 	var newUpgradeList = GenerateUpgradesListForShop(1 if super_shop else shopUpgradeButtons.size());
 	for i in newUpgradeList:
 		if(i is WeaponUpgrade && i.upgradeAmount == 0 && i.viable_variations.size() > 0):
-			if(randf() < 0.5):
+			if(randf() < weapon_variaty_chance):
 				i.apply_variation(i.viable_variations[randi() % i.viable_variations.size()])
 			else:
 				i.apply_variation(GlobalEnums.WEAPON_VARIATION.NONE)

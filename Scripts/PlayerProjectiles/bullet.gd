@@ -47,8 +47,7 @@ func init_with_direction(direction: Vector2, damage: float, speed: float, life_t
 	
 func set_damage_type_and_color(damage_type: GlobalEnums.DAMAGE_TYPES, color: Color):
 	self.damage_type = damage_type
-	$Sprite2D.modulate = color
-	
+	color_bullet(color)
 
 func HitEnemy(body : Enemy):
 	body.take_hit(damage, source, damage_type)  # Call the enemy's damage function

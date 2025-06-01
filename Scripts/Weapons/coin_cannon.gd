@@ -9,12 +9,10 @@ func shoot(enemy: Node) -> void:
 	add_child(bullet)
 	bullet.init_with_direction(direction, player.gold * player.damageMultiplier * gun_damage_multiplier, 
 	base_projectile_speed, bullet_life_time, source)
-	
-	
 	bullet.rotation = Vector2(1, 0).rotated(deg_to_rad(randf_range(0, 360))).angle()
-	
 	bullet.pierce = pierce + player.extraPierce
 	bullet.bounce = player.extraBounce
+	bullet.set_damage_type_and_color(damage_type, variation_color)
 	player.modify_gold(-1)
 
 func shoot_in_circle() -> void:
