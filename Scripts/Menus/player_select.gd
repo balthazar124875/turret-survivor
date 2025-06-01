@@ -28,7 +28,6 @@ func TweenToNewAngle(target_angle : float) -> void:
 	#tween.tween_callback($Sprite.queue_free)
 	#set_meta("current_tween", tween);
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var target_position = pivotPos + Vector2(cos(curr_angle), sin(curr_angle))*radius;

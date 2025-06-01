@@ -5,7 +5,10 @@ extends Node
 class_name GameManager
 
 var playerInitData;
+var currStakeID : int;
 
-func set_player_init_data(playerData : PlayerSelectNode) -> void:
+func set_player_init_data(playerData : PlayerSelectNode, currStakeID : int) -> void:
 	playerInitData = playerData;
+	self.currStakeID = currStakeID;
+	#print("Current stake: " + str(currStakeID));
 	pass

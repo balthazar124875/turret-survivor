@@ -11,6 +11,7 @@ var unlockConditionLabel : Control;
 var startAugmentsUI : Array;
 @export var spellDescNode : PackedScene;
 var augmentStatsControl : Control;
+var currStakeID : int = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -59,6 +60,13 @@ func RenderPlayers(startIdx : int, tweening : bool):
 		var currPlayer = characters[idx] as PlayerSelectNode;
 		if currPlayer.isLocked:
 			animated_sprite.modulate = Color(0.1, 0.1, 0.1, 1)
+		else:
+			var tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE);
+			var tweenDuration = 0.2;
+			var target_color = Color(0.5, 0.5, 0.5, 1.0);
+			if currPlayer == selectedPlayer:
+				target_color = Color(1.0, 1.0, 1.0, 1.0);
+			tween.tween_property(animated_sprite, "modulate", target_color, tweenDuration);
 
 func RenderStartSpellsList(player : PlayerSelectNode) -> void:
 	for elem in startAugmentsUI:
@@ -89,8 +97,9 @@ func ShiftRight() -> void:
 
 func SelectCharacter() -> void:
 	if !selectedPlayer.isLocked:
+		currStakeID = $Control/Stakes.currIdx;
 		var new_scene = load("res://Scenes/simon_ek_scene.tscn").instantiate()
-		new_scene.set_player_init_data(selectedPlayer)
+		new_scene.set_player_init_data(selectedPlayer, currStakeID)
 		var currScene = get_tree().current_scene;
 		get_tree().root.add_child(new_scene);
 		get_tree().current_scene = new_scene;

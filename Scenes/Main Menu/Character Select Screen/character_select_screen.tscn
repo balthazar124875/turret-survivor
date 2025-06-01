@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bnlnbvug3d6tw"]
+[gd_scene load_steps=10 format=3 uid="uid://bnlnbvug3d6tw"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/character_select_screen.gd" id="1_cp40a"]
 [ext_resource type="PackedScene" uid="uid://djk2xjnw738l7" path="res://Scenes/Main Menu/Character Select Screen/spell_desc_node.tscn" id="2_b5s0k"]
@@ -7,17 +7,18 @@
 [ext_resource type="Script" path="res://Scripts/vfx/camera_shake.gd" id="3_8h3ui"]
 [ext_resource type="PackedScene" uid="uid://d1y3th5qku4c0" path="res://Scenes/Main Menu/Character Select Screen/player1_select.tscn" id="3_a8bii"]
 [ext_resource type="PackedScene" uid="uid://d3ilsjok78chr" path="res://Scenes/Main Menu/Character Select Screen/player3_select.tscn" id="4_70myy"]
+[ext_resource type="Script" path="res://Scripts/Menus/stake_selector.gd" id="4_77ddq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o67t5"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="CharacterSelectScreen" type="Node2D"]
 script = ExtResource("1_cp40a")
@@ -63,6 +64,38 @@ bbcode_enabled = true
 text = "Player"
 fit_content = true
 autowrap_mode = 0
+
+[node name="Stakes" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_77ddq")
+
+[node name="StakeDescription" type="RichTextLabel" parent="Control/Stakes"]
+layout_mode = 2
+offset_left = -920.0
+offset_top = 312.0
+offset_right = -336.0
+offset_bottom = 442.0
+theme_override_font_sizes/normal_font_size = 30
+text = "Stake description"
+fit_content = true
+autowrap_mode = 0
+
+[node name="StakesSA" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_left = -928.0
+offset_top = 112.0
+offset_right = -334.0
+offset_bottom = 444.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_o67t5")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/StakesSA"]
+layout_mode = 2
+theme_override_constants/margin_left = 340
+theme_override_constants/margin_top = 180
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
 
 [node name="Stats" type="Control" parent="Control"]
 anchors_preset = 0
