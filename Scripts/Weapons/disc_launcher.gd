@@ -23,6 +23,7 @@ func shoot(enemy: Node) -> void:
 		bullet.pierce = pierce + player.extraPierce
 		bullet.life_time = bullet_life_time
 		bullet.scale = Vector2(1, 1) * player.areaSizeMultiplier
+		bullet.set_damage_type_and_color(damage_type, variation_color)
 		add_child(bullet)
 
 func apply_level_up():

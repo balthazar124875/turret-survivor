@@ -7,6 +7,7 @@
 [node name="DiscLauncherUpgrade" type="Node2D"]
 script = ExtResource("1_3073y")
 weapon_scene = ExtResource("2_ivqxh")
+viable_variations = Array[int]([1, 2, 6, 3, 7, 4])
 upgradeName = "Disc launcher"
 description = "Shoots a rotating disc"
 icon = ExtResource("3_i3wyo")

@@ -36,6 +36,7 @@ func shoot(enemy: Node) -> void:
 			base_projectile_speed * local_projectile_speed_multiplier * player.projectileSpeedMultipler, bullet_life_time, source)
 		bullet.pierce += player.extraPierce
 		bullet.bounce += player.extraBounce
+		bullet.set_damage_type_and_color(damage_type, variation_color)
 		direction = direction.rotated(-deg_to_rad(bullet_spread))
 
 func apply_level_up():

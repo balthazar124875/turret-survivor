@@ -24,6 +24,9 @@ enum TargetingType {
 @export var source: String = ""
 @export var damage_type: GlobalEnums.DAMAGE_TYPES = GlobalEnums.DAMAGE_TYPES.PHYSICAL
 
+var variation: GlobalEnums.WEAPON_VARIATION
+var variation_color: Color = Color(1, 1, 1)
+
 var localAttackSpeedBonus: float = 1
 
 var player: Player
@@ -143,6 +146,33 @@ func get_enum_name(value):
 		if GlobalEnums.DAMAGE_TYPES[name] == value:
 			return name
 	return "UNKNOWN"
+	
+func set_variation(variation: GlobalEnums.WEAPON_VARIATION) -> void:
+	match variation:
+		GlobalEnums.WEAPON_VARIATION.HEAVY:
+			cooldown *= 2
+			gun_damage_multiplier *= 2 
+		GlobalEnums.WEAPON_VARIATION.LIGHT:
+			cooldown *= 0.5
+			gun_damage_multiplier *= 0.5
+		GlobalEnums.WEAPON_VARIATION.EXTRA_SHOT: #straight upgrade
+			base_projectile_amount += 1
+		GlobalEnums.WEAPON_VARIATION.BLAZING:
+			damage_type = GlobalEnums.DAMAGE_TYPES.FIRE
+			variation_color = Color.ORANGE
+		GlobalEnums.WEAPON_VARIATION.SHOCKING:
+			damage_type = GlobalEnums.DAMAGE_TYPES.LIGHTNING
+			variation_color = Color.YELLOW
+		GlobalEnums.WEAPON_VARIATION.SHIVERING:
+			damage_type = GlobalEnums.DAMAGE_TYPES.ICE
+			variation_color = Color.CYAN
+		GlobalEnums.WEAPON_VARIATION.MYSTIC:
+			damage_type = GlobalEnums.DAMAGE_TYPES.MAGIC
+			variation_color = Color.PURPLE
+		GlobalEnums.WEAPON_VARIATION.TOXIC:
+			damage_type = GlobalEnums.DAMAGE_TYPES.POISON
+			variation_color = Color.GREEN
+	self.variation = variation
 	
 func get_custom_tooltip_text() -> String: #override this
 	return ""

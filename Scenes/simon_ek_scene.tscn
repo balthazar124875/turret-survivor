@@ -53,7 +53,7 @@
 [ext_resource type="Texture2D" uid="uid://crnfw7u4yi5ga" path="res://Assets/Sprites/upgrades/luckybug.png" id="32_26hin"]
 [ext_resource type="Texture2D" uid="uid://bq1vwc7do4883" path="res://Assets/Sprites/upgrades/proj_speed_up.png" id="32_e3gei"]
 [ext_resource type="Script" path="res://Scripts/UI/damage_numbers_handler.gd" id="37_5o2m1"]
-[ext_resource type="StyleBox" path="res://Themes/augment.tres" id="38_xtrk1"]
+[ext_resource type="StyleBox" uid="uid://e2ylx83bifj" path="res://Themes/augment.tres" id="38_xtrk1"]
 [ext_resource type="Script" path="res://Scenes/UI/ui_augments.gd" id="39_j6pgw"]
 [ext_resource type="Script" path="res://Scripts/UI/upgrades_container.gd" id="40_5dn0k"]
 [ext_resource type="PackedScene" uid="uid://b28o0wogrqmsi" path="res://Scenes/UI/augment_handler.tscn" id="40_yymlw"]
@@ -69,9 +69,9 @@
 [ext_resource type="Shader" path="res://Scenes/Shaders/simon_ek_scene.gdshader" id="52_mk7mp"]
 [ext_resource type="Texture2D" uid="uid://dwkn3crn28sa8" path="res://Assets/Sprites/Background/background_spooky_2.png" id="53_bqs3t"]
 [ext_resource type="Script" path="res://Scripts/UI/lootbox_roll.gd" id="56_76q55"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/lootbox_upgrade.tscn" id="67_b7gyy"]
+[ext_resource type="PackedScene" uid="uid://b3hbh58fbjtka" path="res://Scenes/UI/lootbox_upgrade.tscn" id="67_b7gyy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xqyj5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2nlbs"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -185,7 +185,7 @@ waves = Array[ExtResource("4_4h2fe")]([ExtResource("5_dajof"), ExtResource("6_wb
 center = NodePath("../Player")
 enemy_spawn_distance = 700
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_xqyj5")
+enemy_outline_material = SubResource("ShaderMaterial_2nlbs")
 
 [node name="GameplayUi" type="Control" parent="."]
 z_index = 100
@@ -323,6 +323,32 @@ offset_bottom = 32.0
 texture = ExtResource("8_3c8yg")
 script = ExtResource("13_jowf6")
 
+[node name="ExtraInfo" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton1"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.5
+offset_top = -14.0
+offset_right = 23.5
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.5)
+mouse_filter = 1
+theme = SubResource("Theme_t5p71")
+bbcode_enabled = true
+text = "
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
 [node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton1"]
 visible = false
 layout_mode = 0
@@ -380,6 +406,32 @@ offset_bottom = 32.0
 texture = ExtResource("8_3c8yg")
 script = ExtResource("13_jowf6")
 
+[node name="ExtraInfo" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton2"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.5
+offset_top = -14.0
+offset_right = 23.5
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.5)
+mouse_filter = 1
+theme = SubResource("Theme_t5p71")
+bbcode_enabled = true
+text = "
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
 [node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton2"]
 visible = false
 layout_mode = 0
@@ -436,6 +488,32 @@ offset_right = 32.0
 offset_bottom = 32.0
 texture = ExtResource("8_3c8yg")
 script = ExtResource("13_jowf6")
+
+[node name="ExtraInfo" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton3"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.5
+offset_top = -14.0
+offset_right = 23.5
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.5)
+mouse_filter = 1
+theme = SubResource("Theme_t5p71")
+bbcode_enabled = true
+text = "
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton3"]
 visible = false
@@ -502,6 +580,32 @@ offset_bottom = 32.0
 texture = ExtResource("8_3c8yg")
 script = ExtResource("13_jowf6")
 
+[node name="ExtraInfo" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton4"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.5
+offset_top = -14.0
+offset_right = 23.5
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.5)
+mouse_filter = 1
+theme = SubResource("Theme_t5p71")
+bbcode_enabled = true
+text = "
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
 [node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton4"]
 visible = false
 layout_mode = 0
@@ -567,6 +671,32 @@ offset_bottom = 32.0
 texture = ExtResource("8_3c8yg")
 script = ExtResource("13_jowf6")
 
+[node name="ExtraInfo" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton5"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.5
+offset_top = -14.0
+offset_right = 23.5
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.5)
+mouse_filter = 1
+theme = SubResource("Theme_t5p71")
+bbcode_enabled = true
+text = "
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
 [node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton5"]
 visible = false
 layout_mode = 0
@@ -624,6 +754,32 @@ offset_bottom = 32.0
 texture = ExtResource("8_3c8yg")
 script = ExtResource("13_jowf6")
 
+[node name="ExtraInfo" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton6"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.5
+offset_top = -14.0
+offset_right = 23.5
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.5)
+mouse_filter = 1
+theme = SubResource("Theme_t5p71")
+bbcode_enabled = true
+text = "
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
 [node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton6"]
 visible = false
 layout_mode = 0
@@ -680,6 +836,32 @@ offset_right = 32.0
 offset_bottom = 32.0
 texture = ExtResource("8_3c8yg")
 script = ExtResource("13_jowf6")
+
+[node name="ExtraInfo" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton7"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.5
+offset_top = -14.0
+offset_right = 23.5
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.5)
+mouse_filter = 1
+theme = SubResource("Theme_t5p71")
+bbcode_enabled = true
+text = "
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton7"]
 visible = false
@@ -746,6 +928,32 @@ offset_right = 32.0
 offset_bottom = 32.0
 texture = ExtResource("8_3c8yg")
 script = ExtResource("13_jowf6")
+
+[node name="ExtraInfo" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton8"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.5
+offset_top = -14.0
+offset_right = 23.5
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.5)
+mouse_filter = 1
+theme = SubResource("Theme_t5p71")
+bbcode_enabled = true
+text = "
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [node name="Sale" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/ShopUpgrades/ShopUpgradeButton8"]
 visible = false

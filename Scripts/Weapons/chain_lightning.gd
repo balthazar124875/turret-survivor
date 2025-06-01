@@ -77,8 +77,13 @@ func shoot(target_enemy: Node) -> void:
 		var bullet = bullet.instantiate()
 		add_child(bullet)
 		bullet.set_targets(i)
+		if(variation_color != Color.WHITE):
+			bullet.get_node("Thunder").modulate = variation_color
+		
+			
+		
 		for enemy in i:
-			enemy.take_hit(damage * player.damageMultiplier * gun_damage_multiplier, "Chain Lightning", GlobalEnums.DAMAGE_TYPES.LIGHTNING)
+			enemy.take_hit(damage * player.damageMultiplier * gun_damage_multiplier, "Chain Lightning", damage_type)
 			
 		call_deferred("_delete_after_time", bullet_life_time, bullet)
 	

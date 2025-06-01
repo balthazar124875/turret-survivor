@@ -79,3 +79,27 @@ static var ELEMENTAL_DAMAGE_TYPES = [
 	GlobalEnums.DAMAGE_TYPES.POISON,
 	GlobalEnums.DAMAGE_TYPES.LIGHTNING
 ]
+
+enum WEAPON_VARIATION {
+	NONE,
+	HEAVY,
+	LIGHT,
+	EXTRA_SHOT,
+	BLAZING,
+	SHOCKING,
+	SHIVERING,
+	MYSTIC,
+	TOXIC
+}
+
+var WEAPON_VARIATION_NAMES = [
+	"none",
+	"heavy",
+	"light",
+	"extra",
+	"blazing",
+	"shocking",
+	"shivering",
+	"mystic",
+	"toxic"
+]

@@ -7,6 +7,7 @@
 [node name="ChainLightningWeapon" type="Node2D"]
 script = ExtResource("1_pdo37")
 weapon_scene = ExtResource("2_ddjx6")
+viable_variations = Array[int]([1, 2, 4, 8, 7])
 upgradeName = "Chain lightning"
 description = "Shoots lightning that bounces between enemies"
 rarity = 2

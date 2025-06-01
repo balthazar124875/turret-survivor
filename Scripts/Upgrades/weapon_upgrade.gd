@@ -3,6 +3,9 @@ extends Upgrade
 class_name WeaponUpgrade
 
 @export var weapon_scene : PackedScene;
+@export var viable_variations: Array[GlobalEnums.WEAPON_VARIATION] = []
+
+var variation: GlobalEnums.WEAPON_VARIATION
 var weapon: BaseGun
 
 func _ready() -> void:
@@ -14,9 +17,14 @@ func applyUpgradeToPlayer(player: Player) -> void:
 		var new_weapon = weapon_scene.instantiate()
 		player.get_node("./Weapons").add_child(new_weapon)
 		weapon = new_weapon
+		if(variation != null):
+			weapon.set_variation(variation)
 		reparentToPlayer(player)
 	else:
 		weapon.level_up()
+
+func apply_variation(variation: GlobalEnums.WEAPON_VARIATION):
+	self.variation = variation
 
 func reparentToPlayer(player: Player) -> void:
 	player.playerUpgrades.push_back(self)
@@ -24,6 +32,8 @@ func reparentToPlayer(player: Player) -> void:
 
 func get_description() -> String:
 	var str = description
+	if(variation != GlobalEnums.WEAPON_VARIATION.NONE):
+		str += "\n" + IconHandler.get_icon_path(GlobalEnums.WEAPON_VARIATION_NAMES[variation], 32, 32) + ": " + get_variation_description()
 	str += weapon.get_damage()
 	str += weapon.get_fireRate()
 	str += weapon.get_damage_type()
@@ -32,3 +42,22 @@ func get_description() -> String:
 		str += weapon.get_lvl10_bonus_description()
 	return str
 	
+func get_variation_description() -> String:
+	match variation:
+		GlobalEnums.WEAPON_VARIATION.HEAVY:
+			return "Deals double damage, attacks half as fast"
+		GlobalEnums.WEAPON_VARIATION.LIGHT:
+			return "Deals half damage, attacks twice as fast"
+		GlobalEnums.WEAPON_VARIATION.EXTRA_SHOT: #straight upgrade
+			return "Shoots an extra projectile"
+		GlobalEnums.WEAPON_VARIATION.BLAZING:
+			return "Deals fire damage"
+		GlobalEnums.WEAPON_VARIATION.SHOCKING:
+			return "Deals lightning damage"
+		GlobalEnums.WEAPON_VARIATION.SHIVERING:
+			return "Deals ice damage"
+		GlobalEnums.WEAPON_VARIATION.MYSTIC:
+			return "Deals mystic damage"
+		GlobalEnums.WEAPON_VARIATION.TOXIC:
+			return "Deals poison damage"
+	return ""

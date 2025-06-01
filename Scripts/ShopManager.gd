@@ -58,6 +58,7 @@ func _ready() -> void:
 	circle = player.get_node("./Circle")
 	load_upgrades()
 	initialize_buttons()
+	fillShopUpgradeButtons()
 	SignalBus.current_wave_updated.connect(new_wave_shop_reroll)
 	SignalBus.refresh_shop_upgrades.connect(fillShopUpgradeButtons)
 	empty_item_slot_texture = load("res://Assets/Sprites/upgrades/empty_upgrade_slot.png")
@@ -73,10 +74,8 @@ func _input(event):
 			for i in locked_buyable:
 				shopUpgradeButtons[i].button.get_node("LockButton").queue_free()
 			locked_buyable.clear()
-			
-			
+
 func load_upgrades() -> void:
-			#Iterate all Upgrade scripts and put them in the global array
 	var folders = ["Circle", "Stats", "Weapons", "Passives", "Other", "Augments"]
 	for f in folders:
 		var dir = DirAccess.open("res://Scenes/Upgrades/" + f);
@@ -85,7 +84,6 @@ func load_upgrades() -> void:
 			var file_name = dir.get_next()
 			while file_name != "":
 				var upgrade = load("res://Scenes/Upgrades/" + f  + "/" + file_name).instantiate()
-				upgrade.gold_cost = get_cost(upgrade.rarity)
 				UPGRADES_LIST[upgrade.rarity].push_back(upgrade);
 				file_name = dir.get_next()
 				
@@ -93,7 +91,7 @@ func load_upgrades() -> void:
 					upgrade._instantiate(); #Generate random inner outer functionality for circle upgrade
 		else:
 			print("An error occurred when trying to access the path.");
-
+						
 func initialize_buttons() -> void:
 	buttons = self.get_children()
 	for i in len(buttons):
@@ -109,9 +107,6 @@ func initialize_buttons() -> void:
 			l.button_down.connect(_on_shop_locked_button_pressed.bind(i))
 			l.mouse_entered.connect(mouse_enter.bind(i))
 			l.mouse_exited.connect(mouse_exit)
-			
-	
-	fillShopUpgradeButtons()
 
 func new_wave_shop_reroll(current_wave: int = 0) -> void:
 	SignalBus.animate_shop_upgrade_door.emit()
@@ -126,18 +121,32 @@ func fillShopUpgradeButtons(current_wave: int = 0) -> void:
 	var super_shop = s_r < super_shop_chance
 		
 	var newUpgradeList = GenerateUpgradesListForShop(1 if super_shop else shopUpgradeButtons.size());
+	for i in newUpgradeList:
+		if(i is WeaponUpgrade && i.upgradeAmount == 0 && i.viable_variations.size() > 0):
+			if(randf() < 0.5):
+				i.apply_variation(i.viable_variations[randi() % i.viable_variations.size()])
+			else:
+				i.apply_variation(GlobalEnums.WEAPON_VARIATION.NONE)
+	
 	for i in shopUpgradeButtons.size():
+		var index = i if !super_shop else 0
+		
 		if(shopUpgradeButtons[i].locked):
 			continue
-		shopUpgradeButtons[i].upgradeNode = newUpgradeList[i if !super_shop else 0];
-		buttons[i].texture_normal = newUpgradeList[i if !super_shop else 0].icon
+		shopUpgradeButtons[i].upgradeNode = newUpgradeList[index];
+		buttons[i].texture_normal = newUpgradeList[index].icon
 		var r = randf_range(0, 1)
 		var x = shopUpgradeButtons[i]
 		var sale = (r < sale_chance + (player.luck * 0.01))
 		shopUpgradeButtons[i].sale = sale
 		shopUpgradeButtons[i].button.get_node("Sale").visible = sale
-		shopUpgradeButtons[i].cost = newUpgradeList[i if !super_shop else 0].gold_cost * (0.5 if sale else 1)
+		shopUpgradeButtons[i].cost = newUpgradeList[index].gold_cost * (0.5 if sale else 1)
 		
+		if(newUpgradeList[index] is WeaponUpgrade && newUpgradeList[index].variation != GlobalEnums.WEAPON_VARIATION.NONE):
+			buttons[i].get_node("ExtraInfo").text = IconHandler.get_icon_path(GlobalEnums.WEAPON_VARIATION_NAMES[newUpgradeList[index].variation])
+		else:
+			buttons[i].get_node("ExtraInfo").text = ""
+			
 		GenerateButtonTooltip(shopUpgradeButtons[i]);
 		var text = buttons[i].get_child(0) as RichTextLabel
 		text.scroll_active = false
@@ -227,18 +236,13 @@ func _on_shop_upgrade_button_pressed(index: int) -> void:
 	buy_upgrade(index)
 
 	var x = shopUpgradeButtons[index]
-	#if rightclick == false:
+	
 	shopUpgradeButtons[index].upgradeNode = null
 	shopUpgradeButtons[index].locked = false
 	shopUpgradeButtons[index].button.get_node("FROZEN").visible = shopUpgradeButtons[index].locked
 	buttons[index].texture_normal = empty_item_slot_texture
 	tooltipMgr.HideTooltip();
-	#else:
-		#var text = shopUpgradeButtons[index].button.get_child(0) as RichTextLabel
-		#text.scroll_active = false
-		#if(shopUpgradeButtons[index].upgradeNode.upgradeAmount != 0):
-			#text.text = "[right][color=black][font_size=12]" + str(shopUpgradeButtons[index].upgradeNode.upgradeAmount) + "[/font_size][/color][/right]"
-
+	
 func lock_item(index: int) -> void:
 	if (!shopUpgradeButtons[index].locked):
 		var locked_amount = shopUpgradeButtons.reduce(func(a, b): return a +  (1 if b.locked else 0), 0)

@@ -3,6 +3,7 @@ extends ArcProjectile
 class_name Trap
 
 var base_damage = 1
+var damage_type: GlobalEnums.DAMAGE_TYPES
 var armed = false
 var lifetime
 

@@ -7,6 +7,7 @@
 [node name="ClusterBombUpgrade" type="Node2D"]
 script = ExtResource("1_fdt7u")
 weapon_scene = ExtResource("2_mgjvk")
+viable_variations = Array[int]([1, 2, 3, 4])
 upgradeName = "Cluster bomb"
 description = "Shoots a bomb that splits into multiple bombs"
 rarity = 1

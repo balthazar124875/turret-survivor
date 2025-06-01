@@ -7,6 +7,7 @@
 [node name="ShotGunUpgrade" type="Node2D"]
 script = ExtResource("1_71klg")
 weapon_scene = ExtResource("2_6ii2h")
+viable_variations = Array[int]([1, 2, 3, 7])
 upgradeName = "Shotgun"
 description = "Shoots several bullets"
 icon = ExtResource("3_c3hwg")

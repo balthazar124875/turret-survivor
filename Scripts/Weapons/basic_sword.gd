@@ -15,6 +15,7 @@ func shoot(enemy: Node) -> void:
 		bullet.damage = damage * gun_damage_multiplier
 		bullet.swing_degrees = base_swing_degrees * player.areaSizeMultiplier
 		bullet.sword_scale = base_sword_scale * player.rangeMultiplier
+		bullet.set_damage_type_and_color(damage_type, variation_color)
 		add_child(bullet)
 
 func apply_level_up():
