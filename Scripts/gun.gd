@@ -47,7 +47,8 @@ func apply_level_up():
 		local_projectile_speed_multiplier *= 0.75
 		bullet_life_time *= 1.33
 		wrapAround = true
-		damage_type = GlobalEnums.DAMAGE_TYPES.MAGIC
+		if(damage_type == GlobalEnums.DAMAGE_TYPES.PHYSICAL):
+			damage_type = GlobalEnums.DAMAGE_TYPES.MAGIC
 		return
 	
 	match level % 5:

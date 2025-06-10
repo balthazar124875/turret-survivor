@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://qb4oso6v3pxf"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Augments/contrarian.gd" id="1_6rdcx"]
+[ext_resource type="Texture2D" uid="uid://cyn3ecleom54" path="res://Assets/Sprites/upgrades/contrarian.png" id="2_nxata"]
+
+[node name="Contrarian" type="Node2D"]
+script = ExtResource("1_6rdcx")
+passiveType = 6
+upgradeName = "Contrarian"
+description = "Weapons will no longer spawn as common variety"
+type = 1
+rarity = 4
+icon = ExtResource("2_nxata")

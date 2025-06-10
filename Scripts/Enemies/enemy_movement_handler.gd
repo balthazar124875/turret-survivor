@@ -74,7 +74,7 @@ func add_displacement(displacement_vector: Vector2, speed: float) -> void:
 		return
 	
 	enemy.state = Enemy.EnemyState.DISPLACEMENT
-	SignalBus.enemy_displaced.emit(self)
+	SignalBus.enemy_displaced.emit(self.enemy)
 	displacement_speed = speed
 	create_curve(enemy.global_position + (displacement_vector)) #reduce with cc_effectiveness?
 	
