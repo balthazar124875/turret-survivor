@@ -12,3 +12,4 @@ upgradeName = "Cluster bomb"
 description = "Shoots a bomb that splits into multiple bombs"
 rarity = 1
 icon = ExtResource("3_evc55")
+tags = Array[int]([0, 8])

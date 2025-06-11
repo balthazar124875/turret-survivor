@@ -19,6 +19,19 @@ enum UpgradeRarity {
 	MYTHIC
 }
 
+enum TAGS {
+	PHYSICAL,
+	FIRE,
+	LIGHTNING,
+	COLD,
+	MAGIC,
+	POISON,
+	HEALTH,
+	INCOME,
+	WEAPON,
+	TRAP
+}
+
 @export var upgradeName : String;
 @export var description : String;
 @export var type : UpgradeType;
@@ -31,6 +44,7 @@ var upgradeAmount = 0;
 @export var weight = 10;
 @export var weight_reduction: = 0
 @export var rolled: bool
+@export var tags: Array[TAGS] = []
 
 func applyUpgradeToPlayer(player: Player) -> void:
 	learnt = true;

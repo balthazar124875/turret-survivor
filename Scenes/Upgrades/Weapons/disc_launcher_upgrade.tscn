@@ -11,3 +11,4 @@ viable_variations = Array[int]([1, 2, 6, 3, 7, 4])
 upgradeName = "Disc launcher"
 description = "Shoots a rotating disc"
 icon = ExtResource("3_i3wyo")
+tags = Array[int]([0, 8])

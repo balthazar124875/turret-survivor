@@ -255,3 +255,12 @@ func get_random_weapon(tag: String = "") -> WeaponUpgrade:
 		return matching_children[randi() % matching_children.size()]
 	else:
 		return null
+
+func get_random_upgrade_with_tags(tags: Array[Upgrade.TAGS]):
+	var matching = playerUpgrades.filter(func(e: Upgrade): return tags.all(func(n): return e.tags.has(n)))
+
+	if matching.size() > 0:
+		return matching[randi() % matching.size()]
+	else:
+		return null
+	

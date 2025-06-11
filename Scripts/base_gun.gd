@@ -123,29 +123,7 @@ func get_fireRate() -> String:
 	return "\nFire rate: [color=yellow]" + String.num(1 * player.attackSpeedMultiplier / cooldown, 2) + "[/color] shots/sec"
 	
 func get_damage_type() -> String:
-	return "\nDamage type: [color=" + get_damage_color() + "]" + get_enum_name(damage_type) + "[/color]"
-	
-func get_damage_color() -> String:
-	match damage_type:
-		GlobalEnums.DAMAGE_TYPES.PHYSICAL: 
-			return "white"
-		GlobalEnums.DAMAGE_TYPES.MAGIC:
-			return "purple"
-		GlobalEnums.DAMAGE_TYPES.ICE:
-			return "cyan"
-		GlobalEnums.DAMAGE_TYPES.FIRE: 
-			return "red"
-		GlobalEnums.DAMAGE_TYPES.POISON: 
-			return "green"
-		GlobalEnums.DAMAGE_TYPES.LIGHTNING: 
-			return "yellow"
-	return "white"
-	
-func get_enum_name(value):
-	for name in GlobalEnums.DAMAGE_TYPES.keys():
-		if GlobalEnums.DAMAGE_TYPES[name] == value:
-			return name
-	return "UNKNOWN"
+	return "\nDamage type:" + TooltipHelper.get_damage_type_text(damage_type)
 	
 func set_variation(variation: GlobalEnums.WEAPON_VARIATION) -> void:
 	match variation:

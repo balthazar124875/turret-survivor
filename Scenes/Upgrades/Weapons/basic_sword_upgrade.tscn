@@ -12,3 +12,4 @@ upgradeName = "Basic Sword"
 description = "Swings a sword at nearby enemies"
 icon = ExtResource("3_q0ovi")
 gold_cost = 20
+tags = Array[int]([0, 8])

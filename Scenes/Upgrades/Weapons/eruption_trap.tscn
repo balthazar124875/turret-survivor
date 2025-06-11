@@ -12,3 +12,4 @@ upgradeName = "Eruption trap"
 description = "Launches explosive traps"
 rarity = 1
 icon = ExtResource("3_0c07s")
+tags = Array[int]([1, 9, 8])

@@ -13,3 +13,4 @@ description = "Fires a powerful laser after charging"
 rarity = 1
 icon = ExtResource("3_pvemx")
 gold_cost = 200
+tags = Array[int]([4, 8])

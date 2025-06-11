@@ -12,3 +12,4 @@ upgradeName = "Poison dart"
 description = "Fire a dart that poisons enemies"
 icon = ExtResource("3_6ddy1")
 gold_cost = 20
+tags = Array[int]([0, 5, 8])

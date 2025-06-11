@@ -11,3 +11,4 @@ upgradeName = "Poison blob"
 description = "Shoots toxic poison that explodes"
 rarity = 1
 icon = ExtResource("2_l1enk")
+tags = Array[int]([5, 8])
