@@ -11,3 +11,4 @@ upgradeName = "Poison nova"
 description = "Shoots a wave of poison on nearby enemies"
 rarity = 2
 icon = ExtResource("3_c7eka")
+tags = Array[int]([5, 8])

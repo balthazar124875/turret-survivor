@@ -9,3 +9,4 @@ upgradeName = "Icepick"
 description = "Deals lots of extra damage to frozen enemies but breaks the ice"
 type = 1
 icon = ExtResource("2_o45fk")
+tags = Array[int]([3])

@@ -71,7 +71,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/lootbox_roll.gd" id="56_76q55"]
 [ext_resource type="PackedScene" uid="uid://b3hbh58fbjtka" path="res://Scenes/UI/lootbox_upgrade.tscn" id="67_b7gyy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vn44e"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdkhg"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -185,7 +185,7 @@ waves = Array[ExtResource("4_4h2fe")]([ExtResource("5_dajof"), ExtResource("6_wb
 center = NodePath("../Player")
 enemy_spawn_distance = 700
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_vn44e")
+enemy_outline_material = SubResource("ShaderMaterial_hdkhg")
 
 [node name="GameplayUi" type="Control" parent="."]
 z_index = 100

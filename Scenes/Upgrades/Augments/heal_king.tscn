@@ -10,3 +10,4 @@ description = "Increases healing by 100%."
 type = 1
 rarity = 4
 icon = ExtResource("2_ixy0u")
+tags = Array[int]([6])

@@ -10,3 +10,4 @@ description = "Cold damage might freeze enemies for seconds depending on damage 
 type = 1
 rarity = 4
 icon = ExtResource("2_j3ptq")
+tags = Array[int]([3])

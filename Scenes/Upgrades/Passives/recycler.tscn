@@ -10,3 +10,4 @@ description = "Recieve gold when traps expire"
 type = 1
 rarity = 1
 icon = ExtResource("2_rm83m")
+tags = Array[int]([9, 7])

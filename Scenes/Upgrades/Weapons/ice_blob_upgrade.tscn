@@ -10,3 +10,4 @@ weapon_scene = ExtResource("2_u6xjd")
 upgradeName = "Ice Blob"
 description = "Fire a tiny ice blob that will grow as it hits enemies."
 icon = ExtResource("3_xt5fy")
+tags = Array[int]([3, 8])

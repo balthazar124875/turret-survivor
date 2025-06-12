@@ -10,3 +10,4 @@ description = "Gain maximum health when spending money"
 type = 1
 rarity = 4
 icon = ExtResource("2_4hctg")
+tags = Array[int]([7, 6])

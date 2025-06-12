@@ -12,3 +12,4 @@ description = "Enemies explode on death"
 type = 1
 rarity = 3
 icon = ExtResource("2_b05ff")
+tags = Array[int]([1])

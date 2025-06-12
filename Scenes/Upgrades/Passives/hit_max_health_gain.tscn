@@ -12,3 +12,4 @@ type = 1
 rarity = 2
 icon = ExtResource("2_sp30q")
 gold_cost = 45
+tags = Array[int]([6])

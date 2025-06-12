@@ -12,3 +12,4 @@ upgradeName = "Gravity trap"
 description = "Lays traps that pulls enemies"
 rarity = 1
 icon = ExtResource("3_v3raq")
+tags = Array[int]([4, 8, 9])

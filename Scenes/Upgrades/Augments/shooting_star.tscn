@@ -13,3 +13,4 @@ description = "Spawn a shooting star on every 10 enemies killed"
 type = 1
 rarity = 4
 icon = ExtResource("2_hqmvb")
+tags = Array[int]([1, 2, 3, 4, 5])

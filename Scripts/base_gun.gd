@@ -123,7 +123,7 @@ func get_fireRate() -> String:
 	return "\nFire rate: [color=yellow]" + String.num(1 * player.attackSpeedMultiplier / cooldown, 2) + "[/color] shots/sec"
 	
 func get_damage_type() -> String:
-	return "\nDamage type:" + TooltipHelper.get_damage_type_text(damage_type)
+	return "\nDamage type: " + TooltipHelper.get_damage_type_text(damage_type)
 	
 func set_variation(variation: GlobalEnums.WEAPON_VARIATION) -> void:
 	match variation:

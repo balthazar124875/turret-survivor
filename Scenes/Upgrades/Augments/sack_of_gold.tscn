@@ -11,3 +11,4 @@ description = "Gives 500 gold"
 type = 1
 rarity = 4
 icon = ExtResource("2_t8hqm")
+tags = Array[int]([7])

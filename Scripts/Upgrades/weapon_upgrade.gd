@@ -19,6 +19,7 @@ func applyUpgradeToPlayer(player: Player) -> void:
 		weapon = new_weapon
 		if(variation != null):
 			weapon.set_variation(variation)
+			add_variation_tag()
 		reparentToPlayer(player)
 	else:
 		weapon.level_up()
@@ -61,3 +62,16 @@ func get_variation_description() -> String:
 		GlobalEnums.WEAPON_VARIATION.TOXIC:
 			return "Deals poison damage"
 	return ""
+	
+func add_variation_tag() -> void:
+	match variation:
+		GlobalEnums.WEAPON_VARIATION.BLAZING:
+			tags.append(TAGS.FIRE)
+		GlobalEnums.WEAPON_VARIATION.SHOCKING:
+			tags.append(TAGS.LIGHTNING)
+		GlobalEnums.WEAPON_VARIATION.SHIVERING:
+			tags.append(TAGS.COLD)
+		GlobalEnums.WEAPON_VARIATION.MYSTIC:
+			tags.append(TAGS.MAGIC)
+		GlobalEnums.WEAPON_VARIATION.TOXIC:
+			tags.append(TAGS.POISON)

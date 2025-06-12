@@ -12,3 +12,4 @@ description = "Brings down THUNDER"
 rarity = 3
 icon = ExtResource("3_xm3ao")
 gold_cost = 15
+tags = Array[int]([2, 8])

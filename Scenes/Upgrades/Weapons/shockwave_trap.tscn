@@ -11,3 +11,4 @@ viable_variations = Array[int]([2])
 upgradeName = "Shockwave trap"
 description = "Traps knocksbacks enemies"
 icon = ExtResource("3_2sfjj")
+tags = Array[int]([2, 9, 8])

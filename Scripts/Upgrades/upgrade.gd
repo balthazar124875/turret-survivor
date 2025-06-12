@@ -75,7 +75,17 @@ func GetTooltipStats() -> String:
 	return ""
 
 func get_tooltip() -> String:
-	return "[b]" + upgradeName + "[/b] \n" + get_description()
+	return "[b]" + upgradeName + "[/b] \n" + get_description() + get_tags()
 
 func get_description() -> String:
 	return description
+	
+func get_tags() -> String:
+	if tags.is_empty():
+		return ""
+		
+	var tag_names: Array[String] = []
+	for tag in tags:
+		tag_names.append(TAGS.keys()[int(tag)])
+
+	return "\n[b]#" + " #".join(tag_names) + "[/b]"

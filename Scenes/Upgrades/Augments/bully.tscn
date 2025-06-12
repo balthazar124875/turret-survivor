@@ -13,3 +13,4 @@ type = 1
 rarity = 4
 icon = ExtResource("2_12yiq")
 weight = 0
+tags = Array[int]([4])

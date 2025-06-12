@@ -11,3 +11,4 @@ upgradeName = "Slowing bullets"
 description = "Bullets slow"
 type = 1
 icon = ExtResource("2_1qqc2")
+tags = Array[int]([3])

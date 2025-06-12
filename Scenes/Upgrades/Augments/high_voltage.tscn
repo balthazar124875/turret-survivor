@@ -11,3 +11,4 @@ description = "Direct Lightning damage can knockback enemeis"
 type = 1
 rarity = 4
 icon = ExtResource("2_6wnin")
+tags = Array[int]([2])

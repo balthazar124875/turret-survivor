@@ -11,3 +11,4 @@ viable_variations = Array[int]([1, 2, 4, 5])
 upgradeName = "Gun"
 description = "Shoots a bullet"
 icon = ExtResource("3_7beam")
+tags = Array[int]([0, 8])

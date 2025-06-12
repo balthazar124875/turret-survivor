@@ -14,3 +14,4 @@ type = 1
 rarity = 4
 icon = ExtResource("3_nsuww")
 weight = 0
+tags = Array[int]([5])

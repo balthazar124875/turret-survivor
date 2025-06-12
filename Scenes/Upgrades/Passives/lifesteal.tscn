@@ -10,3 +10,4 @@ description = "When below 25% direct hits to enemies restore health"
 type = 1
 rarity = 2
 icon = ExtResource("2_5jq7g")
+tags = Array[int]([6])

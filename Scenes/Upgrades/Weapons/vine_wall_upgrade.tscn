@@ -10,3 +10,4 @@ weapon_scene = ExtResource("2_8qmmd")
 upgradeName = "Vine Wall"
 description = "Summon vines around you stopping enemies in their track"
 icon = ExtResource("2_eo5dj")
+tags = Array[int]([0])

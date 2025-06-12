@@ -1,7 +1,12 @@
 extends AugmentUpgrade
 
 var possible_tags = [
-	Upgrade.TAGS.FIRE
+	Upgrade.TAGS.FIRE,
+	Upgrade.TAGS.PHYSICAL,
+	Upgrade.TAGS.COLD,
+	Upgrade.TAGS.LIGHTNING,
+	Upgrade.TAGS.POISON,
+	Upgrade.TAGS.MAGIC
 ]
 
 var damage_type: GlobalEnums.DAMAGE_TYPES

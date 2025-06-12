@@ -10,3 +10,4 @@ description = "Traps detonate instantly upon landing. Increases trap damage by 2
 type = 1
 rarity = 4
 icon = ExtResource("2_x2ke6")
+tags = Array[int]([9])

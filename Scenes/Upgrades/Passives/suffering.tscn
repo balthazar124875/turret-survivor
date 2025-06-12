@@ -11,3 +11,4 @@ description = "Killing a poisoned or burning enemy restores health"
 type = 1
 rarity = 1
 icon = ExtResource("2_v7gtt")
+tags = Array[int]([1, 5, 6])

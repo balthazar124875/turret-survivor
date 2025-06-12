@@ -11,3 +11,4 @@ description = "Gives 40 armor. Causes player to bleed when hit."
 type = 1
 rarity = 4
 icon = ExtResource("2_6cpyi")
+tags = Array[int]([0, 6])

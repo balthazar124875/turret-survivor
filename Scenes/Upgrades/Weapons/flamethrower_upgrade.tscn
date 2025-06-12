@@ -10,3 +10,4 @@ weapon_scene = ExtResource("2_5371y")
 upgradeName = "Flamethrower"
 description = "Add flamethrower to your arsenal"
 icon = ExtResource("3_l58tl")
+tags = Array[int]([1, 8])

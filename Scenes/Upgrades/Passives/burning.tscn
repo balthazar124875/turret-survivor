@@ -11,3 +11,4 @@ upgradeName = "Burny "
 description = "Fire damage can burn enemies"
 type = 1
 icon = ExtResource("2_m2jqe")
+tags = Array[int]([1])

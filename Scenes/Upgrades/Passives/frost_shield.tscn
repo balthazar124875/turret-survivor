@@ -11,3 +11,4 @@ description = "Freezes enemies that hit the player"
 type = 1
 rarity = 1
 icon = ExtResource("2_edwxi")
+tags = Array[int]([3])

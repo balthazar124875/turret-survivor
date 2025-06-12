@@ -11,3 +11,4 @@ upgradeName = "Vine trap"
 description = "Lays traps that root enemies"
 rarity = 2
 icon = ExtResource("3_kfmfy")
+tags = Array[int]([9, 0, 5, 8])

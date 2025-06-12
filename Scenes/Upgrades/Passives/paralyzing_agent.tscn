@@ -10,3 +10,4 @@ description = "Poison damage paralyzes enemies"
 type = 1
 rarity = 2
 icon = ExtResource("2_i1ws8")
+tags = Array[int]([5])

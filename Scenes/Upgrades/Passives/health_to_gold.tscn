@@ -11,3 +11,4 @@ type = 1
 rarity = 1
 icon = ExtResource("2_mpyhd")
 gold_cost = 0
+tags = Array[int]([6, 7])
