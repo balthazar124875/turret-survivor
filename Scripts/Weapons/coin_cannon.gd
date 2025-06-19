@@ -3,6 +3,9 @@ extends SimpleGun
 @export var cashout: bool = false
 
 func shoot(enemy: Node) -> void:
+	if(player.gold < 1):
+		return
+	
 	var current_position = global_position
 	var direction = (enemy.position - current_position).normalized()
 	var bullet = bullet.instantiate()

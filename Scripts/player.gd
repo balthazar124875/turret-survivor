@@ -173,7 +173,7 @@ func _on_enemy_killed(enemy: Enemy) -> void:
 		
 	match enemy.champion_type:
 		GlobalEnums.ENEMY_CHAMPION_TYPE.QUICK:
-			modify_stat(GlobalEnums.PLAYER_STATS.ATTACK_SPEED, championRewardBonus * 0.005)
+			modify_stat(GlobalEnums.PLAYER_STATS.RANGE_MULTIPLER, championRewardBonus * 0.005)
 		GlobalEnums.ENEMY_CHAMPION_TYPE.REGENERATING:
 			modify_stat(GlobalEnums.PLAYER_STATS.ADD_HEALTH_REGENERATION, championRewardBonus * 0.2)
 		GlobalEnums.ENEMY_CHAMPION_TYPE.JUGGERNAUT:

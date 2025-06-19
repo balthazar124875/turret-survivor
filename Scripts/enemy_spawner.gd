@@ -14,6 +14,8 @@ extends Node2D
 @export var enemy_cc_effectiveness_scaling = 0.96
 @export var enemy_speed_bonus_per_wave = 0.01
 @export var double_enemies_every = 10
+@export var max_enemies_amount = 10
+@export var double_hp_scaling_every = 100
 
 var rng = RandomNumberGenerator.new()
 var current_wave_enemy_index = 0
@@ -41,8 +43,12 @@ func _process(delta: float) -> void:
 	wave_progress_bar.value = wave_timer.time_left
 
 func _on_enemy_spawner_timer_timeout() -> void:
-	var r = rng.randi_range(0, current_wave)
-	var amount = 1 + (r / double_enemies_every) 
+	var amount = 1
+	if(current_wave/double_enemies_every > max_enemies_amount):
+		amount = max_enemies_amount
+	else:
+		var r = rng.randi_range(0, current_wave)
+		amount = 1 + (r / double_enemies_every)
 	
 	for i in range (amount):
 		spawn_enemy(waves[current_wave_enemy_index].enemy, true)
@@ -59,10 +65,7 @@ func spawn_enemy(enemyScene: PackedScene, possibleChampion: bool, position: Vect
 		enemy.position = Vector2(xPos, yPos)
 		
 	call_deferred("_spawn", enemy)
-	enemy.modify_stats(pow(enemy_hp_scaling, current_wave / waves.size()),
-	 pow(enemy_dmg_scaling, current_wave / waves.size()),
-	 pow(enemy_cc_effectiveness_scaling, current_wave / waves.size()),
-	 current_wave * enemy_speed_bonus_per_wave)
+	scale_enemy(enemy)
 	
 	var champ_r = randf_range(0, 1)
 	if(possibleChampion && champ_r < champion_spawn_rate):
@@ -81,6 +84,26 @@ func spawn_enemy(enemyScene: PackedScene, possibleChampion: bool, position: Vect
 				
 		enemy.set_champion_type(type)
 
+func scale_enemy(enemy: Enemy):
+	var weighted_hp_scaling_wave = weighted_value(current_wave)
+	
+	enemy.modify_stats(pow(enemy_hp_scaling, weighted_hp_scaling_wave / waves.size()),
+	 pow(enemy_dmg_scaling, current_wave / waves.size()),
+	 pow(enemy_cc_effectiveness_scaling, current_wave / waves.size()),
+	 current_wave * enemy_speed_bonus_per_wave)
+	
+func weighted_value(value: float) -> float:
+	var total = 0.0
+	var remaining = value
+	var multiplier = 1
+
+	while remaining > 0:
+		var chunk = min(remaining, double_hp_scaling_every)
+		total += chunk * multiplier
+		remaining -= chunk
+		multiplier += 1
+	return total
+	
 func _spawn(enemy):
 	enemies.add_child(enemy)
 

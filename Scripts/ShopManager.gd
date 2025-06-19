@@ -85,6 +85,7 @@ func load_upgrades() -> void:
 			var file_name = dir.get_next()
 			while file_name != "":
 				var upgrade = load("res://Scenes/Upgrades/" + f  + "/" + file_name).instantiate()
+				upgrade.gold_cost = get_cost(upgrade.rarity)
 				UPGRADES_LIST[upgrade.rarity].push_back(upgrade);
 				file_name = dir.get_next()
 				

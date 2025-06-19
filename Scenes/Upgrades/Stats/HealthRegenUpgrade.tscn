@@ -6,7 +6,7 @@
 [node name="HealthRegenUpgrade" type="Node2D"]
 script = ExtResource("1_rwqk5")
 stat_type = 7
-amount = 5.0
+amount = 2.0
 upgradeName = "Add health regen"
 description = "Increase health regeneration"
 type = 2
