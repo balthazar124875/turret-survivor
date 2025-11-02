@@ -1,34 +1,59 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2ds7nskhcrdu"]
+[gd_scene load_steps=4 format=3 uid="uid://b2ds7nskhcrdu"]
 
 [ext_resource type="Texture2D" uid="uid://dahsvs0n0nnbe" path="res://Assets/Sprites/upgrades/augments/heal_king.png" id="1_vxi00"]
+[ext_resource type="Script" path="res://Scripts/Menus/UnlockNodes/AchievementUI.gd" id="1_ypulj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwigv"]
+bg_color = Color(0, 0, 0, 0.572549)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="AchievementUI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 24.0
-offset_bottom = 24.0
+offset_left = -200.0
+offset_top = 8.0
+offset_right = -200.0
+offset_bottom = 8.0
+pivot_offset = Vector2(200, 56)
+size_flags_horizontal = 4
+script = ExtResource("1_ypulj")
+
+[node name="StakesSA" type="PanelContainer" parent="."]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 402.0
+offset_bottom = 127.0
+pivot_offset = Vector2(208, 64)
+theme_override_styles/panel = SubResource("StyleBoxFlat_wwigv")
 
 [node name="SpellName" type="RichTextLabel" parent="."]
 layout_mode = 2
 offset_left = 128.0
-offset_top = -8.0
-offset_right = 428.0
-offset_bottom = 22.0
-scale = Vector2(2, 2)
+offset_right = 392.09
+offset_bottom = 30.0
 text = "Heal king"
 
 [node name="SpellDesc" type="RichTextLabel" parent="."]
 layout_mode = 2
 offset_left = 128.0
-offset_top = 40.0
-offset_right = 728.0
-offset_bottom = 152.0
+offset_top = 24.0
+offset_right = 392.09
+offset_bottom = 116.44
+grow_horizontal = 2
+grow_vertical = 2
 text = "Heal everytime you take damage."
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 2
 offset_right = 100.0
 offset_bottom = 100.0
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("1_vxi00")
+stretch_mode = 5

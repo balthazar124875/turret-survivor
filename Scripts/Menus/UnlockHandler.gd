@@ -39,12 +39,12 @@ func load_unlocks() -> void:
 			var itemName = item.resource_path.get_file().get_basename();
 			lockedItemsDictionary[itemName] = false;
 
-func RenderAchievementBox(unlockName : String, icon : Texture2D):
+func RenderAchievementBox(unlockName : String, unlockCondition : String, icon : Texture2D):
 	var uiBox = achievementUI.instantiate();
 	get_tree().root.add_child(uiBox);
-	uiBox.get_node("SpellName").text = unlockName;
-	uiBox.get_node("SpellDesc").text = "New Character Unlocked!";
+	uiBox.get_node("SpellName").text = "New Character Unlocked!";
+	uiBox.get_node("SpellDesc").text = unlockName + "\n" + unlockCondition;
 	uiBox.get_node("Icon").texture = icon;
-	uiBox.global_position.x = 0;
-	uiBox.global_position.y = -1080/2;
+	var spawnPos = Vector2(0, -1080/2);
+	uiBox.Init(spawnPos);
 	pass

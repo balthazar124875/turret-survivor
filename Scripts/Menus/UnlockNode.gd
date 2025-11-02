@@ -30,6 +30,7 @@ func UnlockThisNode():
 			#Run UI code that will notify the player and play some party vfx
 			#You'll send in name and sprite icon into the UI function and that's it!
 			var itemInstance = item.instantiate();
+			itemInstance.init();
 			var unlockName = "";
 			if itemInstance is PlayerSelectNode:
 				unlockName = itemInstance.playerName;
@@ -37,7 +38,7 @@ func UnlockThisNode():
 				unlockName = itemInstance.upgradeName;
 			else:
 				print("Unlocked item name not found! This is a bad error, investigate!")
-			UnlockHandler.RenderAchievementBox(unlockName, itemInstance.icon);
+			UnlockHandler.RenderAchievementBox(unlockName, itemInstance.unlockCondition, itemInstance.icon);
 			print(unlockName + " unlocked!");
 	isLocked = false;
 	

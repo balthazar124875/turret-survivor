@@ -15,6 +15,9 @@ var radius : float;
 var stakesCleared : int = 0;
 var playerID : int = 0; #IMPORTANT: Give each player a unique ID
 
+func init() -> void:
+	_ready();
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	isLocked = true;
