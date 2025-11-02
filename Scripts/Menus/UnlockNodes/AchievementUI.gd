@@ -20,7 +20,7 @@ func TweenToNewPos(target_pos : Vector2) -> void:
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR);
 	var tweenDuration = 0.4;
 	tween.tween_property(self, "global_position", target_pos, tweenDuration);
-	tween.tween_callback(TweenBackToOGPos.bind(og_pos)).set_delay(2.0)
+	tween.tween_callback(TweenBackToOGPos.bind(og_pos)).set_delay(5.0)
 	#set_meta("current_tween", tween);
 
 func TweenBackToOGPos(target_pos : Vector2) -> void:
