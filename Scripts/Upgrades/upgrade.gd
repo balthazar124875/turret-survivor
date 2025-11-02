@@ -41,6 +41,7 @@ enum TAGS {
 var playerCosmetic; #The cosmetic this upgrade will add to your player, e.g hat, wings etc.
 var learnt = false; #Set to true if this upgrade has been learnt
 var upgradeAmount = 0;
+var isLocked = false; #Set this to true to make this item locked, to unlock it you'll have to fullfill an UnlockNode condition.
 @export var weight = 10;
 @export var weight_reduction: = 0
 @export var rolled: bool

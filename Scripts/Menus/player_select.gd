@@ -3,6 +3,7 @@ extends Node
 class_name PlayerSelectNode
 
 @export var playerName : String;
+var objectName : String; #Same as playerName
 @export var startAugments : Array[PackedScene]; #res://Scenes/Upgrades/Augments/
 @export var startWeapons : Array[PackedScene];
 var isLocked : bool;
@@ -11,6 +12,8 @@ var isLocked : bool;
 var curr_angle : float;
 var pivotPos : Vector2;
 var radius : float;
+var stakesCleared : int = 0;
+var playerID : int = 0; #IMPORTANT: Give each player a unique ID
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,6 +21,7 @@ func _ready() -> void:
 	curr_angle = 0.0;
 	pivotPos = Vector2(0.0, 0.0);
 	radius = 0.0;
+	objectName = playerName;
 	pass # Replace with function body.
 
 func TweenToNewAngle(target_angle : float) -> void:

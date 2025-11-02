@@ -25,7 +25,8 @@ enum DAMAGE_TYPES {
 	ICE,
 	FIRE,
 	POISON,
-	LIGHTNING
+	LIGHTNING,
+	COUNT
 }
 
 #See damage_type_colors

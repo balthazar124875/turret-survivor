@@ -1,6 +1,7 @@
 extends Control
 
 var damages = {}
+var damageTypeList = {}
 var heals = {}
 var start_y = 10
 
@@ -44,7 +45,14 @@ func _add_damage(enemy: Enemy, amount: float, damageType: GlobalEnums.DAMAGE_TYP
 		label.text = source + ": " + str(round(damages[source]))
 	total_damage += amount
 	total_damage_label.text = str("Damage done: ", round(total_damage))
-
+	
+	if damageType in damageTypeList:
+		damageTypeList[damageType] += amount
+	else:
+		damageTypeList[damageType] = amount
+		
+	UnlockSignals.elemental_damage_dealt.emit(damageType, damageTypeList[damageType])
+	
 func _add_heal(amount: float, source: String):
 	if (source == ''):
 		return

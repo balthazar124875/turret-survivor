@@ -17,6 +17,7 @@ animations = [{
 
 [node name="Player3" type="Node2D"]
 script = ExtResource("1_2nk8v")
+playerName = "Flower"
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
