@@ -21,7 +21,7 @@ animations = [{
 script = ExtResource("1_nmmrx")
 playerName = "Lemon"
 startAugments = Array[PackedScene]([ExtResource("2_u3rj1"), ExtResource("3_nbimo")])
-sprite = ExtResource("3_3omym")
+icon = ExtResource("3_3omym")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -2,6 +2,7 @@
 extends Node
 
 #@onready var GameManager : GameManager = get_node("/root/EmilScene")
+var achievementUI : PackedScene;
 
 var unlock_list : Array[UnlockNode]; #Will hold all our Achievements and Unlocks
 var lockedItemsDictionary : Dictionary = {};
@@ -11,6 +12,7 @@ var challengesCleared : Array[bool]; #size = TOTAL_CHALLENGES_COUNT
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	achievementUI = load("res://Scenes/Main Menu/AchievementUI.tscn");
 	#1. Läs in alla unlocks från fil in hit.
 	#2. Executa deras function signalbus
 	load_unlocks();
@@ -37,6 +39,12 @@ func load_unlocks() -> void:
 			var itemName = item.resource_path.get_file().get_basename();
 			lockedItemsDictionary[itemName] = false;
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func RenderAchievementBox(unlockName : String, icon : Texture2D):
+	var uiBox = achievementUI.instantiate();
+	get_tree().root.add_child(uiBox);
+	uiBox.get_node("SpellName").text = unlockName;
+	uiBox.get_node("SpellDesc").text = "New Character Unlocked!";
+	uiBox.get_node("Icon").texture = icon;
+	uiBox.global_position.x = 0;
+	uiBox.global_position.y = -1080/2;
 	pass

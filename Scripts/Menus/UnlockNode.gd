@@ -37,7 +37,7 @@ func UnlockThisNode():
 				unlockName = itemInstance.upgradeName;
 			else:
 				print("Unlocked item name not found! This is a bad error, investigate!")
-			#CreateBox(name, sprite)
+			UnlockHandler.RenderAchievementBox(unlockName, itemInstance.icon);
 			print(unlockName + " unlocked!");
 	isLocked = false;
 	

@@ -8,7 +8,7 @@ var objectName : String; #Same as playerName
 @export var startWeapons : Array[PackedScene];
 var isLocked : bool;
 @export var unlockCondition : String;
-@export var sprite : Texture2D;
+@export var icon : Texture2D;
 var curr_angle : float;
 var pivotPos : Vector2;
 var radius : float;

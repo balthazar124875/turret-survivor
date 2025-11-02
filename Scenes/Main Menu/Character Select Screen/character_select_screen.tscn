@@ -181,6 +181,8 @@ position = Vector2(0, -200)
 
 [node name="Player1" parent="Characters" instance=ExtResource("3_a8bii")]
 position = Vector2(175, -10)
+startWeapons = Array[PackedScene]([])
+unlockCondition = ""
 
 [node name="Lemon" parent="Characters" instance=ExtResource("2_hf2f7")]
 position = Vector2(-205, -24)

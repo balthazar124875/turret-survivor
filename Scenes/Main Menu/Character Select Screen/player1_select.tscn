@@ -18,11 +18,8 @@ animations = [{
 
 [node name="Player1" type="Node2D"]
 script = ExtResource("1_wbr10")
-objectName = null
 startAugments = Array[PackedScene]([ExtResource("2_ly6gf")])
-startWeapons = null
-unlockCondition = null
-sprite = ExtResource("3_d11ik")
+icon = ExtResource("3_d11ik")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

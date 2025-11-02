@@ -73,7 +73,7 @@ func _ready() -> void:
 		var animation_name = $AnimatedSprite2D.animation
 		var frame_index = $AnimatedSprite2D.frame  #Current frame index
 		# Replace the texture of the current frame
-		sprite_frames.set_frame(animation_name, frame_index, GameManager.playerInitData.sprite);
+		sprite_frames.set_frame(animation_name, frame_index, GameManager.playerInitData.icon);
 		
 		#Set starting augments
 		for augment in GameManager.playerInitData.startAugments:
