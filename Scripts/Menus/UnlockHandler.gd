@@ -33,6 +33,9 @@ func RenderAchievementBox(unlockName : String, unlockCondition : String, icon : 
 	pass
 
 func _unhandled_input(event: InputEvent) -> void:
+	if(event is not InputEventKey):
+		return
+	
 	if event.is_pressed() and event.keycode == KEY_P:
 		print_save_file()
 	if event.is_pressed() and event.keycode == KEY_O:

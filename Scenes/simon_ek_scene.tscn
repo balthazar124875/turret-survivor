@@ -1,13 +1,13 @@
 [gd_scene load_steps=85 format=3 uid="uid://p042rqn4c74u"]
 
-[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_itpwq"]
+[ext_resource type="Script" uid="uid://b6kmf58swsxf7" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
 [ext_resource type="PackedScene" uid="uid://bkwrq0qtta0ix" path="res://Scenes/enemy_spawner.tscn" id="3_fpmdp"]
-[ext_resource type="Script" path="res://Scripts/wave.gd" id="4_4h2fe"]
-[ext_resource type="Shader" path="res://vfxShaders/enemy_outline.gdshader" id="4_6ev4i"]
-[ext_resource type="Script" path="res://Scripts/UIManager.gd" id="5_1pdr0"]
+[ext_resource type="Script" uid="uid://dxeskojcdlbq5" path="res://Scripts/wave.gd" id="4_4h2fe"]
+[ext_resource type="Shader" uid="uid://dmw1dssnduqvf" path="res://vfxShaders/enemy_outline.gdshader" id="4_6ev4i"]
+[ext_resource type="Script" uid="uid://cba3pagk7nfto" path="res://Scripts/UIManager.gd" id="5_1pdr0"]
 [ext_resource type="Resource" uid="uid://lhgub04y3bdb" path="res://Resources/wave1.tres" id="5_dajof"]
-[ext_resource type="Script" path="res://Scripts/ShopManager.gd" id="5_jxmqa"]
+[ext_resource type="Script" uid="uid://xcgotph6pu8h" path="res://Scripts/ShopManager.gd" id="5_jxmqa"]
 [ext_resource type="Texture2D" uid="uid://b27w0ddjiakbn" path="res://Assets/Sprites/UI/ui_overlay.png" id="6_pvymq"]
 [ext_resource type="Resource" uid="uid://bm2q7xl0iapv5" path="res://Resources/wave2.tres" id="6_wb1pu"]
 [ext_resource type="Resource" uid="uid://2nbfix1i2x45" path="res://Resources/wave3.tres" id="7_5jkau"]
@@ -20,27 +20,27 @@
 [ext_resource type="Resource" uid="uid://ngftjlnyqymm" path="res://Resources/wave5.tres" id="10_2ssat"]
 [ext_resource type="Texture2D" uid="uid://cdwj2q2l6ab3m" path="res://Assets/Sprites/UI/reroll_icon.png" id="10_btva0"]
 [ext_resource type="Resource" uid="uid://b5m6113lpakb6" path="res://Resources/wave6.tres" id="11_2kb38"]
-[ext_resource type="Script" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
-[ext_resource type="Shader" path="res://vfxShaders/sale_pulse.gdshader" id="11_co786"]
-[ext_resource type="Script" path="res://Scripts/UI/orb_stats.gd" id="11_v6kre"]
-[ext_resource type="Script" path="res://Scripts/UI/TextEffects/jumping_text.gd" id="12_fie7l"]
+[ext_resource type="Script" uid="uid://cvn0ncaikwdl6" path="res://Scripts/UI/health_ui.gd" id="11_4w2qp"]
+[ext_resource type="Shader" uid="uid://cns4sayt5tjvq" path="res://vfxShaders/sale_pulse.gdshader" id="11_co786"]
+[ext_resource type="Script" uid="uid://ckhkcoeiyt1pa" path="res://Scripts/UI/orb_stats.gd" id="11_v6kre"]
+[ext_resource type="Script" uid="uid://ckvsk4osf082w" path="res://Scripts/UI/TextEffects/jumping_text.gd" id="12_fie7l"]
 [ext_resource type="Texture2D" uid="uid://bphat1e3xk2ax" path="res://Assets/Sprites/UI/locked_slot.png" id="12_msjj3"]
 [ext_resource type="Resource" uid="uid://cafpbt15yrcnl" path="res://Resources/wave8.tres" id="12_y5lg1"]
-[ext_resource type="Script" path="res://Scripts/UI/sale_outline.gd" id="13_jowf6"]
+[ext_resource type="Script" uid="uid://if435mtl2fax" path="res://Scripts/UI/sale_outline.gd" id="13_jowf6"]
 [ext_resource type="Resource" uid="uid://bul3ky4jfitsy" path="res://Resources/wave9.tres" id="13_yidmk"]
-[ext_resource type="Resource" path="res://Resources/wave10.tres" id="14_3ncf5"]
+[ext_resource type="Resource" uid="uid://cuhq1q0hrbfeo" path="res://Resources/wave10.tres" id="14_3ncf5"]
 [ext_resource type="Resource" uid="uid://cl8k4vxw56nif" path="res://Resources/wave11.tres" id="15_cdqcm"]
 [ext_resource type="PackedScene" uid="uid://bampk2ki2ygjd" path="res://Scenes/UI/damage_dictionary.tscn" id="18_dwmxg"]
 [ext_resource type="Texture2D" uid="uid://ch75yn1lg3g7j" path="res://Assets/Sprites/UI/shop_door.png" id="20_0xokr"]
-[ext_resource type="Script" path="res://Scripts/UI/shop_door_handler.gd" id="21_s3o7k"]
+[ext_resource type="Script" uid="uid://bu4de1q64pd5" path="res://Scripts/UI/shop_door_handler.gd" id="21_s3o7k"]
 [ext_resource type="Theme" uid="uid://7qh40l0am5og" path="res://Themes/new_test.tres" id="21_uq2lv"]
-[ext_resource type="Script" path="res://Scripts/UI/TooltipManager.gd" id="22_q1apf"]
-[ext_resource type="Script" path="res://Scripts/UI/stat_display.gd" id="23_538x1"]
+[ext_resource type="Script" uid="uid://r07laiw2tjd8" path="res://Scripts/UI/TooltipManager.gd" id="22_q1apf"]
+[ext_resource type="Script" uid="uid://jta04qlmwh3j" path="res://Scripts/UI/stat_display.gd" id="23_538x1"]
 [ext_resource type="Texture2D" uid="uid://c18hxp10xpph3" path="res://Assets/Sprites/upgrades/health.png" id="23_n2622"]
 [ext_resource type="Texture2D" uid="uid://bsrsq4uahi4pd" path="res://Assets/Sprites/upgrades/health_regen.png" id="24_k15pe"]
 [ext_resource type="Texture2D" uid="uid://m2fbo1scyp7x" path="res://Assets/Sprites/upgrades/armor_up.png" id="25_mkusj"]
 [ext_resource type="Texture2D" uid="uid://bpp541wygu8nr" path="res://Assets/Sprites/upgrades/income_timer.png" id="26_ctdy5"]
-[ext_resource type="Script" path="res://Scripts/UI/TextEffects/frozen_text.gd" id="27_3hf6d"]
+[ext_resource type="Script" uid="uid://c8no4i1pfml3j" path="res://Scripts/UI/TextEffects/frozen_text.gd" id="27_3hf6d"]
 [ext_resource type="Texture2D" uid="uid://bid3oqi85anxc" path="res://Assets/Sprites/upgrades/income_up.png" id="27_tsq1f"]
 [ext_resource type="Texture2D" uid="uid://dhym8e8ru5pga" path="res://Assets/Sprites/upgrades/damage_up.png" id="28_g4c07"]
 [ext_resource type="Texture2D" uid="uid://bok4vaa68chsr" path="res://Assets/Sprites/upgrades/chain_up.png" id="28_imtlq"]
@@ -52,26 +52,26 @@
 [ext_resource type="Texture2D" uid="uid://cn4vbiasqmowd" path="res://Assets/Sprites/upgrades/area_up.png" id="31_i8is2"]
 [ext_resource type="Texture2D" uid="uid://crnfw7u4yi5ga" path="res://Assets/Sprites/upgrades/luckybug.png" id="32_26hin"]
 [ext_resource type="Texture2D" uid="uid://bq1vwc7do4883" path="res://Assets/Sprites/upgrades/proj_speed_up.png" id="32_e3gei"]
-[ext_resource type="Script" path="res://Scripts/UI/damage_numbers_handler.gd" id="37_5o2m1"]
+[ext_resource type="Script" uid="uid://7ktkxjtqg6w1" path="res://Scripts/UI/damage_numbers_handler.gd" id="37_5o2m1"]
 [ext_resource type="StyleBox" uid="uid://e2ylx83bifj" path="res://Themes/augment.tres" id="38_xtrk1"]
-[ext_resource type="Script" path="res://Scenes/UI/ui_augments.gd" id="39_j6pgw"]
-[ext_resource type="Script" path="res://Scripts/UI/upgrades_container.gd" id="40_5dn0k"]
+[ext_resource type="Script" uid="uid://c1d26qq1eqpa5" path="res://Scenes/UI/ui_augments.gd" id="39_j6pgw"]
+[ext_resource type="Script" uid="uid://b5f5xpbg7pted" path="res://Scripts/UI/upgrades_container.gd" id="40_5dn0k"]
 [ext_resource type="PackedScene" uid="uid://b28o0wogrqmsi" path="res://Scenes/UI/augment_handler.tscn" id="40_yymlw"]
-[ext_resource type="Script" path="res://Scripts/effect_handler.gd" id="41_3t8tb"]
+[ext_resource type="Script" uid="uid://c26uyakn7p2ic" path="res://Scripts/effect_handler.gd" id="41_3t8tb"]
 [ext_resource type="PackedScene" uid="uid://2nc5rlyhtq58" path="res://Scenes/vfx/FrozenEffect/frozen_effect_main_scene.tscn" id="42_c3t1l"]
-[ext_resource type="Script" path="res://Scripts/UI/debug_upgrade_menu.gd" id="43_tdgbw"]
+[ext_resource type="Script" uid="uid://b8grt8o0bhf6k" path="res://Scripts/UI/debug_upgrade_menu.gd" id="43_tdgbw"]
 [ext_resource type="PackedScene" uid="uid://cgwyhsqfwal2c" path="res://Scenes/UI/debug_upgrade_button.tscn" id="44_h1cgt"]
-[ext_resource type="Script" path="res://Scripts/background_handler.gd" id="47_45rtc"]
-[ext_resource type="Shader" path="res://vfxShaders/disolve.gdshader" id="47_onmk0"]
-[ext_resource type="Script" path="res://Scripts/background.gd" id="49_rpqod"]
+[ext_resource type="Script" uid="uid://dup0lovpj1gkc" path="res://Scripts/background_handler.gd" id="47_45rtc"]
+[ext_resource type="Shader" uid="uid://b7ko515jc67jj" path="res://vfxShaders/disolve.gdshader" id="47_onmk0"]
+[ext_resource type="Script" uid="uid://di281i7xbq1w3" path="res://Scripts/background.gd" id="49_rpqod"]
 [ext_resource type="Texture2D" uid="uid://tj3i0lmn0iqy" path="res://Assets/Sprites/Background/background_dungeon_2.png" id="51_ifjer"]
 [ext_resource type="Texture2D" uid="uid://drq40qtvwf5tj" path="res://Assets/Sprites/Background/background_field_2.png" id="52_2txh5"]
-[ext_resource type="Shader" path="res://Scenes/Shaders/simon_ek_scene.gdshader" id="52_mk7mp"]
+[ext_resource type="Shader" uid="uid://bklftuw4m1k5w" path="res://Scenes/Shaders/simon_ek_scene.gdshader" id="52_mk7mp"]
 [ext_resource type="Texture2D" uid="uid://dwkn3crn28sa8" path="res://Assets/Sprites/Background/background_spooky_2.png" id="53_bqs3t"]
-[ext_resource type="Script" path="res://Scripts/UI/lootbox_roll.gd" id="56_76q55"]
+[ext_resource type="Script" uid="uid://bf3j137uewpjq" path="res://Scripts/UI/lootbox_roll.gd" id="56_76q55"]
 [ext_resource type="PackedScene" uid="uid://b3hbh58fbjtka" path="res://Scenes/UI/lootbox_upgrade.tscn" id="67_b7gyy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_llrcq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_edjys"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -185,7 +185,7 @@ waves = Array[ExtResource("4_4h2fe")]([ExtResource("5_dajof"), ExtResource("6_wb
 center = NodePath("../Player")
 enemy_spawn_distance = 700
 enemies = NodePath("../Enemies")
-enemy_outline_material = SubResource("ShaderMaterial_llrcq")
+enemy_outline_material = SubResource("ShaderMaterial_edjys")
 
 [node name="GameplayUi" type="Control" parent="."]
 z_index = 100
@@ -230,7 +230,6 @@ text = "#Outer orbs: "
 
 [node name="ShopDoorParent" type="Control" parent="GameplayUi/LeftMenuColumn"]
 z_index = 1
-layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -994,7 +993,7 @@ texture_normal = ExtResource("12_msjj3")
 
 [node name="DoubleBuyLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn"]
 visible = false
-layout_mode = 2
+layout_mode = 0
 offset_left = 186.0
 offset_top = 257.0
 offset_right = 208.0
@@ -1015,7 +1014,7 @@ offset_bottom = 482.0
 scale = Vector2(0.974, 1)
 
 [node name="Gold" type="Panel" parent="GameplayUi/LeftMenuColumn/RerollContainer"]
-layout_mode = 2
+layout_mode = 0
 offset_right = 310.0
 offset_bottom = 80.0
 
@@ -1049,7 +1048,7 @@ text = "[img width=16 height=16]res://Assets/icons/coin.png[/img][color=black]he
 
 [node name="BuyButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/RerollContainer"]
 visible = false
-layout_mode = 2
+layout_mode = 0
 offset_left = 4.0
 offset_right = 104.0
 offset_bottom = 32.0
@@ -1057,7 +1056,7 @@ theme = ExtResource("8_4ctao")
 texture_normal = ExtResource("9_yckrj")
 
 [node name="RerollButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/RerollContainer"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 321.355
 offset_right = 353.355
 offset_bottom = 32.0
@@ -1649,7 +1648,6 @@ offset_bottom = 1039.0
 
 [node name="Passives" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character"]
 visible = false
-layout_mode = 3
 anchors_preset = 0
 offset_left = 205.0
 offset_top = 577.0
@@ -1657,6 +1655,7 @@ offset_right = 418.0
 offset_bottom = 1050.0
 
 [node name="AugmentHandler" parent="GameplayUi" instance=ExtResource("40_yymlw")]
+layout_mode = 0
 
 [node name="DamageNumbersHandler" type="Control" parent="GameplayUi"]
 anchors_preset = 0
@@ -1666,7 +1665,6 @@ script = ExtResource("37_5o2m1")
 
 [node name="Tooltip" type="Control" parent="GameplayUi"]
 process_mode = 3
-layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1711,7 +1709,7 @@ script = ExtResource("43_tdgbw")
 debug_button = ExtResource("44_h1cgt")
 
 [node name="TextureRect" type="TextureRect" parent="GameplayUi/Debug"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 428.0
 offset_top = 123.0
 offset_right = 1491.0

@@ -22,7 +22,7 @@ var t = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#text = "%.1f" % number
-	text = "[color=" + damage_type_colors[damage_type] +"]" + str(ceil(number)) + "[/color]"
+	text = "[color=" + damage_type_colors[damage_type] +"]" + String.num(ceil(number), 0) + "[/color]"
 	initial_y = global_position.y
 	initial_scale_x = scale.x
 	initial_scale_y = scale.y
@@ -50,7 +50,7 @@ func update_number(number: float):
 	if(t > duration/2):
 		t = duration/2
 	time_since_change = 0
-	text = "[color=" + damage_type_colors[damage_type] +"]" + str(ceil(number)) + "[/color]"
+	text = "[color=" + damage_type_colors[damage_type] +"]" + String.num(ceil(number), 0) + "[/color]"
 #
 #func _on_life_time_timer_timeout() -> void:
 	#queue_free()

@@ -65,10 +65,10 @@ render_mode blend_add;
 
 uniform vec4 SecondaaryColor : source_color;
 uniform vec4 MainColor : source_color;
-uniform float VanishingValue : hint_range(0, 1);
+uniform float VanishingValue : hint_range(0.0, 1.0);
 uniform sampler2D basic_texture : source_color, filter_nearest, repeat_disable;
-uniform float SecondaryColorMult : hint_range(0, 10) = 1;
-uniform float ColorMultiplier : hint_range(0, 10) = 1;
+uniform float SecondaryColorMult : hint_range(0.0, 10.0) = 1.0;
+uniform float ColorMultiplier : hint_range(0.0, 10.0) = 1.0;
 
 
 
