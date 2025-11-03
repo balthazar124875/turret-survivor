@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Turret Survivor"
 run/main_scene="res://Scenes/Main Menu/Character Select Screen/character_select_screen.tscn"
-config/features=PackedStringArray("4.3", "Mobile")
+config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
