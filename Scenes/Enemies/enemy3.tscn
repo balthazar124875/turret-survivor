@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bvh4sggr4wxu3"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_5t3wh"]
+[ext_resource type="Script" uid="uid://bxtkx70rt23fi" path="res://Scripts/Enemies/enemy.gd" id="1_5t3wh"]
 [ext_resource type="Texture2D" uid="uid://djccjykygh1ts" path="res://Assets/Sprites/enemy_1.png" id="2_squui"]
 [ext_resource type="Texture2D" uid="uid://cd7rk22mo2kuf" path="res://Assets/Sprites/Enemies/WalkingEye.png" id="3_3wsrx"]
 [ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="3_cv320"]
@@ -18,18 +18,16 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_twbii"]
-radius = 38.0
-height = 90.0
+radius = 22.0
+height = 62.0
 
 [node name="Enemy3" type="RigidBody2D"]
-position = Vector2(604, 288)
 collision_layer = 2
 collision_mask = 4
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_5t3wh")
-speed = 210
 max_health = 2
 health = 2
 damage = 1.3
@@ -43,7 +41,7 @@ y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_p7tvn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -1)
+position = Vector2(1, 0)
 shape = SubResource("CapsuleShape2D_twbii")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
@@ -53,11 +51,11 @@ scale = Vector2(1.4, 1.4)
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.435294)
 z_index = -10
-position = Vector2(0, 41)
-scale = Vector2(3, 3)
+position = Vector2(0, 27)
+scale = Vector2(2, 2)
 texture = ExtResource("3_cv320")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 texture = ExtResource("3_3wsrx")

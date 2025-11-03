@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dubhjiikeg6by"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/splitting_enemy.gd" id="1_8p3yr"]
+[ext_resource type="Script" uid="uid://hqy3qhh6fxgm" path="res://Scripts/Enemies/splitting_enemy.gd" id="1_8p3yr"]
 [ext_resource type="PackedScene" uid="uid://be8eohoa58so4" path="res://Scenes/Enemies/splitter_enemy_child.tscn" id="2_hclkf"]
 [ext_resource type="Texture2D" uid="uid://daqsrf8qt1dlg" path="res://Assets/Sprites/Enemies/fetto.png" id="3_wyxuc"]
 [ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="4_nsce7"]
@@ -18,11 +18,10 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_twbii"]
-radius = 48.0
-height = 96.0
+radius = 35.0
+height = 70.0
 
 [node name="SplitterEnemy" type="RigidBody2D"]
-position = Vector2(604, 288)
 collision_layer = 2
 collision_mask = 4
 gravity_scale = 0.0
@@ -30,6 +29,7 @@ contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_8p3yr")
 child_scene = ExtResource("2_hclkf")
+speed = 50
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -48,12 +48,12 @@ scale = Vector2(1.4, 1.4)
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.435294)
 z_index = -10
-position = Vector2(2, 38)
-scale = Vector2(3, 3)
+position = Vector2(2, 37)
+scale = Vector2(2, 2)
 texture = ExtResource("4_nsce7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(7, 3)
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 texture = ExtResource("3_wyxuc")

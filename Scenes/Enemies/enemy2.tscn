@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://di3fcf5mxt36n"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_76bfq"]
+[ext_resource type="Script" uid="uid://bxtkx70rt23fi" path="res://Scripts/Enemies/enemy.gd" id="1_76bfq"]
 [ext_resource type="Texture2D" uid="uid://2xpx86r7u8la" path="res://Assets/Sprites/test_enemy_1.png" id="2_by6wh"]
 [ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="3_ewhym"]
 [ext_resource type="Texture2D" uid="uid://dsrwnxqh7gm46" path="res://Assets/Sprites/Enemies/eye_thing.png" id="4_fduhh"]
@@ -17,18 +17,17 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lletx"]
-radius = 37.5
-height = 94.0
+radius = 21.0
+height = 56.0
 
 [node name="Enemy2" type="RigidBody2D"]
-position = Vector2(604, 288)
 collision_layer = 2
 collision_mask = 4
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_76bfq")
-speed = 75
+speed = 50
 rotational_speed = 150
 random_shake_movement_enabled = true
 max_health = 8
@@ -40,11 +39,11 @@ metadata/_edit_lock_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
 y_sort_enabled = true
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_p7tvn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 8)
+position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_lletx")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
@@ -54,12 +53,11 @@ scale = Vector2(1.4, 1.4)
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.466667)
 z_index = -10
-position = Vector2(3, 61)
-scale = Vector2(3.6679, 3.03)
+position = Vector2(0, 27)
+scale = Vector2(2, 2)
 texture = ExtResource("3_ewhym")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(3, 17)
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 texture = ExtResource("4_fduhh")

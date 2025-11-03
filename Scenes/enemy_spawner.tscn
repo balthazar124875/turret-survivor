@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bkwrq0qtta0ix"]
 
-[ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="1_5mxpo"]
-[ext_resource type="Script" path="res://Scripts/wave.gd" id="2_ykpo0"]
+[ext_resource type="Script" uid="uid://di2cy38sbh2lk" path="res://Scripts/enemy_spawner.gd" id="1_5mxpo"]
+[ext_resource type="Script" uid="uid://dxeskojcdlbq5" path="res://Scripts/wave.gd" id="2_ykpo0"]
 [ext_resource type="Resource" uid="uid://lhgub04y3bdb" path="res://Resources/wave1.tres" id="3_h3sms"]
 [ext_resource type="Resource" uid="uid://bm2q7xl0iapv5" path="res://Resources/wave2.tres" id="4_uruiv"]
 [ext_resource type="Resource" uid="uid://2nbfix1i2x45" path="res://Resources/wave3.tres" id="5_njt6p"]
@@ -23,7 +23,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="WaveTimer" type="Timer" parent="."]
-wait_time = 8.0
+wait_time = 25.0
 autostart = true
 
 [connection signal="timeout" from="EnemySpawnerTimer" to="." method="_on_enemy_spawner_timer_timeout"]

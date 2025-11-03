@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dab7kg6pilus7"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/exploding_enemy.gd" id="1_0gflr"]
+[ext_resource type="Script" uid="uid://cu0w8lgp5nn6o" path="res://Scripts/Enemies/exploding_enemy.gd" id="1_0gflr"]
 [ext_resource type="Texture2D" uid="uid://dlpiyvwh7k5wk" path="res://Assets/Sprites/Enemies/bloorg.png" id="2_2e0us"]
 [ext_resource type="PackedScene" uid="uid://cfo7n2f5t114n" path="res://Scenes/vfx/vfx_explosion_blood.tscn" id="2_150mo"]
 [ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="3_683tw"]
@@ -18,11 +18,10 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_twbii"]
-radius = 36.0
-height = 96.0
+radius = 25.0
+height = 56.0
 
 [node name="Enemy6" type="RigidBody2D"]
-position = Vector2(604, 288)
 collision_layer = 2
 collision_mask = 4
 gravity_scale = 0.0
@@ -30,6 +29,7 @@ contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_0gflr")
 explosionVFX = ExtResource("2_150mo")
+speed = 75
 max_health = 3
 health = 3
 damage = 15.0
@@ -52,12 +52,12 @@ scale = Vector2(1.4, 1.4)
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.435294)
 z_index = -10
-position = Vector2(2, 38)
-scale = Vector2(3, 3)
+position = Vector2(2, 27)
+scale = Vector2(2, 2)
 texture = ExtResource("3_683tw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(7, 3)
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 texture = ExtResource("2_2e0us")

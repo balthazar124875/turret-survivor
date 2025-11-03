@@ -6,7 +6,7 @@ var displacement_path: Path2D
 var displacement_path_follow: PathFollow2D
 var displacement_speed: float
 var current_zigzag_cooldown = 0
-var attack_range: float = 100
+var attack_range: float = 75
 var zigzag_tween: Tween
 
 func _init(enemy: Enemy):
@@ -29,7 +29,7 @@ func handle_movement(delta: float) -> void:
 				return
 
 		# If blocked, or close to player don't move
-		if enemy.objectObstructingEnemy != null || current_position.distance_to(enemy.target_position) < 100:
+		if enemy.objectObstructingEnemy != null || current_position.distance_to(enemy.target_position) < attack_range:
 			if zigzag_tween != null:
 				zigzag_tween.kill()
 			return 

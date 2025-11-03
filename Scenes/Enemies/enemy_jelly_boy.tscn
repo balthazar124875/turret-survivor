@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bhyncceo6hvb0"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_857f1"]
+[ext_resource type="Script" uid="uid://bxtkx70rt23fi" path="res://Scripts/Enemies/enemy.gd" id="1_857f1"]
 [ext_resource type="Texture2D" uid="uid://djccjykygh1ts" path="res://Assets/Sprites/enemy_1.png" id="2_hy7aw"]
 [ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="3_l6h1r"]
 [ext_resource type="Texture2D" uid="uid://c0wxwdklhysj4" path="res://Assets/Sprites/Enemies/tentacle.png" id="4_a73c4"]
@@ -18,11 +18,10 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_twbii"]
-radius = 38.0
-height = 90.0
+radius = 27.0
+height = 62.0
 
 [node name="JellyBOy" type="RigidBody2D"]
-position = Vector2(604, 288)
 collision_layer = 2
 collision_mask = 4
 gravity_scale = 0.0
@@ -49,11 +48,11 @@ scale = Vector2(1.4, 1.4)
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.435294)
 z_index = -10
-position = Vector2(0, 41)
-scale = Vector2(3, 3)
+position = Vector2(0, 26)
+scale = Vector2(2, 2)
 texture = ExtResource("3_l6h1r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 texture = ExtResource("4_a73c4")

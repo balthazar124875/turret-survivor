@@ -1801,7 +1801,7 @@ script = ExtResource("49_rpqod")
 z_index = -1
 material = SubResource("ShaderMaterial_3hep3")
 position = Vector2(4, -2)
-scale = Vector2(3.00937, 3)
+scale = Vector2(3, 3)
 texture = ExtResource("53_bqs3t")
 script = ExtResource("49_rpqod")
 

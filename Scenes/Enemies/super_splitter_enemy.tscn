@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://5p2t51y1w4vo"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/splitting_enemy.gd" id="1_0lgyv"]
+[ext_resource type="Script" uid="uid://hqy3qhh6fxgm" path="res://Scripts/Enemies/splitting_enemy.gd" id="1_0lgyv"]
 [ext_resource type="PackedScene" uid="uid://dubhjiikeg6by" path="res://Scenes/Enemies/splitter_enemy.tscn" id="2_pc6he"]
 [ext_resource type="Texture2D" uid="uid://daqsrf8qt1dlg" path="res://Assets/Sprites/Enemies/fetto.png" id="3_jccpo"]
 [ext_resource type="Texture2D" uid="uid://bsruevcpfmwig" path="res://Assets/Sprites/Enemies/super_fetto.png" id="4_4fhxu"]
@@ -19,11 +19,10 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_twbii"]
-radius = 79.0
-height = 158.0
+radius = 55.0
+height = 110.0
 
 [node name="SuperSplitterEnemy" type="RigidBody2D"]
-position = Vector2(604, 288)
 collision_layer = 2
 collision_mask = 4
 gravity_scale = 0.0
@@ -51,12 +50,12 @@ scale = Vector2(1.4, 1.4)
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.435294)
 z_index = -10
-position = Vector2(2, 77)
-scale = Vector2(5, 5)
+position = Vector2(2, 56)
+scale = Vector2(4, 4)
 texture = ExtResource("4_7tf3n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(7, 3)
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 texture = ExtResource("4_4fhxu")

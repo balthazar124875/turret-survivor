@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dnjei3oiiciha"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_biolc"]
+[ext_resource type="Script" uid="uid://bxtkx70rt23fi" path="res://Scripts/Enemies/enemy.gd" id="1_biolc"]
 [ext_resource type="Texture2D" uid="uid://dpcn4navygyv1" path="res://Assets/Sprites/little_enemy.png" id="2_i0e02"]
 [ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="3_qn633"]
 
@@ -18,11 +18,10 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1wvhi"]
-radius = 40.0
-height = 80.0
+radius = 28.0
+height = 56.0
 
 [node name="Enemy" type="RigidBody2D"]
-position = Vector2(604, 288)
 collision_layer = 2
 collision_mask = 4
 gravity_scale = 0.0
@@ -30,7 +29,7 @@ lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_biolc")
-speed = 120
+speed = 50
 max_health = 4
 health = 4
 metadata/_edit_lock_ = true
@@ -52,11 +51,11 @@ scale = Vector2(1.4, 1.4)
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.419608)
 z_index = -10
-position = Vector2(1, 29)
-scale = Vector2(3.91999, 3.11999)
+position = Vector2(1, 20)
+scale = Vector2(2.56, 2)
 texture = ExtResource("3_qn633")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 texture = ExtResource("2_i0e02")
