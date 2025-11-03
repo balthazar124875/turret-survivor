@@ -18,8 +18,19 @@ func load_augments() -> void:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			var augment = load("res://Scenes/Upgrades/Augments/" + file_name).instantiate()
-			augment_list.push_back(augment)
+			var resource = load("res://Scenes/Upgrades/Augments/" + file_name)
+			var augment = resource.instantiate()
+		
+			# Used for checking if it is locked / unlocked
+			var augment_file_name = resource.resource_path.get_file().get_basename()
+			
+			# If augment is set to false in unlocks handler, do not add to available augment list
+			var augment_is_locked = augment.isLocked && UnlockHandler.lockedItemsDictionary.get(augment_file_name, false) == false
+			
+			if augment_is_locked:
+				pass
+			else: 
+				augment_list.push_back(augment)
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.");

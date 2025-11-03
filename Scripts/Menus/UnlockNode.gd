@@ -39,6 +39,7 @@ func UnlockThisNode():
 			else:
 				print("Unlocked item name not found! This is a bad error, investigate!")
 			UnlockHandler.RenderAchievementBox(unlockName, itemInstance.unlockCondition, itemInstance.icon);
+			UnlockHandler.save_data()
 			print(unlockName + " unlocked!");
 	isLocked = false;
 	
