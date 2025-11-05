@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://diaq8pn7e67t"]
+
+[ext_resource type="Script" uid="uid://dulrmn7c2ymkg" path="res://Scripts/Upgrades/weapon_upgrade.gd" id="1_105t3"]
+[ext_resource type="PackedScene" uid="uid://bxnxt8nmt2ce" path="res://Scenes/Weapons/rainbow_gun.tscn" id="2_1kbnt"]
+[ext_resource type="Texture2D" uid="uid://cjdbtisx1vn23" path="res://Assets/Sprites/upgrades/rainbowGun.png" id="3_ik0rn"]
+
+[node name="RainbowGunUpgrade" type="Node2D"]
+script = ExtResource("1_105t3")
+weapon_scene = ExtResource("2_1kbnt")
+viable_variations = Array[int]([3])
+upgradeName = "Rainbow Rod"
+description = "A magical rod infused with all elements."
+rarity = 2
+icon = ExtResource("3_ik0rn")
+tags = Array[int]([1, 2, 3, 4, 5, 8])
