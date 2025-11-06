@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://byo2qfn8knd6v"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/eruption_trap_launcher.gd" id="1_amj1n"]
+[ext_resource type="Script" uid="uid://0a0vknmnq048" path="res://Scripts/Weapons/eruption_trap_launcher.gd" id="1_amj1n"]
 [ext_resource type="PackedScene" uid="uid://5mm0ou4jrlqa" path="res://Scenes/Projectiles/eruption_trap.tscn" id="2_c1xld"]
 
 [node name="EruptionTrapLauncher" type="Node2D"]

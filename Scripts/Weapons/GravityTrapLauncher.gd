@@ -4,7 +4,7 @@ class_name GravityTrapLauncher
 
 var magnetic_traps = false
 @export var base_area = 1
-@export var base_pull_distance = 150
+@export var base_pull_distance = 75
 
 func shoot_area(position: Vector2) -> void:
 	var obj = bullet.instantiate()
@@ -30,4 +30,4 @@ func apply_level_up():
 		3:
 			damage += 1
 		4:
-			base_pull_distance += 50
+			base_pull_distance += 30

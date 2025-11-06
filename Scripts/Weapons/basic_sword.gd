@@ -3,7 +3,7 @@ extends BaseGun
 class_name BasicSword
 
 @export var base_swing_degrees:float = 90
-@export var base_sword_scale:float = 1
+@export var base_sword_scale: float = 0.5
 
 func shoot(enemy: Node) -> void:
 		var current_position = player.global_position

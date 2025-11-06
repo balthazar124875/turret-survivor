@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://berj1mi3hnmxo"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/GravityTrapLauncher.gd" id="1_4ho2x"]
+[ext_resource type="Script" uid="uid://dfu3efdjro3pe" path="res://Scripts/Weapons/GravityTrapLauncher.gd" id="1_4ho2x"]
 [ext_resource type="PackedScene" uid="uid://kdfu1gj068k0" path="res://Scenes/Projectiles/gravity_trap.tscn" id="2_as42f"]
 
 [node name="GravityTrapLauncher" type="Node2D"]

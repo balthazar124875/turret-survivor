@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cpvsil1b5pgkk"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/ShockWaveTrapLauncher.gd" id="1_rpaf7"]
+[ext_resource type="Script" uid="uid://dsdj7o227ousi" path="res://Scripts/Weapons/ShockWaveTrapLauncher.gd" id="1_rpaf7"]
 [ext_resource type="PackedScene" uid="uid://dto00ay2vkxky" path="res://Scenes/Projectiles/shockwave_trap.tscn" id="2_b2igs"]
 
 [node name="ShockWaveTrapLauncher" type="Node2D"]

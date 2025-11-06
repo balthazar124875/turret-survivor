@@ -2,7 +2,7 @@ extends TrapLauncher
 
 class_name EruptionTrapLauncher
 
-@export var base_eruption_radius = 150
+@export var base_eruption_radius = 75
 @export var base_area = 1
 
 var ignites = false
@@ -35,7 +35,7 @@ func apply_level_up():
 		1:
 			damage += 1
 		2:
-			base_eruption_radius += 25
+			base_eruption_radius += 15
 
 func get_lvl10_bonus_description() -> String:
 	return "\nLvl [color=yellow]10[/color]: Ignites enemies for [color=red]" + str(damage * player.damageMultiplier * gun_damage_multiplier * ignite_damage) + "[/color]/0.5sec for [color=yellow]" + str(ignite_duration) + "[/color] seconds"

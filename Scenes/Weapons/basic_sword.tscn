@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5w6vbul2jww4"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/basic_sword.gd" id="1_0acrg"]
+[ext_resource type="Script" uid="uid://dwumlsabnsh8" path="res://Scripts/Weapons/basic_sword.gd" id="1_0acrg"]
 [ext_resource type="PackedScene" uid="uid://ckjytsgcfxb7" path="res://Scenes/Projectiles/basic_sword_projectile.tscn" id="2_vwwsp"]
 
 [node name="BasicSword" type="Node2D"]

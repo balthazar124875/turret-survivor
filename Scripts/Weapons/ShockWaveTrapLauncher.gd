@@ -26,7 +26,7 @@ func apply_level_up():
 	
 	match level % 5:
 		1:
-			base_knockback_radius += 50
+			base_knockback_radius += 30
 		2:
 			cooldown *= 0.95
 		3:

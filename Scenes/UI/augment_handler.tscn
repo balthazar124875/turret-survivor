@@ -1,7 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://b28o0wogrqmsi"]
+[gd_scene load_steps=26 format=3 uid="uid://b28o0wogrqmsi"]
 
-[ext_resource type="Script" path="res://Scripts/augment_handler.gd" id="1_xrt3i"]
+[ext_resource type="Script" uid="uid://c67pvmfftgt77" path="res://Scripts/augment_handler.gd" id="1_xrt3i"]
 [ext_resource type="PackedScene" uid="uid://bblakrwwg08ml" path="res://Scenes/UI/augment_choice.tscn" id="2_qtcnf"]
+[ext_resource type="PackedScene" uid="uid://defi70snoa0ww" path="res://Scenes/Upgrades/Augments/berserk.tscn" id="3_1oq5q"]
+[ext_resource type="PackedScene" uid="uid://lqpf3cyonbbr" path="res://Scenes/Upgrades/Augments/blood_control.tscn" id="4_nst4r"]
+[ext_resource type="PackedScene" uid="uid://dojyqbthga6vn" path="res://Scenes/Upgrades/Augments/bounty_hunter.tscn" id="5_gfw7o"]
+[ext_resource type="PackedScene" uid="uid://dtxs5k52og45p" path="res://Scenes/Upgrades/Augments/brap.tscn" id="6_henwq"]
+[ext_resource type="PackedScene" uid="uid://nvqkaeitrwkp" path="res://Scenes/Upgrades/Augments/bully.tscn" id="7_dfent"]
+[ext_resource type="PackedScene" uid="uid://qb4oso6v3pxf" path="res://Scenes/Upgrades/Augments/contrarian.tscn" id="8_4wiyw"]
+[ext_resource type="PackedScene" uid="uid://bqp65rkofoo1r" path="res://Scenes/Upgrades/Augments/decay.tscn" id="9_r5ka1"]
+[ext_resource type="PackedScene" uid="uid://o45v6vb0wkd6" path="res://Scenes/Upgrades/Augments/dev_console.tscn" id="10_81q4e"]
+[ext_resource type="PackedScene" uid="uid://ii4dseeahcsl" path="res://Scenes/Upgrades/Augments/extra_deals.tscn" id="11_ye0rf"]
+[ext_resource type="PackedScene" uid="uid://v17df4excdr5" path="res://Scenes/Upgrades/Augments/freezy_frost.tscn" id="12_gdf6u"]
+[ext_resource type="PackedScene" uid="uid://5my4snvnriwv" path="res://Scenes/Upgrades/Augments/frozen_items_cost_decrease.tscn" id="13_0p11r"]
+[ext_resource type="PackedScene" uid="uid://b8i678nyyu7px" path="res://Scenes/Upgrades/Augments/heal_king.tscn" id="14_itsba"]
+[ext_resource type="PackedScene" uid="uid://x5ikinlyf0yg" path="res://Scenes/Upgrades/Augments/high_voltage.tscn" id="15_n56o4"]
+[ext_resource type="PackedScene" uid="uid://bm6hatqyu5wrn" path="res://Scenes/Upgrades/Augments/ice_cicle_explode.tscn" id="16_1vvta"]
+[ext_resource type="PackedScene" uid="uid://y7jqdbyeyy2l" path="res://Scenes/Upgrades/Augments/lady_luck.tscn" id="17_vglb0"]
+[ext_resource type="PackedScene" uid="uid://dmwo6nenk6x2t" path="res://Scenes/Upgrades/Augments/melt_armor.tscn" id="18_v2qrj"]
+[ext_resource type="PackedScene" uid="uid://d4aixlicjwp1e" path="res://Scenes/Upgrades/Augments/orb_armor.tscn" id="19_dbnuw"]
+[ext_resource type="PackedScene" uid="uid://r0ah0d7fjtg5" path="res://Scenes/Upgrades/Augments/sack_of_gold.tscn" id="20_35dl8"]
+[ext_resource type="PackedScene" uid="uid://ceckm0ci8wv0g" path="res://Scenes/Upgrades/Augments/shooting_star.tscn" id="21_c53c2"]
+[ext_resource type="PackedScene" uid="uid://cuo7dd8f0bm2o" path="res://Scenes/Upgrades/Augments/short_fuse.tscn" id="22_1gwhr"]
+[ext_resource type="PackedScene" uid="uid://df6s5r7bc5qm0" path="res://Scenes/Upgrades/Augments/toxic_blood.tscn" id="23_3lr0o"]
+[ext_resource type="PackedScene" uid="uid://cy14vjq080icj" path="res://Scenes/Upgrades/Augments/unstable_power.tscn" id="24_dgn8m"]
+[ext_resource type="PackedScene" uid="uid://cyl7gpit2177g" path="res://Scenes/Upgrades/Augments/yummy_coin.tscn" id="25_yglu6"]
 
 [node name="AugmentHandler" type="Control"]
 process_mode = 3
@@ -9,10 +32,11 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_xrt3i")
 augment_button = ExtResource("2_qtcnf")
+augment_scenes = Array[PackedScene]([ExtResource("3_1oq5q"), ExtResource("4_nst4r"), ExtResource("5_gfw7o"), ExtResource("6_henwq"), ExtResource("7_dfent"), ExtResource("8_4wiyw"), ExtResource("9_r5ka1"), ExtResource("10_81q4e"), ExtResource("11_ye0rf"), ExtResource("12_gdf6u"), ExtResource("13_0p11r"), ExtResource("14_itsba"), ExtResource("15_n56o4"), ExtResource("16_1vvta"), ExtResource("17_vglb0"), ExtResource("18_v2qrj"), ExtResource("19_dbnuw"), ExtResource("20_35dl8"), ExtResource("21_c53c2"), ExtResource("22_1gwhr"), ExtResource("23_3lr0o"), ExtResource("24_dgn8m"), ExtResource("25_yglu6")])
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
-layout_mode = 2
+layout_mode = 0
 offset_left = 420.0
 offset_right = 1500.0
 offset_bottom = 1080.0

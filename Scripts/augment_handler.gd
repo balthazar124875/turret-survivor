@@ -4,6 +4,7 @@ extends Control
 
 @export var augment_button: PackedScene
 
+@export var augment_scenes: Array[PackedScene] = []
 var augment_list: Array[AugmentUpgrade] = []
 
 # Called when the node enters the scene tree for the first time.
@@ -13,27 +14,39 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func load_augments() -> void:
-	var dir = DirAccess.open("res://Scenes/Upgrades/Augments");
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			var resource = load("res://Scenes/Upgrades/Augments/" + file_name)
-			var augment = resource.instantiate()
+	for scene in augment_scenes:
+		var augment = scene.instantiate()
 		
-			# Used for checking if it is locked / unlocked
-			var augment_file_name = resource.resource_path.get_file().get_basename()
+		augment_list.push_back(augment)
+		#var augment_file_name = scene.get_basename()
+		#var augment_is_locked = augment.isLocked && UnlockHandler.lockedItemsDictionary.get(augment_file_name, false) == false
+			#
+		#if augment_is_locked:
+			#pass
+		#else: 
+			#augment_list.push_back(augment)
 			
-			# If augment is set to false in unlocks handler, do not add to available augment list
-			var augment_is_locked = augment.isLocked && UnlockHandler.lockedItemsDictionary.get(augment_file_name, false) == false
-			
-			if augment_is_locked:
-				pass
-			else: 
-				augment_list.push_back(augment)
-			file_name = dir.get_next()
-	else:
-		print("An error occurred when trying to access the path.");
+	#var dir = DirAccess.open("res://Scenes/Upgrades/Augments");
+	#if dir:
+		#dir.list_dir_begin()
+		#var file_name = dir.get_next()
+		#while file_name != "":
+			#var resource = load("res://Scenes/Upgrades/Augments/" + file_name)
+			#var augment = resource.instantiate()
+		#
+			## Used for checking if it is locked / unlocked
+			#var augment_file_name = resource.resource_path.get_file().get_basename()
+			#
+			## If augment is set to false in unlocks handler, do not add to available augment list
+			#var augment_is_locked = augment.isLocked && UnlockHandler.lockedItemsDictionary.get(augment_file_name, false) == false
+			#
+			#if augment_is_locked:
+				#pass
+			#else: 
+				#augment_list.push_back(augment)
+			#file_name = dir.get_next()
+	#else:
+		#print("An error occurred when trying to access the path.");
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

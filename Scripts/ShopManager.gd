@@ -26,7 +26,7 @@ static var legendaryCost = 150
 
 static var shopUpgradeButtons : Array[ShopUpgradeButton] = [];
 
-var base_reroll_cost = 5
+var base_reroll_cost = 2
 var current_reroll_cost = base_reroll_cost
 
 var empty_item_slot_texture: Texture2D
@@ -43,6 +43,8 @@ var frozen = []
 @export var sale_chance: float = 0.05
 @export var super_shop_chance: float = 0.005
 @export var weapon_variaty_chance: float = 0.05
+
+@export var upgrades_scenes : Array[PackedScene] = []
 
 var player: Player
 var circle: Circle
@@ -77,22 +79,29 @@ func _input(event):
 			locked_buyable.clear()
 
 func load_upgrades() -> void:
-	var folders = ["Circle", "Stats", "Weapons", "Passives", "Other", "Augments"]
-	for f in folders:
-		var dir = DirAccess.open("res://Scenes/Upgrades/" + f);
-		if dir:
-			dir.list_dir_begin()
-			var file_name = dir.get_next()
-			while file_name != "":
-				var upgrade = load("res://Scenes/Upgrades/" + f  + "/" + file_name).instantiate()
-				upgrade.gold_cost = get_cost(upgrade.rarity)
-				UPGRADES_LIST[upgrade.rarity].push_back(upgrade);
-				file_name = dir.get_next()
-				
-				if(f == "Circle"):
-					upgrade._instantiate(); #Generate random inner outer functionality for circle upgrade
-		else:
-			print("An error occurred when trying to access the path.");
+	for scene in upgrades_scenes:
+		var upgrade = scene.instantiate()
+		
+		upgrade.gold_cost = get_cost(upgrade.rarity)
+		UPGRADES_LIST[upgrade.rarity].push_back(upgrade);
+	
+	
+	#var folders = ["Circle", "Stats", "Weapons", "Passives", "Other", "Augments"]
+	#for f in folders:
+		#var dir = DirAccess.open("res://Scenes/Upgrades/" + f);
+		#if dir:
+			#dir.list_dir_begin()
+			#var file_name = dir.get_next()
+			#while file_name != "":
+				#var upgrade = load("res://Scenes/Upgrades/" + f  + "/" + file_name).instantiate()
+				#upgrade.gold_cost = get_cost(upgrade.rarity)
+				#UPGRADES_LIST[upgrade.rarity].push_back(upgrade);
+				#file_name = dir.get_next()
+				#
+				#if(f == "Circle"):
+					#upgrade._instantiate(); #Generate random inner outer functionality for circle upgrade
+		#else:
+			#print("An error occurred when trying to access the path.");
 						
 func initialize_buttons() -> void:
 	buttons = self.get_children()
@@ -267,7 +276,7 @@ func _on_reroll_button_pressed() -> void:
 	if player.gold < current_reroll_cost:
 		return
 	player.modify_gold(-current_reroll_cost)
-	current_reroll_cost += base_reroll_cost
+	current_reroll_cost += 1
 	SignalBus.animate_shop_upgrade_door.emit()
 
 func choose_weighted_random(upgrades: Array):
