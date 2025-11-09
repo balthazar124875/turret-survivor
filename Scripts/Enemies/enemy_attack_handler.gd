@@ -8,6 +8,10 @@ func _init(enemy: Enemy):
 	sprite = enemy.get_node("Sprite2D")
 
 func attack() -> void:
+	if(enemy is ExplodingEnemy):
+		enemy.attack()
+		return
+	
 	enemy.t = 0
 	var tween = enemy.get_tree().create_tween()
 	var original_scale = sprite.scale
