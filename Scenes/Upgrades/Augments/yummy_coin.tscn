@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cyl7gpit2177g"]
 
-[ext_resource type="Script" path="res://Scripts/Upgrades/Augments/yummy_coin.gd" id="1_5dw4w"]
+[ext_resource type="Script" uid="uid://dm68l6q1oqeqd" path="res://Scripts/Upgrades/Augments/yummy_coin.gd" id="1_5dw4w"]
 [ext_resource type="Texture2D" uid="uid://doyesl33ck38n" path="res://Assets/Sprites/upgrades/yummy_coin.png" id="2_4hctg"]
 
 [node name="YummyCoin" type="Node2D"]

@@ -155,6 +155,7 @@ func take_hit(amount: float,
 	on_hit_effects: Array[StatusEffect] = [],
 	ignore_armor: bool = false) -> void:
 		var hit = Hit.new(amount, damage_type, on_hit_effects, source)
+		SignalBus.convert_hit_type.emit(hit);
 		SignalBus.before_enemy_take_hit.emit(hit, self)
 		take_damage(hit.amount + hit.bonus_damage, source, hit.type, ignore_armor, true)
 		if(!isDead):

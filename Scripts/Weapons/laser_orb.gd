@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 		
 		laserDamageTimer += delta;
 		if laserDamageTimer >= laserDamageTickSpeed:
-			enemy.take_damage(laserDamagePerTick * player.damageMultiplier, source, GlobalEnums.DAMAGE_TYPES.MAGIC);
+			enemy.take_hit(laserDamagePerTick * player.damageMultiplier, source, GlobalEnums.DAMAGE_TYPES.MAGIC);
 			laserDamageTimer = 0.0;
 	else:
 		ShutDownLaserVfx();

@@ -5,10 +5,6 @@ var total_gained = 0
 func _ready() -> void:
 	SignalBus.gold_spent.connect(gold_updated)
 	pass # Replace with function body.
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func gold_updated(value: float):
 	if(value < 0):

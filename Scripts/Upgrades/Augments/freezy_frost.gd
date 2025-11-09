@@ -6,10 +6,6 @@ extends AugmentUpgrade
 func _ready() -> void:
 	SignalBus.before_enemy_take_hit.connect(_before_hit)
 	pass # Replace with function body.
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _before_hit(hit: Hit, enemy: Enemy):
 	if(hit.type == GlobalEnums.DAMAGE_TYPES.ICE):
