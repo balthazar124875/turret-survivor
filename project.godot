@@ -23,6 +23,7 @@ IconHandler="*res://Scripts/icon_handler.gd"
 TooltipHelper="*res://Scripts/tooltip_helper.gd"
 UnlockSignals="*res://UnlockSignals.gd"
 UnlockHandler="*res://Scripts/Menus/UnlockHandler.gd"
+GlobalVariables="*res://Scripts/GlobalVariables.gd"
 
 [display]
 

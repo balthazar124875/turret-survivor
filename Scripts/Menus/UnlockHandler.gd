@@ -31,7 +31,7 @@ func RenderAchievementBox(unlockName : String, unlockCondition : String, icon : 
 		uiBox.get_node("SpellName").text = "New Character Unlocked!";
 	uiBox.get_node("SpellDesc").text = unlockName + "\n" + unlockCondition;
 	uiBox.get_node("Icon").texture = icon;
-	var spawnPos = Vector2(0, -1080/2);
+	var spawnPos = Vector2(0, -GlobalVariables.screen_size/2);
 	uiBox.Init(spawnPos);
 	pass
 

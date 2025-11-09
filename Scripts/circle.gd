@@ -79,10 +79,10 @@ static func GetRandomPositionOutsideCircle() -> Vector2:
 	var max_attempts = 100
 	var attempt = 0
 		
-	var gameViewYMin = 0;
-	var gameViewYMax = 1080;
-	var gameViewXMin = 420;
-	var gameViewXMax = 1500;
+	var gameViewYMin = -GlobalVariables.screen_size/2;
+	var gameViewYMax = GlobalVariables.screen_size/2;
+	var gameViewXMin = -GlobalVariables.screen_size/2;
+	var gameViewXMax = GlobalVariables.screen_size/2;
 	
 	while attempt < max_attempts:
 		var rnd_pos = Vector2(randf_range(gameViewXMin, gameViewXMax), randf_range(gameViewYMin, gameViewYMax))

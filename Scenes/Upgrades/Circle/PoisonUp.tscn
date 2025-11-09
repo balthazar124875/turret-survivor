@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://s8gjjxm8weaq"]
 
-[ext_resource type="Script" path="res://Scripts/Upgrades/Circle/PoisonUp.gd" id="1_c34yl"]
+[ext_resource type="Script" uid="uid://tudxqpjm5ybj" path="res://Scripts/Upgrades/Circle/PoisonUp.gd" id="1_c34yl"]
 [ext_resource type="Texture2D" uid="uid://35yqpknhc6cf" path="res://Textures/Circle/PoisonSticker.png" id="2_g3fbu"]
 [ext_resource type="Texture2D" uid="uid://bagslw1xc8tyw" path="res://Textures/Circle/poisonStickerUpgrade.png" id="2_l55x5"]
 
