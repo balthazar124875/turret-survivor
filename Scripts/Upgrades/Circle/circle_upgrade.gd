@@ -12,9 +12,10 @@ var statup_type : GlobalEnums.PLAYER_STATS = -1;
 var statMultiplier = 1.0;
 
 func _ready() -> void:
+	type = UpgradeType.CIRCLE
 	pass
 	
-func _instantiate() -> void:
+func stickerInit() -> void:
 	stickerSpriteInstance = Sprite2D.new();
 	stickerSpriteInstance.texture = stickerTexture;
 	type = UpgradeType.CIRCLE

@@ -68,14 +68,10 @@ func load_upgrades() -> void:
 				file_name = dir.get_next()
 				
 				if(f == "Circle"):
-					upgrade._instantiate(); #Generate random inner outer functionality for circle upgrade
+					upgrade.stickerInit(); #Generate random inner outer functionality for circle upgrade
 		else:
 			print("An error occurred when trying to access the path.");
 	loaded = true
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _on_button_pressed(upgrade: Upgrade):
 	upgrade.applyPlayerUpgrade(player)

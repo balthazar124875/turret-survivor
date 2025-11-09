@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckluhcmhyguqv"]
+
+[ext_resource type="Script" uid="uid://dnbleeitvpo5n" path="res://Scripts/Menus/UnlockNodes/Achievements/achievement_Thousand_hp.gd" id="1_smhbv"]
+
+[node name="Achievement1000hp" type="Node2D"]
+script = ExtResource("1_smhbv")
+achievementName = "Unstoppable Heartbeat"
+unlockCondition = "Reach 2000 Max HP"
+isAchievement = true
+unlockType = 1

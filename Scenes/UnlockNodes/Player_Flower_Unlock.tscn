@@ -1,8 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6ugd74b2h1w7"]
 
-[ext_resource type="Script" path="res://Scripts/Menus/UnlockNodes/Unlocks/Player_Flower.gd" id="1_2pa1s"]
+[ext_resource type="Script" uid="uid://cecnhndf4fec8" path="res://Scripts/Menus/UnlockNodes/Unlocks/Player_Flower.gd" id="1_2pa1s"]
 [ext_resource type="PackedScene" uid="uid://d3ilsjok78chr" path="res://Scenes/Main Menu/Character Select Screen/player3_select.tscn" id="2_dkhxa"]
 
 [node name="PlayerFlowerUnlock" type="Node2D"]
 script = ExtResource("1_2pa1s")
+unlockCondition = "Deal 1000 damage of each element (fire, ice, lighting, poison, magic) in a single run."
 lockedItems = Array[PackedScene]([ExtResource("2_dkhxa")])

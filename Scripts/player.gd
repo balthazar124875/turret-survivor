@@ -51,7 +51,6 @@ func apply_dot_effects():
 		
 	if damage_from_bleeding > 0:
 		take_damage(damage_from_bleeding, null)
-		print("taking" + str(damage_from_bleeding) + " from blleding")
 
 func apply_status_effect(status_effect: StatusEffect):
 	active_status_effects.append(status_effect)
@@ -152,6 +151,7 @@ func modify_max_health(value: float) -> void:
 		health = maxHealth
 	
 	SignalBus.player_health_updated.emit(health, maxHealth)
+	SignalBus.player_max_health_updated.emit(maxHealth)
 
 func modify_health_regeneration(value: float) -> void:
 	healthRegeneration += value

@@ -1,6 +1,6 @@
 extends CircleUpgrade
 	
-func _instantiate() -> void:
+func stickerInit() -> void:
 	super();
 	damage_type = GlobalEnums.DAMAGE_TYPES.POISON;
 	statMultiplier = 1.1;

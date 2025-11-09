@@ -22,10 +22,13 @@ func _ready() -> void:
 		unlock.Init();
 	pass # Replace with function body.
 
-func RenderAchievementBox(unlockName : String, unlockCondition : String, icon : Texture2D):
+func RenderAchievementBox(unlockName : String, unlockCondition : String, icon : Texture2D, isAchievement : bool):
 	var uiBox = achievementUI.instantiate();
 	get_tree().root.add_child(uiBox);
-	uiBox.get_node("SpellName").text = "New Character Unlocked!";
+	if isAchievement:
+		uiBox.get_node("SpellName").text = "Achievement Get!";
+	else:
+		uiBox.get_node("SpellName").text = "New Character Unlocked!";
 	uiBox.get_node("SpellDesc").text = unlockName + "\n" + unlockCondition;
 	uiBox.get_node("Icon").texture = icon;
 	var spawnPos = Vector2(0, -1080/2);
