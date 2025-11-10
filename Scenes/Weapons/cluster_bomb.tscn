@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b1xsaxnjdg0qd"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/cluster_bomb_weapon.gd" id="1_nkpif"]
+[ext_resource type="Script" uid="uid://p57ldbodm34t" path="res://Scripts/Weapons/cluster_bomb_weapon.gd" id="1_nkpif"]
 [ext_resource type="PackedScene" uid="uid://dld1f4yhc0meq" path="res://Scenes/Projectiles/cluster_bomb_projectile.tscn" id="2_5tpos"]
 
 [node name="ClusterBomb" type="Node2D"]

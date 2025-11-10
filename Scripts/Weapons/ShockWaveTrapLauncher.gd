@@ -15,6 +15,7 @@ func shoot_area(position: Vector2) -> void:
 	obj.knockback_radius = base_knockback_radius
 	obj.knockback_distance = base_knockback_distance
 	obj.delayed_detonation = delayed_detonation
+	obj.damage_type = damage_type
 	
 func apply_level_up():
 	if(level == 5):

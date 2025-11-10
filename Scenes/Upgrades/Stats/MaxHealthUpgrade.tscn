@@ -6,8 +6,8 @@
 [node name="MaxHealthUpgrade" type="Node2D"]
 script = ExtResource("1_4nvkk")
 stat_type = 6
-amount = 20.0
+amount = 100.0
 upgradeName = "Health up!"
-description = "Increases max health by 10%"
+description = "Increases max health by 100"
 type = 2
 icon = ExtResource("2_1meov")

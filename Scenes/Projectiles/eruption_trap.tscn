@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://5mm0ou4jrlqa"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerProjectiles/eruption_trap.gd" id="1_2y0pr"]
+[ext_resource type="Script" uid="uid://lbgyovaydqf7" path="res://Scripts/PlayerProjectiles/eruption_trap.gd" id="1_2y0pr"]
 [ext_resource type="Texture2D" uid="uid://bhc2jjjk7nco" path="res://Assets/Sprites/sprite_sheets/eruption_trap.png" id="2_o8fbe"]
 [ext_resource type="PackedScene" uid="uid://dl4b1u5aa0ad" path="res://Scenes/vfx/eruption.tscn" id="2_t8ijq"]
 

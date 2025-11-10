@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4vn1cl2u1xi5"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerProjectiles/bullet.gd" id="1_hsvne"]
+[ext_resource type="Script" uid="uid://bcvxxt46r67td" path="res://Scripts/PlayerProjectiles/bullet.gd" id="1_hsvne"]
 [ext_resource type="Texture2D" uid="uid://ks5kcj5v0xea" path="res://Assets/Sprites/whitefireball.png" id="3_ve7y7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8stfk"]

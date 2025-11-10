@@ -15,7 +15,10 @@ func shoot(enemy: Node) -> void:
 	bullet.rotation = Vector2(1, 0).rotated(deg_to_rad(randf_range(0, 360))).angle()
 	bullet.pierce = pierce + player.extraPierce
 	bullet.bounce = player.extraBounce
-	bullet.set_damage_type_and_color(damage_type, variation_color)
+	
+	if(GlobalEnums.WEAPON_VARIATION_TYPE_SWAPS.has(variation)):
+		bullet.set_damage_type_and_color(damage_type, variation_color)
+		
 	player.modify_gold(-1)
 
 func shoot_in_circle() -> void:

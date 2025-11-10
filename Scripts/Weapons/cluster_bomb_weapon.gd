@@ -16,8 +16,10 @@ func shoot(enemy: Node) -> void:
 	bullet.damage = damage * player.damageMultiplier * gun_damage_multiplier
 	bullet.cluster_times = cluster_times + player.extraChains if recursive else cluster_times
 	bullet.number_of_cluster_bombs = base_projectile_amount + player.extraProjectiles
-	bullet.set_damage_type_and_color(damage_type, variation_color)
+	
 	add_child(bullet)
+	if(GlobalEnums.WEAPON_VARIATION_TYPE_SWAPS.has(variation)):
+		bullet.set_damage_type_and_color(damage_type, variation_color)
 	
 func apply_level_up():
 	if(level == 5):

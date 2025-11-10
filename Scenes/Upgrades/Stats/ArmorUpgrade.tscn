@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqfdqieusyv24"]
 
-[ext_resource type="Script" path="res://Scripts/Upgrades/Stats/stat_upgrade.gd" id="1_iw80y"]
+[ext_resource type="Script" uid="uid://b880fx1nqp6h7" path="res://Scripts/Upgrades/Stats/stat_upgrade.gd" id="1_iw80y"]
 [ext_resource type="Texture2D" uid="uid://m2fbo1scyp7x" path="res://Assets/Sprites/upgrades/armor_up.png" id="2_sx3c7"]
 
 [node name="ArmorUpgrade" type="Node2D"]
@@ -10,4 +10,5 @@ amount = 1.0
 upgradeName = "Armor up"
 description = "Increase armor by 1"
 type = 2
+rarity = 1
 icon = ExtResource("2_sx3c7")

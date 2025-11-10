@@ -18,13 +18,13 @@ func shoot(enemy: Node) -> void:
 		if(armor_shred):
 			bullet.armor_reduction = 1
 			
-			
-			
 		bullet.pierce = pierce + player.extraPierce
 		bullet.life_time = bullet_life_time
 		bullet.scale = Vector2(1, 1) * player.areaSizeMultiplier
-		bullet.set_damage_type_and_color(damage_type, variation_color)
+		
 		add_child(bullet)
+		if(GlobalEnums.WEAPON_VARIATION_TYPE_SWAPS.has(variation)):
+			bullet.set_damage_type_and_color(damage_type, variation_color)
 
 func apply_level_up():
 	if(level == 5):

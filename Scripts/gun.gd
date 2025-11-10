@@ -31,12 +31,15 @@ func shoot(enemy: Node) -> void:
 	direction = direction.rotated(deg_to_rad(bullet_spread * (bulletAmount / 2)))
 	for n in range(bulletAmount):
 		var bullet = wrapAroundBullet.instantiate() if wrapAround else bullet.instantiate()
-		add_child(bullet)
 		bullet.init_with_direction(direction, damage * player.damageMultiplier * gun_damage_multiplier, 
 			base_projectile_speed * local_projectile_speed_multiplier * player.projectileSpeedMultipler, bullet_life_time, source)
 		bullet.pierce += player.extraPierce
 		bullet.bounce += player.extraBounce
-		bullet.set_damage_type_and_color(damage_type, variation_color)
+		
+		add_child(bullet)
+		if(GlobalEnums.WEAPON_VARIATION_TYPE_SWAPS.has(variation)):
+			bullet.set_damage_type_and_color(damage_type, variation_color)
+		
 		direction = direction.rotated(-deg_to_rad(bullet_spread))
 
 func apply_level_up():

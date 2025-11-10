@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://baxg6dpo4avbu"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerProjectiles/charge_laser_projectile.gd" id="1_ghx2m"]
+[ext_resource type="Script" uid="uid://c7fqnr35hvptl" path="res://Scripts/PlayerProjectiles/charge_laser_projectile.gd" id="1_ghx2m"]
 [ext_resource type="Texture2D" uid="uid://b70b6b1k75ggq" path="res://Assets/Sprites/Particles/purple_ball.png" id="2_lg460"]
 [ext_resource type="Texture2D" uid="uid://e0ipawprq50w" path="res://Assets/Sprites/Projectiles/charge_laser_slice.png" id="2_va2un"]
 
@@ -15,7 +15,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.721569)
 gradient = SubResource("Gradient_w00g2")
 
 [sub_resource type="Curve" id="Curve_bq4fo"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 0.0286517), 0.0, 26.4421, 0, 0, Vector2(0.318966, 3), 0.0, 0.0, 0, 0, Vector2(1, 0.0432585), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -64,8 +64,8 @@ shape = SubResource("RectangleShape2D_r0q4f")
 
 [node name="ChargeParticles" type="GPUParticles2D" parent="."]
 amount = 25
-process_material = SubResource("ParticleProcessMaterial_0epkt")
 texture = ExtResource("2_lg460")
+process_material = SubResource("ParticleProcessMaterial_0epkt")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5

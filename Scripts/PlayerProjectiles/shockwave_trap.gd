@@ -24,7 +24,7 @@ func trigger_trap():
 				if (distance < knockback_radius):
 					var vector_dir = (enemy.global_position - global_position).normalized() * knockback_distance
 					
-					enemy.take_hit(base_damage, "ShockWave Trap", GlobalEnums.DAMAGE_TYPES.LIGHTNING)
+					enemy.take_hit(base_damage, "ShockWave Trap", damage_type)
 					
 					enemy.add_displacement(vector_dir, knockback_speed)
 						

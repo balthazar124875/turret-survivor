@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://bnlnbvug3d6tw"]
 
-[ext_resource type="Script" path="res://Scripts/Menus/character_select_screen.gd" id="1_cp40a"]
+[ext_resource type="Script" uid="uid://bqku8q716j17r" path="res://Scripts/Menus/character_select_screen.gd" id="1_cp40a"]
 [ext_resource type="PackedScene" uid="uid://djk2xjnw738l7" path="res://Scenes/Main Menu/Character Select Screen/spell_desc_node.tscn" id="2_b5s0k"]
 [ext_resource type="Texture2D" uid="uid://3twshf16qkx4" path="res://Assets/Sprites/upgrades/augments/bounty_hunter.png" id="2_egitf"]
 [ext_resource type="PackedScene" uid="uid://beeycdkbtpq0s" path="res://Scenes/Main Menu/Character Select Screen/lemon_select.tscn" id="2_hf2f7"]
-[ext_resource type="Script" path="res://Scripts/vfx/camera_shake.gd" id="3_8h3ui"]
+[ext_resource type="Script" uid="uid://hnx1sit4aai1" path="res://Scripts/vfx/camera_shake.gd" id="3_8h3ui"]
 [ext_resource type="PackedScene" uid="uid://d1y3th5qku4c0" path="res://Scenes/Main Menu/Character Select Screen/player1_select.tscn" id="3_a8bii"]
 [ext_resource type="PackedScene" uid="uid://d3ilsjok78chr" path="res://Scenes/Main Menu/Character Select Screen/player3_select.tscn" id="4_70myy"]
-[ext_resource type="Script" path="res://Scripts/Menus/stake_selector.gd" id="4_77ddq"]
+[ext_resource type="Script" uid="uid://5jtaa46hu3ec" path="res://Scripts/Menus/stake_selector.gd" id="4_77ddq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o67t5"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -72,7 +72,7 @@ offset_bottom = 40.0
 script = ExtResource("4_77ddq")
 
 [node name="StakeDescription" type="RichTextLabel" parent="Control/Stakes"]
-layout_mode = 2
+layout_mode = 0
 offset_left = -920.0
 offset_top = 312.0
 offset_right = -336.0
@@ -111,6 +111,7 @@ offset_bottom = 248.0
 
 [node name="SpellDescNode" parent="Control/Stats/AugmentStats" instance=ExtResource("2_b5s0k")]
 visible = false
+layout_mode = 0
 
 [node name="SpellDescNode2" type="Control" parent="Control/Stats/AugmentStats"]
 visible = false
@@ -121,7 +122,7 @@ offset_right = 24.0
 offset_bottom = 152.0
 
 [node name="SpellName" type="RichTextLabel" parent="Control/Stats/AugmentStats/SpellDescNode2"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 128.0
 offset_top = -8.0
 offset_right = 428.0
@@ -130,7 +131,7 @@ scale = Vector2(2, 2)
 text = "Heal king"
 
 [node name="SpellDesc" type="RichTextLabel" parent="Control/Stats/AugmentStats/SpellDescNode2"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 128.0
 offset_top = 40.0
 offset_right = 728.0
@@ -138,7 +139,7 @@ offset_bottom = 152.0
 text = "Heal everytime you take damage."
 
 [node name="Icon" type="TextureRect" parent="Control/Stats/AugmentStats/SpellDescNode2"]
-layout_mode = 2
+layout_mode = 0
 offset_right = 100.0
 offset_bottom = 100.0
 texture = ExtResource("2_egitf")

@@ -215,6 +215,11 @@ func modify_stat(stat: GlobalEnums.PLAYER_STATS, amount: float, source: String =
 			self.maxHealth += amount
 			modify_health(amount)
 			SignalBus.stat_updated.emit(stat, maxHealth, amount)
+		GlobalEnums.PLAYER_STATS.MAX_HEALTH_PERCENTAGE:
+			var change = self.maxHealth * amount
+			self.maxHealth += change
+			modify_health(change)
+			SignalBus.stat_updated.emit(stat, maxHealth, change)
 		GlobalEnums.PLAYER_STATS.ADD_HEALTH_REGENERATION:
 			self.healthRegeneration += amount
 			SignalBus.stat_updated.emit(stat, self.healthRegeneration, amount)

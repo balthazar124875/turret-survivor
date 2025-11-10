@@ -15,6 +15,7 @@ func shoot_area(position: Vector2) -> void:
 	trap.create_trap(Vector2(0, 0), position - global_position, base_projectile_speed * player.projectileSpeedMultipler,
 	 damage * player.damageMultiplier * gun_damage_multiplier, base_area * player.areaSizeMultiplier, trap_duration)
 	trap.eruption_radius = base_eruption_radius * player.areaSizeMultiplier
+	trap.damage_type = damage_type
 	if(ignites):
 		trap.ignites = true
 		trap.ignite_duration = ignite_duration

@@ -14,3 +14,10 @@ func set_player_init_data(playerData : PlayerSelectNode, currStakeID : int) -> v
 	self.currStakeID = currStakeID;
 	#print("Current stake: " + str(currStakeID));
 	pass
+
+func _input(event):
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_R:
+			# Clear current scene
+			#get_tree().root.queue_free()
+			get_tree().change_scene_to_file("res://Scenes/Main Menu/Character Select Screen/character_select_screen.tscn")

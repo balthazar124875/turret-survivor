@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dto00ay2vkxky"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerProjectiles/shockwave_trap.gd" id="1_cpjrs"]
+[ext_resource type="Script" uid="uid://bfnib23m8bm48" path="res://Scripts/PlayerProjectiles/shockwave_trap.gd" id="1_cpjrs"]
 [ext_resource type="Texture2D" uid="uid://dch3ekpmvehje" path="res://Assets/Sprites/sprite_sheets/shockwave_trap.png" id="2_joufu"]
 [ext_resource type="PackedScene" uid="uid://clxyrnvqyvycl" path="res://Scenes/vfx/shockwave.tscn" id="2_oyv41"]
 

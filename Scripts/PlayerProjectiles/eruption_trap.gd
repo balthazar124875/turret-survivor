@@ -25,8 +25,8 @@ func trigger_trap():
 					if(ignites):
 						var burnEffect = StatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.BURNING, ignite_duration, ignite_damage)
 						var effects: Array[StatusEffect] = [burnEffect]
-						enemy.take_hit(base_damage, "Eruption Trap", GlobalEnums.DAMAGE_TYPES.FIRE, effects)
+						enemy.take_hit(base_damage, "Eruption Trap", damage_type, effects)
 					else:
-						enemy.take_hit(base_damage, "Eruption Trap", GlobalEnums.DAMAGE_TYPES.FIRE)
+						enemy.take_hit(base_damage, "Eruption Trap", damage_type)
 					
 	queue_free()

@@ -70,6 +70,7 @@ func cluster():
 		new_bomb.damage = damage
 		new_bomb.cluster_times = cluster_times - 1 if i == 0 else 0
 		new_bomb.number_of_cluster_bombs = number_of_cluster_bombs
+		new_bomb.damage_type = damage_type
 		get_parent().add_child(new_bomb)
 		
 func create_explosion():
@@ -83,7 +84,7 @@ func damage_enemies_in_collider():
 	var enemies = []
 	for body in get_overlapping_bodies():
 		if body is Enemy:  # Check if it's an enemy
-			body.take_hit(damage, "Cluster bomb")
+			body.take_hit(damage, "Cluster bomb", damage_type)
 #func _delete_after_time(timeout):
 	#await get_tree().create_timer(timeout).timeout
 	#queue_free()

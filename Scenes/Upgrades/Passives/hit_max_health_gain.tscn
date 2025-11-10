@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ogvr6m3kxw4f"]
 
-[ext_resource type="Script" path="res://Scripts/Upgrades/Passives/hit_max_health_gain.gd" id="1_rlv3m"]
+[ext_resource type="Script" uid="uid://be754jcvjxk13" path="res://Scripts/Upgrades/Passives/hit_max_health_gain.gd" id="1_rlv3m"]
 [ext_resource type="Texture2D" uid="uid://dw6kiiokdaji" path="res://Assets/Sprites/upgrades/hit_max_health_gain.png" id="2_sp30q"]
 
 [node name="HitMaxHealthGain" type="Node2D"]
@@ -9,7 +9,7 @@ passiveType = 3
 upgradeName = "Strong heart"
 description = "When player is hit, gain max health"
 type = 1
-rarity = 2
+rarity = 3
 icon = ExtResource("2_sp30q")
 gold_cost = 45
 tags = Array[int]([6])
