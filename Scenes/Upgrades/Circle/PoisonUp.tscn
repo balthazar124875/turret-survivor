@@ -7,6 +7,7 @@
 [node name="PoisonUp" type="Node2D"]
 script = ExtResource("1_c34yl")
 stickerTexture = ExtResource("2_g3fbu")
+shopIconFilePath = "res://Textures/Circle/poisonStickerUpgrade.png"
 upgradeName = "Poison Up"
 description = "xx"
 type = 4

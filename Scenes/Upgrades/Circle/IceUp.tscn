@@ -7,6 +7,7 @@
 [node name="IceUp" type="Node2D"]
 script = ExtResource("1_uacfj")
 stickerTexture = ExtResource("2_fuac3")
+shopIconFilePath = "res://Textures/Circle/IceUP_UpgradeIcon.png"
 upgradeName = "Ice Up"
 description = "xx"
 type = 4

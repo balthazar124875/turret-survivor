@@ -2,9 +2,9 @@ extends Upgrade
 
 class_name CircleUpgrade
 
-var iconBackgroundSprite : AnimatedSprite2D; #The Blue Or Red BackGround image we have on the spell icon
 var circleUpgradeType : Circle.CircleType; #This should be random generated
 @export var stickerTexture : Texture2D #The sticker that will be placed
+@export var shopIconFilePath : String;
 var innerOuterString : String;
 var stickerSpriteInstance : Sprite2D;
 var damage_type : GlobalEnums.DAMAGE_TYPES = -1;
@@ -22,9 +22,31 @@ func stickerInit() -> void:
 	var my_random_number = randi() % 2; # This will be either INNER or OUTER
 	circleUpgradeType = my_random_number;
 	if circleUpgradeType == Circle.CircleType.INNER:
-		innerOuterString = "[color=blue]Inner[/color]";
+		innerOuterString = "[color=DEEP_SKY_BLUE]Inner[/color]";
 	else:
-		innerOuterString = "[color=red]Outer[/color]";
+		innerOuterString = "[color=CRIMSON]Outer[/color]";
+		
+	# Create a new 32x32 white texture
+	var sticker_image := Image.load_from_file(shopIconFilePath) #OG sticker image from the @export
+	var backgroundImage := Image.load_from_file("res://Textures/Circle/blank_white.png");
+	if circleUpgradeType == Circle.CircleType.INNER:
+		backgroundImage.fill(Color.DODGER_BLUE)
+	else:
+		backgroundImage.fill(Color.CRIMSON)
+	
+	#Blit
+	backgroundImage.blit_rect_mask(
+		sticker_image,                       # source image
+		sticker_image,                       # use sticker's alpha as mask
+		Rect2i(Vector2i.ZERO, sticker_image.get_size()), # region to copy
+		Vector2i.ZERO                        # position on background
+	)
+	
+	#var texture := ImageTexture.create_from_image(image)
+	var combined_texture := ImageTexture.create_from_image(backgroundImage)
+	
+	icon = combined_texture
+
 	UpgradeDescription()
 	
 	# Load and apply the shader
