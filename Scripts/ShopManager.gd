@@ -46,7 +46,7 @@ var frozen = []
 
 @export var upgrades_scenes : Array[PackedScene] = []
 
-var player: Player
+@onready var player: Player = get_node(GlobalVariables.game_path + "Player")
 var circle: Circle
 
 @onready var tooltipMgr : TooltipManager = get_node("/root/EmilScene/GameplayUi/Tooltip")
@@ -57,7 +57,6 @@ var currTooltipShotButtonIdx;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	currTooltipShotButtonIdx = -1;
-	player = get_node("/root/EmilScene/Player")
 	circle = player.get_node("./Circle")
 	load_upgrades()
 	initialize_buttons()
@@ -125,6 +124,7 @@ func initialize_buttons() -> void:
 func new_wave_shop_reroll(current_wave: int = 0) -> void:
 	SignalBus.animate_shop_upgrade_door.emit()
 	current_reroll_cost = base_reroll_cost
+	SignalBus.reroll_cost_updated.emit(current_reroll_cost)
 
 #Call this on re-rolls to update all shopUpgrade buttons.
 func fillShopUpgradeButtons(current_wave: int = 0) -> void:
@@ -280,6 +280,7 @@ func _on_reroll_button_pressed() -> void:
 		return
 	player.modify_gold(-current_reroll_cost)
 	current_reroll_cost += 1
+	SignalBus.reroll_cost_updated.emit(current_reroll_cost)
 	SignalBus.animate_shop_upgrade_door.emit()
 
 func choose_weighted_random(upgrades: Array):
