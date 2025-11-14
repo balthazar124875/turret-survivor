@@ -173,7 +173,7 @@ func take_damage(
 	direct: bool = true
 	) -> void:
 	# Take minimum 1 damage
-	var damage_after_type_multipler = amount * player.GetDamageMultiplier(damage_type, global_position);
+	var damage_after_type_multipler = (amount + player.GetBaseDamage(damage_type)) * player.GetDamageMultiplier(damage_type, global_position);
 	var damage_after_armor = max(1, damage_after_type_multipler) if ignore_armor else max(1, damage_after_type_multipler - armor)
 	var health_before = health
 	health -= damage_after_armor

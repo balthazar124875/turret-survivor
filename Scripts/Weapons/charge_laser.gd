@@ -10,7 +10,7 @@ func shoot(enemy: Node) -> void:
 		var direction = (enemy.global_position - current_position).normalized()
 		bullet.look_at(direction)
 		bullet.position = bullet.position + direction * 30
-		bullet.damage_per_tick = get_modified_damage()
+		bullet.damage_per_tick = get_total_damage()
 		bullet.source = "Charge laser"
 		bullet.damage_type = damage_type
 		bullet.range = range * player.rangeMultiplier

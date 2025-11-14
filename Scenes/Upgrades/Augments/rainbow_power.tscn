@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://eg8srja1wux6"]
+
+[ext_resource type="Script" uid="uid://dc4lte3jqkv7h" path="res://Scripts/Upgrades/Augments/rainbow_power.gd" id="1_bmuqu"]
+[ext_resource type="Texture2D" uid="uid://ivpdmfsyhmtd" path="res://Assets/Sprites/upgrades/augments/RainbowPower.png" id="2_4q2a5"]
+
+[node name="RainbowPower" type="Node2D"]
+script = ExtResource("1_bmuqu")
+upgradeName = "Rainbow Power"
+description = "For each 1000 damage dealt with an element, damage for that element goes up by 1. (Damage requirements increases by 50% each time an element power increases by this augment)"
+icon = ExtResource("2_4q2a5")

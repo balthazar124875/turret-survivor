@@ -52,6 +52,7 @@ func _add_damage(enemy: Enemy, amount: float, damageType: GlobalEnums.DAMAGE_TYP
 		damageTypeList[damageType] = amount
 		
 	UnlockSignals.elemental_damage_dealt.emit(damageType, damageTypeList[damageType])
+	SignalBus.elemental_damage_dealt.emit(damageType, amount)
 	
 func _add_heal(amount: float, source: String):
 	if (source == ''):

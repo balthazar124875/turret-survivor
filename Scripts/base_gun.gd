@@ -113,11 +113,11 @@ func level_up():
 func apply_level_up():
 	pass
 
-func get_modified_damage():
-	return damage * player.damageMultiplier * gun_damage_multiplier * player.damage_type_multipliers[damage_type]
+func get_total_damage():
+	return player.get_player_damage(damage, damage_type) * gun_damage_multiplier;
 
 func get_damage() -> String:
-	return "\nDamage: [color=red]" + String.num(get_modified_damage(), 2) + "[/color]"
+	return "\nDamage: [color=red]" + String.num(get_total_damage(), 2) + "[/color]"
 	
 func get_fireRate() -> String:
 	return "\nFire rate: [color=yellow]" + String.num(1 * player.attackSpeedMultiplier / cooldown, 2) + "[/color] shots/sec"

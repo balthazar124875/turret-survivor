@@ -32,11 +32,6 @@ func _ready() -> void:
 	collider = get_node("CollisionPolygon2D");
 	collider.disabled = false
 	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	#ProcessPerFrameData(delta)
-	pass
 	
 func ProcessPerFrameData(delta: float) -> void:
 	#This will make sure our collider outer points are growing
@@ -91,7 +86,7 @@ func UpdateSingleFlameColliderPoints() -> void:
 	#await get_tree().process_frame
 
 func HitEnemy(body) -> void:
-	body.take_hit(damage*100.0, "Flamethrower", GlobalEnums.DAMAGE_TYPES.FIRE)
+	body.take_hit(damage, "Flamethrower", GlobalEnums.DAMAGE_TYPES.FIRE) #damage comes from get_total_damage()
 
 func _physics_process(delta):
 	ProcessPerFrameData(delta);

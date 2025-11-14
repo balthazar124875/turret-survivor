@@ -11,6 +11,7 @@ var damage = 15.0
 var damage_max_health_percent = 20.0
 var source = "Shooting Star"
 @onready var player_damage_mult = get_node("/root/EmilScene/Player").damageMultiplier
+@onready var player = get_node("/root/EmilScene/Player")
 
 var random_damage_type;
 var starColor;
@@ -61,7 +62,7 @@ func damage_enemies_in_collider():
 			if(random_damage_type == GlobalEnums.DAMAGE_TYPES.ICE):
 				var slow = StatusEffect.new(GlobalEnums.ENEMY_STATUS_EFFECTS.FROZEN, 3, 1)
 				var effects: Array[StatusEffect] = [slow]
-				body.take_hit(damage * player_damage_mult + damage_max_health_percent, source, random_damage_type, effects)
+				body.take_hit(player.get_player_damage(damage, random_damage_type) + damage_max_health_percent, source, random_damage_type, effects)
 			else:
-				body.take_hit(damage * player_damage_mult + damage_max_health_percent, source, random_damage_type)
+				body.take_hit(player.get_player_damage(damage, random_damage_type) + damage_max_health_percent, source, random_damage_type)
 			

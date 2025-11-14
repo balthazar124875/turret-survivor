@@ -23,6 +23,7 @@ var playerUpgrades: Array = [];
 @export var armor_damage_reduction_const = 0.05
 # <DAMAGE_TYPE, float>
 @export var damage_type_multipliers: Dictionary = {}
+@export var base_damage: Dictionary = {}
 
 @export var championRewardBonus: float = 1;
 
@@ -81,6 +82,7 @@ func _ready() -> void:
 	
 	circle = get_node("./Circle");
 	init_damage_type_multipliers()
+	init_base_damage()
 	SignalBus.enemy_killed.connect(_on_enemy_killed)
 	add_child(dot_timer)
 	dot_timer.wait_time = dot_tick_time
@@ -96,6 +98,9 @@ func init_damage_type_multipliers():
 	for key in GlobalEnums.DAMAGE_TYPES.values():
 		damage_type_multipliers[key] = 1.0
 	
+func init_base_damage():
+	for key in GlobalEnums.DAMAGE_TYPES.values():
+		base_damage[key] = 0.0
 
 #TODO: REMOVE THIS
 func _input(event):
@@ -116,6 +121,9 @@ func _on_income_timer_timeout() -> void:
 func get_interest() -> int:
 	var interest = (gold / interest_per_amount) as int
 	return min(interest_cap, interest)
+
+func get_player_damage(damage: float, damage_type : GlobalEnums.DAMAGE_TYPES):
+	return (damage + base_damage[damage_type]) * damageMultiplier * damage_type_multipliers[damage_type];
 
 func heal_damage(value: float, source: String) -> void:
 	var result = healing_multiplier * value
@@ -235,6 +243,13 @@ func modify_stat(stat: GlobalEnums.PLAYER_STATS, amount: float, source: String =
 		GlobalEnums.PLAYER_STATS.BONUS_BOUNCE:
 			self.extraBounce += amount
 			SignalBus.stat_updated.emit(stat, self.extraBounce, amount)
+
+func GetBaseDamage(damage_type : GlobalEnums.DAMAGE_TYPES) -> float:
+	var base_damage = base_damage[damage_type]
+	return base_damage;
+
+func IncreaseBaseDamage(damage_type : GlobalEnums.DAMAGE_TYPES, amount : float) -> void:
+	base_damage[damage_type] += amount;
 
 func GetDamageMultiplier(damage_type : GlobalEnums.DAMAGE_TYPES, enemyPos : Vector2) -> float:
 	var damage_multiplier = damage_type_multipliers[damage_type]

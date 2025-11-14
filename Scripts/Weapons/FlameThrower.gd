@@ -57,7 +57,7 @@ func CreateFlameColliderInstance(enemyHash : Enemy, directionAngle : float) -> v
 	var flameColliderInst = flameCollider.instantiate();
 	flame_thrower_instance.add_child(flameColliderInst);
 	flameColliderInst.rotation = directionAngle;
-	flameColliderInst.init(flameColRange, spread_angle, damage * player.damageMultiplier, flameRange / ogFlameRange);
+	flameColliderInst.init(flameColRange, spread_angle, get_total_damage(), flameRange / ogFlameRange);
 	enemy_to_flameColliders_hashMap[enemyHash] = flameColliderInst;
 
 func DestroyFlameColliderInstance(enemyHash: Enemy) -> void:
