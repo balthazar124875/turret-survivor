@@ -3,6 +3,7 @@ extends Control
 
 func _ready() -> void:
 	SignalBus.reroll_cost_updated.connect(update_reroll_cost)
+	update_reroll_cost(2)
 	pass # Replace with function body.
 
 func update_reroll_cost(amount: int):

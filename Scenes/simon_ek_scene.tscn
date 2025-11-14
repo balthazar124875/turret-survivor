@@ -1,4 +1,4 @@
-[gd_scene load_steps=176 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=177 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" uid="uid://b6kmf58swsxf7" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -161,6 +161,7 @@
 [ext_resource type="PackedScene" uid="uid://d30www1x6rre5" path="res://Scenes/Upgrades/Weapons/shotgun_upgrade.tscn" id="112_0m046"]
 [ext_resource type="PackedScene" uid="uid://bws7my0sqcuvx" path="res://Scenes/Upgrades/Weapons/vine_trap.tscn" id="113_qdyk1"]
 [ext_resource type="PackedScene" uid="uid://drdghbgnuueoq" path="res://Scenes/Upgrades/Weapons/vine_wall_upgrade.tscn" id="114_oylqi"]
+[ext_resource type="Script" uid="uid://b8o5sy6y71v0h" path="res://Scenes/reroll_container.gd" id="122_v505v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lo1n0"]
 resource_local_to_scene = true
@@ -1108,6 +1109,7 @@ offset_top = 395.0
 offset_right = 410.0
 offset_bottom = 482.0
 scale = Vector2(0.974, 1)
+script = ExtResource("122_v505v")
 
 [node name="Gold" type="Panel" parent="GameplayUi/LeftMenuColumn/RerollContainer"]
 layout_mode = 0
@@ -1159,6 +1161,18 @@ offset_bottom = 32.0
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("10_btva0")
 stretch_mode = 0
+
+[node name="Cost" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/RerollContainer/RerollButton"]
+layout_mode = 0
+offset_left = -6.285
+offset_top = 18.6
+offset_right = 35.7291
+offset_bottom = 39.2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center][img width=16 height=16]res://Assets/icons/coin.png[/img][color=yellow]3"
+scroll_active = false
+autowrap_mode = 0
 
 [node name="WaveLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn"]
 layout_mode = 1
@@ -1896,7 +1910,7 @@ script = ExtResource("49_rpqod")
 [node name="Background3" type="Sprite2D" parent="BackgroundHandler"]
 z_index = -1
 material = SubResource("ShaderMaterial_3hep3")
-position = Vector2(4, -2)
+position = Vector2(-2, -20)
 scale = Vector2(3, 3)
 texture = ExtResource("53_bqs3t")
 script = ExtResource("49_rpqod")

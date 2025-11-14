@@ -48,7 +48,7 @@ func _ready() -> void:
 	OrbHandler.addPlayerBaseOrb(self);
 	SignalBus.orb_purchased.emit();
 	var screenSize = get_viewport().get_visible_rect().size;
-	orbRange = screenSize.y*0.15; #10% of the screenSize, to make this scale properly
+	orbRange = screenSize.y*0.10; #10% of the screenSize, to make this scale properly
 	
 	if OrbHandler.enhancedOrbs[type]:
 		EnhanceOrb();

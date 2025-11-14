@@ -112,6 +112,10 @@ offset_bottom = 248.0
 [node name="SpellDescNode" parent="Control/Stats/AugmentStats" instance=ExtResource("2_b5s0k")]
 visible = false
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="SpellDescNode2" type="Control" parent="Control/Stats/AugmentStats"]
 visible = false

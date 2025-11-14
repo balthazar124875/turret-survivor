@@ -10,8 +10,8 @@ class ShopUpgradeButton:
 	var sale: bool;
 	var locked: bool;
 	
-static var UPGRADES_LIST = [[],[],[],[],[]]; #2D array, access elems by UPGRADE_LIST[rarity] -> gives the list of upgrades
-static var availableUpgradesList : Array = []; #This list will hold all upgrades that are available to use currently CURRENTLY UNUSED!!!
+var UPGRADES_LIST = [[],[],[],[],[]]; #2D array, access elems by UPGRADE_LIST[rarity] -> gives the list of upgrades
+var availableUpgradesList : Array = []; #This list will hold all upgrades that are available to use currently CURRENTLY UNUSED!!!
 
 #Rarity rates (rarity rate for common is always one minus the sum of the vars)
 static var legendaryRate = 0.03;
@@ -24,7 +24,7 @@ static var unCommonCost = 25
 static var rareCost = 50
 static var legendaryCost = 150
 
-static var shopUpgradeButtons : Array[ShopUpgradeButton] = [];
+var shopUpgradeButtons : Array[ShopUpgradeButton] = [];
 
 var base_reroll_cost = 2
 var current_reroll_cost = base_reroll_cost
@@ -46,7 +46,7 @@ var frozen = []
 
 @export var upgrades_scenes : Array[PackedScene] = []
 
-@onready var player: Player = get_node(GlobalVariables.game_path + "Player")
+@onready var player: Player = get_node("/root/EmilScene/Player")
 var circle: Circle
 
 @onready var tooltipMgr : TooltipManager = get_node("/root/EmilScene/GameplayUi/Tooltip")
@@ -79,7 +79,7 @@ func _input(event):
 
 func load_upgrades() -> void:
 	for scene in upgrades_scenes:
-		var upgrade = scene.instantiate()
+		var upgrade = scene.duplicate().instantiate()
 		
 		if upgrade is CircleUpgrade:
 			upgrade.stickerInit();
