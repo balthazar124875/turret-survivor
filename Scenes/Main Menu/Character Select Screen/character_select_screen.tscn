@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bnlnbvug3d6tw"]
+[gd_scene load_steps=17 format=3 uid="uid://bnlnbvug3d6tw"]
 
 [ext_resource type="Script" uid="uid://bqku8q716j17r" path="res://Scripts/Menus/character_select_screen.gd" id="1_cp40a"]
 [ext_resource type="PackedScene" uid="uid://djk2xjnw738l7" path="res://Scenes/Main Menu/Character Select Screen/spell_desc_node.tscn" id="2_b5s0k"]
@@ -8,7 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://d1y3th5qku4c0" path="res://Scenes/Main Menu/Character Select Screen/player1_select.tscn" id="3_a8bii"]
 [ext_resource type="PackedScene" uid="uid://d3ilsjok78chr" path="res://Scenes/Main Menu/Character Select Screen/player3_select.tscn" id="4_70myy"]
 [ext_resource type="Script" uid="uid://5jtaa46hu3ec" path="res://Scripts/Menus/stake_selector.gd" id="4_77ddq"]
+[ext_resource type="PackedScene" uid="uid://bnfdwxvddb7xl" path="res://Scenes/Upgrades/Weapons/gun_upgrade.tscn" id="7_p6l5b"]
 [ext_resource type="PackedScene" uid="uid://b8i678nyyu7px" path="res://Scenes/Upgrades/Augments/heal_king.tscn" id="8_lepa2"]
+[ext_resource type="PackedScene" uid="uid://cw00yv0oed5rx" path="res://Scenes/Main Menu/Character Select Screen/Benis.tscn" id="10_85qvm"]
+[ext_resource type="PackedScene" uid="uid://xr0ttbf332d4" path="res://Scenes/Main Menu/Character Select Screen/Pwl.tscn" id="10_dh5wo"]
+[ext_resource type="PackedScene" uid="uid://bnib5knhroohd" path="res://Scenes/Upgrades/Weapons/gnome_fella_upgrade.tscn" id="10_p6l5b"]
+[ext_resource type="PackedScene" uid="uid://d4aixlicjwp1e" path="res://Scenes/Upgrades/Augments/orb_armor.tscn" id="11_3hgbe"]
+[ext_resource type="Script" uid="uid://c763pvrtf6tko" path="res://Scripts/Menus/PlayerSelect/Player4.gd" id="11_5ksfc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o67t5"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -187,10 +193,18 @@ position = Vector2(0, -200)
 
 [node name="Player1" parent="Characters" instance=ExtResource("3_a8bii")]
 position = Vector2(175, -10)
+startWeapons = Array[PackedScene]([ExtResource("7_p6l5b")])
 
 [node name="Lemon" parent="Characters" instance=ExtResource("2_hf2f7")]
 position = Vector2(-205, -24)
 startAugments = Array[PackedScene]([ExtResource("8_lepa2")])
+startWeapons = Array[PackedScene]([ExtResource("10_p6l5b")])
 
 [node name="Player3" parent="Characters" instance=ExtResource("4_70myy")]
 position = Vector2(-7, -271)
+
+[node name="Pwl" parent="Characters" instance=ExtResource("10_dh5wo")]
+startAugments = Array[PackedScene]([ExtResource("11_3hgbe")])
+
+[node name="Benis" parent="Characters" instance=ExtResource("10_85qvm")]
+script = ExtResource("11_5ksfc")

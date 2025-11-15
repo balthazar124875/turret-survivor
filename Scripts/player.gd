@@ -67,20 +67,6 @@ func erase_status_effect(status_effect: StatusEffect):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if(gameManager.playerInitData != null):
-		#Set the main player sprite
-		var sprite_frames = $AnimatedSprite2D.sprite_frames
-		var animation_name = $AnimatedSprite2D.animation
-		var frame_index = $AnimatedSprite2D.frame  #Current frame index
-		# Replace the texture of the current frame
-		sprite_frames.set_frame(animation_name, frame_index, gameManager.playerInitData.icon);
-		
-		#Set starting augments
-		for augment in gameManager.playerInitData.startAugments:
-			var currAugment = augment.instantiate() as AugmentUpgrade;
-			SignalBus.augment_recieved.emit(currAugment)
-			currAugment.applyUpgradeToPlayer(self);
-	
 	circle = get_node("./Circle");
 	init_damage_type_multipliers()
 	init_base_damage()
@@ -89,11 +75,34 @@ func _ready() -> void:
 	dot_timer.wait_time = dot_tick_time
 	dot_timer.start()
 	dot_timer.timeout.connect(apply_dot_effects)
+	
+	init_player_data(gameManager.playerInitData)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	heal_damage(healthRegeneration * delta, "Regeneration")
 	update_active_status_effect_durations(delta)
+
+func init_player_data(playerInitData):
+	await get_tree().process_frame
+	if(playerInitData != null):
+		#Set the main player sprite
+		var sprite_frames = $AnimatedSprite2D.sprite_frames
+		var animation_name = $AnimatedSprite2D.animation
+		var frame_index = $AnimatedSprite2D.frame  #Current frame index
+		# Replace the texture of the current frame
+		sprite_frames.set_frame(animation_name, frame_index, playerInitData.icon);
+		
+		#Set starting augments
+		for augment in playerInitData.startAugments:
+			var currAugment = augment.instantiate() as AugmentUpgrade;
+			SignalBus.augment_recieved.emit(currAugment)
+			currAugment.applyUpgradeToPlayer(self);
+			
+		
+		for weapon in playerInitData.startWeapons:
+			var currWeapon = weapon.instantiate() as WeaponUpgrade;
+			currWeapon.applyPlayerUpgrade(self)
 
 func init_damage_type_multipliers():
 	for key in GlobalEnums.DAMAGE_TYPES.values():

@@ -85,7 +85,18 @@ func RenderStartSpellsList(player : PlayerSelectNode) -> void:
 		augmentStatsControl.add_child(spellDescNode);
 		spellDescNode.global_position.y += 120 * idx;
 		idx = idx + 1;
-	pass;
+		
+	var startWeapons =  player.startWeapons;
+	for weapon in startWeapons:
+		var spellDescNode = spellDescNode.instantiate();
+		var weaponUpdgradeScript = weapon.instantiate() as WeaponUpgrade;
+		spellDescNode.get_node("SpellName").text = weaponUpdgradeScript.upgradeName;
+		spellDescNode.get_node("SpellDesc").text = weaponUpdgradeScript.description;
+		spellDescNode.get_node("Icon").texture = weaponUpdgradeScript.icon;
+		startAugmentsUI.push_back(spellDescNode);
+		augmentStatsControl.add_child(spellDescNode);
+		spellDescNode.global_position.y += 120 * idx;
+		idx = idx + 1;
 
 func ShiftLeft() -> void:
 	RenderPlayers(currentSelectedIdx - 1, true)
@@ -99,7 +110,7 @@ func SelectCharacter() -> void:
 	if !selectedPlayer.isLocked:
 		currStakeID = $Control/Stakes.currIdx;
 		var new_scene = load("res://Scenes/simon_ek_scene.tscn").instantiate()
-		new_scene.set_player_init_data(selectedPlayer, currStakeID)
+		new_scene.set_player_init_data(selectedPlayer.duplicate(), currStakeID)
 		var currScene = get_tree().current_scene;
 		get_tree().root.add_child(new_scene);
 		get_tree().current_scene = new_scene;

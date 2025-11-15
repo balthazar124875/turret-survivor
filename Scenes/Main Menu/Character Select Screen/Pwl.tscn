@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://xr0ttbf332d4"]
+
+[ext_resource type="Script" uid="uid://c0yctjnjfiq1t" path="res://Scripts/Menus/PlayerSelect/Player5.gd" id="1_2pfia"]
+[ext_resource type="PackedScene" uid="uid://qb4oso6v3pxf" path="res://Scenes/Upgrades/Augments/contrarian.tscn" id="2_2pfia"]
+[ext_resource type="Texture2D" uid="uid://b2nd1w6cj75xi" path="res://Assets/Sprites/Players/pwl.png" id="3_2pfia"]
+[ext_resource type="PackedScene" uid="uid://l8yke0r1f3uq" path="res://Scenes/Upgrades/Weapons/fire_orb_weapon.tscn" id="3_numkn"]
+[ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="4_vyxxl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oaghf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2pfia")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Pwl" type="Node2D"]
+script = ExtResource("1_2pfia")
+playerName = "Pwl"
+startAugments = Array[PackedScene]([ExtResource("2_2pfia")])
+startWeapons = Array[PackedScene]([ExtResource("3_numkn")])
+icon = ExtResource("3_2pfia")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.329412)
+position = Vector2(0, 53)
+scale = Vector2(3, 3)
+texture = ExtResource("4_vyxxl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_oaghf")
+metadata/_edit_group_ = true

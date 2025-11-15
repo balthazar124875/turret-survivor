@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cw00yv0oed5rx"]
+
+[ext_resource type="Script" uid="uid://uigacj4v7f7y" path="res://Scripts/Menus/PlayerSelect/Player2.gd" id="1_8f001"]
+[ext_resource type="PackedScene" uid="uid://qb4oso6v3pxf" path="res://Scenes/Upgrades/Augments/contrarian.tscn" id="2_8f001"]
+[ext_resource type="Texture2D" uid="uid://cxhx6jom8ph3r" path="res://Assets/Sprites/Players/hidden_character.png" id="2_sjs5b"]
+[ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="5_cefpy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oaghf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sjs5b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Benis" type="Node2D"]
+script = ExtResource("1_8f001")
+playerName = "Benis"
+startAugments = Array[PackedScene]([ExtResource("2_8f001")])
+icon = ExtResource("2_sjs5b")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.329412)
+position = Vector2(0, 53)
+scale = Vector2(3, 3)
+texture = ExtResource("5_cefpy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_oaghf")
+metadata/_edit_group_ = true

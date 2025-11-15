@@ -9,7 +9,7 @@ var upgrade_dict: Dictionary = {}
 
 @onready var tooltipMgr = get_node("/root/EmilScene/GameplayUi/Tooltip")
 
-func _ready() -> void:
+func _init() -> void:
 	SignalBus.upgrade_recieved.connect(add_upgrade)
 
 func add_upgrade(upgrade: Upgrade):
