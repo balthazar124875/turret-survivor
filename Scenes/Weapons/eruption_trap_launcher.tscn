@@ -10,6 +10,6 @@ bullet = ExtResource("2_c1xld")
 cooldown = 4.0
 damage = 3.0
 gun_damage_multiplier = 4.0
-range = 400.0
+range = 150.0
 source = "Eruption Trap"
 damage_type = 3

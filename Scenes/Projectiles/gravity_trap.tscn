@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://kdfu1gj068k0"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerProjectiles/gravity_trap.gd" id="1_3u7mr"]
+[ext_resource type="Script" uid="uid://bwuj6d1j24vrx" path="res://Scripts/PlayerProjectiles/gravity_trap.gd" id="1_3u7mr"]
 [ext_resource type="PackedScene" uid="uid://bwr28v4751j4k" path="res://Scenes/vfx/gravitypull.tscn" id="2_bwxtm"]
 [ext_resource type="Texture2D" uid="uid://bj5r6fc36vaag" path="res://Assets/Sprites/sprite_sheets/gravity_trap_transparent.png" id="2_y0u3j"]
 

@@ -4,6 +4,7 @@ extends Trap
 @export var pull_vfx: PackedScene
 
 @export var pull_radius: float
+@export var magnetic: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,4 +23,14 @@ func trigger_trap():
 					var vector_dir = (global_position - enemy.global_position).normalized() * (distance - 25) 
 					enemy.take_hit(base_damage, "Gravity Trap", damage_type)
 					enemy.add_displacement(vector_dir, pull_speed)
+					
+	if(magnetic):
+		var traps := get_tree().root.find_children("*", "Trap", true, false)
+		for trap in traps:
+			if trap == self || (global_position.distance_to(trap.global_position) > pull_radius):
+				continue
+
+			var tween = get_tree().create_tween()
+			tween.tween_property(trap, "global_position", global_position, 0.2)
+					
 	queue_free()

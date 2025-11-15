@@ -9,6 +9,6 @@ targeting_type = 1
 bullet = ExtResource("2_as42f")
 cooldown = 4.0
 damage = 3.0
-range = 500.0
+range = 250.0
 source = "Gravity Trap"
 damage_type = 1

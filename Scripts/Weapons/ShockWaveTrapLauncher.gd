@@ -33,7 +33,7 @@ func apply_level_up():
 		3:
 			damage += 1
 		4:
-			base_knockback_distance += 50
+			base_knockback_distance += 30
 			
 func get_lvl10_bonus_description() -> String:
 	return "\nLvl [color=yellow]10[/color]: Trap retriggers again after [color=yellow]10[/color] seconds"

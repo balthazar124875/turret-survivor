@@ -1,6 +1,7 @@
 extends Control
 
 @onready var player = get_node("/root/EmilScene/Player")
+@onready var gameManager : GameManager = get_node("/root/EmilScene")
 
 @export var augment_button: PackedScene
 
@@ -15,6 +16,9 @@ func _ready() -> void:
 
 func load_augments() -> void:
 	for scene in augment_scenes:
+		if(gameManager.playerInitData.startAugments.has(scene)):
+			continue
+			
 		var augment = scene.instantiate()
 		
 		augment_list.push_back(augment)
@@ -54,7 +58,7 @@ func _process(delta: float) -> void:
 	pass
 
 func check_wave(wave: int):
-	if(wave == 10 || wave == 35 || wave == 60):
+	if(wave == 10 || wave == 30 || wave == 55 || wave == 80):
 		get_tree().paused = true
 		get_node("ColorRect").visible = true
 		spawn_augments()

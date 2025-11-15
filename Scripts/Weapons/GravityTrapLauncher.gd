@@ -13,6 +13,7 @@ func shoot_area(position: Vector2) -> void:
 	 get_total_damage(), base_area * player.areaSizeMultiplier, trap_duration)
 	obj.pull_radius = base_pull_distance
 	obj.damage_type = damage_type
+	obj.magnetic = magnetic_traps
 	
 func apply_level_up():
 	if(level == 5):
@@ -31,3 +32,6 @@ func apply_level_up():
 			damage += 1
 		4:
 			base_pull_distance += 30
+
+func get_lvl10_bonus_description() -> String:
+	return "\nLvl [color=yellow]10[/color]: Pulls in other traps aswell"

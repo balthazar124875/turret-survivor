@@ -5,7 +5,7 @@ var augments: Array[AugmentUpgrade] = []
 
 @export var color_selected: Color
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _init() -> void:
 	SignalBus.augment_recieved.connect(new_augment)
 	pass # Replace with function body.
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bcfyfx8iv801t"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/ice_blob_weapon.gd" id="1_tvkrc"]
+[ext_resource type="Script" uid="uid://bfjysewwrw3ov" path="res://Scripts/Weapons/ice_blob_weapon.gd" id="1_tvkrc"]
 [ext_resource type="PackedScene" uid="uid://v4s0y3icum8n" path="res://Scenes/vfx/vfx_ice_blob.tscn" id="2_ijxak"]
 
 [node name="IceBlob" type="Node2D"]

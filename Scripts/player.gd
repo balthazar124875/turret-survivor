@@ -36,7 +36,7 @@ var ENABLE_BOUNTY = false
 
 @onready var income_timer: Timer = get_node("IncomeTimer")
 @onready var damage_flash_timer: Timer = get_node("DamageFlashTimer")
-@onready var GameManager : GameManager = get_node("/root/EmilScene")
+@onready var gameManager : GameManager = get_node("/root/EmilScene")
 
 var circle;
 
@@ -67,17 +67,18 @@ func erase_status_effect(status_effect: StatusEffect):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if(GameManager.playerInitData != null):
+	if(gameManager.playerInitData != null):
 		#Set the main player sprite
 		var sprite_frames = $AnimatedSprite2D.sprite_frames
 		var animation_name = $AnimatedSprite2D.animation
 		var frame_index = $AnimatedSprite2D.frame  #Current frame index
 		# Replace the texture of the current frame
-		sprite_frames.set_frame(animation_name, frame_index, GameManager.playerInitData.icon);
+		sprite_frames.set_frame(animation_name, frame_index, gameManager.playerInitData.icon);
 		
 		#Set starting augments
-		for augment in GameManager.playerInitData.startAugments:
+		for augment in gameManager.playerInitData.startAugments:
 			var currAugment = augment.instantiate() as AugmentUpgrade;
+			SignalBus.augment_recieved.emit(currAugment)
 			currAugment.applyUpgradeToPlayer(self);
 	
 	circle = get_node("./Circle");

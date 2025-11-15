@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnlnbvug3d6tw"]
+[gd_scene load_steps=11 format=3 uid="uid://bnlnbvug3d6tw"]
 
 [ext_resource type="Script" uid="uid://bqku8q716j17r" path="res://Scripts/Menus/character_select_screen.gd" id="1_cp40a"]
 [ext_resource type="PackedScene" uid="uid://djk2xjnw738l7" path="res://Scenes/Main Menu/Character Select Screen/spell_desc_node.tscn" id="2_b5s0k"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d1y3th5qku4c0" path="res://Scenes/Main Menu/Character Select Screen/player1_select.tscn" id="3_a8bii"]
 [ext_resource type="PackedScene" uid="uid://d3ilsjok78chr" path="res://Scenes/Main Menu/Character Select Screen/player3_select.tscn" id="4_70myy"]
 [ext_resource type="Script" uid="uid://5jtaa46hu3ec" path="res://Scripts/Menus/stake_selector.gd" id="4_77ddq"]
+[ext_resource type="PackedScene" uid="uid://b8i678nyyu7px" path="res://Scenes/Upgrades/Augments/heal_king.tscn" id="8_lepa2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o67t5"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -189,6 +190,7 @@ position = Vector2(175, -10)
 
 [node name="Lemon" parent="Characters" instance=ExtResource("2_hf2f7")]
 position = Vector2(-205, -24)
+startAugments = Array[PackedScene]([ExtResource("8_lepa2")])
 
 [node name="Player3" parent="Characters" instance=ExtResource("4_70myy")]
 position = Vector2(-7, -271)

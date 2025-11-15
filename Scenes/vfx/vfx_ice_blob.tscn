@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://v4s0y3icum8n"]
 
-[ext_resource type="Script" path="res://Scripts/vfx/vfx_ice_blob.gd" id="1_a7jbo"]
-[ext_resource type="Shader" path="res://vfxShaders/vfx_blob.gdshader" id="2_jjlsl"]
+[ext_resource type="Script" uid="uid://dq0i3ynm36uxv" path="res://Scripts/vfx/vfx_ice_blob.gd" id="1_a7jbo"]
+[ext_resource type="Shader" uid="uid://db0bq2j50yn1a" path="res://vfxShaders/vfx_blob.gdshader" id="2_jjlsl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eijkf"]
 shader = ExtResource("2_jjlsl")
@@ -10,7 +10,7 @@ shader = ExtResource("2_jjlsl")
 size = Vector2(33.3333, 73.3333)
 
 [node name="VfxBlob" type="Area2D"]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.5, 0.5)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_a7jbo")
