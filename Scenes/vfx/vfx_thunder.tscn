@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://d1umchc2k1brc"]
 
 [ext_resource type="Shader" uid="uid://b4sgevpcv7g0g" path="res://vfxShaders/thunder_shader.tres" id="1_kc0ex"]
-[ext_resource type="Script" path="res://Scenes/vfx/vfx_thunder.gd" id="1_xukmf"]
+[ext_resource type="Script" uid="uid://djgx0f82nssq2" path="res://Scenes/vfx/vfx_thunder.gd" id="1_xukmf"]
 [ext_resource type="Texture2D" uid="uid://ynjyyam03lvo" path="res://Textures/vfxThunder.jpg" id="2_bvu4g"]
 [ext_resource type="Texture2D" uid="uid://dfw81wjllmjub" path="res://Textures/sparksvfx.jpg" id="3_oja8k"]
 
@@ -13,6 +13,7 @@ shader_parameter/Vector2Parameter = Vector2(0.3, 1)
 shader_parameter/Speed = 10.0
 shader_parameter/DistancePerStep = Vector2(-4, 0)
 shader_parameter/basic_texture = ExtResource("2_bvu4g")
+shader_parameter/Intensity = 2.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r4rhg"]
 blend_mode = 1
@@ -45,6 +46,7 @@ emission_ring_axis = Vector3(0, 0, 1)
 emission_ring_height = 25.0
 emission_ring_radius = 50.0
 emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
 direction = Vector3(0, 1, 0)
 spread = 0.0
 initial_velocity_min = -500.0
@@ -178,9 +180,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_el7eb"]
 _data = {
-"RESET": SubResource("Animation_qf8es"),
-"end_animation": SubResource("Animation_uv0ko"),
-"start_animation": SubResource("Animation_g8y52")
+&"RESET": SubResource("Animation_qf8es"),
+&"end_animation": SubResource("Animation_uv0ko"),
+&"start_animation": SubResource("Animation_g8y52")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bykd2"]
@@ -202,14 +204,14 @@ texture_mode = 1
 material = SubResource("CanvasItemMaterial_r4rhg")
 emitting = false
 amount = 30
-process_material = SubResource("ParticleProcessMaterial_vld6c")
 texture = ExtResource("3_oja8k")
 lifetime = 0.1
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_vld6c")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_el7eb")
+&"": SubResource("AnimationLibrary_el7eb")
 }
 autoplay = "start_animation"
 

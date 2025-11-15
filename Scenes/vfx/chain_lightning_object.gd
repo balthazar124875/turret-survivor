@@ -12,12 +12,14 @@ func _process(delta: float) -> void:
 	var i = 1
 	for enemy in targets:
 		if is_instance_valid(enemy):
-			thunder.set_point_position(i, (enemy.global_position - self.global_position))
-		i += 1
+			thunder.set_point_position(i, enemy.global_position)
+			thunder.set_point_position(i+1, enemy.global_position)
+		i += 2
 
 func set_targets(targets) -> void:
 	self.targets = targets
 	thunder.clear_points()
 	thunder.add_point(Vector2(0, 0))
 	for enemy in targets:
-		thunder.add_point((enemy.global_position - self.global_position))
+		thunder.add_point(enemy.global_position)
+		thunder.add_point(enemy.global_position)
