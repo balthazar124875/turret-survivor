@@ -12,7 +12,7 @@ func shoot(enemy: Node) -> void:
 		bullet.look_at(direction)
 		bullet.position = Vector2(0,0)
 		bullet.source = source
-		bullet.damage = damage * gun_damage_multiplier
+		bullet.damage = get_total_damage()
 		bullet.swing_degrees = base_swing_degrees * player.areaSizeMultiplier
 		bullet.sword_scale = base_sword_scale * player.rangeMultiplier
 		

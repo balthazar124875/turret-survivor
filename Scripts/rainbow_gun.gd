@@ -4,6 +4,7 @@ class_name RainbowGun
 
 static var element_type = 0;
 var superBulletPercentage = 0.1;
+var superBullets = false;
 
 func shoot(enemy: Node) -> void:
 	var bulletAmount: int = base_projectile_amount + player.extraProjectiles
@@ -13,13 +14,13 @@ func shoot(enemy: Node) -> void:
 	for n in range(bulletAmount):
 		var bullet = wrapAroundBullet.instantiate() if wrapAround else bullet.instantiate()
 		add_child(bullet)
-		bullet.init_with_direction(direction, damage * player.damageMultiplier * gun_damage_multiplier, 
-			base_projectile_speed * local_projectile_speed_multiplier * player.projectileSpeedMultipler, bullet_life_time, source)
-		bullet.pierce += player.extraPierce
-		bullet.bounce += player.extraBounce
 		element_type = element_type % (GlobalEnums.ELEMENTAL_DAMAGE_TYPES.size()-1);
 		element_type = element_type + 1;
 		bullet.set_damage_type_and_color(element_type, GlobalEnums.DamageColor[element_type])
+		bullet.init_with_direction(direction, get_total_damage(), 
+			base_projectile_speed * local_projectile_speed_multiplier * player.projectileSpeedMultipler, bullet_life_time, source)
+		bullet.pierce += player.extraPierce
+		bullet.bounce += player.extraBounce
 		direction = direction.rotated(-deg_to_rad(bullet_spread))
 
 func apply_level_up():
@@ -27,7 +28,7 @@ func apply_level_up():
 			base_projectile_amount += 1
 			return
 	if(level == 10):
-			#intensify = true
+			superBullets = true
 			return
 	
 	match level % 5:

@@ -13,7 +13,7 @@ func shoot(enemy: Node) -> void:
 		bullet.poison_damage_per_tick = poison_damage_per_tick
 		bullet.poison_duration = poison_duration
 		add_child(bullet)
-		bullet.init_with_direction(direction, damage * player.damageMultiplier * gun_damage_multiplier, 
+		bullet.init_with_direction(direction, get_total_damage(), 
 			base_projectile_speed * local_projectile_speed_multiplier * player.projectileSpeedMultipler, bullet_life_time, source)
 		bullet.pierce += player.extraPierce
 		bullet.bounce += player.extraBounce

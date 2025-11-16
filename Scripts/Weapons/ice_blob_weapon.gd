@@ -10,7 +10,7 @@ func shoot(enemy: Node) -> void:
 	var direction = (enemy.position - current_position).normalized()
 	var bullet = bullet.instantiate()
 	add_child(bullet)
-	bullet.init_with_direction(direction, damage * player.damageMultiplier * gun_damage_multiplier, 
+	bullet.init_with_direction(direction, get_total_damage(), 
 	base_projectile_speed, bullet_life_time, source)
 	bullet.pierce = pierce;
 	bullet.scale *= Vector2(base_area, base_area);

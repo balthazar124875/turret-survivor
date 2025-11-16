@@ -83,7 +83,7 @@ func shoot(target_enemy: Node) -> void:
 			
 		
 		for enemy in i:
-			enemy.take_hit(damage * player.damageMultiplier * gun_damage_multiplier, "Chain Lightning", damage_type)
+			enemy.take_hit(get_total_damage(), "Chain Lightning", damage_type)
 			
 		call_deferred("_delete_after_time", bullet_life_time, bullet)
 	

@@ -11,7 +11,7 @@ func shoot(enemy: Node) -> void:
 		var bullet = bullet.instantiate()
 		var speed = base_projectile_speed * player.projectileSpeedMultipler
 		var offset = Vector2(cos(random_offset + i * (2 * PI / bulletAmount)), sin(random_offset + i * (2 * PI / bulletAmount)))
-		bullet.init_with_direction(offset, damage * player.damageMultiplier * gun_damage_multiplier, base_projectile_speed * player.projectileSpeedMultipler, bullet_life_time, "Disc Launcher")
+		bullet.init_with_direction(offset, get_total_damage(), base_projectile_speed * player.projectileSpeedMultipler, bullet_life_time, "Disc Launcher")
 		bullet.rotation_speed = speed
 		bullet.outward_speed = speed / 2
 		

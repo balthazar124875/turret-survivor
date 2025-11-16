@@ -13,7 +13,7 @@ func shoot(enemy: Node) -> void:
 	if get_target() != null:
 		bullet.target_pos = get_target().global_position - player.global_position
 	bullet.speed = base_projectile_speed
-	bullet.damage = damage * player.damageMultiplier * gun_damage_multiplier
+	bullet.damage = get_total_damage()
 	bullet.cluster_times = cluster_times + player.extraChains if recursive else cluster_times
 	bullet.number_of_cluster_bombs = base_projectile_amount + player.extraProjectiles
 	

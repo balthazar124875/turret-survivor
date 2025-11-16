@@ -17,7 +17,7 @@ func shoot(enemy: Node) -> void:
 	if target != null:
 		bullet.target_pos = target.global_position - player.global_position
 	bullet.speed = base_projectile_speed
-	bullet.damage = damage * player.damageMultiplier * gun_damage_multiplier
+	bullet.damage = get_total_damage()
 	bullet.start_pos = Vector2(0,0)
 	add_child(bullet)
 	

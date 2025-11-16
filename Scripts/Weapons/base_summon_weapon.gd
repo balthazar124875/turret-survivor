@@ -19,7 +19,7 @@ func create_new_summon():
 	add_child(child)
 	
 func get_summon_damage() -> float: 
-	return damage * gun_damage_multiplier * player.damageMultiplier
+	return get_total_damage()
 
 func apply_level_up():
 	if(level == 5):

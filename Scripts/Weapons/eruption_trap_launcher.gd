@@ -39,4 +39,4 @@ func apply_level_up():
 			base_eruption_radius += 15
 
 func get_lvl10_bonus_description() -> String:
-	return "\nLvl [color=yellow]10[/color]: Ignites enemies for [color=red]" + str(damage * player.damageMultiplier * gun_damage_multiplier * ignite_damage) + "[/color]/0.5sec for [color=yellow]" + str(ignite_duration) + "[/color] seconds"
+	return "\nLvl [color=yellow]10[/color]: Ignites enemies for [color=red]" + str(get_total_damage() * ignite_damage) + "[/color]/0.5sec for [color=yellow]" + str(ignite_duration) + "[/color] seconds"
