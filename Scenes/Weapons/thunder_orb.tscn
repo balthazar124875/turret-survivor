@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bdqo4a8uyi5jf"]
 
-[ext_resource type="Script" uid="uid://c0jmkgs167vu5" path="res://Scripts/Weapons/black_orb.gd" id="1_md7yu"]
+[ext_resource type="Script" uid="uid://c0jmkgs167vu5" path="res://Scripts/Weapons/thunder_orb.gd" id="1_md7yu"]
 [ext_resource type="PackedScene" uid="uid://ku5gmp4se7cv" path="res://Scenes/vfx/orb_thunder_line2D_vfx.tscn" id="2_wv835"]
 [ext_resource type="Shader" uid="uid://c5ui7q4oyxj3r" path="res://vfxShaders/fire_orb.tres" id="3_gd0nm"]
 [ext_resource type="Texture2D" uid="uid://bburp7jn0j75m" path="res://Textures/fire_orb_LowResClean.jpg" id="4_jjdbg"]
@@ -27,7 +27,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_shs68"]
-radius = 105.0
+radius = 99.00505
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dx4xu"]
 shader = ExtResource("6_7awyy")

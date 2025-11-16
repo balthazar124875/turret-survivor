@@ -1,8 +1,9 @@
 extends BaseOrb
 
-class_name BlackOrb
+class_name ThunderOrb
 
 const MAX_LINES = 10;
+const BIG_ORB_EXTRA_LINES = 3; #Extra lines that get added to big orb
 const updateTime = 0.1;
 var currTime = 0.0;
 var thunderLines: Array[Line2D] = [];
@@ -48,3 +49,29 @@ func UpdateLines() -> void:
 		#thunder.set_point_position(3, pointPos)
 		#i += 1;
 	pass
+	
+func ApplyVisualChanges() -> void:
+	super();
+	#Add some extra lines to big orb
+	for i in BIG_ORB_EXTRA_LINES:
+		var thunder = thunderLine.instantiate();
+		add_child(thunder)
+		thunderLines.append(thunder)
+	var interval = TAU/(MAX_LINES+BIG_ORB_EXTRA_LINES);
+	var i = 0;
+	for thunder in thunderLines:
+		thunder.set_point_position(0, Vector2(0,0))
+		#Set the thunder evenly
+		var pointPos = Vector2(cos(interval*i), sin(interval*i)) * sphere_radius
+		thunder.set_point_position(3, pointPos)	
+		i += 1;
+	
+	sphere_radius *= 2.0
+	#Increase size of thunder as well
+	i = 0;
+	interval = TAU/(MAX_LINES+BIG_ORB_EXTRA_LINES) #TAU=2π
+	for thunder in thunderLines:
+		var pointPos = Vector2(cos(interval*i), sin(interval*i)) * sphere_radius
+		thunder.set_point_position(3, pointPos)	
+		thunder.width *= 2.0;
+		i += 1;
