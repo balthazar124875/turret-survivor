@@ -1,25 +1,25 @@
-[gd_scene load_steps=13 format=3 uid="uid://btp3ufwouy15a"]
+[gd_scene load_steps=13 format=3 uid="uid://bdqo4a8uyi5jf"]
 
-[ext_resource type="Script" uid="uid://c0jmkgs167vu5" path="res://Scripts/Weapons/black_orb.gd" id="1_w0lwh"]
-[ext_resource type="PackedScene" uid="uid://ku5gmp4se7cv" path="res://Scenes/vfx/orb_thunder_line2D_vfx.tscn" id="2_7lr7v"]
-[ext_resource type="Shader" uid="uid://c5ui7q4oyxj3r" path="res://vfxShaders/fire_orb.tres" id="2_nuy4h"]
-[ext_resource type="Texture2D" uid="uid://bburp7jn0j75m" path="res://Textures/fire_orb_LowResClean.jpg" id="3_hvm5i"]
-[ext_resource type="Texture2D" uid="uid://dfw81wjllmjub" path="res://Textures/sparksvfx.jpg" id="4_o115p"]
-[ext_resource type="Shader" uid="uid://b4sgevpcv7g0g" path="res://vfxShaders/thunder_shader.tres" id="5_gftic"]
-[ext_resource type="Texture2D" uid="uid://ynjyyam03lvo" path="res://Textures/vfxThunder.jpg" id="6_gftic"]
+[ext_resource type="Script" uid="uid://c0jmkgs167vu5" path="res://Scripts/Weapons/black_orb.gd" id="1_md7yu"]
+[ext_resource type="PackedScene" uid="uid://ku5gmp4se7cv" path="res://Scenes/vfx/orb_thunder_line2D_vfx.tscn" id="2_wv835"]
+[ext_resource type="Shader" uid="uid://c5ui7q4oyxj3r" path="res://vfxShaders/fire_orb.tres" id="3_gd0nm"]
+[ext_resource type="Texture2D" uid="uid://bburp7jn0j75m" path="res://Textures/fire_orb_LowResClean.jpg" id="4_jjdbg"]
+[ext_resource type="Texture2D" uid="uid://dfw81wjllmjub" path="res://Textures/sparksvfx.jpg" id="5_5g5ne"]
+[ext_resource type="Shader" uid="uid://b4sgevpcv7g0g" path="res://vfxShaders/thunder_shader.tres" id="6_7awyy"]
+[ext_resource type="Texture2D" uid="uid://ynjyyam03lvo" path="res://Textures/vfxThunder.jpg" id="7_8gudq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bqkk8"]
 resource_local_to_scene = true
-shader = ExtResource("2_nuy4h")
+shader = ExtResource("3_gd0nm")
 shader_parameter/SecondaaryColor = Color(0.49803922, 0.8784314, 1, 1)
 shader_parameter/ColorIntensity = 2.0
-shader_parameter/basic_texture = ExtResource("3_hvm5i")
+shader_parameter/basic_texture = ExtResource("4_jjdbg")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_avr3i"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_o115p")
+"texture": ExtResource("5_5g5ne")
 }],
 "loop": true,
 "name": &"default",
@@ -27,15 +27,15 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_shs68"]
-radius = 35.0571
+radius = 105.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dx4xu"]
-shader = ExtResource("5_gftic")
+shader = ExtResource("6_7awyy")
 shader_parameter/VanishingValue = 0.0
 shader_parameter/Vector2Parameter = Vector2(1, 1)
 shader_parameter/Speed = 0.0
 shader_parameter/DistancePerStep = Vector2(0, 0)
-shader_parameter/basic_texture = ExtResource("6_gftic")
+shader_parameter/basic_texture = ExtResource("7_8gudq")
 shader_parameter/Intensity = 1.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_421vm"]
@@ -46,10 +46,10 @@ gravity = Vector3(0, 0, 0)
 scale_min = 20.0
 scale_max = 20.0
 
-[node name="BlackOrb" type="Node2D"]
-script = ExtResource("1_w0lwh")
-thunderLine = ExtResource("2_7lr7v")
-source = "Black Orb"
+[node name="ThunderOrb" type="Node2D"]
+script = ExtResource("1_md7yu")
+thunderLine = ExtResource("2_wv835")
+source = "Thunder Orb"
 damage_type = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -62,7 +62,6 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 light_mask = 4
 visibility_layer = 2
 shape = SubResource("CircleShape2D_shs68")

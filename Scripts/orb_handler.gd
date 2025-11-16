@@ -9,10 +9,11 @@ enum OrbTypes
 	HEAL,
 	LASER,
 	GOLD,
+	THUNDER,
 	BLACK,
 	COUNT
 }
-static var orbNames = ["Fire", "Ice", "Heal", "Laser", "Gold", "Black"]; #Keep in line with enum
+static var orbNames = ["Fire", "Ice", "Heal", "Laser", "Gold", "Thunder", "Black"]; #Keep in line with enum
 
 static var playerOrbs : Array[BaseOrb] = [];
 static var playerOrbsOuter : Array[BaseOrb] = [];

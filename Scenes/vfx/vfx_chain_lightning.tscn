@@ -1,11 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://bpq5k8m6lkt13"]
+[gd_scene load_steps=17 format=3 uid="uid://bpq5k8m6lkt13"]
 
 [ext_resource type="Script" uid="uid://ghtfvywnfe5k" path="res://Scenes/vfx/chain_lightning_object.gd" id="1_ncd3n"]
+[ext_resource type="PackedScene" uid="uid://c4hjst7jod55" path="res://Scenes/vfx/thunder_line2D.tscn" id="2_jyqb6"]
 [ext_resource type="Shader" uid="uid://b4sgevpcv7g0g" path="res://vfxShaders/thunder_shader.tres" id="2_uwdj3"]
 [ext_resource type="Texture2D" uid="uid://ynjyyam03lvo" path="res://Textures/vfxThunder.jpg" id="3_hcfp4"]
 [ext_resource type="Texture2D" uid="uid://dfw81wjllmjub" path="res://Textures/sparksvfx.jpg" id="4_crdpg"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_18eli"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tieom"]
 resource_local_to_scene = true
 shader = ExtResource("2_uwdj3")
 shader_parameter/VanishingValue = 0.0
@@ -189,16 +190,8 @@ _data = {
 script = ExtResource("1_ncd3n")
 thunder = NodePath("Thunder")
 
-[node name="Thunder" type="Line2D" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_18eli")
-points = PackedVector2Array(0, 0, 100, 100)
-width = 25.0
-default_color = Color(0.427392, 0.634639, 0.698615, 1)
-texture_mode = 1
-end_cap_mode = 1
-round_precision = 1
-antialiased = true
+[node name="Thunder" parent="." instance=ExtResource("2_jyqb6")]
+material = SubResource("ShaderMaterial_tieom")
 
 [node name="Sparks" type="GPUParticles2D" parent="."]
 visible = false

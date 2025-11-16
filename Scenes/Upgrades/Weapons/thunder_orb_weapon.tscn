@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce7jr7t527188"]
+
+[ext_resource type="Script" uid="uid://cgjjrprci0c28" path="res://Scripts/Upgrades/Passives/orb_weapon_upgrade.gd" id="1_l3r88"]
+[ext_resource type="PackedScene" uid="uid://bdqo4a8uyi5jf" path="res://Scenes/Weapons/thunder_orb.tscn" id="2_l3r88"]
+[ext_resource type="Texture2D" uid="uid://co80psvhov1tx" path="res://Assets/Sprites/upgrades/orbs/thunder_orb.png" id="3_l3r88"]
+
+[node name="ThunderOrbWeapon" type="Node2D"]
+script = ExtResource("1_l3r88")
+weapon_scene = ExtResource("2_l3r88")
+upgradeName = "Thunder Orb"
+description = "Spawn a powerful orb spinning around you"
+rarity = 2
+icon = ExtResource("3_l3r88")
