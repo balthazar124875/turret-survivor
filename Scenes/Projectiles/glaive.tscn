@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8tmiwiy87ocy"]
+
+[ext_resource type="Script" uid="uid://dgid8dncpqfyf" path="res://Scripts/PlayerProjectiles/glaive.gd" id="1_b6net"]
+[ext_resource type="Texture2D" uid="uid://3h785oo4jq3w" path="res://Assets/Sprites/Projectiles/glaive.png" id="2_b6net"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35m71"]
+radius = 42.047592
+
+[node name="Glaive" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_b6net")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_b6net")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_35m71")

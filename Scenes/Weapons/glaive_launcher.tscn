@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0nsrcj228jdx"]
+
+[ext_resource type="Script" uid="uid://y3t7j4rdhn11" path="res://Scripts/Weapons/glaive_launcher.gd" id="1_gvw6n"]
+[ext_resource type="PackedScene" uid="uid://b8tmiwiy87ocy" path="res://Scenes/Projectiles/glaive.tscn" id="2_gvw6n"]
+
+[node name="GlaiveLauncher" type="Node2D"]
+script = ExtResource("1_gvw6n")
+chain_range = 200
+targeting_type = 3
+bullet = ExtResource("2_gvw6n")
+cooldown = 3.0
+damage = 2.0
+gun_damage_multiplier = 1.2
+base_projectile_speed = 200.0
+bullet_life_time = 20.0
+range = 350.0
+source = "Glaive"

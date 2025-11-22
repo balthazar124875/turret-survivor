@@ -5,7 +5,8 @@ class_name BaseGun
 enum TargetingType {
 	ENEMY,
 	AREA,
-	RANDOM_ENEMY
+	RANDOM_ENEMY,
+	ENEMIES
 }
 
 @export var targeting_type : TargetingType;
@@ -57,6 +58,10 @@ func _process(delta: float) -> void:
 				var area = get_target_area()
 				charge = fmod(charge,  cooldown)
 				shoot_area(area)
+			TargetingType.ENEMIES:
+				var enemies = get_targets()
+				charge = fmod(charge,  cooldown)
+				shoot_enemies(enemies)
 				
 
 func get_target() -> Node: #defaults to getting closest
@@ -72,6 +77,50 @@ func get_target() -> Node: #defaults to getting closest
 					
 	return closest_enemy
 	
+
+func get_targets() -> Array[Node]:
+	var targets: Array = []
+	var amount = base_projectile_amount + player.extraProjectiles
+	
+	if not enemy_parent:
+		return targets
+
+	for enemy in enemy_parent.get_children():
+		if not enemy or not enemy.is_inside_tree():
+			continue
+		
+		# Safe alive check: only call if enemy has the method
+		if enemy.has_method("is_alive") and not enemy.is_alive():
+			continue
+
+		var distance = global_position.distance_to(enemy.global_position)
+
+		# range filter
+		if range != 0 and distance >= range * player.rangeMultiplier:
+			continue
+
+		if targets.size() < amount:
+			targets.append({ "node": enemy, "distance": distance })
+		else:
+			# Find the furthest in the current list
+			var furthest_index = -1
+			var furthest_dist = -INF
+			for i in range(targets.size()):
+				var d = targets[i]["distance"]
+				if d > furthest_dist:
+					furthest_dist = d
+					furthest_index = i
+
+			# Replace if this enemy is closer
+			if distance < furthest_dist:
+				targets[furthest_index] = { "node": enemy, "distance": distance }
+
+	# Return ONLY the nodes
+	var result: Array[Node] = []
+	for t in targets:
+		result.append(t["node"])
+
+	return result
 
 func get_random_target() -> Node:
 	var enemies = enemy_parent.get_children()
@@ -105,6 +154,10 @@ func shoot_area(position: Vector2) -> void:
 	var obj = bullet.instantiate()
 	add_child(obj)
 	obj.global_position = position
+	
+func shoot_enemies(enemies: Array[Node]) -> void:
+	for enemy in enemies:
+		enemy.take_hit(damage)
 	
 func level_up():
 	level += 1

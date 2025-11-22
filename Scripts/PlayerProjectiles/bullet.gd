@@ -11,6 +11,7 @@ var source: String
 #behaviour modifiers
 var pierce: int = 0
 var bounce: float = 0
+var chain: float = 0
 var dist
 
 var effects: Array = []
