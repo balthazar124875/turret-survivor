@@ -6,6 +6,7 @@ var initial_y: float
 var initial_scale_x: float
 var initial_scale_y: float
 var damage_type: GlobalEnums.DAMAGE_TYPES
+
 var damage_type_colors = {
 	GlobalEnums.DAMAGE_TYPES.PHYSICAL: "white",
 	GlobalEnums.DAMAGE_TYPES.MAGIC: "purple",
