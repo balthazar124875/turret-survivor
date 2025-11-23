@@ -83,6 +83,14 @@ func _ready() -> void:
 	player = get_node("/root/EmilScene/Player")
 	circle = player.get_node("./Circle")
 	target_position = player.global_position
+
+func colliding_with_object(body) -> void:
+	if objectObstructingEnemy == null:
+		objectObstructingEnemy = body;
+	return;
+	
+func clear_obstructing_enemy() -> void:
+	objectObstructingEnemy = null
 	
 func add_displacement(displacement_vector: Vector2, speed: float) -> void:
 	movement_handler.add_displacement(displacement_vector, speed)

@@ -8,10 +8,24 @@ var current_attack_cooldown = 0
 var target_enemy: Enemy
 var player: Player
 
+var max_health: float = 1
+var current_health: float = 1
+
 @onready var enemy_parent = get_node("/root/EmilScene/Enemies")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Area2D.body_entered.connect(collide_with_enemy)
+	$Area2D.body_exited.connect(uncollide_with_enemy)
 	init_tweens()
+
+func collide_with_enemy(body: Node2D):
+	body.colliding_with_object(self)
+	
+func uncollide_with_enemy(body: Node2D):
+	body.clear_obstructing_enemy()
+
+func take_damage(damage : float, enemy : Enemy):
+	current_health -= damage;
 
 func init_tweens():
 	var original_scale = $Sprite2D.scale

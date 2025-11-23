@@ -163,9 +163,9 @@
 [ext_resource type="PackedScene" uid="uid://drdghbgnuueoq" path="res://Scenes/Upgrades/Weapons/vine_wall_upgrade.tscn" id="114_oylqi"]
 [ext_resource type="PackedScene" uid="uid://ce7jr7t527188" path="res://Scenes/Upgrades/Weapons/thunder_orb_weapon.tscn" id="115_1l4is"]
 [ext_resource type="PackedScene" uid="uid://dybvuwx8skfix" path="res://Scenes/Upgrades/Weapons/glaive_weapon.tscn" id="116_mhe6q"]
-[ext_resource type="Script" uid="uid://b8o5sy6y71v0h" path="res://Scenes/reroll_container.gd" id="122_v505v"]
+[ext_resource type="Script" path="res://Scenes/reroll_container.gd" id="122_v505v"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rvudi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mhe6q"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -272,6 +272,8 @@ healthRegeneration = 3.0
 
 [node name="Marker2D" type="Marker2D" parent="Player"]
 
+[node name="PlayerSummons" type="Node2D" parent="."]
+
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("center", "enemies") instance=ExtResource("3_fpmdp")]
@@ -283,7 +285,7 @@ enemy_hp_scaling = 2.0
 enemy_dmg_scaling = 1.3
 enemy_cc_effectiveness_scaling = 0.9
 enemy_speed_bonus_per_wave = 0.02
-enemy_outline_material = SubResource("ShaderMaterial_rvudi")
+enemy_outline_material = SubResource("ShaderMaterial_mhe6q")
 
 [node name="GameplayUi" type="Control" parent="."]
 z_index = 100

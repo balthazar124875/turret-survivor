@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://cl5adxdoy3ad3"]
 
-[ext_resource type="Script" path="res://Scripts/Summons/gnome_fella_summon.gd" id="1_00l70"]
+[ext_resource type="Script" uid="uid://dbujegwplqwmq" path="res://Scripts/Summons/summon.gd" id="1_guld6"]
 [ext_resource type="Texture2D" uid="uid://d11ry3hn10880" path="res://Assets/Sprites/TowerShadow.png" id="2_63d0x"]
 [ext_resource type="Texture2D" uid="uid://bfxdgyinl762c" path="res://Assets/Sprites/Summons/gnome_fella.png" id="3_kd2gq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6kq7n"]
-radius = 72.4431
+radius = 77.00649
 
 [node name="GnomeFellaSummon" type="Node2D"]
-script = ExtResource("1_00l70")
+script = ExtResource("1_guld6")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.403922)
@@ -21,6 +21,10 @@ scale = Vector2(3, 3)
 texture = ExtResource("3_kd2gq")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_6kq7n")
+
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

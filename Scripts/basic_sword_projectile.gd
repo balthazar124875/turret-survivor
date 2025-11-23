@@ -6,6 +6,7 @@ class_name BasicSwordProjectile
 
 var swing_degrees: float
 var sword_scale: float
+var swing_direction: int # either 1 or  -1 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,7 +18,7 @@ func _ready() -> void:
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", Vector2(sword_scale, sword_scale), 0.5).set_trans(Tween.TRANS_SPRING)
 	tween.tween_callback(enableHitbox)
-	tween.tween_property(self, "rotation", deg_to_rad(self.rotation_degrees + swing_degrees), 1).set_trans(Tween.TRANS_ELASTIC)
+	tween.tween_property(self, "rotation", deg_to_rad(self.rotation_degrees + swing_degrees * swing_direction), 1).set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_callback(disableHitbox)
 	tween.tween_property(self, "scale", Vector2(0, 0), 0.5).set_trans(Tween.TRANS_SPRING)
 	tween.tween_callback(queue_free)

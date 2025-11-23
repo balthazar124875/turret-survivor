@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://blobx2hgicdob"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/base_summon_weapon.gd" id="1_236td"]
+[ext_resource type="Script" uid="uid://7g83jt11x8yc" path="res://Scripts/Weapons/base_summon_weapon.gd" id="1_236td"]
 [ext_resource type="PackedScene" uid="uid://cl5adxdoy3ad3" path="res://Scenes/Summons/gnome_fella_summon.tscn" id="2_io3ac"]
 
 [node name="GnomeFella" type="Node2D"]

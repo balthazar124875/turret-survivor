@@ -1,6 +1,6 @@
 extends BaseGun
 
-class_name BaseSummon
+class_name BaseSummonWeapon
 
 @export var summon_scene: PackedScene
 

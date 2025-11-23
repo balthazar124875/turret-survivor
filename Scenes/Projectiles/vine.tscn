@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c4v632lnncigq"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerProjectiles/vine.gd" id="1_jow8d"]
+[ext_resource type="Script" uid="uid://byl680ybaqbgt" path="res://Scripts/PlayerProjectiles/vine.gd" id="1_jow8d"]
 [ext_resource type="Texture2D" uid="uid://dgorckj3en1s6" path="res://Assets/Sprites/sprite_sheets/vine_1.png" id="2_1rvh1"]
 [ext_resource type="Texture2D" uid="uid://decmd6xpjqqfb" path="res://Assets/Sprites/sprite_sheets/vine_2.png" id="3_a732w"]
 [ext_resource type="Texture2D" uid="uid://dvpfugpesjlq2" path="res://Assets/Sprites/sprite_sheets/vine_3.png" id="4_ko2dt"]

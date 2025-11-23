@@ -59,3 +59,9 @@ texture = ExtResource("3_qn633")
 y_sort_enabled = true
 scale = Vector2(2, 2)
 texture = ExtResource("2_i0e02")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -1)
+shape = SubResource("CapsuleShape2D_1wvhi")

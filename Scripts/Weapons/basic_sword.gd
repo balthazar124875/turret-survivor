@@ -4,6 +4,7 @@ class_name BasicSword
 
 @export var base_swing_degrees:float = 90
 @export var base_sword_scale: float = 0.5
+var swing_direction = 1 # Shift between left and right swing. right = 1, left = -1
 
 func shoot(enemy: Node) -> void:
 		var current_position = player.global_position
@@ -15,6 +16,8 @@ func shoot(enemy: Node) -> void:
 		bullet.damage = get_total_damage()
 		bullet.swing_degrees = base_swing_degrees * player.areaSizeMultiplier
 		bullet.sword_scale = base_sword_scale * player.rangeMultiplier
+		bullet.swing_direction = swing_direction
+		swing_direction *= -1 # inveert swing direction
 		
 		add_child(bullet)
 		
