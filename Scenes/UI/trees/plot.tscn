@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c50aqhjdpxv5o"]
+
+[ext_resource type="Script" uid="uid://7aadk7hv4btm" path="res://Scenes/UI/trees/plot.gd" id="1_lby5f"]
+[ext_resource type="Texture2D" uid="uid://btr8dww3dqbpe" path="res://Assets/schizo-paints/tree-plot.png" id="1_sit18"]
+[ext_resource type="PackedScene" uid="uid://d04s87n0pbps5" path="res://Scenes/UI/trees/tree.tscn" id="3_eyfn4"]
+
+[node name="Plot" type="Panel"]
+script = ExtResource("1_lby5f")
+tree_prefab = ExtResource("3_eyfn4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_sit18")
+
+[node name="BuyButton" type="Button" parent="."]
+layout_mode = 0
+offset_top = 15.0
+offset_right = 53.0
+offset_bottom = 35.0
+
+[node name="Cost" type="RichTextLabel" parent="BuyButton"]
+layout_mode = 0
+offset_left = -4.0
+offset_right = 56.0
+offset_bottom = 19.0
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center][img width=16 height=16]res://Assets/icons/coin.png[/img][color=yellow][font_size=12]125[/font_size][/color]"

@@ -27,6 +27,8 @@ var current_wave = 1
 @onready var wave_timer: Timer = get_node("WaveTimer")
 @onready var enemy_spawn_timer: Timer = get_node("EnemySpawnerTimer")
 
+var skip = false
+
 #TODO: REMOVE THIS DEBUG FEATURE
 func _input(event):
 	if event is InputEventKey and event.pressed:
@@ -43,6 +45,10 @@ func _process(delta: float) -> void:
 	wave_progress_bar.value = wave_timer.time_left
 
 func _on_enemy_spawner_timer_timeout() -> void:
+	skip = !skip
+	if(skip == true):
+		return
+	
 	var amount = 1
 	if(current_wave/double_enemies_every > max_enemies_amount):
 		amount = max_enemies_amount

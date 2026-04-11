@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw4l6n56rrd1k"]
+
+[ext_resource type="Script" uid="uid://bk70phj7aflg2" path="res://Scenes/UI/trees/fruit.gd" id="1_ovdf6"]
+[ext_resource type="Texture2D" uid="uid://dau88ueiggy7r" path="res://Assets/schizo-paints/growth_progress/growth_0.png" id="3_owpwx"]
+[ext_resource type="Texture2D" uid="uid://b4puodfegl54q" path="res://Assets/schizo-paints/growth_progress/full_warning.png" id="3_u4f4q"]
+
+[node name="Fruit" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ovdf6")
+
+[node name="Image" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Progress" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -10.0
+offset_right = -6.0
+offset_bottom = -10.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_owpwx")
+expand_mode = 2
+stretch_mode = 2
+
+[node name="Warning" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = -20.0
+offset_right = 16.0
+offset_bottom = -20.0
+mouse_filter = 2
+texture = ExtResource("3_u4f4q")
+expand_mode = 2
+stretch_mode = 2

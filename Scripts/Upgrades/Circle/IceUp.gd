@@ -1,6 +1,6 @@
 extends CircleUpgrade
 	
-func stickerInit() -> void:
+func upgradeInit() -> void:
 	super();
 	stickerSpriteInstance.scale *= 0.5;
 	damage_type = GlobalEnums.DAMAGE_TYPES.ICE;

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://d04s87n0pbps5"]
+
+[ext_resource type="Script" uid="uid://nta2qxyu2a36" path="res://Scenes/UI/trees/tree.gd" id="1_cmcwx"]
+[ext_resource type="Texture2D" uid="uid://c30t3v2j0xjbn" path="res://Assets/schizo-paints/single_tree.png" id="2_1cmns"]
+[ext_resource type="PackedScene" uid="uid://cw4l6n56rrd1k" path="res://Scenes/UI/trees/fruit.tscn" id="3_o5mgc"]
+
+[node name="Tree" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_cmcwx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_1cmns")
+
+[node name="Fruit1" parent="." instance=ExtResource("3_o5mgc")]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 49.0
+offset_right = 19.0
+offset_bottom = 49.0
+
+[node name="Fruit2" parent="." instance=ExtResource("3_o5mgc")]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 35.0
+offset_right = 76.0
+offset_bottom = 35.0

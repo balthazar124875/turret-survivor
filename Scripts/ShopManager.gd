@@ -81,8 +81,7 @@ func load_upgrades() -> void:
 	for scene in upgrades_scenes:
 		var upgrade = scene.duplicate().instantiate()
 		
-		if upgrade is CircleUpgrade:
-			upgrade.stickerInit();
+		upgrade.upgradeInit()
 		
 		upgrade.gold_cost = get_cost(upgrade.rarity)
 		UPGRADES_LIST[upgrade.rarity].push_back(upgrade);

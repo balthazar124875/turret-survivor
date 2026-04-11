@@ -75,3 +75,10 @@ func add_variation_tag() -> void:
 			tags.append(TAGS.MAGIC)
 		GlobalEnums.WEAPON_VARIATION.TOXIC:
 			tags.append(TAGS.POISON)
+
+func roll_variation(odds: float) -> void:
+	if(upgradeAmount == 0 && viable_variations.size() > 0):
+		if(randf() < odds):
+			apply_variation(viable_variations[randi() % viable_variations.size()])
+		else:
+			apply_variation(GlobalEnums.WEAPON_VARIATION.NONE)

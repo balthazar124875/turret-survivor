@@ -12,6 +12,14 @@ offset_bottom = 240.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_55glw")
 script = ExtResource("1_7to26")
 
+[node name="BackgroundColor" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 192.0
+offset_bottom = 225.0
+color = Color(1, 1, 1, 0)
+
 [node name="Name" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 5.0
@@ -36,3 +44,12 @@ text = "[center][font_size=12][color=3f3f74]Descipriont oes here"
 position = Vector2(100, 70)
 scale = Vector2(2, 2)
 texture = ExtResource("1_vrmvc")
+
+[node name="ExtraInfo" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 185.0
+offset_right = 166.0
+offset_bottom = 223.0
+mouse_filter = 1
+bbcode_enabled = true

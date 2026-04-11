@@ -67,8 +67,7 @@ func load_upgrades() -> void:
 				
 				file_name = dir.get_next()
 				
-				if(f == "Circle"):
-					upgrade.stickerInit(); #Generate random inner outer functionality for circle upgrade
+				upgrade.upgradeInit()
 		else:
 			print("An error occurred when trying to access the path.");
 	loaded = true

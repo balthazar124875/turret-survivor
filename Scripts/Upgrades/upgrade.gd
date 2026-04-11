@@ -61,7 +61,10 @@ func applyPlayerUpgrade(player: Player) -> void:
 	SignalBus.upgrade_recieved.emit(self)
 
 	#reparentToPlayer(player)
-	
+
+func upgradeInit():
+	pass
+
 #This function should return the current level desc, and next level desc
 # Lvl 2 -> 3
 # Atk +10% etc

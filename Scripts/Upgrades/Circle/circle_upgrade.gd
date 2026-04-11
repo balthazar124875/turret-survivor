@@ -15,7 +15,7 @@ func _ready() -> void:
 	type = UpgradeType.CIRCLE
 	pass
 	
-func stickerInit() -> void:
+func upgradeInit() -> void:
 	stickerSpriteInstance = Sprite2D.new();
 	stickerSpriteInstance.texture = stickerTexture;
 	type = UpgradeType.CIRCLE
