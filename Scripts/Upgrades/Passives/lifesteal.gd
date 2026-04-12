@@ -2,12 +2,15 @@ extends PassiveUpgrade
 
 @export var health_restore = 0.5
 @export var health_threshold = 0.25 #10%
+@export var cd = 0.1 #10%
 
 var active = false
 
 var damage_increase = false
 
 var total_restored = 0
+
+var on_cd = false
 
 func applyUpgradeToPlayer(player: Player) -> void:
 	if(!active):
@@ -19,9 +22,11 @@ func _process(delta: float) -> void:
 	pass
 
 func paralyze(enemy: Enemy, amount: float, damageType: GlobalEnums.DAMAGE_TYPES, source: String, direct: bool):
-	if(direct && (player.health/player.maxHealth) < health_threshold):
+	if(!on_cd && direct && (player.health/player.maxHealth) < health_threshold):
 		player.heal_damage(health_restore, "Lifesteal")
 		total_restored += health_restore
+		on_cd = true
+		call_deferred("reset_cd", cd)
 			
 func apply_level_up():
 	if(upgradeAmount == 10):
@@ -30,7 +35,7 @@ func apply_level_up():
 	
 	match upgradeAmount % 2:
 		0:
-			health_restore += 0.5
+			health_restore += 5
 		1:
 			health_threshold += 0.01
 
@@ -39,4 +44,10 @@ func get_description() -> String:
 	if(damage_increase):
 		text += "\nLvl [color=yellow]10[/color]: Gives a damage boost for a short while after stealing health from enemies[color=red](Not implemented)"
 	text += "\n[b]Total restored: [/b][color=red]" + str(total_restored) + "[/color]" + IconHandler.get_icon_path("health")
+	text += "\nNote: Has a small internal cooldown(0.1 sec)"
+	
 	return text
+
+func reset_cd(timeout: float):
+	await get_tree().create_timer(timeout).timeout
+	on_cd = false
