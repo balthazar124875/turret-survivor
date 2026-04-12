@@ -37,7 +37,7 @@ func activate():
 	plant_tree()
 
 func plant_tree():
-	#have more different trees to here
+	#have more different trees to plant here
 	
 	var new_tree = tree_prefab.instantiate()
 	$TextureRect.add_child(new_tree)

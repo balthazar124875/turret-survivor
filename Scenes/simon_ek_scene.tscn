@@ -1,4 +1,4 @@
-[gd_scene load_steps=183 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=185 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" uid="uid://b6kmf58swsxf7" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -167,9 +167,11 @@
 [ext_resource type="Script" uid="uid://co0dhghrgcq5w" path="res://Scenes/UI/trees/plot_manager.gd" id="128_evi6n"]
 [ext_resource type="PackedScene" uid="uid://c50aqhjdpxv5o" path="res://Scenes/UI/trees/plot.tscn" id="128_rvudi"]
 [ext_resource type="PackedScene" uid="uid://bfyo3oo1vdo2o" path="res://Scenes/UI/trees/player_start_tree.tscn" id="130_6yj6h"]
+[ext_resource type="PackedScene" uid="uid://bgxormkglms5n" path="res://Scenes/UI/trees/types/iron_tree.tscn" id="131_gf6js"]
+[ext_resource type="PackedScene" uid="uid://dw8a4jj50ig35" path="res://Scenes/UI/trees/types/magic_tree.tscn" id="131_jbmve"]
 [ext_resource type="PackedScene" uid="uid://bltqtqoxu5yrn" path="res://Scenes/Upgrades/upgrade_handler.tscn" id="152_y0jbi"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y0jbi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbmve"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -286,10 +288,10 @@ center = NodePath("../Player")
 enemy_spawn_distance = 700
 enemies = NodePath("../Enemies")
 enemy_hp_scaling = 2.0
-enemy_dmg_scaling = 1.3
+enemy_dmg_scaling = 1.15
 enemy_cc_effectiveness_scaling = 0.9
 double_enemies_every = 15
-enemy_outline_material = SubResource("ShaderMaterial_y0jbi")
+enemy_outline_material = SubResource("ShaderMaterial_jbmve")
 
 [node name="GameplayUi" type="Control" parent="."]
 z_index = 100
@@ -1165,6 +1167,7 @@ theme = ExtResource("8_4ctao")
 texture_normal = ExtResource("9_yckrj")
 
 [node name="RerollButton" type="TextureButton" parent="GameplayUi/LeftMenuColumn/RerollContainer"]
+visible = false
 layout_mode = 0
 offset_left = 321.355
 offset_right = 353.355
@@ -1235,6 +1238,7 @@ offset_top = 265.0
 offset_right = 300.0
 offset_bottom = 265.0
 scale = Vector2(1.5, 1.5)
+tree_prefab = ExtResource("131_jbmve")
 
 [node name="Plot4" parent="GameplayUi/LeftMenuColumn/TreeGarden" instance=ExtResource("128_rvudi")]
 layout_mode = 0
@@ -1243,6 +1247,7 @@ offset_top = 265.0
 offset_right = 80.0
 offset_bottom = 265.0
 scale = Vector2(1.5, 1.5)
+tree_prefab = ExtResource("131_gf6js")
 
 [node name="RightMenuColumn" type="Control" parent="GameplayUi"]
 layout_mode = 1

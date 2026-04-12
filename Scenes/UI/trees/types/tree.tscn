@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://boop5uugqf2u4"]
+
+[ext_resource type="PackedScene" uid="uid://d04s87n0pbps5" path="res://Scenes/UI/trees/tree.tscn" id="1_lw3k1"]
+[ext_resource type="Texture2D" uid="uid://drqt0xh82j6jd" path="res://Assets/schizo-paints/iron_tree.png" id="2_meddq"]
+
+[node name="Tree" instance=ExtResource("1_lw3k1")]
+
+[node name="TextureRect" parent="." index="0"]
+texture = ExtResource("2_meddq")

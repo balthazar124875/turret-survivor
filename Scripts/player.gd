@@ -25,6 +25,8 @@ var playerUpgrades: Array = [];
 @export var damage_type_multipliers: Dictionary = {}
 @export var base_damage: Dictionary = {}
 
+@export var max_weapons: int = 5
+
 @export var championRewardBonus: float = 1;
 
 var gold: int = 50;
@@ -93,16 +95,6 @@ func init_player_data(playerInitData):
 		# Replace the texture of the current frame
 		sprite_frames.set_frame(animation_name, frame_index, playerInitData.icon);
 		
-		#Set starting augments
-		for augment in playerInitData.startAugments:
-			var currAugment = augment.instantiate() as AugmentUpgrade;
-			SignalBus.augment_recieved.emit(currAugment)
-			currAugment.applyUpgradeToPlayer(self);
-			
-		
-		for weapon in playerInitData.startWeapons:
-			var currWeapon = weapon.instantiate() as WeaponUpgrade;
-			currWeapon.applyPlayerUpgrade(self)
 
 func init_damage_type_multipliers():
 	for key in GlobalEnums.DAMAGE_TYPES.values():
@@ -294,3 +286,5 @@ func get_random_upgrade_with_tags(tags: Array[Upgrade.TAGS]):
 	else:
 		return null
 	
+func has_room_for_weapons():
+	return max_weapons > playerUpgrades.filter(func(e: Upgrade): return e.type == Upgrade.UpgradeType.WEAPON).size()

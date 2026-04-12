@@ -1,7 +1,7 @@
 extends AugmentUpgrade
 
-@onready var shop_manager = get_node("/root/EmilScene/GameplayUi/LeftMenuColumn/ShopUpgrades")
+@onready var upgrade_handler: UpgradeHandler = get_node("/root/EmilScene/GameplayUi/UpgradeHandler")
 
 func _ready() -> void:
-	shop_manager.weapon_variaty_chance += 1
+	upgrade_handler.weapon_variaty_chance += 1
 	

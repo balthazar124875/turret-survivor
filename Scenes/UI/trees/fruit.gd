@@ -22,9 +22,32 @@ var growth_step = 0
 
 @onready var upgrade_handler: UpgradeHandler = get_node("/root/EmilScene/GameplayUi/UpgradeHandler")
 
+var tag_bonuses: Dictionary[Upgrade.TAGS, float]
+
+@onready var mat: ShaderMaterial = $Image.material as ShaderMaterial
+
+var outline_strength := 0.0
+var hover := false
+const SPEED := 4.0
+
+func _process(delta):
+	var target := 1.0 if hover else 0.0
+	outline_strength = lerp(outline_strength, target, delta * SPEED)
+	mat.set_shader_parameter("outline_strength", outline_strength)
+
+
 func _ready():
 	$Image.pressed.connect(harvest)
+	$Image.mouse_entered. connect(_on_mouse_entered)
+	$Image.mouse_exited. connect(_on_mouse_exited)
+	
+	mat = $Image.material.duplicate()
+	$Image.material = mat
+	mat.set_shader_parameter("outline_strength", outline_strength)
 	pass
+
+func apply_tag_bonuses(tag_bonuses):
+	self.tag_bonuses = tag_bonuses
 
 func increase_growth(amount = 1):
 	growth_step += amount
@@ -53,18 +76,25 @@ func update_growth_state():
 	$Progress.texture = load("res://Assets/schizo-paints/growth_progress/growth_" + str(growth_step) + ".png")
 	
 func harvest():
-	match growth_stage:
-		GROWTH_STAGE.START:
-			return
-		GROWTH_STAGE.COMMON:
-			upgrade_handler.roll_upgrades(3, get_rarity(), {})
-		GROWTH_STAGE.RARE:
-			upgrade_handler.roll_upgrades(3, get_rarity(), {})
-		GROWTH_STAGE.LEGENDARY:
-			upgrade_handler.roll_upgrades(3, get_rarity(), {})
-		GROWTH_STAGE.MYTHIC:
-			upgrade_handler.roll_upgrades(3, get_rarity(), {})
-			
+	if(growth_stage == GROWTH_STAGE.START):
+		return 
+		
+	var rarity = get_rarity()
+	
+	
+	
+	match rarity:
+		
+		Upgrade.UpgradeRarity.MYTHIC:
+			upgrade_handler.roll_upgrades(3, rarity, tag_bonuses)
+		Upgrade.UpgradeRarity.LEGENDARY:
+			upgrade_handler.roll_upgrades(2, rarity, tag_bonuses)
+		Upgrade.UpgradeRarity.RARE:
+			upgrade_handler.roll_upgrades(3, rarity, tag_bonuses)
+		Upgrade.UpgradeRarity.UNCOMMON:
+			upgrade_handler.roll_upgrades(4, rarity, tag_bonuses)
+		Upgrade.UpgradeRarity.COMMON:
+			upgrade_handler.roll_upgrades(5, rarity, tag_bonuses)
 	growth_stage = GROWTH_STAGE.NONE
 	growth_step = 0
 	
@@ -98,3 +128,9 @@ func get_rarity() -> Upgrade.UpgradeRarity:
 		GROWTH_STAGE.MYTHIC:
 			return Upgrade.UpgradeRarity.MYTHIC
 	return Upgrade.UpgradeRarity.COMMON
+
+func _on_mouse_entered():
+	hover = growth_stage != GROWTH_STAGE.START
+
+func _on_mouse_exited():
+	hover = false
