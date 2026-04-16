@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b2oynko2yoer0"]
 
-[ext_resource type="Script" path="res://Scripts/Upgrades/Passives/recycler.gd" id="1_1famt"]
+[ext_resource type="Script" uid="uid://bpohlln6ie1ej" path="res://Scripts/Upgrades/Passives/recycler.gd" id="1_1famt"]
 [ext_resource type="Texture2D" uid="uid://b68qprirx8s3p" path="res://Assets/Sprites/upgrades/recylcler.png" id="2_rm83m"]
 
 [node name="Recycler" type="Node2D"]
@@ -10,4 +10,6 @@ description = "Recieve gold when traps expire"
 type = 1
 rarity = 1
 icon = ExtResource("2_rm83m")
+isLocked = true
+weight = 0
 tags = Array[int]([9, 7])

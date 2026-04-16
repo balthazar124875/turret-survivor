@@ -3,22 +3,11 @@ extends SimpleGun
 @export var poison_damage_per_tick: float = 1
 @export var poison_duration: float = 2.0
 
-func shoot(enemy: Node) -> void:
-	var bulletAmount: int = base_projectile_amount + player.extraProjectiles
-	var current_position = global_position
-	var direction = (enemy.position - current_position).normalized()
-	direction = direction.rotated(deg_to_rad(bullet_spread * (bulletAmount / 2)))
-	for n in range(bulletAmount):
-		var bullet = wrapAroundBullet.instantiate() if wrapAround else bullet.instantiate()
-		bullet.poison_damage_per_tick = poison_damage_per_tick
-		bullet.poison_duration = poison_duration
-		add_child(bullet)
-		bullet.init_with_direction(direction, get_total_damage(), 
-			base_projectile_speed * local_projectile_speed_multiplier * player.projectileSpeedMultipler, bullet_life_time, source)
-		bullet.pierce += player.extraPierce
-		bullet.bounce += player.extraBounce
-		direction = direction.rotated(-deg_to_rad(bullet_spread))
-
+func add_bullet_extra_effects(bullet: Bullet):
+	super.add_bullet_extra_effects(bullet)
+	bullet.poison_damage_per_tick = poison_damage_per_tick
+	bullet.poison_duration = poison_duration
+	
 # TODO: Add other poison level ups
 func apply_level_up():
 	if(level == 5):

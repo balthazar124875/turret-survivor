@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6ka0sege7e3n"]
 
-[ext_resource type="Script" path="res://Scripts/Upgrades/Stats/stat_upgrade.gd" id="1_483sg"]
+[ext_resource type="Script" uid="uid://b880fx1nqp6h7" path="res://Scripts/Upgrades/Stats/stat_upgrade.gd" id="1_483sg"]
 [ext_resource type="Texture2D" uid="uid://bpp541wygu8nr" path="res://Assets/Sprites/upgrades/income_timer.png" id="2_ol3e0"]
 
 [node name="DecreaseIncomeTimerUpgrade" type="Node2D"]
@@ -12,3 +12,4 @@ description = "Decrease income timer by 5%"
 type = 2
 rarity = 1
 icon = ExtResource("2_ol3e0")
+weight = 0

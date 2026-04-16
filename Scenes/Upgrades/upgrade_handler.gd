@@ -18,6 +18,7 @@ var upgrade_list: Array[Upgrade] = []
 func _ready():
 	load_augments()
 	load_upgrades()
+	$DustOption.pressed.connect(get_dust)
 	#load_starter_upgrades()
 	
 func load_augments() -> void:
@@ -70,7 +71,7 @@ func calc_tag_weights(tags: Array[Upgrade.TAGS], tagBonuses: Dictionary[Upgrade.
 func choose_weighted_random(upgrades: Dictionary[Upgrade, int]):
 	var weapon_elegible = player.has_room_for_weapons()
 	
-	var unrolled_upgrades = upgrades.keys().filter(func(x): return !x.rolled && (weapon_elegible || x is not WeaponUpgrade || player.playerUpgrades.has(x)))
+	var unrolled_upgrades = upgrades.keys().filter(func(x): return !x.rolled && (weapon_elegible || x is OrbWeaponUpgrade || x is not WeaponUpgrade || player.playerUpgrades.has(x)))
 	
 	var total_weight = 0
 	for unrolled in unrolled_upgrades:
@@ -112,12 +113,17 @@ func spawn_upgrade_buttons(upgrades: Array[Upgrade]):
 		new_upgrade.choice_data = upgrade
 		new_upgrade.connect("choice_selected", Callable(self, "_on_choice_selected"))
 		
+	$DustOption.visible = true
+		
 func _on_choice_selected(choice: Upgrade):
 	if(choice is AugmentUpgrade):
 		SignalBus.augment_recieved.emit(choice)
 	reset()
 	choice.applyPlayerUpgrade(player)
-	print(choice.upgradeName)
+
+func get_dust():
+	player.modify_dust(20)
+	reset();
 
 func get_color(rarity: Upgrade.UpgradeRarity) -> Color:
 	match rarity:
@@ -138,6 +144,8 @@ func reset():
 			child.queue_free()
 	get_tree().paused = false
 	get_node("ColorRect").visible = false
+	
+	$DustOption.visible = false
 
 func load_starter_upgrades():
 		for augment in gameManager.playerInitData.startAugments:
@@ -147,10 +155,22 @@ func load_starter_upgrades():
 			loaded_aug.applyUpgradeToPlayer(player);
 			augment_list.erase(loaded_aug)
 			
-		
 		for weapon in gameManager.playerInitData.startWeapons:
 			var temp = weapon.instantiate()
 			var loaded_weapn = upgrade_list.find(func(x): return x.name == temp.name)
 			loaded_weapn.applyPlayerUpgrade(self)
 	
+func get_all_upgrades() -> Array[Upgrade]:
+	var list = upgrade_list
+	list.append(augment_list)
+	return list
+
+func get_random_upgrade() -> Upgrade:
+	var filter_unavailable = upgrade_list.filter(func(x): return x.weight > 0)
+	
+	return filter_unavailable[randi() % filter_unavailable.size()]
+	
+func get_random_upgrades(count: int = 10) -> Array:
+	upgrade_list.shuffle()
+	return upgrade_list.slice(0, min(count, upgrade_list.size()))
 	

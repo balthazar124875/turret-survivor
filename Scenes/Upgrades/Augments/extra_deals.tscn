@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ii4dseeahcsl"]
 
-[ext_resource type="Script" path="res://Scripts/Upgrades/Augments/extra_deals.gd" id="1_qwc7j"]
+[ext_resource type="Script" uid="uid://b3qx4o3y418kt" path="res://Scripts/Upgrades/Augments/extra_deals.gd" id="1_qwc7j"]
 [ext_resource type="Texture2D" uid="uid://5fbp3jpigben" path="res://Assets/Sprites/upgrades/augments/extra_deals.png" id="2_ypbbf"]
 
 [node name="Extra Deals" type="Node2D"]
@@ -11,4 +11,5 @@ description = "Increases amount of slots in the shop."
 type = 1
 rarity = 4
 icon = ExtResource("2_ypbbf")
+weight = 0
 weight_reduction = 10

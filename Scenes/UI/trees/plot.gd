@@ -22,12 +22,12 @@ func setup():
 
 func update_cost(cost: int):
 	price = cost
-	$BuyButton/Cost.text = "[center][img width=16 height=16]res://Assets/icons/coin.png[/img][font_size=12][color=yellow]" + str(cost) + "[/color][/font_size]"
+	$BuyButton/Cost.text = "[center][img width=16 height=16]res://Assets/icons/dust.png[/img][font_size=12][color=yellow]" + str(cost) + "[/color][/font_size]"
 
 func buy():
-	if(player.gold >= price):
+	if(player.dust > price):
+		player.modify_dust(-price)
 		activate()
-		player.modify_gold(-price)
 
 func activate():
 	unlocked = true

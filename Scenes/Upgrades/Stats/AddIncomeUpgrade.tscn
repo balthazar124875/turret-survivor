@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d01lclgrm5lrl"]
 
-[ext_resource type="Script" path="res://Scripts/Upgrades/Stats/stat_upgrade.gd" id="1_vok66"]
+[ext_resource type="Script" uid="uid://b880fx1nqp6h7" path="res://Scripts/Upgrades/Stats/stat_upgrade.gd" id="1_vok66"]
 [ext_resource type="Texture2D" uid="uid://bid3oqi85anxc" path="res://Assets/Sprites/upgrades/income_up.png" id="2_trtj2"]
 
 [node name="AddIncomeUpgrade" type="Node2D"]

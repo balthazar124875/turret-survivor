@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cr4r2wtd6tyy"]
 
-[ext_resource type="Script" path="res://Scripts/Upgrades/Passives/income_heal.gd" id="1_66mx0"]
+[ext_resource type="Script" uid="uid://gili1ty6ts6k" path="res://Scripts/Upgrades/Passives/income_heal.gd" id="1_66mx0"]
 [ext_resource type="Texture2D" uid="uid://fvkldt8eex4f" path="res://Assets/Sprites/upgrades/gold_heart.png" id="2_upece"]
 
 [node name="IncomeHeal" type="Node2D"]
@@ -12,4 +12,5 @@ type = 1
 rarity = 1
 icon = ExtResource("2_upece")
 gold_cost = 50
+weight = 0
 tags = Array[int]([6, 7])

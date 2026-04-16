@@ -5,8 +5,9 @@
 
 [node name="AttackSpeedUpgrade" type="Node2D"]
 script = ExtResource("1_pi0t8")
-amount = 0.05
+amount = 0.1
 upgradeName = "Attack speed Up!"
-description = "Increases attack speed by 5%"
+description = "Increases attack speed by 10%"
 type = 2
 icon = ExtResource("2_nafku")
+maxAmount = 10

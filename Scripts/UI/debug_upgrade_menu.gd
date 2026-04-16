@@ -7,6 +7,7 @@ var single_pick = true
 @export var debug_button: PackedScene
 
 @onready var player: Player = get_node("/root/EmilScene/Player")
+@onready var upgrade_handler: UpgradeHandler = get_node("/root/EmilScene/GameplayUi/UpgradeHandler")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -49,27 +50,16 @@ func debug_get_all():
 		button.upgrade.applyPlayerUpgrade(player)
 
 func load_upgrades() -> void:
-			#Iterate all Upgrade scripts and put them in the global array
-	var folders = ["Circle", "Stats", "Weapons", "Passives", "Augments", "Other"]
-	for f in folders:
-		var dir = DirAccess.open("res://Scenes/Upgrades/" + f);
-		if dir:
-			dir.list_dir_begin()
-			var file_name = dir.get_next()
-			while file_name != "":
-				var upgrade = load("res://Scenes/Upgrades/" + f  + "/" + file_name).instantiate()
-				
-				var upgrade_button = debug_button.instantiate()
-				upgrade_button.init(upgrade)
-				upgrade_button.pressed.connect(Callable(self, "_on_button_pressed").bind(upgrade_button.upgrade))
-				
-				get_node("BoxContainer").add_child(upgrade_button)
-				
-				file_name = dir.get_next()
-				
-				upgrade.upgradeInit()
-		else:
-			print("An error occurred when trying to access the path.");
+	
+	var upgrades = upgrade_handler.get_all_upgrades()
+	
+	for u in upgrades:
+		var upgrade_button = debug_button.instantiate()
+		upgrade_button.init(u)
+		upgrade_button.pressed.connect(Callable(self, "_on_button_pressed").bind(upgrade_button.upgrade))
+
+		get_node("BoxContainer").add_child(upgrade_button)
+
 	loaded = true
 
 func _on_button_pressed(upgrade: Upgrade):

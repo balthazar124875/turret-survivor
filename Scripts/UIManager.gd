@@ -23,6 +23,7 @@ func _process(delta):
 		
 func subscribe_to_signals() -> void:
 	SignalBus.gold_amount_updated.connect(on_gold_or_income_updated)
+	SignalBus.dust_amount_updated.connect(on_dust_updated)
 	SignalBus.current_wave_updated.connect(on_wave_updated)
 	SignalBus.enemy_killed.connect(on_enemy_killed)
 	on_gold_or_income_updated()
@@ -50,6 +51,9 @@ func update_income(stat: GlobalEnums.PLAYER_STATS, new_total: float, increase: f
 		
 func on_gold_or_income_updated() -> void:
 	get_node("LeftMenuColumn/RerollContainer/Gold/Amount").text = IconHandler.get_icon_path("coin") + "[color=black]" + str(player.gold) + "(+" + str(player.get_interest() + player.gold_income) + ")"
+	
+func on_dust_updated() -> void:
+	get_node("LeftMenuColumn/RerollContainer/Dust/Amount").text = IconHandler.get_icon_path("dust") + "[color=black]" + str(player.dust)
 	
 func on_enemy_killed(_e) -> void:
 	kills += 1

@@ -197,11 +197,12 @@ script = ExtResource("12_fie7l")
 script = ExtResource("27_3hf6d")
 
 [sub_resource type="Gradient" id="Gradient_e11lr"]
-colors = PackedColorArray(0.929412, 0.717647, 0.227451, 1, 0.972549, 0.901961, 0.541176, 1)
+offsets = PackedFloat32Array(0, 0.0033333334, 1)
+colors = PackedColorArray(0.929412, 0.717647, 0.227451, 1, 0, 0.7372549, 0.25882354, 1, 0, 0.7176471, 0.8627451, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_hdy6k"]
 gradient = SubResource("Gradient_e11lr")
-width = 310
+width = 400
 height = 80
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3e480"]
@@ -1125,6 +1126,7 @@ scale = Vector2(0.974, 1)
 script = ExtResource("122_v505v")
 
 [node name="Gold" type="Panel" parent="GameplayUi/LeftMenuColumn/RerollContainer"]
+visible = false
 layout_mode = 0
 offset_right = 310.0
 offset_bottom = 80.0
@@ -1187,6 +1189,40 @@ bbcode_enabled = true
 text = "[center][img width=16 height=16]res://Assets/icons/coin.png[/img][color=yellow]3"
 scroll_active = false
 autowrap_mode = 0
+
+[node name="Dust" type="Panel" parent="GameplayUi/LeftMenuColumn/RerollContainer"]
+layout_mode = 0
+offset_left = 2.0533447
+offset_right = 412.73102
+offset_bottom = 80.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="GameplayUi/LeftMenuColumn/RerollContainer/Dust"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 407.59753
+offset_bottom = 81.0
+step = 0.0
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_hdy6k")
+tint_under = Color(0.980392, 0.498039, 0, 0)
+tint_over = Color(0.603922, 0, 0.298039, 0)
+tint_progress = Color(0.94902, 1, 0.678431, 0.878431)
+
+[node name="Amount" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn/RerollContainer/Dust"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = -32.0
+offset_right = 106.0
+offset_bottom = -9.0
+grow_vertical = 2
+scale = Vector2(3, 3)
+bbcode_enabled = true
+text = "[img width=16 height=16]res://Assets/icons/dust.png[/img][color=black]0[/color]
+"
 
 [node name="WaveLabel" type="RichTextLabel" parent="GameplayUi/LeftMenuColumn"]
 layout_mode = 1

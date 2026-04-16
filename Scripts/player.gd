@@ -30,6 +30,7 @@ var playerUpgrades: Array = [];
 @export var championRewardBonus: float = 1;
 
 var gold: int = 50;
+var dust: int = 0;
 var gold_income: int = 10;
 var interest_per_amount: int = 10;
 var interest_cap: int = 10;
@@ -171,6 +172,12 @@ func modify_gold(value: int) -> void:
 	SignalBus.gold_amount_updated.emit()
 	if(value < 0):
 		SignalBus.gold_spent.emit(value)
+	
+func modify_dust(value: int) -> void:
+	dust += value
+	SignalBus.dust_amount_updated.emit()
+	if(value < 0):
+		SignalBus.dust_spent.emit(value)
 	
 func modify_income(value: int) -> void:
 	gold_income += value
