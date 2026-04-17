@@ -25,6 +25,9 @@ var playerUpgrades: Array = [];
 @export var damage_type_multipliers: Dictionary = {}
 @export var base_damage: Dictionary = {}
 
+
+@export var dust_income_multiplier: float = 1.0
+
 @export var max_weapons: int = 5
 
 @export var championRewardBonus: float = 1;
@@ -174,6 +177,8 @@ func modify_gold(value: int) -> void:
 		SignalBus.gold_spent.emit(value)
 	
 func modify_dust(value: int) -> void:
+	if(value > 0):
+		value *= dust_income_multiplier
 	dust += value
 	SignalBus.dust_amount_updated.emit()
 	if(value < 0):
@@ -252,6 +257,9 @@ func modify_stat(stat: GlobalEnums.PLAYER_STATS, amount: float, source: String =
 		GlobalEnums.PLAYER_STATS.BONUS_BOUNCE:
 			self.extraBounce += amount
 			SignalBus.stat_updated.emit(stat, self.extraBounce, amount)
+		GlobalEnums.PLAYER_STATS.BONUS_DUST:
+			self.dust_income_multiplier += amount
+			SignalBus.stat_updated.emit(stat, self.dust_income_multiplier, amount)
 
 func GetBaseDamage(damage_type : GlobalEnums.DAMAGE_TYPES) -> float:
 	var base_damage = base_damage[damage_type]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=185 format=3 uid="uid://p042rqn4c74u"]
+[gd_scene load_steps=190 format=3 uid="uid://p042rqn4c74u"]
 
 [ext_resource type="Script" uid="uid://b6kmf58swsxf7" path="res://Scripts/GameManager.gd" id="1_itpwq"]
 [ext_resource type="PackedScene" uid="uid://blmikl8w11roj" path="res://Scenes/player.tscn" id="2_n3kdf"]
@@ -36,7 +36,6 @@
 [ext_resource type="Theme" uid="uid://7qh40l0am5og" path="res://Themes/new_test.tres" id="21_uq2lv"]
 [ext_resource type="Script" uid="uid://r07laiw2tjd8" path="res://Scripts/UI/TooltipManager.gd" id="22_q1apf"]
 [ext_resource type="Script" uid="uid://jta04qlmwh3j" path="res://Scripts/UI/stat_display.gd" id="23_538x1"]
-[ext_resource type="Texture2D" uid="uid://c18hxp10xpph3" path="res://Assets/Sprites/upgrades/health.png" id="23_n2622"]
 [ext_resource type="Texture2D" uid="uid://bsrsq4uahi4pd" path="res://Assets/Sprites/upgrades/health_regen.png" id="24_k15pe"]
 [ext_resource type="PackedScene" uid="uid://defi70snoa0ww" path="res://Scenes/Upgrades/Augments/berserk.tscn" id="24_lo1n0"]
 [ext_resource type="Texture2D" uid="uid://m2fbo1scyp7x" path="res://Assets/Sprites/upgrades/armor_up.png" id="25_mkusj"]
@@ -166,12 +165,18 @@
 [ext_resource type="Script" uid="uid://b8o5sy6y71v0h" path="res://Scenes/reroll_container.gd" id="122_v505v"]
 [ext_resource type="Script" uid="uid://co0dhghrgcq5w" path="res://Scenes/UI/trees/plot_manager.gd" id="128_evi6n"]
 [ext_resource type="PackedScene" uid="uid://c50aqhjdpxv5o" path="res://Scenes/UI/trees/plot.tscn" id="128_rvudi"]
-[ext_resource type="PackedScene" uid="uid://bfyo3oo1vdo2o" path="res://Scenes/UI/trees/player_start_tree.tscn" id="130_6yj6h"]
+[ext_resource type="PackedScene" uid="uid://dv3ooe6bxjn20" path="res://Scenes/UI/trees/start_tree.tscn" id="130_5we1r"]
 [ext_resource type="PackedScene" uid="uid://bgxormkglms5n" path="res://Scenes/UI/trees/types/iron_tree.tscn" id="131_gf6js"]
 [ext_resource type="PackedScene" uid="uid://dw8a4jj50ig35" path="res://Scenes/UI/trees/types/magic_tree.tscn" id="131_jbmve"]
+[ext_resource type="Texture2D" uid="uid://cor0amewxdacg" path="res://Assets/Sprites/upgrades/dust_up.png" id="136_6qphx"]
 [ext_resource type="PackedScene" uid="uid://bltqtqoxu5yrn" path="res://Scenes/Upgrades/upgrade_handler.tscn" id="152_y0jbi"]
+[ext_resource type="PackedScene" uid="uid://b2pppwxno08oh" path="res://Scenes/Upgrades/Augments/rainbow_medley.tscn" id="155_aaov2"]
+[ext_resource type="PackedScene" uid="uid://eg8srja1wux6" path="res://Scenes/Upgrades/Augments/rainbow_power.tscn" id="156_6qphx"]
+[ext_resource type="PackedScene" uid="uid://bt1ko6t10gd2q" path="res://Scenes/Upgrades/Augments/farmer.tscn" id="157_6qphx"]
+[ext_resource type="PackedScene" uid="uid://dnl4mrnjvd0o3" path="res://Scenes/Upgrades/Augments/dust_to_dust.tscn" id="158_5we1r"]
+[ext_resource type="PackedScene" uid="uid://cvfqb32vysdvv" path="res://Scenes/Upgrades/Stats/DustBonusUpgrade.tscn" id="158_51sgp"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbmve"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_51sgp"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -292,7 +297,7 @@ enemy_hp_scaling = 1.5
 enemy_dmg_scaling = 1.15
 enemy_cc_effectiveness_scaling = 0.9
 double_enemies_every = 15
-enemy_outline_material = SubResource("ShaderMaterial_jbmve")
+enemy_outline_material = SubResource("ShaderMaterial_51sgp")
 
 [node name="GameplayUi" type="Control" parent="."]
 z_index = 100
@@ -1265,7 +1270,7 @@ offset_right = 196.0
 offset_bottom = 107.0
 scale = Vector2(1.5, 1.5)
 unlocked = true
-tree_prefab = ExtResource("130_6yj6h")
+tree_prefab = ExtResource("130_5we1r")
 
 [node name="Plot3" parent="GameplayUi/LeftMenuColumn/TreeGarden" instance=ExtResource("128_rvudi")]
 layout_mode = 0
@@ -1345,23 +1350,23 @@ offset_top = 8.0
 offset_right = 420.0
 offset_bottom = 278.0
 
-[node name="MaxHp" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats"]
-visible = false
+[node name="BonusDust" type="Control" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats"]
 anchors_preset = 0
 offset_left = 20.0
 offset_top = 5.0
 offset_right = 80.0
 offset_bottom = 85.0
 script = ExtResource("23_538x1")
-stat = 6
+stat = 17
+percentage = true
 
-[node name="Sprite2D" type="Sprite2D" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/MaxHp"]
+[node name="Sprite2D" type="Sprite2D" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/BonusDust"]
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("23_n2622")
+texture = ExtResource("136_6qphx")
 centered = false
 offset = Vector2(3, 0)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/MaxHp"]
+[node name="RichTextLabel" type="RichTextLabel" parent="GameplayUi/RightMenuColumn/TabContainer/Character/BaseStats/BonusDust"]
 layout_mode = 0
 offset_left = -11.0
 offset_top = 53.0
@@ -1893,8 +1898,8 @@ offset_bottom = 1050.0
 [node name="UpgradeHandler" parent="GameplayUi" instance=ExtResource("152_y0jbi")]
 process_mode = 3
 layout_mode = 0
-augment_scenes = Array[PackedScene]([ExtResource("24_lo1n0"), ExtResource("25_v505v"), ExtResource("26_1l4is"), ExtResource("27_mhe6q"), ExtResource("28_rvudi"), ExtResource("29_evi6n"), ExtResource("30_6yj6h"), ExtResource("31_y0jbi"), ExtResource("32_gf6js"), ExtResource("33_jbmve"), ExtResource("34_4eoxu"), ExtResource("35_aaov2"), ExtResource("36_6qphx"), ExtResource("37_51sgp"), ExtResource("38_5we1r"), ExtResource("39_v0sy4"), ExtResource("40_flmaf"), ExtResource("41_gdtnd"), ExtResource("42_r7ci0"), ExtResource("43_hae1d"), ExtResource("44_8nwdl"), ExtResource("45_67cmg"), ExtResource("46_vlsa2")])
-upgrade_scenes = Array[PackedScene]([ExtResource("24_lo1n0"), ExtResource("25_v505v"), ExtResource("26_1l4is"), ExtResource("27_mhe6q"), ExtResource("28_rvudi"), ExtResource("29_evi6n"), ExtResource("30_6yj6h"), ExtResource("31_y0jbi"), ExtResource("32_gf6js"), ExtResource("33_jbmve"), ExtResource("34_4eoxu"), ExtResource("35_aaov2"), ExtResource("36_6qphx"), ExtResource("37_51sgp"), ExtResource("38_5we1r"), ExtResource("39_v0sy4"), ExtResource("40_flmaf"), ExtResource("41_gdtnd"), ExtResource("42_r7ci0"), ExtResource("43_hae1d"), ExtResource("44_8nwdl"), ExtResource("45_67cmg"), ExtResource("46_vlsa2"), ExtResource("47_hyqkb"), ExtResource("48_vow8m"), ExtResource("49_mtd1b"), ExtResource("50_wufgh"), ExtResource("51_qdqqf"), ExtResource("52_y70ns"), ExtResource("53_00ydc"), ExtResource("54_y2y21"), ExtResource("55_uusru"), ExtResource("56_32x6h"), ExtResource("57_4sj35"), ExtResource("58_smmsx"), ExtResource("59_25d3u"), ExtResource("60_ugv3l"), ExtResource("61_l23mq"), ExtResource("62_gehmf"), ExtResource("63_st6jl"), ExtResource("64_xxwfp"), ExtResource("65_82vt6"), ExtResource("66_ol6jh"), ExtResource("67_smsdj"), ExtResource("68_pv7ch"), ExtResource("69_aaxfw"), ExtResource("70_hcoql"), ExtResource("71_lxdir"), ExtResource("72_d3sl3"), ExtResource("73_4rdys"), ExtResource("74_jbu8v"), ExtResource("75_yryno"), ExtResource("76_mtgtx"), ExtResource("77_3oxh1"), ExtResource("78_kh22x"), ExtResource("79_81j1g"), ExtResource("80_ldpfi"), ExtResource("81_cf2tq"), ExtResource("82_gukml"), ExtResource("83_ceige"), ExtResource("84_t0vmj"), ExtResource("85_6puq5"), ExtResource("86_400fd"), ExtResource("87_bkh3n"), ExtResource("88_o3h8t"), ExtResource("89_nv4ly"), ExtResource("90_covh5"), ExtResource("91_5ogv1"), ExtResource("92_nnd5v"), ExtResource("93_wxtwc"), ExtResource("94_3eavt"), ExtResource("95_l8e4l"), ExtResource("96_hfd8b"), ExtResource("97_g17yk"), ExtResource("98_jkmat"), ExtResource("99_ow6su"), ExtResource("100_f1jp5"), ExtResource("101_pwah5"), ExtResource("102_8gis8"), ExtResource("103_lsplc"), ExtResource("104_chrrn"), ExtResource("105_0sosv"), ExtResource("106_dhj0k"), ExtResource("107_7hu0e"), ExtResource("108_od0xp"), ExtResource("109_kfub0"), ExtResource("110_x6j4y"), ExtResource("111_ysxld"), ExtResource("112_0m046"), ExtResource("113_qdyk1"), ExtResource("114_oylqi"), ExtResource("115_1l4is"), ExtResource("116_mhe6q")])
+augment_scenes = Array[PackedScene]([ExtResource("24_lo1n0"), ExtResource("25_v505v"), ExtResource("26_1l4is"), ExtResource("27_mhe6q"), ExtResource("28_rvudi"), ExtResource("29_evi6n"), ExtResource("30_6yj6h"), ExtResource("31_y0jbi"), ExtResource("32_gf6js"), ExtResource("33_jbmve"), ExtResource("34_4eoxu"), ExtResource("35_aaov2"), ExtResource("36_6qphx"), ExtResource("37_51sgp"), ExtResource("38_5we1r"), ExtResource("39_v0sy4"), ExtResource("40_flmaf"), ExtResource("41_gdtnd"), ExtResource("42_r7ci0"), ExtResource("43_hae1d"), ExtResource("44_8nwdl"), ExtResource("45_67cmg"), ExtResource("46_vlsa2"), ExtResource("155_aaov2"), ExtResource("156_6qphx"), ExtResource("157_6qphx"), ExtResource("158_5we1r")])
+upgrade_scenes = Array[PackedScene]([ExtResource("47_hyqkb"), ExtResource("48_vow8m"), ExtResource("49_mtd1b"), ExtResource("50_wufgh"), ExtResource("51_qdqqf"), ExtResource("52_y70ns"), ExtResource("53_00ydc"), ExtResource("54_y2y21"), ExtResource("55_uusru"), ExtResource("56_32x6h"), ExtResource("57_4sj35"), ExtResource("58_smmsx"), ExtResource("59_25d3u"), ExtResource("60_ugv3l"), ExtResource("61_l23mq"), ExtResource("62_gehmf"), ExtResource("63_st6jl"), ExtResource("64_xxwfp"), ExtResource("65_82vt6"), ExtResource("66_ol6jh"), ExtResource("67_smsdj"), ExtResource("68_pv7ch"), ExtResource("69_aaxfw"), ExtResource("70_hcoql"), ExtResource("71_lxdir"), ExtResource("72_d3sl3"), ExtResource("73_4rdys"), ExtResource("74_jbu8v"), ExtResource("75_yryno"), ExtResource("76_mtgtx"), ExtResource("77_3oxh1"), ExtResource("78_kh22x"), ExtResource("79_81j1g"), ExtResource("80_ldpfi"), ExtResource("81_cf2tq"), ExtResource("82_gukml"), ExtResource("83_ceige"), ExtResource("84_t0vmj"), ExtResource("85_6puq5"), ExtResource("86_400fd"), ExtResource("87_bkh3n"), ExtResource("88_o3h8t"), ExtResource("89_nv4ly"), ExtResource("90_covh5"), ExtResource("91_5ogv1"), ExtResource("92_nnd5v"), ExtResource("93_wxtwc"), ExtResource("94_3eavt"), ExtResource("95_l8e4l"), ExtResource("96_hfd8b"), ExtResource("97_g17yk"), ExtResource("98_jkmat"), ExtResource("99_ow6su"), ExtResource("100_f1jp5"), ExtResource("101_pwah5"), ExtResource("102_8gis8"), ExtResource("103_lsplc"), ExtResource("104_chrrn"), ExtResource("105_0sosv"), ExtResource("106_dhj0k"), ExtResource("107_7hu0e"), ExtResource("108_od0xp"), ExtResource("109_kfub0"), ExtResource("110_x6j4y"), ExtResource("111_ysxld"), ExtResource("112_0m046"), ExtResource("113_qdyk1"), ExtResource("114_oylqi"), ExtResource("115_1l4is"), ExtResource("116_mhe6q"), ExtResource("158_51sgp")])
 
 [node name="AugmentHandler" parent="GameplayUi" instance=ExtResource("40_yymlw")]
 layout_mode = 0

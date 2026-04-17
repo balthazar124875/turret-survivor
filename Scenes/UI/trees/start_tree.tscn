@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv3ooe6bxjn20"]
+
+[ext_resource type="PackedScene" uid="uid://d04s87n0pbps5" path="res://Scenes/UI/trees/tree.tscn" id="1_er8c4"]
+
+[node name="Tree" instance=ExtResource("1_er8c4")]
+fruit1_start_level = 3
+fruit2_start_level = 6

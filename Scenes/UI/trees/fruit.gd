@@ -120,6 +120,8 @@ func get_rarity() -> Upgrade.UpgradeRarity:
 				
 			return Upgrade.UpgradeRarity.COMMON
 		GROWTH_STAGE.LEGENDARY:
+			#if(r > 0.1):
+				#return Upgrade.UpgradeRarity.MYTHIC
 			if(r > 0.65):
 				return Upgrade.UpgradeRarity.LEGENDARY
 			if(r > 0.2):

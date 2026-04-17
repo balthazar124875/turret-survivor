@@ -24,3 +24,6 @@ func on_enemy_killed(enemy: Enemy):
 			bullet.pierce = bullet_pierce + player.extraPierce
 			bullet.bounce += player.extraBounce
 			direction = direction.rotated(-deg_to_rad(spread))
+
+func get_description() -> String:
+	return "Sends out " + str(4 + player.extraProjectiles) + "icicles that deal [color=cyan]" +  String.num(player.get_player_damage(damage, GlobalEnums.DAMAGE_TYPES.ICE), 2) + " [/color]damage"

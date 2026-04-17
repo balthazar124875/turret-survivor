@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt1ko6t10gd2q"]
+
+[ext_resource type="Script" uid="uid://wrk85mldmgex" path="res://Scripts/Upgrades/Augments/farmer.gd" id="1_2dwl0"]
+[ext_resource type="Texture2D" uid="uid://4rrs6jyk8i1p" path="res://Assets/Sprites/upgrades/farmer.png" id="2_t5mpw"]
+
+[node name="Farmer" type="Node2D"]
+script = ExtResource("1_2dwl0")
+upgradeName = "Farmer"
+description = "Dobules seed drop rate"
+type = 1
+rarity = 4
+icon = ExtResource("2_t5mpw")

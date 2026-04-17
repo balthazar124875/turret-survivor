@@ -25,3 +25,6 @@ func on_enemy_killed(enemy: Enemy):
 	if enemyKillCounter >= killThreshold:
 		enemyKillCounter = 0;
 		SpawnShootingStar(enemy.global_position);
+
+func get_description() -> String:
+	return "Stars deal [color=red]15[/color] + [color=purple]20%[/color] of enemies max health as damage"

@@ -68,7 +68,7 @@ func cluster():
 		new_bomb.speed = speed 
 		new_bomb.arc_height = 50
 		new_bomb.damage = damage
-		new_bomb.cluster_times = cluster_times - 1 if i == 0 else 0
+		new_bomb.cluster_times = cluster_times - 1 
 		new_bomb.number_of_cluster_bombs = number_of_cluster_bombs
 		new_bomb.damage_type = damage_type
 		get_parent().add_child(new_bomb)

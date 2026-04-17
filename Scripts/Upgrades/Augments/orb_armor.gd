@@ -12,3 +12,7 @@ func increase_player_armor() -> void:
 	var increment = 1;
 	player.modify_stat(GlobalEnums.PLAYER_STATS.ADD_ARMOR, increment, "Orb Armor");
 	pass
+
+
+func get_description() -> String:
+	return "Granting [color=red]" + String.num(OrbHandler.playerOrbs.size(), 0) + "[/color] armor"

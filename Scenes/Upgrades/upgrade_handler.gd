@@ -15,6 +15,8 @@ var upgrade_list: Array[Upgrade] = []
 
 @export var weapon_variaty_chance: float = 0.15
 
+var dust_value: int =  10
+
 func _ready():
 	load_augments()
 	load_upgrades()
@@ -60,6 +62,7 @@ func roll_upgrades(amount: int, rarity: Upgrade.UpgradeRarity, tagBonuses: Dicti
 	for u in rarityUpgrades:
 		u.rolled = false
 	spawn_upgrade_buttons(chosenUpgrades)
+	update_dust_amount(rarity)
 	
 func calc_tag_weights(tags: Array[Upgrade.TAGS], tagBonuses: Dictionary[Upgrade.TAGS, float]):
 	var mult = 1
@@ -113,7 +116,6 @@ func spawn_upgrade_buttons(upgrades: Array[Upgrade]):
 		new_upgrade.choice_data = upgrade
 		new_upgrade.connect("choice_selected", Callable(self, "_on_choice_selected"))
 		
-	$DustOption.visible = true
 		
 func _on_choice_selected(choice: Upgrade):
 	if(choice is AugmentUpgrade):
@@ -121,8 +123,24 @@ func _on_choice_selected(choice: Upgrade):
 	reset()
 	choice.applyPlayerUpgrade(player)
 
+func update_dust_amount(rarity: Upgrade.UpgradeRarity):
+	match rarity:
+		Upgrade.UpgradeRarity.COMMON:
+			dust_value = 10
+		Upgrade.UpgradeRarity.UNCOMMON:
+			dust_value = 15
+		Upgrade.UpgradeRarity.RARE:
+			dust_value = 20
+		Upgrade.UpgradeRarity.LEGENDARY:
+			dust_value = 25
+		Upgrade.UpgradeRarity.MYTHIC:
+			dust_value = 50
+			
+	$DustOption/RichTextLabel.text = "[center]+" + String.num(dust_value, 0) + "[img width=32 height=16]res://Assets/icons/dust.png[/img]"
+	$DustOption.visible = true
+
 func get_dust():
-	player.modify_dust(20)
+	player.modify_dust(dust_value)
 	reset();
 
 func get_color(rarity: Upgrade.UpgradeRarity) -> Color:
@@ -135,6 +153,8 @@ func get_color(rarity: Upgrade.UpgradeRarity) -> Color:
 			return Color(0, 0, 1, 0.2)
 		Upgrade.UpgradeRarity.LEGENDARY:
 			return Color(0.916, 0.617, 0.145, 0.3)
+		Upgrade.UpgradeRarity.MYTHIC:
+			return Color(0.509, 0.094, 0.123, 0.3)
 	return Color(1, 1, 1, 0)
 	
 func reset():
@@ -160,10 +180,8 @@ func load_starter_upgrades():
 			var loaded_weapn = upgrade_list.find(func(x): return x.name == temp.name)
 			loaded_weapn.applyPlayerUpgrade(self)
 	
-func get_all_upgrades() -> Array[Upgrade]:
-	var list = upgrade_list
-	list.append(augment_list)
-	return list
+func get_all_upgrades() -> Array:
+	return upgrade_list + augment_list
 
 func get_random_upgrade() -> Upgrade:
 	var filter_unavailable = upgrade_list.filter(func(x): return x.weight > 0)
