@@ -12,12 +12,12 @@ script = ExtResource("1_7gl3m")
 
 [node name="Types" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 156.0
+offset_right = 291.0
 offset_bottom = 40.0
 
 [node name="Source Name" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_right = 117.0
+offset_right = 305.0
 offset_bottom = 24.0
 bbcode_enabled = true
 text = "[color=black]Gun"
