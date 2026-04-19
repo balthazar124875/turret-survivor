@@ -29,7 +29,8 @@ enum TAGS {
 	HEALTH,
 	INCOME,
 	WEAPON,
-	TRAP
+	TRAP,
+	OWNED
 }
 
 @export var upgradeName : String;
@@ -60,6 +61,7 @@ func applyPlayerUpgrade(player: Player) -> void:
 	weight -= weight_reduction 
 	applyUpgradeToPlayer(player)
 	SignalBus.upgrade_recieved.emit(self)
+	tags.append(TAGS.OWNED)
 
 	#reparentToPlayer(player)
 
@@ -91,6 +93,11 @@ func get_tags() -> String:
 		
 	var tag_names: Array[String] = []
 	for tag in tags:
+		if(excluded_tags.has(tag)):
+			continue
+			
 		tag_names.append(TAGS.keys()[int(tag)])
 
 	return "\n[b]#" + " #".join(tag_names) + "[/b]"
+
+var excluded_tags: Array[TAGS] = [TAGS.WEAPON, TAGS.OWNED]

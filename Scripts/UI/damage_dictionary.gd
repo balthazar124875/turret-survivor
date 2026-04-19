@@ -13,11 +13,23 @@ var start_y = 10
 var total_damage = 0
 var total_heal = 0
 
+var damage_done_entries: Array[DamageDoneEntry] = []
+
+@export var damage_entry: PackedScene
+
+var tween: Tween
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.damage_done.connect(_add_damage)
 	SignalBus.heal_done.connect(_add_heal)
-	pass # Replace with function body.
+	
+	
+	var timer = Timer.new()
+	timer.wait_time = 1.0
+	timer.autostart = true
+	timer.timeout.connect(rerender_entries)
+	add_child(timer)
 
 func _input(event):
 	if event is InputEventKey and event.pressed:
@@ -31,20 +43,47 @@ func _process(delta: float) -> void:
 func _add_damage(enemy: Enemy, amount: float, damageType: GlobalEnums.DAMAGE_TYPES, source: String, direct:bool):
 	if (source == ''):
 		return
-	if source in damages:
-		var label = get_damage_child_by_name(source)
-		damages[source] += amount
-		label.text = source + ": " + str(round(damages[source]))
+		
+	var entry_index = damage_done_entries.find_custom(func(x): return x.name == source)
+	if(entry_index != -1):
+		var entry = damage_done_entries[entry_index]
+		entry.total += amount
+		if damageType in entry.damage_types:
+			entry.damage_types[damageType] += amount
+		else:
+			entry.damage_types[damageType] = amount
 	else:
-		var label = Label.new()
-		damage_list.add_child(label)
-		label.position = Vector2(0, get_child_count() * 40)
-		label.name =  source
+		var new_entry = DamageDoneEntry.new()
+		new_entry.name = source
+		new_entry.total = amount
+		new_entry.damage_types[damageType] = amount
+		
+		var entry_object = damage_entry.instantiate()
+		damage_list.add_child(entry_object)
+		entry_object.name =  source
+		entry_object.init(source)
+		entry_object.position = Vector2(0, damage_done_entries.size() * 40)
+		new_entry.pos = damage_done_entries.size()
+		entry_object.rerender(new_entry.damage_types, new_entry.total, 0)
+		
+		
+		damage_done_entries.append(new_entry)
+		
 	
-		damages[source] = amount
-		label.text = source + ": " + str(round(damages[source]))
-	total_damage += amount
-	total_damage_label.text = str("Damage done: ", round(total_damage))
+	#if source in damages:
+		#var label = get_damage_child_by_name(source)
+		#damages[source] += amount
+		#label.text = source + ": " + str(round(damages[source]))
+	#else:
+		#var label = Label.new()
+		#damage_list.add_child(label)
+		#label.position = Vector2(0, get_child_count() * 40)
+		#label.name =  source
+	#
+		#damages[source] = amount
+		#label.text = source + ": " + str(round(damages[source]))
+	#total_damage += amount
+	#total_damage_label.text = str("Damage done: ", round(total_damage))
 	
 	if damageType in damageTypeList:
 		damageTypeList[damageType] += amount
@@ -71,6 +110,34 @@ func _add_heal(amount: float, source: String):
 		label.text = source + ": " + str(round(heals[source]))
 	total_heal += amount
 	total_heal_label.text = str("Heal done: ", round(total_heal))
+	
+func rerender_entries():
+	if(damage_done_entries.size() == 0):
+		return
+		
+	damage_done_entries.sort_custom(sort_entry)
+	
+	if tween:
+		tween.kill()
+
+	tween = create_tween()
+	tween.set_parallel(true)
+	
+	var max = damage_done_entries[0].total
+	
+	var i = 0
+	for d_e in damage_done_entries:
+		var children = damage_list.get_children()
+		var obj = damage_list.get_node(d_e.name)
+		obj.rerender(d_e.damage_types, d_e.total, max)
+		
+		if(d_e.pos != i):
+			tween.tween_property(obj, "position", Vector2(0, i * 40), 0.3)
+			d_e.pos = i
+		i += 1
+
+func sort_entry(a: DamageDoneEntry, b: DamageDoneEntry):
+	return a.total > b.total
 	
 func _print():
 	for key in damages.keys():

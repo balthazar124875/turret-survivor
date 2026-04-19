@@ -30,7 +30,7 @@
 [ext_resource type="Resource" uid="uid://bul3ky4jfitsy" path="res://Resources/wave9.tres" id="13_yidmk"]
 [ext_resource type="Resource" uid="uid://cuhq1q0hrbfeo" path="res://Resources/wave10.tres" id="14_3ncf5"]
 [ext_resource type="Resource" uid="uid://cl8k4vxw56nif" path="res://Resources/wave11.tres" id="15_cdqcm"]
-[ext_resource type="PackedScene" uid="uid://bampk2ki2ygjd" path="res://Scenes/UI/damage_dictionary.tscn" id="18_dwmxg"]
+[ext_resource type="PackedScene" uid="uid://bampk2ki2ygjd" path="res://Scenes/UI/Damage Done Stats/damage_dictionary.tscn" id="18_dwmxg"]
 [ext_resource type="Texture2D" uid="uid://ch75yn1lg3g7j" path="res://Assets/Sprites/UI/shop_door.png" id="20_0xokr"]
 [ext_resource type="Script" uid="uid://bu4de1q64pd5" path="res://Scripts/UI/shop_door_handler.gd" id="21_s3o7k"]
 [ext_resource type="Theme" uid="uid://7qh40l0am5og" path="res://Themes/new_test.tres" id="21_uq2lv"]
@@ -176,7 +176,7 @@
 [ext_resource type="PackedScene" uid="uid://dnl4mrnjvd0o3" path="res://Scenes/Upgrades/Augments/dust_to_dust.tscn" id="158_5we1r"]
 [ext_resource type="PackedScene" uid="uid://cvfqb32vysdvv" path="res://Scenes/Upgrades/Stats/DustBonusUpgrade.tscn" id="158_51sgp"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_51sgp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5we1r"]
 resource_local_to_scene = true
 shader = ExtResource("4_6ev4i")
 shader_parameter/outline_color = Vector4(0, 0, 0, 1)
@@ -297,7 +297,7 @@ enemy_hp_scaling = 1.5
 enemy_dmg_scaling = 1.15
 enemy_cc_effectiveness_scaling = 0.9
 double_enemies_every = 15
-enemy_outline_material = SubResource("ShaderMaterial_51sgp")
+enemy_outline_material = SubResource("ShaderMaterial_5we1r")
 
 [node name="GameplayUi" type="Control" parent="."]
 z_index = 100

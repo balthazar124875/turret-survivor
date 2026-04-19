@@ -1,9 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bampk2ki2ygjd"]
+[gd_scene load_steps=5 format=3 uid="uid://bampk2ki2ygjd"]
 
-[ext_resource type="Script" path="res://Scripts/UI/damage_dictionary.gd" id="1_4mhtr"]
+[ext_resource type="Script" uid="uid://b7wafy7336tjn" path="res://Scripts/UI/damage_dictionary.gd" id="1_4mhtr"]
+[ext_resource type="PackedScene" uid="uid://d6t384ef2pfe" path="res://Scenes/UI/Damage Done Stats/damage_entry.tscn" id="2_yqo23"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1furj"]
-font_size = 20
+font_size = 15
 font_color = Color(1, 0.984314, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wfcer"]
@@ -13,20 +14,28 @@ font_color = Color(1, 1, 0, 1)
 [node name="DamageDictionary" type="VBoxContainer"]
 alignment = 1
 script = ExtResource("1_4mhtr")
+damage_entry = ExtResource("2_yqo23")
 
-[node name="Damage" type="VBoxContainer" parent="."]
+[node name="Damage" type="Control" parent="."]
 layout_mode = 2
 
 [node name="DamageDone" type="Label" parent="Damage"]
-layout_mode = 2
+layout_mode = 0
+offset_right = 156.0
+offset_bottom = 47.0
 text = "Damage done: 0
 "
 label_settings = SubResource("LabelSettings_1furj")
 
-[node name="DamageList" type="VBoxContainer" parent="Damage"]
-layout_mode = 2
+[node name="DamageList" type="Control" parent="Damage"]
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 25.0
+offset_right = 157.0
+offset_bottom = 25.0
 
 [node name="Heal" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 
 [node name="HealDone" type="Label" parent="Heal"]
